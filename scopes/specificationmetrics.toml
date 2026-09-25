@@ -3,3 +3,7 @@ schema_version = 1
 [[source_sets]]
 role = "application"
 paths = ["src"]
+
+[[source_sets]]
+role = "test"
+paths = ["tests/fixtures"]

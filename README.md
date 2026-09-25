@@ -140,7 +140,7 @@ stores the digest and preserves older snapshots without it.
 ### Example: this Rust project
 
 [`scopes/specificationmetrics.toml`](scopes/specificationmetrics.toml) assigns
-the project's `src` tree to `application`:
+the project's `src` tree to `application` and its liveness fixtures to `test`:
 
 ```bash
 cargo run -- scan . --scope-manifest scopes/specificationmetrics.toml
