@@ -1,14 +1,13 @@
 # SpecificationMetrics
 
-A Rust CLI for examining Specification adoption in Python, Swift, and Rust.
-The current release scans control-flow candidates and reports evidence coverage
-from a reviewed registry. The intended primary metric is a live ratio described
-below; it is not yet implemented by `measure`.
+A Rust CLI for measuring Specification adoption in Python, Swift, and Rust.
+It scans the current source snapshot and reports the live ratio of distinct
+Specification definitions to remaining control-flow opportunities.
 
 See the [roadmap](ROADMAP.md) for proposed System One assisted candidate
 classification with Jev, Laya, and GLiNER2.5-Decide.
 
-## Target live metric
+## Live metric
 
 For each source snapshot, calculate `S / U`: `S` is the number of distinct
 application-defined Specifications, counted once per definition rather than
@@ -23,21 +22,34 @@ If `U` reaches zero, report `S` and `U` plus a `complete` state instead of
 serializing infinity as a JSON number. If both counts are zero, report
 `not_applicable`. Changes in project scope, new decisions, and deleted code may
 move the ratio in either direction; that is part of a live project-health
-measurement. Store dated snapshots and their source revision in the registry
-to explain the trajectory, without freezing a historical denominator.
+measurement. Store dated snapshots and their source revision in SQLite to
+explain the trajectory, without freezing a historical denominator.
 
-The exact cross-language detection rules for Specification definitions and
-remaining opportunities still need implementation and validation. The current
-`measure` command reports a different, evidence-based `coverage_percent` over
-reviewed registry entries. Do not interpret it as `S / U` or compare it with
-future live-ratio snapshots.
+Counting rule v1 recognizes direct Specification/DecisionSpec conformances or
+implementations and source sites that construct `PredicateSpec` or `FirstMatch`
+variants. It counts a factory site once, regardless of runtime calls. Decisions
+inside recognized definitions or factories do not contribute to `U`. Reviewed
+`excluded` entries in an optional registry remove only *currently matching*
+candidates. Other current candidates contribute to `U`.
+
+This is a syntax-based measure. Aliased or indirect conformances, some factory
+forms, and a decision that merely calls a Specification from an ordinary `if`
+may need review. Inspect `scan` output, its `specifications` list, and the raw
+counts before interpreting changes. A parse issue marks a report provisional.
 
 ## Current reviewed inventory
 
 `sync` records each discovered site in a TOML registry. Reviewers classify it
-as `eligible` or `excluded`. Current `measure` retains eligible entries after
-their original syntax disappears to audit evidence for past refactoring work.
-This historical inventory does not define the target ratio's denominator.
+as `eligible` or `excluded`. `measure` can use reviewed exclusions from the
+registry, but its denominator comes from the current source only. Historical
+entries whose fingerprints are absent no longer contribute to `U`.
+
+`measure --store` saves each distinct report to a SQLite database, including
+the source digest, Git revision when available, scope, rule version, raw counts,
+ratio, and parse status. `history` reads these snapshots newest first. Repeating
+an identical measurement returns the same snapshot ID instead of appending a
+duplicate. The separate `measure-evidence` command retains the earlier
+evidence-based `coverage_percent` report; it is not `S / U`.
 
 `defer` is discovered in Swift, but ordinary scope-exit cleanup normally belongs
 in `excluded` with a reason. A decision inside its body is scanned separately.
@@ -50,8 +62,11 @@ cargo run -- scan ../SpecGraph --output candidates.json
 cargo run -- sync ../SpecGraph --registry registries/specgraph.toml \
   --include tools/idea_to_spec_promotion_gate.py
 # Review each `disposition = "unreviewed"` entry in the registry.
-cargo run -- measure ../SpecGraph --registry registries/specgraph.toml
-cargo run -- measure ../SpecGraph --registry registries/specgraph.toml --require-complete
+cargo run -- measure ../SpecGraph --registry registries/specgraph.toml \
+  --store metrics/specgraph.sqlite --require-complete
+cargo run -- history --store metrics/specgraph.sqlite
+# Historical evidence report, if needed:
+cargo run -- measure-evidence ../SpecGraph --registry registries/specgraph.toml
 ```
 
 The scanner follows `.gitignore`. Use repeated `--include` arguments to start
@@ -61,11 +76,12 @@ that registry's scope. The selected scope is saved in the registry, so
 narrowed. Keep one registry per source repository and root.
 
 The scanner reports source parse errors explicitly. `sync` refuses to update a
-registry from a partial scan unless `--allow-partial` is given. `measure` sets
-`provisional` when candidates still need review, a legacy eligible anchor
-disappeared without complete evidence, or a file could not be parsed.
+registry from a partial scan unless `--allow-partial` is given. Live `measure`
+sets `provisional` when a file could not be parsed. `--require-complete` fails
+in that case. The older `measure-evidence` report also considers unreviewed
+candidates and missing legacy anchors provisional.
 
-## Registry and score
+## Registry and evidence report
 
 The first `sync` creates entries like this:
 
@@ -83,8 +99,8 @@ disposition = "unreviewed"
 ```
 
 Give each reviewed entry a stable human-readable `id`. An excluded entry needs
-a non-empty `reason`. An eligible entry can earn one point for each evidence
-reference:
+a non-empty `reason`. In the separate evidence report, an eligible entry can
+earn one point for each evidence reference:
 
 ```toml
 [[sites]]

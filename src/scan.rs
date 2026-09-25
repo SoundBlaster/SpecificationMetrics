@@ -6,7 +6,9 @@ use anyhow::{Context, Result, ensure};
 use ignore::WalkBuilder;
 use tree_sitter::{Language as TreeSitterLanguage, Node, Parser};
 
-use crate::model::{Candidate, Language, ParseIssue, SCHEMA_VERSION, ScanReport};
+use crate::model::{
+    Candidate, Language, ParseIssue, SCHEMA_VERSION, ScanReport, SpecificationDefinition,
+};
 
 pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
     let root = root
@@ -30,9 +32,29 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
     }
     let mut files = source_files(&root)?;
     files.sort();
+    for include in &includes {
+        let selected = base.join(include).canonicalize()?;
+        if selected.is_file() {
+            ensure!(
+                supported(&selected),
+                "included file is not a supported source: {include}"
+            );
+            ensure!(
+                files.binary_search(&selected).is_ok(),
+                "included source is ignored by the file walker: {include}"
+            );
+        } else {
+            ensure!(
+                files.iter().any(|file| file.starts_with(&selected)),
+                "included directory has no selected source files: {include}"
+            );
+        }
+    }
 
     let mut candidates = Vec::new();
+    let mut specifications = Vec::new();
     let mut parse_issues = Vec::new();
+    let mut source_hasher = blake3::Hasher::new();
     for file in files {
         let language = file
             .extension()
@@ -64,6 +86,10 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
                 continue;
             }
         };
+        source_hasher.update(relative_path.as_bytes());
+        source_hasher.update(&[0]);
+        source_hasher.update(source.as_bytes());
+        source_hasher.update(&[0]);
         let mut parser = Parser::new();
         parser
             .set_language(&tree_sitter_language(language))
@@ -83,13 +109,18 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
             });
         }
         let mut occurrences = HashMap::new();
+        let mut state = VisitState {
+            occurrences: &mut occurrences,
+            candidates: &mut candidates,
+            specifications: &mut specifications,
+        };
         visit(
             root_node,
             language,
             &relative_path,
             source.as_bytes(),
-            &mut occurrences,
-            &mut candidates,
+            &mut state,
+            false,
         );
     }
     candidates.sort_by(|a, b| {
@@ -100,11 +131,16 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
             &b.fingerprint,
         ))
     });
+    specifications.sort_by(|a, b| {
+        (&a.path, a.line, a.column, &a.name).cmp(&(&b.path, b.line, b.column, &b.name))
+    });
     Ok(ScanReport {
         schema_version: SCHEMA_VERSION,
         root: root.display().to_string(),
         includes,
         candidates,
+        specifications,
+        source_digest: source_hasher.finalize().to_hex().to_string(),
         parse_issues,
     })
 }
@@ -209,20 +245,40 @@ fn is_direct_else_if(node: Node<'_>) -> bool {
     })
 }
 
+struct VisitState<'a> {
+    occurrences: &'a mut HashMap<String, usize>,
+    candidates: &'a mut Vec<Candidate>,
+    specifications: &'a mut Vec<SpecificationDefinition>,
+}
+
 fn visit(
     node: Node<'_>,
     language: Language,
     path: &str,
     source: &[u8],
-    occurrences: &mut HashMap<String, usize>,
-    candidates: &mut Vec<Candidate>,
+    state: &mut VisitState<'_>,
+    inside_specification: bool,
 ) {
+    let declaration = specification_declaration(language, node, source);
+    let factory = specification_factory(language, node, source);
+    if let Some((name, kind)) = declaration.as_ref().or(factory.as_ref()) {
+        let position = node.start_position();
+        state.specifications.push(SpecificationDefinition {
+            language,
+            path: path.to_owned(),
+            name: name.clone(),
+            kind: (*kind).to_owned(),
+            line: position.row + 1,
+            column: position.column + 1,
+        });
+    }
+    let inside_specification = inside_specification || declaration.is_some() || factory.is_some();
     if let Some(kind) = decision_kind(language, node, source) {
         let source_text = String::from_utf8_lossy(&source[node.byte_range()]);
         let normalized: String = source_text.split_whitespace().collect();
         let digest = blake3::hash(normalized.as_bytes()).to_hex().to_string();
         let base = format!("{}:{path}:{kind}:{}", language.label(), &digest[..16]);
-        let occurrence = occurrences.entry(base.clone()).or_insert(0);
+        let occurrence = state.occurrences.entry(base.clone()).or_insert(0);
         *occurrence += 1;
         let position = node.start_position();
         let excerpt = source_text
@@ -233,7 +289,7 @@ fn visit(
             .chars()
             .take(120)
             .collect();
-        candidates.push(Candidate {
+        state.candidates.push(Candidate {
             fingerprint: format!("{base}:{}", *occurrence),
             language,
             path: path.to_owned(),
@@ -241,12 +297,132 @@ fn visit(
             line: position.row + 1,
             column: position.column + 1,
             excerpt,
+            inside_specification,
         });
     }
     let mut cursor = node.walk();
     for child in node.named_children(&mut cursor) {
-        visit(child, language, path, source, occurrences, candidates);
+        visit(child, language, path, source, state, inside_specification);
     }
+}
+
+fn specification_declaration(
+    language: Language,
+    node: Node<'_>,
+    source: &[u8],
+) -> Option<(String, &'static str)> {
+    let name = match (language, node.kind()) {
+        (Language::Python, "class_definition") => {
+            let bases = node.child_by_field_name("superclasses")?;
+            let mut cursor = bases.walk();
+            if !bases
+                .named_children(&mut cursor)
+                .any(|base| is_spec_base(node_text(base, source)))
+            {
+                return None;
+            }
+            node.child_by_field_name("name")?
+        }
+        (Language::Swift, "class_declaration") => {
+            let mut cursor = node.walk();
+            if !node
+                .named_children(&mut cursor)
+                .filter(|child| child.kind() == "inheritance_specifier")
+                .filter_map(|base| base.child_by_field_name("inherits_from"))
+                .any(|base| is_spec_base(node_text(base, source)))
+            {
+                return None;
+            }
+            node.child_by_field_name("name")?
+        }
+        (Language::Rust, "impl_item") => {
+            let trait_node = node.child_by_field_name("trait")?;
+            if !is_spec_base(node_text(trait_node, source)) {
+                return None;
+            }
+            node.child_by_field_name("type")?
+        }
+        _ => return None,
+    };
+    let name = node_text(name, source).trim().to_owned();
+    (!name.is_empty()).then_some((name, "declaration"))
+}
+
+fn is_spec_base(text: &str) -> bool {
+    let base = text
+        .trim()
+        .split(['[', '<'])
+        .next()
+        .unwrap_or_default()
+        .trim();
+    let name = base.rsplit(['.', ':']).next().unwrap_or(base).trim();
+    is_spec_marker(name)
+}
+
+fn is_spec_marker(name: &str) -> bool {
+    matches!(
+        name,
+        "Specification"
+            | "AsyncSpecification"
+            | "DecisionSpec"
+            | "AsyncDecisionSpec"
+            | "DecisionSpecification"
+            | "AutoContextSpecification"
+    )
+}
+
+fn specification_factory(
+    language: Language,
+    node: Node<'_>,
+    source: &[u8],
+) -> Option<(String, &'static str)> {
+    if language == Language::Swift && node.kind() == "comparison_expression" {
+        let expression = node_text(node, source).trim();
+        if let Some((head, tail)) = expression.split_once('<') {
+            let factory = head.rsplit('.').next().unwrap_or(head).trim();
+            if matches!(factory, "PredicateSpec" | "FirstMatchSpec")
+                && tail.contains('>')
+                && tail
+                    .split_once('>')
+                    .is_some_and(|(_, after)| after.trim_start().starts_with('{'))
+            {
+                return Some((factory.to_owned(), "factory"));
+            }
+        }
+    }
+    let called = match (language, node.kind()) {
+        (Language::Python, "call") | (Language::Rust, "call_expression") => {
+            node_text(node.child_by_field_name("function")?, source)
+        }
+        (Language::Swift, "call_expression") => {
+            node_text(node, source).split(['(', '{']).next()?.trim()
+        }
+        _ => return None,
+    };
+    let called = called.trim();
+    let base = called.split('<').next().unwrap_or(called).trim();
+    let last = base.rsplit(['.', ':']).next().unwrap_or(base).trim();
+    let known = match language {
+        Language::Python => matches!(
+            last,
+            "PredicateSpec" | "AsyncPredicateSpec" | "FirstMatch" | "AsyncFirstMatch"
+        ),
+        Language::Swift => matches!(last, "PredicateSpec" | "FirstMatchSpec"),
+        Language::Rust => called.rsplit_once("::").is_some_and(|(receiver, method)| {
+            let receiver = receiver
+                .trim_end_matches('>')
+                .split("::<")
+                .next()
+                .unwrap_or(receiver);
+            receiver.rsplit("::").next() == Some("FirstMatch")
+                && matches!(method, "new" | "default")
+        }),
+    };
+    known.then_some((called.to_owned(), "factory"))
+}
+
+fn node_text<'a>(node: Node<'_>, source: &'a [u8]) -> &'a str {
+    std::str::from_utf8(&source[node.byte_range()]).unwrap_or_default()
 }
 
 #[cfg(test)]
@@ -255,7 +431,7 @@ mod tests {
 
     use tempfile::tempdir;
 
-    use super::scan;
+    use super::{is_spec_base, scan};
 
     #[test]
     fn discovers_decisions_in_all_three_languages() {
@@ -342,5 +518,57 @@ mod tests {
         fs::write(dir.path().join("first.py"), "if first:\n    pass\n").unwrap();
         assert!(scan(dir.path(), &["missing.py".to_owned()]).is_err());
         assert!(scan(dir.path(), &["../outside.py".to_owned()]).is_err());
+        fs::write(dir.path().join("notes.txt"), "not source").unwrap();
+        assert!(scan(dir.path(), &["notes.txt".to_owned()]).is_err());
+        fs::create_dir(dir.path().join("empty")).unwrap();
+        assert!(scan(dir.path(), &["empty".to_owned()]).is_err());
+    }
+
+    #[test]
+    fn generic_argument_does_not_count_as_specification_conformance() {
+        assert!(is_spec_base("specification_core.Specification[int]"));
+        assert!(is_spec_base("specification_core::Specification<i32>"));
+        assert!(!is_spec_base("Container<Specification>"));
+        assert!(!is_spec_base("Generic[Specification]"));
+    }
+
+    #[test]
+    fn counts_specification_definitions_and_ignores_their_internal_branches() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.py"),
+            "from specification_core import Specification, PredicateSpec\nclass Ready(Specification[int]):\n    def is_satisfied_by(self, value):\n        if value > 0:\n            return True\n        return False\nrule = PredicateSpec(lambda value: value > 0)\nif other:\n    pass\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("example.swift"),
+            "struct Ready: Specification {\n    func isSatisfiedBy(_ value: Int) -> Bool {\n        if value > 0 { return true }\n        return false\n    }\n}\nlet rule = PredicateSpec<Int> { $0 > 0 }\nif other { print(other) }\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("example.rs"),
+            "struct Ready;\nimpl Specification<i32> for Ready {\n    fn is_satisfied_by(&self, value: &i32) -> bool {\n        if *value > 0 { true } else { false }\n    }\n}\nfn run(other: bool) {\n    let rule = FirstMatch::<i32, bool>::new();\n    if other {}\n}\n",
+        )
+        .unwrap();
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        let by_language = |language| {
+            report
+                .specifications
+                .iter()
+                .filter(|spec| spec.language == language)
+                .count()
+        };
+        assert_eq!(by_language(crate::model::Language::Python), 2);
+        assert_eq!(by_language(crate::model::Language::Swift), 2);
+        assert_eq!(by_language(crate::model::Language::Rust), 2);
+        assert_eq!(
+            report
+                .candidates
+                .iter()
+                .filter(|candidate| !candidate.inside_specification)
+                .count(),
+            3
+        );
     }
 }

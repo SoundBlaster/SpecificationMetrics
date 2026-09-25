@@ -1,36 +1,32 @@
 # Roadmap
 
-This document records proposed work. The current CLI discovers syntax candidates
-and reports evidence coverage from a reviewed registry. It does not yet compute
-the intended live `S / U` ratio. No model inference is part of the current
+This document records completed foundations and proposed work. The CLI scans
+Python, Swift, and Rust and computes a live `S / U` ratio. The earlier evidence
+report remains available separately. No model inference is part of the current
 release.
 
 ## Live Specification ratio
 
-Implement the primary project-health metric as `S / U`, recalculated for each
-source snapshot. `S` counts distinct application-defined Specifications once
-per definition, even when reused at many call sites. `U` counts current
-decision opportunities still outside Specification. A high ratio is a valid
-result; this project does not attempt to balance it with reuse, coupling, or
-cohesion metrics.
+The primary project-health metric is `S / U`, recalculated for each source
+snapshot. `S` counts distinct recognized Specification definitions and factory
+sites once per source location, even when reused at many runtime call sites.
+`U` counts current decision opportunities outside Specification. A high ratio
+is a valid result; this project does not attempt to balance it with reuse,
+coupling, or cohesion metrics.
 
-1. Define and test source-level detection of Specification definitions and
-   Specification-backed decisions in Python, Swift, and Rust. Keep counts and
-   syntax locations inspectable; resolve ambiguous patterns explicitly.
-2. Recompute both counts for the same versioned source scope on every run.
-   Classifier and reviewer decisions may explain which current candidates
-   contribute to `U`, but old candidates must not remain in `U` merely because
-   they were observed in a previous revision.
-3. Emit `S`, `U`, the ratio when `U > 0`, and explicit `complete` (`S > 0`,
-   `U = 0`) or `not_applicable` (`S = U = 0`) states. Preserve the raw counts
-   alongside any presentation of the ratio.
-4. Store successive snapshots with timestamp, source revision, scope, counting
-   rule version, and classification provenance. The registry supports trend
-   analysis and audit; it does not supply a frozen denominator.
+**Implemented in counting rule v1:** direct conformances/implementations and
+selected factory sites in the three languages; current-source denominator;
+raw counts and explicit `complete`/`not_applicable` states; optional reviewed
+exclusions; and idempotent SQLite snapshots with timestamp, source digest, Git
+revision when available, scope, and rule version. The separate
+`measure-evidence` command retains the earlier `coverage_percent` report.
 
-The existing `coverage_percent` is a separate experimental evidence report.
-Replacing or retiring it needs a schema and CLI compatibility decision; it
-must never be relabeled as the live ratio.
+**Next accuracy work:** recognize aliased and indirect conformances, more
+factory forms, and Specification-backed decisions whose `if` remains outside
+a Specification body. Build a labeled cross-language fixture set and compare
+each counting rule version against it before changing the metric. Preserve
+historical snapshots under their original rule version; do not silently
+recalculate old observations with new rules.
 
 ## System One assisted candidate classification
 
