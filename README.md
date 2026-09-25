@@ -25,7 +25,7 @@ move the ratio in either direction; that is part of a live project-health
 measurement. Store dated snapshots and their source revision in SQLite to
 explain the trajectory, without freezing a historical denominator.
 
-Counting rule v1 recognizes direct Specification/DecisionSpec conformances or
+Counting rule v2 recognizes direct Specification/DecisionSpec conformances or
 implementations and source sites that construct `PredicateSpec` or `FirstMatch`
 variants. It counts a factory site once, regardless of runtime calls. Decisions
 inside recognized definitions or factories do not contribute to `U`. Reviewed
@@ -33,10 +33,11 @@ inside recognized definitions or factories do not contribute to `U`. Reviewed
 candidates. Other current candidates contribute to `U`.
 
 The [counting contract](docs/counting-contract.md) defines the source ownership
-boundary and the disjoint reasons for removing a candidate from `U`. In
-particular, a whole-repository scan is discovery until application sources are
-selected: current v1 has no source-role manifest and does not automatically
-remove framework or test code from the ratio.
+boundary and the disjoint reasons for removing a candidate from `U`. For a
+whole-repository scan, use a versioned source-role manifest. Only `application`
+files contribute to the ratio; unassigned or conflicting files make the report
+provisional. Without a manifest or explicit `--include` paths, a directory-root
+measurement remains provisional discovery.
 
 This is a syntax-based measure. Aliased or indirect conformances, some factory
 forms, and a decision that merely calls a Specification from an ordinary `if`
@@ -51,7 +52,8 @@ registry, but its denominator comes from the current source only. Historical
 entries whose fingerprints are absent no longer contribute to `U`.
 
 `measure --store` saves each distinct report to a SQLite database, including
-the source digest, Git revision when available, scope, rule version, raw counts,
+the source digest, Git revision when available, scope-manifest digest, rule
+version, raw counts,
 ratio, and parse status. `history` reads these snapshots newest first. Repeating
 an identical measurement returns the same snapshot ID instead of appending a
 duplicate. The separate `measure-evidence` command retains the earlier
@@ -83,11 +85,53 @@ narrowed. Keep one registry per source repository, root, and reviewed production
 scope. To establish a narrower scope after a whole-root registry, start a new
 registry and history store rather than comparing the two ratios as one trend.
 
-The scanner reports source parse errors explicitly. `sync` refuses to update a
-registry from a partial scan unless `--allow-partial` is given. Live `measure`
-sets `provisional` when a file could not be parsed. `--require-complete` fails
-in that case. The older `measure-evidence` report also considers unreviewed
-candidates and missing legacy anchors provisional.
+For a whole-project measurement, create a TOML manifest with roles for every
+supported source file discovered under the root. More specific paths override
+broader paths, so `.` can select the default application scope:
+
+```toml
+schema_version = 1
+
+[[source_sets]]
+role = "application"
+paths = ["."]
+
+[[source_sets]]
+role = "framework"
+paths = ["vendor/SpecificationCore"]
+
+[[source_sets]]
+role = "test"
+paths = ["tests", "fixtures", "examples"]
+
+[[source_sets]]
+role = "generated"
+paths = ["generated", "build"]
+```
+
+```bash
+cargo run -- scan ../SpecGraph --scope-manifest scopes/specgraph.toml
+cargo run -- sync ../SpecGraph --scope-manifest scopes/specgraph.toml \
+  --registry registries/specgraph.toml
+cargo run -- measure ../SpecGraph --scope-manifest scopes/specgraph.toml \
+  --registry registries/specgraph.toml --store metrics/specgraph.sqlite \
+  --require-complete
+```
+
+The manifest is a checked-in measurement contract; it need not live inside the
+scanned root. Each supported file must resolve to one role. The report records
+the semantic manifest digest, file counts by role group, and any scope issues.
+`--include` and `--scope-manifest` are mutually exclusive. A registry is bound
+to its manifest digest; changing roles requires a new registry. SQLite history
+stores the digest and preserves older snapshots without it.
+
+The scanner reports source parse and scope issues explicitly. `sync` always
+rejects unresolved scope issues and refuses parse errors unless
+`--allow-partial` is given. Live
+`measure` sets `provisional` for parse issues, scope issues, or an unreviewed
+whole-root scope; `--require-complete` fails in those cases. The older
+`measure-evidence` report also considers unreviewed candidates and missing
+legacy anchors provisional.
 
 ## Registry and evidence report
 

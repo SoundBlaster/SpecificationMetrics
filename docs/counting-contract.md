@@ -12,8 +12,9 @@ source file exactly one role before its findings affect the ratio:
 | `test` | Tests, fixtures, benchmarks, examples | No |
 | `generated` | Generated, vendored, or build output | No |
 
-Roles must come from an explicit, versioned source-scope manifest, with
-repository-relative paths. A file with no role or conflicting roles makes a
+Roles come from an explicit, versioned source-scope manifest, with
+repository-relative paths. The most specific matching path supplies the role;
+conflicting roles at the same path or a file with no role make a
 whole-repository measurement provisional. Path names such as `spec` or
 `test` are not enough to infer ownership. A library can be measured as its own
 project by assigning its production files the `application` role in a separate
@@ -51,19 +52,18 @@ adds `1` to `S` and `0` to `U`; an unrelated `if` beside it adds `1` to `U`.
 The source of a vendored SpecificationCore package adds nothing to either
 count, even when the scanner walks through that directory.
 
-The report and stored snapshot should retain the source-scope manifest digest,
-counting-rule version, and the four partition counts. Comparing ratios across
-different scopes or rule versions requires an explicit annotation; old
-snapshots are not rewritten when the contract changes.
+The report and stored snapshot retain the source-scope manifest digest and
+counting-rule version. The complete four-way candidate partition remains
+future work because resolved `uses_specification` is not yet implemented.
+Comparing ratios across different scopes or rule versions requires an explicit
+annotation; old snapshots are not rewritten when the contract changes.
 
 ## Current implementation boundary
 
-Counting rule v1 implements the exact-subtree `inside_specification` exclusion
-for directly recognized definitions and factories, plus reviewed exclusions.
-It does **not** yet implement source-role manifests or resolved
-`uses_specification` classification. `--include` can select owned production
-files or directories today. Without that selection, a scan of a repository
-root may include framework and test sources that are not ignored by
-`.gitignore`; treat its ratio as a discovery result until its source scope has
-been reviewed. The current `provisional` flag indicates parse issues, not this
-scope review.
+Counting rule v2 implements versioned source roles, semantic manifest digests,
+the exact-subtree `inside_specification` exclusion for directly recognized
+definitions and factories, and reviewed exclusions. It does **not** yet
+implement resolved `uses_specification` classification. `--include` can still
+select owned production files or directories. An unrestricted directory-root
+measurement without a manifest is provisional discovery. The `provisional`
+flag also covers parse errors, unassigned files, and conflicting roles.

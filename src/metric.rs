@@ -35,6 +35,11 @@ pub fn save_registry(path: &Path, registry: &Registry) -> Result<()> {
 
 pub fn sync(scan: &ScanReport, registry: &mut Registry, allow_partial: bool) -> Result<usize> {
     ensure!(
+        scan.scope_issues.is_empty(),
+        "cannot sync a scan with {} unresolved scope issue(s)",
+        scan.scope_issues.len()
+    );
+    ensure!(
         allow_partial || scan.parse_issues.is_empty(),
         "cannot sync a partial scan: {} parse issue(s)",
         scan.parse_issues.len()
@@ -47,6 +52,10 @@ pub fn sync(scan: &ScanReport, registry: &mut Registry, allow_partial: bool) -> 
     ensure!(
         registry.includes == scan.includes,
         "scan scope does not match registry includes"
+    );
+    ensure!(
+        registry.scope_manifest_digest == scan.scope_manifest_digest,
+        "scan scope manifest does not match registry"
     );
     let mut known: HashSet<String> = registry
         .sites
@@ -68,6 +77,10 @@ pub fn measure(root: &Path, scan: &ScanReport, registry: &Registry) -> Result<Me
     ensure!(
         registry.includes == scan.includes,
         "scan scope does not match registry includes"
+    );
+    ensure!(
+        registry.scope_manifest_digest == scan.scope_manifest_digest,
+        "scan scope manifest does not match registry"
     );
     let registered: HashSet<&str> = registry
         .sites
@@ -118,13 +131,16 @@ pub fn measure(root: &Path, scan: &ScanReport, registry: &Registry) -> Result<Me
     let possible_points = eligible * 4;
     let coverage_percent =
         (possible_points > 0).then_some(earned_points as f64 * 100.0 / possible_points as f64);
-    let provisional =
-        unreviewed + newly_found + missing_legacy_anchors > 0 || !scan.parse_issues.is_empty();
+    let provisional = unreviewed + newly_found + missing_legacy_anchors > 0
+        || !scan.parse_issues.is_empty()
+        || !scan.scope_issues.is_empty();
 
     Ok(MetricReport {
         schema_version: SCHEMA_VERSION,
         root: scan.root.clone(),
         includes: scan.includes.clone(),
+        scope_manifest_digest: scan.scope_manifest_digest.clone(),
+        scope_issues: scan.scope_issues.clone(),
         scanned_candidates: scan.candidates.len(),
         registered_sites: registry.sites.len(),
         eligible,
@@ -230,7 +246,7 @@ mod tests {
 
     use tempfile::tempdir;
 
-    use crate::model::{Disposition, Evidence, ParseIssue, Registry};
+    use crate::model::{Disposition, Evidence, ParseIssue, Registry, ScopeIssue};
     use crate::scan::scan;
 
     use super::{load_existing_registry, measure, sync};
@@ -312,5 +328,19 @@ mod tests {
         assert!(sync(&report, &mut registry, false).is_err());
         assert_eq!(sync(&report, &mut registry, true).unwrap(), 1);
         assert!(measure(dir.path(), &report, &registry).unwrap().provisional);
+    }
+
+    #[test]
+    fn unresolved_scope_issues_cannot_be_synced() {
+        let dir = tempdir().unwrap();
+        fs::write(dir.path().join("policy.py"), "if ready: pass\n").unwrap();
+        let mut report = scan(dir.path(), &[]).unwrap();
+        report.scope_issues.push(ScopeIssue {
+            path: "other.py".to_owned(),
+            message: "source file has no role".to_owned(),
+        });
+        let mut registry = Registry::default();
+        assert!(sync(&report, &mut registry, true).is_err());
+        assert!(registry.sites.is_empty());
     }
 }

@@ -21,6 +21,10 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
             registry.includes == scan.includes,
             "scan scope does not match registry includes"
         );
+        ensure!(
+            registry.scope_manifest_digest == scan.scope_manifest_digest,
+            "scan scope manifest does not match registry"
+        );
         let mut fingerprints = HashSet::new();
         for site in &registry.sites {
             ensure!(
@@ -78,11 +82,17 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
     let ratio = (remaining_opportunities > 0)
         .then_some(specification_definitions as f64 / remaining_opportunities as f64);
 
+    let scope_review_required = scan.scope_review_required;
     Ok(LiveMetricReport {
         schema_version: SCHEMA_VERSION,
         counting_rule_version: COUNTING_RULE_VERSION,
         root: scan.root.clone(),
         includes: scan.includes.clone(),
+        scope_manifest_digest: scan.scope_manifest_digest.clone(),
+        scope_issues: scan.scope_issues.clone(),
+        scope_review_required,
+        application_files: scan.application_files,
+        excluded_files: scan.excluded_files,
         source_revision: source_revision(Path::new(&scan.root)),
         source_digest: scan.source_digest.clone(),
         scanned_candidates: scan.candidates.len(),
@@ -92,7 +102,9 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         remaining_opportunities,
         ratio,
         state,
-        provisional: !scan.parse_issues.is_empty(),
+        provisional: !scan.parse_issues.is_empty()
+            || !scan.scope_issues.is_empty()
+            || scope_review_required,
         parse_issues: scan.parse_issues.clone(),
     })
 }
@@ -174,6 +186,20 @@ mod tests {
         let report = measure(&scan(dir.path(), &[]).unwrap(), None).unwrap();
         assert_eq!(report.state, LiveState::NotApplicable);
         assert_eq!(report.ratio, None);
+    }
+
+    #[test]
+    fn directory_root_requires_reviewed_source_scope() {
+        let dir = tempdir().unwrap();
+        fs::write(dir.path().join("policy.py"), "if ready: pass\n").unwrap();
+        let discovery = measure(&scan(dir.path(), &[]).unwrap(), None).unwrap();
+        assert!(discovery.scope_review_required);
+        assert!(discovery.provisional);
+
+        let selected =
+            measure(&scan(dir.path(), &["policy.py".to_owned()]).unwrap(), None).unwrap();
+        assert!(!selected.scope_review_required);
+        assert!(!selected.provisional);
     }
 
     #[test]
