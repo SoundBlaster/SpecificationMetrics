@@ -35,6 +35,23 @@ Continue the [counting contract](docs/counting-contract.md) with resolved
 Specification uses and exact candidate partition counts. An unrestricted root
 scan without a manifest remains provisional discovery.
 
+## Specification liveness
+
+Add a diagnostic count of recognized Specification definitions that have no
+resolved uses in the measured source set. Exclude confirmed dead definitions
+from the live `S / U` ratio, including their internal decision sites, while
+keeping the dead-definition count visible in the report. An unresolved or
+ambiguous use must remain `unknown` and must not make a definition dead.
+
+**Open contract:** define what counts as a use for each language and source
+scope. The analysis needs to account for cross-file references and exported
+Specifications that are consumed by code outside the measured root. Dynamic
+dispatch, reflection, dependency injection, and public library APIs can make a
+textually unused definition live; decide which of these require an explicit
+manifest annotation or force an `unknown` result before excluding anything
+from the ratio. Keep liveness diagnostics separate from the System One
+opportunity classifier below.
+
 ## System One assisted candidate classification
 
 **Goal:** reduce the manual effort of reviewing Python, Swift, and Rust
