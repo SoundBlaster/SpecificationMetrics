@@ -35,6 +35,18 @@ Continue the [counting contract](docs/counting-contract.md) with resolved
 Specification uses and exact candidate partition counts. An unrestricted root
 scan without a manifest remains provisional discovery.
 
+## Specification liveness
+
+The proposed status rules and language-specific evidence are defined in the
+[Specification liveness contract](docs/specification-liveness-contract.md).
+Only confirmed `dead` declarations leave `S`; unresolved declarations remain
+in `S`, make the report provisional, and are counted as `unknown`. The
+versioned fixture corpus covers cross-file use, private unreferenced
+declarations, public exports, dynamic lookup, and explicit runtime
+registration. The analyzer, report fields, and any explicit closed-world
+manifest policy remain future implementation work. Keep liveness diagnostics
+separate from the System One opportunity classifier below.
+
 ## System One assisted candidate classification
 
 **Goal:** reduce the manual effort of reviewing Python, Swift, and Rust

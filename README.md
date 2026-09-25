@@ -137,6 +137,20 @@ the semantic manifest digest, file counts by role group, and any scope issues.
 to its manifest digest; changing roles requires a new registry. SQLite history
 stores the digest and preserves older snapshots without it.
 
+### Example: this Rust project
+
+[`scopes/specificationmetrics.toml`](scopes/specificationmetrics.toml) assigns
+the project's `src` tree to `application` and its liveness fixtures to `test`:
+
+```bash
+cargo run -- scan . --scope-manifest scopes/specificationmetrics.toml
+```
+
+Rust unit tests written inline in `src` files remain part of the `application`
+role because source roles apply to whole files. Put tests in a separate
+directory such as `tests/` and add it as a `test` source set when you want to
+exclude those files from the ratio.
+
 The scanner reports source parse and scope issues explicitly. `sync` always
 rejects unresolved scope issues and refuses parse errors unless
 `--allow-partial` is given. Live
