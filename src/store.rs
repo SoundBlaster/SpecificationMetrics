@@ -136,4 +136,23 @@ mod tests {
         assert_eq!(entries[0].report.specification_definitions, 1);
         assert_eq!(entries[1].report.remaining_opportunities, 1);
     }
+
+    #[test]
+    fn invalid_utf8_changes_create_distinct_snapshots() {
+        let dir = tempdir().unwrap();
+        let source = dir.path().join("policy.py");
+        let database = dir.path().join("metrics.sqlite");
+        fs::write(&source, [0xff]).unwrap();
+        let first = measure(&scan(dir.path(), &[]).unwrap(), None).unwrap();
+        let first_id = save(&database, &first).unwrap();
+
+        fs::write(&source, [0xfe]).unwrap();
+        let second = measure(&scan(dir.path(), &[]).unwrap(), None).unwrap();
+        let second_id = save(&database, &second).unwrap();
+
+        assert_eq!(first.parse_issues.len(), 1);
+        assert_eq!(second.parse_issues.len(), 1);
+        assert_ne!(first.source_digest, second.source_digest);
+        assert_ne!(first_id, second_id);
+    }
 }

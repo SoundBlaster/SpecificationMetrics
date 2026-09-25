@@ -76,25 +76,35 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
         {
             continue;
         }
-        let source = match fs::read_to_string(&file) {
+        let source_bytes = match fs::read(&file) {
             Ok(source) => source,
             Err(error) => {
                 parse_issues.push(ParseIssue {
                     path: relative_path,
-                    message: format!("cannot read UTF-8 source: {error}"),
+                    message: format!("cannot read source: {error}"),
                 });
                 continue;
             }
         };
         source_hasher.update(relative_path.as_bytes());
         source_hasher.update(&[0]);
-        source_hasher.update(source.as_bytes());
+        source_hasher.update(&source_bytes);
         source_hasher.update(&[0]);
+        let source = match std::str::from_utf8(&source_bytes) {
+            Ok(source) => source,
+            Err(error) => {
+                parse_issues.push(ParseIssue {
+                    path: relative_path,
+                    message: format!("cannot decode UTF-8 source: {error}"),
+                });
+                continue;
+            }
+        };
         let mut parser = Parser::new();
         parser
             .set_language(&tree_sitter_language(language))
             .with_context(|| format!("cannot load {} parser", language.label()))?;
-        let Some(tree) = parser.parse(&source, None) else {
+        let Some(tree) = parser.parse(source, None) else {
             parse_issues.push(ParseIssue {
                 path: relative_path,
                 message: "parser returned no syntax tree".to_owned(),
@@ -570,5 +580,37 @@ mod tests {
                 .count(),
             3
         );
+    }
+
+    #[test]
+    fn swift_extension_conformance_covers_its_decisions() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.swift"),
+            "struct Ready {}\nextension Ready: Specification {\n    func isSatisfiedBy(_ value: Int) -> Bool {\n        if value > 0 { return true }\n        return false\n    }\n}\nif unrelated { print(unrelated) }\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        assert_eq!(report.specifications.len(), 1);
+        assert_eq!(report.specifications[0].name, "Ready");
+        assert_eq!(report.candidates.len(), 2);
+        assert!(report.candidates[0].inside_specification);
+        assert!(!report.candidates[1].inside_specification);
+    }
+
+    #[test]
+    fn invalid_utf8_bytes_change_source_digest() {
+        let dir = tempdir().unwrap();
+        let source = dir.path().join("invalid.py");
+        fs::write(&source, [0xff]).unwrap();
+        let first = scan(dir.path(), &[]).unwrap();
+        fs::write(&source, [0xfe]).unwrap();
+        let second = scan(dir.path(), &[]).unwrap();
+
+        assert_eq!(first.parse_issues.len(), 1);
+        assert_eq!(second.parse_issues.len(), 1);
+        assert_ne!(first.source_digest, second.source_digest);
     }
 }

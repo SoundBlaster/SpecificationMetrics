@@ -45,16 +45,14 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         .specifications
         .iter()
         .map(|spec| {
-            let identity = if spec.kind == "factory" {
-                format!("{}:{}:{}", spec.name, spec.line, spec.column)
-            } else {
-                spec.name.clone()
-            };
             format!(
-                "{}:{}:{}:{identity}",
+                "{}:{}:{}:{}:{}:{}",
                 spec.language.label(),
                 spec.path,
-                spec.kind
+                spec.kind,
+                spec.name,
+                spec.line,
+                spec.column
             )
         })
         .collect();
@@ -197,5 +195,22 @@ mod tests {
         let rescanned = measure(&scan(dir.path(), &[]).unwrap(), Some(&registry)).unwrap();
         assert_eq!(rescanned.remaining_opportunities, 2);
         assert_eq!(rescanned.reviewed_exclusions, 0);
+    }
+
+    #[test]
+    fn same_named_declarations_in_different_scopes_count_separately() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("policy.py"),
+            "class A:\n    class Rule(Specification):\n        pass\nclass B:\n    class Rule(Specification):\n        pass\n",
+        )
+        .unwrap();
+
+        let scan = scan(dir.path(), &[]).unwrap();
+        assert!(scan.parse_issues.is_empty(), "{:?}", scan.parse_issues);
+        assert_eq!(scan.specifications.len(), 2);
+        let measured = measure(&scan, None).unwrap();
+        assert_eq!(measured.specification_definitions, 2);
+        assert_eq!(measured.state, LiveState::Complete);
     }
 }
