@@ -1,0 +1,110 @@
+{
+  "contract_version": 1,
+  "cases": [
+    {
+      "id": "python.cross_file_runtime_use",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/cross_file_runtime_use/rules.py", "python/cross_file_runtime_use/consumer.py"]
+    },
+    {
+      "id": "python.unreferenced_private",
+      "language": "python",
+      "status": "dead",
+      "world": "closed",
+      "files": ["python/unreferenced_private/rules.py"]
+    },
+    {
+      "id": "python.exported_public",
+      "language": "python",
+      "status": "unknown",
+      "world": "open",
+      "files": ["python/exported_public/package/__init__.py", "python/exported_public/package/rules.py"]
+    },
+    {
+      "id": "python.unresolved_dynamic_lookup",
+      "language": "python",
+      "status": "unknown",
+      "world": "open",
+      "files": ["python/unresolved_dynamic_lookup/rules.py", "python/unresolved_dynamic_lookup/lookup.py"]
+    },
+    {
+      "id": "python.explicit_runtime_registration",
+      "language": "python",
+      "status": "live",
+      "world": "open",
+      "files": ["python/explicit_runtime_registration/rules.py", "python/explicit_runtime_registration/registry.py"]
+    },
+    {
+      "id": "swift.cross_file_runtime_use",
+      "language": "swift",
+      "status": "live",
+      "world": "closed",
+      "files": ["swift/cross_file_runtime_use/Ready.swift", "swift/cross_file_runtime_use/Consumer.swift"]
+    },
+    {
+      "id": "swift.unreferenced_private",
+      "language": "swift",
+      "status": "dead",
+      "world": "closed",
+      "files": ["swift/unreferenced_private/Unused.swift"]
+    },
+    {
+      "id": "swift.public_api",
+      "language": "swift",
+      "status": "unknown",
+      "world": "open",
+      "files": ["swift/public_api/PublicRule.swift"]
+    },
+    {
+      "id": "swift.unresolved_runtime_lookup",
+      "language": "swift",
+      "status": "unknown",
+      "world": "open",
+      "files": ["swift/unresolved_runtime_lookup/Rule.swift", "swift/unresolved_runtime_lookup/Lookup.swift"]
+    },
+    {
+      "id": "swift.explicit_runtime_registration",
+      "language": "swift",
+      "status": "live",
+      "world": "open",
+      "files": ["swift/explicit_runtime_registration/Rule.swift", "swift/explicit_runtime_registration/Registry.swift"]
+    },
+    {
+      "id": "rust.cross_file_runtime_use",
+      "language": "rust",
+      "status": "live",
+      "world": "closed",
+      "files": ["rust/cross_file_runtime_use/rules.rs", "rust/cross_file_runtime_use/consumer.rs"]
+    },
+    {
+      "id": "rust.unreferenced_private",
+      "language": "rust",
+      "status": "dead",
+      "world": "closed",
+      "files": ["rust/unreferenced_private/rules.rs"]
+    },
+    {
+      "id": "rust.public_api",
+      "language": "rust",
+      "status": "unknown",
+      "world": "open",
+      "files": ["rust/public_api/lib.rs"]
+    },
+    {
+      "id": "rust.unresolved_plugin_lookup",
+      "language": "rust",
+      "status": "unknown",
+      "world": "open",
+      "files": ["rust/unresolved_plugin_lookup/rules.rs", "rust/unresolved_plugin_lookup/lookup.rs"]
+    },
+    {
+      "id": "rust.explicit_runtime_registration",
+      "language": "rust",
+      "status": "live",
+      "world": "open",
+      "files": ["rust/explicit_runtime_registration/rules.rs", "rust/explicit_runtime_registration/registry.rs"]
+    }
+  ]
+}
