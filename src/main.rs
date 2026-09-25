@@ -2,6 +2,7 @@ mod live;
 mod metric;
 mod model;
 mod scan;
+mod scope;
 mod store;
 
 use std::fs;
@@ -29,6 +30,9 @@ enum Command {
         /// Restrict discovery to a relative file or directory (repeatable).
         #[arg(long = "include")]
         includes: Vec<String>,
+        /// Classify every discovered source file by its owned source role.
+        #[arg(long, conflicts_with = "includes")]
+        scope_manifest: Option<PathBuf>,
         #[arg(long)]
         output: Option<PathBuf>,
     },
@@ -40,6 +44,8 @@ enum Command {
         /// Add a relative file or directory to the registry scope (repeatable).
         #[arg(long = "include")]
         includes: Vec<String>,
+        #[arg(long, conflicts_with = "includes")]
+        scope_manifest: Option<PathBuf>,
         /// Persist candidates from files with parser errors; reports remain provisional.
         #[arg(long)]
         allow_partial: bool,
@@ -53,6 +59,8 @@ enum Command {
         /// Restrict measurement to a relative file or directory (repeatable).
         #[arg(long = "include")]
         includes: Vec<String>,
+        #[arg(long, conflicts_with = "includes")]
+        scope_manifest: Option<PathBuf>,
         /// Save an idempotent snapshot to a SQLite metric store.
         #[arg(long)]
         store: Option<PathBuf>,
@@ -67,6 +75,8 @@ enum Command {
         root: PathBuf,
         #[arg(long)]
         registry: PathBuf,
+        #[arg(long)]
+        scope_manifest: Option<PathBuf>,
         #[arg(long)]
         output: Option<PathBuf>,
         #[arg(long)]
@@ -94,18 +104,34 @@ fn main() -> Result<()> {
         Command::Scan {
             root,
             includes,
+            scope_manifest,
             output,
         } => {
-            let report = scan::scan(&root, &includes)?;
+            let manifest = scope_manifest
+                .as_deref()
+                .map(scope::ScopeManifest::load)
+                .transpose()?;
+            let report = scan::scan_with_scope(&root, &includes, manifest.as_ref())?;
             emit_json(&report, output.as_deref())?;
         }
         Command::Sync {
             root,
             registry,
             includes,
+            scope_manifest,
             allow_partial,
         } => {
+            let manifest = scope_manifest
+                .as_deref()
+                .map(scope::ScopeManifest::load)
+                .transpose()?;
+            let new_registry = !registry.exists();
             let mut current = metric::load_registry(&registry)?;
+            if new_registry {
+                current.scope_manifest_digest = manifest
+                    .as_ref()
+                    .map(|manifest| manifest.digest().to_owned());
+            }
             if !includes.is_empty() {
                 if current.includes.is_empty() && !current.sites.is_empty() {
                     bail!("cannot narrow a registry that already covers the entire root");
@@ -113,7 +139,7 @@ fn main() -> Result<()> {
                 current.includes.extend(includes);
                 current.includes = scan::normalize_includes(&current.includes)?;
             }
-            let report = scan::scan(&root, &current.includes)?;
+            let report = scan::scan_with_scope(&root, &current.includes, manifest.as_ref())?;
             let added = metric::sync(&report, &mut current, allow_partial)?;
             metric::save_registry(&registry, &current)?;
             emit_json(
@@ -129,10 +155,15 @@ fn main() -> Result<()> {
             root,
             registry,
             includes,
+            scope_manifest,
             store,
             output,
             require_complete,
         } => {
+            let manifest = scope_manifest
+                .as_deref()
+                .map(scope::ScopeManifest::load)
+                .transpose()?;
             let current = registry
                 .as_ref()
                 .map(|path| metric::load_existing_registry(path))
@@ -150,11 +181,11 @@ fn main() -> Result<()> {
             } else {
                 includes
             };
-            let report = scan::scan(&root, &includes)?;
+            let report = scan::scan_with_scope(&root, &includes, manifest.as_ref())?;
             let metrics = live::measure(&report, current.as_ref())?;
             emit_json(&metrics, output.as_deref())?;
             if require_complete && metrics.provisional {
-                bail!("metric is provisional: resolve source parse issues");
+                bail!("metric is provisional: resolve source parse or scope issues");
             }
             if let Some(store) = store {
                 let id = store::save(&store, &metrics)?;
@@ -164,15 +195,22 @@ fn main() -> Result<()> {
         Command::MeasureEvidence {
             root,
             registry,
+            scope_manifest,
             output,
             require_complete,
         } => {
+            let manifest = scope_manifest
+                .as_deref()
+                .map(scope::ScopeManifest::load)
+                .transpose()?;
             let current = metric::load_existing_registry(&registry)?;
-            let report = scan::scan(&root, &current.includes)?;
+            let report = scan::scan_with_scope(&root, &current.includes, manifest.as_ref())?;
             let metrics = metric::measure(&root, &report, &current)?;
             emit_json(&metrics, output.as_deref())?;
             if require_complete && metrics.provisional {
-                bail!("evidence metric is provisional: review new sites and resolve parse issues");
+                bail!(
+                    "evidence metric is provisional: review new sites and resolve parse or scope issues"
+                );
             }
         }
         Command::History { store, limit } => {

@@ -7,14 +7,29 @@ use ignore::WalkBuilder;
 use tree_sitter::{Language as TreeSitterLanguage, Node, Parser};
 
 use crate::model::{
-    Candidate, Language, ParseIssue, SCHEMA_VERSION, ScanReport, SpecificationDefinition,
+    Candidate, Language, ParseIssue, SCHEMA_VERSION, ScanReport, ScopeIssue,
+    SpecificationDefinition,
 };
+use crate::scope::{ScopeManifest, SourceRole};
 
+#[cfg(test)]
 pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
+    scan_with_scope(root, includes, None)
+}
+
+pub fn scan_with_scope(
+    root: &Path,
+    includes: &[String],
+    manifest: Option<&ScopeManifest>,
+) -> Result<ScanReport> {
     let root = root
         .canonicalize()
         .with_context(|| format!("cannot resolve {}", root.display()))?;
     let includes = normalize_includes(includes)?;
+    ensure!(
+        manifest.is_none() || includes.is_empty(),
+        "--include cannot be combined with a scope manifest"
+    );
     let base = if root.is_file() {
         root.parent().expect("source file has a parent")
     } else {
@@ -54,6 +69,9 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
     let mut candidates = Vec::new();
     let mut specifications = Vec::new();
     let mut parse_issues = Vec::new();
+    let mut scope_issues = Vec::new();
+    let mut application_files = 0;
+    let mut excluded_files = 0;
     let mut source_hasher = blake3::Hasher::new();
     for file in files {
         let language = file
@@ -76,6 +94,23 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
         {
             continue;
         }
+        if let Some(manifest) = manifest {
+            match manifest.role_for(&relative_path) {
+                Ok(SourceRole::Application) => {}
+                Ok(_) => {
+                    excluded_files += 1;
+                    continue;
+                }
+                Err(message) => {
+                    scope_issues.push(ScopeIssue {
+                        path: relative_path,
+                        message,
+                    });
+                    continue;
+                }
+            }
+        }
+        application_files += 1;
         let source_bytes = match fs::read(&file) {
             Ok(source) => source,
             Err(error) => {
@@ -133,6 +168,12 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
             false,
         );
     }
+    if manifest.is_some() && application_files == 0 {
+        scope_issues.push(ScopeIssue {
+            path: ".".to_owned(),
+            message: "scope manifest selected no application source files".to_owned(),
+        });
+    }
     candidates.sort_by(|a, b| {
         (&a.path, a.line, a.column, &a.fingerprint).cmp(&(
             &b.path,
@@ -144,10 +185,16 @@ pub fn scan(root: &Path, includes: &[String]) -> Result<ScanReport> {
     specifications.sort_by(|a, b| {
         (&a.path, a.line, a.column, &a.name).cmp(&(&b.path, b.line, b.column, &b.name))
     });
+    let scope_review_required = manifest.is_none() && includes.is_empty() && root.is_dir();
     Ok(ScanReport {
         schema_version: SCHEMA_VERSION,
         root: root.display().to_string(),
         includes,
+        scope_manifest_digest: manifest.map(|manifest| manifest.digest().to_owned()),
+        scope_issues,
+        scope_review_required,
+        application_files,
+        excluded_files,
         candidates,
         specifications,
         source_digest: source_hasher.finalize().to_hex().to_string(),
@@ -441,7 +488,9 @@ mod tests {
 
     use tempfile::tempdir;
 
-    use super::{is_spec_base, scan};
+    use crate::scope::ScopeManifest;
+
+    use super::{is_spec_base, scan, scan_with_scope};
 
     #[test]
     fn discovers_decisions_in_all_three_languages() {
@@ -612,5 +661,92 @@ mod tests {
         assert_eq!(first.parse_issues.len(), 1);
         assert_eq!(second.parse_issues.len(), 1);
         assert_ne!(first.source_digest, second.source_digest);
+    }
+
+    #[test]
+    fn whole_project_manifest_excludes_non_application_sources() {
+        let dir = tempdir().unwrap();
+        for directory in ["app", "vendor", "tests", "generated"] {
+            fs::create_dir(dir.path().join(directory)).unwrap();
+        }
+        fs::write(
+            dir.path().join("app/policy.py"),
+            "class Ready(Specification):\n    def accepts(self, x):\n        if x: return True\nif business: pass\n",
+        )
+        .unwrap();
+        for directory in ["vendor", "tests", "generated"] {
+            fs::write(
+                dir.path().join(directory).join("other.py"),
+                "class Other(Specification): pass\nif ignored: pass\n",
+            )
+            .unwrap();
+        }
+        let manifest = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['.']\n[[source_sets]]\nrole='framework'\npaths=['vendor']\n[[source_sets]]\nrole='test'\npaths=['tests']\n[[source_sets]]\nrole='generated'\npaths=['generated']\n",
+        )
+        .unwrap();
+        let first = scan_with_scope(dir.path(), &[], Some(&manifest)).unwrap();
+        assert!(first.scope_issues.is_empty());
+        assert!(!first.scope_review_required);
+        assert_eq!(first.application_files, 1);
+        assert_eq!(first.excluded_files, 3);
+        assert_eq!(first.specifications.len(), 1);
+        assert_eq!(first.candidates.len(), 2);
+        assert!(first.candidates[0].inside_specification);
+        assert!(!first.candidates[1].inside_specification);
+
+        fs::write(dir.path().join("vendor/other.py"), "if changed: pass\n").unwrap();
+        let second = scan_with_scope(dir.path(), &[], Some(&manifest)).unwrap();
+        assert_eq!(first.source_digest, second.source_digest);
+    }
+
+    #[test]
+    fn unassigned_source_is_a_scope_issue() {
+        let dir = tempdir().unwrap();
+        fs::create_dir(dir.path().join("app")).unwrap();
+        fs::write(dir.path().join("app/main.py"), "if ready: pass\n").unwrap();
+        fs::write(dir.path().join("other.py"), "if unknown: pass\n").unwrap();
+        let manifest = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['app']\n",
+        )
+        .unwrap();
+        let report = scan_with_scope(dir.path(), &[], Some(&manifest)).unwrap();
+        assert_eq!(report.scope_issues.len(), 1);
+        assert_eq!(report.scope_issues[0].path, "other.py");
+        assert_eq!(report.candidates.len(), 1);
+    }
+
+    #[test]
+    fn explicit_file_and_directory_exclusions_remove_both_counts() {
+        let dir = tempdir().unwrap();
+        fs::create_dir(dir.path().join("app")).unwrap();
+        fs::create_dir_all(dir.path().join("old/nested")).unwrap();
+        fs::write(
+            dir.path().join("app/current.py"),
+            "class Current(Specification): pass\nif active: pass\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("app/legacy.py"),
+            "class Legacy(Specification): pass\nif legacy: pass\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("old/nested/another.py"),
+            "class Old(Specification): pass\nif old: pass\n",
+        )
+        .unwrap();
+        let manifest = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['.']\n[[source_sets]]\nrole='excluded'\npaths=['app/legacy.py', 'old']\nreason='Reviewed outside adoption scope'\n",
+        )
+        .unwrap();
+        let report = scan_with_scope(dir.path(), &[], Some(&manifest)).unwrap();
+        assert!(report.scope_issues.is_empty());
+        assert_eq!(report.application_files, 1);
+        assert_eq!(report.excluded_files, 2);
+        assert_eq!(report.specifications.len(), 1);
+        assert_eq!(report.specifications[0].name, "Current");
+        assert_eq!(report.candidates.len(), 1);
+        assert_eq!(report.candidates[0].path, "app/current.py");
     }
 }

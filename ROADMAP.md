@@ -14,11 +14,14 @@ sites once per source location, even when reused at many runtime call sites.
 is a valid result; this project does not attempt to balance it with reuse,
 coupling, or cohesion metrics.
 
-**Implemented in counting rule v1:** direct conformances/implementations and
+**Implemented in counting rule v2:** direct conformances/implementations and
 selected factory sites in the three languages; current-source denominator;
 raw counts and explicit `complete`/`not_applicable` states; optional reviewed
 exclusions; and idempotent SQLite snapshots with timestamp, source digest, Git
-revision when available, scope, and rule version. The separate
+revision when available, source-role manifest digest, scope, and rule version.
+Whole-project scans classify files as application, framework, test, generated,
+or explicitly excluded with a reason; only application sources contribute to
+the live ratio. The separate
 `measure-evidence` command retains the earlier `coverage_percent` report.
 
 **Next accuracy work:** recognize aliased and indirect conformances, more
@@ -28,11 +31,9 @@ each counting rule version against it before changing the metric. Preserve
 historical snapshots under their original rule version; do not silently
 recalculate old observations with new rules.
 
-Implement the [counting contract](docs/counting-contract.md) for whole-project
-scans: versioned source roles, strict handling of unassigned or conflicting
-files, exact candidate partition counts, and a scope-manifest digest in each
-stored snapshot. Until then, use reviewed `--include` paths for production
-source and treat an unrestricted root scan as discovery.
+Continue the [counting contract](docs/counting-contract.md) with resolved
+Specification uses and exact candidate partition counts. An unrestricted root
+scan without a manifest remains provisional discovery.
 
 ## System One assisted candidate classification
 

@@ -59,11 +59,22 @@ pub struct ParseIssue {
     pub message: String,
 }
 
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct ScopeIssue {
+    pub path: String,
+    pub message: String,
+}
+
 #[derive(Clone, Debug, Serialize)]
 pub struct ScanReport {
     pub schema_version: u32,
     pub root: String,
     pub includes: Vec<String>,
+    pub scope_manifest_digest: Option<String>,
+    pub scope_issues: Vec<ScopeIssue>,
+    pub scope_review_required: bool,
+    pub application_files: usize,
+    pub excluded_files: usize,
     pub candidates: Vec<Candidate>,
     pub specifications: Vec<SpecificationDefinition>,
     pub source_digest: String,
@@ -146,6 +157,8 @@ pub struct Registry {
     pub schema_version: u32,
     #[serde(default)]
     pub includes: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub scope_manifest_digest: Option<String>,
     #[serde(default)]
     pub sites: Vec<Site>,
 }
@@ -155,6 +168,7 @@ impl Default for Registry {
         Self {
             schema_version: SCHEMA_VERSION,
             includes: Vec::new(),
+            scope_manifest_digest: None,
             sites: Vec::new(),
         }
     }
@@ -165,6 +179,8 @@ pub struct MetricReport {
     pub schema_version: u32,
     pub root: String,
     pub includes: Vec<String>,
+    pub scope_manifest_digest: Option<String>,
+    pub scope_issues: Vec<ScopeIssue>,
     pub scanned_candidates: usize,
     pub registered_sites: usize,
     pub eligible: usize,
@@ -179,7 +195,7 @@ pub struct MetricReport {
     pub provisional: bool,
 }
 
-pub const COUNTING_RULE_VERSION: u32 = 1;
+pub const COUNTING_RULE_VERSION: u32 = 2;
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "snake_case")]
@@ -205,6 +221,16 @@ pub struct LiveMetricReport {
     pub counting_rule_version: u32,
     pub root: String,
     pub includes: Vec<String>,
+    #[serde(default)]
+    pub scope_manifest_digest: Option<String>,
+    #[serde(default)]
+    pub scope_issues: Vec<ScopeIssue>,
+    #[serde(default)]
+    pub scope_review_required: bool,
+    #[serde(default)]
+    pub application_files: usize,
+    #[serde(default)]
+    pub excluded_files: usize,
     pub source_revision: Option<String>,
     pub source_digest: String,
     pub scanned_candidates: usize,
