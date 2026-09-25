@@ -15,6 +15,15 @@ pub fn load_registry(path: &Path) -> Result<Registry> {
     toml::from_str(&source).with_context(|| format!("invalid registry {}", path.display()))
 }
 
+pub fn load_existing_registry(path: &Path) -> Result<Registry> {
+    ensure!(
+        path.is_file(),
+        "registry does not exist: {}",
+        path.display()
+    );
+    load_registry(path)
+}
+
 pub fn save_registry(path: &Path, registry: &Registry) -> Result<()> {
     let source = toml::to_string_pretty(registry).context("cannot serialize registry")?;
     if let Some(parent) = path.parent() {
@@ -224,7 +233,13 @@ mod tests {
     use crate::model::{Disposition, Evidence, ParseIssue, Registry};
     use crate::scan::scan;
 
-    use super::{measure, sync};
+    use super::{load_existing_registry, measure, sync};
+
+    #[test]
+    fn measurement_requires_an_existing_registry() {
+        let dir = tempdir().unwrap();
+        assert!(load_existing_registry(&dir.path().join("missing.toml")).is_err());
+    }
 
     #[test]
     fn denominator_survives_removal_of_original_if() {

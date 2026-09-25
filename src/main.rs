@@ -1,6 +1,8 @@
+mod live;
 mod metric;
 mod model;
 mod scan;
+mod store;
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -12,7 +14,7 @@ use serde::Serialize;
 #[derive(Parser)]
 #[command(
     version,
-    about = "Measure reviewed SpecificationCore refactoring opportunities"
+    about = "Measure live Specification adoption in Python, Swift, and Rust"
 )]
 struct Cli {
     #[command(subcommand)]
@@ -42,8 +44,26 @@ enum Command {
         #[arg(long)]
         allow_partial: bool,
     },
-    /// Calculate coverage from reviewed registry entries and current source.
+    /// Calculate the live Specification definitions / remaining opportunities ratio.
     Measure {
+        root: PathBuf,
+        /// Apply reviewed exclusions and reuse the registry's source scope.
+        #[arg(long)]
+        registry: Option<PathBuf>,
+        /// Restrict measurement to a relative file or directory (repeatable).
+        #[arg(long = "include")]
+        includes: Vec<String>,
+        /// Save an idempotent snapshot to a SQLite metric store.
+        #[arg(long)]
+        store: Option<PathBuf>,
+        #[arg(long)]
+        output: Option<PathBuf>,
+        /// Fail when source files contain parse issues.
+        #[arg(long)]
+        require_complete: bool,
+    },
+    /// Report the earlier evidence-coverage metric from a reviewed registry.
+    MeasureEvidence {
         root: PathBuf,
         #[arg(long)]
         registry: PathBuf,
@@ -51,6 +71,13 @@ enum Command {
         output: Option<PathBuf>,
         #[arg(long)]
         require_complete: bool,
+    },
+    /// Read saved live metric snapshots, newest first.
+    History {
+        #[arg(long)]
+        store: PathBuf,
+        #[arg(long, default_value_t = 20)]
+        limit: usize,
     },
 }
 
@@ -101,16 +128,55 @@ fn main() -> Result<()> {
         Command::Measure {
             root,
             registry,
+            includes,
+            store,
             output,
             require_complete,
         } => {
-            let current = metric::load_registry(&registry)?;
+            let current = registry
+                .as_ref()
+                .map(|path| metric::load_existing_registry(path))
+                .transpose()?;
+            let includes = if let Some(current) = &current {
+                if includes.is_empty() {
+                    current.includes.clone()
+                } else {
+                    let normalized = scan::normalize_includes(&includes)?;
+                    if normalized != current.includes {
+                        bail!("--include does not match registry scope");
+                    }
+                    normalized
+                }
+            } else {
+                includes
+            };
+            let report = scan::scan(&root, &includes)?;
+            let metrics = live::measure(&report, current.as_ref())?;
+            emit_json(&metrics, output.as_deref())?;
+            if require_complete && metrics.provisional {
+                bail!("metric is provisional: resolve source parse issues");
+            }
+            if let Some(store) = store {
+                let id = store::save(&store, &metrics)?;
+                eprintln!("stored metric snapshot {id} in {}", store.display());
+            }
+        }
+        Command::MeasureEvidence {
+            root,
+            registry,
+            output,
+            require_complete,
+        } => {
+            let current = metric::load_existing_registry(&registry)?;
             let report = scan::scan(&root, &current.includes)?;
             let metrics = metric::measure(&root, &report, &current)?;
             emit_json(&metrics, output.as_deref())?;
             if require_complete && metrics.provisional {
-                bail!("metric is provisional: review new sites and resolve parse issues");
+                bail!("evidence metric is provisional: review new sites and resolve parse issues");
             }
+        }
+        Command::History { store, limit } => {
+            emit_json(&store::history(&store, limit)?, None)?;
         }
     }
     Ok(())

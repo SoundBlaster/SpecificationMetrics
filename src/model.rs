@@ -38,6 +38,19 @@ pub struct Candidate {
     pub line: usize,
     pub column: usize,
     pub excerpt: String,
+    /// A control-flow construct inside an explicit Specification definition.
+    #[serde(default)]
+    pub inside_specification: bool,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct SpecificationDefinition {
+    pub language: Language,
+    pub path: String,
+    pub name: String,
+    pub kind: String,
+    pub line: usize,
+    pub column: usize,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -52,6 +65,8 @@ pub struct ScanReport {
     pub root: String,
     pub includes: Vec<String>,
     pub candidates: Vec<Candidate>,
+    pub specifications: Vec<SpecificationDefinition>,
+    pub source_digest: String,
     pub parse_issues: Vec<ParseIssue>,
 }
 
@@ -162,4 +177,43 @@ pub struct MetricReport {
     pub possible_points: usize,
     pub coverage_percent: Option<f64>,
     pub provisional: bool,
+}
+
+pub const COUNTING_RULE_VERSION: u32 = 1;
+
+#[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LiveState {
+    Ratio,
+    Complete,
+    NotApplicable,
+}
+
+impl LiveState {
+    pub fn label(self) -> &'static str {
+        match self {
+            Self::Ratio => "ratio",
+            Self::Complete => "complete",
+            Self::NotApplicable => "not_applicable",
+        }
+    }
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct LiveMetricReport {
+    pub schema_version: u32,
+    pub counting_rule_version: u32,
+    pub root: String,
+    pub includes: Vec<String>,
+    pub source_revision: Option<String>,
+    pub source_digest: String,
+    pub scanned_candidates: usize,
+    pub covered_candidates: usize,
+    pub reviewed_exclusions: usize,
+    pub specification_definitions: usize,
+    pub remaining_opportunities: usize,
+    pub ratio: Option<f64>,
+    pub state: LiveState,
+    pub provisional: bool,
+    pub parse_issues: Vec<ParseIssue>,
 }
