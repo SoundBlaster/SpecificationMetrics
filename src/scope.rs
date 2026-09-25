@@ -132,7 +132,8 @@ impl ScopeManifest {
 }
 
 fn normalize_path(raw: &str) -> Result<String> {
-    let path = raw.trim().trim_end_matches('/').replace('\\', "/");
+    let converted = raw.trim().replace('\\', "/");
+    let path = converted.trim_end_matches('/').to_owned();
     ensure!(!path.is_empty(), "source path cannot be empty");
     if path == "." {
         return Ok(path);
@@ -171,6 +172,20 @@ mod tests {
         assert_ne!(first.digest(), changed_role.digest());
         assert_eq!(first.role_for("src/main.rs"), Ok(SourceRole::Application));
         assert_eq!(first.role_for("tests/test.py"), Ok(SourceRole::Test));
+    }
+
+    #[test]
+    fn windows_trailing_separator_preserves_directory_role() {
+        let manifest = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['.']\n[[source_sets]]\nrole='test'\npaths=['tests\\\\']\n",
+        )
+        .unwrap();
+        let canonical = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['.']\n[[source_sets]]\nrole='test'\npaths=['tests']\n",
+        )
+        .unwrap();
+        assert_eq!(manifest.role_for("tests/nested.py"), Ok(SourceRole::Test));
+        assert_eq!(manifest.digest(), canonical.digest());
     }
 
     #[test]
