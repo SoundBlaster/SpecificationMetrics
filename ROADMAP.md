@@ -28,6 +28,12 @@ each counting rule version against it before changing the metric. Preserve
 historical snapshots under their original rule version; do not silently
 recalculate old observations with new rules.
 
+Implement the [counting contract](docs/counting-contract.md) for whole-project
+scans: versioned source roles, strict handling of unassigned or conflicting
+files, exact candidate partition counts, and a scope-manifest digest in each
+stored snapshot. Until then, use reviewed `--include` paths for production
+source and treat an unrestricted root scan as discovery.
+
 ## System One assisted candidate classification
 
 **Goal:** reduce the manual effort of reviewing Python, Swift, and Rust

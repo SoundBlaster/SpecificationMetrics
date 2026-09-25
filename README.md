@@ -32,6 +32,12 @@ inside recognized definitions or factories do not contribute to `U`. Reviewed
 `excluded` entries in an optional registry remove only *currently matching*
 candidates. Other current candidates contribute to `U`.
 
+The [counting contract](docs/counting-contract.md) defines the source ownership
+boundary and the disjoint reasons for removing a candidate from `U`. In
+particular, a whole-repository scan is discovery until application sources are
+selected: current v1 has no source-role manifest and does not automatically
+remove framework or test code from the ratio.
+
 This is a syntax-based measure. Aliased or indirect conformances, some factory
 forms, and a decision that merely calls a Specification from an ordinary `if`
 may need review. Inspect `scan` output, its `specifications` list, and the raw
@@ -73,7 +79,9 @@ The scanner follows `.gitignore`. Use repeated `--include` arguments to start
 with individual files or directories; later `sync --include` calls can expand
 that registry's scope. The selected scope is saved in the registry, so
 `measure` reuses it. A registry already covering the whole root cannot be
-narrowed. Keep one registry per source repository and root.
+narrowed. Keep one registry per source repository, root, and reviewed production
+scope. To establish a narrower scope after a whole-root registry, start a new
+registry and history store rather than comparing the two ratios as one trend.
 
 The scanner reports source parse errors explicitly. `sync` refuses to update a
 registry from a partial scan unless `--allow-partial` is given. Live `measure`
