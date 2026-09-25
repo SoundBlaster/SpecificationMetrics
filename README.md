@@ -4,6 +4,9 @@ A Rust CLI for tracking how explicitly selected code decisions are represented
 by SpecificationCore. It scans Python, Swift, and Rust syntax, then measures
 progress against a reviewed, durable inventory of decision opportunities.
 
+See the [roadmap](ROADMAP.md) for proposed System One assisted candidate
+classification with Jev, Laya, and GLiNER2.5-Decide.
+
 ## Why the inventory is durable
 
 Refactoring can remove the original `if` or `switch`. Recounting only current
