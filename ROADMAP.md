@@ -19,8 +19,9 @@ selected factory sites in the three languages; current-source denominator;
 raw counts and explicit `complete`/`not_applicable` states; optional reviewed
 exclusions; and idempotent SQLite snapshots with timestamp, source digest, Git
 revision when available, source-role manifest digest, scope, and rule version.
-Whole-project scans classify files as application, framework, test, or
-generated; only application sources contribute to the live ratio. The separate
+Whole-project scans classify files as application, framework, test, generated,
+or explicitly excluded with a reason; only application sources contribute to
+the live ratio. The separate
 `measure-evidence` command retains the earlier `coverage_percent` report.
 
 **Next accuracy work:** recognize aliased and indirect conformances, more

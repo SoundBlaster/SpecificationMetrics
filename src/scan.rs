@@ -715,4 +715,38 @@ mod tests {
         assert_eq!(report.scope_issues[0].path, "other.py");
         assert_eq!(report.candidates.len(), 1);
     }
+
+    #[test]
+    fn explicit_file_and_directory_exclusions_remove_both_counts() {
+        let dir = tempdir().unwrap();
+        fs::create_dir(dir.path().join("app")).unwrap();
+        fs::create_dir_all(dir.path().join("old/nested")).unwrap();
+        fs::write(
+            dir.path().join("app/current.py"),
+            "class Current(Specification): pass\nif active: pass\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("app/legacy.py"),
+            "class Legacy(Specification): pass\nif legacy: pass\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("old/nested/another.py"),
+            "class Old(Specification): pass\nif old: pass\n",
+        )
+        .unwrap();
+        let manifest = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['.']\n[[source_sets]]\nrole='excluded'\npaths=['app/legacy.py', 'old']\nreason='Reviewed outside adoption scope'\n",
+        )
+        .unwrap();
+        let report = scan_with_scope(dir.path(), &[], Some(&manifest)).unwrap();
+        assert!(report.scope_issues.is_empty());
+        assert_eq!(report.application_files, 1);
+        assert_eq!(report.excluded_files, 2);
+        assert_eq!(report.specifications.len(), 1);
+        assert_eq!(report.specifications[0].name, "Current");
+        assert_eq!(report.candidates.len(), 1);
+        assert_eq!(report.candidates[0].path, "app/current.py");
+    }
 }

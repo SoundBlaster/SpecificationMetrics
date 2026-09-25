@@ -11,6 +11,7 @@ source file exactly one role before its findings affect the ratio:
 | `framework` | SpecificationCore or other library implementation | No |
 | `test` | Tests, fixtures, benchmarks, examples | No |
 | `generated` | Generated, vendored, or build output | No |
+| `excluded` | Reviewed file or directory outside the current scope, with a reason | No |
 
 Roles come from an explicit, versioned source-scope manifest, with
 repository-relative paths. The most specific matching path supplies the role;
@@ -19,6 +20,11 @@ whole-repository measurement provisional. Path names such as `spec` or
 `test` are not enough to infer ownership. A library can be measured as its own
 project by assigning its production files the `application` role in a separate
 measurement scope.
+
+The `excluded` role accepts exact file paths and directory prefixes and
+requires a non-empty reason. It excludes all Specification definitions and
+decision candidates in those files, so it affects both `S` and `U`. A reviewed
+candidate exclusion in the registry affects only that candidate in `U`.
 
 Within `application` files, count each recognized Specification declaration or
 factory source site once in `S`. Runtime instances and repeated uses do not

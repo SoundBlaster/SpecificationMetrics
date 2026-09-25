@@ -107,7 +107,19 @@ paths = ["tests", "fixtures", "examples"]
 [[source_sets]]
 role = "generated"
 paths = ["generated", "build"]
+
+[[source_sets]]
+role = "excluded"
+paths = ["app/legacy.py", "old/subsystem"]
+reason = "Reviewed outside the current adoption scope"
 ```
+
+An exact file path excludes that file; a directory path excludes all supported
+source files below it. These are repository-relative paths, not globs. More
+specific paths can select a file back into `application` if needed. The
+`excluded` role requires a non-empty reason and removes the file's findings
+from both `S` and `U`. A registry site's `disposition = "excluded"` is different:
+it removes only one reviewed decision candidate from `U`.
 
 ```bash
 cargo run -- scan ../SpecGraph --scope-manifest scopes/specgraph.toml
