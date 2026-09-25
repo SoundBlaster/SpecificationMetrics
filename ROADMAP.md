@@ -1,16 +1,44 @@
 # Roadmap
 
 This document records proposed work. The current CLI discovers syntax candidates
-and measures a registry that a reviewer classifies. No model inference is part
-of the current release.
+and reports evidence coverage from a reviewed registry. It does not yet compute
+the intended live `S / U` ratio. No model inference is part of the current
+release.
+
+## Live Specification ratio
+
+Implement the primary project-health metric as `S / U`, recalculated for each
+source snapshot. `S` counts distinct application-defined Specifications once
+per definition, even when reused at many call sites. `U` counts current
+decision opportunities still outside Specification. A high ratio is a valid
+result; this project does not attempt to balance it with reuse, coupling, or
+cohesion metrics.
+
+1. Define and test source-level detection of Specification definitions and
+   Specification-backed decisions in Python, Swift, and Rust. Keep counts and
+   syntax locations inspectable; resolve ambiguous patterns explicitly.
+2. Recompute both counts for the same versioned source scope on every run.
+   Classifier and reviewer decisions may explain which current candidates
+   contribute to `U`, but old candidates must not remain in `U` merely because
+   they were observed in a previous revision.
+3. Emit `S`, `U`, the ratio when `U > 0`, and explicit `complete` (`S > 0`,
+   `U = 0`) or `not_applicable` (`S = U = 0`) states. Preserve the raw counts
+   alongside any presentation of the ratio.
+4. Store successive snapshots with timestamp, source revision, scope, counting
+   rule version, and classification provenance. The registry supports trend
+   analysis and audit; it does not supply a frozen denominator.
+
+The existing `coverage_percent` is a separate experimental evidence report.
+Replacing or retiring it needs a schema and CLI compatibility decision; it
+must never be relabeled as the live ratio.
 
 ## System One assisted candidate classification
 
 **Goal:** reduce the manual effort of reviewing Python, Swift, and Rust
-decision candidates while keeping the metric's denominator auditable. Use a
+decision candidates while keeping each live denominator auditable. Use a
 small, constrained classifier to suggest whether a candidate is a meaningful
 SpecificationCore refactoring opportunity, a mechanical construct to exclude,
-or uncertain. A suggestion does not change the registry disposition or score.
+or uncertain. A suggestion does not change a reviewed classification or score.
 
 ### Phase 1 — Labels and evaluation set
 
@@ -61,8 +89,8 @@ better from a few illustrative examples.
 
 - Show suggestions alongside candidate source and rubric, with an explicit
   accept/correct/abstain review action. Record reviewer decisions separately
-  from model output; only accepted decisions update `eligible` or `excluded` in
-  the durable registry.
+  from model output; only accepted decisions update the classification of a
+  current candidate. Keep historical classifications for trend explanation.
 - Track agreement with reviewers and the rate of corrected false exclusions.
   Re-evaluate on held-out examples after changing the prompt, labels, model,
   checkpoint, or context extraction.
@@ -74,4 +102,5 @@ better from a few illustrative examples.
 held-out quality and abstention behavior are reported for each supported
 language, false exclusions are acceptable under a documented review policy,
 and the registry remains fully usable without inference. Human-reviewed labels
-remain authoritative for the denominator and the coverage metric.
+remain authoritative when resolving ambiguous current candidates; the live
+ratio is always recomputed for the source snapshot.

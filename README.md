@@ -1,19 +1,43 @@
 # SpecificationMetrics
 
-A Rust CLI for tracking how explicitly selected code decisions are represented
-by SpecificationCore. It scans Python, Swift, and Rust syntax, then measures
-progress against a reviewed, durable inventory of decision opportunities.
+A Rust CLI for examining Specification adoption in Python, Swift, and Rust.
+The current release scans control-flow candidates and reports evidence coverage
+from a reviewed registry. The intended primary metric is a live ratio described
+below; it is not yet implemented by `measure`.
 
 See the [roadmap](ROADMAP.md) for proposed System One assisted candidate
 classification with Jev, Laya, and GLiNER2.5-Decide.
 
-## Why the inventory is durable
+## Target live metric
 
-Refactoring can remove the original `if` or `switch`. Recounting only current
-syntax would then shrink the denominator and overstate progress. `sync` records
-each discovered site in a TOML registry. Reviewers classify it as `eligible` or
-`excluded`; eligible entries remain in the denominator after their original
-syntax disappears.
+For each source snapshot, calculate `S / U`: `S` is the number of distinct
+application-defined Specifications, counted once per definition rather than
+once per use; `U` is the number of current decision opportunities that remain
+outside Specification. Both counts are recomputed from the same source scope.
+The ratio can grow beyond 1 and is not a percentage or a score capped at 100.
+For example, `0 / 10,000` becomes `1 / 9,999` after one conversion. A large
+ratio is a valid observation; questions about Specification reuse, coupling,
+and cohesion belong to separate metrics.
+
+If `U` reaches zero, report `S` and `U` plus a `complete` state instead of
+serializing infinity as a JSON number. If both counts are zero, report
+`not_applicable`. Changes in project scope, new decisions, and deleted code may
+move the ratio in either direction; that is part of a live project-health
+measurement. Store dated snapshots and their source revision in the registry
+to explain the trajectory, without freezing a historical denominator.
+
+The exact cross-language detection rules for Specification definitions and
+remaining opportunities still need implementation and validation. The current
+`measure` command reports a different, evidence-based `coverage_percent` over
+reviewed registry entries. Do not interpret it as `S / U` or compare it with
+future live-ratio snapshots.
+
+## Current reviewed inventory
+
+`sync` records each discovered site in a TOML registry. Reviewers classify it
+as `eligible` or `excluded`. Current `measure` retains eligible entries after
+their original syntax disappears to audit evidence for past refactoring work.
+This historical inventory does not define the target ratio's denominator.
 
 `defer` is discovered in Swift, but ordinary scope-exit cleanup normally belongs
 in `excluded` with a reason. A decision inside its body is scanned separately.
