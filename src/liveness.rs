@@ -84,7 +84,9 @@ impl PythonLiveness {
             if tree.root_node().has_error() {
                 parse_failed.insert(source.path.clone());
             }
-            dynamic_lookup |= contains_dynamic_lookup(tree.root_node(), &source.source);
+            dynamic_lookup |= contains_dynamic_lookup(tree.root_node(), &source.source)
+                || has_module_getattr(tree.root_node(), &source.source)
+                || has_dynamic_all(tree.root_node(), &source.source);
             parsed_sources.push(ParsedPythonSource {
                 module: module_name(&source.path),
                 path: source.path.clone(),
@@ -179,6 +181,7 @@ impl PythonLiveness {
                 source.tree.root_node(),
                 None,
                 None,
+                None,
                 false,
                 false,
                 &mut inspection,
@@ -246,6 +249,69 @@ impl PythonLiveness {
         self.sources.iter().any(|source| source.module == module)
     }
 
+    fn module_has_dynamic_export_assignment(&self, module: &str, name: &str) -> bool {
+        let sources = self
+            .sources
+            .iter()
+            .filter(|source| source.module == module)
+            .collect::<Vec<_>>();
+        if sources.len() != 1 {
+            return false;
+        }
+        let source = sources[0];
+        let mut cursor = source.tree.root_node().walk();
+        source
+            .tree
+            .root_node()
+            .named_children(&mut cursor)
+            .any(|statement| {
+                let assignments = if statement.kind() == "expression_statement" {
+                    let mut statement_cursor = statement.walk();
+                    statement
+                        .named_children(&mut statement_cursor)
+                        .collect::<Vec<_>>()
+                } else {
+                    vec![statement]
+                };
+                assignments.into_iter().any(|assignment| {
+                    matches!(assignment.kind(), "assignment" | "augmented_assignment")
+                        && assignment
+                            .child_by_field_name("left")
+                            .and_then(|left| left.utf8_text(source.source.as_bytes()).ok())
+                            == Some(name)
+                        && assignment
+                            .child_by_field_name("right")
+                            .is_some_and(|right| match right.kind() {
+                                "string" | "integer" | "float" | "true" | "false" | "none" => false,
+                                "identifier" => {
+                                    let assigned_name = right
+                                        .utf8_text(source.source.as_bytes())
+                                        .unwrap_or_default();
+                                    !self.definitions_by_module.contains_key(&(
+                                        module.to_owned(),
+                                        assigned_name.to_owned(),
+                                    ))
+                                }
+                                "call" => {
+                                    let called_name = right
+                                        .child_by_field_name("function")
+                                        .and_then(|function| {
+                                            function.utf8_text(source.source.as_bytes()).ok()
+                                        })
+                                        .unwrap_or_default()
+                                        .rsplit('.')
+                                        .next()
+                                        .unwrap_or_default();
+                                    !self
+                                        .definitions_by_module
+                                        .contains_key(&(module.to_owned(), called_name.to_owned()))
+                                }
+                                _ => true,
+                            })
+                })
+            })
+    }
+
     fn resolve_symbol(
         &self,
         module: &str,
@@ -288,11 +354,16 @@ impl PythonLiveness {
         }
         let mut result = SymbolResolution::default();
         let mut cursor = source.tree.root_node().walk();
-        for import_node in source.tree.root_node().named_children(&mut cursor) {
+        let module_statements = source
+            .tree
+            .root_node()
+            .named_children(&mut cursor)
+            .collect::<Vec<_>>();
+        for import_node in &module_statements {
             if import_node.kind() != "import_from_statement" {
                 continue;
             }
-            for binding in from_import_bindings(import_node, &source.path, &source.source) {
+            for binding in from_import_bindings(*import_node, &source.path, &source.source) {
                 if binding.wildcard {
                     result.ambiguous = true;
                     continue;
@@ -308,6 +379,30 @@ impl PythonLiveness {
                 result.indices.extend(resolved.indices);
                 result.ambiguous |= resolved.ambiguous;
             }
+        }
+        let mut conditional_imports = Vec::new();
+        for statement in module_statements {
+            if is_module_compound_statement(statement.kind()) {
+                collect_module_level_imports(
+                    statement,
+                    &source.path,
+                    &source.source,
+                    &mut conditional_imports,
+                );
+            }
+        }
+        for binding in conditional_imports {
+            if binding.local != name || binding.wildcard {
+                continue;
+            }
+            if self.module_exists(&format!("{}.{}", binding.module, binding.name)) {
+                result.ambiguous = true;
+                continue;
+            }
+            let mut branch = visited.clone();
+            let resolved = self.resolve_symbol(&binding.module, &binding.name, &mut branch);
+            result.indices.extend(resolved.indices);
+            result.ambiguous = true;
         }
         result.indices.sort_unstable();
         result.indices.dedup();
@@ -485,7 +580,7 @@ fn collect_imports(
                         .filter(|((_, name), _)| name == &binding.name)
                         .flat_map(|(_, indices)| indices.iter().copied()),
                 );
-                if python.module_exists(&binding.module) {
+                if python.module_has_dynamic_export_assignment(&binding.module, &binding.name) {
                     let prefix = format!("{}.", binding.module);
                     imports.ambiguous_targets.extend(
                         python
@@ -541,6 +636,7 @@ fn inspect_runtime_references(
     node: Node<'_>,
     parent: Option<Node<'_>>,
     grandparent: Option<Node<'_>>,
+    great_grandparent: Option<Node<'_>>,
     in_type: bool,
     in_import: bool,
     inspection: &mut ReferenceInspection<'_>,
@@ -588,7 +684,13 @@ fn inspect_runtime_references(
                 if resolved.indices.contains(&inspection.target) {
                     if modules.len() == 1
                         && !resolved.ambiguous
-                        && is_runtime_use(node, parent, grandparent, inspection.source)
+                        && is_runtime_use(
+                            node,
+                            parent,
+                            grandparent,
+                            great_grandparent,
+                            inspection.source,
+                        )
                     {
                         *inspection.direct_use = true;
                     } else {
@@ -615,7 +717,13 @@ fn inspect_runtime_references(
             && let Some(indices) = inspection.imports.aliases.get(name)
             && indices.contains(&inspection.target)
         {
-            if is_runtime_use(node, parent, grandparent, inspection.source) {
+            if is_runtime_use(
+                node,
+                parent,
+                grandparent,
+                great_grandparent,
+                inspection.source,
+            ) {
                 *inspection.direct_use = true;
             } else {
                 *inspection.ambiguous_use = true;
@@ -628,6 +736,7 @@ fn inspect_runtime_references(
             child,
             Some(node),
             parent,
+            grandparent,
             node_is_type,
             node_is_import,
             inspection,
@@ -654,15 +763,24 @@ fn is_runtime_use(
     node: Node<'_>,
     parent: Option<Node<'_>>,
     grandparent: Option<Node<'_>>,
+    great_grandparent: Option<Node<'_>>,
     source: &str,
 ) -> bool {
+    let class_pattern = parent.zip(grandparent).is_some_and(|(parent, pattern)| {
+        parent.kind() == "dotted_name"
+            && pattern.kind() == "class_pattern"
+            && pattern.named_child(0) == Some(parent)
+    });
+    let mapping_value = parent.is_some_and(|pair| {
+        pair.kind() == "pair" && pair.child_by_field_name("value") == Some(node)
+    });
     let called = parent.is_some_and(|parent| {
         parent.kind() == "call" && parent.child_by_field_name("function") == Some(node)
     });
-    let consumed = parent.is_some_and(|parent| parent.kind() == "argument_list")
-        && grandparent.is_some_and(|call| {
+    let call_consumed = |arguments: Node<'_>, call: Option<Node<'_>>| {
+        call.is_some_and(|call| {
             call.kind() == "call"
-                && call.child_by_field_name("arguments") == parent
+                && call.child_by_field_name("arguments") == Some(arguments)
                 && call
                     .child_by_field_name("function")
                     .is_some_and(|function| {
@@ -670,8 +788,17 @@ fn is_runtime_use(
                             function.utf8_text(source.as_bytes()).unwrap_or_default(),
                         )
                     })
-        });
-    called || consumed
+        })
+    };
+    let consumed = parent.is_some_and(|parent| {
+        (parent.kind() == "argument_list" && call_consumed(parent, grandparent))
+            || (parent.kind() == "tuple"
+                && grandparent.is_some_and(|arguments| {
+                    arguments.kind() == "argument_list"
+                        && call_consumed(arguments, great_grandparent)
+                }))
+    });
+    called || consumed || class_pattern || mapping_value
 }
 
 fn is_specification_consumer(function: &str) -> bool {
@@ -679,6 +806,8 @@ fn is_specification_consumer(function: &str) -> bool {
     matches!(
         name,
         "evaluate"
+            | "isinstance"
+            | "issubclass"
             | "is_satisfied_by"
             | "is_satisfied"
             | "matches"
@@ -755,6 +884,108 @@ fn contains_dynamic_lookup(node: Node<'_>, source: &str) -> bool {
     let mut cursor = node.walk();
     node.named_children(&mut cursor)
         .any(|child| contains_dynamic_lookup(child, source))
+}
+
+fn has_module_getattr(node: Node<'_>, source: &str) -> bool {
+    if node.kind() == "class_definition" {
+        return false;
+    }
+    if node.kind() == "function_definition" {
+        return node
+            .child_by_field_name("name")
+            .and_then(|name| name.utf8_text(source.as_bytes()).ok())
+            == Some("__getattr__");
+    }
+    let mut cursor = node.walk();
+    node.named_children(&mut cursor)
+        .any(|child| has_module_getattr(child, source))
+}
+
+fn collect_module_level_imports(
+    node: Node<'_>,
+    source_path: &str,
+    source: &str,
+    imports: &mut Vec<FromImportBinding>,
+) {
+    if matches!(
+        node.kind(),
+        "class_definition" | "function_definition" | "lambda"
+    ) {
+        return;
+    }
+    if node.kind() == "import_from_statement" {
+        imports.extend(from_import_bindings(node, source_path, source));
+        return;
+    }
+    let mut cursor = node.walk();
+    for child in node.named_children(&mut cursor) {
+        collect_module_level_imports(child, source_path, source, imports);
+    }
+}
+
+fn is_module_compound_statement(kind: &str) -> bool {
+    matches!(
+        kind,
+        "if_statement"
+            | "try_statement"
+            | "with_statement"
+            | "for_statement"
+            | "while_statement"
+            | "match_statement"
+    )
+}
+
+fn has_dynamic_all(node: Node<'_>, source: &str) -> bool {
+    let mut cursor = node.walk();
+    node.named_children(&mut cursor).any(|child| {
+        let statements = if child.kind() == "expression_statement" {
+            let mut statement_cursor = child.walk();
+            child
+                .named_children(&mut statement_cursor)
+                .collect::<Vec<_>>()
+        } else {
+            vec![child]
+        };
+        statements.into_iter().any(|statement| {
+            if statement.kind() == "augmented_assignment"
+                && statement
+                    .child_by_field_name("left")
+                    .and_then(|left| left.utf8_text(source.as_bytes()).ok())
+                    == Some("__all__")
+            {
+                return true;
+            }
+            if statement.kind() == "assignment"
+                && statement
+                    .child_by_field_name("left")
+                    .and_then(|left| left.utf8_text(source.as_bytes()).ok())
+                    == Some("__all__")
+            {
+                let Some(right) = statement.child_by_field_name("right") else {
+                    return true;
+                };
+                if !matches!(right.kind(), "list" | "tuple") {
+                    return true;
+                }
+                let mut values = right.walk();
+                return right
+                    .named_children(&mut values)
+                    .any(|value| value.kind() != "string" && value.kind() != "comment");
+            }
+            if statement.kind() == "call" {
+                return statement
+                    .child_by_field_name("function")
+                    .is_some_and(|function| {
+                        function.kind() == "attribute"
+                            && function
+                                .child_by_field_name("object")
+                                .and_then(|object| object.utf8_text(source.as_bytes()).ok())
+                                == Some("__all__")
+                    });
+            }
+            false
+        })
+    })
 }
 
 fn exported_from_package(

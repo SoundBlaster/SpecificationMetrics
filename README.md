@@ -53,9 +53,11 @@ forms, and a decision that merely calls a Specification from an ordinary `if`
 may need review. Python liveness is intentionally conservative and currently
 supports named class declarations, aliased and unaliased module imports,
 import-based re-export chains, constructor calls, known evaluator/combinator
-calls, and explicit registration calls. Unsupported or ambiguous bindings stay
-`unknown`. Inspect the `specification_liveness` evidence and raw counts before
-interpreting changes.
+calls, runtime `isinstance`/`issubclass` and class-pattern uses, static type
+registry values, and explicit registration calls. Module-level `__getattr__`,
+computed `__all__`, and cyclic re-export paths stay `unknown` when they could
+affect a declaration. Inspect the `specification_liveness` evidence and raw
+counts before interpreting changes.
 A parse, scope, or unknown liveness issue marks a report provisional.
 
 ## Current reviewed inventory

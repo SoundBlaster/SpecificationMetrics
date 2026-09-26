@@ -23,7 +23,7 @@ Each named declaration receives exactly one status:
 
 | Status | Rule | Effect on `S / U` |
 | --- | --- | --- |
-| `live` | At least one resolved runtime use, including construction, passing the value to a Specification evaluator/combinator, or an explicit runtime registry/factory registration. | Count the declaration in `S`. |
+| `live` | At least one resolved runtime use, including construction, passing the value to a Specification evaluator/combinator, runtime `isinstance`/`issubclass` checks, class patterns, or an explicit runtime registry/factory value. | Count the declaration in `S`. |
 | `dead` | No resolved runtime use, the complete owning module/target is in scope, the symbol is not externally visible, and no unresolved dynamic lookup could refer to it. | Exclude the declaration from `S`. Its internal decision sites remain excluded from `U`. |
 | `unknown` | Visibility, source completeness, symbol resolution, reflection, dynamic lookup, macros, or another supported uncertainty prevents proving either status. | Keep the declaration in `S` conservatively and mark the report provisional until reviewed. |
 
@@ -61,20 +61,26 @@ body, including a dead one, remain outside `U`.
 The current Python implementation recognizes named classes, `from` imports,
 aliased and unaliased module imports, and static `from`-import re-export chains
 within the measured source set. It counts constructor calls, a bounded list of
-Specification consumers, and explicit registration calls. Public names,
+Specification consumers, runtime class checks and patterns, static registry
+values, and explicit registration calls. Public names,
 shadowed or conflicting bindings, unresolved same-name imports, wildcard
 imports, dynamic lookups, parse/scope-incomplete scans, and declarations outside
 an explicit closed-world manifest remain `unknown`. Assignment-based exports
-and dynamic `__getattr__` re-exports are not resolved. Language-specific
-Swift/Rust resolution is also not implemented. These cases must not be
-inferred `dead`.
+and dynamic `__getattr__` re-exports are not resolved; a module-level
+`__getattr__` hook or computed `__all__` keeps potentially affected
+declarations `unknown`. Cyclic re-export resolution is also `unknown`.
+Language-specific Swift/Rust resolution is not implemented. These cases must
+not be inferred `dead`.
 
 The versioned acceptance corpus is under
 [`tests/fixtures/liveness/v1`](../tests/fixtures/liveness/v1). Its
 `cases.json` records the expected status and source files for Python, Swift,
 and Rust examples of cross-file use, module aliases, import-based re-exports,
-unreferenced private declarations, exported/public declarations, unresolved
-dynamic lookup, and explicit runtime registration. Python cases are exercised
-by the current test suite. Swift and
+runtime class checks and patterns, static type registries, dynamic exports,
+cyclic re-exports, unreferenced private declarations, exported/public
+declarations, unresolved dynamic lookup, and explicit runtime registration.
+Python cases are exercised by the current test suite. Swift and
 Rust fixture expectations describe the target contract; the current scanner
 reports those declarations as `unknown` until their analyzers are implemented.
+The bounded real-package audit and its limits are recorded in
+[`python-liveness-real-package-audit.md`](python-liveness-real-package-audit.md).
