@@ -354,11 +354,16 @@ impl PythonLiveness {
         }
         let mut result = SymbolResolution::default();
         let mut cursor = source.tree.root_node().walk();
-        for import_node in source.tree.root_node().named_children(&mut cursor) {
+        let module_statements = source
+            .tree
+            .root_node()
+            .named_children(&mut cursor)
+            .collect::<Vec<_>>();
+        for import_node in &module_statements {
             if import_node.kind() != "import_from_statement" {
                 continue;
             }
-            for binding in from_import_bindings(import_node, &source.path, &source.source) {
+            for binding in from_import_bindings(*import_node, &source.path, &source.source) {
                 if binding.wildcard {
                     result.ambiguous = true;
                     continue;
@@ -374,6 +379,30 @@ impl PythonLiveness {
                 result.indices.extend(resolved.indices);
                 result.ambiguous |= resolved.ambiguous;
             }
+        }
+        let mut conditional_imports = Vec::new();
+        for statement in module_statements {
+            if is_module_compound_statement(statement.kind()) {
+                collect_module_level_imports(
+                    statement,
+                    &source.path,
+                    &source.source,
+                    &mut conditional_imports,
+                );
+            }
+        }
+        for binding in conditional_imports {
+            if binding.local != name || binding.wildcard {
+                continue;
+            }
+            if self.module_exists(&format!("{}.{}", binding.module, binding.name)) {
+                result.ambiguous = true;
+                continue;
+            }
+            let mut branch = visited.clone();
+            let resolved = self.resolve_symbol(&binding.module, &binding.name, &mut branch);
+            result.indices.extend(resolved.indices);
+            result.ambiguous = true;
         }
         result.indices.sort_unstable();
         result.indices.dedup();
@@ -858,23 +887,52 @@ fn contains_dynamic_lookup(node: Node<'_>, source: &str) -> bool {
 }
 
 fn has_module_getattr(node: Node<'_>, source: &str) -> bool {
-    let mut cursor = node.walk();
-    node.named_children(&mut cursor).any(|child| {
-        let function = if child.kind() == "function_definition" {
-            Some(child)
-        } else if child.kind() == "decorated_definition" {
-            let mut decorated_cursor = child.walk();
-            child
-                .named_children(&mut decorated_cursor)
-                .find(|inner| inner.kind() == "function_definition")
-        } else {
-            None
-        };
-        function
-            .and_then(|function| function.child_by_field_name("name"))
+    if node.kind() == "class_definition" {
+        return false;
+    }
+    if node.kind() == "function_definition" {
+        return node
+            .child_by_field_name("name")
             .and_then(|name| name.utf8_text(source.as_bytes()).ok())
-            == Some("__getattr__")
-    })
+            == Some("__getattr__");
+    }
+    let mut cursor = node.walk();
+    node.named_children(&mut cursor)
+        .any(|child| has_module_getattr(child, source))
+}
+
+fn collect_module_level_imports(
+    node: Node<'_>,
+    source_path: &str,
+    source: &str,
+    imports: &mut Vec<FromImportBinding>,
+) {
+    if matches!(
+        node.kind(),
+        "class_definition" | "function_definition" | "lambda"
+    ) {
+        return;
+    }
+    if node.kind() == "import_from_statement" {
+        imports.extend(from_import_bindings(node, source_path, source));
+        return;
+    }
+    let mut cursor = node.walk();
+    for child in node.named_children(&mut cursor) {
+        collect_module_level_imports(child, source_path, source, imports);
+    }
+}
+
+fn is_module_compound_statement(kind: &str) -> bool {
+    matches!(
+        kind,
+        "if_statement"
+            | "try_statement"
+            | "with_statement"
+            | "for_statement"
+            | "while_statement"
+            | "match_statement"
+    )
 }
 
 fn has_dynamic_all(node: Node<'_>, source: &str) -> bool {

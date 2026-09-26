@@ -72,6 +72,27 @@
       "files": ["python/dynamic_getattr_export/package/__init__.py", "python/dynamic_getattr_export/package/rules.py", "python/dynamic_getattr_export/consumer.py"]
     },
     {
+      "id": "python.conditional_getattr_export",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/conditional_getattr_export/package/__init__.py", "python/conditional_getattr_export/package/rules.py"]
+    },
+    {
+      "id": "python.nested_getattr_is_not_module_hook",
+      "language": "python",
+      "status": "dead",
+      "world": "closed",
+      "files": ["python/nested_getattr_is_not_module_hook/rules.py", "python/nested_getattr_is_not_module_hook/helpers.py"]
+    },
+    {
+      "id": "python.conditional_reexport",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/conditional_reexport/package/__init__.py", "python/conditional_reexport/package/rules.py", "python/conditional_reexport/consumer.py"]
+    },
+    {
       "id": "python.dynamic_all_export",
       "language": "python",
       "status": "unknown",
