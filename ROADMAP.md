@@ -51,9 +51,11 @@ remain in `S` and make the result provisional. Swift and Rust declarations
 remain `unknown` until language-specific resolution is implemented. Keep
 liveness diagnostics separate from the System One opportunity classifier below.
 
-**Next liveness work:** validate Python alias and re-export resolution against
-real packages, including shadowed bindings and dynamic export hooks. Then
-implement Swift target and Rust crate resolution;
+**Python validation:** a bounded `zspec` source audit and fixtures for NumPy-
+style module `__getattr__`, computed `__all__`, and cyclic re-exports are
+recorded in [the real-package audit](docs/python-liveness-real-package-audit.md).
+Continue testing against larger application packages and shadowed dynamic
+exports. Then implement Swift target and Rust crate resolution;
 do not remove declarations from `S` in either language until closed-world and
 runtime-use evidence are represented by tests.
 

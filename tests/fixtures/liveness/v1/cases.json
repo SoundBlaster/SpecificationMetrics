@@ -65,6 +65,83 @@
       "files": ["python/package_reexport/package/__init__.py", "python/package_reexport/package/rules.py", "python/package_reexport/consumer.py"]
     },
     {
+      "id": "python.dynamic_getattr_export",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/dynamic_getattr_export/package/__init__.py", "python/dynamic_getattr_export/package/rules.py", "python/dynamic_getattr_export/consumer.py"]
+    },
+    {
+      "id": "python.conditional_getattr_export",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/conditional_getattr_export/package/__init__.py", "python/conditional_getattr_export/package/rules.py"]
+    },
+    {
+      "id": "python.nested_getattr_is_not_module_hook",
+      "language": "python",
+      "status": "dead",
+      "world": "closed",
+      "files": ["python/nested_getattr_is_not_module_hook/rules.py", "python/nested_getattr_is_not_module_hook/helpers.py"]
+    },
+    {
+      "id": "python.conditional_reexport",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/conditional_reexport/package/__init__.py", "python/conditional_reexport/package/rules.py", "python/conditional_reexport/consumer.py"]
+    },
+    {
+      "id": "python.dynamic_all_export",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/dynamic_all_export/package/__init__.py", "python/dynamic_all_export/package/rules.py"]
+    },
+    {
+      "id": "python.assignment_export_unknown",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/assignment_export_unknown/package/__init__.py", "python/assignment_export_unknown/package/rules.py", "python/assignment_export_unknown/consumer.py"]
+    },
+    {
+      "id": "python.imported_base_class",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/imported_base_class/rules.py", "python/imported_base_class/consumer.py"]
+    },
+    {
+      "id": "python.runtime_class_check",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/runtime_class_check/rules.py", "python/runtime_class_check/consumer.py"]
+    },
+    {
+      "id": "python.class_pattern_use",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/class_pattern_use/rules.py", "python/class_pattern_use/consumer.py"]
+    },
+    {
+      "id": "python.type_registry_value",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/type_registry_value/rules.py", "python/type_registry_value/consumer.py"]
+    },
+    {
+      "id": "python.circular_reexport",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/circular_reexport/package/a.py", "python/circular_reexport/package/b.py", "python/circular_reexport/package/rules.py", "python/circular_reexport/consumer.py"]
+    },
+    {
       "id": "python.module_alias_shadowed",
       "language": "python",
       "status": "unknown",
