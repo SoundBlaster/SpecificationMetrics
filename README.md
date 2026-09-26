@@ -41,6 +41,12 @@ remain `unknown` and therefore stay in `S`. Unknown liveness makes the report
 provisional. The report includes per-status counts and evidence. Anonymous
 factory sites remain in `S` as before.
 
+For projects whose named Specification types do not use a recognized base,
+protocol, or trait, an opt-in source marker is being considered. Its proposed
+scope and rules are described in the
+[declaration marker contract](docs/declaration-marker-contract.md); current
+counting rule v3 does not recognize these markers.
+
 The [counting contract](docs/counting-contract.md) defines the source ownership
 boundary and the disjoint reasons for removing a candidate from `U`. For a
 whole-repository scan, use a versioned source-role manifest. Only `application`

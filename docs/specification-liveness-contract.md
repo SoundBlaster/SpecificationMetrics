@@ -3,6 +3,10 @@
 This contract defines liveness classification for named Specification
 declarations. Counting rule v3 implements a conservative subset for Python;
 Swift and Rust are retained as `unknown` pending language-specific analyzers.
+The proposed opt-in source marker for named declarations without a recognized
+base/protocol/trait is specified separately in the
+[declaration marker contract](declaration-marker-contract.md); it is not
+implemented by counting rule v3.
 
 ## Unit and source boundary
 
