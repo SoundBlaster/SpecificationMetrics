@@ -58,21 +58,23 @@ unknown liveness result makes the ratio provisional. Keep existing decision
 candidate accounting intact: branches inside every recognized Specification
 body, including a dead one, remain outside `U`.
 
-The current Python implementation recognizes named classes and straightforward
-`from module import Name` resolution, constructor calls, a bounded list of
-Specification consumers, and explicit registration calls. It deliberately
-leaves public names, ambiguous references, unresolved same-name imports,
-dynamic lookups, parse/scope-incomplete scans, and declarations outside an
-explicit closed-world manifest as `unknown`. Straightforward relative imports
-are resolved when their package path is within the measured source set. Module
-aliases and re-exports remain `unknown`; language-specific Swift/Rust
-resolution is not implemented. These cases must not be inferred `dead`.
+The current Python implementation recognizes named classes, `from` imports,
+aliased and unaliased module imports, and static `from`-import re-export chains
+within the measured source set. It counts constructor calls, a bounded list of
+Specification consumers, and explicit registration calls. Public names,
+shadowed or conflicting bindings, unresolved same-name imports, wildcard
+imports, dynamic lookups, parse/scope-incomplete scans, and declarations outside
+an explicit closed-world manifest remain `unknown`. Assignment-based exports
+and dynamic `__getattr__` re-exports are not resolved. Language-specific
+Swift/Rust resolution is also not implemented. These cases must not be
+inferred `dead`.
 
 The versioned acceptance corpus is under
 [`tests/fixtures/liveness/v1`](../tests/fixtures/liveness/v1). Its
 `cases.json` records the expected status and source files for Python, Swift,
-and Rust examples of cross-file use, unreferenced private declarations,
-exported/public declarations, unresolved dynamic lookup, and explicit runtime
-registration. Python cases are exercised by the current test suite. Swift and
+and Rust examples of cross-file use, module aliases, import-based re-exports,
+unreferenced private declarations, exported/public declarations, unresolved
+dynamic lookup, and explicit runtime registration. Python cases are exercised
+by the current test suite. Swift and
 Rust fixture expectations describe the target contract; the current scanner
 reports those declarations as `unknown` until their analyzers are implemented.

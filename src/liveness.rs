@@ -153,22 +153,26 @@ impl PythonLiveness {
             direct_use = true;
         }
         for source in &self.sources {
-            let aliases = self.aliases_for(source);
-            ambiguous_use |= unresolved_import_may_match(
-                source.tree.root_node(),
-                &source.path,
-                &source.source,
-                &self.definitions_by_module,
-                definition,
-            );
-            let local_indices = aliases.values().flatten().copied().collect::<HashSet<_>>();
-            if !local_indices.contains(&declaration_index) {
+            let imports = self.aliases_for(source);
+            ambiguous_use |= imports.ambiguous_targets.contains(&declaration_index);
+            let has_symbol_alias = imports
+                .aliases
+                .values()
+                .flatten()
+                .any(|index| *index == declaration_index);
+            let target_module = module_name(&definition.path);
+            let has_module_alias = imports.module_aliases.values().flatten().any(|module| {
+                target_module == *module || target_module.starts_with(&format!("{module}."))
+            });
+            if !has_symbol_alias && !has_module_alias {
                 continue;
             }
             let mut inspection = ReferenceInspection {
                 source: &source.source,
-                aliases: &aliases,
+                imports: &imports,
                 target: declaration_index,
+                target_module: &target_module,
+                target_name: &definition.name,
                 direct_use: &mut direct_use,
                 ambiguous_use: &mut ambiguous_use,
             };
@@ -218,22 +222,112 @@ impl PythonLiveness {
         )
     }
 
-    fn aliases_for(&self, source: &ParsedPythonSource) -> HashMap<String, Vec<usize>> {
-        let mut aliases: HashMap<String, Vec<usize>> = HashMap::new();
+    fn aliases_for(&self, source: &ParsedPythonSource) -> ImportResolution {
+        let mut imports = ImportResolution::default();
         for ((module, name), indices) in &self.definitions_by_module {
             if module == &source.module {
-                aliases.entry(name.clone()).or_default().extend(indices);
+                imports
+                    .aliases
+                    .entry(name.clone())
+                    .or_default()
+                    .extend(indices);
             }
         }
         collect_imports(
+            self,
             source.tree.root_node(),
             &source.path,
             &source.source,
-            &self.definitions_by_module,
-            &mut aliases,
+            &mut imports,
         );
-        aliases
+        imports
     }
+
+    fn module_exists(&self, module: &str) -> bool {
+        self.sources.iter().any(|source| source.module == module)
+    }
+
+    fn resolve_symbol(
+        &self,
+        module: &str,
+        name: &str,
+        visited: &mut HashSet<(String, String)>,
+    ) -> SymbolResolution {
+        let key = (module.to_owned(), name.to_owned());
+        if !visited.insert(key.clone()) {
+            return SymbolResolution {
+                ambiguous: true,
+                ..SymbolResolution::default()
+            };
+        }
+        if let Some(indices) = self
+            .definitions_by_module
+            .get(&(module.to_owned(), name.to_owned()))
+        {
+            return SymbolResolution {
+                indices: indices.clone(),
+                ambiguous: indices.len() != 1,
+            };
+        }
+        let matching_sources = self
+            .sources
+            .iter()
+            .filter(|source| source.module == module)
+            .collect::<Vec<_>>();
+        if matching_sources.len() != 1 {
+            return SymbolResolution {
+                ambiguous: !matching_sources.is_empty(),
+                ..SymbolResolution::default()
+            };
+        }
+        let source = matching_sources[0];
+        if self.parse_failed.contains(&source.path) {
+            return SymbolResolution {
+                ambiguous: true,
+                ..SymbolResolution::default()
+            };
+        }
+        let mut result = SymbolResolution::default();
+        let mut cursor = source.tree.root_node().walk();
+        for import_node in source.tree.root_node().named_children(&mut cursor) {
+            if import_node.kind() != "import_from_statement" {
+                continue;
+            }
+            for binding in from_import_bindings(import_node, &source.path, &source.source) {
+                if binding.wildcard {
+                    result.ambiguous = true;
+                    continue;
+                }
+                if binding.local != name {
+                    continue;
+                }
+                if self.module_exists(&format!("{}.{}", binding.module, binding.name)) {
+                    continue;
+                }
+                let mut branch = visited.clone();
+                let resolved = self.resolve_symbol(&binding.module, &binding.name, &mut branch);
+                result.indices.extend(resolved.indices);
+                result.ambiguous |= resolved.ambiguous;
+            }
+        }
+        result.indices.sort_unstable();
+        result.indices.dedup();
+        visited.remove(&key);
+        result
+    }
+}
+
+#[derive(Default)]
+struct SymbolResolution {
+    indices: Vec<usize>,
+    ambiguous: bool,
+}
+
+#[derive(Default)]
+struct ImportResolution {
+    aliases: HashMap<String, Vec<usize>>,
+    module_aliases: HashMap<String, Vec<String>>,
+    ambiguous_targets: HashSet<usize>,
 }
 
 fn module_name(path: &str) -> String {
@@ -243,73 +337,172 @@ fn module_name(path: &str) -> String {
     module.replace('/', ".")
 }
 
-fn collect_imports(
-    node: Node<'_>,
-    source_path: &str,
-    source: &str,
-    definitions_by_module: &HashMap<(String, String), Vec<usize>>,
-    aliases: &mut HashMap<String, Vec<usize>>,
-) {
+#[derive(Clone)]
+struct FromImportBinding {
+    module: String,
+    name: String,
+    local: String,
+    wildcard: bool,
+}
+
+fn from_import_bindings(node: Node<'_>, source_path: &str, source: &str) -> Vec<FromImportBinding> {
+    let mut bindings = Vec::new();
     if node.kind() == "import_from_statement"
         && let Some(module_node) = node.child_by_field_name("module_name")
     {
-        let imported_module = resolve_import_module(
+        let module = resolve_import_module(
             source_path,
             module_node.utf8_text(source.as_bytes()).unwrap_or_default(),
         );
         let mut cursor = node.walk();
         for imported in node.children_by_field_name("name", &mut cursor) {
             if imported.kind() == "wildcard_import" {
-                aliases.entry("*".to_owned()).or_default().extend(
-                    definitions_by_module
-                        .iter()
-                        .filter(|((module, _), _)| module == &imported_module)
-                        .flat_map(|(_, indices)| indices.iter().copied()),
-                );
+                bindings.push(FromImportBinding {
+                    module: module.clone(),
+                    name: "*".to_owned(),
+                    local: "*".to_owned(),
+                    wildcard: true,
+                });
                 continue;
             }
-            let (symbol, local) = if imported.kind() == "aliased_import" {
+            let (name, local) = if imported.kind() == "aliased_import" {
                 (
                     imported
                         .child_by_field_name("name")
-                        .map(|child| {
-                            child
-                                .utf8_text(source.as_bytes())
-                                .unwrap_or_default()
-                                .to_owned()
-                        })
-                        .unwrap_or_default(),
+                        .and_then(|child| child.utf8_text(source.as_bytes()).ok())
+                        .unwrap_or_default()
+                        .to_owned(),
                     imported
                         .child_by_field_name("alias")
-                        .map(|child| {
-                            child
-                                .utf8_text(source.as_bytes())
-                                .unwrap_or_default()
-                                .to_owned()
-                        })
-                        .unwrap_or_default(),
+                        .and_then(|child| child.utf8_text(source.as_bytes()).ok())
+                        .unwrap_or_default()
+                        .to_owned(),
                 )
             } else {
-                let symbol = imported
-                    .utf8_text(source.as_bytes())
-                    .unwrap_or_default()
-                    .to_owned();
+                let name = imported.utf8_text(source.as_bytes()).unwrap_or_default();
                 (
-                    symbol.clone(),
-                    symbol.rsplit('.').next().unwrap_or(&symbol).to_owned(),
+                    name.to_owned(),
+                    name.rsplit('.').next().unwrap_or(name).to_owned(),
                 )
             };
-            if symbol.is_empty() || local.is_empty() {
+            if !name.is_empty() && !local.is_empty() {
+                bindings.push(FromImportBinding {
+                    module: module.clone(),
+                    name,
+                    local,
+                    wildcard: false,
+                });
+            }
+        }
+    }
+    bindings
+}
+
+fn collect_imports(
+    python: &PythonLiveness,
+    node: Node<'_>,
+    source_path: &str,
+    source: &str,
+    imports: &mut ImportResolution,
+) {
+    if node.kind() == "wildcard_import" {
+        imports
+            .ambiguous_targets
+            .extend(python.definitions_by_module.values().flatten().copied());
+        return;
+    }
+    if node.kind() == "import_statement" {
+        let mut cursor = node.walk();
+        for imported in node.named_children(&mut cursor) {
+            let (module, local) = if imported.kind() == "aliased_import" {
+                (
+                    imported
+                        .child_by_field_name("name")
+                        .and_then(|child| child.utf8_text(source.as_bytes()).ok())
+                        .unwrap_or_default()
+                        .to_owned(),
+                    imported
+                        .child_by_field_name("alias")
+                        .and_then(|child| child.utf8_text(source.as_bytes()).ok())
+                        .unwrap_or_default()
+                        .to_owned(),
+                )
+            } else {
+                let module = imported.utf8_text(source.as_bytes()).unwrap_or_default();
+                let root = module.split('.').next().unwrap_or(module);
+                (root.to_owned(), root.to_owned())
+            };
+            let has_measured_module = python.module_exists(&module)
+                || python
+                    .sources
+                    .iter()
+                    .any(|candidate| candidate.module.starts_with(&format!("{module}.")));
+            if has_measured_module && !local.is_empty() {
+                imports
+                    .module_aliases
+                    .entry(local)
+                    .or_default()
+                    .push(module);
+            }
+        }
+    }
+    if node.kind() == "import_from_statement" {
+        for binding in from_import_bindings(node, source_path, source) {
+            if binding.wildcard {
+                imports
+                    .ambiguous_targets
+                    .extend(python.definitions_by_module.values().flatten().copied());
                 continue;
             }
-            if let Some(indices) = definitions_by_module.get(&(imported_module.clone(), symbol)) {
-                aliases.entry(local).or_default().extend(indices);
+            let submodule = format!("{}.{}", binding.module, binding.name);
+            if python.module_exists(&submodule) {
+                imports
+                    .module_aliases
+                    .entry(binding.local)
+                    .or_default()
+                    .push(submodule);
+                continue;
+            }
+            let resolved =
+                python.resolve_symbol(&binding.module, &binding.name, &mut HashSet::new());
+            if !resolved.indices.is_empty() {
+                imports
+                    .aliases
+                    .entry(binding.local)
+                    .or_default()
+                    .extend(resolved.indices.iter().copied());
+            }
+            if resolved.ambiguous {
+                imports
+                    .ambiguous_targets
+                    .extend(resolved.indices.iter().copied());
+            }
+            if resolved.indices.is_empty() {
+                imports.ambiguous_targets.extend(
+                    python
+                        .definitions_by_module
+                        .iter()
+                        .filter(|((_, name), _)| name == &binding.name)
+                        .flat_map(|(_, indices)| indices.iter().copied()),
+                );
+                if python.module_exists(&binding.module) {
+                    let prefix = format!("{}.", binding.module);
+                    imports.ambiguous_targets.extend(
+                        python
+                            .definitions_by_module
+                            .iter()
+                            .filter(|((module, _), _)| {
+                                module == &binding.module || module.starts_with(&prefix)
+                            })
+                            .flat_map(|(_, indices)| indices.iter().copied()),
+                    );
+                }
             }
         }
     }
     let mut cursor = node.walk();
     for child in node.named_children(&mut cursor) {
-        collect_imports(child, source_path, source, definitions_by_module, aliases);
+        collect_imports(python, child, source_path, source, imports);
     }
 }
 
@@ -335,71 +528,12 @@ fn resolve_import_module(source_path: &str, import: &str) -> String {
     package.join(".")
 }
 
-fn unresolved_import_may_match(
-    node: Node<'_>,
-    source_path: &str,
-    source: &str,
-    definitions_by_module: &HashMap<(String, String), Vec<usize>>,
-    target: &SpecificationDefinition,
-) -> bool {
-    if node.kind() == "wildcard_import" {
-        return true;
-    }
-    let target_module = module_name(&target.path);
-    if node.kind() == "import_statement" {
-        let mut cursor = node.walk();
-        for imported in node.named_children(&mut cursor) {
-            let imported = imported.utf8_text(source.as_bytes()).unwrap_or_default();
-            let imported = imported.split_whitespace().next().unwrap_or(imported);
-            if target_module == imported || target_module.starts_with(&format!("{imported}.")) {
-                return true;
-            }
-        }
-    }
-    if node.kind() == "import_from_statement"
-        && let Some(module_node) = node.child_by_field_name("module_name")
-    {
-        let imported_module = module_node.utf8_text(source.as_bytes()).unwrap_or_default();
-        let resolved = resolve_import_module(source_path, imported_module);
-        let mut cursor = node.walk();
-        for imported in node.children_by_field_name("name", &mut cursor) {
-            if imported.kind() == "wildcard_import" {
-                return true;
-            }
-            let name = if imported.kind() == "aliased_import" {
-                imported
-                    .child_by_field_name("name")
-                    .and_then(|child| child.utf8_text(source.as_bytes()).ok())
-                    .unwrap_or_default()
-            } else {
-                imported.utf8_text(source.as_bytes()).unwrap_or_default()
-            };
-            if name == target.name
-                && !definitions_by_module.contains_key(&(resolved.clone(), name.to_owned()))
-                && definitions_by_module
-                    .keys()
-                    .any(|(_, candidate)| candidate == name)
-            {
-                return true;
-            }
-            let target_parent = target_module.rsplit_once('.').map(|(parent, _)| parent);
-            if target_module.rsplit('.').next() == Some(name)
-                && target_parent == Some(resolved.as_str())
-            {
-                return true;
-            }
-        }
-    }
-    let mut cursor = node.walk();
-    node.named_children(&mut cursor).any(|child| {
-        unresolved_import_may_match(child, source_path, source, definitions_by_module, target)
-    })
-}
-
 struct ReferenceInspection<'a> {
     source: &'a str,
-    aliases: &'a HashMap<String, Vec<usize>>,
+    imports: &'a ImportResolution,
     target: usize,
+    target_module: &'a str,
+    target_name: &'a str,
     direct_use: &'a mut bool,
     ambiguous_use: &'a mut bool,
 }
@@ -413,6 +547,7 @@ fn inspect_runtime_references(
     inspection: &mut ReferenceInspection<'_>,
 ) {
     if inspection
+        .imports
         .aliases
         .get("*")
         .is_some_and(|indices| indices.contains(&inspection.target))
@@ -428,6 +563,36 @@ fn inspect_runtime_references(
         });
     let node_is_import =
         in_import || node.kind() == "import_from_statement" || node.kind() == "import_statement";
+    if node.kind() == "attribute"
+        && !node_is_type
+        && let Some(path) = expression_path(node, inspection.source)
+    {
+        for (alias, modules) in &inspection.imports.module_aliases {
+            let Some(suffix) = path.strip_prefix(&format!("{alias}.")) else {
+                continue;
+            };
+            let mut parts = suffix.split('.').collect::<Vec<_>>();
+            let Some(symbol) = parts.pop() else {
+                continue;
+            };
+            for module in modules {
+                let resolved_module = if parts.is_empty() {
+                    module.clone()
+                } else {
+                    format!("{module}.{}", parts.join("."))
+                };
+                if resolved_module == inspection.target_module && symbol == inspection.target_name {
+                    if modules.len() == 1
+                        && is_runtime_use(node, parent, grandparent, inspection.source)
+                    {
+                        *inspection.direct_use = true;
+                    } else {
+                        *inspection.ambiguous_use = true;
+                    }
+                }
+            }
+        }
+    }
     if node.kind() == "identifier" && !node_is_type && !node_is_import {
         let name = node
             .utf8_text(inspection.source.as_bytes())
@@ -435,28 +600,17 @@ fn inspect_runtime_references(
         let is_declaration_name = parent.is_some_and(|parent| {
             parent.kind() == "class_definition" && parent.child_by_field_name("name") == Some(node)
         });
+        let is_module_prefix = parent.is_some_and(|parent| {
+            parent.kind() == "attribute" && parent.child_by_field_name("object") == Some(node)
+        });
+        if !is_module_prefix && inspection.imports.module_aliases.contains_key(name) {
+            *inspection.ambiguous_use = true;
+        }
         if !is_declaration_name
-            && let Some(indices) = inspection.aliases.get(name)
+            && let Some(indices) = inspection.imports.aliases.get(name)
             && indices.contains(&inspection.target)
         {
-            let parent = parent.expect("identifier has parent");
-            let called =
-                parent.kind() == "call" && parent.child_by_field_name("function") == Some(node);
-            let consumed = parent.kind() == "argument_list"
-                && grandparent.is_some_and(|call| {
-                    call.kind() == "call"
-                        && call.child_by_field_name("arguments") == Some(parent)
-                        && call
-                            .child_by_field_name("function")
-                            .is_some_and(|function| {
-                                is_specification_consumer(
-                                    function
-                                        .utf8_text(inspection.source.as_bytes())
-                                        .unwrap_or_default(),
-                                )
-                            })
-                });
-            if called || consumed {
+            if is_runtime_use(node, parent, grandparent, inspection.source) {
                 *inspection.direct_use = true;
             } else {
                 *inspection.ambiguous_use = true;
@@ -474,6 +628,45 @@ fn inspect_runtime_references(
             inspection,
         );
     }
+}
+
+fn expression_path(node: Node<'_>, source: &str) -> Option<String> {
+    match node.kind() {
+        "identifier" => Some(node.utf8_text(source.as_bytes()).ok()?.to_owned()),
+        "attribute" => {
+            let object = expression_path(node.child_by_field_name("object")?, source)?;
+            let attribute = node
+                .child_by_field_name("attribute")?
+                .utf8_text(source.as_bytes())
+                .ok()?;
+            Some(format!("{object}.{attribute}"))
+        }
+        _ => None,
+    }
+}
+
+fn is_runtime_use(
+    node: Node<'_>,
+    parent: Option<Node<'_>>,
+    grandparent: Option<Node<'_>>,
+    source: &str,
+) -> bool {
+    let called = parent.is_some_and(|parent| {
+        parent.kind() == "call" && parent.child_by_field_name("function") == Some(node)
+    });
+    let consumed = parent.is_some_and(|parent| parent.kind() == "argument_list")
+        && grandparent.is_some_and(|call| {
+            call.kind() == "call"
+                && call.child_by_field_name("arguments") == parent
+                && call
+                    .child_by_field_name("function")
+                    .is_some_and(|function| {
+                        is_specification_consumer(
+                            function.utf8_text(source.as_bytes()).unwrap_or_default(),
+                        )
+                    })
+        });
+    called || consumed
 }
 
 fn is_specification_consumer(function: &str) -> bool {
