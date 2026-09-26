@@ -146,6 +146,12 @@ impl PythonLiveness {
 
         let mut direct_use = false;
         let mut ambiguous_use = false;
+        if self.sources.iter().any(|source| {
+            source.path == definition.path
+                && has_registration_decorator(source.tree.root_node(), &source.source, definition)
+        }) {
+            direct_use = true;
+        }
         for source in &self.sources {
             let aliases = self.aliases_for(source);
             ambiguous_use |= unresolved_import_may_match(
@@ -175,13 +181,19 @@ impl PythonLiveness {
                 &mut inspection,
             );
         }
+        if ambiguous_use {
+            return (
+                SpecificationLivenessStatus::Unknown,
+                "a runtime reference may be shadowed or dynamically resolved".to_owned(),
+            );
+        }
         if direct_use {
             return (
                 SpecificationLivenessStatus::Live,
                 "resolved constructor or Specification consumer use".to_owned(),
             );
         }
-        if ambiguous_use || self.dynamic_lookup {
+        if self.dynamic_lookup {
             return (
                 SpecificationLivenessStatus::Unknown,
                 "an unresolved runtime reference or dynamic lookup may use this declaration"
@@ -483,6 +495,45 @@ fn is_specification_consumer(function: &str) -> bool {
     )
 }
 
+fn has_registration_decorator(
+    node: Node<'_>,
+    source: &str,
+    definition: &SpecificationDefinition,
+) -> bool {
+    if node.kind() == "decorated_definition" {
+        let mut cursor = node.walk();
+        let children = node.named_children(&mut cursor).collect::<Vec<_>>();
+        let decorates_target = children.iter().any(|child| {
+            child.kind() == "class_definition"
+                && child.start_position().row + 1 == definition.line
+                && child
+                    .child_by_field_name("name")
+                    .and_then(|name| name.utf8_text(source.as_bytes()).ok())
+                    == Some(definition.name.as_str())
+        });
+        if decorates_target {
+            return children
+                .iter()
+                .filter(|child| child.kind() == "decorator")
+                .any(|decorator| {
+                    let decorator = decorator.utf8_text(source.as_bytes()).unwrap_or_default();
+                    let function = decorator
+                        .trim_start_matches('@')
+                        .split('(')
+                        .next()
+                        .unwrap_or_default()
+                        .rsplit('.')
+                        .next()
+                        .unwrap_or_default();
+                    matches!(function, "register" | "register_factory")
+                });
+        }
+    }
+    let mut cursor = node.walk();
+    node.named_children(&mut cursor)
+        .any(|child| has_registration_decorator(child, source, definition))
+}
+
 fn contains_dynamic_lookup(node: Node<'_>, source: &str) -> bool {
     if node.kind() == "call"
         && let Some(function) = node.child_by_field_name("function")
@@ -491,7 +542,14 @@ fn contains_dynamic_lookup(node: Node<'_>, source: &str) -> bool {
         let name = name.rsplit('.').next().unwrap_or(name);
         if matches!(
             name,
-            "getattr" | "globals" | "locals" | "eval" | "exec" | "__import__" | "import_module"
+            "getattr"
+                | "globals"
+                | "locals"
+                | "eval"
+                | "exec"
+                | "__import__"
+                | "import_module"
+                | "__subclasses__"
         ) {
             return true;
         }

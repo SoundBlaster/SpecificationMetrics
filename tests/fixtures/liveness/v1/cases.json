@@ -65,6 +65,27 @@
       "files": ["python/explicit_runtime_registration/rules.py", "python/explicit_runtime_registration/registry.py"]
     },
     {
+      "id": "python.decorator_registration",
+      "language": "python",
+      "status": "live",
+      "world": "open",
+      "files": ["python/decorator_registration/rules.py"]
+    },
+    {
+      "id": "python.subclass_enumeration",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/subclass_enumeration/rules.py", "python/subclass_enumeration/discovery.py"]
+    },
+    {
+      "id": "python.shadowed_import",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/shadowed_import/rules.py", "python/shadowed_import/consumer.py"]
+    },
+    {
       "id": "swift.cross_file_runtime_use",
       "language": "swift",
       "status": "live",
