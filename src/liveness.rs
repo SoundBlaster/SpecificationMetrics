@@ -168,11 +168,10 @@ impl PythonLiveness {
                 continue;
             }
             let mut inspection = ReferenceInspection {
+                resolver: self,
                 source: &source.source,
                 imports: &imports,
                 target: declaration_index,
-                target_module: &target_module,
-                target_name: &definition.name,
                 direct_use: &mut direct_use,
                 ambiguous_use: &mut ambiguous_use,
             };
@@ -312,6 +311,7 @@ impl PythonLiveness {
         }
         result.indices.sort_unstable();
         result.indices.dedup();
+        result.ambiguous |= result.indices.len() > 1;
         visited.remove(&key);
         result
     }
@@ -529,11 +529,10 @@ fn resolve_import_module(source_path: &str, import: &str) -> String {
 }
 
 struct ReferenceInspection<'a> {
+    resolver: &'a PythonLiveness,
     source: &'a str,
     imports: &'a ImportResolution,
     target: usize,
-    target_module: &'a str,
-    target_name: &'a str,
     direct_use: &'a mut bool,
     ambiguous_use: &'a mut bool,
 }
@@ -581,8 +580,14 @@ fn inspect_runtime_references(
                 } else {
                     format!("{module}.{}", parts.join("."))
                 };
-                if resolved_module == inspection.target_module && symbol == inspection.target_name {
+                let resolved = inspection.resolver.resolve_symbol(
+                    &resolved_module,
+                    symbol,
+                    &mut HashSet::new(),
+                );
+                if resolved.indices.contains(&inspection.target) {
                     if modules.len() == 1
+                        && !resolved.ambiguous
                         && is_runtime_use(node, parent, grandparent, inspection.source)
                     {
                         *inspection.direct_use = true;
@@ -774,6 +779,7 @@ mod tests {
 
     use serde::Deserialize;
 
+    use super::PythonSource;
     use crate::model::{Language, SpecificationDefinition, SpecificationLivenessStatus};
     use crate::scan::scan_with_scope;
     use crate::scope::ScopeManifest;
@@ -810,6 +816,45 @@ mod tests {
             results
                 .iter()
                 .all(|result| result.status == SpecificationLivenessStatus::Live)
+        );
+    }
+
+    #[test]
+    fn conflicting_reexports_are_unknown_for_each_target() {
+        let definitions = ["package/a.py", "package/b.py"].map(|path| SpecificationDefinition {
+            language: Language::Python,
+            path: path.to_owned(),
+            name: "_Ready".to_owned(),
+            kind: "declaration".to_owned(),
+            line: 1,
+            column: 1,
+        });
+        let sources = [
+            PythonSource {
+                path: "package/a.py".to_owned(),
+                source: "class _Ready(Specification):\n    pass\n".to_owned(),
+            },
+            PythonSource {
+                path: "package/b.py".to_owned(),
+                source: "class _Ready(Specification):\n    pass\n".to_owned(),
+            },
+            PythonSource {
+                path: "package/__init__.py".to_owned(),
+                source: "from .a import _Ready as Ready\nfrom .b import _Ready as Ready\n"
+                    .to_owned(),
+            },
+            PythonSource {
+                path: "consumer.py".to_owned(),
+                source: "import package\npackage.Ready()\n".to_owned(),
+            },
+        ];
+
+        let results = super::classify(&definitions, &sources, true, false);
+        assert_eq!(results.len(), 2);
+        assert!(
+            results
+                .iter()
+                .all(|result| result.status == SpecificationLivenessStatus::Unknown)
         );
     }
 
