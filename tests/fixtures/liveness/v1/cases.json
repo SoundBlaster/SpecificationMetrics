@@ -9,6 +9,13 @@
       "files": ["python/cross_file_runtime_use/rules.py", "python/cross_file_runtime_use/consumer.py"]
     },
     {
+      "id": "python.relative_package_runtime_use",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/relative_package_runtime_use/package/__init__.py", "python/relative_package_runtime_use/package/rules.py", "python/relative_package_runtime_use/package/consumer.py"]
+    },
+    {
       "id": "python.unreferenced_private",
       "language": "python",
       "status": "dead",
@@ -30,11 +37,53 @@
       "files": ["python/unresolved_dynamic_lookup/rules.py", "python/unresolved_dynamic_lookup/lookup.py"]
     },
     {
+      "id": "python.unresolved_import",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/unresolved_import/rules.py", "python/unresolved_import/consumer.py"]
+    },
+    {
+      "id": "python.module_alias",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/module_alias/rules.py", "python/module_alias/consumer.py"]
+    },
+    {
+      "id": "python.wildcard_import",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/wildcard_import/rules.py", "python/wildcard_import/consumer.py"]
+    },
+    {
       "id": "python.explicit_runtime_registration",
       "language": "python",
       "status": "live",
       "world": "open",
       "files": ["python/explicit_runtime_registration/rules.py", "python/explicit_runtime_registration/registry.py"]
+    },
+    {
+      "id": "python.decorator_registration",
+      "language": "python",
+      "status": "live",
+      "world": "open",
+      "files": ["python/decorator_registration/rules.py"]
+    },
+    {
+      "id": "python.subclass_enumeration",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/subclass_enumeration/rules.py", "python/subclass_enumeration/discovery.py"]
+    },
+    {
+      "id": "python.shadowed_import",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/shadowed_import/rules.py", "python/shadowed_import/consumer.py"]
     },
     {
       "id": "swift.cross_file_runtime_use",

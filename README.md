@@ -25,12 +25,21 @@ move the ratio in either direction; that is part of a live project-health
 measurement. Store dated snapshots and their source revision in SQLite to
 explain the trajectory, without freezing a historical denominator.
 
-Counting rule v2 recognizes direct Specification/DecisionSpec conformances or
+Counting rule v3 recognizes direct Specification/DecisionSpec conformances or
 implementations and source sites that construct `PredicateSpec` or `FirstMatch`
 variants. It counts a factory site once, regardless of runtime calls. Decisions
 inside recognized definitions or factories do not contribute to `U`. Reviewed
 `excluded` entries in an optional registry remove only *currently matching*
 candidates. Other current candidates contribute to `U`.
+
+Rule v3 also classifies named Python Specification declarations as `live`,
+`dead`, or `unknown`. Resolved runtime uses stay in `S`; a private declaration
+without a resolved use leaves `S` only when a source-role manifest explicitly
+sets `[liveness] closed_world = true`. Public declarations, unresolved imports,
+dynamic lookup, incomplete scans, and all Swift/Rust declarations currently
+remain `unknown` and therefore stay in `S`. Unknown liveness makes the report
+provisional. The report includes per-status counts and evidence. Anonymous
+factory sites remain in `S` as before.
 
 The [counting contract](docs/counting-contract.md) defines the source ownership
 boundary and the disjoint reasons for removing a candidate from `U`. For a
@@ -41,8 +50,11 @@ measurement remains provisional discovery.
 
 This is a syntax-based measure. Aliased or indirect conformances, some factory
 forms, and a decision that merely calls a Specification from an ordinary `if`
-may need review. Inspect `scan` output, its `specifications` list, and the raw
-counts before interpreting changes. A parse issue marks a report provisional.
+may need review. Python liveness is intentionally conservative and currently
+supports named class declarations, straightforward imports, constructor calls,
+known evaluator/combinator calls, and explicit registration calls. Inspect the
+`specification_liveness` evidence and raw counts before interpreting changes.
+A parse, scope, or unknown liveness issue marks a report provisional.
 
 ## Current reviewed inventory
 
@@ -91,6 +103,9 @@ broader paths, so `.` can select the default application scope:
 
 ```toml
 schema_version = 1
+
+[liveness]
+closed_world = true # Only if all runtime consumers are assigned in this manifest.
 
 [[source_sets]]
 role = "application"

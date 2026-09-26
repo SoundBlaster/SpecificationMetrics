@@ -187,6 +187,12 @@ mod tests {
             "scope_review_required",
             "application_files",
             "excluded_files",
+            "live_specifications",
+            "dead_specifications",
+            "unknown_specifications",
+            "liveness_review_required",
+            "liveness_closed_world",
+            "specification_liveness",
         ] {
             legacy_json.as_object_mut().unwrap().remove(field);
         }

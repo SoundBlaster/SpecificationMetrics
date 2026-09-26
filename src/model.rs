@@ -65,6 +65,26 @@ pub struct ScopeIssue {
     pub message: String,
 }
 
+#[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum SpecificationLivenessStatus {
+    Live,
+    Dead,
+    Unknown,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct SpecificationLiveness {
+    pub language: Language,
+    pub path: String,
+    pub name: String,
+    pub kind: String,
+    pub line: usize,
+    pub column: usize,
+    pub status: SpecificationLivenessStatus,
+    pub evidence: String,
+}
+
 #[derive(Clone, Debug, Serialize)]
 pub struct ScanReport {
     pub schema_version: u32,
@@ -77,6 +97,12 @@ pub struct ScanReport {
     pub excluded_files: usize,
     pub candidates: Vec<Candidate>,
     pub specifications: Vec<SpecificationDefinition>,
+    #[serde(default)]
+    pub specification_liveness: Vec<SpecificationLiveness>,
+    #[serde(default)]
+    pub liveness_review_required: bool,
+    #[serde(default)]
+    pub liveness_closed_world: bool,
     pub source_digest: String,
     pub parse_issues: Vec<ParseIssue>,
 }
@@ -195,7 +221,7 @@ pub struct MetricReport {
     pub provisional: bool,
 }
 
-pub const COUNTING_RULE_VERSION: u32 = 2;
+pub const COUNTING_RULE_VERSION: u32 = 3;
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "snake_case")]
@@ -236,6 +262,18 @@ pub struct LiveMetricReport {
     pub scanned_candidates: usize,
     pub covered_candidates: usize,
     pub reviewed_exclusions: usize,
+    #[serde(default)]
+    pub live_specifications: usize,
+    #[serde(default)]
+    pub dead_specifications: usize,
+    #[serde(default)]
+    pub unknown_specifications: usize,
+    #[serde(default)]
+    pub liveness_review_required: bool,
+    #[serde(default)]
+    pub liveness_closed_world: bool,
+    #[serde(default)]
+    pub specification_liveness: Vec<SpecificationLiveness>,
     pub specification_definitions: usize,
     pub remaining_opportunities: usize,
     pub ratio: Option<f64>,

@@ -1,4 +1,4 @@
-from rules import _Ready
+from dynamically_selected_rules import *
 
 
 def should_promote(value: object) -> bool:

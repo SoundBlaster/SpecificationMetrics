@@ -1,4 +1,5 @@
 mod live;
+mod liveness;
 mod metric;
 mod model;
 mod scan;
@@ -185,7 +186,9 @@ fn main() -> Result<()> {
             let metrics = live::measure(&report, current.as_ref())?;
             emit_json(&metrics, output.as_deref())?;
             if require_complete && metrics.provisional {
-                bail!("metric is provisional: resolve source parse or scope issues");
+                bail!(
+                    "metric is provisional: resolve source parse, scope, or Specification liveness issues"
+                );
             }
             if let Some(store) = store {
                 let id = store::save(&store, &metrics)?;

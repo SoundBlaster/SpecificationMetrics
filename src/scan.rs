@@ -6,6 +6,7 @@ use anyhow::{Context, Result, ensure};
 use ignore::WalkBuilder;
 use tree_sitter::{Language as TreeSitterLanguage, Node, Parser};
 
+use crate::liveness::{self, PythonSource};
 use crate::model::{
     Candidate, Language, ParseIssue, SCHEMA_VERSION, ScanReport, ScopeIssue,
     SpecificationDefinition,
@@ -68,6 +69,7 @@ pub fn scan_with_scope(
 
     let mut candidates = Vec::new();
     let mut specifications = Vec::new();
+    let mut python_sources = Vec::new();
     let mut parse_issues = Vec::new();
     let mut scope_issues = Vec::new();
     let mut application_files = 0;
@@ -135,6 +137,12 @@ pub fn scan_with_scope(
                 continue;
             }
         };
+        if language == Language::Python {
+            python_sources.push(PythonSource {
+                path: relative_path.clone(),
+                source: source.to_owned(),
+            });
+        }
         let mut parser = Parser::new();
         parser
             .set_language(&tree_sitter_language(language))
@@ -185,6 +193,16 @@ pub fn scan_with_scope(
     specifications.sort_by(|a, b| {
         (&a.path, a.line, a.column, &a.name).cmp(&(&b.path, b.line, b.column, &b.name))
     });
+    let specification_liveness = liveness::classify(
+        &specifications,
+        &python_sources,
+        manifest.is_some_and(ScopeManifest::liveness_closed_world),
+        !parse_issues.is_empty() || !scope_issues.is_empty(),
+    );
+    let liveness_review_required = specification_liveness
+        .iter()
+        .any(|entry| entry.status == crate::model::SpecificationLivenessStatus::Unknown);
+    let liveness_closed_world = manifest.is_some_and(ScopeManifest::liveness_closed_world);
     let scope_review_required = manifest.is_none() && includes.is_empty() && root.is_dir();
     Ok(ScanReport {
         schema_version: SCHEMA_VERSION,
@@ -197,6 +215,9 @@ pub fn scan_with_scope(
         excluded_files,
         candidates,
         specifications,
+        specification_liveness,
+        liveness_review_required,
+        liveness_closed_world,
         source_digest: source_hasher.finalize().to_hex().to_string(),
         parse_issues,
     })

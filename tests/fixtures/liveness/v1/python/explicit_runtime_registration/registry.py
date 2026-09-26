@@ -1,4 +1,4 @@
-from .rules import _RegisteredRule
+from rules import _RegisteredRule
 from specification_runtime import registry
 
 
