@@ -33,6 +33,15 @@ impl SourceRole {
 struct ScopeDocument {
     schema_version: u32,
     source_sets: Vec<SourceSet>,
+    #[serde(default)]
+    liveness: LivenessOptions,
+}
+
+#[derive(Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct LivenessOptions {
+    #[serde(default)]
+    closed_world: bool,
 }
 
 #[derive(Deserialize)]
@@ -46,6 +55,7 @@ struct SourceSet {
 pub struct ScopeManifest {
     entries: Vec<(String, SourceRole, Option<String>)>,
     digest: String,
+    liveness_closed_world: bool,
 }
 
 impl ScopeManifest {
@@ -63,6 +73,7 @@ impl ScopeManifest {
             document.schema_version
         );
         let mut entries = Vec::new();
+        let liveness_closed_world = document.liveness.closed_world;
         for source_set in document.source_sets {
             ensure!(!source_set.paths.is_empty(), "source set has no paths");
             let reason = source_set.reason.map(|reason| reason.trim().to_owned());
@@ -94,6 +105,7 @@ impl ScopeManifest {
         );
         let mut hasher = blake3::Hasher::new();
         hasher.update(&SCOPE_SCHEMA_VERSION.to_le_bytes());
+        hasher.update(&[u8::from(liveness_closed_world)]);
         for (path, role, reason) in &entries {
             hasher.update(path.as_bytes());
             hasher.update(&[0]);
@@ -105,11 +117,16 @@ impl ScopeManifest {
         Ok(Self {
             entries,
             digest: hasher.finalize().to_hex().to_string(),
+            liveness_closed_world,
         })
     }
 
     pub fn digest(&self) -> &str {
         &self.digest
+    }
+
+    pub fn liveness_closed_world(&self) -> bool {
+        self.liveness_closed_world
     }
 
     pub fn role_for(&self, path: &str) -> Result<SourceRole, String> {
@@ -186,6 +203,21 @@ mod tests {
         .unwrap();
         assert_eq!(manifest.role_for("tests/nested.py"), Ok(SourceRole::Test));
         assert_eq!(manifest.digest(), canonical.digest());
+    }
+
+    #[test]
+    fn closed_world_liveness_policy_changes_manifest_digest() {
+        let open = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['src']\n",
+        )
+        .unwrap();
+        let closed = ScopeManifest::parse(
+            "schema_version=1\n[liveness]\nclosed_world=true\n[[source_sets]]\nrole='application'\npaths=['src']\n",
+        )
+        .unwrap();
+        assert!(!open.liveness_closed_world());
+        assert!(closed.liveness_closed_world());
+        assert_ne!(open.digest(), closed.digest());
     }
 
     #[test]

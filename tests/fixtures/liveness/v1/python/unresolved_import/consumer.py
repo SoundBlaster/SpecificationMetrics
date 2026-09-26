@@ -1,4 +1,4 @@
-from rules import _Ready
+from missing_runtime_module import _Ready
 
 
 def should_promote(value: object) -> bool:

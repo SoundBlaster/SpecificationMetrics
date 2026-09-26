@@ -1,7 +1,8 @@
 # Specification liveness contract
 
-This contract defines the future liveness classification for named
-Specification declarations. Counting rule v2 does not implement it yet.
+This contract defines liveness classification for named Specification
+declarations. Counting rule v3 implements a conservative subset for Python;
+Swift and Rust are retained as `unknown` pending language-specific analyzers.
 
 ## Unit and source boundary
 
@@ -57,10 +58,21 @@ unknown liveness result makes the ratio provisional. Keep existing decision
 candidate accounting intact: branches inside every recognized Specification
 body, including a dead one, remain outside `U`.
 
+The current Python implementation recognizes named classes and straightforward
+`from module import Name` resolution, constructor calls, a bounded list of
+Specification consumers, and explicit registration calls. It deliberately
+leaves public names, ambiguous references, unresolved same-name imports,
+dynamic lookups, parse/scope-incomplete scans, and declarations outside an
+explicit closed-world manifest as `unknown`. Straightforward relative imports
+are resolved when their package path is within the measured source set. Module
+aliases and re-exports remain `unknown`; language-specific Swift/Rust
+resolution is not implemented. These cases must not be inferred `dead`.
+
 The versioned acceptance corpus is under
 [`tests/fixtures/liveness/v1`](../tests/fixtures/liveness/v1). Its
 `cases.json` records the expected status and source files for Python, Swift,
 and Rust examples of cross-file use, unreferenced private declarations,
 exported/public declarations, unresolved dynamic lookup, and explicit runtime
-registration. These fixtures are design inputs for a later analyzer; the
-current scanner does not consume them as liveness tests.
+registration. Python cases are exercised by the current test suite. Swift and
+Rust fixture expectations describe the target contract; the current scanner
+reports those declarations as `unknown` until their analyzers are implemented.

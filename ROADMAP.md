@@ -14,7 +14,7 @@ sites once per source location, even when reused at many runtime call sites.
 is a valid result; this project does not attempt to balance it with reuse,
 coupling, or cohesion metrics.
 
-**Implemented in counting rule v2:** direct conformances/implementations and
+**Implemented in counting rule v3:** direct conformances/implementations and
 selected factory sites in the three languages; current-source denominator;
 raw counts and explicit `complete`/`not_applicable` states; optional reviewed
 exclusions; and idempotent SQLite snapshots with timestamp, source digest, Git
@@ -43,9 +43,19 @@ Only confirmed `dead` declarations leave `S`; unresolved declarations remain
 in `S`, make the report provisional, and are counted as `unknown`. The
 versioned fixture corpus covers cross-file use, private unreferenced
 declarations, public exports, dynamic lookup, and explicit runtime
-registration. The analyzer, report fields, and any explicit closed-world
-manifest policy remain future implementation work. Keep liveness diagnostics
-separate from the System One opportunity classifier below.
+registration. Python has a conservative static classifier for resolved
+constructor, consumer, and registration uses, plus private unused declarations
+under an explicit closed-world manifest setting. Reports expose live/dead/unknown
+counts and evidence. Confirmed dead declarations leave `S`; unknown declarations
+remain in `S` and make the result provisional. Swift and Rust declarations
+remain `unknown` until language-specific resolution is implemented. Keep
+liveness diagnostics separate from the System One opportunity classifier below.
+
+**Next liveness work:** cover Python module aliases and re-exports, broaden
+relative and package import resolution, and validate conservative behavior
+against real projects. Then implement Swift target and Rust crate resolution;
+do not remove declarations from `S` in either language until closed-world and
+runtime-use evidence are represented by tests.
 
 ## System One assisted candidate classification
 

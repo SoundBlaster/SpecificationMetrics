@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{BTreeMap, HashSet};
 use std::path::Path;
 use std::process::Command;
 
@@ -6,7 +6,7 @@ use anyhow::{Result, ensure};
 
 use crate::model::{
     COUNTING_RULE_VERSION, Disposition, LiveMetricReport, LiveState, Registry, SCHEMA_VERSION,
-    ScanReport,
+    ScanReport, SpecificationLivenessStatus,
 };
 
 pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMetricReport> {
@@ -45,21 +45,39 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         }
     }
 
-    let specifications: HashSet<String> = scan
-        .specifications
+    let mut specifications = BTreeMap::new();
+    for entry in &scan.specification_liveness {
+        let key = format!(
+            "{}:{}:{}:{}:{}:{}",
+            entry.language.label(),
+            entry.path,
+            entry.kind,
+            entry.name,
+            entry.line,
+            entry.column
+        );
+        specifications
+            .entry(key)
+            .and_modify(|existing: &mut crate::model::SpecificationLiveness| {
+                if liveness_priority(entry.status) > liveness_priority(existing.status) {
+                    *existing = entry.clone();
+                }
+            })
+            .or_insert_with(|| entry.clone());
+    }
+    let specification_liveness: Vec<_> = specifications.into_values().collect();
+    let live_specifications = specification_liveness
         .iter()
-        .map(|spec| {
-            format!(
-                "{}:{}:{}:{}:{}:{}",
-                spec.language.label(),
-                spec.path,
-                spec.kind,
-                spec.name,
-                spec.line,
-                spec.column
-            )
-        })
-        .collect();
+        .filter(|entry| entry.status == SpecificationLivenessStatus::Live)
+        .count();
+    let dead_specifications = specification_liveness
+        .iter()
+        .filter(|entry| entry.status == SpecificationLivenessStatus::Dead)
+        .count();
+    let unknown_specifications = specification_liveness
+        .iter()
+        .filter(|entry| entry.status == SpecificationLivenessStatus::Unknown)
+        .count();
     let covered_candidates = scan
         .candidates
         .iter()
@@ -73,7 +91,7 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         })
         .count();
     let remaining_opportunities = scan.candidates.len() - covered_candidates - reviewed_exclusions;
-    let specification_definitions = specifications.len();
+    let specification_definitions = live_specifications + unknown_specifications;
     let state = match (specification_definitions, remaining_opportunities) {
         (_, remaining) if remaining > 0 => LiveState::Ratio,
         (specifications, 0) if specifications > 0 => LiveState::Complete,
@@ -98,15 +116,30 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         scanned_candidates: scan.candidates.len(),
         covered_candidates,
         reviewed_exclusions,
+        live_specifications,
+        dead_specifications,
+        unknown_specifications,
+        liveness_review_required: scan.liveness_review_required,
+        liveness_closed_world: scan.liveness_closed_world,
+        specification_liveness,
         specification_definitions,
         remaining_opportunities,
         ratio,
         state,
         provisional: !scan.parse_issues.is_empty()
             || !scan.scope_issues.is_empty()
-            || scope_review_required,
+            || scope_review_required
+            || scan.liveness_review_required,
         parse_issues: scan.parse_issues.clone(),
     })
+}
+
+fn liveness_priority(status: SpecificationLivenessStatus) -> u8 {
+    match status {
+        SpecificationLivenessStatus::Dead => 0,
+        SpecificationLivenessStatus::Live => 1,
+        SpecificationLivenessStatus::Unknown => 2,
+    }
 }
 
 fn source_revision(root: &Path) -> Option<String> {
