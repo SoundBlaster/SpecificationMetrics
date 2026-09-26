@@ -51,9 +51,11 @@ measurement remains provisional discovery.
 This is a syntax-based measure. Aliased or indirect conformances, some factory
 forms, and a decision that merely calls a Specification from an ordinary `if`
 may need review. Python liveness is intentionally conservative and currently
-supports named class declarations, straightforward imports, constructor calls,
-known evaluator/combinator calls, and explicit registration calls. Inspect the
-`specification_liveness` evidence and raw counts before interpreting changes.
+supports named class declarations, aliased and unaliased module imports,
+import-based re-export chains, constructor calls, known evaluator/combinator
+calls, and explicit registration calls. Unsupported or ambiguous bindings stay
+`unknown`. Inspect the `specification_liveness` evidence and raw counts before
+interpreting changes.
 A parse, scope, or unknown liveness issue marks a report provisional.
 
 ## Current reviewed inventory

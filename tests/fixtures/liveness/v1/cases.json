@@ -46,9 +46,37 @@
     {
       "id": "python.module_alias",
       "language": "python",
-      "status": "unknown",
+      "status": "live",
       "world": "closed",
       "files": ["python/module_alias/rules.py", "python/module_alias/consumer.py"]
+    },
+    {
+      "id": "python.unaliased_module_path",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/unaliased_module_path/package/__init__.py", "python/unaliased_module_path/package/rules.py", "python/unaliased_module_path/consumer.py"]
+    },
+    {
+      "id": "python.package_reexport",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/package_reexport/package/__init__.py", "python/package_reexport/package/rules.py", "python/package_reexport/consumer.py"]
+    },
+    {
+      "id": "python.module_alias_shadowed",
+      "language": "python",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["python/module_alias_shadowed/rules.py", "python/module_alias_shadowed/consumer.py"]
+    },
+    {
+      "id": "python.module_alias_type_only",
+      "language": "python",
+      "status": "dead",
+      "world": "closed",
+      "files": ["python/module_alias_type_only/rules.py", "python/module_alias_type_only/consumer.py"]
     },
     {
       "id": "python.wildcard_import",
