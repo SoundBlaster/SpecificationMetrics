@@ -1,6 +1,7 @@
 # Declaration marker contract
 
-**Status:** proposed contract, not implemented by the scanner.
+**Status:** Python form implemented by counting rule v4; Swift and Rust forms
+proposed.
 **Contract version:** `specification-marker/v1`.
 
 ## Purpose
@@ -24,10 +25,11 @@ liveness, and uncertainty rules as any other recognized declaration.
 
 The semantic contract is shared, while each language uses syntax its parser and
 compiler/type checker can see. Version 1 reserves these marker names and forms.
+Only the Python form is implemented today.
 
 ### Python
 
-Declare a typed class variable on the class:
+Declare a typed class variable directly in the class body:
 
 ```python
 from typing import ClassVar, Literal
@@ -40,11 +42,14 @@ class ResponseSpec(MelleaRequirement):
 ```
 
 The scanner recognizes only this exact class-level field name and literal
-version. A type checker can validate the literal's type; the field is also
+version. It accepts the shown short `ClassVar`/`Literal` names or both names
+qualified by `typing.`; type import aliases are not recognized. A type
+checker can validate the literal's type; the field is also
 visible in the Python AST. It must not be an instance field or serialized
-framework data field. The implementation must test supported model frameworks
-to make sure the `ClassVar` marker is not emitted as user data. Reflection can
-still observe the class attribute.
+framework data field. The CI fixture verifies that dataclasses and Pydantic v2
+exclude the `ClassVar` marker from fields and serialized dictionaries.
+Reflection can still observe the class attribute. Other model frameworks need
+their own compatibility tests before being documented as supported.
 
 ### Swift
 
@@ -189,18 +194,19 @@ questions are outside this metric.
 - Marker recognition is deterministic and requires no model inference.
 - Reports identify the marker version, source path, qualified symbol when
   resolvable, marker location, and liveness evidence. They do not treat a
-  comment as proof of liveness.
+  marker declaration as proof of liveness.
 
-Enabling marker recognition changes the counting semantics. Its implementation
-must increment the counting-rule version; historical snapshots retain the rule
-version under which they were produced and are not recalculated in place.
+Enabling marker recognition changes the counting semantics. Python support
+increments the counting-rule version to v4; Swift/Rust support must increment
+it again when implemented. Historical snapshots retain the rule version under
+which they were produced and are not recalculated in place.
 
-## Acceptance fixtures required before implementation
+## Acceptance coverage
 
-The implementation should add versioned fixtures covering at least:
+Versioned implementation fixtures should cover at least:
 
 1. a marked local type without a previously recognized Specification
-   base/trait/protocol is discovered in each language;
+   base/trait/protocol is discovered in each supported language;
 2. native recognition plus a marker counts the declaration once;
 3. a live marked type resolves a runtime use across files and aliases where
    that language analyzer supports them;
@@ -211,12 +217,14 @@ The implementation should add versioned fixtures covering at least:
 6. marker fields/conformances/implementations in
    test/framework/generated/excluded paths do not affect the application
    metric;
-7. malformed or wrong-version Python markers and marker conformances that do
-   not resolve to the reserved Swift/Rust interface yield deterministic
-   diagnostics;
+7. malformed or wrong-version Python markers and, when implemented,
+   conformances that do not resolve to the reserved Swift/Rust interface yield
+   deterministic diagnostics;
 8. adding a marker to an import without a local type declaration does not
    count the imported external type.
 
-Python, Swift, and Rust fixtures must be added as each language's marker parser
-and liveness analyzer become available. Until then, the contract does not imply
-that the current scanner recognizes markers in any language.
+The Rust scanner tests cover Python marker discovery, deduplication with native
+recognition, internal decision exclusion, marker diagnostics, and resolved
+liveness. A Python runtime fixture verifies `ClassVar` stays out of dataclass
+fields and `asdict` output. Swift and Rust parser, compiler, and liveness tests
+remain required before those marker forms are implemented.

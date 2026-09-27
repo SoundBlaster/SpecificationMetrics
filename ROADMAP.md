@@ -14,11 +14,13 @@ sites once per source location, even when reused at many runtime call sites.
 is a valid result; this project does not attempt to balance it with reuse,
 coupling, or cohesion metrics.
 
-**Implemented in counting rule v3:** direct conformances/implementations and
+**Implemented in counting rule v4:** direct conformances/implementations and
 selected factory sites in the three languages; current-source denominator;
 raw counts and explicit `complete`/`not_applicable` states; optional reviewed
 exclusions; and idempotent SQLite snapshots with timestamp, source digest, Git
 revision when available, source-role manifest digest, scope, and rule version.
+Python also recognizes the typed `__specmetrics_specification__` class marker;
+invalid marker declarations are reported and make the measurement provisional.
 Whole-project scans classify files as application, framework, test, generated,
 or explicitly excluded with a reason; only application sources contribute to
 the live ratio. The separate
@@ -55,11 +57,11 @@ liveness diagnostics separate from the System One opportunity classifier below.
 style module `__getattr__`, computed `__all__`, and cyclic re-exports are
 recorded in [the real-package audit](docs/python-liveness-real-package-audit.md).
 Continue testing against larger application packages and shadowed dynamic
-exports. The proposed opt-in type-system marker for named declarations that do not
-inherit from or implement a recognized Specification base is defined in the
-[declaration marker contract](docs/declaration-marker-contract.md); implement
-it only with versioned cross-language fixtures. Then implement Swift target and
-Rust crate resolution;
+exports. The Python opt-in type marker is implemented in counting rule v4. Add
+Swift and Rust recognition from the
+[declaration marker contract](docs/declaration-marker-contract.md) together
+with versioned parser, compiler, and liveness fixtures. Then implement Swift
+target and Rust crate resolution;
 do not remove declarations from `S` in either language until closed-world and
 runtime-use evidence are represented by tests.
 

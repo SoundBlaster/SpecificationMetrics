@@ -66,10 +66,11 @@ annotation; old snapshots are not rewritten when the contract changes.
 
 ## Current implementation boundary
 
-Counting rule v2 implements versioned source roles, semantic manifest digests,
+Counting rule v4 implements versioned source roles, semantic manifest digests,
 the exact-subtree `inside_specification` exclusion for directly recognized
-definitions and factories, and reviewed exclusions. It does **not** yet
-implement resolved `uses_specification` classification. `--include` can still
-select owned production files or directories. An unrestricted directory-root
-measurement without a manifest is provisional discovery. The `provisional`
-flag also covers parse errors, unassigned files, and conflicting roles.
+definitions, factories, and the Python type marker, plus reviewed exclusions.
+It does **not** yet implement resolved `uses_specification` classification.
+`--include` can still select owned production files or directories. An
+unrestricted directory-root measurement without a manifest is provisional
+discovery. The `provisional` flag also covers parse/marker errors, unassigned
+files, and conflicting roles.

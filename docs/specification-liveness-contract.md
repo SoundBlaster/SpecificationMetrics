@@ -1,12 +1,11 @@
 # Specification liveness contract
 
 This contract defines liveness classification for named Specification
-declarations. Counting rule v3 implements a conservative subset for Python;
-Swift and Rust are retained as `unknown` pending language-specific analyzers.
-The proposed opt-in source marker for named declarations without a recognized
-base/protocol/trait is specified separately in the
-[declaration marker contract](declaration-marker-contract.md); it is not
-implemented by counting rule v3.
+declarations. Counting rule v4 implements a conservative subset for Python,
+including the typed class marker in the [declaration marker
+contract](declaration-marker-contract.md). Swift and Rust remain `unknown`
+pending language-specific liveness analyzers; their proposed marker forms are
+not recognized yet.
 
 ## Unit and source boundary
 
@@ -49,7 +48,7 @@ that could contain uses also force `unknown`.
 
 | Language | Named declaration | Resolved runtime use | Externally visible or dynamic cases |
 | --- | --- | --- | --- |
-| Python | A class recognized through a Specification base class. | Resolve imports/aliases across the measured package; count construction or passing the class/instance to a known evaluator, combinator, or explicit registry. | A non-private importable class, a package export such as `__all__`, `getattr`/`globals` lookup, or unresolved plugin loading is `unknown` unless closed-world evidence resolves it. |
+| Python | A class recognized through a Specification base class or the versioned class marker. | Resolve imports/aliases across the measured package; count construction or passing the class/instance to a known evaluator, combinator, or explicit registry. | A non-private importable class, a package export such as `__all__`, `getattr`/`globals` lookup, or unresolved plugin loading is `unknown` unless closed-world evidence resolves it. |
 | Swift | A class or struct conforming to a recognized Specification protocol. | Resolve module symbols; count construction, passing the value to evaluation/composition, or a statically declared registry factory. | `public`/`open` API, Objective-C runtime name lookup, incomplete target membership, or unresolved registration is `unknown` unless closed-world evidence resolves it. |
 | Rust | A type with a recognized Specification trait implementation. | Resolve crate/module paths; count value construction, passing the value to evaluation/composition, or an explicit static factory registration. | Public library API, incomplete crate/target membership, unresolved macro-generated registration, or runtime plugin lookup is `unknown` unless closed-world evidence resolves it. |
 
@@ -62,7 +61,9 @@ unknown liveness result makes the ratio provisional. Keep existing decision
 candidate accounting intact: branches inside every recognized Specification
 body, including a dead one, remain outside `U`.
 
-The current Python implementation recognizes named classes, `from` imports,
+The current Python implementation recognizes named classes declared through a
+Specification base or the typed `__specmetrics_specification__` marker,
+`from` imports,
 aliased and unaliased module imports, and static `from`-import re-export chains
 within the measured source set. It counts constructor calls, a bounded list of
 Specification consumers, runtime class checks and patterns, static registry

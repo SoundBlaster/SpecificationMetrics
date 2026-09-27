@@ -71,6 +71,7 @@ pub fn scan_with_scope(
     let mut specifications = Vec::new();
     let mut python_sources = Vec::new();
     let mut parse_issues = Vec::new();
+    let mut marker_issues = Vec::new();
     let mut scope_issues = Vec::new();
     let mut application_files = 0;
     let mut excluded_files = 0;
@@ -166,6 +167,7 @@ pub fn scan_with_scope(
             occurrences: &mut occurrences,
             candidates: &mut candidates,
             specifications: &mut specifications,
+            marker_issues: &mut marker_issues,
         };
         visit(
             root_node,
@@ -197,7 +199,7 @@ pub fn scan_with_scope(
         &specifications,
         &python_sources,
         manifest.is_some_and(ScopeManifest::liveness_closed_world),
-        !parse_issues.is_empty() || !scope_issues.is_empty(),
+        !parse_issues.is_empty() || !marker_issues.is_empty() || !scope_issues.is_empty(),
     );
     let liveness_review_required = specification_liveness
         .iter()
@@ -210,6 +212,7 @@ pub fn scan_with_scope(
         includes,
         scope_manifest_digest: manifest.map(|manifest| manifest.digest().to_owned()),
         scope_issues,
+        marker_issues,
         scope_review_required,
         application_files,
         excluded_files,
@@ -327,6 +330,17 @@ struct VisitState<'a> {
     occurrences: &'a mut HashMap<String, usize>,
     candidates: &'a mut Vec<Candidate>,
     specifications: &'a mut Vec<SpecificationDefinition>,
+    marker_issues: &'a mut Vec<crate::model::ParseIssue>,
+}
+
+enum PythonMarker {
+    Absent,
+    Valid,
+    Invalid {
+        message: String,
+        row: usize,
+        column: usize,
+    },
 }
 
 fn visit(
@@ -337,7 +351,38 @@ fn visit(
     state: &mut VisitState<'_>,
     inside_specification: bool,
 ) {
-    let declaration = specification_declaration(language, node, source);
+    let marker = if language == Language::Python && node.kind() == "class_definition" {
+        python_specification_marker(node, source)
+    } else {
+        PythonMarker::Absent
+    };
+    if let PythonMarker::Invalid {
+        message,
+        row,
+        column,
+    } = &marker
+    {
+        let class_name = node
+            .child_by_field_name("name")
+            .map(|name| node_text(name, source).trim())
+            .unwrap_or("<anonymous>");
+        state.marker_issues.push(crate::model::ParseIssue {
+            path: path.to_owned(),
+            message: format!(
+                "Python Specification marker on class {class_name:?} at {}:{}: {message}",
+                row + 1,
+                column + 1
+            ),
+        });
+    }
+    let declaration = specification_declaration(language, node, source).or_else(|| {
+        if matches!(marker, PythonMarker::Valid) {
+            let name = node.child_by_field_name("name")?;
+            Some((node_text(name, source).trim().to_owned(), "declaration"))
+        } else {
+            None
+        }
+    });
     let factory = specification_factory(language, node, source);
     if let Some((name, kind)) = declaration.as_ref().or(factory.as_ref()) {
         let position = node.start_position();
@@ -382,6 +427,107 @@ fn visit(
     for child in node.named_children(&mut cursor) {
         visit(child, language, path, source, state, inside_specification);
     }
+}
+
+fn python_specification_marker(node: Node<'_>, source: &[u8]) -> PythonMarker {
+    const MARKER_NAME: &str = "__specmetrics_specification__";
+    let Some(body) = node.child_by_field_name("body") else {
+        return PythonMarker::Absent;
+    };
+    let mut assignments = Vec::new();
+    let mut body_cursor = body.walk();
+    for statement in body.named_children(&mut body_cursor) {
+        if statement.kind() != "expression_statement" {
+            continue;
+        }
+        let mut statement_cursor = statement.walk();
+        for expression in statement.named_children(&mut statement_cursor) {
+            if expression.kind() != "assignment" {
+                continue;
+            }
+            let Some(left) = expression.child_by_field_name("left") else {
+                continue;
+            };
+            if node_text(left, source).trim() == MARKER_NAME {
+                assignments.push(expression);
+            }
+        }
+    }
+    if assignments.is_empty() {
+        return PythonMarker::Absent;
+    }
+    if assignments.len() != 1 {
+        let position = assignments[0].start_position();
+        return PythonMarker::Invalid {
+            message: "the marker class variable must be declared exactly once".to_owned(),
+            row: position.row,
+            column: position.column,
+        };
+    }
+    let assignment = assignments[0];
+    let annotation = assignment
+        .child_by_field_name("type")
+        .map(|node| normalize_type_expression(node_text(node, source)));
+    let value_matches = assignment
+        .child_by_field_name("right")
+        .is_some_and(|node| is_marker_string_literal(node, source));
+    let annotation_matches = annotation.as_deref().is_some_and(|annotation| {
+        matches!(
+            annotation,
+            "ClassVar[Literal[\"specification/v1\"]]"
+                | "ClassVar[Literal['specification/v1']]"
+                | "typing.ClassVar[typing.Literal[\"specification/v1\"]]"
+                | "typing.ClassVar[typing.Literal['specification/v1']]"
+        )
+    });
+    if annotation_matches && value_matches {
+        PythonMarker::Valid
+    } else {
+        let position = assignment.start_position();
+        PythonMarker::Invalid {
+            message: "expected ClassVar[Literal[\"specification/v1\"]] = \"specification/v1\""
+                .to_owned(),
+            row: position.row,
+            column: position.column,
+        }
+    }
+}
+
+fn is_marker_string_literal(node: Node<'_>, source: &[u8]) -> bool {
+    match node.kind() {
+        "string" => matches!(
+            node_text(node, source).trim(),
+            "\"specification/v1\"" | "'specification/v1'"
+        ),
+        "parenthesized_expression" if node.named_child_count() == 1 => node
+            .named_child(0)
+            .is_some_and(|child| is_marker_string_literal(child, source)),
+        _ => false,
+    }
+}
+
+fn normalize_type_expression(text: &str) -> String {
+    let mut normalized = String::new();
+    let mut quote = None;
+    let mut escaped = false;
+    for character in text.chars() {
+        if let Some(quote_character) = quote {
+            normalized.push(character);
+            if escaped {
+                escaped = false;
+            } else if character == '\\' {
+                escaped = true;
+            } else if character == quote_character {
+                quote = None;
+            }
+        } else if matches!(character, '\'' | '"') {
+            quote = Some(character);
+            normalized.push(character);
+        } else if !character.is_whitespace() {
+            normalized.push(character);
+        }
+    }
+    normalized
 }
 
 fn specification_declaration(
@@ -653,6 +799,107 @@ mod tests {
     }
 
     #[test]
+    fn python_typed_marker_counts_class_and_ignores_its_internal_branches() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("policy.py"),
+            "from dataclasses import dataclass\nfrom typing import ClassVar, Literal\n\n@dataclass\nclass _MarkedRule:\n    __specmetrics_specification__: ClassVar[Literal[\"specification/v1\"]] = (\n        \"specification/v1\"\n    )\n\n    def accepts(self, value):\n        if value:\n            return True\n        return False\n\nif unrelated:\n    pass\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        assert!(
+            report.marker_issues.is_empty(),
+            "{:?}",
+            report.marker_issues
+        );
+        assert_eq!(report.specifications.len(), 1);
+        assert_eq!(report.specifications[0].name, "_MarkedRule");
+        assert_eq!(report.specifications[0].kind, "declaration");
+        assert_eq!(report.candidates.len(), 2);
+        assert!(report.candidates[0].inside_specification);
+        assert!(!report.candidates[1].inside_specification);
+    }
+
+    #[test]
+    fn python_marker_does_not_duplicate_a_native_specification() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("policy.py"),
+            "from typing import ClassVar, Literal\nclass _MarkedRule(Specification):\n    __specmetrics_specification__: ClassVar[Literal['specification/v1']] = 'specification/v1'\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(
+            report.marker_issues.is_empty(),
+            "{:?}",
+            report.marker_issues
+        );
+        assert_eq!(report.specifications.len(), 1);
+    }
+
+    #[test]
+    fn invalid_python_marker_is_reported_and_makes_live_metric_provisional() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("policy.py"),
+            "class _Unmarked:\n    __specmetrics_specification__ = True\n    if internal: pass\nif outside: pass\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.specifications.is_empty());
+        assert_eq!(report.marker_issues.len(), 1);
+        assert!(
+            report.marker_issues[0]
+                .message
+                .contains("expected ClassVar")
+        );
+        assert!(
+            report
+                .candidates
+                .iter()
+                .all(|candidate| !candidate.inside_specification)
+        );
+        let metric = crate::live::measure(&report, None).unwrap();
+        assert!(metric.provisional);
+        assert_eq!(metric.marker_issues.len(), 1);
+    }
+
+    #[test]
+    fn python_marker_declaration_uses_existing_liveness_rules() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("rules.py"),
+            "from typing import ClassVar, Literal\nclass _MarkedRule:\n    __specmetrics_specification__: ClassVar[Literal[\"specification/v1\"]] = \"specification/v1\"\n",
+        )
+        .unwrap();
+        fs::write(
+            dir.path().join("consumer.py"),
+            "from rules import _MarkedRule\ndef evaluate():\n    return _MarkedRule()\n",
+        )
+        .unwrap();
+        let scope = ScopeManifest::parse(
+            "schema_version=1\n[liveness]\nclosed_world=true\n[[source_sets]]\nrole='application'\npaths=['.']\n",
+        )
+        .unwrap();
+
+        let report = scan_with_scope(dir.path(), &[], Some(&scope)).unwrap();
+        assert!(
+            report.marker_issues.is_empty(),
+            "{:?}",
+            report.marker_issues
+        );
+        assert_eq!(report.specification_liveness.len(), 1);
+        assert_eq!(
+            report.specification_liveness[0].status,
+            crate::model::SpecificationLivenessStatus::Live
+        );
+    }
+
+    #[test]
     fn swift_extension_conformance_covers_its_decisions() {
         let dir = tempdir().unwrap();
         fs::write(
@@ -692,13 +939,13 @@ mod tests {
         }
         fs::write(
             dir.path().join("app/policy.py"),
-            "class Ready(Specification):\n    def accepts(self, x):\n        if x: return True\nif business: pass\n",
+            "from typing import ClassVar, Literal\nclass Ready:\n    __specmetrics_specification__: ClassVar[Literal[\"specification/v1\"]] = \"specification/v1\"\n    def accepts(self, x):\n        if x: return True\nif business: pass\n",
         )
         .unwrap();
         for directory in ["vendor", "tests", "generated"] {
             fs::write(
                 dir.path().join(directory).join("other.py"),
-                "class Other(Specification): pass\nif ignored: pass\n",
+                "from typing import ClassVar, Literal\nclass Other:\n    __specmetrics_specification__: ClassVar[Literal[\"specification/v1\"]] = \"specification/v1\"\nif ignored: pass\n",
             )
             .unwrap();
         }

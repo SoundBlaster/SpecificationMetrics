@@ -108,6 +108,7 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         includes: scan.includes.clone(),
         scope_manifest_digest: scan.scope_manifest_digest.clone(),
         scope_issues: scan.scope_issues.clone(),
+        marker_issues: scan.marker_issues.clone(),
         scope_review_required,
         application_files: scan.application_files,
         excluded_files: scan.excluded_files,
@@ -127,6 +128,7 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         ratio,
         state,
         provisional: !scan.parse_issues.is_empty()
+            || !scan.marker_issues.is_empty()
             || !scan.scope_issues.is_empty()
             || scope_review_required
             || scan.liveness_review_required,
