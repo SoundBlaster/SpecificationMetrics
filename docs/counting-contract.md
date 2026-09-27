@@ -66,7 +66,7 @@ annotation; old snapshots are not rewritten when the contract changes.
 
 ## Current implementation boundary
 
-Counting rule v6 implements versioned source roles, semantic manifest digests,
+Counting rule v7 implements versioned source roles, semantic manifest digests,
 the exact-subtree `inside_specification` exclusion for directly recognized
 definitions, factories, the Python type marker, the Swift
 `SpecificationMetricV1` protocol marker, and the Rust

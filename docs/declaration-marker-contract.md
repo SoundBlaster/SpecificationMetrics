@@ -1,6 +1,6 @@
 # Declaration marker contract
 
-**Status:** Python, Swift, and Rust forms implemented by counting rule v6.
+**Status:** Python, Swift, and Rust forms implemented by counting rule v7.
 **Contract version:** `specification-marker/v1`.
 
 ## Purpose
@@ -90,15 +90,19 @@ impl SpecificationMetricV1 for ResponseSpec {}
 
 The compiler verifies the trait implementation. The empty trait adds no
 runtime data or methods, though the implementation can participate in trait
-resolution. Counting rule v6 recognizes only a root-level marker trait and
-root-level implementation in the same Rust source file. The accepted trait
-paths are `SpecificationMetricV1` and `self::SpecificationMetricV1`; the
-target path may be `ResponseSpec` or `self::ResponseSpec`, and must resolve to a
-`struct` or `enum` declared in that file. Crate-absolute or nested module paths
-remain unresolved until crate/module mapping is implemented. Implementations
-for a same-named trait in another module or a target type the scanner cannot
-resolve produce a diagnostic. Inherent `impl` blocks for a marked type in
-that file are included when excluding its internal decision sites from `U`.
+resolution. Counting rule v7 resolves marker traits and target structs/enums
+across conventional Rust crate module trees rooted at `lib.rs`, `main.rs`, or
+an auto-discovered binary/example/test/benchmark target.
+It accepts `crate::`, `self::`, `super::`, and direct module paths when those
+paths resolve to declarations in the same measured crate. A standalone Rust
+file without a recognized crate root is treated as its own crate. Custom
+`#[path]` mappings, macro-generated modules, `use` aliases, and unresolved or
+excluded module files are not resolved or counted; visible marker-shaped
+implementations that fail resolution produce a diagnostic. The scanner does
+not guess their ownership. Marker implementations are counted once at the
+nominal type, and
+inherent `impl` blocks for that type are included when excluding its internal
+decision sites from `U`.
 
 These forms are intentionally language-specific. The versioned meaning is
 `specification/v1`; the scanner recognizes the syntax without requiring a
@@ -160,9 +164,10 @@ Only declarations in the measurement's `application` source role contribute to
 the metric. The marker field, protocol conformance, or trait implementation
 must also be present in the measured `application` source set. Marker forms in
 test, framework, generated, vendored, or excluded paths do not add to `S` or
-remove decisions from `U`. For Rust, the scanner currently resolves the marker
-trait, target type, and associated inherent `impl` blocks within one source
-file. Cross-file crate/module resolution remains a future parser improvement.
+remove decisions from `U`. For Rust, the scanner resolves marker traits,
+target types, and associated inherent `impl` blocks across recognized
+crate/module paths in the measured source set. Files that cannot be mapped into
+a crate remain unresolved.
 
 Consequently, importing `mellea.Requirement` and putting a similarly named
 field on the import does not turn that external declaration into an
@@ -208,8 +213,9 @@ questions are outside this metric.
   marker declaration as proof of liveness.
 
 Enabling marker recognition changes the counting semantics. Python support
-introduced counting rule v4, Swift support increments it to v5, and Rust
-support increments it to v6. Historical snapshots retain the rule version
+introduced counting rule v4, Swift support increments it to v5, Rust markers
+increment it to v6, and Rust crate/module resolution increments it to v7.
+Historical snapshots retain the rule version
 under which they were produced and are not recalculated in place.
 
 ## Acceptance coverage
@@ -235,6 +241,8 @@ Versioned implementation fixtures should cover at least:
 
 The Rust scanner tests cover Python, Swift, and Rust marker discovery,
 deduplication with native recognition, internal decision exclusion, and marker
-diagnostics. Python liveness tests remain conservative; Swift and Rust
+diagnostics, including cross-file `crate::` paths, inline modules, `super::`,
+native-conformance deduplication, and unknown custom `#[path]` ownership.
+Python liveness tests remain conservative; Swift and Rust
 liveness remain `unknown`. Runtime fixtures verify Python `ClassVar` behavior,
 and CI typechecks the Rust marker fixture with `rustc`.
