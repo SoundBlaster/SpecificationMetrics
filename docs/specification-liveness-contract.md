@@ -1,11 +1,10 @@
 # Specification liveness contract
 
 This contract defines liveness classification for named Specification
-declarations. Counting rule v7 implements a conservative subset for Python,
-including its typed class marker. The scanner recognizes declaration markers
-for Python, Swift, and Rust as described in the
-[declaration marker contract](declaration-marker-contract.md). Swift and Rust
-liveness remain `unknown` pending language-specific analyzers.
+declarations. Counting rule v8 implements conservative subsets for Python and
+Rust, including their declaration markers. The scanner recognizes declaration
+markers for Python, Swift, and Rust as described in the [declaration marker
+contract](declaration-marker-contract.md). Swift liveness remains `unknown`.
 
 ## Unit and source boundary
 
@@ -75,8 +74,19 @@ an explicit closed-world manifest remain `unknown`. Assignment-based exports
 and dynamic `__getattr__` re-exports are not resolved; a module-level
 `__getattr__` hook or computed `__all__` keeps potentially affected
 declarations `unknown`. Cyclic re-export resolution is also `unknown`.
-Language-specific Swift/Rust liveness resolution is not implemented. These cases must
-not be inferred `dead`.
+Rust liveness resolves the scanner's conventional crate/module ownership for
+recognized trait implementations. It confirms runtime uses through local
+construction, fully qualified crate/module paths, call arguments, and known
+static `inventory::submit!` or `linkme::distributed_slice!` registrations.
+Public types, wildcard/grouped imports, type-only references, unresolved
+trait-object lookups, ambiguous same-name types, macro references outside those static
+registries, incomplete scans, incomplete source-role boundaries, and
+declarations without an explicit closed-world manifest remain `unknown`. A
+private declaration is eligible for `dead` only when the selected source set
+resolves it under a conventional crate root such as `lib.rs` or `main.rs`.
+These cases must not be inferred `dead`. Rust
+`#[path]` ownership that the module resolver cannot map is likewise unknown.
+Swift liveness resolution is not implemented.
 
 The versioned acceptance corpus is under
 [`tests/fixtures/liveness/v1`](../tests/fixtures/liveness/v1). Its
@@ -85,9 +95,10 @@ and Rust examples of cross-file use, module aliases, import-based re-exports,
 runtime class checks and patterns, static type registries, dynamic exports,
 cyclic re-exports, unreferenced private declarations, exported/public
 declarations, unresolved dynamic lookup, and explicit runtime registration.
-Python cases are exercised by the current test suite. Swift and Rust marker
-recognition are tested by Rust scanner tests; Swift/Rust fixture expectations
-for runtime-use resolution remain the target contract, and the scanner reports
-these declarations as `unknown`.
-The bounded real-package audit and its limits are recorded in
-[`python-liveness-real-package-audit.md`](python-liveness-real-package-audit.md).
+Python and Rust cases are exercised by the current test suite. Swift marker
+recognition is tested by scanner tests; Swift fixture expectations for runtime
+use remain the target contract, and the scanner reports these declarations as
+`unknown`.
+The bounded real-package audits and their limits are recorded in
+[`python-liveness-real-package-audit.md`](python-liveness-real-package-audit.md)
+and [`rust-liveness-real-package-audit.md`](rust-liveness-real-package-audit.md).

@@ -5,3 +5,7 @@ impl Specification<bool> for _Unused {
         *value
     }
 }
+
+fn unrelated(value: bool) -> bool {
+    if value { true } else { false }
+}

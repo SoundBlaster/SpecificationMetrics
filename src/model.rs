@@ -223,7 +223,7 @@ pub struct MetricReport {
     pub provisional: bool,
 }
 
-pub const COUNTING_RULE_VERSION: u32 = 7;
+pub const COUNTING_RULE_VERSION: u32 = 8;
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "snake_case")]

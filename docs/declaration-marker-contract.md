@@ -243,6 +243,6 @@ The Rust scanner tests cover Python, Swift, and Rust marker discovery,
 deduplication with native recognition, internal decision exclusion, and marker
 diagnostics, including cross-file `crate::` paths, inline modules, `super::`,
 native-conformance deduplication, and unknown custom `#[path]` ownership.
-Python liveness tests remain conservative; Swift and Rust
-liveness remain `unknown`. Runtime fixtures verify Python `ClassVar` behavior,
-and CI typechecks the Rust marker fixture with `rustc`.
+Python and Rust liveness tests remain conservative; Swift liveness remains
+`unknown`. Runtime fixtures verify Python `ClassVar` behavior, and CI typechecks
+the Rust marker fixture with `rustc`.

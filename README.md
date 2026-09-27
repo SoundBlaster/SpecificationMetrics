@@ -25,19 +25,22 @@ move the ratio in either direction; that is part of a live project-health
 measurement. Store dated snapshots and their source revision in SQLite to
 explain the trajectory, without freezing a historical denominator.
 
-Counting rule v7 recognizes direct Specification/DecisionSpec conformances or
+Counting rule v8 recognizes direct Specification/DecisionSpec conformances or
 implementations and source sites that construct `PredicateSpec` or `FirstMatch`
 variants. It counts a factory site once, regardless of runtime calls. Decisions
 inside recognized definitions or factories do not contribute to `U`. Reviewed
 `excluded` entries in an optional registry remove only *currently matching*
 candidates. Other current candidates contribute to `U`.
 
-Rule v7 also classifies named Python Specification declarations as `live`,
+Rule v8 classifies named Python and Rust Specification declarations as `live`,
 `dead`, or `unknown`. Resolved runtime uses stay in `S`; a private declaration
 without a resolved use leaves `S` only when a source-role manifest explicitly
-sets `[liveness] closed_world = true`. Public declarations, unresolved imports,
-dynamic lookup, incomplete scans, and Swift/Rust liveness currently remain
-`unknown` and therefore stay in `S`. Python classes can also opt in
+sets `[liveness] closed_world = true`. Public declarations, unresolved or
+ambiguous imports, dynamic lookup, incomplete scans, and Swift liveness remain `unknown` and
+therefore stay in `S`. Rust liveness resolves a bounded set of crate/module
+paths and runtime constructions, including direct named imports and aliases.
+Ambiguous imports, unresolved dynamic trait-object lookup, and macro references
+outside known static registries remain `unknown`. Python classes can also opt in
 through the typed `__specmetrics_specification__` class variable documented in
 the [declaration marker contract](docs/declaration-marker-contract.md). Marker
 issues and unknown liveness make the report provisional. The report includes
@@ -47,8 +50,8 @@ Swift types can opt in by conforming to the exact unqualified
 `SpecificationMetricV1` protocol, directly or in a same-file extension. Rust
 types can opt in through a local `SpecificationMetricV1` trait and a
 `struct`/`enum` implementation. Conventional crate/module paths are resolved;
-unmapped ownership stays provisional. Rust and Swift liveness remain
-`unknown`.
+unmapped ownership stays provisional. Swift liveness remains `unknown`; Rust
+uses the conservative resolver described above.
 
 The [counting contract](docs/counting-contract.md) defines the source ownership
 boundary and the disjoint reasons for removing a candidate from `U`. For a

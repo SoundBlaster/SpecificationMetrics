@@ -240,18 +240,60 @@
       "files": ["swift/explicit_runtime_registration/Rule.swift", "swift/explicit_runtime_registration/Registry.swift"]
     },
     {
+      "id": "rust.unrooted_private",
+      "language": "rust",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["rust/unrooted_private/rules.rs"]
+    },
+    {
+      "id": "rust.marker_trait_runtime_use",
+      "language": "rust",
+      "status": "live",
+      "world": "closed",
+      "files": ["rust/marker_trait_runtime_use/lib.rs", "rust/marker_trait_runtime_use/rules.rs"]
+    },
+    {
+      "id": "rust.inline_module_runtime_use",
+      "language": "rust",
+      "status": "live",
+      "world": "closed",
+      "files": ["rust/inline_module_runtime_use/lib.rs"]
+    },
+    {
+      "id": "rust.local_runtime_construction",
+      "language": "rust",
+      "status": "live",
+      "world": "closed",
+      "files": ["rust/local_runtime_construction/rules.rs"]
+    },
+    {
+      "id": "rust.import_alias",
+      "language": "rust",
+      "status": "live",
+      "world": "closed",
+      "files": ["rust/import_alias/lib.rs", "rust/import_alias/rules.rs", "rust/import_alias/consumer.rs"]
+    },
+    {
+      "id": "rust.type_only_reference",
+      "language": "rust",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["rust/type_only_reference/rules.rs"]
+    },
+    {
       "id": "rust.cross_file_runtime_use",
       "language": "rust",
       "status": "live",
       "world": "closed",
-      "files": ["rust/cross_file_runtime_use/rules.rs", "rust/cross_file_runtime_use/consumer.rs"]
+      "files": ["rust/cross_file_runtime_use/lib.rs", "rust/cross_file_runtime_use/rules.rs", "rust/cross_file_runtime_use/consumer.rs"]
     },
     {
       "id": "rust.unreferenced_private",
       "language": "rust",
       "status": "dead",
       "world": "closed",
-      "files": ["rust/unreferenced_private/rules.rs"]
+      "files": ["rust/unreferenced_private/lib.rs", "rust/unreferenced_private/rules.rs"]
     },
     {
       "id": "rust.public_api",
@@ -264,15 +306,15 @@
       "id": "rust.unresolved_plugin_lookup",
       "language": "rust",
       "status": "unknown",
-      "world": "open",
-      "files": ["rust/unresolved_plugin_lookup/rules.rs", "rust/unresolved_plugin_lookup/lookup.rs"]
+      "world": "closed",
+      "files": ["rust/unresolved_plugin_lookup/lib.rs", "rust/unresolved_plugin_lookup/rules.rs", "rust/unresolved_plugin_lookup/lookup.rs"]
     },
     {
       "id": "rust.explicit_runtime_registration",
       "language": "rust",
       "status": "live",
       "world": "open",
-      "files": ["rust/explicit_runtime_registration/rules.rs", "rust/explicit_runtime_registration/registry.rs"]
+      "files": ["rust/explicit_runtime_registration/lib.rs", "rust/explicit_runtime_registration/rules.rs", "rust/explicit_runtime_registration/registry.rs"]
     }
   ]
 }
