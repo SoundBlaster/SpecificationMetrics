@@ -1,11 +1,10 @@
 # Specification liveness contract
 
 This contract defines liveness classification for named Specification
-declarations. Counting rule v5 implements a conservative subset for Python,
+declarations. Counting rule v6 implements a conservative subset for Python,
 including its typed class marker, and recognizes Python and Swift declaration
 markers in the [declaration marker contract](declaration-marker-contract.md).
-Swift and Rust remain `unknown` pending language-specific liveness analyzers;
-Rust marker recognition is not implemented yet.
+Swift and Rust remain `unknown` pending language-specific liveness analyzers.
 
 ## Unit and source boundary
 
@@ -50,7 +49,7 @@ that could contain uses also force `unknown`.
 | --- | --- | --- | --- |
 | Python | A class recognized through a Specification base class or the versioned class marker. | Resolve imports/aliases across the measured package; count construction or passing the class/instance to a known evaluator, combinator, or explicit registry. | A non-private importable class, a package export such as `__all__`, `getattr`/`globals` lookup, or unresolved plugin loading is `unknown` unless closed-world evidence resolves it. |
 | Swift | A class or struct conforming to a recognized Specification protocol or the `SpecificationMetricV1` marker. | Resolve module symbols; count construction, passing the value to evaluation/composition, or a statically declared registry factory. | `public`/`open` API, Objective-C runtime name lookup, incomplete target membership, or unresolved registration is `unknown` unless closed-world evidence resolves it. |
-| Rust | A type with a recognized Specification trait implementation. | Resolve crate/module paths; count value construction, passing the value to evaluation/composition, or an explicit static factory registration. | Public library API, incomplete crate/target membership, unresolved macro-generated registration, or runtime plugin lookup is `unknown` unless closed-world evidence resolves it. |
+| Rust | A type with a recognized Specification trait implementation or the versioned marker trait. | Resolve crate/module paths; count value construction, passing the value to evaluation/composition, or an explicit static factory registration. | Public library API, incomplete crate/target membership, unresolved macro-generated registration, or runtime plugin lookup is `unknown` unless closed-world evidence resolves it. |
 
 ## Report and fixture requirements
 
@@ -85,10 +84,9 @@ and Rust examples of cross-file use, module aliases, import-based re-exports,
 runtime class checks and patterns, static type registries, dynamic exports,
 cyclic re-exports, unreferenced private declarations, exported/public
 declarations, unresolved dynamic lookup, and explicit runtime registration.
-Python cases are exercised by the current test suite. Swift marker recognition
-is tested by the Rust scanner suite, but Swift fixture expectations for
-runtime-use resolution remain the target contract; the scanner reports Swift
-declarations as `unknown`. Rust marker recognition and liveness remain future
-work.
+Python cases are exercised by the current test suite. Swift and Rust marker
+recognition are tested by Rust scanner tests; Swift/Rust fixture expectations
+for runtime-use resolution remain the target contract, and the scanner reports
+these declarations as `unknown`.
 The bounded real-package audit and its limits are recorded in
 [`python-liveness-real-package-audit.md`](python-liveness-real-package-audit.md).

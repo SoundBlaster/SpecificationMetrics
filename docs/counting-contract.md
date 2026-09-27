@@ -66,10 +66,11 @@ annotation; old snapshots are not rewritten when the contract changes.
 
 ## Current implementation boundary
 
-Counting rule v5 implements versioned source roles, semantic manifest digests,
+Counting rule v6 implements versioned source roles, semantic manifest digests,
 the exact-subtree `inside_specification` exclusion for directly recognized
-definitions, factories, the Python type marker and the Swift
-`SpecificationMetricV1` protocol marker, plus reviewed exclusions.
+definitions, factories, the Python type marker, the Swift
+`SpecificationMetricV1` protocol marker, and the Rust
+`SpecificationMetricV1` trait marker, plus reviewed exclusions.
 It does **not** yet implement resolved `uses_specification` classification.
 `--include` can still select owned production files or directories. An
 unrestricted directory-root measurement without a manifest is provisional
