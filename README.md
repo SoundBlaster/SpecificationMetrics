@@ -25,21 +25,27 @@ move the ratio in either direction; that is part of a live project-health
 measurement. Store dated snapshots and their source revision in SQLite to
 explain the trajectory, without freezing a historical denominator.
 
-Counting rule v3 recognizes direct Specification/DecisionSpec conformances or
+Counting rule v5 recognizes direct Specification/DecisionSpec conformances or
 implementations and source sites that construct `PredicateSpec` or `FirstMatch`
 variants. It counts a factory site once, regardless of runtime calls. Decisions
 inside recognized definitions or factories do not contribute to `U`. Reviewed
 `excluded` entries in an optional registry remove only *currently matching*
 candidates. Other current candidates contribute to `U`.
 
-Rule v3 also classifies named Python Specification declarations as `live`,
+Rule v5 also classifies named Python Specification declarations as `live`,
 `dead`, or `unknown`. Resolved runtime uses stay in `S`; a private declaration
 without a resolved use leaves `S` only when a source-role manifest explicitly
 sets `[liveness] closed_world = true`. Public declarations, unresolved imports,
 dynamic lookup, incomplete scans, and all Swift/Rust declarations currently
-remain `unknown` and therefore stay in `S`. Unknown liveness makes the report
-provisional. The report includes per-status counts and evidence. Anonymous
-factory sites remain in `S` as before.
+remain `unknown` and therefore stay in `S`. Python classes can also opt in
+through the typed `__specmetrics_specification__` class variable documented in
+the [declaration marker contract](docs/declaration-marker-contract.md). Marker
+issues and unknown liveness make the report provisional. The report includes
+per-status counts and evidence. Anonymous factory sites remain in `S` as before.
+
+Swift types can opt in by conforming to the exact unqualified
+`SpecificationMetricV1` protocol, directly or in a same-file extension. Rust
+marker recognition remains proposed. Swift and Rust liveness remain `unknown`.
 
 The [counting contract](docs/counting-contract.md) defines the source ownership
 boundary and the disjoint reasons for removing a candidate from `U`. For a
@@ -59,7 +65,7 @@ registry values, and explicit registration calls. Module-level `__getattr__`,
 computed `__all__`, and cyclic re-export paths stay `unknown` when they could
 affect a declaration. Inspect the `specification_liveness` evidence and raw
 counts before interpreting changes.
-A parse, scope, or unknown liveness issue marks a report provisional.
+A parse, marker, scope, or unknown liveness issue marks a report provisional.
 
 ## Current reviewed inventory
 

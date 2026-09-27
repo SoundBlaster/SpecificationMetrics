@@ -187,7 +187,7 @@ fn main() -> Result<()> {
             emit_json(&metrics, output.as_deref())?;
             if require_complete && metrics.provisional {
                 bail!(
-                    "metric is provisional: resolve source parse, scope, or Specification liveness issues"
+                    "metric is provisional: resolve parse, marker, scope, or Specification liveness issues"
                 );
             }
             if let Some(store) = store {

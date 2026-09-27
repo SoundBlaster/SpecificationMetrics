@@ -92,6 +92,8 @@ pub struct ScanReport {
     pub includes: Vec<String>,
     pub scope_manifest_digest: Option<String>,
     pub scope_issues: Vec<ScopeIssue>,
+    #[serde(default)]
+    pub marker_issues: Vec<ParseIssue>,
     pub scope_review_required: bool,
     pub application_files: usize,
     pub excluded_files: usize,
@@ -221,7 +223,7 @@ pub struct MetricReport {
     pub provisional: bool,
 }
 
-pub const COUNTING_RULE_VERSION: u32 = 3;
+pub const COUNTING_RULE_VERSION: u32 = 5;
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(rename_all = "snake_case")]
@@ -251,6 +253,8 @@ pub struct LiveMetricReport {
     pub scope_manifest_digest: Option<String>,
     #[serde(default)]
     pub scope_issues: Vec<ScopeIssue>,
+    #[serde(default)]
+    pub marker_issues: Vec<ParseIssue>,
     #[serde(default)]
     pub scope_review_required: bool,
     #[serde(default)]
