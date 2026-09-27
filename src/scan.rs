@@ -195,7 +195,7 @@ pub fn scan_with_scope(
             swift_nominal_types,
             swift_extension_specification_types,
             rust_marker_context,
-            rust_recorded_specification_types: HashSet::new(),
+            rust_recorded_specification_symbols: HashSet::new(),
         };
         visit(
             root_node,
@@ -362,16 +362,16 @@ struct VisitState<'a> {
     swift_nominal_types: HashSet<String>,
     swift_extension_specification_types: HashSet<String>,
     rust_marker_context: RustMarkerContext,
-    rust_recorded_specification_types: HashSet<String>,
+    rust_recorded_specification_symbols: HashSet<RustSymbolPath>,
 }
 
 #[derive(Clone, Default)]
 struct RustMarkerContext {
-    local_types: HashSet<String>,
-    specification_types: HashSet<String>,
     marked_type_nodes: HashSet<usize>,
     resolved_marker_impls: HashSet<usize>,
+    marked_native_impls: HashSet<usize>,
     specification_impl_nodes: HashSet<usize>,
+    impl_target_symbols: HashMap<usize, HashSet<RustSymbolPath>>,
 }
 
 struct RustSourceUnit {
@@ -388,6 +388,7 @@ struct RustSymbolPath {
 
 struct RustImplRecord {
     path: String,
+    crate_root: String,
     module_path: Vec<String>,
     byte: usize,
     trait_path: Option<String>,
@@ -398,7 +399,7 @@ struct RustImplRecord {
 struct RustSymbols {
     marker_traits: HashSet<RustSymbolPath>,
     types: HashSet<RustSymbolPath>,
-    type_nodes: HashMap<(String, usize), RustSymbolPath>,
+    type_nodes: HashMap<(String, usize), HashSet<RustSymbolPath>>,
     impls: Vec<RustImplRecord>,
 }
 
@@ -463,7 +464,7 @@ fn rust_marker_contexts(
     } else {
         units.keys().cloned().collect::<Vec<_>>()
     };
-    let mut assignments = HashMap::<String, (String, Vec<String>)>::new();
+    let mut assignments = HashMap::<String, Vec<(String, Vec<String>)>>::new();
     for crate_root in roots {
         let mut visited = HashSet::new();
         map_rust_module_file(
@@ -480,24 +481,26 @@ fn rust_marker_contexts(
     if !has_declared_crate_roots {
         for path in units.keys() {
             if !assignments.contains_key(path) {
-                assignments.insert(path.clone(), (path.clone(), Vec::new()));
+                assignments.insert(path.clone(), vec![(path.clone(), Vec::new())]);
             }
         }
     }
 
     let mut symbols = RustSymbols::default();
     for (path, unit) in &units {
-        let Some((crate_root, file_module)) = assignments.get(path) else {
+        let Some(file_assignments) = assignments.get(path) else {
             continue;
         };
-        collect_rust_module_symbols(
-            unit.tree.root_node(),
-            unit.source.as_bytes(),
-            path,
-            crate_root,
-            file_module,
-            &mut symbols,
-        );
+        for (crate_root, file_module) in file_assignments {
+            collect_rust_module_symbols(
+                unit.tree.root_node(),
+                unit.source.as_bytes(),
+                path,
+                crate_root,
+                file_module,
+                &mut symbols,
+            );
+        }
     }
 
     let mut resolved_markers = Vec::new();
@@ -509,43 +512,23 @@ fn rust_marker_contexts(
         if trait_path.rsplit("::").next() != Some("SpecificationMetricV1") {
             continue;
         }
-        let Some((crate_root, _)) = assignments.get(&record.path) else {
-            continue;
-        };
-        let resolved_trait = resolve_rust_symbol_path(trait_path, crate_root, &record.module_path);
+        let resolved_trait =
+            resolve_rust_symbol_path(trait_path, &record.crate_root, &record.module_path);
         let resolved_type =
-            resolve_rust_symbol_path(&record.type_path, crate_root, &record.module_path);
+            resolve_rust_symbol_path(&record.type_path, &record.crate_root, &record.module_path);
         if let (Some(resolved_trait), Some(resolved_type)) = (resolved_trait, resolved_type)
             && symbols.marker_traits.contains(&resolved_trait)
             && symbols.types.contains(&resolved_type)
             && resolved_trait.crate_root == resolved_type.crate_root
         {
             marked_types.insert(resolved_type.clone());
-            resolved_markers.push((record.path.clone(), record.byte, resolved_type));
+            resolved_markers.push((record.path.clone(), record.byte));
         }
     }
 
     let mut contexts = HashMap::<String, RustMarkerContext>::new();
-    for path in units.keys() {
-        let context = contexts.entry(path.clone()).or_default();
-        if let Some((crate_root, _)) = assignments.get(path) {
-            context.local_types.extend(
-                symbols
-                    .types
-                    .iter()
-                    .filter(|symbol| &symbol.crate_root == crate_root)
-                    .map(|symbol| symbol.name.clone()),
-            );
-            context.specification_types.extend(
-                marked_types
-                    .iter()
-                    .filter(|symbol| &symbol.crate_root == crate_root)
-                    .map(|symbol| symbol.name.clone()),
-            );
-        }
-    }
-    for ((path, byte), symbol) in &symbols.type_nodes {
-        if marked_types.contains(symbol) {
+    for ((path, byte), symbols) in &symbols.type_nodes {
+        if symbols.iter().any(|symbol| marked_types.contains(symbol)) {
             contexts
                 .entry(path.clone())
                 .or_default()
@@ -553,26 +536,31 @@ fn rust_marker_contexts(
                 .insert(*byte);
         }
     }
-    for (path, byte, target) in resolved_markers {
-        let context = contexts.entry(path.clone()).or_default();
-        context.resolved_marker_impls.insert(byte);
-        context.specification_types.insert(target.name);
+    for (path, byte) in resolved_markers {
+        contexts
+            .entry(path)
+            .or_default()
+            .resolved_marker_impls
+            .insert(byte);
     }
     for record in &symbols.impls {
-        let Some((crate_root, _)) = assignments.get(&record.path) else {
-            continue;
-        };
         let Some(target) =
-            resolve_rust_symbol_path(&record.type_path, crate_root, &record.module_path)
+            resolve_rust_symbol_path(&record.type_path, &record.crate_root, &record.module_path)
         else {
             continue;
         };
+        let context = contexts.entry(record.path.clone()).or_default();
+        context
+            .impl_target_symbols
+            .entry(record.byte)
+            .or_default()
+            .insert(target.clone());
         if marked_types.contains(&target) {
-            contexts
-                .entry(record.path.clone())
-                .or_default()
-                .specification_impl_nodes
-                .insert(record.byte);
+            if record.trait_path.is_none() {
+                context.specification_impl_nodes.insert(record.byte);
+            } else if record.trait_path.as_deref().is_some_and(is_spec_base) {
+                context.marked_native_impls.insert(record.byte);
+            }
         }
     }
     contexts
@@ -600,14 +588,18 @@ fn map_rust_module_file(
     path: &str,
     modules: Vec<String>,
     units: &HashMap<String, RustSourceUnit>,
-    assignments: &mut HashMap<String, (String, Vec<String>)>,
+    assignments: &mut HashMap<String, Vec<(String, Vec<String>)>>,
     visited: &mut HashSet<(String, Vec<String>)>,
 ) {
     let Some(unit) = units.get(path) else { return };
     if !visited.insert((path.to_owned(), modules.clone())) {
         return;
     }
-    assignments.insert(path.to_owned(), (crate_root.to_owned(), modules.clone()));
+    let assignment = (crate_root.to_owned(), modules.clone());
+    let file_assignments = assignments.entry(path.to_owned()).or_default();
+    if !file_assignments.contains(&assignment) {
+        file_assignments.push(assignment);
+    }
     map_rust_external_and_inline_modules(
         unit.tree.root_node(),
         unit.source.as_bytes(),
@@ -625,7 +617,7 @@ fn map_rust_external_and_inline_modules(
     crate_root: &str,
     modules: &[String],
     units: &HashMap<String, RustSourceUnit>,
-    assignments: &mut HashMap<String, (String, Vec<String>)>,
+    assignments: &mut HashMap<String, Vec<(String, Vec<String>)>>,
     visited: &mut HashSet<(String, Vec<String>)>,
 ) {
     let mut cursor = scope.walk();
@@ -715,13 +707,16 @@ fn collect_rust_module_symbols(
                     symbols.types.insert(symbol.clone());
                     symbols
                         .type_nodes
-                        .insert((path.to_owned(), item.start_byte()), symbol);
+                        .entry((path.to_owned(), item.start_byte()))
+                        .or_default()
+                        .insert(symbol);
                 }
             }
             "impl_item" => {
                 if let Some(type_node) = item.child_by_field_name("type") {
                     symbols.impls.push(RustImplRecord {
                         path: path.to_owned(),
+                        crate_root: crate_root.to_owned(),
                         module_path: modules.to_vec(),
                         byte: item.start_byte(),
                         trait_path: item
@@ -900,29 +895,12 @@ fn visit(
         });
     let rust_duplicate_specification = language == Language::Rust
         && declaration.is_some()
-        && (node.kind() == "impl_item"
-            && (rust_marker_trait_candidate(node, source)
-                && rust_marker_implementation_is_resolved(
-                    node,
-                    source,
-                    &state.rust_marker_context,
-                )
-                || node.child_by_field_name("type").is_some_and(|type_node| {
-                    rust_impl_target_name(node_text(type_node, source)).is_some_and(|name| {
-                        state.rust_marker_context.local_types.contains(&name)
-                            && state
-                                .rust_marker_context
-                                .specification_types
-                                .contains(&name)
-                            || !state.rust_recorded_specification_types.insert(name)
-                    })
-                }))
-            || matches!(node.kind(), "struct_item" | "enum_item")
-                && node.child_by_field_name("name").is_some_and(|name| {
-                    !state
-                        .rust_recorded_specification_types
-                        .insert(node_text(name, source).trim().to_owned())
-                }));
+        && is_duplicate_rust_specification(
+            node,
+            source,
+            &state.rust_marker_context,
+            &mut state.rust_recorded_specification_symbols,
+        );
     if !extension_conformance_for_local_type
         && !rust_duplicate_specification
         && let Some((name, kind)) = declaration.as_ref().or(factory.as_ref())
@@ -1136,7 +1114,7 @@ fn specification_declaration(
                 }
             } else if !is_spec_base(node_text(trait_node, source))
                 || rust_marker_context
-                    .specification_impl_nodes
+                    .marked_native_impls
                     .contains(&node.start_byte())
             {
                 return None;
@@ -1168,21 +1146,34 @@ fn rust_marker_implementation_is_resolved(
     node.kind() == "impl_item" && context.resolved_marker_impls.contains(&node.start_byte())
 }
 
-fn rust_impl_target_name(text: &str) -> Option<String> {
-    let base = text
-        .split('<')
-        .next()?
-        .chars()
-        .filter(|character| !character.is_whitespace())
-        .collect::<String>();
-    let name = base.strip_prefix("self::").unwrap_or(&base);
-    if name.is_empty()
-        || name.contains(':')
-        || !name.chars().all(|c| c == '_' || c.is_alphanumeric())
-    {
-        return None;
+fn is_duplicate_rust_specification(
+    node: Node<'_>,
+    source: &[u8],
+    context: &RustMarkerContext,
+    recorded_symbols: &mut HashSet<RustSymbolPath>,
+) -> bool {
+    if node.kind() != "impl_item" {
+        return false;
     }
-    Some(name.to_owned())
+    if rust_marker_trait_candidate(node, source)
+        && rust_marker_implementation_is_resolved(node, source, context)
+    {
+        return true;
+    }
+    if context.marked_native_impls.contains(&node.start_byte()) {
+        return true;
+    }
+    let Some(targets) = context.impl_target_symbols.get(&node.start_byte()) else {
+        return false;
+    };
+    if targets.is_empty() {
+        return false;
+    }
+    let duplicate = targets
+        .iter()
+        .all(|target| recorded_symbols.contains(target));
+    recorded_symbols.extend(targets.iter().cloned());
+    duplicate
 }
 
 fn rust_inherent_impl_for_specification(
@@ -1781,7 +1772,7 @@ mod tests {
         .unwrap();
         fs::write(
             src.join("types.rs"),
-            "pub(crate) trait Specification<T> {}\npub(crate) struct Ready;\nimpl Ready { fn accepts(value: bool) -> bool { if value { true } else { false } } }\n",
+            "pub(crate) trait Specification<T> {}\npub(crate) trait Other {}\npub(crate) struct Ready;\nimpl Ready { fn accepts(value: bool) -> bool { if value { true } else { false } } }\nimpl Other for Ready { fn unrelated(value: bool) { if value {} else {} } }\n",
         )
         .unwrap();
         fs::write(
@@ -1805,13 +1796,70 @@ mod tests {
             .collect::<Vec<_>>();
         names.sort_unstable();
         assert_eq!(names, ["NestedReady", "Ready"]);
-        assert_eq!(report.candidates.len(), 2);
+        assert_eq!(report.candidates.len(), 3);
+        assert_eq!(
+            report
+                .candidates
+                .iter()
+                .filter(|candidate| candidate.inside_specification)
+                .count(),
+            2
+        );
         assert!(
             report
                 .candidates
                 .iter()
-                .all(|candidate| candidate.inside_specification)
+                .any(|candidate| !candidate.inside_specification)
         );
+    }
+
+    #[test]
+    fn rust_shared_module_file_keeps_each_crate_resolution_stable() {
+        let dir = tempdir().unwrap();
+        let src = dir.path().join("src");
+        fs::create_dir_all(&src).unwrap();
+        fs::write(
+            src.join("lib.rs"),
+            "trait SpecificationMetricV1 {}\nmod shared;\nimpl SpecificationMetricV1 for shared::Rule {}\n",
+        )
+        .unwrap();
+        fs::write(src.join("main.rs"), "mod shared;\n").unwrap();
+        fs::write(src.join("shared.rs"), "pub struct Rule;\n").unwrap();
+
+        let reports = (0..5)
+            .map(|_| scan(dir.path(), &[]).unwrap())
+            .collect::<Vec<_>>();
+        assert!(reports.iter().all(|report| {
+            report.specifications.len() == 1
+                && report.specifications[0].name == "Rule"
+                && report.marker_issues.is_empty()
+        }));
+    }
+
+    #[test]
+    fn rust_deduplication_keeps_same_named_types_in_distinct_modules() {
+        let dir = tempdir().unwrap();
+        let src = dir.path().join("src");
+        fs::create_dir_all(&src).unwrap();
+        fs::write(
+            src.join("lib.rs"),
+            "trait SpecificationMetricV1 {}\ntrait Specification<T> {}\nmod a;\nmod b;\n",
+        )
+        .unwrap();
+        fs::write(
+            src.join("a.rs"),
+            "pub struct Rule;\nimpl crate::SpecificationMetricV1 for Rule {}\n",
+        )
+        .unwrap();
+        fs::write(
+            src.join("b.rs"),
+            "pub struct Rule;\nimpl crate::Specification<bool> for Rule {}\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert_eq!(report.specifications.len(), 2);
+        assert!(report.marker_issues.is_empty());
     }
 
     #[test]
