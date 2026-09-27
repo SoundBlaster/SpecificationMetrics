@@ -1,10 +1,11 @@
 # Specification liveness contract
 
 This contract defines liveness classification for named Specification
-declarations. Counting rule v6 implements a conservative subset for Python,
-including its typed class marker, and recognizes Python and Swift declaration
-markers in the [declaration marker contract](declaration-marker-contract.md).
-Swift and Rust remain `unknown` pending language-specific liveness analyzers.
+declarations. Counting rule v7 implements a conservative subset for Python,
+including its typed class marker. The scanner recognizes declaration markers
+for Python, Swift, and Rust as described in the
+[declaration marker contract](declaration-marker-contract.md). Swift and Rust
+liveness remain `unknown` pending language-specific analyzers.
 
 ## Unit and source boundary
 
