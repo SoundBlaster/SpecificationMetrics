@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -163,11 +163,27 @@ pub fn scan_with_scope(
             });
         }
         let mut occurrences = HashMap::new();
+        let swift_nominal_types = if language == Language::Swift {
+            swift_nominal_type_names(root_node, source.as_bytes())
+        } else {
+            HashSet::new()
+        };
+        let swift_extension_specification_types = if language == Language::Swift {
+            swift_extension_specification_type_names(
+                root_node,
+                source.as_bytes(),
+                &swift_nominal_types,
+            )
+        } else {
+            HashSet::new()
+        };
         let mut state = VisitState {
             occurrences: &mut occurrences,
             candidates: &mut candidates,
             specifications: &mut specifications,
             marker_issues: &mut marker_issues,
+            swift_nominal_types,
+            swift_extension_specification_types,
         };
         visit(
             root_node,
@@ -331,6 +347,8 @@ struct VisitState<'a> {
     candidates: &'a mut Vec<Candidate>,
     specifications: &'a mut Vec<SpecificationDefinition>,
     marker_issues: &'a mut Vec<crate::model::ParseIssue>,
+    swift_nominal_types: HashSet<String>,
+    swift_extension_specification_types: HashSet<String>,
 }
 
 enum PythonMarker {
@@ -375,7 +393,31 @@ fn visit(
             ),
         });
     }
-    let declaration = specification_declaration(language, node, source).or_else(|| {
+    if language == Language::Swift
+        && swift_marker_extension(node, source)
+        && node.child_by_field_name("name").is_some_and(|name| {
+            !state
+                .swift_nominal_types
+                .contains(node_text(name, source).trim())
+        })
+    {
+        state.marker_issues.push(crate::model::ParseIssue {
+            path: path.to_owned(),
+            message: format!(
+                "Swift SpecificationMetricV1 extension at {}:{} does not resolve to a nominal type declared in the same source file",
+                node.start_position().row + 1,
+                node.start_position().column + 1
+            ),
+        });
+    }
+    let declaration = specification_declaration(
+        language,
+        node,
+        source,
+        &state.swift_nominal_types,
+        &state.swift_extension_specification_types,
+    )
+    .or_else(|| {
         if matches!(marker, PythonMarker::Valid) {
             let name = node.child_by_field_name("name")?;
             Some((node_text(name, source).trim().to_owned(), "declaration"))
@@ -384,7 +426,16 @@ fn visit(
         }
     });
     let factory = specification_factory(language, node, source);
-    if let Some((name, kind)) = declaration.as_ref().or(factory.as_ref()) {
+    let extension_conformance_for_local_type = language == Language::Swift
+        && swift_specification_extension(node, source)
+        && node.child_by_field_name("name").is_some_and(|name| {
+            state
+                .swift_nominal_types
+                .contains(node_text(name, source).trim())
+        });
+    if !extension_conformance_for_local_type
+        && let Some((name, kind)) = declaration.as_ref().or(factory.as_ref())
+    {
         let position = node.start_position();
         state.specifications.push(SpecificationDefinition {
             language,
@@ -534,6 +585,8 @@ fn specification_declaration(
     language: Language,
     node: Node<'_>,
     source: &[u8],
+    swift_nominal_types: &HashSet<String>,
+    swift_extension_specification_types: &HashSet<String>,
 ) -> Option<(String, &'static str)> {
     let name = match (language, node.kind()) {
         (Language::Python, "class_definition") => {
@@ -548,16 +601,27 @@ fn specification_declaration(
             node.child_by_field_name("name")?
         }
         (Language::Swift, "class_declaration") => {
+            let name = node.child_by_field_name("name")?;
+            let marker_extension = swift_marker_extension(node, source);
+            if marker_extension && !swift_nominal_types.contains(node_text(name, source).trim()) {
+                return None;
+            }
+            let marked_type =
+                swift_extension_specification_types.contains(node_text(name, source).trim());
             let mut cursor = node.walk();
-            if !node
-                .named_children(&mut cursor)
-                .filter(|child| child.kind() == "inheritance_specifier")
-                .filter_map(|base| base.child_by_field_name("inherits_from"))
-                .any(|base| is_spec_base(node_text(base, source)))
+            if !marked_type
+                && !node
+                    .named_children(&mut cursor)
+                    .filter(|child| child.kind() == "inheritance_specifier")
+                    .filter_map(|base| base.child_by_field_name("inherits_from"))
+                    .any(|base| {
+                        is_spec_base(node_text(base, source))
+                            || is_swift_marker_protocol(node_text(base, source))
+                    })
             {
                 return None;
             }
-            node.child_by_field_name("name")?
+            name
         }
         (Language::Rust, "impl_item") => {
             let trait_node = node.child_by_field_name("trait")?;
@@ -570,6 +634,90 @@ fn specification_declaration(
     };
     let name = node_text(name, source).trim().to_owned();
     (!name.is_empty()).then_some((name, "declaration"))
+}
+
+fn swift_marker_extension(node: Node<'_>, source: &[u8]) -> bool {
+    node.kind() == "class_declaration"
+        && node
+            .child_by_field_name("declaration_kind")
+            .is_some_and(|kind| node_text(kind, source) == "extension")
+        && node
+            .named_children(&mut node.walk())
+            .filter(|child| child.kind() == "inheritance_specifier")
+            .filter_map(|base| base.child_by_field_name("inherits_from"))
+            .any(|base| is_swift_marker_protocol(node_text(base, source)))
+}
+
+fn swift_specification_extension(node: Node<'_>, source: &[u8]) -> bool {
+    node.kind() == "class_declaration"
+        && node
+            .child_by_field_name("declaration_kind")
+            .is_some_and(|kind| node_text(kind, source) == "extension")
+        && node
+            .named_children(&mut node.walk())
+            .filter(|child| child.kind() == "inheritance_specifier")
+            .filter_map(|base| base.child_by_field_name("inherits_from"))
+            .any(|base| {
+                is_spec_base(node_text(base, source))
+                    || is_swift_marker_protocol(node_text(base, source))
+            })
+}
+
+fn swift_nominal_type_names(root: Node<'_>, source: &[u8]) -> HashSet<String> {
+    fn collect(node: Node<'_>, source: &[u8], names: &mut HashSet<String>) {
+        if node.kind() == "class_declaration"
+            && node
+                .child_by_field_name("declaration_kind")
+                .is_some_and(|kind| node_text(kind, source) != "extension")
+            && let Some(name) = node.child_by_field_name("name")
+        {
+            names.insert(node_text(name, source).trim().to_owned());
+        }
+        let mut cursor = node.walk();
+        for child in node.named_children(&mut cursor) {
+            collect(child, source, names);
+        }
+    }
+
+    let mut names = HashSet::new();
+    collect(root, source, &mut names);
+    names
+}
+
+fn swift_extension_specification_type_names(
+    root: Node<'_>,
+    source: &[u8],
+    nominal_types: &HashSet<String>,
+) -> HashSet<String> {
+    fn collect(
+        node: Node<'_>,
+        source: &[u8],
+        nominal_types: &HashSet<String>,
+        marked_types: &mut HashSet<String>,
+    ) {
+        if swift_specification_extension(node, source)
+            && let Some(name) = node.child_by_field_name("name")
+        {
+            let name = node_text(name, source).trim();
+            if nominal_types.contains(name) {
+                marked_types.insert(name.to_owned());
+            }
+        }
+        let mut cursor = node.walk();
+        for child in node.named_children(&mut cursor) {
+            collect(child, source, nominal_types, marked_types);
+        }
+    }
+
+    let mut marked_types = HashSet::new();
+    collect(root, source, nominal_types, &mut marked_types);
+    marked_types
+}
+
+fn is_swift_marker_protocol(text: &str) -> bool {
+    // Keep this Swift-specific: the similarly named Rust marker form is not
+    // implemented yet, and qualified names could refer to another module.
+    text.trim() == "SpecificationMetricV1"
 }
 
 fn is_spec_base(text: &str) -> bool {
@@ -915,6 +1063,85 @@ mod tests {
         assert_eq!(report.candidates.len(), 2);
         assert!(report.candidates[0].inside_specification);
         assert!(!report.candidates[1].inside_specification);
+    }
+
+    #[test]
+    fn swift_marker_protocol_counts_direct_and_extension_conformances() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.swift"),
+            "protocol SpecificationMetricV1 {}\nstruct DirectRule: SpecificationMetricV1 {\n    func accepts(_ value: Int) -> Bool {\n        if value > 0 { return true }\n        return false\n    }\n}\nstruct ExtendedRule {\n    func other(_ value: Int) -> Bool {\n        if value > 0 { return true }\n        return false\n    }\n}\nextension ExtendedRule: SpecificationMetricV1 {\n    func accepts(_ value: Int) -> Bool {\n        guard value > 0 else { return false }\n        return true\n    }\n}\nif unrelated { print(unrelated) }\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        assert_eq!(report.specifications.len(), 2);
+        assert_eq!(
+            report
+                .specifications
+                .iter()
+                .map(|specification| specification.name.as_str())
+                .collect::<Vec<_>>(),
+            ["DirectRule", "ExtendedRule"]
+        );
+        assert_eq!(report.candidates.len(), 4);
+        assert!(report.candidates[0].inside_specification);
+        assert!(report.candidates[1].inside_specification);
+        assert!(report.candidates[2].inside_specification);
+        assert!(!report.candidates[3].inside_specification);
+        assert_eq!(report.specification_liveness.len(), 2);
+        assert!(
+            report.specification_liveness.iter().all(|entry| {
+                entry.status == crate::model::SpecificationLivenessStatus::Unknown
+            })
+        );
+    }
+
+    #[test]
+    fn swift_marker_conformance_does_not_duplicate_native_specification() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.swift"),
+            "struct MarkedRule: Specification {}\nextension MarkedRule: SpecificationMetricV1 {}\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert_eq!(report.specifications.len(), 1);
+        assert_eq!(report.specifications[0].name, "MarkedRule");
+    }
+
+    #[test]
+    fn swift_qualified_marker_name_is_not_the_reserved_local_protocol() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.swift"),
+            "struct ExternalMarkerRule: OtherModule.SpecificationMetricV1 {}\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.specifications.is_empty());
+    }
+
+    #[test]
+    fn swift_marker_extension_requires_a_local_nominal_type() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.swift"),
+            "extension ImportedRule: SpecificationMetricV1 {}\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.specifications.is_empty());
+        assert_eq!(report.marker_issues.len(), 1);
+        assert!(
+            report.marker_issues[0]
+                .message
+                .contains("declared in the same source file")
+        );
     }
 
     #[test]

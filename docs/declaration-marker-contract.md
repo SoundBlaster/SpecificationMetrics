@@ -1,6 +1,6 @@
 # Declaration marker contract
 
-**Status:** Python form implemented by counting rule v4; Swift and Rust forms
+**Status:** Python and Swift forms implemented by counting rule v5; Rust form
 proposed.
 **Contract version:** `specification-marker/v1`.
 
@@ -25,7 +25,8 @@ liveness, and uncertainty rules as any other recognized declaration.
 
 The semantic contract is shared, while each language uses syntax its parser and
 compiler/type checker can see. Version 1 reserves these marker names and forms.
-Only the Python form is implemented today.
+The Python and Swift forms are implemented; Rust recognition remains future
+work.
 
 ### Python
 
@@ -64,12 +65,14 @@ struct ResponseSpec: SomeRequirementProtocol, SpecificationMetricV1 {
 }
 ```
 
-An extension conformance is also accepted as the marker location when
-`ResponseSpec` is a project-owned declaration in the measurement scope; the
-extension itself is not counted as a Specification. Swift checks that the
-conformance is valid. The protocol has no requirements and adds no callable
-behavior, but its conformance metadata can affect generic constraints and
-runtime conformance checks.
+An extension conformance is also accepted as the marker location when the
+nominal type is declared in the same source file; the extension itself is not
+counted as a Specification. The scanner recognizes only the exact unqualified
+protocol name `SpecificationMetricV1`. Swift checks that the conformance is
+valid. The protocol has no requirements and adds no callable behavior, but its
+conformance metadata can affect generic constraints and runtime conformance
+checks. Cross-file nominal-type resolution is not implemented yet, so a marker
+extension in another file is not recognized by v5.
 
 ### Rust
 
@@ -197,9 +200,9 @@ questions are outside this metric.
   marker declaration as proof of liveness.
 
 Enabling marker recognition changes the counting semantics. Python support
-increments the counting-rule version to v4; Swift/Rust support must increment
-it again when implemented. Historical snapshots retain the rule version under
-which they were produced and are not recalculated in place.
+introduced counting rule v4; Swift support increments it to v5. Rust support
+must increment it again when implemented. Historical snapshots retain the
+rule version under which they were produced and are not recalculated in place.
 
 ## Acceptance coverage
 
@@ -223,8 +226,10 @@ Versioned implementation fixtures should cover at least:
 8. adding a marker to an import without a local type declaration does not
    count the imported external type.
 
-The Rust scanner tests cover Python marker discovery, deduplication with native
-recognition, internal decision exclusion, marker diagnostics, and resolved
-liveness. A Python runtime fixture verifies `ClassVar` stays out of dataclass
-fields and `asdict` output. Swift and Rust parser, compiler, and liveness tests
-remain required before those marker forms are implemented.
+The Rust scanner tests cover Python and Swift marker discovery, direct and
+extension conformance, deduplication with native recognition, internal
+decision exclusion, and Python marker diagnostics and liveness. A Python
+runtime fixture verifies `ClassVar` stays out of dataclass fields and `asdict`
+output. The Swift marker fixture is typechecked locally; CI runs the Rust
+scanner tests. Swift liveness remains `unknown`, and Rust marker support still
+requires parser, compiler, and liveness tests.
