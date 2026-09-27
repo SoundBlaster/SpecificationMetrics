@@ -55,12 +55,13 @@ remain in `S` and make the result provisional. Swift and Rust declarations
 remain `unknown` until language-specific resolution is implemented. Keep
 liveness diagnostics separate from the System One opportunity classifier below.
 
-**Python validation:** a bounded `zspec` source audit and fixtures for NumPy-
-style module `__getattr__`, computed `__all__`, and cyclic re-exports are
-recorded in [the real-package audit](docs/python-liveness-real-package-audit.md).
-Continue testing against larger application packages and shadowed dynamic
-exports. The Python and Swift opt-in type markers are implemented in counting
-rule v5. Add Rust recognition from the
+**Python validation:** bounded `zspec` coverage, plus pinned SpecificationCore,
+Mellea, and spec-classes scans with generic constructors, class factories, and
+re-export consumers, are recorded in the
+[real-package audit](docs/python-liveness-real-package-audit.md) and
+[complex-package audit](docs/python-liveness-complex-package-audit.md).
+Continue testing shadowed dynamic exports. The Python and Swift opt-in type
+markers are implemented in counting rule v5. Add Rust recognition from the
 [declaration marker contract](docs/declaration-marker-contract.md) with
 versioned parser, compiler, and liveness fixtures. Then implement Swift target
 and Rust crate resolution;

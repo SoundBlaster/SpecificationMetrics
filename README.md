@@ -58,8 +58,9 @@ This is a syntax-based measure. Aliased or indirect conformances, some factory
 forms, and a decision that merely calls a Specification from an ordinary `if`
 may need review. Python liveness is intentionally conservative and currently
 supports named class declarations, aliased and unaliased module imports,
-import-based re-export chains, constructor calls, known evaluator/combinator
-calls, runtime `isinstance`/`issubclass` and class-pattern uses, static type
+import-based re-export chains, direct and parameterized generic constructor
+calls, class-level factory calls, known evaluator/combinator calls, runtime
+`isinstance`/`issubclass` and class-pattern uses, static type
 registry values, and explicit registration calls. Module-level `__getattr__`,
 computed `__all__`, and cyclic re-export paths stay `unknown` when they could
 affect a declaration. Inspect the `specification_liveness` evidence and raw

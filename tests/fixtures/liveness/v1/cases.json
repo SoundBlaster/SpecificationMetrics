@@ -121,6 +121,20 @@
       "files": ["python/runtime_class_check/rules.py", "python/runtime_class_check/consumer.py"]
     },
     {
+      "id": "python.generic_spec_constructor",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/generic_spec_constructor/package/__init__.py", "python/generic_spec_constructor/package/rules.py", "python/generic_spec_constructor/consumer.py"]
+    },
+    {
+      "id": "python.class_factory_use",
+      "language": "python",
+      "status": "live",
+      "world": "closed",
+      "files": ["python/class_factory_use/package/__init__.py", "python/class_factory_use/package/rules.py", "python/class_factory_use/consumer.py"]
+    },
+    {
       "id": "python.class_pattern_use",
       "language": "python",
       "status": "live",
