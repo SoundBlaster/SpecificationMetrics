@@ -777,6 +777,20 @@ fn is_runtime_use(
     let called = parent.is_some_and(|parent| {
         parent.kind() == "call" && parent.child_by_field_name("function") == Some(node)
     });
+    let generic_constructor = parent.is_some_and(|subscript| {
+        subscript.kind() == "subscript"
+            && subscript.child_by_field_name("value") == Some(node)
+            && grandparent.is_some_and(|call| {
+                call.kind() == "call" && call.child_by_field_name("function") == Some(subscript)
+            })
+    });
+    let class_factory_call = parent.is_some_and(|attribute| {
+        attribute.kind() == "attribute"
+            && attribute.child_by_field_name("object") == Some(node)
+            && grandparent.is_some_and(|call| {
+                call.kind() == "call" && call.child_by_field_name("function") == Some(attribute)
+            })
+    });
     let call_consumed = |arguments: Node<'_>, call: Option<Node<'_>>| {
         call.is_some_and(|call| {
             call.kind() == "call"
@@ -798,7 +812,12 @@ fn is_runtime_use(
                         && call_consumed(arguments, great_grandparent)
                 }))
     });
-    called || consumed || class_pattern || mapping_value
+    called
+        || generic_constructor
+        || class_factory_call
+        || consumed
+        || class_pattern
+        || mapping_value
 }
 
 fn is_specification_consumer(function: &str) -> bool {

@@ -60,9 +60,10 @@ body, including a dead one, remain outside `U`.
 
 The current Python implementation recognizes named classes, `from` imports,
 aliased and unaliased module imports, and static `from`-import re-export chains
-within the measured source set. It counts constructor calls, a bounded list of
-Specification consumers, runtime class checks and patterns, static registry
-values, and explicit registration calls. Public names,
+within the measured source set. It counts direct and parameterized generic
+constructor calls, class-level factory calls, a bounded list of Specification
+consumers, runtime class checks and patterns, static registry values, and
+explicit registration calls. Public names,
 shadowed or conflicting bindings, unresolved same-name imports, wildcard
 imports, dynamic lookups, parse/scope-incomplete scans, and declarations outside
 an explicit closed-world manifest remain `unknown`. Assignment-based exports
