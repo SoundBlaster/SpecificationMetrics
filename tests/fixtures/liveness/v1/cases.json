@@ -315,6 +315,27 @@
       "status": "live",
       "world": "open",
       "files": ["rust/explicit_runtime_registration/lib.rs", "rust/explicit_runtime_registration/rules.rs", "rust/explicit_runtime_registration/registry.rs"]
+    },
+    {
+      "id": "rust.impl_targets_public_type_in_other_module",
+      "language": "rust",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["rust/impl_targets_public_type_in_other_module/lib.rs", "rust/impl_targets_public_type_in_other_module/models.rs", "rust/impl_targets_public_type_in_other_module/rules.rs"]
+    },
+    {
+      "id": "rust.marker_impl_is_not_a_runtime_use",
+      "language": "rust",
+      "status": "dead",
+      "world": "closed",
+      "files": ["rust/marker_impl_is_not_a_runtime_use/lib.rs", "rust/marker_impl_is_not_a_runtime_use/rules.rs"]
+    },
+    {
+      "id": "rust.unrelated_qualified_paths",
+      "language": "rust",
+      "status": "unknown",
+      "world": "closed",
+      "files": ["rust/unrelated_qualified_paths/lib.rs", "rust/unrelated_qualified_paths/rules.rs", "rust/unrelated_qualified_paths/consumer.rs", "rust/unrelated_qualified_paths/other_crate.rs"]
     }
   ]
 }

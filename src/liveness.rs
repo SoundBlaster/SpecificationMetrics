@@ -95,6 +95,13 @@ struct RustLiveness {
     parse_failed: HashSet<String>,
 }
 
+#[derive(Clone, Debug, Eq, PartialEq)]
+struct RustResolvedType {
+    crate_root: String,
+    module_path: Vec<String>,
+    name: String,
+}
+
 impl RustLiveness {
     fn new(sources: &[RustSource]) -> Self {
         let mut parser = Parser::new();
@@ -146,36 +153,38 @@ impl RustLiveness {
             );
         };
         let type_name = rust_type_name(&definition.name);
-        let assignments = declaration_source
+        let targets = declaration_source
             .assignments
             .iter()
             .filter_map(|assignment| {
-                rust_definition_module(
+                rust_definition_target(
                     declaration_source.tree.root_node(),
                     declaration_source.source.as_bytes(),
                     definition.line,
                     type_name,
+                    &assignment.crate_root,
                     &assignment.module_path,
                 )
-                .map(|module_path| RustModuleAssignment {
+                .map(|(module_path, name)| RustResolvedType {
                     crate_root: assignment.crate_root.clone(),
                     module_path,
+                    name,
                 })
             })
             .collect::<Vec<_>>();
-        if assignments.is_empty() {
+        if targets.is_empty() {
             return (
                 SpecificationLivenessStatus::Unknown,
                 "the Rust declaration has no resolved crate or module owner".to_owned(),
             );
         }
-        if assignments.len() > 1 {
+        if targets.len() > 1 {
             return (
                 SpecificationLivenessStatus::Unknown,
                 "the Rust declaration belongs to multiple or ambiguous crate modules".to_owned(),
             );
         }
-        let assignment = &assignments[0];
+        let target = &targets[0];
         let mut direct_use = false;
         let mut uncertain_use = false;
         let mut same_name_symbols = 0usize;
@@ -183,7 +192,7 @@ impl RustLiveness {
             source
                 .assignments
                 .iter()
-                .any(|candidate| candidate.crate_root == assignment.crate_root)
+                .any(|candidate| candidate.crate_root == target.crate_root)
         }) {
             let mut cursor = source.tree.root_node().walk();
             for node in source.tree.root_node().named_children(&mut cursor) {
@@ -199,34 +208,35 @@ impl RustLiveness {
             source
                 .assignments
                 .iter()
-                .any(|candidate| candidate.crate_root == assignment.crate_root)
+                .any(|candidate| candidate.crate_root == target.crate_root)
         }) {
             for source_assignment in source
                 .assignments
                 .iter()
-                .filter(|candidate| candidate.crate_root == assignment.crate_root)
+                .filter(|candidate| candidate.crate_root == target.crate_root)
             {
                 let imported_aliases = rust_import_aliases(
                     source.tree.root_node(),
                     source.source.as_bytes(),
-                    &assignment.module_path.join("::"),
-                    type_name,
+                    &target.crate_root,
+                    &source_assignment.module_path,
+                    target,
                 );
                 let mut inspection = RustReferenceInspection {
                     source,
-                    target_path: assignment.module_path.join("::"),
-                    type_name,
+                    target: target.clone(),
                     imported_aliases,
                     declaration_line: definition.line,
                     declaration_path: &definition.path,
-                    declaration_module: &assignment.module_path,
                     ambiguous_same_name: same_name_symbols > 1,
                     direct_use: &mut direct_use,
                     uncertain_use: &mut uncertain_use,
                 };
                 inspect_rust_references(
                     source.tree.root_node(),
+                    &target.crate_root,
                     &source_assignment.module_path,
+                    false,
                     &mut inspection,
                 );
             }
@@ -246,11 +256,20 @@ impl RustLiveness {
                 "a Rust import, macro, type-only reference, or ambiguous name may use this declaration".to_owned(),
             );
         }
-        if rust_type_is_public(declaration_source, type_name, &assignment.module_path) {
-            return (
-                SpecificationLivenessStatus::Unknown,
-                "the Specification type is externally visible".to_owned(),
-            );
+        match rust_type_visibility(&self.sources, target) {
+            Some(true) => {
+                return (
+                    SpecificationLivenessStatus::Unknown,
+                    "the Specification type is externally visible".to_owned(),
+                );
+            }
+            None => {
+                return (
+                    SpecificationLivenessStatus::Unknown,
+                    "the Specification type does not resolve to one crate declaration".to_owned(),
+                );
+            }
+            Some(false) => {}
         }
         if !closed_world {
             return (
@@ -258,7 +277,7 @@ impl RustLiveness {
                 "the manifest does not declare a closed-world source boundary".to_owned(),
             );
         }
-        if !is_conventional_rust_crate_root(&assignment.crate_root) {
+        if !is_conventional_rust_crate_root(&target.crate_root) {
             return (
                 SpecificationLivenessStatus::Unknown,
                 "the selected Rust files do not identify a complete crate root".to_owned(),
@@ -273,24 +292,23 @@ impl RustLiveness {
 
 struct RustReferenceInspection<'a> {
     source: &'a ParsedRustSource,
-    target_path: String,
-    type_name: &'a str,
+    target: RustResolvedType,
     imported_aliases: HashSet<String>,
     declaration_line: usize,
     declaration_path: &'a str,
-    declaration_module: &'a [String],
     ambiguous_same_name: bool,
     direct_use: &'a mut bool,
     uncertain_use: &'a mut bool,
 }
 
-fn rust_definition_module(
+fn rust_definition_target(
     node: Node<'_>,
     source: &[u8],
     line: usize,
     type_name: &str,
+    crate_root: &str,
     module_path: &[String],
-) -> Option<Vec<String>> {
+) -> Option<(Vec<String>, String)> {
     if node.kind() == "impl_item"
         && node.start_position().row + 1 == line
         && node.child_by_field_name("trait").is_some_and(|trait_node| {
@@ -302,7 +320,8 @@ fn rust_definition_module(
                 .is_some_and(is_specification_trait)
         })
     {
-        return Some(module_path.to_vec());
+        let target_path = node.child_by_field_name("type")?.utf8_text(source).ok()?;
+        return resolve_rust_type_path(target_path, crate_root, module_path);
     }
     if matches!(node.kind(), "struct_item" | "enum_item" | "type_item")
         && node.start_position().row + 1 == line
@@ -310,7 +329,7 @@ fn rust_definition_module(
             .child_by_field_name("name")
             .is_some_and(|name| name.utf8_text(source).ok() == Some(type_name))
     {
-        return Some(module_path.to_vec());
+        return Some((module_path.to_vec(), type_name.to_owned()));
     }
     let nested_module = if node.kind() == "mod_item" {
         node.child_by_field_name("name")
@@ -326,11 +345,57 @@ fn rust_definition_module(
         {
             child_module.push(name.to_owned());
         }
-        if let Some(found) = rust_definition_module(child, source, line, type_name, &child_module) {
+        if let Some(found) =
+            rust_definition_target(child, source, line, type_name, crate_root, &child_module)
+        {
             return Some(found);
         }
     }
     None
+}
+
+fn resolve_rust_type_path(
+    path: &str,
+    crate_root: &str,
+    current_module: &[String],
+) -> Option<(Vec<String>, String)> {
+    let path = path
+        .split('<')
+        .next()?
+        .chars()
+        .filter(|character| !character.is_whitespace())
+        .collect::<String>();
+    let mut segments = path
+        .split("::")
+        .filter(|segment| !segment.is_empty())
+        .collect::<Vec<_>>();
+    if segments.is_empty() {
+        return None;
+    }
+    let modules = match segments[0] {
+        "crate" => {
+            segments.remove(0);
+            Vec::new()
+        }
+        "self" => {
+            segments.remove(0);
+            current_module.to_vec()
+        }
+        "super" => {
+            let mut modules = current_module.to_vec();
+            while segments.first() == Some(&"super") {
+                segments.remove(0);
+                modules.pop()?;
+            }
+            modules
+        }
+        _ if segments.len() == 1 => current_module.to_vec(),
+        _ => return None,
+    };
+    let name = segments.pop()?.to_owned();
+    let mut modules = modules;
+    modules.extend(segments.into_iter().map(str::to_owned));
+    (!crate_root.is_empty()).then_some((modules, name))
 }
 
 fn rust_type_name(name: &str) -> &str {
@@ -362,28 +427,63 @@ fn is_conventional_rust_crate_root(path: &str) -> bool {
 
 fn inspect_rust_references(
     node: Node<'_>,
+    crate_root: &str,
     current_module: &[String],
+    in_static_registration: bool,
     inspection: &mut RustReferenceInspection<'_>,
 ) {
     let line = node.start_position().row + 1;
-    if node.kind() == "impl_item"
-        && line == inspection.declaration_line
-        && inspection.source.path == inspection.declaration_path
-    {
-        return;
+    if node.kind() == "impl_item" {
+        if line == inspection.declaration_line
+            && inspection.source.path == inspection.declaration_path
+        {
+            return;
+        }
+        let is_specification_impl = node.child_by_field_name("trait").is_some_and(|trait_node| {
+            let is_specification_trait = trait_node
+                .utf8_text(inspection.source.source.as_bytes())
+                .unwrap_or_default()
+                .rsplit("::")
+                .next()
+                .is_some_and(is_specification_trait);
+            let implemented_type = node.child_by_field_name("type").and_then(|type_node| {
+                type_node
+                    .utf8_text(inspection.source.source.as_bytes())
+                    .ok()
+            });
+            is_specification_trait
+                && implemented_type.is_some_and(|path| {
+                    rust_path_resolves_to_target(
+                        path,
+                        crate_root,
+                        current_module,
+                        &inspection.target,
+                        &inspection.imported_aliases,
+                    )
+                })
+        });
+        if is_specification_impl {
+            return;
+        }
     }
     let text = node
         .utf8_text(inspection.source.source.as_bytes())
         .unwrap_or_default()
         .trim();
     let matching_identifier = matches!(node.kind(), "identifier" | "type_identifier")
-        && (text == inspection.type_name || inspection.imported_aliases.contains(text));
+        && (text == inspection.target.name || inspection.imported_aliases.contains(text));
     let resolved_import_alias = inspection.imported_aliases.contains(text);
     let matching_path = matches!(node.kind(), "scoped_identifier" | "scoped_type_identifier")
-        && rust_path_matches(text, &inspection.target_path, inspection.type_name);
+        && rust_path_resolves_to_target(
+            text,
+            crate_root,
+            current_module,
+            &inspection.target,
+            &inspection.imported_aliases,
+        );
     if matching_identifier || matching_path {
         let is_type_declaration_name = node.parent().is_some_and(|parent| {
-            matches!(parent.kind(), "struct_item" | "enum_item")
+            matches!(parent.kind(), "struct_item" | "enum_item" | "type_item")
                 && parent.child_by_field_name("name") == Some(node)
         });
         if is_type_declaration_name {
@@ -391,11 +491,11 @@ fn inspect_rust_references(
         }
         if inside_rust_use_declaration(node) {
             *inspection.uncertain_use = true;
-        } else if node_is_runtime_rust_use(node) {
+        } else if in_static_registration || node_is_runtime_rust_use(node) {
             if matching_identifier
                 && !resolved_import_alias
                 && (inspection.ambiguous_same_name
-                    || current_module != inspection.declaration_module)
+                    || (!in_static_registration && current_module != inspection.target.module_path))
             {
                 *inspection.uncertain_use = true;
             } else {
@@ -405,13 +505,8 @@ fn inspect_rust_references(
             *inspection.uncertain_use = true;
         }
     }
-    if node.kind() == "macro_invocation" && text.contains(inspection.type_name) {
-        if rust_static_registration_macro(text) {
-            *inspection.direct_use = true;
-        } else {
-            *inspection.uncertain_use = true;
-        }
-    }
+    let in_static_registration = in_static_registration
+        || (node.kind() == "macro_invocation" && rust_static_registration_macro(text));
     let mut cursor = node.walk();
     for child in node.named_children(&mut cursor) {
         let mut child_module = current_module.to_vec();
@@ -423,22 +518,30 @@ fn inspect_rust_references(
         {
             child_module.push(name.to_owned());
         }
-        inspect_rust_references(child, &child_module, inspection);
+        inspect_rust_references(
+            child,
+            crate_root,
+            &child_module,
+            in_static_registration,
+            inspection,
+        );
     }
 }
 
 fn rust_import_aliases(
     node: Node<'_>,
     source: &[u8],
-    module_path: &str,
-    type_name: &str,
+    crate_root: &str,
+    module_path: &[String],
+    target: &RustResolvedType,
 ) -> HashSet<String> {
     let mut aliases = HashSet::new();
     fn collect(
         node: Node<'_>,
         source: &[u8],
-        module_path: &str,
-        type_name: &str,
+        crate_root: &str,
+        module_path: &[String],
+        target: &RustResolvedType,
         aliases: &mut HashSet<String>,
     ) {
         if node.kind() == "use_declaration" {
@@ -451,38 +554,83 @@ fn rust_import_aliases(
                 .trim_end_matches(';')
                 .trim();
             if let Some((path, alias)) = text.split_once(" as ")
-                && rust_path_matches(path.trim(), module_path, type_name)
+                && rust_path_resolves_to_target(
+                    path.trim(),
+                    crate_root,
+                    module_path,
+                    target,
+                    &HashSet::new(),
+                )
                 && !alias.trim().is_empty()
             {
                 aliases.insert(alias.trim().to_owned());
-            } else if rust_path_matches(text, module_path, type_name) {
-                aliases.insert(type_name.to_owned());
+            } else if rust_path_resolves_to_target(
+                text,
+                crate_root,
+                module_path,
+                target,
+                &HashSet::new(),
+            ) {
+                aliases.insert(target.name.clone());
             }
             return;
         }
         let mut cursor = node.walk();
         for child in node.named_children(&mut cursor) {
-            collect(child, source, module_path, type_name, aliases);
+            collect(child, source, crate_root, module_path, target, aliases);
         }
     }
-    collect(node, source, module_path, type_name, &mut aliases);
+    collect(node, source, crate_root, module_path, target, &mut aliases);
     aliases
 }
 
-fn rust_path_matches(text: &str, module_path: &str, type_name: &str) -> bool {
+fn rust_path_resolves_to_target(
+    text: &str,
+    crate_root: &str,
+    current_module: &[String],
+    target: &RustResolvedType,
+    imported_aliases: &HashSet<String>,
+) -> bool {
     let normalized = text
+        .split('<')
+        .next()
+        .unwrap_or(text)
         .chars()
-        .filter(|c| !c.is_whitespace())
+        .filter(|character| !character.is_whitespace())
         .collect::<String>();
-    let target = if module_path.is_empty() {
-        type_name.to_owned()
-    } else {
-        format!("{module_path}::{type_name}")
+    let segments = normalized.split("::").collect::<Vec<_>>();
+    if segments.is_empty() {
+        return false;
+    }
+    if segments.len() == 1 && imported_aliases.contains(segments[0]) {
+        return target.crate_root == crate_root;
+    }
+
+    let (mut modules, path_segments) = match segments[0] {
+        "crate" => (Vec::new(), &segments[1..]),
+        "self" => (current_module.to_vec(), &segments[1..]),
+        "super" => {
+            let mut modules = current_module.to_vec();
+            let mut prefix = 0;
+            while segments.get(prefix) == Some(&"super") {
+                if modules.pop().is_none() {
+                    return false;
+                }
+                prefix += 1;
+            }
+            (modules, &segments[prefix..])
+        }
+        _ if segments.len() == 1 => (current_module.to_vec(), &segments[..]),
+        // An unqualified multi-segment path can name a local module, an imported
+        // module alias, or an external crate. Without resolving imports, do not
+        // guess that it refers to this declaration.
+        _ => return false,
     };
-    normalized == format!("crate::{target}")
-        || normalized == format!("self::{target}")
-        || normalized.ends_with(&format!("::{target}"))
-        || normalized == target
+    let Some((name, module_segments)) = path_segments.split_last() else {
+        return false;
+    };
+    modules.extend(module_segments.iter().map(|segment| (*segment).to_owned()));
+    target.crate_root == crate_root && target.module_path == modules && target.name == *name
 }
 
 fn node_is_runtime_rust_use(node: Node<'_>) -> bool {
@@ -562,25 +710,67 @@ fn count_rust_type_declarations(node: Node<'_>, source: &[u8], name: &str, count
     }
 }
 
-fn rust_type_is_public(source: &ParsedRustSource, name: &str, _module_path: &[String]) -> bool {
-    fn visit(node: Node<'_>, source: &[u8], name: &str) -> bool {
+fn rust_type_visibility(sources: &[ParsedRustSource], target: &RustResolvedType) -> Option<bool> {
+    fn visit(
+        node: Node<'_>,
+        source: &[u8],
+        module_path: &[String],
+        target: &RustResolvedType,
+        found: &mut Vec<bool>,
+    ) {
         if matches!(node.kind(), "struct_item" | "enum_item" | "type_item")
+            && module_path == target.module_path
             && node
                 .child_by_field_name("name")
-                .is_some_and(|name_node| name_node.utf8_text(source).ok() == Some(name))
+                .is_some_and(|name_node| name_node.utf8_text(source).ok() == Some(&target.name))
         {
-            return node.child_by_field_name("visibility_modifier").is_some()
-                || node
-                    .utf8_text(source)
-                    .unwrap_or_default()
-                    .trim_start()
-                    .starts_with("pub ");
+            let text = node.utf8_text(source).unwrap_or_default().trim_start();
+            found.push(
+                node.child_by_field_name("visibility_modifier").is_some()
+                    || text.starts_with("pub ")
+                    || text.starts_with("pub(")
+                    || text.starts_with("pub\n"),
+            );
         }
+        let nested_module = if node.kind() == "mod_item" {
+            node.child_by_field_name("name")
+                .and_then(|name| name.utf8_text(source).ok())
+        } else {
+            None
+        };
         let mut cursor = node.walk();
-        node.named_children(&mut cursor)
-            .any(|child| visit(child, source, name))
+        for child in node.named_children(&mut cursor) {
+            let mut child_module = module_path.to_vec();
+            if child.kind() == "declaration_list"
+                && let Some(name) = nested_module
+            {
+                child_module.push(name.to_owned());
+            }
+            visit(child, source, &child_module, target, found);
+        }
     }
-    visit(source.tree.root_node(), source.source.as_bytes(), name)
+
+    let mut found = Vec::new();
+    for source in sources {
+        for assignment in source
+            .assignments
+            .iter()
+            .filter(|assignment| assignment.crate_root == target.crate_root)
+        {
+            visit(
+                source.tree.root_node(),
+                source.source.as_bytes(),
+                &assignment.module_path,
+                target,
+                &mut found,
+            );
+        }
+    }
+    if found.len() == 1 {
+        Some(found[0])
+    } else {
+        None
+    }
 }
 
 fn is_specification_trait(name: &str) -> bool {
@@ -1566,7 +1756,7 @@ mod tests {
 
     use serde::Deserialize;
 
-    use super::PythonSource;
+    use super::{PythonSource, RustModuleAssignment, RustSource};
     use crate::model::{Language, SpecificationDefinition, SpecificationLivenessStatus};
     use crate::scan::scan_with_scope;
     use crate::scope::ScopeManifest;
@@ -1646,6 +1836,50 @@ mod tests {
     }
 
     #[test]
+    fn rust_registration_macro_matches_exact_type_names() {
+        let definitions = [
+            SpecificationDefinition {
+                language: Language::Rust,
+                path: "src/rules.rs".to_owned(),
+                name: "Rule".to_owned(),
+                kind: "declaration".to_owned(),
+                line: 1,
+                column: 1,
+            },
+            SpecificationDefinition {
+                language: Language::Rust,
+                path: "src/rules.rs".to_owned(),
+                name: "OtherRule".to_owned(),
+                kind: "declaration".to_owned(),
+                line: 2,
+                column: 1,
+            },
+        ];
+        let rust_sources = [
+            RustSource {
+                path: "src/rules.rs".to_owned(),
+                source: "struct Rule;\nstruct OtherRule;\n".to_owned(),
+                assignments: vec![RustModuleAssignment {
+                    crate_root: "src/lib.rs".to_owned(),
+                    module_path: vec!["rules".to_owned()],
+                }],
+            },
+            RustSource {
+                path: "src/registry.rs".to_owned(),
+                source: "inventory::submit! { OtherRule }\n".to_owned(),
+                assignments: vec![RustModuleAssignment {
+                    crate_root: "src/lib.rs".to_owned(),
+                    module_path: vec!["registry".to_owned()],
+                }],
+            },
+        ];
+
+        let results = super::classify(&definitions, &[], &rust_sources, true, false);
+        assert_eq!(results[0].status, SpecificationLivenessStatus::Dead);
+        assert_eq!(results[1].status, SpecificationLivenessStatus::Live);
+    }
+
+    #[test]
     fn language_liveness_matches_versioned_acceptance_fixtures() {
         let fixture_root =
             std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures/liveness/v1");
@@ -1687,6 +1921,30 @@ mod tests {
                 "{}: {}",
                 case.id, report.specification_liveness[0].evidence
             );
+            if case.id == "rust.impl_targets_public_type_in_other_module" {
+                assert_eq!(
+                    report.specification_liveness[0].evidence,
+                    "the Specification type is externally visible",
+                    "{}",
+                    case.id
+                );
+            }
+            if case.id == "rust.marker_impl_is_not_a_runtime_use" {
+                assert_eq!(
+                    report.specification_liveness[0].evidence,
+                    "private Rust Specification has no resolved runtime use in the closed crate",
+                    "{}",
+                    case.id
+                );
+            }
+            if case.id == "rust.unrelated_qualified_paths" {
+                assert_eq!(
+                    report.specification_liveness[0].evidence,
+                    "a Rust import, macro, type-only reference, or ambiguous name may use this declaration",
+                    "{}",
+                    case.id
+                );
+            }
 
             let metric = crate::live::measure(&report, None).unwrap();
             match actual {
