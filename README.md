@@ -42,7 +42,7 @@ provisional. The report includes per-status counts and evidence. Anonymous
 factory sites remain in `S` as before.
 
 For projects whose named Specification types do not use a recognized base,
-protocol, or trait, an opt-in source marker is being considered. Its proposed
+protocol, or trait, an opt-in type-system marker is being considered. Its proposed
 scope and rules are described in the
 [declaration marker contract](docs/declaration-marker-contract.md); current
 counting rule v3 does not recognize these markers.

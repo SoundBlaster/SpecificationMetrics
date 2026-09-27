@@ -55,7 +55,7 @@ liveness diagnostics separate from the System One opportunity classifier below.
 style module `__getattr__`, computed `__all__`, and cyclic re-exports are
 recorded in [the real-package audit](docs/python-liveness-real-package-audit.md).
 Continue testing against larger application packages and shadowed dynamic
-exports. The proposed opt-in source marker for named declarations that do not
+exports. The proposed opt-in type-system marker for named declarations that do not
 inherit from or implement a recognized Specification base is defined in the
 [declaration marker contract](docs/declaration-marker-contract.md); implement
 it only with versioned cross-language fixtures. Then implement Swift target and

@@ -5,55 +5,93 @@
 
 ## Purpose
 
-The marker is an explicit source-level declaration by the owner of a measured
-codebase: “count this named type as one of my Specification declarations.” It
-lets a project opt in when its Specification type does not inherit from a base
-class or implement a trait/protocol recognized by the scanner.
+The marker is an explicit, type-system-visible declaration by the owner of a
+measured codebase: “count this named type as one of my Specification
+declarations.” It lets a project opt in when its Specification type does not
+inherit from a base class or implement a trait/protocol already recognized by
+the scanner.
 
 The marker does not create a Specification, infer intent from a type name, or
 claim that every requirement/validator in a framework is a Specification. It
-does not change program behavior. A marked declaration is still subject to the
-same source ownership, liveness, and uncertainty rules as any other recognized
-declaration.
+does not add Specification behavior. Its language-native form does have a
+small type-system/runtime footprint: Python exposes a class attribute, Swift
+adds conformance metadata, and Rust adds a trait implementation that can
+participate in trait resolution. Projects must accept that explicit opt-in
+cost. A marked declaration remains subject to the same source ownership,
+liveness, and uncertainty rules as any other recognized declaration.
 
-## Source spelling and attachment
+## Language-specific marker forms
 
-Version 1 uses a standalone comment immediately attached to a named type
-declaration:
+The semantic contract is shared, while each language uses syntax its parser and
+compiler/type checker can see. Version 1 reserves these marker names and forms.
+
+### Python
+
+Declare a typed class variable on the class:
 
 ```python
-# specmetrics: specification/v1
+from typing import ClassVar, Literal
+
 class ResponseSpec(MelleaRequirement):
+    __specmetrics_specification__: ClassVar[Literal["specification/v1"]] = (
+        "specification/v1"
+    )
     ...
 ```
 
+The scanner recognizes only this exact class-level field name and literal
+version. A type checker can validate the literal's type; the field is also
+visible in the Python AST. It must not be an instance field or serialized
+framework data field. The implementation must test supported model frameworks
+to make sure the `ClassVar` marker is not emitted as user data. Reflection can
+still observe the class attribute.
+
+### Swift
+
+Declare an empty marker protocol in the application module and conform the
+project-owned type to it:
+
 ```swift
-// specmetrics: specification/v1
-struct ResponseSpec: SomeRequirementProtocol {
+protocol SpecificationMetricV1 {}
+
+struct ResponseSpec: SomeRequirementProtocol, SpecificationMetricV1 {
     ...
 }
 ```
 
+An extension conformance is also accepted as the marker location when
+`ResponseSpec` is a project-owned declaration in the measurement scope; the
+extension itself is not counted as a Specification. Swift checks that the
+conformance is valid. The protocol has no requirements and adds no callable
+behavior, but its conformance metadata can affect generic constraints and
+runtime conformance checks.
+
+### Rust
+
+Declare an empty marker trait in the application crate and implement it for the
+project-owned type:
+
 ```rust
-// specmetrics: specification/v1
+trait SpecificationMetricV1 {}
+
 struct ResponseSpec {
     ...
 }
+
+impl SpecificationMetricV1 for ResponseSpec {}
 ```
 
-The marker applies to the next named type declaration in the same source file
-when only whitespace, comments, and that declaration's language attributes or
-decorators intervene. Any other declaration or executable statement breaks the
-attachment. The scanner must associate the marker through syntax/token
-structure, not by guessing from a nearby type name.
+The compiler verifies the trait implementation. The empty trait adds no
+runtime data or methods, though the implementation can participate in trait
+resolution. Trait and implementation paths must resolve to the reserved marker
+names; a same-named unrelated trait in another module does not count.
 
-The marker is a comment, so it introduces no runtime dependency, decorator
-execution, generated code, or serialized metadata. The spelling is exact and
-case-sensitive. A marker with an unsupported version, a dangling marker, or a
-marker attached to an unsupported syntax node is reported as a marker issue; it
-must not silently mark another declaration. An unresolved marker in an
-`application` file makes the measurement provisional because an intended
-declaration may be missing from `S`.
+These forms are intentionally language-specific. The versioned meaning is
+`specification/v1`; the scanner recognizes the syntax without requiring a
+runtime SpecificationMetrics library. Marker protocols/traits are ordinary
+source declarations owned by the application and introduce no package
+dependency. Their own definitions are marker infrastructure, not Specification
+declarations and do not contribute to `S`.
 
 ## Eligible declarations
 
@@ -61,15 +99,17 @@ Version 1 applies to named, project-owned declarations only:
 
 | Language | Eligible declaration |
 | --- | --- |
-| Python | `class` declaration |
-| Swift | Named `class`, `struct`, `enum`, or `actor` declaration |
-| Rust | Named `struct` or `enum` declaration |
+| Python | `class` with the exact typed class variable described above |
+| Swift | Project-owned named type conforming to `SpecificationMetricV1` |
+| Rust | Project-owned named `struct` or `enum` implementing `SpecificationMetricV1` |
 
-Protocols, traits, type aliases, extensions, anonymous expressions, and
-factory-call sites are outside this marker contract. Existing native
-Specification recognizers and factory-site rules continue to work independently.
-If a declaration is both natively recognized and marked, it is still one
-declaration and contributes at most one to `S`.
+Protocols, traits as Specification declarations, type aliases, anonymous
+expressions, and factory-call sites are outside this marker contract. A Swift
+extension may carry the conformance marker for a project-owned nominal type,
+but the nominal type remains the declaration being counted. Existing native
+Specification recognizers and factory-site rules continue to work
+independently. If a declaration is both natively recognized and marked, it is
+still one declaration and contributes at most one to `S`.
 
 ## What the marker includes in the metric
 
@@ -103,17 +143,31 @@ them. An unresolved dynamic lookup remains `unknown`, never `dead`.
 ## Ownership and third-party frameworks
 
 Only declarations in the measurement's `application` source role contribute to
-the metric. Markers in test, framework, generated, vendored, or excluded paths
-do not add to `S` or remove decisions from `U`.
+the metric. The marker field, protocol conformance, or trait implementation
+must also be present in the measured `application` source set. Marker forms in
+test, framework, generated, vendored, or excluded paths do not add to `S` or
+remove decisions from `U`.
 
-Consequently, importing `mellea.Requirement` and placing a marker beside the
-import does not turn that external declaration into an application-owned
-Specification. A project can mark its own named wrapper/subclass when that type
-is the reusable Specification boundary it intends to measure. If it uses an
-external type directly and has no local declaration, version 1 counts no local
-Specification for it. A future manifest that maps imported external symbols to
-local metric declarations would be a separate adapter contract; it is not
-implied by this marker.
+Consequently, importing `mellea.Requirement` and putting a similarly named
+field on the import does not turn that external declaration into an
+application-owned Specification. A project can mark its own named
+wrapper/subclass when that type is the reusable Specification boundary it
+intends to measure. If it uses an external type directly and has no local
+declaration, version 1 counts no local Specification for it. Swift retroactive
+conformance and Rust implementations of a local marker trait for foreign types
+are outside this contract; use a project-owned wrapper instead. A future
+manifest that maps imported external symbols to local metric declarations
+would be a separate adapter contract; it is not implied by this marker.
+
+The wrapper is an application design choice, not a required metrics shim. Use
+one only when the project wants a local type boundary for the external
+requirement. The marker alone adds no requirement/composition behavior.
+
+Version 1 does not use macros. Python decorators execute at import time, while
+Swift/Rust macro expansion adds language-toolchain-specific build machinery and
+can obscure the source declaration the analyzer needs to resolve. A future
+macro may generate one of these same marker forms, but the scanner must still
+validate the expanded language-level declaration and type identity.
 
 The author who adds a marker owns the semantic assertion. The tool reports the
 marker and resolved declaration as evidence but does not validate whether the
@@ -122,14 +176,16 @@ questions are outside this metric.
 
 ## Diagnostics and deterministic behavior
 
-- One valid marker attaches to at most one declaration.
-- Duplicate markers for one declaration produce a diagnostic; they do not
-  multiply `S`.
-- Unsupported, malformed, or dangling markers produce a diagnostic and do not
-  mark a declaration. In an `application` file, that diagnostic makes the
-  measurement provisional.
-- A marker in a file without an assigned source role cannot affect `S` or `U`;
-  normal scope rules still determine whether the complete report is provisional.
+- One marker conformance/field identifies at most one declaration.
+- Multiple accepted marker forms for one declaration still produce one `S`
+  entry.
+- An invalid Python marker type/value, unresolved Swift conformance, unresolved
+  Rust trait implementation, or unsupported marker version produces a
+  diagnostic and does not mark a declaration. If this occurs in an
+  `application` file, the measurement is provisional.
+- A marker declaration or conformance in a file without an assigned source
+  role cannot affect `S` or `U`; normal scope rules still determine whether
+  the complete report is provisional.
 - Marker recognition is deterministic and requires no model inference.
 - Reports identify the marker version, source path, qualified symbol when
   resolvable, marker location, and liveness evidence. They do not treat a
@@ -143,7 +199,8 @@ version under which they were produced and are not recalculated in place.
 
 The implementation should add versioned fixtures covering at least:
 
-1. a marked local type without a recognized base/trait/protocol is discovered;
+1. a marked local type without a previously recognized Specification
+   base/trait/protocol is discovered in each language;
 2. native recognition plus a marker counts the declaration once;
 3. a live marked type resolves a runtime use across files and aliases where
    that language analyzer supports them;
@@ -151,12 +208,14 @@ The implementation should add versioned fixtures covering at least:
    evidence, while a public or unresolved type remains unknown;
 5. decisions inside a marked type are removed from `U`, while an adjacent
    decision remains in `U`;
-6. marker comments in test/framework/generated/excluded paths do not affect the
-   application metric;
-7. dangling, duplicated, unsupported-version, and unsupported-node markers
-   yield deterministic diagnostics;
-8. marking an import without a local type declaration does not count the
-   imported external type.
+6. marker fields/conformances/implementations in
+   test/framework/generated/excluded paths do not affect the application
+   metric;
+7. malformed or wrong-version Python markers and marker conformances that do
+   not resolve to the reserved Swift/Rust interface yield deterministic
+   diagnostics;
+8. adding a marker to an import without a local type declaration does not
+   count the imported external type.
 
 Python, Swift, and Rust fixtures must be added as each language's marker parser
 and liveness analyzer become available. Until then, the contract does not imply
