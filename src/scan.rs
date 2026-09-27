@@ -6,7 +6,7 @@ use anyhow::{Context, Result, ensure};
 use ignore::WalkBuilder;
 use tree_sitter::{Language as TreeSitterLanguage, Node, Parser};
 
-use crate::liveness::{self, PythonSource};
+use crate::liveness::{self, PythonSource, RustModuleAssignment, RustSource};
 use crate::model::{
     Candidate, Language, ParseIssue, SCHEMA_VERSION, ScanReport, ScopeIssue,
     SpecificationDefinition,
@@ -67,11 +67,12 @@ pub fn scan_with_scope(
         }
     }
 
-    let rust_marker_contexts = rust_marker_contexts(&root, &files, &includes, manifest);
+    let rust_analysis = rust_marker_contexts(&root, &files, &includes, manifest);
 
     let mut candidates = Vec::new();
     let mut specifications = Vec::new();
     let mut python_sources = Vec::new();
+    let mut rust_sources = Vec::new();
     let mut parse_issues = Vec::new();
     let mut marker_issues = Vec::new();
     let mut scope_issues = Vec::new();
@@ -146,6 +147,22 @@ pub fn scan_with_scope(
                 source: source.to_owned(),
             });
         }
+        if language == Language::Rust {
+            rust_sources.push(RustSource {
+                path: relative_path.clone(),
+                source: source.to_owned(),
+                assignments: rust_analysis
+                    .assignments
+                    .get(&relative_path)
+                    .into_iter()
+                    .flatten()
+                    .map(|(crate_root, module_path)| RustModuleAssignment {
+                        crate_root: crate_root.clone(),
+                        module_path: module_path.clone(),
+                    })
+                    .collect(),
+            });
+        }
         let mut parser = Parser::new();
         parser
             .set_language(&tree_sitter_language(language))
@@ -180,7 +197,8 @@ pub fn scan_with_scope(
             HashSet::new()
         };
         let rust_marker_context = if language == Language::Rust {
-            rust_marker_contexts
+            rust_analysis
+                .contexts
                 .get(&relative_path)
                 .cloned()
                 .unwrap_or_default()
@@ -226,6 +244,7 @@ pub fn scan_with_scope(
     let specification_liveness = liveness::classify(
         &specifications,
         &python_sources,
+        &rust_sources,
         manifest.is_some_and(ScopeManifest::liveness_closed_world),
         !parse_issues.is_empty() || !marker_issues.is_empty() || !scope_issues.is_empty(),
     );
@@ -403,12 +422,17 @@ struct RustSymbols {
     impls: Vec<RustImplRecord>,
 }
 
+struct RustMarkerAnalysis {
+    contexts: HashMap<String, RustMarkerContext>,
+    assignments: HashMap<String, Vec<(String, Vec<String>)>>,
+}
+
 fn rust_marker_contexts(
     root: &Path,
     files: &[PathBuf],
     includes: &[String],
     manifest: Option<&ScopeManifest>,
-) -> HashMap<String, RustMarkerContext> {
+) -> RustMarkerAnalysis {
     let mut parser = Parser::new();
     parser
         .set_language(&tree_sitter_rust::LANGUAGE.into())
@@ -450,7 +474,10 @@ fn rust_marker_contexts(
         units.insert(relative.clone(), RustSourceUnit { source, tree });
     }
     if units.is_empty() {
-        return HashMap::new();
+        return RustMarkerAnalysis {
+            contexts: HashMap::new(),
+            assignments: HashMap::new(),
+        };
     }
 
     let crate_roots = units
@@ -563,7 +590,10 @@ fn rust_marker_contexts(
             }
         }
     }
-    contexts
+    RustMarkerAnalysis {
+        contexts,
+        assignments,
+    }
 }
 
 fn is_rust_crate_root(path: &str) -> bool {
