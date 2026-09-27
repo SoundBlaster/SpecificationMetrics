@@ -465,14 +465,23 @@ fn visit(
         });
     let rust_duplicate_specification = language == Language::Rust
         && declaration.is_some()
-        && node.kind() == "impl_item"
-        && node.child_by_field_name("type").is_some_and(|type_node| {
-            rust_impl_target_name(node_text(type_node, source)).is_some_and(|name| {
-                !state
-                    .rust_recorded_specification_types
-                    .insert(name.to_owned())
+        && (node.kind() == "impl_item"
+            && node.child_by_field_name("type").is_some_and(|type_node| {
+                rust_impl_target_name(node_text(type_node, source)).is_some_and(|name| {
+                    state.rust_marker_context.local_types.contains(&name)
+                        && state
+                            .rust_marker_context
+                            .specification_types
+                            .contains(&name)
+                        || !state.rust_recorded_specification_types.insert(name)
+                })
             })
-        });
+            || matches!(node.kind(), "struct_item" | "enum_item")
+                && node.child_by_field_name("name").is_some_and(|name| {
+                    !state
+                        .rust_recorded_specification_types
+                        .insert(node_text(name, source).trim().to_owned())
+                }));
     if !extension_conformance_for_local_type
         && !rust_duplicate_specification
         && let Some((name, kind)) = declaration.as_ref().or(factory.as_ref())
@@ -668,6 +677,16 @@ fn specification_declaration(
             }
             name
         }
+        (Language::Rust, "struct_item" | "enum_item") => {
+            let name = node.child_by_field_name("name")?;
+            if !rust_marker_context
+                .specification_types
+                .contains(node_text(name, source).trim())
+            {
+                return None;
+            }
+            name
+        }
         (Language::Rust, "impl_item") => {
             let trait_node = node.child_by_field_name("trait")?;
             if rust_marker_trait_candidate(node, source) {
@@ -747,7 +766,7 @@ fn rust_marker_implementation_is_resolved(
     let trait_path = node_text(trait_node, source).trim();
     let reserved_root_path = matches!(
         trait_path,
-        "SpecificationMetricV1" | "crate::SpecificationMetricV1" | "self::SpecificationMetricV1"
+        "SpecificationMetricV1" | "self::SpecificationMetricV1"
     );
     node.kind() == "impl_item"
         && node
@@ -758,18 +777,24 @@ fn rust_marker_implementation_is_resolved(
         && node
             .child_by_field_name("type")
             .and_then(|type_node| rust_impl_target_name(node_text(type_node, source)))
-            .is_some_and(|name| context.local_types.contains(name))
+            .is_some_and(|name| context.local_types.contains(&name))
 }
 
-fn rust_impl_target_name(text: &str) -> Option<&str> {
-    let base = text.split('<').next()?.trim();
-    if base.is_empty()
-        || base.contains(':')
-        || !base.chars().all(|c| c == '_' || c.is_alphanumeric())
+fn rust_impl_target_name(text: &str) -> Option<String> {
+    let base = text
+        .split('<')
+        .next()?
+        .chars()
+        .filter(|character| !character.is_whitespace())
+        .collect::<String>();
+    let name = base.strip_prefix("self::").unwrap_or(&base);
+    if name.is_empty()
+        || name.contains(':')
+        || !name.chars().all(|c| c == '_' || c.is_alphanumeric())
     {
         return None;
     }
-    Some(base)
+    Some(name.to_owned())
 }
 
 fn rust_inherent_impl_for_specification(
@@ -785,7 +810,7 @@ fn rust_inherent_impl_for_specification(
         && node
             .child_by_field_name("type")
             .and_then(|type_node| rust_impl_target_name(node_text(type_node, source)))
-            .is_some_and(|name| context.specification_types.contains(name))
+            .is_some_and(|name| context.specification_types.contains(&name))
 }
 
 fn swift_marker_extension(node: Node<'_>, source: &[u8]) -> bool {
@@ -1312,13 +1337,15 @@ mod tests {
             "{:?}",
             report.marker_issues
         );
-        assert_eq!(report.specifications.len(), 2);
+        assert_eq!(report.specifications.len(), 3);
         assert_eq!(report.specifications[0].name, "MarkedResponseSpec");
         assert_eq!(report.specifications[1].name, "AlternateResponseSpec");
-        assert_eq!(report.candidates.len(), 3);
+        assert_eq!(report.specifications[2].name, "QualifiedResponseSpec");
+        assert_eq!(report.candidates.len(), 4);
         assert!(report.candidates[0].inside_specification);
         assert!(report.candidates[1].inside_specification);
-        assert!(!report.candidates[2].inside_specification);
+        assert!(report.candidates[2].inside_specification);
+        assert!(!report.candidates[3].inside_specification);
         assert!(
             report.specification_liveness.iter().all(|entry| {
                 entry.status == crate::model::SpecificationLivenessStatus::Unknown
@@ -1331,7 +1358,7 @@ mod tests {
         let dir = tempdir().unwrap();
         fs::write(
             dir.path().join("example.rs"),
-            "trait SpecificationMetricV1 {}\nstruct LocalRule;\nmod unrelated { pub trait SpecificationMetricV1 {} }\nimpl unrelated::SpecificationMetricV1 for LocalRule {}\nimpl SpecificationMetricV1 for ImportedRule {}\n",
+            "trait SpecificationMetricV1 {}\nstruct LocalRule;\nmod unrelated { pub trait SpecificationMetricV1 {} pub struct Rule; }\nimpl unrelated::SpecificationMetricV1 for LocalRule {}\nimpl SpecificationMetricV1 for ImportedRule {}\nimpl SpecificationMetricV1 for unrelated::Rule {}\nimpl crate::SpecificationMetricV1 for LocalRule {}\n",
         )
         .unwrap();
 
@@ -1342,7 +1369,7 @@ mod tests {
         let report = scan_with_scope(dir.path(), &[], Some(&scope)).unwrap();
         assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
         assert!(report.specifications.is_empty());
-        assert_eq!(report.marker_issues.len(), 2);
+        assert_eq!(report.marker_issues.len(), 4);
         assert!(report.marker_issues.iter().all(|issue| {
             issue
                 .message

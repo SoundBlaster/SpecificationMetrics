@@ -92,12 +92,13 @@ The compiler verifies the trait implementation. The empty trait adds no
 runtime data or methods, though the implementation can participate in trait
 resolution. Counting rule v6 recognizes only a root-level marker trait and
 root-level implementation in the same Rust source file. The accepted trait
-paths are `SpecificationMetricV1`, `self::SpecificationMetricV1`, and
-`crate::SpecificationMetricV1`; the target must be a `struct` or `enum`
-declared in that file. Implementations for a same-named trait in another module
-or a target type the scanner cannot resolve produce a diagnostic. Inherent
-`impl` blocks for a marked type in that file are included when excluding its
-internal decision sites from `U`.
+paths are `SpecificationMetricV1` and `self::SpecificationMetricV1`; the
+target path may be `ResponseSpec` or `self::ResponseSpec`, and must resolve to a
+`struct` or `enum` declared in that file. Crate-absolute or nested module paths
+remain unresolved until crate/module mapping is implemented. Implementations
+for a same-named trait in another module or a target type the scanner cannot
+resolve produce a diagnostic. Inherent `impl` blocks for a marked type in
+that file are included when excluding its internal decision sites from `U`.
 
 These forms are intentionally language-specific. The versioned meaning is
 `specification/v1`; the scanner recognizes the syntax without requiring a

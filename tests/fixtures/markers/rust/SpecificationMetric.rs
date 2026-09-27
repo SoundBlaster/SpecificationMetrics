@@ -8,12 +8,17 @@ impl SpecificationMetricV1 for MarkedResponseSpec {}
 
 impl Specification<bool> for MarkedResponseSpec {}
 
+#[repr(i32)]
 pub enum AlternateResponseSpec {
-    Accepted,
-    Rejected,
+    Accepted = if cfg!(unix) { 1 } else { 0 },
+    Rejected = 2,
 }
 
-impl crate::SpecificationMetricV1 for AlternateResponseSpec {}
+impl self::SpecificationMetricV1 for self::AlternateResponseSpec {}
+
+pub struct QualifiedResponseSpec;
+
+impl self::SpecificationMetricV1 for self::QualifiedResponseSpec {}
 
 impl MarkedResponseSpec {
     pub fn accepts(value: bool) -> bool {
