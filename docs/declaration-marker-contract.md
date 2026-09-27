@@ -1,7 +1,6 @@
 # Declaration marker contract
 
-**Status:** Python and Swift forms implemented by counting rule v5; Rust form
-proposed.
+**Status:** Python, Swift, and Rust forms implemented by counting rule v6.
 **Contract version:** `specification-marker/v1`.
 
 ## Purpose
@@ -25,8 +24,8 @@ liveness, and uncertainty rules as any other recognized declaration.
 
 The semantic contract is shared, while each language uses syntax its parser and
 compiler/type checker can see. Version 1 reserves these marker names and forms.
-The Python and Swift forms are implemented; Rust recognition remains future
-work.
+All three language forms are implemented with conservative source-resolution
+boundaries.
 
 ### Python
 
@@ -91,8 +90,15 @@ impl SpecificationMetricV1 for ResponseSpec {}
 
 The compiler verifies the trait implementation. The empty trait adds no
 runtime data or methods, though the implementation can participate in trait
-resolution. Trait and implementation paths must resolve to the reserved marker
-names; a same-named unrelated trait in another module does not count.
+resolution. Counting rule v6 recognizes only a root-level marker trait and
+root-level implementation in the same Rust source file. The accepted trait
+paths are `SpecificationMetricV1` and `self::SpecificationMetricV1`; the
+target path may be `ResponseSpec` or `self::ResponseSpec`, and must resolve to a
+`struct` or `enum` declared in that file. Crate-absolute or nested module paths
+remain unresolved until crate/module mapping is implemented. Implementations
+for a same-named trait in another module or a target type the scanner cannot
+resolve produce a diagnostic. Inherent `impl` blocks for a marked type in
+that file are included when excluding its internal decision sites from `U`.
 
 These forms are intentionally language-specific. The versioned meaning is
 `specification/v1`; the scanner recognizes the syntax without requiring a
@@ -109,7 +115,7 @@ Version 1 applies to named, project-owned declarations only:
 | --- | --- |
 | Python | `class` with the exact typed class variable described above |
 | Swift | Project-owned named type conforming to `SpecificationMetricV1` |
-| Rust | Project-owned named `struct` or `enum` implementing `SpecificationMetricV1` |
+| Rust | Project-owned named `struct` or `enum` implementing the local `SpecificationMetricV1` trait |
 
 Protocols, traits as Specification declarations, type aliases, anonymous
 expressions, and factory-call sites are outside this marker contract. A Swift
@@ -154,7 +160,9 @@ Only declarations in the measurement's `application` source role contribute to
 the metric. The marker field, protocol conformance, or trait implementation
 must also be present in the measured `application` source set. Marker forms in
 test, framework, generated, vendored, or excluded paths do not add to `S` or
-remove decisions from `U`.
+remove decisions from `U`. For Rust, the scanner currently resolves the marker
+trait, target type, and associated inherent `impl` blocks within one source
+file. Cross-file crate/module resolution remains a future parser improvement.
 
 Consequently, importing `mellea.Requirement` and putting a similarly named
 field on the import does not turn that external declaration into an
@@ -200,9 +208,9 @@ questions are outside this metric.
   marker declaration as proof of liveness.
 
 Enabling marker recognition changes the counting semantics. Python support
-introduced counting rule v4; Swift support increments it to v5. Rust support
-must increment it again when implemented. Historical snapshots retain the
-rule version under which they were produced and are not recalculated in place.
+introduced counting rule v4, Swift support increments it to v5, and Rust
+support increments it to v6. Historical snapshots retain the rule version
+under which they were produced and are not recalculated in place.
 
 ## Acceptance coverage
 
@@ -220,16 +228,13 @@ Versioned implementation fixtures should cover at least:
 6. marker fields/conformances/implementations in
    test/framework/generated/excluded paths do not affect the application
    metric;
-7. malformed or wrong-version Python markers and, when implemented,
-   conformances that do not resolve to the reserved Swift/Rust interface yield
-   deterministic diagnostics;
+7. malformed or wrong-version Python markers and Swift/Rust conformances that
+   do not resolve to the reserved interface yield deterministic diagnostics;
 8. adding a marker to an import without a local type declaration does not
    count the imported external type.
 
-The Rust scanner tests cover Python and Swift marker discovery, direct and
-extension conformance, deduplication with native recognition, internal
-decision exclusion, and Python marker diagnostics and liveness. A Python
-runtime fixture verifies `ClassVar` stays out of dataclass fields and `asdict`
-output. The Swift marker fixture is typechecked locally; CI runs the Rust
-scanner tests. Swift liveness remains `unknown`, and Rust marker support still
-requires parser, compiler, and liveness tests.
+The Rust scanner tests cover Python, Swift, and Rust marker discovery,
+deduplication with native recognition, internal decision exclusion, and marker
+diagnostics. Python liveness tests remain conservative; Swift and Rust
+liveness remain `unknown`. Runtime fixtures verify Python `ClassVar` behavior,
+and CI typechecks the Rust marker fixture with `rustc`.

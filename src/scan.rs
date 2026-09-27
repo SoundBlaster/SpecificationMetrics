@@ -177,6 +177,11 @@ pub fn scan_with_scope(
         } else {
             HashSet::new()
         };
+        let rust_marker_context = if language == Language::Rust {
+            rust_marker_context(root_node, source.as_bytes())
+        } else {
+            RustMarkerContext::default()
+        };
         let mut state = VisitState {
             occurrences: &mut occurrences,
             candidates: &mut candidates,
@@ -184,6 +189,8 @@ pub fn scan_with_scope(
             marker_issues: &mut marker_issues,
             swift_nominal_types,
             swift_extension_specification_types,
+            rust_marker_context,
+            rust_recorded_specification_types: HashSet::new(),
         };
         visit(
             root_node,
@@ -349,6 +356,15 @@ struct VisitState<'a> {
     marker_issues: &'a mut Vec<crate::model::ParseIssue>,
     swift_nominal_types: HashSet<String>,
     swift_extension_specification_types: HashSet<String>,
+    rust_marker_context: RustMarkerContext,
+    rust_recorded_specification_types: HashSet<String>,
+}
+
+#[derive(Default)]
+struct RustMarkerContext {
+    marker_trait_declared: bool,
+    local_types: HashSet<String>,
+    specification_types: HashSet<String>,
 }
 
 enum PythonMarker {
@@ -410,12 +426,26 @@ fn visit(
             ),
         });
     }
+    if language == Language::Rust
+        && rust_marker_trait_candidate(node, source)
+        && !rust_marker_implementation_is_resolved(node, source, &state.rust_marker_context)
+    {
+        state.marker_issues.push(crate::model::ParseIssue {
+            path: path.to_owned(),
+            message: format!(
+                "Rust SpecificationMetricV1 implementation at {}:{} must resolve to the root-level marker trait and a local struct or enum declared in the same source file",
+                node.start_position().row + 1,
+                node.start_position().column + 1
+            ),
+        });
+    }
     let declaration = specification_declaration(
         language,
         node,
         source,
         &state.swift_nominal_types,
         &state.swift_extension_specification_types,
+        &state.rust_marker_context,
     )
     .or_else(|| {
         if matches!(marker, PythonMarker::Valid) {
@@ -433,7 +463,27 @@ fn visit(
                 .swift_nominal_types
                 .contains(node_text(name, source).trim())
         });
+    let rust_duplicate_specification = language == Language::Rust
+        && declaration.is_some()
+        && (node.kind() == "impl_item"
+            && node.child_by_field_name("type").is_some_and(|type_node| {
+                rust_impl_target_name(node_text(type_node, source)).is_some_and(|name| {
+                    state.rust_marker_context.local_types.contains(&name)
+                        && state
+                            .rust_marker_context
+                            .specification_types
+                            .contains(&name)
+                        || !state.rust_recorded_specification_types.insert(name)
+                })
+            })
+            || matches!(node.kind(), "struct_item" | "enum_item")
+                && node.child_by_field_name("name").is_some_and(|name| {
+                    !state
+                        .rust_recorded_specification_types
+                        .insert(node_text(name, source).trim().to_owned())
+                }));
     if !extension_conformance_for_local_type
+        && !rust_duplicate_specification
         && let Some((name, kind)) = declaration.as_ref().or(factory.as_ref())
     {
         let position = node.start_position();
@@ -447,6 +497,9 @@ fn visit(
         });
     }
     let inside_specification = inside_specification || declaration.is_some() || factory.is_some();
+    let inside_specification = inside_specification
+        || (language == Language::Rust
+            && rust_inherent_impl_for_specification(node, source, &state.rust_marker_context));
     if let Some(kind) = decision_kind(language, node, source) {
         let source_text = String::from_utf8_lossy(&source[node.byte_range()]);
         let normalized: String = source_text.split_whitespace().collect();
@@ -587,6 +640,7 @@ fn specification_declaration(
     source: &[u8],
     swift_nominal_types: &HashSet<String>,
     swift_extension_specification_types: &HashSet<String>,
+    rust_marker_context: &RustMarkerContext,
 ) -> Option<(String, &'static str)> {
     let name = match (language, node.kind()) {
         (Language::Python, "class_definition") => {
@@ -623,9 +677,23 @@ fn specification_declaration(
             }
             name
         }
+        (Language::Rust, "struct_item" | "enum_item") => {
+            let name = node.child_by_field_name("name")?;
+            if !rust_marker_context
+                .specification_types
+                .contains(node_text(name, source).trim())
+            {
+                return None;
+            }
+            name
+        }
         (Language::Rust, "impl_item") => {
             let trait_node = node.child_by_field_name("trait")?;
-            if !is_spec_base(node_text(trait_node, source)) {
+            if rust_marker_trait_candidate(node, source) {
+                if !rust_marker_implementation_is_resolved(node, source, rust_marker_context) {
+                    return None;
+                }
+            } else if !is_spec_base(node_text(trait_node, source)) {
                 return None;
             }
             node.child_by_field_name("type")?
@@ -634,6 +702,115 @@ fn specification_declaration(
     };
     let name = node_text(name, source).trim().to_owned();
     (!name.is_empty()).then_some((name, "declaration"))
+}
+
+fn rust_marker_context(root: Node<'_>, source: &[u8]) -> RustMarkerContext {
+    let mut cursor = root.walk();
+    let items = root.named_children(&mut cursor).collect::<Vec<_>>();
+    let mut context = RustMarkerContext {
+        marker_trait_declared: items.iter().any(|item| {
+            item.kind() == "trait_item"
+                && item
+                    .child_by_field_name("name")
+                    .is_some_and(|name| node_text(name, source).trim() == "SpecificationMetricV1")
+        }),
+        ..RustMarkerContext::default()
+    };
+    for item in &items {
+        if matches!(item.kind(), "struct_item" | "enum_item")
+            && let Some(name) = item.child_by_field_name("name")
+        {
+            context
+                .local_types
+                .insert(node_text(name, source).trim().to_owned());
+        }
+    }
+    for item in items.iter().filter(|item| item.kind() == "impl_item") {
+        let Some(trait_node) = item.child_by_field_name("trait") else {
+            continue;
+        };
+        let recognized = if rust_marker_trait_candidate(*item, source) {
+            rust_marker_implementation_is_resolved(*item, source, &context)
+        } else {
+            is_spec_base(node_text(trait_node, source))
+        };
+        if recognized
+            && let Some(type_node) = item.child_by_field_name("type")
+            && let Some(name) = rust_impl_target_name(node_text(type_node, source))
+        {
+            context.specification_types.insert(name.to_owned());
+        }
+    }
+    context
+}
+
+fn rust_marker_trait_candidate(node: Node<'_>, source: &[u8]) -> bool {
+    node.kind() == "impl_item"
+        && node.child_by_field_name("trait").is_some_and(|trait_node| {
+            node_text(trait_node, source)
+                .trim()
+                .rsplit("::")
+                .next()
+                .is_some_and(|name| name.trim() == "SpecificationMetricV1")
+        })
+}
+
+fn rust_marker_implementation_is_resolved(
+    node: Node<'_>,
+    source: &[u8],
+    context: &RustMarkerContext,
+) -> bool {
+    let Some(trait_node) = node.child_by_field_name("trait") else {
+        return false;
+    };
+    let trait_path = node_text(trait_node, source).trim();
+    let reserved_root_path = matches!(
+        trait_path,
+        "SpecificationMetricV1" | "self::SpecificationMetricV1"
+    );
+    node.kind() == "impl_item"
+        && node
+            .parent()
+            .is_some_and(|parent| parent.kind() == "source_file")
+        && context.marker_trait_declared
+        && reserved_root_path
+        && node
+            .child_by_field_name("type")
+            .and_then(|type_node| rust_impl_target_name(node_text(type_node, source)))
+            .is_some_and(|name| context.local_types.contains(&name))
+}
+
+fn rust_impl_target_name(text: &str) -> Option<String> {
+    let base = text
+        .split('<')
+        .next()?
+        .chars()
+        .filter(|character| !character.is_whitespace())
+        .collect::<String>();
+    let name = base.strip_prefix("self::").unwrap_or(&base);
+    if name.is_empty()
+        || name.contains(':')
+        || !name.chars().all(|c| c == '_' || c.is_alphanumeric())
+    {
+        return None;
+    }
+    Some(name.to_owned())
+}
+
+fn rust_inherent_impl_for_specification(
+    node: Node<'_>,
+    source: &[u8],
+    context: &RustMarkerContext,
+) -> bool {
+    node.kind() == "impl_item"
+        && node.child_by_field_name("trait").is_none()
+        && node
+            .parent()
+            .is_some_and(|parent| parent.kind() == "source_file")
+        && node
+            .child_by_field_name("type")
+            .and_then(|type_node| rust_impl_target_name(node_text(type_node, source)))
+            .is_some_and(|name| context.specification_types.contains(&name))
 }
 
 fn swift_marker_extension(node: Node<'_>, source: &[u8]) -> bool {
@@ -1142,6 +1319,102 @@ mod tests {
                 .message
                 .contains("declared in the same source file")
         );
+    }
+
+    #[test]
+    fn rust_marker_trait_counts_local_struct_and_enum_once_and_covers_inherent_impls() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.rs"),
+            include_str!("../tests/fixtures/markers/rust/SpecificationMetric.rs"),
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        assert!(
+            report.marker_issues.is_empty(),
+            "{:?}",
+            report.marker_issues
+        );
+        assert_eq!(report.specifications.len(), 3);
+        assert_eq!(report.specifications[0].name, "MarkedResponseSpec");
+        assert_eq!(report.specifications[1].name, "AlternateResponseSpec");
+        assert_eq!(report.specifications[2].name, "QualifiedResponseSpec");
+        assert_eq!(report.candidates.len(), 4);
+        assert!(report.candidates[0].inside_specification);
+        assert!(report.candidates[1].inside_specification);
+        assert!(report.candidates[2].inside_specification);
+        assert!(!report.candidates[3].inside_specification);
+        assert!(
+            report.specification_liveness.iter().all(|entry| {
+                entry.status == crate::model::SpecificationLivenessStatus::Unknown
+            })
+        );
+    }
+
+    #[test]
+    fn rust_marker_requires_root_trait_path_and_local_type() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.rs"),
+            "trait SpecificationMetricV1 {}\nstruct LocalRule;\nmod unrelated { pub trait SpecificationMetricV1 {} pub struct Rule; }\nimpl unrelated::SpecificationMetricV1 for LocalRule {}\nimpl SpecificationMetricV1 for ImportedRule {}\nimpl SpecificationMetricV1 for unrelated::Rule {}\nimpl crate::SpecificationMetricV1 for LocalRule {}\n",
+        )
+        .unwrap();
+
+        let scope = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['.']\n",
+        )
+        .unwrap();
+        let report = scan_with_scope(dir.path(), &[], Some(&scope)).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        assert!(report.specifications.is_empty());
+        assert_eq!(report.marker_issues.len(), 4);
+        assert!(report.marker_issues.iter().all(|issue| {
+            issue
+                .message
+                .contains("must resolve to the root-level marker trait")
+        }));
+        let metric = crate::live::measure(&report, None).unwrap();
+        assert!(metric.provisional);
+    }
+
+    #[test]
+    fn rust_marker_trait_declaration_alone_is_not_a_specification() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("example.rs"),
+            "trait SpecificationMetricV1 {}\nstruct UnmarkedRule;\n",
+        )
+        .unwrap();
+
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.specifications.is_empty());
+        assert!(report.marker_issues.is_empty());
+    }
+
+    #[test]
+    fn rust_marker_implementation_in_test_sources_does_not_count() {
+        let dir = tempdir().unwrap();
+        fs::create_dir_all(dir.path().join("app")).unwrap();
+        fs::write(dir.path().join("app/main.rs"), "// application source\n").unwrap();
+        fs::create_dir_all(dir.path().join("tests")).unwrap();
+        fs::write(
+            dir.path().join("tests/marker.rs"),
+            "trait SpecificationMetricV1 {}\nstruct TestOnlyRule;\nimpl SpecificationMetricV1 for TestOnlyRule {}\nimpl TestOnlyRule { fn check(value: bool) { if value {} } }\n",
+        )
+        .unwrap();
+        let scope = ScopeManifest::parse(
+            "schema_version=1\n[[source_sets]]\nrole='application'\npaths=['app']\n[[source_sets]]\nrole='test'\npaths=['tests']\n",
+        )
+        .unwrap();
+
+        let report = scan_with_scope(dir.path(), &[], Some(&scope)).unwrap();
+        assert!(report.scope_issues.is_empty(), "{:?}", report.scope_issues);
+        assert!(report.specifications.is_empty());
+        assert!(report.marker_issues.is_empty());
+        assert!(report.candidates.is_empty());
+        assert_eq!(report.excluded_files, 1);
     }
 
     #[test]

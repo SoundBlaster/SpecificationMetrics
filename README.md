@@ -25,14 +25,14 @@ move the ratio in either direction; that is part of a live project-health
 measurement. Store dated snapshots and their source revision in SQLite to
 explain the trajectory, without freezing a historical denominator.
 
-Counting rule v5 recognizes direct Specification/DecisionSpec conformances or
+Counting rule v6 recognizes direct Specification/DecisionSpec conformances or
 implementations and source sites that construct `PredicateSpec` or `FirstMatch`
 variants. It counts a factory site once, regardless of runtime calls. Decisions
 inside recognized definitions or factories do not contribute to `U`. Reviewed
 `excluded` entries in an optional registry remove only *currently matching*
 candidates. Other current candidates contribute to `U`.
 
-Rule v5 also classifies named Python Specification declarations as `live`,
+Rule v6 also classifies named Python Specification declarations as `live`,
 `dead`, or `unknown`. Resolved runtime uses stay in `S`; a private declaration
 without a resolved use leaves `S` only when a source-role manifest explicitly
 sets `[liveness] closed_world = true`. Public declarations, unresolved imports,
@@ -45,7 +45,9 @@ per-status counts and evidence. Anonymous factory sites remain in `S` as before.
 
 Swift types can opt in by conforming to the exact unqualified
 `SpecificationMetricV1` protocol, directly or in a same-file extension. Rust
-marker recognition remains proposed. Swift and Rust liveness remain `unknown`.
+types can opt in through a root-level local `SpecificationMetricV1` trait and
+same-file `struct`/`enum` implementation. Rust and Swift liveness remain
+`unknown`.
 
 The [counting contract](docs/counting-contract.md) defines the source ownership
 boundary and the disjoint reasons for removing a candidate from `U`. For a

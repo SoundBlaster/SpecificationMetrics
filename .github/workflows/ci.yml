@@ -19,4 +19,5 @@ jobs:
       - run: cargo fmt --check
       - run: cargo test --locked
       - run: cargo clippy --all-targets --locked -- -D warnings
+      - run: rustc --edition=2024 --crate-type=lib tests/fixtures/markers/rust/SpecificationMetric.rs --emit=metadata -o /tmp/specmetrics-rust-marker.rmeta
       - run: python tests/python_marker_classvar.py
