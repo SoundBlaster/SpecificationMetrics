@@ -85,8 +85,16 @@ pub struct SpecificationLiveness {
     pub evidence: String,
 }
 
+#[derive(Clone, Debug)]
+pub struct SourceSnapshot {
+    pub path: String,
+    pub bytes: Vec<u8>,
+}
+
 #[derive(Clone, Debug, Serialize)]
 pub struct ScanReport {
+    #[serde(skip)]
+    pub sources: Vec<SourceSnapshot>,
     pub schema_version: u32,
     pub root: String,
     pub includes: Vec<String>,

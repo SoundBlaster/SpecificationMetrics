@@ -37,6 +37,12 @@ each counting rule version against it before changing the metric. Preserve
 historical snapshots under their original rule version; do not silently
 recalculate old observations with new rules.
 
+**Unified collection implemented:** TOML measurement contracts, primary S/U
+reports with opt-in pinned Python complexity and cross-language clone metrics,
+portable snapshots, idempotent collection history, and guarded before/after
+comparison. See the [collection contract](docs/collection-contract.md). Classic
+metrics are observations alongside S/U; no automatic balancing score is defined.
+
 Continue the [counting contract](docs/counting-contract.md) with resolved
 Specification uses and exact candidate partition counts. An unrestricted root
 scan without a manifest remains provisional discovery.

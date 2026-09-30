@@ -2,8 +2,8 @@ schema_version = 1
 
 [[source_sets]]
 role = "application"
-paths = ["src"]
+paths = ["src", "scripts"]
 
 [[source_sets]]
 role = "test"
-paths = ["tests/fixtures"]
+paths = ["tests", "scripts/test_classic_metrics.py"]

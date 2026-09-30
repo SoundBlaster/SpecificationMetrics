@@ -1,3 +1,4 @@
+mod collection;
 mod live;
 mod liveness;
 mod metric;
@@ -25,6 +26,32 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Collect primary S/U counters and opt-in external metrics from a TOML contract.
+    Collect {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        output: Option<PathBuf>,
+        #[arg(long)]
+        store: Option<PathBuf>,
+        /// Fail unless the primary and all requested supplementary metrics are complete.
+        #[arg(long)]
+        require_complete: bool,
+    },
+    /// Compare two collection JSON snapshots under the same measurement contract.
+    Compare {
+        before: PathBuf,
+        after: PathBuf,
+        #[arg(long)]
+        output: Option<PathBuf>,
+    },
+    /// Read combined collection snapshots from SQLite, newest first.
+    CollectionHistory {
+        #[arg(long)]
+        store: PathBuf,
+        #[arg(long, default_value_t = 20)]
+        limit: usize,
+    },
     /// Discover Python, Swift, and Rust control-flow candidates.
     Scan {
         root: PathBuf,
@@ -102,6 +129,37 @@ struct SyncResult {
 fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.command {
+        Command::Collect {
+            config,
+            output,
+            store,
+            require_complete,
+        } => {
+            let report = collection::collect(&config)?;
+            emit_json(&report, output.as_deref())?;
+            if require_complete && report.status != "complete" {
+                bail!(
+                    "collection is {}: inspect primary and supplementary diagnostics",
+                    report.status
+                );
+            }
+            if let Some(path) = store {
+                let id = collection::save(&path, &report)?;
+                eprintln!("stored collection snapshot {id} in {}", path.display());
+            }
+        }
+        Command::Compare {
+            before,
+            after,
+            output,
+        } => {
+            let report =
+                collection::compare(&collection::load(&before)?, &collection::load(&after)?)?;
+            emit_json(&report, output.as_deref())?;
+        }
+        Command::CollectionHistory { store, limit } => {
+            emit_json(&collection::history(&store, limit)?, None)?;
+        }
         Command::Scan {
             root,
             includes,
@@ -227,7 +285,7 @@ fn emit_json<T: Serialize>(payload: &T, output: Option<&Path>) -> Result<()> {
     let serialized =
         serde_json::to_string_pretty(payload).context("cannot serialize JSON report")?;
     if let Some(output) = output {
-        if let Some(parent) = output.parent() {
+        if let Some(parent) = output.parent().filter(|p| !p.as_os_str().is_empty()) {
             fs::create_dir_all(parent)
                 .with_context(|| format!("cannot create {}", parent.display()))?;
         }
