@@ -79,6 +79,7 @@ pub fn scan_with_scope(
     let mut application_files = 0;
     let mut excluded_files = 0;
     let mut source_hasher = blake3::Hasher::new();
+    let mut sources = Vec::new();
     for file in files {
         let language = file
             .extension()
@@ -130,6 +131,10 @@ pub fn scan_with_scope(
         source_hasher.update(relative_path.as_bytes());
         source_hasher.update(&[0]);
         source_hasher.update(&source_bytes);
+        sources.push(crate::model::SourceSnapshot {
+            path: relative_path.clone(),
+            bytes: source_bytes.clone(),
+        });
         source_hasher.update(&[0]);
         let source = match std::str::from_utf8(&source_bytes) {
             Ok(source) => source,
@@ -254,6 +259,7 @@ pub fn scan_with_scope(
     let liveness_closed_world = manifest.is_some_and(ScopeManifest::liveness_closed_world);
     let scope_review_required = manifest.is_none() && includes.is_empty() && root.is_dir();
     Ok(ScanReport {
+        sources,
         schema_version: SCHEMA_VERSION,
         root: root.display().to_string(),
         includes,

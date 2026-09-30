@@ -1,0 +1,12 @@
+schema_version = 1
+project = "0al-spec/SpecGraph"
+root = "../../SpecGraph"
+# Explicit application directories; tests, fixtures and runs are outside this scope.
+# This is a bounded measurement, not a claim that all runtime consumers are known.
+includes = ["tools", "src"]
+
+[supplementary]
+python_complexity = false
+duplication = false
+# When enabling external tools, set python to the prepared metrics interpreter.
+# python = "../.venv-metrics/bin/python"

@@ -7,6 +7,24 @@ Specification definitions to remaining control-flow opportunities.
 See the [roadmap](ROADMAP.md) for proposed System One assisted candidate
 classification with Jev, Laya, and GLiNER2.5-Decide.
 
+## Unified collection
+
+`collect` uses a TOML config to collect **S, U and S/U first**, then optional
+LOC/CC/Cog and clone observations from the same captured application sources.
+It exports JSON, saves idempotent SQLite history and compares compatible
+snapshots without inventing a combined quality score. The scanner works without
+external metric tools; missing opt-in tools produce explicit diagnostics.
+
+```bash
+cargo run --locked -- collect --config configs/self.toml --output metrics/self.json
+cargo run --locked -- collect --config configs/specgraph.toml \
+  --output metrics/specgraph.json --store metrics/specgraph.sqlite
+cargo run --locked -- collection-history --store metrics/specgraph.sqlite
+```
+
+See the [collection contract](docs/collection-contract.md) for source exclusions,
+external-tool setup, before/after comparisons, statuses and strict exit codes.
+
 ## Live metric
 
 For each source snapshot, calculate `S / U`: `S` is the number of distinct
