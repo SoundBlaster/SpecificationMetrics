@@ -245,6 +245,7 @@ source snapshot.
       "top_p": null,
       "max_output_tokens": null,
       "min_confidence": null,
+      "timeout_seconds": 30,
       "provider_options_digest": "sha256:..."
     },
     "data_boundary": "hosted",

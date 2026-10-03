@@ -108,6 +108,7 @@
             "top_p",
             "max_output_tokens",
             "min_confidence",
+            "timeout_seconds",
             "provider_options_digest"
           ],
           "properties": {
@@ -115,6 +116,7 @@
             "top_p": {"type": ["number", "null"]},
             "max_output_tokens": {"type": ["integer", "null"], "minimum": 1},
             "min_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+            "timeout_seconds": {"type": "integer", "minimum": 1},
             "provider_options_digest": {
               "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
             }
