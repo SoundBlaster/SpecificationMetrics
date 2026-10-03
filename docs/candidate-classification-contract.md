@@ -1,14 +1,19 @@
 # Candidate classification contract
 
-Version 1 defines an optional, provider-neutral suggestion artifact for
-System One classification of Specification adoption candidates. It is a wire
+Version 1 defines an optional, provider-neutral request and suggestion artifact
+for System One classification of Specification adoption candidates. It is a wire
 contract for a future `classify` command; the current CLI does not call Jev,
 Laya, GLiNER or another model.
 
 ## Authority and metric boundary
 
-The scanner discovers syntax candidates deterministically. A classifier may
-suggest one of:
+The classifier returns two separate dimensions. `opportunity` says whether
+this scanner candidate should count as a Specification opportunity after
+review. `concern_kind` describes what kind of logic the candidate appears to
+express. They answer different questions and must not be collapsed into one
+enum.
+
+The `opportunity` dimension suggests one of:
 
 - `eligible`: this site appears to express a stable domain decision or policy
   that could benefit from a named, reusable Specification.
@@ -33,6 +38,22 @@ V1 reason codes are:
 | `eligible` | `domain_decision`, `repeated_decision`, `stable_policy_boundary` |
 | `excluded` | `mechanics`, `local_construct`, `already_specification_backed` |
 | `needs_review` | `ambiguous`, `insufficient_context`, `unsupported_syntax`, `sensitive_context_omitted`, `provider_error`, `malformed_provider_output`, `close_decision` |
+
+The independent `concern_kind` dimension suggests one of:
+
+| Concern kind | Meaning |
+| --- | --- |
+| `policy` | A condition expresses a durable product rule, authority, trust, evidence, eligibility or lifecycle decision. |
+| `mechanics` | A condition handles parsing, representation, I/O, adaptation or technical enforcement. |
+| `variant_behavior` | A condition dispatches behavior over domain variants such as an enum, type or platform. |
+| `unknown` | The available evidence does not support a reliable concern-kind classification. |
+
+These dimensions are orthogonal. A rule already owned by a Specification may
+be `policy` and `excluded`; a repeated enum switch may be `variant_behavior`
+and `eligible`; a parser branch may be `mechanics` and `excluded`. A concern
+kind alone never changes the denominator. `unknown` on the concern-kind axis
+does not itself mean `needs_review` on opportunity if the eligibility decision
+is otherwise clear.
 
 The rubric's reason-code descriptions have these meanings:
 
@@ -105,7 +126,8 @@ classification; it does not alter scanner scope or metric configuration.
 The exact profile bytes used for a run are identified by a digest in the
 result.
 
-The request carries the exact rubric label definitions and reason-code
+The request carries the exact opportunity-label definitions, concern-kind
+definitions and opportunity reason-code
 descriptions alongside their ID, version and digest. This keeps provider
 adapters from silently inventing their own label meanings. The position uses
 1-based lines and columns with an exclusive end position. Request schemas bound
@@ -132,12 +154,21 @@ The v1 request and result are validated by
 - exactly one suggestion for each candidate submitted in the run.
 
 Each suggestion binds to the scanner fingerprint and a digest of the complete
-bounded context. It includes the label and a short rationale. `reason_codes`
-are controlled, non-empty diagnostic tags; they supplement prose and do not
-change the label's semantics. Optional provider scores retain their original
-meaning and are accompanied by `score_semantics`. Do not normalize scores from
-different providers into a shared confidence value or treat them as calibrated
-probabilities without separate evidence.
+bounded context. It includes both classifications and a short rationale for
+each. `reason_codes` apply to the opportunity result; they are controlled,
+non-empty diagnostic tags which supplement prose. Provider scores are preserved
+separately for both Choice questions, with per-axis semantics. Do not normalize
+scores from different providers into a shared confidence value or treat them as
+calibrated probabilities without separate evidence.
+
+The Jev adapter uses two fixed-label Choice questions in one System One request:
+one for `opportunity` and one for `concern_kind`. The selected options map to
+the contract enums. Preserve each returned probability distribution and
+confidence under its own axis. Jev's API returns the actual model name and
+usage; record those with the run provenance. The adapter fails closed to
+`needs_review`/`unknown` if either selected option cannot be mapped to the
+current rubric. See the [TypeSafe System One API reference](https://api.typesafe.ai/redoc)
+for the provider request and response shape.
 
 Digests are lowercase, algorithm-prefixed hex (`blake3:<64 hex>` or
 `sha256:<64 hex>`). The source digest is the scanner's BLAKE3 digest with its
@@ -236,11 +267,13 @@ source snapshot.
     {
       "candidate_fingerprint": "blake3:...",
       "context_digest": "sha256:...",
-      "label": "needs_review",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
       "reason_codes": ["insufficient_context"],
-      "rationale": "The enclosing behavior is not available in the bounded context.",
-      "provider_scores": null,
-      "score_semantics": null
+      "opportunity_rationale": "The enclosing behavior is not available in the bounded context.",
+      "concern_rationale": "The site alone does not show whether this is policy or mechanics.",
+      "provider_scores": {"opportunity": null, "concern_kind": null},
+      "score_semantics": {"opportunity": null, "concern_kind": null}
     }
   ]
 }

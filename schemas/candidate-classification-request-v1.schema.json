@@ -50,12 +50,19 @@
     "rubric": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "version", "digest", "label_definitions", "reason_codes"],
+      "required": [
+        "id",
+        "version",
+        "digest",
+        "opportunity_definitions",
+        "concern_kind_definitions",
+        "reason_codes"
+      ],
       "properties": {
         "id": {"type": "string", "minLength": 1},
         "version": {"type": "integer", "minimum": 1},
         "digest": {"$ref": "#/$defs/digest"},
-        "label_definitions": {
+        "opportunity_definitions": {
           "type": "object",
           "additionalProperties": false,
           "required": ["eligible", "excluded", "needs_review"],
@@ -63,6 +70,17 @@
             "eligible": {"type": "string", "minLength": 1, "maxLength": 1000},
             "excluded": {"type": "string", "minLength": 1, "maxLength": 1000},
             "needs_review": {"type": "string", "minLength": 1, "maxLength": 1000}
+          }
+        },
+        "concern_kind_definitions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["policy", "mechanics", "variant_behavior", "unknown"],
+          "properties": {
+            "policy": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "mechanics": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "variant_behavior": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "unknown": {"type": "string", "minLength": 1, "maxLength": 1000}
           }
         },
         "reason_codes": {

@@ -120,16 +120,21 @@
       "required": [
         "candidate_fingerprint",
         "context_digest",
-        "label",
+        "opportunity",
+        "concern_kind",
         "reason_codes",
-        "rationale",
+        "opportunity_rationale",
+        "concern_rationale",
         "provider_scores",
         "score_semantics"
       ],
       "properties": {
         "candidate_fingerprint": {"type": "string", "minLength": 1},
         "context_digest": {"$ref": "#/$defs/digest"},
-        "label": {"enum": ["eligible", "excluded", "needs_review"]},
+        "opportunity": {"enum": ["eligible", "excluded", "needs_review"]},
+        "concern_kind": {
+          "enum": ["policy", "mechanics", "variant_behavior", "unknown"]
+        },
         "reason_codes": {
           "type": "array",
           "minItems": 1,
@@ -152,26 +157,66 @@
             ]
           }
         },
-        "rationale": {"type": "string", "minLength": 1, "maxLength": 500},
+        "opportunity_rationale": {"type": "string", "minLength": 1, "maxLength": 500},
+        "concern_rationale": {"type": "string", "minLength": 1, "maxLength": 500},
         "provider_scores": {
-          "oneOf": [
-            {
-              "type": "object",
-              "minProperties": 1,
-              "additionalProperties": {"type": "number"}
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["opportunity", "concern_kind"],
+          "properties": {
+            "opportunity": {
+              "oneOf": [{"$ref": "#/$defs/choiceScores"}, {"type": "null"}]
             },
-            {"type": "null"}
-          ]
+            "concern_kind": {
+              "oneOf": [{"$ref": "#/$defs/choiceScores"}, {"type": "null"}]
+            }
+          }
         },
-        "score_semantics": {"type": ["string", "null"]}
+        "score_semantics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["opportunity", "concern_kind"],
+          "properties": {
+            "opportunity": {"type": ["string", "null"]},
+            "concern_kind": {"type": ["string", "null"]}
+          }
+        }
       },
       "allOf": [
         {
-          "if": {"properties": {"provider_scores": {"type": "object"}}},
-          "then": {"properties": {"score_semantics": {"type": "string", "minLength": 1}}}
+          "if": {
+            "properties": {
+              "provider_scores": {
+                "properties": {"opportunity": {"type": "object"}}
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "score_semantics": {
+                "properties": {"opportunity": {"type": "string", "minLength": 1}}
+              }
+            }
+          }
         },
         {
-          "if": {"properties": {"label": {"const": "needs_review"}}},
+          "if": {
+            "properties": {
+              "provider_scores": {
+                "properties": {"concern_kind": {"type": "object"}}
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "score_semantics": {
+                "properties": {"concern_kind": {"type": "string", "minLength": 1}}
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"opportunity": {"const": "needs_review"}}},
           "then": {
             "properties": {
               "reason_codes": {
@@ -191,7 +236,7 @@
           }
         },
         {
-          "if": {"properties": {"label": {"const": "eligible"}}},
+          "if": {"properties": {"opportunity": {"const": "eligible"}}},
           "then": {
             "properties": {
               "reason_codes": {
@@ -203,7 +248,7 @@
           }
         },
         {
-          "if": {"properties": {"label": {"const": "excluded"}}},
+          "if": {"properties": {"opportunity": {"const": "excluded"}}},
           "then": {
             "properties": {
               "reason_codes": {
@@ -215,6 +260,19 @@
           }
         }
       ]
+    },
+    "choiceScores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["probabilities", "confidence"],
+      "properties": {
+        "probabilities": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+        },
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+      }
     }
   }
 }

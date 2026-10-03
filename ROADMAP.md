@@ -93,6 +93,8 @@ This contract is groundwork only: the current CLI has no model-backed
 ### Phase 1 — Labels and evaluation set
 
 - Define a versioned rubric for `eligible`, `excluded`, and `needs_review`.
+  Also classify the independent concern kind as `policy`, `mechanics`,
+  `variant_behavior`, or `unknown`.
   Examples of likely exclusions include ordinary input validation and Swift
   scope-exit `defer`; the rubric must describe exceptions and ambiguous cases.
 - Create a reviewed, stratified dataset across Python, Swift, and Rust, with
