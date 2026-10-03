@@ -1,11 +1,236 @@
 [
   {
-    "description": "SpecGraph publication.site.069: workspace allocation must match the requested publication bootstrap.",
+    "description": "SpecGraph publication.site.069: exact workspace allocation source guard",
     "vars": {
-      "candidate_json": "{\"candidate_id\":\"publication.site.069\",\"source\":{\"language\":\"Python\",\"path\":\"tools/subject_publication.py\",\"symbol\":\"_verify_publication\",\"construct\":\"compound require guard\"},\"site\":{\"condition\":\"allocation workspace identity equals requested topology workspace identity; allocation source ref equals request source ref; expected commit equals request expected commit; identity allocation is authorized; source-ref initialization is authorized; declaration digest equals the SHA-256 of the exact workspace declaration bytes\",\"failure\":\"workspace allocation covers a different bootstrap\"},\"bounded_context\":{\"purpose\":\"The rule binds publication to a specific workspace, ref, commit, two explicit authorization decisions, and exact declaration bytes.\",\"nearby_existing_specifications\":[\"human approval\",\"reviewed record equality\",\"transition approval\"],\"prior_diagnostic\":{\"category\":\"policy\",\"boundary_violation\":false,\"classification_status\":\"proposed\"}}}",
+      "candidate_json": "{\"candidate_id\":\"publication.site.069\",\"source\":{\"language\":\"Python\",\"path\":\"tools/subject_publication.py\",\"symbol\":\"_verify_publication\",\"construct\":\"declaration\"},\"site\":{\"code\":\"        require(\\n            allocation[\\\"workspace_identity\\\"] == request.topology.workspace_identity\\n            and allocation[\\\"source_ref\\\"] == request.source_ref\\n            and allocation[\\\"expected_commit\\\"] == request.expected_commit\\n            and allocation[\\\"identity_allocation_authorized\\\"] is True\\n            and allocation[\\\"source_ref_initialization_authorized\\\"] is True\\n            and allocation[\\\"declaration_sha256\\\"]\\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest(),\\n            \\\"workspace allocation covers a different bootstrap\\\",\\n        )\\n\",\"start_line\":499,\"end_line\":508},\"bounded_context\":{\"supporting_code\":[{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@7\",\"code\":\"from __future__ import annotations\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@9\",\"code\":\"import hashlib\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@10\",\"code\":\"import json\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@11\",\"code\":\"import re\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@12\",\"code\":\"from dataclasses import asdict, dataclass\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@13\",\"code\":\"from datetime import datetime\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@14\",\"code\":\"from pathlib import Path, PurePosixPath\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@15\",\"code\":\"from typing import TYPE_CHECKING\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@17\",\"code\":\"from yaml import YAMLError\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@19\",\"code\":\"from spec_yaml import load_yaml_text\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@20\",\"code\":\"from subject_canonical_source import parse_topology_selection\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@21\",\"code\":\"from subject_human_approval_spec import HUMAN_APPROVAL_SPEC\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@22\",\"code\":\"from subject_publication_context import (\\n    HumanApprovalContext,\\n    ReviewedRecordContext,\\n    TransitionApprovalContext,\\n)\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@27\",\"code\":\"from subject_read_model_io import SubjectDocumentError, _object\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@28\",\"code\":\"from subject_reviewed_record_spec import REVIEWED_RECORD_SPEC\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@29\",\"code\":\"from subject_source_git import git_command, require_commit_id\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"import@30\",\"code\":\"from subject_transition_approval_spec import TRANSITION_APPROVAL_SPEC\\n\"},{\"path\":\"tools/subject_publication.py\",\"symbol\":\"require\",\"code\":\"def require(condition: bool, message: str) -> None:\\n    if not condition:\\n        raise PublicationGovernanceError(f\\\"publication governance: {message}\\\")\\n\"}],\"scope\":\"Selected source declarations; callers and unlisted dependencies are omitted.\",\"truncated\":false}}",
       "expected_opportunity": "eligible",
       "expected_concern_kind": "policy",
       "label_status": "pilot_hypothesis"
+    },
+    "metadata": {
+      "family_id": "workspace-allocation",
+      "split": "unassigned",
+      "role": "current_inline_policy",
+      "review_status": "unreviewed",
+      "label_source": "agent_proposal_from_source_inspection",
+      "label_rationale": "The exact guard binds publication to workspace identity, ref, commit, two authorizations and exact declaration bytes. The source rule is a proposed named-policy opportunity, not an accepted business decision.",
+      "source": {
+        "repository": "https://github.com/0al-spec/SpecGraph",
+        "license": "Apache-2.0",
+        "site": {
+          "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+          "path": "tools/subject_publication.py",
+          "symbol": "_verify_publication",
+          "start_line": 499,
+          "end_line": 508,
+          "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+          "excerpt_sha256": "sha256:00a535a8c89379d702e87eb39b8c7abec1ee659cb87186e36344245344711579",
+          "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L499-L508",
+          "code": "        require(\n            allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest(),\n            \"workspace allocation covers a different bootstrap\",\n        )\n"
+        },
+        "supporting": [
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@7",
+            "start_line": 7,
+            "end_line": 7,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:5384bfdb2df380b6557cc7a71d16891415bccaa87699406e236f752c6415389f",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L7-L7",
+            "code": "from __future__ import annotations\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@9",
+            "start_line": 9,
+            "end_line": 9,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:3b3ea3cdc7068a9e97cfcddbcd9d8e0c54fe4d068347b80b158fdd8b14676e3b",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L9-L9",
+            "code": "import hashlib\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@10",
+            "start_line": 10,
+            "end_line": 10,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:261a9112a2918e2aba03e19a2f221a027ab4b6f9e946a6c39814f54e18e07dfc",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L10-L10",
+            "code": "import json\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@11",
+            "start_line": 11,
+            "end_line": 11,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:a830333312c4c9c2233bb02762bd498203b1c3bf0527614735693b4b79f6d167",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L11-L11",
+            "code": "import re\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@12",
+            "start_line": 12,
+            "end_line": 12,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:f9be866a1523d6618db1bd0bee4617502cc2a08055b951d4499d0ac669f89943",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L12-L12",
+            "code": "from dataclasses import asdict, dataclass\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@13",
+            "start_line": 13,
+            "end_line": 13,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:2ed0247cc05b861fea3391ee7651aec4bb57304b71be6e96d2b74d171c551f55",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L13-L13",
+            "code": "from datetime import datetime\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@14",
+            "start_line": 14,
+            "end_line": 14,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L14-L14",
+            "code": "from pathlib import Path, PurePosixPath\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@15",
+            "start_line": 15,
+            "end_line": 15,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:6840d39f0b8b1ca77bcb2b42efa9888e580837244a8dd4331827ad9b240c3381",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L15-L15",
+            "code": "from typing import TYPE_CHECKING\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@17",
+            "start_line": 17,
+            "end_line": 17,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:f8ea8fcd1f36c81b2ee729a091d2519b7f8544a7120713d284c63058df07bed0",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L17-L17",
+            "code": "from yaml import YAMLError\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@19",
+            "start_line": 19,
+            "end_line": 19,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:25055d8f170752837679a4d1a46dd1f94ad45951587620e4d8de1a22c289720f",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L19-L19",
+            "code": "from spec_yaml import load_yaml_text\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@20",
+            "start_line": 20,
+            "end_line": 20,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:7c065431b08fe8911901b684578a9012cdcd99dee86d1fc05329b65070464f42",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L20-L20",
+            "code": "from subject_canonical_source import parse_topology_selection\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@21",
+            "start_line": 21,
+            "end_line": 21,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:5c8aefe40f4fa592b97a22baaee8a47608efca79a6e567ccf83dfb81e8d19a1f",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L21-L21",
+            "code": "from subject_human_approval_spec import HUMAN_APPROVAL_SPEC\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@22",
+            "start_line": 22,
+            "end_line": 26,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:3292910ebd2efb496de4b9dcbff2f1fb6fefef0747b407b466fd371d19525cf0",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L22-L26",
+            "code": "from subject_publication_context import (\n    HumanApprovalContext,\n    ReviewedRecordContext,\n    TransitionApprovalContext,\n)\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@27",
+            "start_line": 27,
+            "end_line": 27,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:3eb01870c370a3598b2408ef5b439871ceca0c5bda35c688f9c4682a7df82611",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L27-L27",
+            "code": "from subject_read_model_io import SubjectDocumentError, _object\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@28",
+            "start_line": 28,
+            "end_line": 28,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:38625ddbd69f672b9c5c59f8f120fa77a3e132c1fae7cb06d2891e08b31690bb",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L28-L28",
+            "code": "from subject_reviewed_record_spec import REVIEWED_RECORD_SPEC\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@29",
+            "start_line": 29,
+            "end_line": 29,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:26fbbb67b2241c242ca0530e0d38c2bcc83eb35bd94e1fe2a79b9111c90e7b40",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L29-L29",
+            "code": "from subject_source_git import git_command, require_commit_id\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "import@30",
+            "start_line": 30,
+            "end_line": 30,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:22e08a7f34aed6117022a4cd057ceb3fff1c749e5ffb2141d8396ea2bc511405",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L30-L30",
+            "code": "from subject_transition_approval_spec import TRANSITION_APPROVAL_SPEC\n"
+          },
+          {
+            "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+            "path": "tools/subject_publication.py",
+            "symbol": "require",
+            "start_line": 41,
+            "end_line": 43,
+            "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+            "excerpt_sha256": "sha256:4bfc0fb369b9ea70824cdb3477320129bae850a6bbb421b131633d4851497924",
+            "url": "https://github.com/0al-spec/SpecGraph/blob/9b285a2e018331460c1a6bee46a697b24a26d3fb/tools/subject_publication.py#L41-L43",
+            "code": "def require(condition: bool, message: str) -> None:\n    if not condition:\n        raise PublicationGovernanceError(f\"publication governance: {message}\")\n"
+          }
+        ]
+      },
+      "history": null,
+      "context_sha256": "sha256:9e004beb181c0b46ec5139b68c4041d69629140b51e9985a961bb4f3fbde1ce8"
     },
     "assert": [
       {

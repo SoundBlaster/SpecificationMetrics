@@ -8,18 +8,28 @@ the same Jev model, candidate state, label set, and concern-kind question:
   abstention rules explicit. It tests the hypothesis that Jev needs a sharper
   decision procedure, not a larger prompt or more repository context.
 
-The only checked-in case is `publication.site.069` from the SpecGraph
-publication diagnostic. Its expected labels are a **pilot hypothesis**, not an
+The default smoke case is `publication.site.069` from SpecGraph source code.
+Its expected labels are a **pilot hypothesis**, not an
 independent human-reviewed gold label. The diagnostic proposed `policy` and
 identified the site as a possible Specification opportunity; neither result is
 formal approval. One case can reveal prompt behavior and probability movement,
 but cannot establish classifier accuracy or generalize across code.
 
-The state is a compact, reviewed summary of that source site. It does not
-include the repository or send a whole source file. Add cases only with a
+The state contains the exact pinned source excerpt, imports and selected
+supporting declarations, with previous diagnostic labels excluded. It does not
+send the repository or a whole source file. Add cases only with a
 documented label source and mark provisional labels explicitly. Keep uncertainty
 visible; Jev Choice probabilities are relative to the fixed labels and are not
 calibrated confidence.
+
+The [evaluation protocol](methodology.md) defines the objective, annotation,
+group splits, paired comparisons and acceptance criteria. The
+[SpecGraph corpus](corpus/README.md) adds 60 source-grounded cases in 34 families,
+including 15 historical before/after pairs. All corpus annotations remain
+unreviewed hypotheses. [Review packet](corpus/review.md) and
+[blank review template](corpus/review-template.json) omit proposed labels.
+No corpus-wide hosted evaluation has been performed; two providers would make
+120 API requests. The default command still sends only the one smoke case.
 
 ## Run
 
@@ -48,6 +58,7 @@ npm run view
 
 ```bash
 python3 validate_cases.py
+python3 -m unittest -v test_validate_cases.py
 npm run test:offline
 npm run validate
 ```
@@ -58,8 +69,9 @@ TypeSafe key or model request.
 ## Reading results
 
 For each axis, Promptfoo reports whether the returned Choice matches the
-case's pilot hypothesis. The assertion score is the probability Jev assigned
-to that expected label. Compare both:
+case's pilot hypothesis. The assertion score is categorical agreement (1 or 0);
+expected-label probability remains in the assertion reason and raw output.
+Compare both:
 
 1. whether the selected label changed or matched;
 2. how the probability mass over the fixed labels moved.
@@ -76,6 +88,10 @@ and different bounded states.
 
 The first run is summarized in
 [`runs/2026-10-04-publication-site-069.md`](runs/2026-10-04-publication-site-069.md).
+Its exact original input is archived beside the report. That input contained a
+previous `policy` diagnosis; this is label leakage, so the run cannot support an
+independent quality claim. The updated source fixture must be treated as a new
+input version; the previous output is not a result for it.
 
 The suite uses Promptfoo's documented custom JavaScript provider interface.
 The TypeSafe page currently documents a built-in provider, but the pinned npm

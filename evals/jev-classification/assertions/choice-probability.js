@@ -15,9 +15,10 @@ module.exports = (output, context) => {
   }
 
   const probability = answer.probabilities?.[expected] ?? 0;
+  const matches = answer.choice === expected;
   return {
-    pass: answer.choice === expected,
-    score: probability,
+    pass: matches,
+    score: matches ? 1 : 0,
     reason: `expected=${expected}; actual=${answer.choice}; expected_label_probability=${probability}; label_status=${context.vars.label_status}`,
   };
 };

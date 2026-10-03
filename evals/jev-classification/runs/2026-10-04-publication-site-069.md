@@ -6,6 +6,14 @@
 - Promptfoo eval ID: `eval-58A-2026-10-03T21:30:40`
 - Requests: 2, one per opportunity prompt; each request contained both Choice questions.
 - Dataset: one SpecGraph candidate with `pilot_hypothesis` labels `eligible` / `policy`.
+- Original input: [`2026-10-04-publication-site-069.inputs.json`](2026-10-04-publication-site-069.inputs.json).
+
+Subsequent source-corpus inspection found that the original model state included
+`prior_diagnostic.category = "policy"`. That exposes a prior proposed label to
+the classifier. These responses are integration/sensitivity observations, not
+independent quality evidence; the unchanged `policy` result may reflect that
+hint. The default fixture now contains pinned source instead and excludes prior
+diagnoses. This run was not repeated on the new input.
 
 | Prompt | Opportunity Choice | Opportunity distribution | Jev confidence | Concern kind | Concern distribution | Input / output tokens |
 | --- | --- | --- | ---: | --- | --- | ---: |
