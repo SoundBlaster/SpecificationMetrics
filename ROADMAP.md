@@ -82,9 +82,19 @@ small, constrained classifier to suggest whether a candidate is a meaningful
 SpecificationCore refactoring opportunity, a mechanical construct to exclude,
 or uncertain. A suggestion does not change a reviewed classification or score.
 
+The provider-neutral v1 wire contract is documented in
+[the candidate-classification contract](docs/candidate-classification-contract.md)
+and its JSON Schemas for the [request](schemas/candidate-classification-request-v1.schema.json)
+and [suggestion artifact](schemas/candidate-classification-suggestions-v1.schema.json).
+This contract is groundwork only: the current CLI has no model-backed
+`classify` command or provider adapter. The deterministic scan, registry and
+`measure` behavior remain the source of the current S/U metric.
+
 ### Phase 1 — Labels and evaluation set
 
 - Define a versioned rubric for `eligible`, `excluded`, and `needs_review`.
+  Also classify the independent concern kind as `policy`, `mechanics`,
+  `variant_behavior`, or `unknown`.
   Examples of likely exclusions include ordinary input validation and Swift
   scope-exit `defer`; the rubric must describe exceptions and ambiguous cases.
 - Create a reviewed, stratified dataset across Python, Swift, and Rust, with
