@@ -107,12 +107,14 @@
             "temperature",
             "top_p",
             "max_output_tokens",
+            "min_confidence",
             "provider_options_digest"
           ],
           "properties": {
             "temperature": {"type": ["number", "null"]},
             "top_p": {"type": ["number", "null"]},
             "max_output_tokens": {"type": ["integer", "null"], "minimum": 1},
+            "min_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
             "provider_options_digest": {
               "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
             }

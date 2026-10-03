@@ -240,10 +240,11 @@ source snapshot.
     "adapter_version": "1.0.0",
     "prompt_digest": "sha256:...",
     "inference_config_digest": "sha256:...",
-    "inference_parameters": {
-      "temperature": 0.0,
+  "inference_parameters": {
+      "temperature": null,
       "top_p": null,
-      "max_output_tokens": 256,
+      "max_output_tokens": null,
+      "min_confidence": null,
       "provider_options_digest": "sha256:..."
     },
     "data_boundary": "hosted",
