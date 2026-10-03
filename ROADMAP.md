@@ -86,9 +86,12 @@ The provider-neutral v1 wire contract is documented in
 [the candidate-classification contract](docs/candidate-classification-contract.md)
 and its JSON Schemas for the [request](schemas/candidate-classification-request-v1.schema.json)
 and [suggestion artifact](schemas/candidate-classification-suggestions-v1.schema.json).
-This contract is groundwork only: the current CLI has no model-backed
-`classify` command or provider adapter. The deterministic scan, registry and
-`measure` behavior remain the source of the current S/U metric.
+The optional Rust `classify` command now implements a bounded Jev adapter with
+independent `opportunity` and `concern_kind` Choice questions. It revalidates
+scan freshness and emits suggestions without changing the registry or S/U
+metric. The deterministic scan, registry and `measure` behavior remain the
+source of current S/U values. Classifier quality evaluation, human review
+workflow and other provider adapters remain future work.
 
 ### Phase 1 — Labels and evaluation set
 
@@ -104,9 +107,9 @@ This contract is groundwork only: the current CLI has no model-backed
   matrices, eligible precision/recall, false exclusions, abstention rate, and
   review time. Report sample counts and rubric version with every result.
 
-### Phase 2 — Suggestion contract
+### Phase 2 — Suggestion contract and Jev adapter (implemented)
 
-- Add an optional `suggest` workflow that reads the existing scan output and
+- Add an optional `classify` workflow that reads the existing scan output and
   emits a separate, reviewable suggestion artifact. Keep `scan`, `sync`, and
   `measure` deterministic and usable without a model.
 - Each suggestion records the candidate fingerprint, proposed label, short
@@ -121,7 +124,7 @@ This contract is groundwork only: the current CLI has no model-backed
   provider failures, or low-confidence/close decisions. Never turn these into
   silent exclusions.
 
-### Phase 3 — Compare providers
+### Phase 3 — Evaluate Jev and compare providers
 
 Try the same versioned labels and evaluation set with these candidate backends:
 

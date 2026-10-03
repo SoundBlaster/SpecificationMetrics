@@ -1,0 +1,26 @@
+id = "specificationcore.default"
+version = "1"
+purpose = "Identify stable product and domain decisions that benefit from named, reusable Specifications with explicit behavior and observable outcomes."
+preferred_patterns = [
+  "Object-role policy with explicit match and evaluation",
+  "Reusable specifications composed from named rules",
+  "Specification types colocated with their owning domain feature",
+  "Variant behavior represented by types and polymorphic behavior where appropriate",
+]
+boundaries = [
+  "Keep parsing, persistence, transport, and framework mechanics in their technical adapters",
+  "Keep each feature's policy and specifications within that feature's module boundary",
+  "A specification expresses a decision; its caller coordinates effects and lifecycle",
+]
+
+[[mechanical_exclusions]]
+construct = "syntax-only parsing or serialization checks"
+reason = "Representation mechanics without a product or domain decision are not Specification opportunities."
+
+[[mechanical_exclusions]]
+construct = "resource cleanup and scope-exit handling"
+reason = "Cleanup mechanics such as defer are local lifecycle behavior unless they enforce a domain rule."
+
+[[mechanical_exclusions]]
+construct = "thin framework or protocol adaptation"
+reason = "Technical adaptation belongs at the boundary unless it embeds a stable domain decision."

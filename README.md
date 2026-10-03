@@ -4,8 +4,11 @@ A Rust CLI for measuring Specification adoption in Python, Swift, and Rust.
 It scans the current source snapshot and reports the live ratio of distinct
 Specification definitions to remaining control-flow opportunities.
 
-See the [roadmap](ROADMAP.md) for proposed System One assisted candidate
-classification with Jev, Laya, and GLiNER2.5-Decide.
+The optional `classify` command uses Jev Choice to suggest whether scanner
+candidates belong in the Specification opportunity denominator and separately
+what kind of logic they express. Suggestions never update reviewed registry
+entries or S/U counts. See the [classification contract](docs/candidate-classification-contract.md)
+for privacy boundaries, provenance, and review semantics.
 
 ## Unified collection
 
@@ -24,6 +27,25 @@ cargo run --locked -- collection-history --store metrics/specgraph.sqlite
 
 See the [collection contract](docs/collection-contract.md) for source exclusions,
 external-tool setup, before/after comparisons, statuses and strict exit codes.
+
+## Semantic candidate suggestions
+
+```bash
+export JEV_API_KEY='…'
+cargo run -- scan ../SpecGraph --include src --output /tmp/specgraph-scan.json
+cargo run -- classify \
+  --scan /tmp/specgraph-scan.json \
+  --profile configs/specificationcore-classification.toml \
+  --allow-hosted-classification \
+  --output /tmp/specgraph-classifications.json
+```
+
+The command revalidates the scan against current sources, omits candidates
+inside recognized Specifications, and sends bounded candidate contexts to the
+hosted Jev API only after the explicit opt-in flag is supplied. It makes no
+automatic retries. The report is informational and keeps the opportunity and
+concern-kind classifications on separate axes. Set `--min-confidence` only
+after calibrating the Jev-specific threshold against reviewed examples.
 
 ## Live metric
 
