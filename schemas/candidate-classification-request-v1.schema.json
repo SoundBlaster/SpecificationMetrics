@@ -146,7 +146,8 @@
         "path",
         "symbol",
         "construct_kind",
-        "excerpt"
+        "excerpt",
+        "excerpt_truncated"
       ],
       "properties": {
         "fingerprint": {"type": "string", "minLength": 1},
@@ -154,7 +155,8 @@
         "path": {"type": "string", "minLength": 1},
         "symbol": {"type": ["string", "null"]},
         "construct_kind": {"type": "string", "minLength": 1},
-        "excerpt": {"type": "string", "maxLength": 1024}
+        "excerpt": {"type": "string", "maxLength": 1024},
+        "excerpt_truncated": {"type": "boolean"}
       }
     },
     "candidate": {
@@ -182,7 +184,7 @@
         "excerpt": {"type": "string", "maxLength": 4096},
         "excerpt_truncated": {"type": "boolean"},
         "enclosing_symbol": {"type": ["string", "null"]},
-        "enclosing_source": {"type": ["string", "null"], "maxLength": 8192},
+        "enclosing_source": {"type": ["string", "null"], "maxLength": 12288},
         "enclosing_source_truncated": {"type": "boolean"},
         "related_sites": {
           "type": "array",

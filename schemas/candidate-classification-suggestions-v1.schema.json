@@ -80,7 +80,7 @@
         "id",
         "endpoint",
         "requested_model",
-        "model_revisions",
+        "returned_models",
         "adapter_version",
         "prompt_digest",
         "inference_config_digest",
@@ -92,7 +92,7 @@
         "id": {"type": "string", "minLength": 1},
         "endpoint": {"type": "string", "format": "uri"},
         "requested_model": {"type": "string", "minLength": 1},
-        "model_revisions": {
+        "returned_models": {
           "type": "array",
           "uniqueItems": true,
           "items": {"type": "string", "minLength": 1}
@@ -140,7 +140,9 @@
       "required": [
         "candidate_fingerprint",
         "context_digest",
+        "model_id",
         "model_revision",
+        "cacheable",
         "opportunity",
         "concern_kind",
         "diagnostics",
@@ -152,7 +154,9 @@
       "properties": {
         "candidate_fingerprint": {"type": "string", "minLength": 1},
         "context_digest": {"$ref": "#/$defs/digest"},
+        "model_id": {"type": ["string", "null"]},
         "model_revision": {"type": ["string", "null"]},
+        "cacheable": {"type": "boolean"},
         "opportunity": {"enum": ["eligible", "excluded", "needs_review"]},
         "concern_kind": {
           "enum": ["policy", "mechanics", "variant_behavior", "unknown"]
@@ -190,6 +194,17 @@
         }
       },
       "allOf": [
+        {
+          "if": {
+            "properties": {"cacheable": {"const": true}},
+            "required": ["cacheable"]
+          },
+          "then": {
+            "properties": {
+              "model_revision": {"type": "string", "minLength": 1}
+            }
+          }
+        },
         {
           "if": {
             "properties": {

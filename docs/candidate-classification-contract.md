@@ -76,7 +76,7 @@ publication, or prove that a proposed refactor preserves behavior.
 
 ## Classification input
 
-The future command consumes a scanner report plus a versioned architecture
+The `classify` command consumes a scanner report plus a versioned architecture
 profile, normalized as a request by
 `schemas/candidate-classification-request-v1.schema.json`. It sends one bounded
 `CandidateContext` per discovered candidate. The context contains:
@@ -84,7 +84,8 @@ profile, normalized as a request by
 - the scanner fingerprint, source language, relative path, source span and
   syntax kind;
 - the candidate excerpt and enclosing declaration, when available;
-- a bounded set of related decision sites selected from the same scan, so the
+- a bounded set of related decision sites selected from the same scan, each
+  with an explicit excerpt-truncation flag, so the
   model can notice repeated checks or dispatch spread across files;
 - the applicable portion of the architecture profile; and
 - the rubric ID and version defining the three labels.
@@ -129,15 +130,17 @@ The v1 request and result are validated by
 - artifact and schema versions;
 - source revision, source digest, scope-manifest digest and scan-report digest;
 - rubric and architecture-profile IDs, versions and digests;
-- provider, requested model, actual model/checkpoint revision per response,
+- provider, requested model, returned model identifier and optional immutable
+  revision per response,
   adapter version, prompt digest, inference-configuration digest, aggregate
   input/output token counts, run ID and generation time; and
 - exactly one suggestion for each candidate submitted in the run.
 
 Each suggestion binds to the scanner fingerprint and a digest of the complete
-bounded context. It includes both classifications and an optional rationale
-object for each axis. Diagnostics describe adapter or provider conditions, not
-semantic reasons for a classification. Provider scores are preserved
+bounded context. It includes both classifications, whether the result can be
+cached safely, and an optional rationale object for each axis. Diagnostics
+describe adapter or provider conditions, not semantic reasons for a
+classification. Provider scores are preserved
 separately for both Choice questions, with per-axis semantics. Do not normalize
 scores from different providers into a shared confidence value or treat them as
 calibrated probabilities without separate evidence.
@@ -147,9 +150,12 @@ one for `opportunity` and one for `concern_kind`. The selected options map to
 the contract enums. Preserve each returned probability distribution and
 confidence under its own axis. Jev's Choice response does not provide free-text
 rationale, so v1 records rationale as unavailable. Jev's API returns the actual
-model name and usage; record the model for each suggestion and aggregate token
-usage in run provenance. The adapter fails closed to `needs_review`/`unknown`
-if either selected option cannot be mapped to the current rubric. See the
+model name and usage; record the returned model identifier for each suggestion
+and aggregate token usage in run provenance. The API does not return an
+immutable checkpoint revision: Jev suggestions therefore set `model_revision`
+to null and `cacheable` to false. The adapter fails closed to
+`needs_review`/`unknown` if either selected option cannot be mapped to the
+current rubric. See the
 [TypeSafe System One API reference](https://api.typesafe.ai/redoc) for the
 provider request and response shape.
 
@@ -179,13 +185,16 @@ data boundary in provenance.
 
 ## Reuse and freshness
 
-A cached result is reusable only when all of these match: candidate fingerprint,
-context digest, rubric ID/version, architecture-profile digest, provider and
-model/checkpoint revision, adapter version, prompt digest, and effective
-inference-configuration digest. Changed source, context, profile, rubric or
-inference setup requires a new suggestion. A line number alone is never an
-identity. Cache records remain suggestions and never become reviewed registry
-entries automatically.
+A cached result is reusable only when `cacheable` is true and all of these
+match: candidate fingerprint, context digest, rubric ID/version,
+architecture-profile digest, provider, immutable model revision, adapter
+version, prompt digest, and effective inference-configuration digest. A
+provider that supplies only a mutable model identifier must set
+`model_revision` to null and `cacheable` to false. Jev v1 uses this
+non-cacheable mode. Changed source, context, profile, rubric or inference setup
+requires a new suggestion. A line number alone is never an identity. Cache
+records remain suggestions and never become reviewed registry entries
+automatically.
 
 For each run, the producer must verify that suggestion fingerprints form a
 one-to-one match with submitted candidates. JSON Schema validates record
@@ -236,7 +245,7 @@ source snapshot.
     "id": "jev",
     "endpoint": "https://api.typesafe.ai/v1/systemone",
     "requested_model": "jev-latest",
-    "model_revisions": ["jev-version-returned-by-provider"],
+    "returned_models": ["jev-latest"],
     "adapter_version": "1.0.0",
     "prompt_digest": "sha256:...",
     "inference_config_digest": "sha256:...",
@@ -255,7 +264,9 @@ source snapshot.
     {
       "candidate_fingerprint": "blake3:...",
       "context_digest": "sha256:...",
-      "model_revision": "jev-version-returned-by-provider",
+      "model_id": "jev-latest",
+      "model_revision": null,
+      "cacheable": false,
       "opportunity": "needs_review",
       "concern_kind": "unknown",
       "diagnostics": [],
