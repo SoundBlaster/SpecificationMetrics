@@ -31,13 +31,13 @@ expresses a named, stable rule, can be understood in its bounded object/module
 context, and would benefit from reuse or centralized observation. It does not
 label every syntactic branch as a useful Specification.
 
-V1 reason codes are:
-
-| Label | Allowed reason codes |
-| --- | --- |
-| `eligible` | `domain_decision`, `repeated_decision`, `stable_policy_boundary` |
-| `excluded` | `mechanics`, `local_construct`, `already_specification_backed` |
-| `needs_review` | `ambiguous`, `insufficient_context`, `unsupported_syntax`, `sensitive_context_omitted`, `provider_error`, `malformed_provider_output`, `close_decision` |
+The opportunity result has no semantic `reason_codes` field. A Choice answer
+provides a label and scores, not a free-text explanation. The adapter must not
+invent a rationale from the chosen label or its probabilities. Rationale is a
+nullable object with a source: Jev v1 uses `{ "text": null, "source":
+"unavailable" }`. A future provider that returns an explanation may populate
+`text` and set `source` to `provider`; an adapter-authored explanation must be
+identified as `adapter`.
 
 The independent `concern_kind` dimension suggests one of:
 
@@ -55,31 +55,12 @@ kind alone never changes the denominator. `unknown` on the concern-kind axis
 does not itself mean `needs_review` on opportunity if the eligibility decision
 is otherwise clear.
 
-The rubric's reason-code descriptions have these meanings:
-
-- `domain_decision`: a condition enforces a product or domain rule.
-- `repeated_decision`: multiple sites appear to implement the same rule or
-  dispatch over the same domain state.
-- `stable_policy_boundary`: the rule has a durable responsibility/location
-  boundary that could be named and reviewed.
-- `mechanics`: the condition handles parsing, I/O, representation, or another
-  technical operation without expressing a domain decision.
-- `local_construct`: the branch is a small, local control-flow or cleanup
-  construct with no independent reusable rule.
-- `already_specification_backed`: a recognized Specification already owns the
-  rule and this site only applies its result.
-- `ambiguous`: available evidence reasonably supports more than one label.
-- `insufficient_context`: needed enclosing or related source is unavailable.
-- `unsupported_syntax`: the classifier cannot interpret this language
-  construct under the current rubric.
-- `sensitive_context_omitted`: redaction removed information needed for a
-  reliable decision.
-- `provider_error`: the provider failed for this candidate.
-- `malformed_provider_output`: provider output could not be parsed or did not
-  match the result schema.
-- `close_decision`: a documented provider-specific abstention threshold was
-  crossed. Scores remain provider-specific and are not treated as comparable
-  confidence values.
+`diagnostics` reports adapter conditions only: `provider_error`,
+`malformed_provider_output` or `close_decision`. The first two explain why a
+suggestion fell back to `needs_review`/`unknown`. `close_decision` is only used
+when the run explicitly configures a provider-specific confidence threshold;
+the threshold is recorded in effective inference parameters and is not a
+cross-provider calibration.
 
 Suggestions are not reviewed registry dispositions. They do not change the
 registry, the live `S / U` counts, liveness, or stored metric snapshots. The
@@ -126,10 +107,9 @@ classification; it does not alter scanner scope or metric configuration.
 The exact profile bytes used for a run are identified by a digest in the
 result.
 
-The request carries the exact opportunity-label definitions, concern-kind
-definitions and opportunity reason-code
-descriptions alongside their ID, version and digest. This keeps provider
-adapters from silently inventing their own label meanings. The position uses
+The request carries the exact opportunity-label and concern-kind definitions
+alongside their ID, version and digest. This keeps provider adapters from
+silently inventing their own label meanings. The position uses
 1-based lines and columns with an exclusive end position. Request schemas bound
 individual strings and collection sizes; the adapter must additionally enforce
 the aggregate UTF-8 byte budgets above.
@@ -149,14 +129,15 @@ The v1 request and result are validated by
 - artifact and schema versions;
 - source revision, source digest, scope-manifest digest and scan-report digest;
 - rubric and architecture-profile IDs, versions and digests;
-- provider, model/checkpoint revision, adapter version, prompt digest,
-  inference-configuration digest, run ID and generation time; and
+- provider, requested model, actual model/checkpoint revision per response,
+  adapter version, prompt digest, inference-configuration digest, aggregate
+  input/output token counts, run ID and generation time; and
 - exactly one suggestion for each candidate submitted in the run.
 
 Each suggestion binds to the scanner fingerprint and a digest of the complete
-bounded context. It includes both classifications and a short rationale for
-each. `reason_codes` apply to the opportunity result; they are controlled,
-non-empty diagnostic tags which supplement prose. Provider scores are preserved
+bounded context. It includes both classifications and an optional rationale
+object for each axis. Diagnostics describe adapter or provider conditions, not
+semantic reasons for a classification. Provider scores are preserved
 separately for both Choice questions, with per-axis semantics. Do not normalize
 scores from different providers into a shared confidence value or treat them as
 calibrated probabilities without separate evidence.
@@ -164,11 +145,13 @@ calibrated probabilities without separate evidence.
 The Jev adapter uses two fixed-label Choice questions in one System One request:
 one for `opportunity` and one for `concern_kind`. The selected options map to
 the contract enums. Preserve each returned probability distribution and
-confidence under its own axis. Jev's API returns the actual model name and
-usage; record those with the run provenance. The adapter fails closed to
-`needs_review`/`unknown` if either selected option cannot be mapped to the
-current rubric. See the [TypeSafe System One API reference](https://api.typesafe.ai/redoc)
-for the provider request and response shape.
+confidence under its own axis. Jev's Choice response does not provide free-text
+rationale, so v1 records rationale as unavailable. Jev's API returns the actual
+model name and usage; record the model for each suggestion and aggregate token
+usage in run provenance. The adapter fails closed to `needs_review`/`unknown`
+if either selected option cannot be mapped to the current rubric. See the
+[TypeSafe System One API reference](https://api.typesafe.ai/redoc) for the
+provider request and response shape.
 
 Digests are lowercase, algorithm-prefixed hex (`blake3:<64 hex>` or
 `sha256:<64 hex>`). The source digest is the scanner's BLAKE3 digest with its
@@ -180,8 +163,9 @@ hashes the effective allowlisted parameters; common sampling parameters are
 also recorded directly. This lets a reviewer identify changed inputs without
 copying source code into the result.
 
-If a provider fails for an individual candidate, emit `needs_review` with the
-`provider_error` reason code when an artifact can still be produced. Every
+If a provider fails for an individual candidate, emit `needs_review` and
+`unknown`, with a `provider_error` diagnostic when an artifact can still be
+produced. Every
 input candidate is accounted for once; failure must not silently remove it
 from the result. A malformed whole response may fail the command and produce
 no authoritative suggestion artifact.
@@ -250,8 +234,9 @@ source snapshot.
   },
   "provider": {
     "id": "jev",
-    "model": "configured-model",
-    "model_revision": "checkpoint-or-api-revision",
+    "endpoint": "https://api.typesafe.ai/v1/systemone",
+    "requested_model": "jev-latest",
+    "model_revisions": ["jev-version-returned-by-provider"],
     "adapter_version": "1.0.0",
     "prompt_digest": "sha256:...",
     "inference_config_digest": "sha256:...",
@@ -261,18 +246,23 @@ source snapshot.
       "max_output_tokens": 256,
       "provider_options_digest": "sha256:..."
     },
-    "data_boundary": "hosted"
+    "data_boundary": "hosted",
+    "usage": {"input_tokens": 1, "output_tokens": 1}
   },
   "suggestions": [
     {
       "candidate_fingerprint": "blake3:...",
       "context_digest": "sha256:...",
+      "model_revision": "jev-version-returned-by-provider",
       "opportunity": "needs_review",
       "concern_kind": "unknown",
-      "reason_codes": ["insufficient_context"],
-      "opportunity_rationale": "The enclosing behavior is not available in the bounded context.",
-      "concern_rationale": "The site alone does not show whether this is policy or mechanics.",
-      "provider_scores": {"opportunity": null, "concern_kind": null},
+      "diagnostics": [],
+      "opportunity_rationale": {"text": null, "source": "unavailable"},
+      "concern_rationale": {"text": null, "source": "unavailable"},
+      "provider_scores": {
+        "opportunity": null,
+        "concern_kind": null
+      },
       "score_semantics": {"opportunity": null, "concern_kind": null}
     }
   ]

@@ -55,8 +55,7 @@
         "version",
         "digest",
         "opportunity_definitions",
-        "concern_kind_definitions",
-        "reason_codes"
+        "concern_kind_definitions"
       ],
       "properties": {
         "id": {"type": "string", "minLength": 1},
@@ -81,40 +80,6 @@
             "mechanics": {"type": "string", "minLength": 1, "maxLength": 1000},
             "variant_behavior": {"type": "string", "minLength": 1, "maxLength": 1000},
             "unknown": {"type": "string", "minLength": 1, "maxLength": 1000}
-          }
-        },
-        "reason_codes": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "domain_decision",
-            "repeated_decision",
-            "stable_policy_boundary",
-            "mechanics",
-            "local_construct",
-            "already_specification_backed",
-            "ambiguous",
-            "insufficient_context",
-            "unsupported_syntax",
-            "sensitive_context_omitted",
-            "provider_error",
-            "malformed_provider_output",
-            "close_decision"
-          ],
-          "properties": {
-            "domain_decision": {"type": "string", "minLength": 1, "maxLength": 256},
-            "repeated_decision": {"type": "string", "minLength": 1, "maxLength": 256},
-            "stable_policy_boundary": {"type": "string", "minLength": 1, "maxLength": 256},
-            "mechanics": {"type": "string", "minLength": 1, "maxLength": 256},
-            "local_construct": {"type": "string", "minLength": 1, "maxLength": 256},
-            "already_specification_backed": {"type": "string", "minLength": 1, "maxLength": 256},
-            "ambiguous": {"type": "string", "minLength": 1, "maxLength": 256},
-            "insufficient_context": {"type": "string", "minLength": 1, "maxLength": 256},
-            "unsupported_syntax": {"type": "string", "minLength": 1, "maxLength": 256},
-            "sensitive_context_omitted": {"type": "string", "minLength": 1, "maxLength": 256},
-            "provider_error": {"type": "string", "minLength": 1, "maxLength": 256},
-            "malformed_provider_output": {"type": "string", "minLength": 1, "maxLength": 256},
-            "close_decision": {"type": "string", "minLength": 1, "maxLength": 256}
           }
         }
       }
