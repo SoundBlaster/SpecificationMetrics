@@ -106,7 +106,7 @@ struct ProviderProvenance {
     id: &'static str,
     endpoint: String,
     requested_model: String,
-    model_revisions: Vec<String>,
+    returned_models: Vec<String>,
     adapter_version: &'static str,
     prompt_digest: String,
     inference_config_digest: String,
@@ -135,7 +135,9 @@ struct Usage {
 struct Suggestion {
     candidate_fingerprint: String,
     context_digest: String,
+    model_id: Option<String>,
     model_revision: Option<String>,
+    cacheable: bool,
     opportunity: Opportunity,
     concern_kind: ConcernKind,
     diagnostics: Vec<Diagnostic>,
@@ -225,6 +227,7 @@ struct RelatedSite {
     symbol: Option<String>,
     construct_kind: String,
     excerpt: String,
+    excerpt_truncated: bool,
 }
 
 #[derive(Debug, Deserialize)]
@@ -250,6 +253,12 @@ struct JevClient {
     bearer_token: String,
 }
 
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum JevError {
+    Provider,
+    Malformed,
+}
+
 impl JevClient {
     fn new(endpoint: &str, model: &str, token: String, timeout: Duration) -> Result<Self> {
         validate_endpoint(endpoint)?;
@@ -272,7 +281,7 @@ impl JevClient {
         &self,
         context: &CandidateContext,
         profile: &ArchitectureProfile,
-    ) -> Result<JevResponse> {
+    ) -> std::result::Result<JevResponse, JevError> {
         let state = json!({
             "candidate": context,
             "architecture_profile": profile,
@@ -289,13 +298,17 @@ impl JevClient {
             .header(CONTENT_TYPE, "application/json")
             .json(&body)
             .send()
-            .context("Jev request failed")?;
+            .map_err(|_| JevError::Provider)?;
         if !response.status().is_success() {
-            bail!("Jev returned HTTP status {}", response.status());
+            return Err(JevError::Provider);
         }
         let bytes = bounded_response_body(&mut response)?;
-        serde_json::from_slice(&bytes).context("Jev returned malformed JSON")
+        parse_response_body(&bytes)
     }
+}
+
+fn parse_response_body(bytes: &[u8]) -> std::result::Result<JevResponse, JevError> {
+    serde_json::from_slice(bytes).map_err(|_| JevError::Malformed)
 }
 
 pub(crate) fn classify(options: ClassifyOptions<'_>) -> Result<ClassificationReport> {
@@ -445,7 +458,14 @@ pub(crate) fn classify(options: ClassifyOptions<'_>) -> Result<ClassificationRep
                     .saturating_add(response.usage.output_tokens);
                 suggestion_from_response(candidate, context_digest, response, min_confidence)
             }
-            Err(_) => fallback_suggestion(candidate, context_digest, Diagnostic::ProviderError),
+            Err(JevError::Provider) => {
+                fallback_suggestion(candidate, context_digest, Diagnostic::ProviderError)
+            }
+            Err(JevError::Malformed) => fallback_suggestion(
+                candidate,
+                context_digest,
+                Diagnostic::MalformedProviderOutput,
+            ),
         };
         suggestions.push(suggestion);
     }
@@ -482,7 +502,7 @@ pub(crate) fn classify(options: ClassifyOptions<'_>) -> Result<ClassificationRep
             id: "jev",
             endpoint: endpoint.to_owned(),
             requested_model: model.to_owned(),
-            model_revisions: actual_models.into_iter().collect(),
+            returned_models: actual_models.into_iter().collect(),
             adapter_version: ADAPTER_VERSION,
             prompt_digest,
             inference_config_digest,
@@ -575,16 +595,15 @@ fn validate_endpoint(endpoint: &str) -> Result<()> {
     Ok(())
 }
 
-fn bounded_response_body(response: &mut Response) -> Result<Vec<u8>> {
+fn bounded_response_body(response: &mut Response) -> std::result::Result<Vec<u8>, JevError> {
     let mut bytes = Vec::new();
     response
         .take(MAX_RESPONSE_BYTES + 1)
         .read_to_end(&mut bytes)
-        .context("cannot read Jev response")?;
-    ensure!(
-        bytes.len() as u64 <= MAX_RESPONSE_BYTES,
-        "Jev response exceeds 1 MiB limit"
-    );
+        .map_err(|_| JevError::Provider)?;
+    if bytes.len() as u64 > MAX_RESPONSE_BYTES {
+        return Err(JevError::Malformed);
+    }
     Ok(bytes)
 }
 
@@ -640,7 +659,7 @@ fn build_context(
         .filter(|other| other.language == candidate.language && other.kind == candidate.kind)
         .take(8)
     {
-        let (excerpt, _) = truncate_utf8(&other.excerpt, MAX_RELATED_SITE_BYTES);
+        let (excerpt, excerpt_truncated) = truncate_utf8(&other.excerpt, MAX_RELATED_SITE_BYTES);
         related_sites.push(RelatedSite {
             fingerprint: other.fingerprint.clone(),
             language: other.language,
@@ -648,6 +667,7 @@ fn build_context(
             symbol: None,
             construct_kind: other.kind.clone(),
             excerpt,
+            excerpt_truncated,
         });
     }
     let context = CandidateContext {
@@ -668,12 +688,45 @@ fn build_context(
         enclosing_source_truncated,
         related_sites,
     };
-    let encoded = serde_json::to_vec(&context)?;
-    ensure!(
-        encoded.len() <= MAX_CONTEXT_BYTES,
-        "bounded candidate context exceeds 24 KiB"
-    );
-    Ok(context)
+    fit_context(context)
+}
+
+fn fit_context(mut context: CandidateContext) -> Result<CandidateContext> {
+    loop {
+        let encoded = serde_json::to_vec(&context)?;
+        if encoded.len() <= MAX_CONTEXT_BYTES {
+            return Ok(context);
+        }
+        let excess = encoded.len() - MAX_CONTEXT_BYTES;
+        let mut reduced = false;
+        for related in context.related_sites.iter_mut().rev() {
+            if !related.excerpt.is_empty() {
+                let target = related.excerpt.len().saturating_sub(excess.max(1));
+                related.excerpt = truncate_utf8(&related.excerpt, target).0;
+                related.excerpt_truncated = true;
+                reduced = true;
+                break;
+            }
+        }
+        if !reduced
+            && let Some(enclosing_source) = context.enclosing_source.as_mut()
+            && !enclosing_source.is_empty()
+        {
+            let target = enclosing_source.len().saturating_sub(excess.max(1));
+            *enclosing_source = truncate_utf8(enclosing_source, target).0;
+            context.enclosing_source_truncated = true;
+            reduced = true;
+        }
+        if !reduced && !context.excerpt.is_empty() {
+            let target = context.excerpt.len().saturating_sub(excess.max(1));
+            context.excerpt = truncate_utf8(&context.excerpt, target).0;
+            context.excerpt_truncated = true;
+            reduced = true;
+        }
+        if !reduced {
+            bail!("candidate metadata alone exceeds the 24 KiB context limit");
+        }
+    }
 }
 
 fn language_for(language: Language) -> tree_sitter::Language {
@@ -825,7 +878,9 @@ fn suggestion_from_response(
     Suggestion {
         candidate_fingerprint: candidate.fingerprint.clone(),
         context_digest,
-        model_revision: Some(response.model),
+        model_id: Some(response.model),
+        model_revision: None,
+        cacheable: false,
         opportunity,
         concern_kind,
         diagnostics,
@@ -865,7 +920,9 @@ fn fallback_suggestion(
     Suggestion {
         candidate_fingerprint: candidate.fingerprint.clone(),
         context_digest,
+        model_id: None,
         model_revision: None,
+        cacheable: false,
         opportunity: Opportunity::NeedsReview,
         concern_kind: ConcernKind::Unknown,
         diagnostics: vec![diagnostic],
@@ -996,4 +1053,67 @@ fn make_run_id(timestamp: &str, source_digest: &str, profile_digest: &str) -> St
     let seed = format!("{timestamp}:{source_digest}:{profile_digest}:{nanos}");
     let hash = blake3::hash(seed.as_bytes()).to_hex().to_string();
     format!("run-{}-{}", nanos, &hash[..12])
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn context() -> CandidateContext {
+        CandidateContext {
+            fingerprint: "blake3:candidate".to_owned(),
+            language: Language::Python,
+            path: "src/example.py".to_owned(),
+            position: Position {
+                start_line: 1,
+                start_column: 1,
+                end_line: 1,
+                end_column: 2,
+            },
+            construct_kind: "if_statement".to_owned(),
+            excerpt: "x".repeat(MAX_EXCERPT_BYTES),
+            excerpt_truncated: false,
+            enclosing_symbol: Some("example".to_owned()),
+            enclosing_source: Some("y".repeat(MAX_DECLARATION_BYTES)),
+            enclosing_source_truncated: false,
+            related_sites: (0..8)
+                .map(|index| RelatedSite {
+                    fingerprint: format!("blake3:related-{index}"),
+                    language: Language::Python,
+                    path: format!("src/related-{index}.py"),
+                    symbol: None,
+                    construct_kind: "if_statement".to_owned(),
+                    excerpt: "z".repeat(MAX_RELATED_SITE_BYTES),
+                    excerpt_truncated: false,
+                })
+                .collect(),
+        }
+    }
+
+    #[test]
+    fn aggregate_context_limit_trims_excerpts_and_marks_them() {
+        let fitted = fit_context(context()).expect("context should fit after excerpt trimming");
+        assert!(serde_json::to_vec(&fitted).unwrap().len() <= MAX_CONTEXT_BYTES);
+        assert!(
+            fitted
+                .related_sites
+                .iter()
+                .any(|site| site.excerpt_truncated)
+        );
+    }
+
+    #[test]
+    fn context_fails_if_non_excerpt_metadata_exceeds_limit() {
+        let mut context = context();
+        context.path = "p".repeat(MAX_CONTEXT_BYTES + 1);
+        assert!(fit_context(context).is_err());
+    }
+
+    #[test]
+    fn invalid_json_is_reported_as_malformed_provider_output() {
+        assert!(matches!(
+            parse_response_body(b"{"),
+            Err(JevError::Malformed)
+        ));
+    }
 }

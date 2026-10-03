@@ -95,7 +95,11 @@ context budget is 24 KiB per candidate: at most 12 KiB for the enclosing
 declaration, 4 KiB for the candidate excerpt, and eight related sites of at
 most 1 KiB each. The applicable architecture-profile excerpt adds at most
 4 KiB. Enforce limits using UTF-8 byte lengths and the aggregate budget;
-JSON Schema character limits alone do not guarantee a byte limit. Truncation
+JSON Schema character limits alone do not guarantee a byte limit. If the combined
+context exceeds 24 KiB, the adapter trims related-site excerpts first, then the
+enclosing declaration, then the candidate excerpt, marking each affected field
+as truncated. If the remaining non-excerpt metadata alone exceeds the budget,
+classification stops with an explicit error. Truncation
 must be marked in the input metadata. If relevant context is missing or
 redacted, the result should be `needs_review` when that omission prevents a
 reliable label.

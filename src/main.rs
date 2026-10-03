@@ -126,7 +126,7 @@ enum Command {
         profile: PathBuf,
         #[arg(long)]
         registry: Option<PathBuf>,
-        #[arg(long, conflicts_with = "includes")]
+        #[arg(long)]
         scope_manifest: Option<PathBuf>,
         #[arg(long, default_value = "https://api.typesafe.ai/v1/systemone")]
         endpoint: String,
