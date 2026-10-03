@@ -50,6 +50,7 @@ test('sends one typed request and preserves Jev output metadata', async () => {
     .callApi('{"candidate":"fixture"}');
   assert.equal(calls, 1);
   assert.deepEqual(result.output, responseBody.answers);
+  assert.deepEqual(result.tokenUsage, { prompt: 10, completion: 2, total: 12 });
   assert.equal(result.metadata.typesafe.returnedModel, 'jev-1.13.0');
   assert.deepEqual(result.metadata.typesafe.usage, responseBody.usage);
 });

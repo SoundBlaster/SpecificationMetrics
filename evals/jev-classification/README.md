@@ -44,9 +44,6 @@ Promptfoo UI can be opened with:
 npm run view
 ```
 
-Use `npm run eval:fresh` when explicitly requesting a fresh comparison that
-bypasses Promptfoo's response cache. Do not use it in automated retries.
-
 ## Offline checks
 
 ```bash
@@ -77,10 +74,16 @@ the comparison isolates one prompt factor. It does not evaluate source-context
 size or redaction; those require a separate experiment with the same prompts
 and different bounded states.
 
+The first run is summarized in
+[`runs/2026-10-04-publication-site-069.md`](runs/2026-10-04-publication-site-069.md).
+
 The suite uses Promptfoo's documented custom JavaScript provider interface.
 The TypeSafe page currently documents a built-in provider, but the pinned npm
 release `0.123.1` does not resolve `typesafe:jev-1.13.0`; the direct adapter
 keeps this evaluation runnable against that published release. The adapter
 uses one HTTP request per case/provider pair, a 30-second timeout, rejects
-redirects, caps response size, and does not implement retries. Promptfoo's
-response cache remains available unless `eval:fresh` is selected.
+redirects, caps response size, and does not implement retries. It uses direct
+`fetch` so Promptfoo's HTTP response cache is bypassed: each `npm run eval`
+invocation makes one fresh request per case/provider pair. This trades repeated
+run cost for a bounded, non-retrying request path; keep the case set small
+until a cache strategy is added and reviewed.

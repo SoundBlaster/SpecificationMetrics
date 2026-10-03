@@ -99,6 +99,11 @@ export default class JevProvider {
 
       return {
         output: body.answers,
+        tokenUsage: body.usage && {
+          prompt: body.usage.input_tokens ?? 0,
+          completion: body.usage.output_tokens ?? 0,
+          total: (body.usage.input_tokens ?? 0) + (body.usage.output_tokens ?? 0),
+        },
         metadata: {
           typesafe: {
             requestedModel: this.config.model || 'jev-1.13.0',

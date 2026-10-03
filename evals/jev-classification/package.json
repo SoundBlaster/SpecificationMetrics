@@ -7,8 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "eval": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml",
-    "eval:fresh": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml --no-cache",
+    "eval": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml --max-concurrency 1",
     "validate": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo validate config -c promptfooconfig.yaml",
     "test:offline": "node --test providers/jev.test.mjs",
     "view": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo view"

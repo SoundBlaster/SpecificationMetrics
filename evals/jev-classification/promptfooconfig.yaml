@@ -4,7 +4,7 @@ description: >-
 maxConcurrency: 1
 
 prompts:
-  - '{{{candidate_json}}}'
+  - '{{candidate_json}}'
 
 providers:
   - id: file://providers/jev.mjs
