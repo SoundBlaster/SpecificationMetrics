@@ -1,9 +1,9 @@
 # Candidate classification contract
 
 Version 1 defines an optional, provider-neutral request and suggestion artifact
-for System One classification of Specification adoption candidates. It is a wire
-contract for a future `classify` command; the current CLI does not call Jev,
-Laya, GLiNER or another model.
+for System One classification of Specification adoption candidates. The Rust
+CLI implements the Jev adapter; Laya, GLiNER and other providers are not
+implemented by this command.
 
 ## Authority and metric boundary
 
@@ -180,8 +180,44 @@ The artifact records provenance, not source text. It must not contain API
 credentials, authorization headers, or a duplicate of the candidate context.
 Only allowlisted, non-secret inference options may be recorded. Hosted
 classification requires an explicit opt-in because bounded code context is
-still source code leaving the machine. Local and hosted runs identify their
-data boundary in provenance.
+still source code leaving the machine. This initial Jev adapter does not
+automatically detect or redact secrets; review the selected scope and source
+before using the hosted opt-in. Local and hosted runs identify their data
+boundary in provenance.
+
+The Rust CLI accepts a TOML architecture profile with the fields shown in the
+request schema. It reads the Jev bearer token from `JEV_API_KEY` by default;
+the variable name can be changed with `--api-key-env`, but its value is never
+written to logs or the artifact. Hosted requests require
+`--allow-hosted-classification`. The implementation makes one request per
+candidate, disables HTTP redirects and automatic retries, applies a request
+timeout, and limits provider responses to 1 MiB. A provider failure for one
+candidate becomes a `provider_error` suggestion so the other candidates can
+still be reported.
+
+Before classifying, the CLI re-scans the source snapshot represented by the
+scan report. It refuses to proceed if the source digest, scan scope, or
+candidate fingerprints have changed. If the original scan used a scope
+manifest, pass the same file again with `--scope-manifest`. The optional
+`--registry` argument omits candidates that already have a human-reviewed
+eligible or excluded disposition; it never changes the registry.
+
+Example:
+
+```bash
+export JEV_API_KEY='…'
+specification-metrics scan /path/to/project --include src --output /tmp/scan.json
+specification-metrics classify \
+  --scan /tmp/scan.json \
+  --profile configs/specificationcore-classification.toml \
+  --allow-hosted-classification \
+  --output /tmp/classifications.json
+```
+
+Add `--min-confidence 0.7` to apply a Jev-specific abstention threshold
+independently to each axis. This is recorded in inference provenance. It is not
+a calibrated threshold and should be evaluated against human-reviewed labels
+before being used operationally.
 
 ## Reuse and freshness
 
@@ -249,7 +285,7 @@ source snapshot.
     "adapter_version": "1.0.0",
     "prompt_digest": "sha256:...",
     "inference_config_digest": "sha256:...",
-  "inference_parameters": {
+    "inference_parameters": {
       "temperature": null,
       "top_p": null,
       "max_output_tokens": null,

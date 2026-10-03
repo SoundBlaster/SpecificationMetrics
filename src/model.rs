@@ -29,7 +29,7 @@ impl Language {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Candidate {
     pub fingerprint: String,
     pub language: Language,
@@ -91,7 +91,7 @@ pub struct SourceSnapshot {
     pub bytes: Vec<u8>,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct ScanReport {
     #[serde(skip)]
     pub sources: Vec<SourceSnapshot>,
