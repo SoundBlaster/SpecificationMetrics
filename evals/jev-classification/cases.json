@@ -1,0 +1,27 @@
+[
+  {
+    "description": "SpecGraph publication.site.069: workspace allocation must match the requested publication bootstrap.",
+    "vars": {
+      "candidate_json": "{\"candidate_id\":\"publication.site.069\",\"source\":{\"language\":\"Python\",\"path\":\"tools/subject_publication.py\",\"symbol\":\"_verify_publication\",\"construct\":\"compound require guard\"},\"site\":{\"condition\":\"allocation workspace identity equals requested topology workspace identity; allocation source ref equals request source ref; expected commit equals request expected commit; identity allocation is authorized; source-ref initialization is authorized; declaration digest equals the SHA-256 of the exact workspace declaration bytes\",\"failure\":\"workspace allocation covers a different bootstrap\"},\"bounded_context\":{\"purpose\":\"The rule binds publication to a specific workspace, ref, commit, two explicit authorization decisions, and exact declaration bytes.\",\"nearby_existing_specifications\":[\"human approval\",\"reviewed record equality\",\"transition approval\"],\"prior_diagnostic\":{\"category\":\"policy\",\"boundary_violation\":false,\"classification_status\":\"proposed\"}}}",
+      "expected_opportunity": "eligible",
+      "expected_concern_kind": "policy",
+      "label_status": "pilot_hypothesis"
+    },
+    "assert": [
+      {
+        "type": "javascript",
+        "value": "file://assertions/choice-probability.js",
+        "config": {
+          "axis": "opportunity"
+        }
+      },
+      {
+        "type": "javascript",
+        "value": "file://assertions/choice-probability.js",
+        "config": {
+          "axis": "concern_kind"
+        }
+      }
+    ]
+  }
+]
