@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:specification-metrics:candidate-classification-suggestions:1",
+  "title": "SpecificationMetrics candidate classification suggestions v1",
+  "description": "Informational model suggestions. This artifact does not update the reviewed registry or S/U metric.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_kind",
+    "schema_version",
+    "run_id",
+    "generated_at",
+    "source",
+    "rubric",
+    "architecture_profile",
+    "provider",
+    "suggestions"
+  ],
+  "properties": {
+    "artifact_kind": {"const": "candidate_classification_suggestions"},
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source": {"$ref": "#/$defs/source"},
+    "rubric": {"$ref": "#/$defs/rubric"},
+    "architecture_profile": {"$ref": "#/$defs/architectureProfile"},
+    "provider": {"$ref": "#/$defs/provider"},
+    "suggestions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/suggestion"}
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^(sha256|blake3):[a-f0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "source_digest",
+        "scope_manifest_digest",
+        "scan_report_digest"
+      ],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "source_digest": {"$ref": "#/$defs/digest"},
+        "scope_manifest_digest": {
+          "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
+        },
+        "scan_report_digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "rubric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "digest"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1},
+        "digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "architectureProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "digest"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "model",
+        "model_revision",
+        "adapter_version",
+        "prompt_digest",
+        "inference_config_digest",
+        "inference_parameters",
+        "data_boundary"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1},
+        "model_revision": {"type": ["string", "null"]},
+        "adapter_version": {"type": "string", "minLength": 1},
+        "prompt_digest": {"$ref": "#/$defs/digest"},
+        "inference_config_digest": {"$ref": "#/$defs/digest"},
+        "inference_parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "temperature",
+            "top_p",
+            "max_output_tokens",
+            "provider_options_digest"
+          ],
+          "properties": {
+            "temperature": {"type": ["number", "null"]},
+            "top_p": {"type": ["number", "null"]},
+            "max_output_tokens": {"type": ["integer", "null"], "minimum": 1},
+            "provider_options_digest": {
+              "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
+            }
+          }
+        },
+        "data_boundary": {"enum": ["local", "hosted"]}
+      }
+    },
+    "suggestion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_fingerprint",
+        "context_digest",
+        "label",
+        "reason_codes",
+        "rationale",
+        "provider_scores",
+        "score_semantics"
+      ],
+      "properties": {
+        "candidate_fingerprint": {"type": "string", "minLength": 1},
+        "context_digest": {"$ref": "#/$defs/digest"},
+        "label": {"enum": ["eligible", "excluded", "needs_review"]},
+        "reason_codes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "domain_decision",
+              "repeated_decision",
+              "stable_policy_boundary",
+              "mechanics",
+              "local_construct",
+              "already_specification_backed",
+              "ambiguous",
+              "insufficient_context",
+              "unsupported_syntax",
+              "sensitive_context_omitted",
+              "provider_error",
+              "malformed_provider_output",
+              "close_decision"
+            ]
+          }
+        },
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 500},
+        "provider_scores": {
+          "oneOf": [
+            {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {"type": "number"}
+            },
+            {"type": "null"}
+          ]
+        },
+        "score_semantics": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"provider_scores": {"type": "object"}}},
+          "then": {"properties": {"score_semantics": {"type": "string", "minLength": 1}}}
+        },
+        {
+          "if": {"properties": {"label": {"const": "needs_review"}}},
+          "then": {
+            "properties": {
+              "reason_codes": {
+                "contains": {
+                  "enum": [
+                    "ambiguous",
+                    "insufficient_context",
+                    "unsupported_syntax",
+                    "sensitive_context_omitted",
+                    "provider_error",
+                    "malformed_provider_output",
+                    "close_decision"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"label": {"const": "eligible"}}},
+          "then": {
+            "properties": {
+              "reason_codes": {
+                "contains": {
+                  "enum": ["domain_decision", "repeated_decision", "stable_policy_boundary"]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"label": {"const": "excluded"}}},
+          "then": {
+            "properties": {
+              "reason_codes": {
+                "contains": {
+                  "enum": ["mechanics", "local_construct", "already_specification_backed"]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

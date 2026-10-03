@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:specification-metrics:candidate-classification-request:1",
+  "title": "SpecificationMetrics candidate classification request v1",
+  "description": "Bounded source and project context supplied to an optional classifier.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_kind",
+    "schema_version",
+    "source",
+    "rubric",
+    "architecture_profile",
+    "candidates"
+  ],
+  "properties": {
+    "artifact_kind": {"const": "candidate_classification_request"},
+    "schema_version": {"const": 1},
+    "source": {"$ref": "#/$defs/source"},
+    "rubric": {"$ref": "#/$defs/rubric"},
+    "architecture_profile": {"$ref": "#/$defs/architectureProfile"},
+    "candidates": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/candidate"}
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^(sha256|blake3):[a-f0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "source_digest",
+        "scope_manifest_digest",
+        "scan_report_digest"
+      ],
+      "properties": {
+        "revision": {"type": ["string", "null"]},
+        "source_digest": {"$ref": "#/$defs/digest"},
+        "scope_manifest_digest": {
+          "oneOf": [{"$ref": "#/$defs/digest"}, {"type": "null"}]
+        },
+        "scan_report_digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "rubric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "digest", "label_definitions", "reason_codes"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1},
+        "digest": {"$ref": "#/$defs/digest"},
+        "label_definitions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["eligible", "excluded", "needs_review"],
+          "properties": {
+            "eligible": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "excluded": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "needs_review": {"type": "string", "minLength": 1, "maxLength": 1000}
+          }
+        },
+        "reason_codes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "domain_decision",
+            "repeated_decision",
+            "stable_policy_boundary",
+            "mechanics",
+            "local_construct",
+            "already_specification_backed",
+            "ambiguous",
+            "insufficient_context",
+            "unsupported_syntax",
+            "sensitive_context_omitted",
+            "provider_error",
+            "malformed_provider_output",
+            "close_decision"
+          ],
+          "properties": {
+            "domain_decision": {"type": "string", "minLength": 1, "maxLength": 256},
+            "repeated_decision": {"type": "string", "minLength": 1, "maxLength": 256},
+            "stable_policy_boundary": {"type": "string", "minLength": 1, "maxLength": 256},
+            "mechanics": {"type": "string", "minLength": 1, "maxLength": 256},
+            "local_construct": {"type": "string", "minLength": 1, "maxLength": 256},
+            "already_specification_backed": {"type": "string", "minLength": 1, "maxLength": 256},
+            "ambiguous": {"type": "string", "minLength": 1, "maxLength": 256},
+            "insufficient_context": {"type": "string", "minLength": 1, "maxLength": 256},
+            "unsupported_syntax": {"type": "string", "minLength": 1, "maxLength": 256},
+            "sensitive_context_omitted": {"type": "string", "minLength": 1, "maxLength": 256},
+            "provider_error": {"type": "string", "minLength": 1, "maxLength": 256},
+            "malformed_provider_output": {"type": "string", "minLength": 1, "maxLength": 256},
+            "close_decision": {"type": "string", "minLength": 1, "maxLength": 256}
+          }
+        }
+      }
+    },
+    "architectureProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "digest",
+        "purpose",
+        "preferred_patterns",
+        "boundaries",
+        "mechanical_exclusions"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "digest": {"$ref": "#/$defs/digest"},
+        "purpose": {"type": "string", "minLength": 1, "maxLength": 768},
+        "preferred_patterns": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {"type": "string", "minLength": 1, "maxLength": 256}
+        },
+        "boundaries": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {"type": "string", "minLength": 1, "maxLength": 256}
+        },
+        "mechanical_exclusions": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["construct", "reason"],
+            "properties": {
+              "construct": {"type": "string", "minLength": 1, "maxLength": 128},
+              "reason": {"type": "string", "minLength": 1, "maxLength": 256}
+            }
+          }
+        }
+      }
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_line", "start_column", "end_line", "end_column"],
+      "properties": {
+        "start_line": {"type": "integer", "minimum": 1},
+        "start_column": {"type": "integer", "minimum": 1},
+        "end_line": {"type": "integer", "minimum": 1},
+        "end_column": {"type": "integer", "minimum": 1}
+      }
+    },
+    "relatedSite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fingerprint",
+        "language",
+        "path",
+        "symbol",
+        "construct_kind",
+        "excerpt"
+      ],
+      "properties": {
+        "fingerprint": {"type": "string", "minLength": 1},
+        "language": {"enum": ["python", "swift", "rust"]},
+        "path": {"type": "string", "minLength": 1},
+        "symbol": {"type": ["string", "null"]},
+        "construct_kind": {"type": "string", "minLength": 1},
+        "excerpt": {"type": "string", "maxLength": 1024}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fingerprint",
+        "language",
+        "path",
+        "position",
+        "construct_kind",
+        "excerpt",
+        "excerpt_truncated",
+        "enclosing_symbol",
+        "enclosing_source",
+        "enclosing_source_truncated",
+        "related_sites"
+      ],
+      "properties": {
+        "fingerprint": {"type": "string", "minLength": 1},
+        "language": {"enum": ["python", "swift", "rust"]},
+        "path": {"type": "string", "minLength": 1},
+        "position": {"$ref": "#/$defs/position"},
+        "construct_kind": {"type": "string", "minLength": 1},
+        "excerpt": {"type": "string", "maxLength": 4096},
+        "excerpt_truncated": {"type": "boolean"},
+        "enclosing_symbol": {"type": ["string", "null"]},
+        "enclosing_source": {"type": ["string", "null"], "maxLength": 8192},
+        "enclosing_source_truncated": {"type": "boolean"},
+        "related_sites": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/relatedSite"}
+        }
+      }
+    }
+  }
+}
