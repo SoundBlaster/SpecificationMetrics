@@ -1,0 +1,81 @@
+description: >-
+  Prompt-only comparison of two Jev Choice rubrics for SpecificationMetrics
+  candidate classification. This is an opt-in live evaluation.
+maxConcurrency: 1
+
+prompts:
+  - '{{candidate_json}}'
+
+providers:
+  - id: file://providers/jev.mjs
+    label: baseline-v1
+    config:
+      model: jev-1.13.0
+      questions:
+        opportunity:
+          type: choice
+          instructions: >-
+            Based only on the bounded state, decide whether this source site
+            belongs in the Specification opportunity denominator. Choose
+            eligible for a stable domain decision or policy suitable for a
+            named, reusable Specification, including repeated decisions or
+            variant dispatch. Choose excluded for mechanics or a local
+            construct outside that opportunity, including a rule already
+            owned by a Specification. Choose needs_review when evidence is
+            ambiguous or insufficient. Do not infer hidden context.
+          criteria:
+            eligible: Stable domain decision or policy suitable for a named, reusable Specification.
+            excluded: Technical mechanics, a local construct outside the opportunity definition, or a rule already owned by a Specification.
+            needs_review: Evidence is ambiguous or insufficient; this is unknown, not an exclusion.
+        concern_kind:
+          type: choice
+          instructions: >-
+            Independently classify the kind of logic expressed by this source
+            site. Use only the bounded state and choose unknown if it does not
+            support a reliable classification.
+          criteria:
+            policy: Durable product rule, authority, trust, evidence, eligibility, or lifecycle decision.
+            mechanics: Parsing, representation, I/O, adaptation, or technical enforcement.
+            variant_behavior: Domain variant dispatch such as an enum, type, or platform.
+            unknown: Available evidence does not support a reliable concern-kind classification.
+
+  - id: file://providers/jev.mjs
+    label: boundary-test-v2
+    config:
+      model: jev-1.13.0
+      questions:
+        opportunity:
+          type: choice
+          instructions: >-
+            Classify only the exact source site and bounded context shown.
+            First ask whether violating this condition changes an admitted
+            product, authority, trust, evidence, eligibility, or lifecycle
+            decision. A stable high-impact rule can be eligible even when it
+            appears once; repetition is evidence for reuse, not a prerequisite.
+            Prefer a named Specification when it would give the rule a clear
+            owner or make it reusable, observable, and independently testable.
+            Choose excluded for parsing, serialization, hashing, I/O, other
+            technical mechanics, or a rule already owned by a Specification.
+            Do not infer domain significance from a long condition, a call to
+            require(), or policy-sounding names alone. Choose needs_review if
+            the bounded source does not establish the rule's meaning or impact.
+            Never invent omitted context.
+          criteria:
+            eligible: Stable domain decision or policy suitable for a named, reusable Specification.
+            excluded: Technical mechanics, a local construct outside the opportunity definition, or a rule already owned by a Specification.
+            needs_review: Evidence is ambiguous or insufficient; this is unknown, not an exclusion.
+        concern_kind:
+          type: choice
+          instructions: >-
+            Independently classify the kind of logic expressed by this source
+            site. Use only the bounded state and choose unknown if it does not
+            support a reliable classification.
+          criteria:
+            policy: Durable product rule, authority, trust, evidence, eligibility, or lifecycle decision.
+            mechanics: Parsing, representation, I/O, adaptation, or technical enforcement.
+            variant_behavior: Domain variant dispatch such as an enum, type, or platform.
+            unknown: Available evidence does not support a reliable concern-kind classification.
+
+tests: file://cases.json
+
+outputPath: results/latest.json
