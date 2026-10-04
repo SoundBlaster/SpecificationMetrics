@@ -1,3 +1,4 @@
+mod classify;
 mod collection;
 mod live;
 mod liveness;
@@ -59,7 +60,7 @@ enum Command {
         #[arg(long = "include")]
         includes: Vec<String>,
         /// Classify every discovered source file by its owned source role.
-        #[arg(long, conflicts_with = "includes")]
+        #[arg(long)]
         scope_manifest: Option<PathBuf>,
         #[arg(long)]
         output: Option<PathBuf>,
@@ -116,6 +117,33 @@ enum Command {
         store: PathBuf,
         #[arg(long, default_value_t = 20)]
         limit: usize,
+    },
+    /// Ask Jev to classify scanner candidates as optional, informational suggestions.
+    Classify {
+        #[arg(long)]
+        scan: PathBuf,
+        #[arg(long)]
+        profile: PathBuf,
+        #[arg(long)]
+        registry: Option<PathBuf>,
+        #[arg(long)]
+        scope_manifest: Option<PathBuf>,
+        #[arg(long, default_value = "https://api.typesafe.ai/v1/systemone")]
+        endpoint: String,
+        #[arg(long, default_value = "jev-latest")]
+        model: String,
+        #[arg(long, default_value = "JEV_API_KEY")]
+        api_key_env: String,
+        /// Required because candidate source context is sent to a hosted provider.
+        #[arg(long)]
+        allow_hosted_classification: bool,
+        #[arg(long, default_value_t = 30)]
+        timeout_seconds: u64,
+        /// Jev-specific threshold applied independently to both Choice answers.
+        #[arg(long)]
+        min_confidence: Option<f64>,
+        #[arg(long)]
+        output: Option<PathBuf>,
     },
 }
 
@@ -276,6 +304,33 @@ fn main() -> Result<()> {
         }
         Command::History { store, limit } => {
             emit_json(&store::history(&store, limit)?, None)?;
+        }
+        Command::Classify {
+            scan,
+            profile,
+            registry,
+            scope_manifest,
+            endpoint,
+            model,
+            api_key_env,
+            allow_hosted_classification,
+            timeout_seconds,
+            min_confidence,
+            output,
+        } => {
+            let report = classify::classify(classify::ClassifyOptions {
+                scan_path: &scan,
+                profile_path: &profile,
+                registry_path: registry.as_deref(),
+                manifest_path: scope_manifest.as_deref(),
+                endpoint: &endpoint,
+                model: &model,
+                api_key_env: &api_key_env,
+                allow_hosted: allow_hosted_classification,
+                timeout_seconds,
+                min_confidence,
+            })?;
+            emit_json(&report, output.as_deref())?;
         }
     }
     Ok(())
