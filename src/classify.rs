@@ -246,7 +246,7 @@ struct JevAnswer {
     probabilities: BTreeMap<String, f64>,
 }
 
-struct JevClient {
+pub(crate) struct JevClient {
     client: Client,
     endpoint: String,
     model: String,
@@ -254,13 +254,18 @@ struct JevClient {
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-enum JevError {
+pub(crate) enum JevError {
     Provider,
     Malformed,
 }
 
 impl JevClient {
-    fn new(endpoint: &str, model: &str, token: String, timeout: Duration) -> Result<Self> {
+    pub(crate) fn new(
+        endpoint: &str,
+        model: &str,
+        token: String,
+        timeout: Duration,
+    ) -> Result<Self> {
         validate_endpoint(endpoint)?;
         ensure!(!model.trim().is_empty(), "Jev model cannot be empty");
         let client = Client::builder()
@@ -286,10 +291,22 @@ impl JevClient {
             "candidate": context,
             "architecture_profile": profile,
         });
+        parse_response_body(&self.request(&state, &choice_questions())?)
+    }
+
+    pub(crate) fn requested_model(&self) -> &str {
+        &self.model
+    }
+
+    pub(crate) fn request(
+        &self,
+        state: &Value,
+        questions: &Value,
+    ) -> std::result::Result<Vec<u8>, JevError> {
         let body = json!({
             "model": self.model,
             "state": state,
-            "questions": choice_questions()
+            "questions": questions
         });
         let mut response = self
             .client
@@ -302,8 +319,7 @@ impl JevClient {
         if !response.status().is_success() {
             return Err(JevError::Provider);
         }
-        let bytes = bounded_response_body(&mut response)?;
-        parse_response_body(&bytes)
+        bounded_response_body(&mut response)
     }
 }
 
