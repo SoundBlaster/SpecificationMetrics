@@ -1,0 +1,1097 @@
+{
+  "study_kind": "diagnostic_context_ablation",
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "summaries": {
+    "code": {
+      "0": {
+        "opportunity": {
+          "count": 8,
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 2,
+              "excluded": 3,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "per_class": {
+            "eligible": {
+              "support": 3,
+              "precision": 0.3333333333333333,
+              "recall": 0.3333333333333333,
+              "f1": 0.3333333333333333
+            },
+            "excluded": {
+              "support": 5,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            "needs_review": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.4666666666666667,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.5,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 2
+        },
+        "concern_kind": {
+          "count": 8,
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "per_class": {
+            "policy": {
+              "support": 5,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.8888888888888888
+            },
+            "mechanics": {
+              "support": 3,
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1": 0.8571428571428571
+            },
+            "variant_behavior": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            },
+            "unknown": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.873015873015873,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.125,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 0
+        },
+        "opportunity_agreement": 0.5,
+        "mechanical_false_positives": 0,
+        "already_owned_false_positives": 2
+      },
+      "1": {
+        "opportunity": {
+          "count": 8,
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 2,
+              "excluded": 3,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "per_class": {
+            "eligible": {
+              "support": 3,
+              "precision": 0.3333333333333333,
+              "recall": 0.3333333333333333,
+              "f1": 0.3333333333333333
+            },
+            "excluded": {
+              "support": 5,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            "needs_review": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.4666666666666667,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.5,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 2
+        },
+        "concern_kind": {
+          "count": 8,
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "per_class": {
+            "policy": {
+              "support": 5,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.8888888888888888
+            },
+            "mechanics": {
+              "support": 3,
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1": 0.8571428571428571
+            },
+            "variant_behavior": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            },
+            "unknown": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.873015873015873,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.125,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 0
+        },
+        "opportunity_agreement": 0.5,
+        "mechanical_false_positives": 0,
+        "already_owned_false_positives": 2
+      },
+      "repeat_disagreements": 0
+    },
+    "code_task": {
+      "0": {
+        "opportunity": {
+          "count": 8,
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 1,
+              "excluded": 4,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "per_class": {
+            "eligible": {
+              "support": 3,
+              "precision": 0.5,
+              "recall": 0.3333333333333333,
+              "f1": 0.4
+            },
+            "excluded": {
+              "support": 5,
+              "precision": 0.6666666666666666,
+              "recall": 0.8,
+              "f1": 0.7272727272727273
+            },
+            "needs_review": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.5636363636363637,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.375,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 2
+        },
+        "concern_kind": {
+          "count": 8,
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "per_class": {
+            "policy": {
+              "support": 5,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.8888888888888888
+            },
+            "mechanics": {
+              "support": 3,
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1": 0.8571428571428571
+            },
+            "variant_behavior": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            },
+            "unknown": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.873015873015873,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.125,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 0
+        },
+        "opportunity_agreement": 0.625,
+        "mechanical_false_positives": 0,
+        "already_owned_false_positives": 1
+      },
+      "1": {
+        "opportunity": {
+          "count": 8,
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 1,
+              "excluded": 4,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "per_class": {
+            "eligible": {
+              "support": 3,
+              "precision": 0.5,
+              "recall": 0.3333333333333333,
+              "f1": 0.4
+            },
+            "excluded": {
+              "support": 5,
+              "precision": 0.6666666666666666,
+              "recall": 0.8,
+              "f1": 0.7272727272727273
+            },
+            "needs_review": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.5636363636363637,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.375,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 2
+        },
+        "concern_kind": {
+          "count": 8,
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "per_class": {
+            "policy": {
+              "support": 5,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.8888888888888888
+            },
+            "mechanics": {
+              "support": 3,
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1": 0.8571428571428571
+            },
+            "variant_behavior": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            },
+            "unknown": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.873015873015873,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.125,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 0
+        },
+        "opportunity_agreement": 0.625,
+        "mechanical_false_positives": 0,
+        "already_owned_false_positives": 1
+      },
+      "repeat_disagreements": 0
+    },
+    "code_task_facts": {
+      "0": {
+        "opportunity": {
+          "count": 8,
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 2,
+              "excluded": 3,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "per_class": {
+            "eligible": {
+              "support": 3,
+              "precision": 0.3333333333333333,
+              "recall": 0.3333333333333333,
+              "f1": 0.3333333333333333
+            },
+            "excluded": {
+              "support": 5,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            "needs_review": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.4666666666666667,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.5,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 2
+        },
+        "concern_kind": {
+          "count": 8,
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "per_class": {
+            "policy": {
+              "support": 5,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.8888888888888888
+            },
+            "mechanics": {
+              "support": 3,
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1": 0.8571428571428571
+            },
+            "variant_behavior": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            },
+            "unknown": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.873015873015873,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.125,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 0
+        },
+        "opportunity_agreement": 0.5,
+        "mechanical_false_positives": 0,
+        "already_owned_false_positives": 2
+      },
+      "1": {
+        "opportunity": {
+          "count": 8,
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 2,
+              "excluded": 3,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "per_class": {
+            "eligible": {
+              "support": 3,
+              "precision": 0.3333333333333333,
+              "recall": 0.3333333333333333,
+              "f1": 0.3333333333333333
+            },
+            "excluded": {
+              "support": 5,
+              "precision": 0.6,
+              "recall": 0.6,
+              "f1": 0.6
+            },
+            "needs_review": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.4666666666666667,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.5,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 2
+        },
+        "concern_kind": {
+          "count": 8,
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "per_class": {
+            "policy": {
+              "support": 5,
+              "precision": 1.0,
+              "recall": 0.8,
+              "f1": 0.8888888888888888
+            },
+            "mechanics": {
+              "support": 3,
+              "precision": 0.75,
+              "recall": 1.0,
+              "f1": 0.8571428571428571
+            },
+            "variant_behavior": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            },
+            "unknown": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "macro_f1": 0.873015873015873,
+          "abstention_rate": 0.0,
+          "coverage": 1.0,
+          "non_abstained_error_rate": 0.125,
+          "provider_or_contract_errors": 0,
+          "false_exclusions": 0
+        },
+        "opportunity_agreement": 0.5,
+        "mechanical_false_positives": 0,
+        "already_owned_false_positives": 2
+      },
+      "repeat_disagreements": 0
+    }
+  },
+  "decisions": [
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "source_candidate_id": "sg-017",
+      "reference_opportunity": "eligible",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "source_candidate_id": "sg-018",
+      "reference_opportunity": "excluded",
+      "static_constructor_gate": true,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "source_candidate_id": "sg-019",
+      "reference_opportunity": "eligible",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "source_candidate_id": "sg-020",
+      "reference_opportunity": "excluded",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "source_candidate_id": "sg-031",
+      "reference_opportunity": "excluded",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "source_candidate_id": "sg-032",
+      "reference_opportunity": "excluded",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "source_candidate_id": "sg-033",
+      "reference_opportunity": "eligible",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        ]
+      }
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "source_candidate_id": "sg-034",
+      "reference_opportunity": "excluded",
+      "static_constructor_gate": false,
+      "outputs": {
+        "code": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "code_task_facts": [
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ]
+      }
+    }
+  ],
+  "hypothesis_supported": {
+    "code_task": false,
+    "code_task_facts": false
+  },
+  "diagnostic_static_filter": {
+    "scope": "Only recognized direct library constructions, no negative inference from absence. Evaluation view, no registry or S/U writes.",
+    "opportunity": {
+      "0": {
+        "count": 8,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 1,
+            "excluded": 2,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 4,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "excluded": {
+            "support": 5,
+            "precision": 0.6666666666666666,
+            "recall": 0.8,
+            "f1": 0.7272727272727273
+          },
+          "needs_review": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.5636363636363637,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.375,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 2
+      },
+      "1": {
+        "count": 8,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 1,
+            "excluded": 2,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 4,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 3,
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1": 0.4
+          },
+          "excluded": {
+            "support": 5,
+            "precision": 0.6666666666666666,
+            "recall": 0.8,
+            "f1": 0.7272727272727273
+          },
+          "needs_review": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.5636363636363637,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.375,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 2
+      }
+    }
+  },
+  "limits": "Purposive diagnostic cases, code-only model references; repeats measure consistency, not independent sample size."
+}
