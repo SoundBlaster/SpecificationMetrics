@@ -313,3 +313,10 @@ cargo test
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Registered rule reuse
+
+Detect newly introduced procedural copies of reviewed Python Specification rules with
+`check-rule-reuse`; retain separate SQLite history with `rule-reuse-history`.
+See the [matching, gate and optional Jev contract](docs/rule-reuse-contract.md).
+The first catalog is [SpecGraph workspace allocation](configs/specgraph-rule-catalog.toml).

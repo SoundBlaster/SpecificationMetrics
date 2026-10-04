@@ -4,6 +4,7 @@ mod live;
 mod liveness;
 mod metric;
 mod model;
+mod reuse;
 mod scan;
 mod scope;
 mod store;
@@ -27,6 +28,53 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Detect new Python procedural copies of registered Specification rules.
+    CheckRuleReuse {
+        root: PathBuf,
+        #[arg(long)]
+        catalog: PathBuf,
+        #[arg(long)]
+        base: String,
+        #[arg(long, default_value = "HEAD")]
+        head: String,
+        #[arg(long)]
+        output: Option<PathBuf>,
+        #[arg(long)]
+        store: Option<PathBuf>,
+        /// Fail on incomplete analysis or newly introduced registered templates.
+        #[arg(long)]
+        strict: bool,
+        /// Ask Jev about new near matches; suggestions never change gate decisions.
+        #[arg(long)]
+        classify_near_matches: bool,
+        #[arg(long)]
+        allow_hosted_classification: bool,
+        #[arg(long, default_value = "https://api.typesafe.ai/v1/systemone")]
+        endpoint: String,
+        #[arg(long, default_value = "jev-1.13.0")]
+        model: String,
+        #[arg(long, default_value = "JEV_API_KEY")]
+        api_key_env: String,
+        #[arg(long, default_value_t = 30)]
+        timeout_seconds: u64,
+    },
+    /// Generate a committed rule's declaration digest for catalog review.
+    FingerprintRule {
+        root: PathBuf,
+        #[arg(long)]
+        path: String,
+        #[arg(long)]
+        symbol: String,
+        #[arg(long, default_value = "HEAD")]
+        at: String,
+    },
+    /// Read rule reuse snapshots separately from primary S/U measurements.
+    RuleReuseHistory {
+        #[arg(long)]
+        store: PathBuf,
+        #[arg(long, default_value_t = 20)]
+        limit: usize,
+    },
     /// Collect primary S/U counters and opt-in external metrics from a TOML contract.
     Collect {
         #[arg(long)]
@@ -157,6 +205,63 @@ struct SyncResult {
 fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.command {
+        Command::CheckRuleReuse {
+            root,
+            catalog,
+            base,
+            head,
+            output,
+            store,
+            strict,
+            classify_near_matches,
+            allow_hosted_classification,
+            endpoint,
+            model,
+            api_key_env,
+            timeout_seconds,
+        } => {
+            let client = if classify_near_matches {
+                anyhow::ensure!(
+                    allow_hosted_classification,
+                    "Jev source classification requires --allow-hosted-classification"
+                );
+                anyhow::ensure!(timeout_seconds > 0, "timeout must be positive");
+                let token = std::env::var(&api_key_env)
+                    .context("Jev API key environment variable is not configured")?;
+                anyhow::ensure!(!token.trim().is_empty(), "Jev API key is empty");
+                Some(classify::JevClient::new(
+                    &endpoint,
+                    &model,
+                    token,
+                    std::time::Duration::from_secs(timeout_seconds),
+                )?)
+            } else {
+                None
+            };
+            let report = reuse::check(&root, &catalog, &base, &head, client.as_ref())?;
+            emit_json(&report, output.as_deref())?;
+            if let Some(store) = store {
+                reuse::save(&store, &report)?;
+            }
+            if strict && (report.status != "complete" || report.new_reimplementations > 0) {
+                bail!(
+                    "rule reuse gate failed: status={}, new_reimplementations={}",
+                    report.status,
+                    report.new_reimplementations
+                );
+            }
+        }
+        Command::FingerprintRule {
+            root,
+            path,
+            symbol,
+            at,
+        } => {
+            emit_json(&reuse::definition(&root, &at, &path, &symbol)?, None)?;
+        }
+        Command::RuleReuseHistory { store, limit } => {
+            emit_json(&reuse::history(&store, limit)?, None)?;
+        }
         Command::Collect {
             config,
             output,
