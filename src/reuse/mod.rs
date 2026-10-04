@@ -33,6 +33,8 @@ struct Rule {
     canonical_digest: String,
     #[serde(default)]
     templates: Vec<Template>,
+    #[serde(default)]
+    review_templates: Vec<Template>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -55,6 +57,7 @@ struct IndexedRule {
     rule: Rule,
     declaration: String,
     patterns: Vec<Pattern>,
+    review_patterns: Vec<Pattern>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -71,6 +74,8 @@ pub(crate) struct Finding {
     pub canonical_symbol: String,
     pub bounded_context: String,
     pub semantic_suggestion: Option<Value>,
+    #[serde(default)]
+    pub match_basis: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -174,7 +179,13 @@ fn load_catalog(
             binders: vec![binder],
         }];
         let mut template_ids = BTreeSet::new();
-        for template in &rule.templates {
+        let mut review_patterns = vec![];
+        for (template, review_only) in rule
+            .templates
+            .iter()
+            .map(|t| (t, false))
+            .chain(rule.review_templates.iter().map(|t| (t, true)))
+        {
             ensure!(
                 template.id != "canonical" && template_ids.insert(template.id.clone()),
                 "duplicate template ID"
@@ -183,16 +194,22 @@ fn load_catalog(
                 template.source_url.starts_with("https://github.com/"),
                 "template source provenance required"
             );
-            patterns.push(Pattern {
+            let pattern = Pattern {
                 id: template.id.clone(),
                 expr: ast::template(&template.expression)?,
                 binders: template.renameable_identifiers.clone(),
-            });
+            };
+            if review_only {
+                review_patterns.push(pattern);
+            } else {
+                patterns.push(pattern);
+            }
         }
         indexed.push(IndexedRule {
             rule,
             declaration,
             patterns,
+            review_patterns,
         });
     }
     Ok((digest(&bytes), catalog, indexed))
@@ -220,11 +237,21 @@ fn findings(source: &str, path: &str, rules: &[IndexedRule]) -> Result<(Vec<Find
                 .patterns
                 .iter()
                 .find(|p| ast::matches(&p.expr, &site.expr, &p.binders));
+            let review = exact
+                .is_none()
+                .then(|| {
+                    indexed
+                        .review_patterns
+                        .iter()
+                        .find(|p| ast::matches(&p.expr, &site.expr, &p.binders))
+                })
+                .flatten();
             let near = exact.is_none()
-                && indexed
-                    .patterns
-                    .iter()
-                    .any(|p| ast::similarity(&p.expr, &site.expr));
+                && (review.is_some()
+                    || indexed
+                        .patterns
+                        .iter()
+                        .any(|p| ast::similarity(&p.expr, &site.expr)));
             if exact.is_none() && !near {
                 continue;
             }
@@ -239,12 +266,22 @@ fn findings(source: &str, path: &str, rules: &[IndexedRule]) -> Result<(Vec<Find
                 },
                 construct: site.kind.into(),
                 introduced: false,
-                template_id: exact.map(|p| p.id.clone()),
+                template_id: exact.or(review).map(|p| p.id.clone()),
                 expression: site.code,
                 canonical_path: indexed.rule.canonical_path.clone(),
                 canonical_symbol: indexed.rule.canonical_symbol.clone(),
                 bounded_context: indexed.rule.bounded_context.clone(),
                 semantic_suggestion: None,
+                match_basis: Some(
+                    if exact.is_some() {
+                        "equivalent_template"
+                    } else if review.is_some() {
+                        "review_template"
+                    } else {
+                        "feature_overlap"
+                    }
+                    .into(),
+                ),
             });
         }
     }
@@ -417,6 +454,9 @@ pub(crate) fn check(
                 report.new_near_matches += 1;
                 let rule = rules.iter().find(|r| r.rule.id == finding.rule_id).unwrap();
                 let request = json!({"candidate":{"path":finding.path,"line":finding.line,"predicate":finding.expression},
+                    "match_basis":finding.match_basis,"template_id":finding.template_id,
+                    "review_template":rule.rule.review_templates.iter().find(|t| Some(&t.id) == finding.template_id.as_ref()).map(|t|
+                        json!({"id":t.id,"expression":t.expression,"source_url":t.source_url})),
                     "existing_rule":{"id":rule.rule.id,"bounded_context":rule.rule.bounded_context,
                                      "path":rule.rule.canonical_path,"symbol":rule.rule.canonical_symbol,
                                      "definition":rule.declaration},

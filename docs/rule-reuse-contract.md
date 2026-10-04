@@ -42,6 +42,27 @@ ignored. Only explicitly registered identifier binders may be renamed, with a
 consistent bijection. Reordered checks are not exact: short-circuit behavior can
 matter. A compound predicate wrapping a registered condition is review-only.
 
+Rules may also opt into `review_templates`, using the same template fields and
+unique IDs shared with `templates`. These describe reviewed **non-equivalent**
+patterns worth inspecting (for example, a historical partial-field check).
+They are matched structurally with only their registered identifier binders
+renameable. They do not participate in feature-overlap matching and never add
+to `new_reimplementations`. No warning is emitted from this mechanism without
+an explicit catalog entry. Invalid expressions, missing provenance and duplicate
+IDs fail catalog validation.
+
+Matching precedence is equivalent/canonical exact match, then explicit review
+template, then the existing feature-overlap heuristic. A review entry cannot
+downgrade an exact procedural copy. Findings include `match_basis`:
+`equivalent_template`, `review_template`, or `feature_overlap`; `template_id`
+identifies an explicit equivalent or review pattern. Earlier stored reports
+without `match_basis` remain readable. Near-match requests also carry review
+pattern expression/provenance when present. This warning says "inspect this
+known pattern", not "this implements the same rule" or "a bug is proven".
+Warnings retain baseline/rename semantics and remain non-blocking under
+`--strict`. Short rules still do not gain general semantic similarity detection;
+unregistered variants and reordered partial checks can remain undetected.
+
 Feature overlap produces `near_match` suggestions, never a blocking count.
 Direct or aliased explicit imports followed by a direct `.is_satisfied_by(...)`
 call (optionally negated) are counted as static reuse. Context assembly is not a

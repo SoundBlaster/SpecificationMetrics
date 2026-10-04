@@ -100,3 +100,60 @@ fn strict_gate_emits_and_stores_failed_report_and_does_not_read_working_tree() {
     ]);
     assert!(!denied.status.success());
 }
+
+#[test]
+fn review_template_warning_passes_strict_and_is_stored() {
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+    git(root, &["init", "-q"]);
+    fs::create_dir(root.join("tools")).unwrap();
+    fs::write(root.join("tools/spec.py"), "from specification_core import PredicateSpec\nPOLICY=PredicateSpec(lambda facts: facts.reviewed_digest == facts.requested_digest)\n").unwrap();
+    fs::write(root.join("tools/caller.py"), "pass\n").unwrap();
+    let base = commit(root);
+    let fingerprint = run(&[
+        "fingerprint-rule",
+        root.to_str().unwrap(),
+        "--path",
+        "tools/spec.py",
+        "--symbol",
+        "POLICY",
+    ]);
+    assert!(fingerprint.status.success());
+    let value: Value = serde_json::from_slice(&fingerprint.stdout).unwrap();
+    let catalog = root.join("catalog.toml");
+    fs::write(&catalog,format!("schema_version=1\nproject='fixture'\n[[rules]]\nid='policy'\nbounded_context='publication'\npaths=['tools']\ncanonical_path='tools/spec.py'\ncanonical_symbol='POLICY'\ncanonical_digest='{}'\n[[rules.review_templates]]\nid='partial'\nexpression=\"draft['title'] == document['title']\"\nrenameable_identifiers=['draft','document']\nsource_url='https://github.com/example/repo/commit/123'\n",value["digest"].as_str().unwrap())).unwrap();
+    fs::write(
+        root.join("tools/caller.py"),
+        "if draft['title'] == document['title']:\n    publish()\n",
+    )
+    .unwrap();
+    commit(root);
+    let output = root.join("report.json");
+    let store = root.join("metrics.sqlite");
+    let result = run(&[
+        "check-rule-reuse",
+        root.to_str().unwrap(),
+        "--catalog",
+        catalog.to_str().unwrap(),
+        "--base",
+        &base,
+        "--output",
+        output.to_str().unwrap(),
+        "--store",
+        store.to_str().unwrap(),
+        "--strict",
+    ]);
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let report: Value = serde_json::from_slice(&fs::read(output).unwrap()).unwrap();
+    assert_eq!(report["new_reimplementations"], 0);
+    assert_eq!(report["new_near_matches"], 1);
+    assert_eq!(report["findings"][0]["match_basis"], "review_template");
+    let history = run(&["rule-reuse-history", "--store", store.to_str().unwrap()]);
+    assert!(history.status.success());
+    let snapshots: Value = serde_json::from_slice(&history.stdout).unwrap();
+    assert_eq!(snapshots[0]["report"]["new_near_matches"], 1);
+}
