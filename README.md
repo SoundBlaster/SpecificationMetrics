@@ -320,3 +320,13 @@ Detect newly introduced procedural copies of reviewed Python Specification rules
 `check-rule-reuse`; retain separate SQLite history with `rule-reuse-history`.
 See the [matching, gate and optional Jev contract](docs/rule-reuse-contract.md).
 The first catalog is [SpecGraph workspace allocation](configs/specgraph-rule-catalog.toml).
+
+### Explicit review-only rule patterns
+
+A registered rule can list `review_templates` for known incomplete or otherwise
+non-equivalent checks. These produce `near_match` warnings with
+`match_basis: review_template`, including source provenance, while `--strict`
+continues to block only new exact copies and incomplete analysis. Exact-match
+precedence cannot be weakened by a review pattern. This is catalog-driven
+structural detection, not automatic semantic equivalence; see
+[the rule reuse contract](docs/rule-reuse-contract.md).

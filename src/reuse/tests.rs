@@ -144,6 +144,134 @@ fn reordered_conditions_and_changed_literals_are_review_only() {
     assert_eq!(report.semantic_review_requests.len(), 2);
 }
 
+fn add_review_template(catalog: &Path, id: &str, expression: &str) {
+    let original = fs::read_to_string(catalog).unwrap();
+    fs::write(catalog, format!("{original}\n[[rules.review_templates]]\nid='{id}'\nexpression=\"\"\"{expression}\"\"\"\nrenameable_identifiers=['allocation','request']\nsource_url='https://github.com/example/project/commit/123'\n")).unwrap();
+}
+
+#[test]
+fn partial_template_is_opt_in_review_only_and_has_provenance() {
+    let partial = PREDICATE.split(" and ").next().unwrap();
+    let (dir, base, catalog) = fixture("pass\n");
+    fs::write(
+        dir.path().join("tools/caller.py"),
+        format!("if {partial}:\n    publish()\n"),
+    )
+    .unwrap();
+    commit(dir.path());
+    assert!(
+        check(dir.path(), &catalog, &base, "HEAD", None)
+            .unwrap()
+            .findings
+            .is_empty()
+    );
+    add_review_template(&catalog, "partial", partial);
+    let report = check(dir.path(), &catalog, &base, "HEAD", None).unwrap();
+    assert_eq!(report.new_reimplementations, 0);
+    assert_eq!(report.new_near_matches, 1);
+    assert_eq!(report.after_reimplementations, 0);
+    assert_eq!(
+        report.findings[0].match_basis.as_deref(),
+        Some("review_template")
+    );
+    assert_eq!(report.findings[0].template_id.as_deref(), Some("partial"));
+    let request = &report.semantic_review_requests[0]["state"];
+    assert_eq!(request["review_template"]["expression"], partial);
+    assert_eq!(
+        request["review_template"]["source_url"],
+        "https://github.com/example/project/commit/123"
+    );
+}
+
+#[test]
+fn exact_policy_cannot_be_downgraded_by_review_template() {
+    let (dir, base, catalog) = fixture("pass\n");
+    add_review_template(&catalog, "also-review", PREDICATE);
+    fs::write(
+        dir.path().join("tools/caller.py"),
+        format!("if {PREDICATE}:\n    publish()\n"),
+    )
+    .unwrap();
+    commit(dir.path());
+    let report = check(dir.path(), &catalog, &base, "HEAD", None).unwrap();
+    assert_eq!(report.new_reimplementations, 1);
+    assert_eq!(report.new_near_matches, 0);
+    assert_eq!(
+        report.findings[0].match_basis.as_deref(),
+        Some("equivalent_template")
+    );
+}
+
+#[test]
+fn review_template_baseline_survives_binder_renaming_and_line_shifts() {
+    let partial = PREDICATE.split(" and ").next().unwrap();
+    let (dir, base, catalog) = fixture(&format!("if {partial}:\n    publish()\n"));
+    add_review_template(&catalog, "partial", partial);
+    fs::write(
+        dir.path().join("tools/caller.py"),
+        format!(
+            "# new line\nif {}:\n    publish()\n",
+            partial
+                .replace("allocation", "facts")
+                .replace("request", "target")
+        ),
+    )
+    .unwrap();
+    commit(dir.path());
+    let report = check(dir.path(), &catalog, &base, "HEAD", None).unwrap();
+    assert_eq!(report.new_near_matches, 0);
+    assert_eq!(report.findings.len(), 1);
+    assert!(!report.findings[0].introduced);
+}
+
+#[test]
+fn unrelated_equality_and_wrong_fields_do_not_match_review_template() {
+    let (dir, base, catalog) = fixture("pass\n");
+    add_review_template(
+        &catalog,
+        "partial",
+        PREDICATE.split(" and ").next().unwrap(),
+    );
+    fs::write(dir.path().join("tools/caller.py"), "if downloaded_sha == cached_sha:\n    pass\nif allocation['title'] == request.title:\n    pass\n").unwrap();
+    commit(dir.path());
+    assert!(
+        check(dir.path(), &catalog, &base, "HEAD", None)
+            .unwrap()
+            .findings
+            .is_empty()
+    );
+}
+
+#[test]
+fn review_templates_do_not_expand_feature_overlap_heuristic() {
+    let (dir, base, catalog) = fixture("pass\n");
+    let partial = "draft['title'] == document['title'] and draft['status'] == document['status'] and draft['owner'] == document['owner']";
+    add_review_template(&catalog, "partial", partial);
+    fs::write(
+        dir.path().join("tools/caller.py"),
+        format!("if {}:\n    publish()\n", partial.replacen("==", "!=", 1)),
+    )
+    .unwrap();
+    commit(dir.path());
+    assert!(
+        check(dir.path(), &catalog, &base, "HEAD", None)
+            .unwrap()
+            .findings
+            .is_empty()
+    );
+}
+
+#[test]
+fn review_templates_reject_duplicate_ids_and_invalid_expressions() {
+    let (dir, base, catalog) = fixture("pass\n");
+    let original = fs::read_to_string(&catalog).unwrap();
+    add_review_template(&catalog, "historical", "allocation is request");
+    assert!(check(dir.path(), &catalog, &base, "HEAD", None).is_err());
+    fs::write(&catalog, original).unwrap();
+    add_review_template(&catalog, "broken", "allocation ==");
+    assert!(check(dir.path(), &catalog, &base, "HEAD", None).is_err());
+}
+
 #[test]
 fn proper_spec_call_and_context_preparation_are_not_copies() {
     let (dir, base, catalog) = fixture("pass\n");
