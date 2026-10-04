@@ -12,7 +12,7 @@ use rusqlite::{Connection, params};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 
-use crate::classify::JevClient;
+use crate::classify::{JevClient, JevError};
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -448,12 +448,20 @@ fn questions() -> Value {
 }
 
 fn semantic_answer(client: &JevClient, state: &Value) -> Value {
-    let result = client
-        .request(state, &questions())
-        .ok()
-        .and_then(|b| serde_json::from_slice::<Value>(&b).ok());
-    let Some(body) = result else {
-        return json!({"choice":"needs_review","diagnostic":"provider_error","cacheable":false});
+    let bytes = match client.request(state, &questions()) {
+        Ok(bytes) => bytes,
+        Err(JevError::Provider) => {
+            return json!({"choice":"needs_review","diagnostic":"provider_error","cacheable":false});
+        }
+        Err(JevError::Malformed) => {
+            return json!({"choice":"needs_review","diagnostic":"malformed_provider_output","cacheable":false});
+        }
+    };
+    let body: Value = match serde_json::from_slice(&bytes) {
+        Ok(body) => body,
+        Err(_) => {
+            return json!({"choice":"needs_review","diagnostic":"malformed_provider_output","cacheable":false});
+        }
     };
     let answer = &body["answers"]["rule_reuse"];
     let choice = answer["choice"].as_str().unwrap_or("");

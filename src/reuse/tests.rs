@@ -268,10 +268,12 @@ fn jev_suggestions_preserve_provenance_and_never_block_near_matches() {
     use std::io::{Read, Write};
     use std::net::TcpListener;
     use std::time::Duration;
-    for (status,body,expected) in [
-        ("200 OK",json!({"model":"fixture-model","answers":{"rule_reuse":{"type":"choice","choice":"same_rule","confidence":0.9,"probabilities":{"same_rule":0.9,"different_rule":0.05,"needs_review":0.05}}}}).to_string(),"same_rule"),
-        ("200 OK","{}".into(),"needs_review"),
-        ("503 Service Unavailable","provider diagnostic must not leak".into(),"needs_review"),
+    for (status,body,expected,diagnostic) in [
+        ("200 OK",json!({"model":"fixture-model","answers":{"rule_reuse":{"type":"choice","choice":"same_rule","confidence":0.9,"probabilities":{"same_rule":0.9,"different_rule":0.05,"needs_review":0.05}}}}).to_string(),"same_rule", None),
+        ("200 OK","{}".into(),"needs_review", Some("malformed_provider_output")),
+        ("200 OK","{".into(),"needs_review", Some("malformed_provider_output")),
+        ("200 OK","x".repeat(1024 * 1024 + 1),"needs_review", Some("malformed_provider_output")),
+        ("503 Service Unavailable","provider diagnostic must not leak".into(),"needs_review", Some("provider_error")),
     ] {
         let listener=TcpListener::bind("127.0.0.1:0").unwrap();
         let endpoint=format!("http://{}/typesafe",listener.local_addr().unwrap());
@@ -291,7 +293,9 @@ fn jev_suggestions_preserve_provenance_and_never_block_near_matches() {
                     }
                 }
             }
-            write!(socket,"HTTP/1.1 {status}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}",body.len()).unwrap();
+            write!(socket,"HTTP/1.1 {status}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",body.len()).unwrap();
+            // Oversized responses are rejected before all bytes are consumed.
+            let _ = socket.write_all(body.as_bytes());
         });
         let (dir,base,catalog)=fixture("pass\n");
         fs::write(dir.path().join("tools/caller.py"),format!("require({}, 'changed')\n",PREDICATE.replace("is True","is False"))).unwrap();
@@ -301,6 +305,9 @@ fn jev_suggestions_preserve_provenance_and_never_block_near_matches() {
         assert_eq!(report.new_reimplementations,0);
         let suggestion=report.findings[0].semantic_suggestion.as_ref().unwrap();
         assert_eq!(suggestion["choice"],expected);
+        if let Some(diagnostic) = diagnostic {
+            assert_eq!(suggestion["diagnostic"], diagnostic);
+        }
         assert_eq!(suggestion["requested_model"],"requested-model");
         assert!(suggestion["input_digest"].as_str().unwrap().starts_with("blake3:"));
         let output=serde_json::to_string(&report).unwrap();
