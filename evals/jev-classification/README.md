@@ -33,7 +33,7 @@ No corpus-wide hosted evaluation has been performed; two providers would make
 
 ## Run
 
-Requires Node.js and a TypeSafe key. The promptfoo version is pinned in
+Requires Node.js >=22.22.0 and a TypeSafe key. The promptfoo version is pinned in
 `package-lock.json`; Jev is pinned to `1.13.0` in the config.
 
 ```bash
@@ -98,8 +98,17 @@ The TypeSafe page currently documents a built-in provider, but the pinned npm
 release `0.123.1` does not resolve `typesafe:jev-1.13.0`; the direct adapter
 keeps this evaluation runnable against that published release. The adapter
 uses one HTTP request per case/provider pair, a 30-second timeout, rejects
-redirects, caps response size, and does not implement retries. It uses direct
-`fetch` so Promptfoo's HTTP response cache is bypassed: each `npm run eval`
-invocation makes one fresh request per case/provider pair. This trades repeated
-run cost for a bounded, non-retrying request path; keep the case set small
-until a cache strategy is added and reviewed.
+redirects, caps response size, and does not implement retries. It keeps bounded direct `fetch` for HTTP and stores only validated successful
+provider results through Promptfoo's public cache helpers. Identical requests
+reuse that cache; `npm run eval:fresh` (or Promptfoo `--no-cache`) forces a fresh
+request. The key includes endpoint, model, state, rubric and an opaque credential
+partition digest; credentials are not stored in keys or values. Errors and
+oversized/malformed responses are never cached. Cached responses are marked
+`cached: true` and `responseSource: cache`; their usage metadata describes the
+original request, not newly billed tokens. Cache reuse is an evaluation convenience,
+not a claim of independent repeated samples or immutable model behavior.
+
+Offline CI includes actual rendering of the checked-in prompt with the pinned
+Promptfoo evaluator and a fake provider, plus cache reuse/bypass/error tests.
+No live Jev requests are needed. The standard Nunjucks interpolation is
+`{{candidate_json}}`; triple-brace Mustache syntax is unsupported here.

@@ -1,3 +1,6 @@
+import { createHash } from 'node:crypto';
+import { cache } from 'promptfoo';
+
 const DEFAULT_ENDPOINT = 'https://api.typesafe.ai/v1/systemone';
 const MAX_RESPONSE_BYTES = 1024 * 1024;
 
@@ -59,10 +62,30 @@ export default class JevProvider {
       return { error: 'Rendered Jev state must be a JSON object or array' };
     }
 
+    const endpoint = this.config.endpoint || DEFAULT_ENDPOINT;
+    const requestBody = JSON.stringify({
+      model: this.config.model || 'jev-1.13.0', state, questions: this.config.questions,
+    });
+    // Partition by credentials without storing them in the cache key/value.
+    const key = cache.getScopedCacheKey('jev-validated-v1:' + createHash('sha256')
+      .update(JSON.stringify([endpoint, apiKey, requestBody])).digest('hex'));
+    const enabled = cache.isCacheEnabled();
+    if (enabled) {
+      const stored = await cache.getCache().get(key);
+      if (stored) {
+        try {
+          const result = JSON.parse(stored);
+          return { ...result, cached: true,
+            tokenUsage: result.tokenUsage && { ...result.tokenUsage, cached: result.tokenUsage.total },
+            metadata: { typesafe: { ...result.metadata.typesafe, responseSource: 'cache' } } };
+        } catch { /* A corrupt cache entry is a miss, never a provider response. */ }
+      }
+    }
+
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), this.config.timeoutMs ?? 30_000);
     try {
-      const response = await fetch(this.config.endpoint || DEFAULT_ENDPOINT, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         redirect: 'error',
         signal: controller.signal,
@@ -70,11 +93,7 @@ export default class JevProvider {
           authorization: `Bearer ${apiKey}`,
           'content-type': 'application/json',
         },
-        body: JSON.stringify({
-          model: this.config.model || 'jev-1.13.0',
-          state,
-          questions: this.config.questions,
-        }),
+        body: requestBody,
       });
 
       let bodyText;
@@ -97,7 +116,8 @@ export default class JevProvider {
         return { error: 'TypeSafe Jev response is missing model or answers' };
       }
 
-      return {
+      const result = {
+        cached: false,
         output: body.answers,
         tokenUsage: body.usage && {
           prompt: body.usage.input_tokens ?? 0,
@@ -109,9 +129,12 @@ export default class JevProvider {
             requestedModel: this.config.model || 'jev-1.13.0',
             returnedModel: body.model,
             usage: body.usage || null,
+            responseSource: 'live',
           },
         },
       };
+      if (enabled) await cache.getCache().set(key, JSON.stringify(result));
+      return result;
     } catch (error) {
       const reason = error?.name === 'AbortError' ? 'request timed out' : 'request failed';
       return { error: `TypeSafe Jev ${reason}` };
