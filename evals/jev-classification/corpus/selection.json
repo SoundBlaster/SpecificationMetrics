@@ -1,0 +1,1766 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/0al-spec/SpecGraph",
+  "selection_method": "Purposive source/history challenge corpus; not a representative prevalence sample.",
+  "current_snapshot": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+  "cases": [
+    {
+      "id": "sg-001",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_candidate_approval_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        },
+        {
+          "symbol": "_candidate_approval_intent_state"
+        },
+        {
+          "symbol": "_candidate_approval_decision_state"
+        },
+        {
+          "symbol": "_promotion_request_state"
+        },
+        {
+          "symbol": "_promotion_execution_state"
+        },
+        {
+          "symbol": "_review_status"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-002",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_candidate_approval_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-003",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_candidate_approval_intent_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-004",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_candidate_approval_intent_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-005",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_candidate_approval_decision_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-006",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_candidate_approval_decision_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "symbol": "_status"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-007",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_platform_promotion_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        },
+        {
+          "symbol": "_candidate_approval_intent_state"
+        },
+        {
+          "symbol": "_candidate_approval_decision_state"
+        },
+        {
+          "symbol": "_promotion_request_state"
+        },
+        {
+          "symbol": "_promotion_execution_state"
+        },
+        {
+          "symbol": "_review_status"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-008",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_platform_promotion_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-009",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_promotion_request_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-010",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_promotion_request_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-011",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_promotion_execution_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-012",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_promotion_execution_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "symbol": "_status"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-013",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_review_status"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-014",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_review_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-015",
+      "family_id": "lifecycle-states",
+      "revision": "b7643721b11b5d4768bc966abab7dddd1092a5bd",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_read_model_publication_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_int"
+        },
+        {
+          "symbol": "_summary"
+        },
+        {
+          "symbol": "_candidate_approval_intent_state"
+        },
+        {
+          "symbol": "_candidate_approval_decision_state"
+        },
+        {
+          "symbol": "_promotion_request_state"
+        },
+        {
+          "symbol": "_promotion_execution_state"
+        },
+        {
+          "symbol": "_review_status"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-016",
+      "family_id": "lifecycle-states",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/idea_maturity_read_model_publication_spec.py",
+      "selector": {
+        "symbol": "_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "LifecycleStateContext"
+        },
+        {
+          "symbol": "_status"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_int"
+        },
+        {
+          "path": "tools/idea_maturity_lifecycle_context.py",
+          "symbol": "_summary"
+        }
+      ],
+      "history": {
+        "refactor_commit": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/425078cc74e1c2cccbff259b5505b1b958b8e904",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-017",
+      "family_id": "pre-sib",
+      "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "selector": {
+        "symbol": "_gate_findings",
+        "node_kind": "If",
+        "contains": "if _pre_sib_original_blocked(pre_sib, materialization)"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_pre_sib_original_blocked"
+        },
+        {
+          "symbol": "_readiness_ready"
+        },
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_finding"
+        }
+      ],
+      "history": {
+        "refactor_commit": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-018",
+      "family_id": "pre-sib",
+      "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "selector": {
+        "symbol": "_PRE_SIB_STATE_DECISION"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "symbol": "_PreSibState"
+        },
+        {
+          "symbol": "_PreSibDecisionContext"
+        }
+      ],
+      "history": {
+        "refactor_commit": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-019",
+      "family_id": "acceptance-criteria",
+      "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_repair_acceptance_criteria"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": {
+        "refactor_commit": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-020",
+      "family_id": "acceptance-criteria",
+      "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_ACCEPTANCE_CRITERION_DECISION"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "symbol": "_AcceptanceCriterionContext"
+        },
+        {
+          "symbol": "_AcceptanceCriterionDisposition"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_text"
+        }
+      ],
+      "history": {
+        "refactor_commit": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-021",
+      "family_id": "unsupported-claims",
+      "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_repair_unsupported_claims"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_is_strong_claim"
+        },
+        {
+          "symbol": "_claim_reliability"
+        },
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": {
+        "refactor_commit": "710367a01881d34c1291e09b534925f8cd7f79ae",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/710367a01881d34c1291e09b534925f8cd7f79ae",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-022",
+      "family_id": "unsupported-claims",
+      "revision": "710367a01881d34c1291e09b534925f8cd7f79ae",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_UNSUPPORTED_CLAIM_DECISION"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "symbol": "_UnsupportedClaimContext"
+        },
+        {
+          "symbol": "_UnsupportedClaimDisposition"
+        },
+        {
+          "symbol": "_is_strong_claim"
+        },
+        {
+          "symbol": "_claim_reliability"
+        },
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": {
+        "refactor_commit": "710367a01881d34c1291e09b534925f8cd7f79ae",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/710367a01881d34c1291e09b534925f8cd7f79ae",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-023",
+      "family_id": "preview-dispatch",
+      "revision": "81d74d540ffffbc6df752e6a1678574446da9197",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_apply_preview_actions"
+      },
+      "proposed_opportunity": "needs_review",
+      "proposed_concern_kind": "variant_behavior",
+      "role": "historical_before",
+      "rationale": "Dispatch selects concrete graph-edit operations and also performs mutations. Whether these variants belong to policy specifications or operation objects needs architectural adjudication; historical extraction is not proof of eligibility.",
+      "supporting": [
+        {
+          "symbol": "_node_by_id"
+        },
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        }
+      ],
+      "history": {
+        "refactor_commit": "90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-024",
+      "family_id": "preview-dispatch",
+      "revision": "90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_PREVIEW_OPERATION_DECISION"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "variant_behavior",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "symbol": "_PreviewOperationContext"
+        },
+        {
+          "symbol": "_ignore_preview_operation"
+        },
+        {
+          "symbol": "_append_preview_edge"
+        },
+        {
+          "symbol": "_add_preview_acceptance_criterion"
+        },
+        {
+          "symbol": "_replace_preview_claim_type"
+        },
+        {
+          "symbol": "_node_by_id"
+        },
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": {
+        "refactor_commit": "90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-025",
+      "family_id": "candidate-quality",
+      "revision": "162f17b8c52c1753d4649f0ec56d49cd912e77b4",
+      "path": "tools/idea_to_spec_rerun_preview.py",
+      "selector": {
+        "symbol": "_candidate_quality_preview"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_int"
+        }
+      ],
+      "history": {
+        "refactor_commit": "6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-026",
+      "family_id": "candidate-quality",
+      "revision": "6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+      "path": "tools/idea_to_spec_candidate_quality_review_spec.py",
+      "selector": {
+        "symbol": "_CANDIDATE_QUALITY_REVIEW_SPEC"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "path": "tools/idea_to_spec_candidate_quality_context.py",
+          "symbol": "CandidateQualityContext"
+        }
+      ],
+      "history": {
+        "refactor_commit": "6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-027",
+      "family_id": "noop-handoff",
+      "revision": "0d3b0048055919e67b745cc2261977e5e4f76def",
+      "path": "tools/repaired_candidate_promotion_handoff.py",
+      "selector": {
+        "symbol": "_repair_loop_for_repaired_handoff"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "historical_before",
+      "rationale": "The visible source selects a stable named lifecycle or domain-policy outcome; proposed eligibility still needs independent review.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        }
+      ],
+      "history": {
+        "refactor_commit": "7fc2836acf68815edfc68d0dc8a500ddb067f304",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/7fc2836acf68815edfc68d0dc8a500ddb067f304",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-028",
+      "family_id": "noop-handoff",
+      "revision": "7fc2836acf68815edfc68d0dc8a500ddb067f304",
+      "path": "tools/repaired_handoff_noop_passthrough_spec.py",
+      "selector": {
+        "symbol": "CLEAN_PRE_SIB_NOOP_PASSTHROUGH"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "policy",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "symbol": "_is_clean_pre_sib_noop_passthrough"
+        },
+        {
+          "path": "tools/repaired_handoff_context.py",
+          "symbol": "RepairedHandoffContext"
+        }
+      ],
+      "history": {
+        "refactor_commit": "7fc2836acf68815edfc68d0dc8a500ddb067f304",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/7fc2836acf68815edfc68d0dc8a500ddb067f304",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-029",
+      "family_id": "ontology-counts",
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "path": "tools/ontology_imports.py",
+      "selector": {
+        "symbol": "build_ontology_owner_decision_report",
+        "node_kind": "Assign",
+        "contains": "accepted_count = sum"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "historical_before",
+      "rationale": "Exact equality checks aggregate already prepared state rows; they do not decide which state is authorized or correct. The historical SpecificationCore extraction alone does not make the counting mechanics a new adoption opportunity.",
+      "supporting": [
+        {
+          "selector": {
+            "symbol": "build_ontology_owner_decision_report",
+            "node_kind": "Assign",
+            "contains": "rejected_count = sum"
+          }
+        },
+        {
+          "selector": {
+            "symbol": "build_ontology_owner_decision_report",
+            "node_kind": "Assign",
+            "contains": "clarification_count = sum"
+          }
+        }
+      ],
+      "history": {
+        "refactor_commit": "11e7e1356f1a207d26767ea857e5d2a2ae4e482f",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/11e7e1356f1a207d26767ea857e5d2a2ae4e482f",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-030",
+      "family_id": "ontology-counts",
+      "revision": "11e7e1356f1a207d26767ea857e5d2a2ae4e482f",
+      "path": "tools/ontology_decision_state_spec.py",
+      "selector": {
+        "symbol": "count_decision_states"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "historical_specification_control",
+      "rationale": "The decision is already explicitly composed through SpecificationCore at this snapshot; it is not a remaining adoption opportunity. This control is deliberately selected, not a naturally sampled scanner candidate.",
+      "supporting": [
+        {
+          "symbol": "ACCEPTED"
+        },
+        {
+          "symbol": "REJECTED"
+        },
+        {
+          "symbol": "NEEDS_CLARIFICATION"
+        },
+        {
+          "symbol": "DecisionStateCounts"
+        }
+      ],
+      "history": {
+        "refactor_commit": "11e7e1356f1a207d26767ea857e5d2a2ae4e482f",
+        "url": "https://github.com/0al-spec/SpecGraph/commit/11e7e1356f1a207d26767ea857e5d2a2ae4e482f",
+        "interpretation": "Refactoring history is provenance, not a gold label or behavior-preservation proof."
+      }
+    },
+    {
+      "id": "sg-031",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_dict",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "selector": {
+        "symbol": "_dict"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-032",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_text",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "selector": {
+        "symbol": "_text"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-033",
+      "family_id": "workspace-allocation",
+      "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+      "path": "tools/subject_publication.py",
+      "selector": {
+        "symbol": "_verify_publication",
+        "node_kind": "Expr",
+        "contains": "workspace allocation covers a different bootstrap"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The exact guard binds publication to workspace identity, ref, commit, two authorizations and exact declaration bytes. The source rule is a proposed named-policy opportunity, not an accepted business decision.",
+      "supporting": [
+        {
+          "symbol": "require"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-034",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_slug",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_slug"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-035",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_edge_degrees",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_edge_degrees"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-036",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_node_by_id",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/candidate_repair_loop.py",
+      "selector": {
+        "symbol": "_node_by_id"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-037",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_parse_time",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_parse_time"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_parse_time"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-038",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_seconds_between",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_seconds_between"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_parse_time"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-039",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_rate",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_rate"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_parse_time"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-040",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_dedupe_records",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_dedupe_records"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_parse_time"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-041",
+      "family_id": "mechanics:tools/evidence_claim_gate.py:unique_object",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/evidence_claim_gate.py",
+      "selector": {
+        "symbol": "unique_object"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-042",
+      "family_id": "mechanics:tools/evidence_claim_gate.py:read_bounded",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/evidence_claim_gate.py",
+      "selector": {
+        "symbol": "read_bounded"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-043",
+      "family_id": "mechanics:tools/evidence_claim_gate.py:digest",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/evidence_claim_gate.py",
+      "selector": {
+        "symbol": "digest"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-044",
+      "family_id": "mechanics:tools/subject_read_model_io.py:_object",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/subject_read_model_io.py",
+      "selector": {
+        "symbol": "_object"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-045",
+      "family_id": "mechanics:tools/subject_read_model_io.py:_require_string_trace_keys",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/subject_read_model_io.py",
+      "selector": {
+        "symbol": "_require_string_trace_keys"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-046",
+      "family_id": "mechanics:tools/subject_read_model_io.py:revision_payload",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/subject_read_model_io.py",
+      "selector": {
+        "symbol": "revision_payload"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-047",
+      "family_id": "mechanics:tools/subject_source_write.py:parse_write_request",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/subject_source_write.py",
+      "selector": {
+        "symbol": "parse_write_request"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-048",
+      "family_id": "mechanics:tools/subject_source_write.py:_require_digest",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/subject_source_write.py",
+      "selector": {
+        "symbol": "_require_digest"
+      },
+      "proposed_opportunity": "excluded",
+      "proposed_concern_kind": "mechanics",
+      "role": "current_mechanics",
+      "rationale": "The selected code parses, normalizes, aggregates, projects or validates representation rather than choosing a product-policy outcome.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-049",
+      "family_id": "promotion-paths",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "selector": {
+        "symbol": "_promotion_path_allowed"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_readiness_ready"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-050",
+      "family_id": "promotion-paths",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/candidate_approval_decision.py",
+      "selector": {
+        "symbol": "_promotion_path_allowed"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_readiness_ready"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-051",
+      "family_id": "approval-admission",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/candidate_approval_decision.py",
+      "selector": {
+        "symbol": "_validate_active_candidate"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        },
+        {
+          "symbol": "_readiness_ready"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-052",
+      "family_id": "evidence-admission",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/evidence_claim_gate.py",
+      "selector": {
+        "symbol": "source_claim_reason"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-053",
+      "family_id": "evidence-admission",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/evidence_claim_gate.py",
+      "selector": {
+        "symbol": "_validate_runtime_decision"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-054",
+      "family_id": "subject-transitions",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/subject_source_write.py",
+      "selector": {
+        "symbol": "_check_transition"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [],
+      "history": null
+    },
+    {
+      "id": "sg-055",
+      "family_id": "lifecycle-states",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_lifecycle_state_from_metrics_fragment"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-056",
+      "family_id": "lifecycle-states",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_derived_state"
+      },
+      "proposed_opportunity": "eligible",
+      "proposed_concern_kind": "policy",
+      "role": "current_inline_policy",
+      "rationale": "The visible conditions admit or reject a named lifecycle, authority, evidence or immutable-history outcome. Proposed eligibility needs independent review of the chosen source-site boundary.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-057",
+      "family_id": "boundary:tools/idea_maturity_metrics_report.py:_public_safe",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_public_safe"
+      },
+      "proposed_opportunity": "needs_review",
+      "proposed_concern_kind": "unknown",
+      "role": "current_boundary",
+      "rationale": "The declaration mixes projection, artifact selection, privacy or temporal choices. The bounded code does not by itself settle the preferred policy owner or whether another Specification is useful; independent adjudication is needed.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_seconds_between"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-058",
+      "family_id": "boundary:tools/idea_maturity_metrics_report.py:_selected_artifact_key",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_selected_artifact_key"
+      },
+      "proposed_opportunity": "needs_review",
+      "proposed_concern_kind": "unknown",
+      "role": "current_boundary",
+      "rationale": "The declaration mixes projection, artifact selection, privacy or temporal choices. The bounded code does not by itself settle the preferred policy owner or whether another Specification is useful; independent adjudication is needed.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_seconds_between"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-059",
+      "family_id": "boundary:tools/idea_maturity_metrics_report.py:_phase_dwell_seconds",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/idea_maturity_metrics_report.py",
+      "selector": {
+        "symbol": "_phase_dwell_seconds"
+      },
+      "proposed_opportunity": "needs_review",
+      "proposed_concern_kind": "unknown",
+      "role": "current_boundary",
+      "rationale": "The declaration mixes projection, artifact selection, privacy or temporal choices. The bounded code does not by itself settle the preferred policy owner or whether another Specification is useful; independent adjudication is needed.",
+      "supporting": [
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text_list"
+        },
+        {
+          "symbol": "_seconds_between"
+        }
+      ],
+      "history": null
+    },
+    {
+      "id": "sg-060",
+      "family_id": "boundary:tools/repaired_candidate_promotion_handoff.py:_candidate_graph_preview",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/repaired_candidate_promotion_handoff.py",
+      "selector": {
+        "symbol": "_candidate_graph_preview"
+      },
+      "proposed_opportunity": "needs_review",
+      "proposed_concern_kind": "unknown",
+      "role": "current_boundary",
+      "rationale": "The declaration mixes projection, artifact selection, privacy or temporal choices. The bounded code does not by itself settle the preferred policy owner or whether another Specification is useful; independent adjudication is needed.",
+      "supporting": [
+        {
+          "symbol": "_dict"
+        },
+        {
+          "symbol": "_list"
+        },
+        {
+          "symbol": "_text"
+        }
+      ],
+      "history": null
+    }
+  ]
+}

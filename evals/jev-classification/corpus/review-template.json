@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "rubric_id": "specification_metrics.candidate.v1",
+  "rubric_version": 1,
+  "reviewer_id": null,
+  "reviews": [
+    {
+      "candidate_id": "sg-001",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-002",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-003",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-004",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-005",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-006",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-007",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-008",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-009",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-010",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-011",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-012",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-013",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-014",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-015",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-016",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-017",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-018",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-019",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-020",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-021",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-022",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-023",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-024",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-025",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-026",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-027",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-028",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-029",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-030",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-031",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-032",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-033",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-034",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-035",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-036",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-037",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-038",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-039",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-040",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-041",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-042",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-043",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-044",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-045",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-046",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-047",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-048",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-049",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-050",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-051",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-052",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-053",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-054",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-055",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-056",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-057",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-058",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-059",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    },
+    {
+      "candidate_id": "sg-060",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationale": null
+    }
+  ]
+}

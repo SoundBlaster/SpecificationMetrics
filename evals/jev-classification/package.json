@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "specificationmetrics-jev-classification-eval",
+  "version": "0.1.0",
+  "description": "Opt-in Promptfoo evaluation for Jev candidate classification",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "eval": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml --max-concurrency 1",
+    "validate": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo validate config -c promptfooconfig.yaml",
+    "test:offline": "PROMPTFOO_DISABLE_TELEMETRY=1 PROMPTFOO_CACHE_TYPE=memory node --test providers/jev.test.mjs assertions/choice-probability.test.mjs",
+    "view": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo view",
+    "eval:fresh": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml --max-concurrency 1 --no-cache"
+  },
+  "devDependencies": {
+    "promptfoo": "0.123.1"
+  }
+}
