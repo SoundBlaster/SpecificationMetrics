@@ -9,7 +9,7 @@
   "scripts": {
     "eval": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml --max-concurrency 1",
     "validate": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo validate config -c promptfooconfig.yaml",
-    "test:offline": "PROMPTFOO_DISABLE_TELEMETRY=1 PROMPTFOO_CACHE_TYPE=memory node --test providers/jev.test.mjs assertions/choice-probability.test.mjs",
+    "test:offline": "PROMPTFOO_DISABLE_TELEMETRY=1 PROMPTFOO_CACHE_TYPE=memory node --test providers/jev.test.mjs assertions/choice-probability.test.mjs evaluate_batch.test.mjs",
     "view": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo view",
     "eval:fresh": "PROMPTFOO_DISABLE_TELEMETRY=1 promptfoo eval -c promptfooconfig.yaml --max-concurrency 1 --no-cache"
   },

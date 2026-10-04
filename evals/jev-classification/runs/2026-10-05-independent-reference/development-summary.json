@@ -1,0 +1,709 @@
+{
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "phase": "development",
+  "variants": {
+    "baseline-v1": {
+      "opportunity": {
+        "count": 12,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 3,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 0,
+            "excluded": 6,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 4,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          "excluded": {
+            "support": 6,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571
+          },
+          "needs_review": {
+            "support": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "macro_f1": 0.5357142857142857,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.25,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 12,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 6,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.9230769230769231
+          },
+          "variant_behavior": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.9373219373219372,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.08333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    },
+    "boundary-test-v2": {
+      "opportunity": {
+        "count": 12,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 1,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 0,
+            "excluded": 6,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 2,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          },
+          "excluded": {
+            "support": 6,
+            "precision": 0.5454545454545454,
+            "recall": 1.0,
+            "f1": 0.7058823529411765
+          },
+          "needs_review": {
+            "support": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "macro_f1": 0.3686274509803922,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.4166666666666667,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 3
+      },
+      "concern_kind": {
+        "count": 12,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 6,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.9230769230769231
+          },
+          "variant_behavior": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.9373219373219372,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.08333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    },
+    "singleton-v1": {
+      "opportunity": {
+        "count": 12,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 3,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 5,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 4,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666
+          },
+          "excluded": {
+            "support": 6,
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307693
+          },
+          "needs_review": {
+            "support": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "macro_f1": 0.47863247863247865,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.3333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 12,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 6,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.9230769230769231
+          },
+          "variant_behavior": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.9373219373219372,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.08333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    },
+    "owned-rule-v1": {
+      "opportunity": {
+        "count": 12,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 3,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 5,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 4,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666
+          },
+          "excluded": {
+            "support": 6,
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307693
+          },
+          "needs_review": {
+            "support": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "macro_f1": 0.47863247863247865,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.3333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 12,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 6,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.9230769230769231
+          },
+          "variant_behavior": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.9373219373219372,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.08333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    },
+    "mechanical-boundary-v1": {
+      "opportunity": {
+        "count": 12,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 3,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 0,
+            "excluded": 6,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 4,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          "excluded": {
+            "support": 6,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571
+          },
+          "needs_review": {
+            "support": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "macro_f1": 0.5357142857142857,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.25,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 12,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 6,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.9230769230769231
+          },
+          "variant_behavior": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.9373219373219372,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.08333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    },
+    "bounded-evidence-v1": {
+      "opportunity": {
+        "count": 12,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 3,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 0,
+            "excluded": 6,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 4,
+            "precision": 0.75,
+            "recall": 0.75,
+            "f1": 0.75
+          },
+          "excluded": {
+            "support": 6,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571
+          },
+          "needs_review": {
+            "support": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "macro_f1": 0.5357142857142857,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.25,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 12,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 6,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 6,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1": 0.9230769230769231
+          },
+          "variant_behavior": {
+            "support": 1,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.9373219373219372,
+        "abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.08333333333333333,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    }
+  },
+  "limits": "Agreement with one blind model reviewer on a purposive challenge corpus; not measured human accuracy or production prevalence.",
+  "paired_comparisons": {
+    "boundary-test-v2": {
+      "eligible_recall_delta_interval": [
+        -1.0,
+        0.0
+      ],
+      "resampling_unit": "whole decision family",
+      "draws_with_eligible": 1988,
+      "limits": "Small-family diagnostic percentile bootstrap; no statistical-power claim."
+    },
+    "singleton-v1": {
+      "eligible_recall_delta_interval": [
+        0.0,
+        0.0
+      ],
+      "resampling_unit": "whole decision family",
+      "draws_with_eligible": 1988,
+      "limits": "Small-family diagnostic percentile bootstrap; no statistical-power claim."
+    },
+    "owned-rule-v1": {
+      "eligible_recall_delta_interval": [
+        0.0,
+        0.0
+      ],
+      "resampling_unit": "whole decision family",
+      "draws_with_eligible": 1988,
+      "limits": "Small-family diagnostic percentile bootstrap; no statistical-power claim."
+    },
+    "mechanical-boundary-v1": {
+      "eligible_recall_delta_interval": [
+        0.0,
+        0.0
+      ],
+      "resampling_unit": "whole decision family",
+      "draws_with_eligible": 1988,
+      "limits": "Small-family diagnostic percentile bootstrap; no statistical-power claim."
+    },
+    "bounded-evidence-v1": {
+      "eligible_recall_delta_interval": [
+        0.0,
+        0.0
+      ],
+      "resampling_unit": "whole decision family",
+      "draws_with_eligible": 1988,
+      "limits": "Small-family diagnostic percentile bootstrap; no statistical-power claim."
+    }
+  }
+}

@@ -1,0 +1,703 @@
+{
+  "schema_version": 1,
+  "reference_kind": "independent_model_annotation",
+  "reviewer_id": "blind_codex_reviewer",
+  "human_adjudicated": false,
+  "seed": "specgraph-jev-family-v1",
+  "screening_ids": [
+    "review-80cfb8df0e3d8882",
+    "review-3a8e416b997b3af8",
+    "review-1098d534a6c6e4dd",
+    "review-385b27c146495921",
+    "review-60ed1c033c09c857",
+    "review-c6e7be0fb9d4bc6c",
+    "review-a925c728a12b3e64",
+    "review-5d3b5c9c1d3622ea",
+    "review-21fa99e1bc4afd72",
+    "review-a4b4493efcf2f97c",
+    "review-3238205e0bfcab79",
+    "review-a793523e8aecba49"
+  ],
+  "selection_rule": "Rank by eligible recall, then precision, then lower abstention; ties by variant ID. Baseline always retained.",
+  "targets": {
+    "eligible_recall": 0.9,
+    "eligible_precision": 0.8,
+    "abstention_max": 0.35,
+    "provider_errors": 0
+  },
+  "targets_scope": "Provisional discovery targets; machine-reference agreement only, no production or human-gold claim.",
+  "cases": [
+    {
+      "candidate_id": "review-78614336ae5de317",
+      "source_candidate_id": "sg-001",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:b55d80acd5adf9abe240209d2b9711d3e69e451c912b3aacdf6aa85f46bf1be1",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Readiness is decided by any ready_for_candidate_approval flag being exactly True; repair artifact presence without that evidence yields blocked, candidate graph presence yields not_reached. This is an ordered lifecycle rule.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-bab8d3586286452c",
+      "source_candidate_id": "sg-002",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:c363ced0c09b2fe0f3b6dd5a94564ed17cf5dc09cc3585f8fdcb646bc6125c44",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The ready_for_candidate_approval OR, repair-content blocking and candidate-exists branches are already owned by named PredicateSpec rules inside FirstMatch.with_fallback(candidate_approval_state).",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-874d8dea17e42a29",
+      "source_candidate_id": "sg-003",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:0efb6a8c25eff93933b6cbbc88a92306e0153759d870a7b1f3509d622cc2cca8",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Absent approval_intent is interpreted differently depending on approval readiness; active_intent_count > 0 or requested status establishes requested, while blocked status establishes blocked. These are lifecycle decisions.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d07a5a6f65d9f010",
+      "source_candidate_id": "sg-004",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:b220e1018491dad7cdb89bf82561d32749dcb5228488b9c80e5fe277ca6ddcb4",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The absence/readiness, positive active_intent_count/requested and blocked predicates are already named PredicateSpec branches in candidate_approval_intent_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-6ccf82f44a98e95c",
+      "source_candidate_id": "sg-005",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:9836f70c69a9dc698ec2cdcf83cea81c448cd446adb88bc1d11044bf29585a1b",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "An approved decision plus readiness.ready is required for materialized; rejected/needs_context/superseded block, dry_run and failure have ordered outcomes, and execution decision references can establish materialization. These encode lifecycle evidence precedence.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-32a0197374538236",
+      "source_candidate_id": "sg-006",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:e38c3d22b1b23bd36ebebd1abbd338c59c16b7f1679cca592ac886bc0afb05fe",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Approved-ready, dry_run, failed, blocked and execution-materialized cases already belong to named PredicateSpec branches of candidate_approval_decision_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d01349d6824a814b",
+      "source_candidate_id": "sg-007",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:c3eb5ca481b9e6fdfd00af6ec1857d9263cb175607449ad7c689b9d08596434b",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Execution evidence takes priority unless unavailable/not_reached, then requested promotion takes priority, and materialized approval establishes ready. The selected site owns this ordered promotion lifecycle decision.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-b484c79a2a335210",
+      "source_candidate_id": "sg-008",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:935ae4278ee27f180725644d3506a8d0a0fac59377d2c3d4b9f8161e8e95ee93",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Execution precedence, requested state and approval-materialized readiness are already represented by named PredicateSpec branches in platform_promotion_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-7f98da62ce812b2f",
+      "source_candidate_id": "sg-009",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:690b12e1c1f023d1265ad171acb12f69620e9bf85df28b23ff905df08e70d818",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A missing promotion request is unavailable only after materialized approval; ok or promotion_ready establishes requested and positive error_count blocks. This is a lifecycle evidence rule.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-b6ca24526fb56f36",
+      "source_candidate_id": "sg-010",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:65ddc3eae53acaf6b1646cc582fa6cb0f1fcb33a334b5ff164e6b3ae3655544f",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The absent-after-approval, requested, blocked and unknown cases are already owned by named PredicateSpec branches of promotion_request_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-df3ae64fd44e5d1f",
+      "source_candidate_id": "sg-011",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:7570d3bb9db79210ed6b94621e91eafc1620fe856157865a8b03b5d16fd0feb1",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "dry_run precedes error_count/failure and blocking; commit_created or review_opened establishes executed. Missing execution depends on requested promotion. These are durable lifecycle evidence decisions.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-26e48ebd678344c1",
+      "source_candidate_id": "sg-012",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:6232a5282a0043086935a8c18d6c225cb55bff875831d5444591eedd55733af4",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The dry_run, failed, blocked, executed and unavailable-after-request outcomes already have named PredicateSpec ownership in promotion_execution_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-1098d534a6c6e4dd",
+      "source_candidate_id": "sg-013",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:3a25441f84b91d6a55f23dbfa3e64c68409e78d9f4ff4b16425dd83955e5564a",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "review_probe_only with merged is deliberately unknown; canonical open/merged and closed states precede summary fallbacks. This defines what review evidence may establish lifecycle status.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d3520a00b92eff20",
+      "source_candidate_id": "sg-014",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:07f470c32a0fc0dc78799b331664fbcbfbca0341eaceefd18436b4fecaf26bf7",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Probe-only merged suppression and canonical/summary review-state precedence already appear as named PredicateSpec rules in review_status.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-e91e522471626f00",
+      "source_candidate_id": "sg-015",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:32022edbf5f22d42a9a7119f91e9b8eb8eb18d5254cf776e62fb15bc9ee789d9",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Probe-only review evidence forces not_reached; absent publication is unavailable only after merged review, and published evidence precedes dry_run/failure/blocking. This is publication lifecycle policy.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-a0572e5fd02101e5",
+      "source_candidate_id": "sg-016",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:d4a0454d495852dec9eca4fabf58b9baa5edaf9850ec58668ec5897d0b9bd968",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Probe suppression, review prerequisite and publication result predicates are already owned by the named read_model_publication_state FirstMatch specification.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "source_candidate_id": "sg-017",
+      "family_id": "pre-sib",
+      "split": "holdout",
+      "context_sha256": "sha256:422288d9d407dd057d95beb162a9b83a3db792f098b8a4ee35dfc604a7f7b50d",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A non-ready original pre-SIB report blocks unless materialization_source is repair_loop_preview; that exception turns the condition into a warning. Supporting _pre_sib_original_blocked makes the repair allowance explicit.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "source_candidate_id": "sg-018",
+      "family_id": "pre-sib",
+      "split": "holdout",
+      "context_sha256": "sha256:cb83ca44e88b5fd0fcacc13ff22c5bdd6321c95c03198c352fef1195d7017f48",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "pre_sib_ready and the repair_loop_preview exception already determine READY/BLOCKED/REPAIRED_PREVIEW through named PredicateSpec branches of _PRE_SIB_STATE_DECISION.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "source_candidate_id": "sg-019",
+      "family_id": "acceptance-criteria",
+      "split": "development",
+      "context_sha256": "sha256:6316577accdf4fe09a16f3550a3758f016b54d646c5aa31e70a1911d4e76c2d5",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Requirements receive placeholder acceptance criteria unless they already have nonempty refs and every ref names an existing criterion. This coverage rule drives add_acceptance_criterion actions, beyond the incidental ID formatting.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "source_candidate_id": "sg-020",
+      "family_id": "acceptance-criteria",
+      "split": "development",
+      "context_sha256": "sha256:2dce0925cfc91b0233ac09f18107e6f7e5d09c22c1c7d812d628c52e24a56200",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The nonempty references plus all-existing coverage condition is already owned by acceptance_criterion.already_covered in _ACCEPTANCE_CRITERION_DECISION with ADD_PLACEHOLDER fallback.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f140281981943c50",
+      "source_candidate_id": "sg-021",
+      "family_id": "unsupported-claims",
+      "split": "development",
+      "context_sha256": "sha256:ca6590c8876346a9ecd823fd45a38da027804f4657c8c5bfa1c28f0899fb2970",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A strong claim is downgraded to hypothesis when reliability is at most 2 or unavailable and evidence_refs is empty; stronger reliability or evidence prevents repair. Supporting helpers expose the threshold and strong-claim test.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-53a5233b28d07afe",
+      "source_candidate_id": "sg-022",
+      "family_id": "unsupported-claims",
+      "split": "development",
+      "context_sha256": "sha256:c45469baafdc5cf8e51e231c11f250d261961c80f6216fb1ec57e22822d2fa44",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Invalid/non-strong/supported claim cases and DOWNGRADE fallback are already owned by named PredicateSpec rules in _UNSUPPORTED_CLAIM_DECISION.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-80bd99f046e3d3aa",
+      "source_candidate_id": "sg-023",
+      "family_id": "preview-dispatch",
+      "split": "development",
+      "context_sha256": "sha256:544dc24e5329762fb3a4df456b309bf40c85909ff48d9298869772407998d39d",
+      "opportunity": "needs_review",
+      "concern_kind": "variant_behavior",
+      "rationale": "The whole function combines preview authority stamping (canonical_mutations_allowed and tracked_artifacts_written False), applied_to_preview filtering and op-specific graph mutation for append/add_acceptance_criterion/replace_claim_type. Behavioral dispatch is visible, but a single Specification opportunity for this mixed selection is unclear.",
+      "missing_context": [
+        "Intended boundary between preview authority invariants, action applicability and operation dispatch."
+      ]
+    },
+    {
+      "candidate_id": "review-3a8e416b997b3af8",
+      "source_candidate_id": "sg-024",
+      "family_id": "preview-dispatch",
+      "split": "development",
+      "context_sha256": "sha256:04c0c671e158a53b413688b06f69835530bab3653091caf89631dae6bf9df1ba",
+      "opportunity": "excluded",
+      "concern_kind": "variant_behavior",
+      "rationale": "append /edges, add_acceptance_criterion and replace_claim_type already dispatch to distinct behaviors through named PredicateSpec branches in _PREVIEW_OPERATION_DECISION; handlers show graph updates rather than an unowned admissibility rule.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-fa4ec4f541044412",
+      "source_candidate_id": "sg-025",
+      "family_id": "candidate-quality",
+      "split": "development",
+      "context_sha256": "sha256:2757aee06372c1a4e89d34b6752b73e05b22ecee3d993e7263dcf5e759a2959a",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "unresolved_count == 0 with resolved_count > 0 means improved; positive resolved_count means partially improved; unresolved ontology/candidate families establish distinct blocked states. This is candidate quality classification policy despite count/result packaging.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-04e91cf0b46fc04a",
+      "source_candidate_id": "sg-026",
+      "family_id": "candidate-quality",
+      "split": "development",
+      "context_sha256": "sha256:32fb7712f91f1a18863d54fed10606bc10551e80bfd701cf9d129b14c15523dd",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "All-resolved, some-resolved and each unresolved gap-family predicate already belong to named PredicateSpec branches in candidate_quality_review_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d9c6188e527ff27d",
+      "source_candidate_id": "sg-027",
+      "family_id": "noop-handoff",
+      "split": "development",
+      "context_sha256": "sha256:0e1e874745e2f676bc3a661bc51955335f6f1abd16b44427c1ae093e80e3b419",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Readiness is normalized only when pre-SIB is ready, repair loop is not already ready, there are no findings and both applied_action_count and context_required_count are zero. Those explicit prerequisites authorize clean no-op pass-through.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d83fa2a2c26429f9",
+      "source_candidate_id": "sg-028",
+      "family_id": "noop-handoff",
+      "split": "development",
+      "context_sha256": "sha256:a29f3f539c985d2fb7ae2a3d929f49d9c22ef3cd3ab88e9d875d750cb014537d",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The pre-SIB-ready, repair-not-ready, no-findings and zero-count conjunction is already owned by CLEAN_PRE_SIB_NOOP_PASSTHROUGH PredicateSpec and its supporting predicate.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f2b23f48ed4942d7",
+      "source_candidate_id": "sg-029",
+      "family_id": "ontology-counts",
+      "split": "development",
+      "context_sha256": "sha256:c4550ca80cccd40a83402e586010c7dc367ecb97484b9acb85dce1889dc9e6d8",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The exact selected expression merely counts prepared decision rows whose decision_state equals accepted. It does not decide whether any underlying proposal deserves acceptance.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-9929c781779bcfe8",
+      "source_candidate_id": "sg-030",
+      "family_id": "ontology-counts",
+      "split": "development",
+      "context_sha256": "sha256:7e579d90b1d814bbb7e064cbbd44a9ea0f4fc7cd38413932d381b16a26694e52",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "count_decision_states aggregates already prepared exact state values into three counts; its docstring preserves traversal/KeyError semantics and supporting predicates already own the state comparisons.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "source_candidate_id": "sg-031",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_dict",
+      "split": "holdout",
+      "context_sha256": "sha256:d5e8645dfc28ed6c96ec603824c52e30402c4f020aa3bcd7de74e57b642e472a",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "isinstance(value, dict) selects a representation or empty-dict fallback. There is no domain eligibility or lifecycle decision.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "source_candidate_id": "sg-032",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_text",
+      "split": "development",
+      "context_sha256": "sha256:475539fd9482f71edb1d8925aa0a50a8df68026942c875895fc04ae7c343bba0",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The selected function strips nonempty strings and otherwise returns a caller-supplied default. This is text normalization.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "source_candidate_id": "sg-033",
+      "family_id": "workspace-allocation",
+      "split": "holdout",
+      "context_sha256": "sha256:ead2beea31512d34d995ef597853638a19385d4b750a2120436d8d3836ef7dd4",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Allocation must match workspace_identity, source_ref, expected_commit and declaration hash while both allocation and initialization authorization flags are exactly True. The conjunction binds bootstrap authority to the specific requested workspace evidence.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "source_candidate_id": "sg-034",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_slug",
+      "split": "development",
+      "context_sha256": "sha256:abc27e62ef52c741dc4af699b216649ce2bbae5cb6c990abe69fbd901b794119",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Lowercasing, replacing non-alphanumeric runs, trimming dashes and applying a fallback construct a slug representation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-5aba8775bdd00154",
+      "source_candidate_id": "sg-035",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_edge_degrees",
+      "split": "development",
+      "context_sha256": "sha256:30e1d870ea66da1cd4b02e8e182b33a0f4999b9fdf48277fac5e434a1a675769",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The function initializes node degrees and increments known endpoints for each from/to edge reference. This is graph aggregation without a domain admissibility outcome.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-bee56fb5baeef176",
+      "source_candidate_id": "sg-036",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_node_by_id",
+      "split": "holdout",
+      "context_sha256": "sha256:e2510951f0544c691762578fd6a967972dd4aa7d204b4d31a926c0fb7305db23",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The function finds the first node whose normalized id equals node_id or returns None. This is data lookup.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-b8b284ef77571870",
+      "source_candidate_id": "sg-037",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_parse_time",
+      "split": "holdout",
+      "context_sha256": "sha256:dfcb8543ce6af218e66b3308aabba3025579a2010645f584b0bde73ee04b04f1",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Nonempty string checking, Z offset replacement and datetime.fromisoformat with ValueError fallback parse a timestamp representation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-9c054fa8949b1c12",
+      "source_candidate_id": "sg-038",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_seconds_between",
+      "split": "holdout",
+      "context_sha256": "sha256:31ddb437a929a569fa8960ae9b65f0255fc165e04b04c6e2b1a90fa4256fb1c9",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Missing endpoints and negative elapsed values return None; otherwise duration is calculated and rounded. These are arithmetic validity and representation checks.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-5d3b5c9c1d3622ea",
+      "source_candidate_id": "sg-039",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_rate",
+      "split": "development",
+      "context_sha256": "sha256:ac3d008faef3f64f0df9f70fe3117ce048ec615196f208af7784c56904f7fd1a",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "A nonpositive denominator prevents division and the ratio is rounded to six places. This is numerical computation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f3441aa2c5f86230",
+      "source_candidate_id": "sg-040",
+      "family_id": "mechanics:tools/idea_maturity_metrics_report.py:_dedupe_records",
+      "split": "development",
+      "context_sha256": "sha256:46e3934736516d46d6a6e756544f4f999f5a147e36a5b2f12745c28f1ce39a49",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "A composite record key built from node/gap/decision-or-request/match/resolution identifiers is used for first-occurrence deduplication. The selected site performs record representation cleanup, without deciding evidence acceptance.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-68c0d96b55b36722",
+      "source_candidate_id": "sg-041",
+      "family_id": "mechanics:tools/evidence_claim_gate.py:unique_object",
+      "split": "development",
+      "context_sha256": "sha256:6a0c4c31e0107299e6539ed61268610831545373dcb43e557ee284de7aa34411",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Repeated JSON keys raise ValueError while pairs build an object. This is unambiguous parsing enforcement.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-63a4b1a985991965",
+      "source_candidate_id": "sg-042",
+      "family_id": "mechanics:tools/evidence_claim_gate.py:read_bounded",
+      "split": "holdout",
+      "context_sha256": "sha256:dd815d2626ba70da29a3879a876619f399272d1bed6c6b71dabfb8f5202dbabc",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "os.open/fstat enforce regular-file input; reading limit + 1 bytes and rejecting oversize data bounds I/O. No product authority or eligibility rule is shown.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-bcb7fbd88ef92831",
+      "source_candidate_id": "sg-043",
+      "family_id": "mechanics:tools/evidence_claim_gate.py:digest",
+      "split": "development",
+      "context_sha256": "sha256:11bd3d7a6cd24b47de9b27e4d33d0f56945a111df1d1fcf735867cc2d10d5307",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "sha256(data).hexdigest computes a digest representation; it does not decide trust or evidence admissibility.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-385b27c146495921",
+      "source_candidate_id": "sg-044",
+      "family_id": "mechanics:tools/subject_read_model_io.py:_object",
+      "split": "development",
+      "context_sha256": "sha256:19366b7ef9e50c23db868f03315ceeee8100275ac55a3af0efe4c923f9444e02",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Mapping type, unknown-field and required-field set checks enforce generic object shape supplied by callers.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-21fa99e1bc4afd72",
+      "source_candidate_id": "sg-045",
+      "family_id": "mechanics:tools/subject_read_model_io.py:_require_string_trace_keys",
+      "split": "development",
+      "context_sha256": "sha256:8190b64fd6e8f9f2d5d6fb6cb40dbc58b3e322da278d85f6bc132e32d7a32333",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Recursive string-key checks prevent YAML-to-JSON rewriting of trace mappings. This is representation preservation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-c6e7be0fb9d4bc6c",
+      "source_candidate_id": "sg-046",
+      "family_id": "mechanics:tools/subject_read_model_io.py:revision_payload",
+      "split": "development",
+      "context_sha256": "sha256:6797bfb9bb3c36add5e595491b94d55844204ae3e19d65e7664520d769d6a542",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "asdict conversion, legacy field omission, provenance optional-field preservation and trace_context_json decoding implement exchange serialization.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-83f0c41f4d194d28",
+      "source_candidate_id": "sg-047",
+      "family_id": "mechanics:tools/subject_source_write.py:parse_write_request",
+      "split": "holdout",
+      "context_sha256": "sha256:b61db4aa612599ec3817fcd747f4b3b03fb13432cc7bedb10b54e599f3bf9035",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The selected function checks request/container shape, parses references/topology, canonicalizes YAML and constructs immutable request/change values. It carries expected digests without deciding whether a write is authorized.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f03e7e58ac5b09b2",
+      "source_candidate_id": "sg-048",
+      "family_id": "mechanics:tools/subject_source_write.py:_require_digest",
+      "split": "holdout",
+      "context_sha256": "sha256:c9b9395af853c993919fbb1579e924adaa2506d42d7f7d19f9302d93f062c52f",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The string/type and [0-9a-f]{64} regex checks validate the lowercase complete SHA256 format.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-60ed1c033c09c857",
+      "source_candidate_id": "sg-049",
+      "family_id": "promotion-paths",
+      "split": "development",
+      "context_sha256": "sha256:132243ac2f9cf4a8a87ae230835c7c6f39363d277fcaea95ea8bfae0ed768b50",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "rationale": "The function combines slash normalization and absolute/parent-traversal rejection with admission by PROMOTION_PATH_PREFIXES. The prefix allowlist could define promotion authority, but its values and ownership are omitted.",
+      "missing_context": [
+        "PROMOTION_PATH_PREFIXES values and the intended promotion authority boundary."
+      ]
+    },
+    {
+      "candidate_id": "review-97478793680175b9",
+      "source_candidate_id": "sg-050",
+      "family_id": "promotion-paths",
+      "split": "development",
+      "context_sha256": "sha256:23a7e7b0ea13207df1622774ccefc0f0ecd0fbd0fb589ff0a218abf5ad44c553",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "rationale": "String normalization and absolute/parent/current-directory segment rejection are mixed with PROMOTION_PATH_PREFIXES admission. It is unclear whether this is a durable allowed promotion scope or a technical path guard.",
+      "missing_context": [
+        "PROMOTION_PATH_PREFIXES values and callers establishing the authority scope of approval."
+      ]
+    },
+    {
+      "candidate_id": "review-a925c728a12b3e64",
+      "source_candidate_id": "sg-051",
+      "family_id": "approval-admission",
+      "split": "development",
+      "context_sha256": "sha256:5826c4f6fc84a2398c495e236e4cb7af07cfe997bffa64f3e0e847c6093c3747",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Approval requires a ready active candidate, canonical_mutations_allowed and tracked_artifacts_written exactly False, active_candidate source mode and specified product workflow/governance/repository roles. These explicit prerequisites define candidate admissibility beyond incidental artifact-format checks.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-c3a6aad69cb11619",
+      "source_candidate_id": "sg-052",
+      "family_id": "evidence-admission",
+      "split": "development",
+      "context_sha256": "sha256:f6fb0b4b19c7db5002d3dd42a88f9e5d5108aaf4aa85d436223f9652e12356ad",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Claim support requires requested criteria to exist and be bound, required elements to exist, validation_issues to be empty, an exact nonambiguous anchor set, matching source identity and resolved anchors with blob identity. This is a durable evidence acceptance rule; malformed-evidence guards support that decision.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-faf2671c3972d87e",
+      "source_candidate_id": "sg-053",
+      "family_id": "evidence-admission",
+      "split": "development",
+      "context_sha256": "sha256:f5ef0c9f91a6e4c40c45816c945c0f8858b45fed3132583aec06e810f1395c62",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "rationale": "The whole validator mixes exact fields/profile/digest/signature-envelope format checks with digest binding, canonical identity matching and issuer authority matching. Trust policy predicates are present, but no narrow selected decision boundary separates them from signed-format enforcement.",
+      "missing_context": [
+        "Intended Specification boundary between signed decision schema enforcement and authority/evidence binding."
+      ]
+    },
+    {
+      "candidate_id": "review-a793523e8aecba49",
+      "source_candidate_id": "sg-054",
+      "family_id": "subject-transitions",
+      "split": "development",
+      "context_sha256": "sha256:5afa393f9a8b51576f35176758b67cf0e6aae255cede5e0a19350f3c003a4840",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Origin requires no existing subject, one revision and one activation; later writes must append exactly one immutable-history revision and preserve containment and disposition. These are explicit lifecycle transition permissions.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-185d2caec2e7f2ad",
+      "source_candidate_id": "sg-055",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:e58e2d373a8da3aba454ba097111b387339618178cef79c1d3c62ce25b844270",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "An ordered lifecycle decision gives published precedence over open/merged review, requested promotion and materialized/ready approval; later branches infer repaired/rerun/repair/intake stages from artifact presence. The selected site owns this stage precedence.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-9caee3bff9dbe0e8",
+      "source_candidate_id": "sg-056",
+      "family_id": "lifecycle-states",
+      "split": "development",
+      "context_sha256": "sha256:e8976f5a83ccd15bb1b423558b46101d51031d45f4e3f57d8c5ca319597bbbf5",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "The selected function decides lifecycle precedence and repaired readiness using candidate nodes, clarification questions and zero unresolved gap counts; medium/high findings and remaining blockers produce blocker identifiers. These are lifecycle and blocker rules.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-86c251ee78c5b0eb",
+      "source_candidate_id": "sg-057",
+      "family_id": "boundary:tools/idea_maturity_metrics_report.py:_public_safe",
+      "split": "development",
+      "context_sha256": "sha256:fc91fe4971d791f233505f7068d03a754f3ceaffc868b89c63ea87112b50e44e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Recursive dictionary export excludes keys in RAW_TRACE_FIELDS and every raw_ prefix while retaining other string keys. That explicit field-admissibility predicate defines a publication disclosure rule, even though traversal is mechanical.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-3636ba56782a5aae",
+      "source_candidate_id": "sg-058",
+      "family_id": "boundary:tools/idea_maturity_metrics_report.py:_selected_artifact_key",
+      "split": "development",
+      "context_sha256": "sha256:54b32c55026a1c768ae6357189d302dee49237b21df89f8663354ecca1b70bb2",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationale": "The exact function chooses the first truthy preferred/fallback artifact. Without callers it could be generic lookup mechanics or authoritative evidence selection; the shown helpers do not resolve which.",
+      "missing_context": [
+        "Callers defining what preferred/fallback artifacts mean and whether selection establishes authoritative evidence."
+      ]
+    },
+    {
+      "candidate_id": "review-a4b4493efcf2f97c",
+      "source_candidate_id": "sg-059",
+      "family_id": "boundary:tools/idea_maturity_metrics_report.py:_phase_dwell_seconds",
+      "split": "development",
+      "context_sha256": "sha256:eaddc8465928eed4aeb0e18cdad2df17e5f0a5984983a7dbddf8ebd85878fd82",
+      "opportunity": "needs_review",
+      "concern_kind": "mechanics",
+      "rationale": "Most of the function calculates phase durations, but it extends the final phase to now when blocked_or_open or last_phase == lifecycle_state. Whether that inclusion test is measurement mechanics or lifecycle measurement policy cannot be established from the shown context.",
+      "missing_context": [
+        "Callers and metric definition for blocked_or_open and ongoing final-phase duration."
+      ]
+    },
+    {
+      "candidate_id": "review-20590908808d82ef",
+      "source_candidate_id": "sg-060",
+      "family_id": "boundary:tools/repaired_candidate_promotion_handoff.py:_candidate_graph_preview",
+      "split": "development",
+      "context_sha256": "sha256:6448c32cbdfeaa01290117a5c9c2d0f929d1f48135475a5e7970a68ba09fc976",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A handoff preview must exist, be a candidate_spec_graph under the expected contract, have candidate nodes and forbid canonical mutations/tracked writes with exact False. These explicit requirements decide preview admissibility and constrain authority.",
+      "missing_context": []
+    }
+  ]
+}

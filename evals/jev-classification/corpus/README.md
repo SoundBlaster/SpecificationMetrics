@@ -57,9 +57,11 @@ prove refactor parity or label correctness.
    [classification contract](../../../docs/candidate-classification-contract.md),
    record both labels and evidence/missing context before seeing Jev answers or
    the agent-proposed labels in `cases.json`/`selection.json`.
-3. Preserve disagreements and adjudicate them explicitly. This task has not
-   performed an independent or human review; all 60 labels remain
-   `pilot_hypothesis`, `unreviewed`, and splits remain `unassigned`.
+3. Preserve disagreements and adjudicate them explicitly. The original source
+   dataset still retains `pilot_hypothesis`, `unreviewed`, `unassigned` metadata.
+   A separate [independent machine-reference experiment](../independent-experiment.md)
+   records one blind model annotation and frozen family splits without promoting
+   these original hypotheses. Human review/adjudication remains outstanding.
 4. Partition by complete decision family after annotation. All lifecycle-state
    examples belong to one family because they call each other. Before/after
    pairs and related repeated checks must not cross development/holdout splits.
