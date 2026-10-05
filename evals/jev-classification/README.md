@@ -126,3 +126,10 @@ holds the prompt fixed and compares code, source task evidence and structural
 implementation facts on eight diagnostic examples, with two fresh repeats.
 It includes an explicit input correction and a separate static-filter view;
 it is development evidence, not a new confirmation holdout.
+
+The [SpecificationCore intent-profile ablation](runs/2026-10-05-intent-profile-ablation/README.md)
+tests a different context factor: the same eight cases with and without a
+versioned description of the project's global architecture goal. The prompt and
+code state otherwise remain fixed. The result supports adding project intent as
+an explicit classifier input on these examples, but inherited pre-profile labels
+are not gold for the new goal.
