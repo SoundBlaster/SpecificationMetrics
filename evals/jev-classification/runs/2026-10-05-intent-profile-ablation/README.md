@@ -56,6 +56,9 @@ Following review, the scorer was tightened so promotions require a valid
 non-eligible baseline label and every mechanical control must explicitly be
 `excluded`. The raw run is unchanged; `summary-final.json` is recomputed with
 those stricter checks. The prior report is retained as `summary-pre-review.json`.
+An errored, missing, or malformed baseline therefore cannot count as a
+successful promotion; a mechanical control marked `needs_review` or lacking a
+valid result fails that control instead of being treated as excluded.
 
 | Observation | Code only | Code + intent profile |
 | --- | ---: | ---: |
