@@ -64,5 +64,32 @@ class GoalProfileAblationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "profile digest"):
             experiment.score(self.study, broken)
 
+    def test_failed_baseline_is_not_a_promotion_and_controls_must_be_excluded(self):
+        run = {"study_sha256": digest((json.dumps(self.study, ensure_ascii=False, indent=2) + "\n").encode()),
+               "prompt_sha256": digest(json.dumps(self.study["prompt_config"], ensure_ascii=False, separators=(",", ":")).encode()),
+               "architecture_profile_sha256": self.study["architecture_profile"]["sha256"],
+               "completed": True, "rows": []}
+        for repeat in range(2):
+            for arm in self.study["arms"]:
+                for case in self.study["cases"]:
+                    run["rows"].append({"repeat": repeat, "arm": arm, "candidate_id": case["candidate_id"],
+                        "context_sha256": case["contexts"][arm]["sha256"],
+                        "response": {"output": {"opportunity": {"choice": case["opportunity"]},
+                                                   "concern_kind": {"choice": case["concern_kind"]}}}})
+        cases_by_source = {case["source_candidate_id"]: case for case in self.study["cases"]}
+        target = cases_by_source["sg-033"]["candidate_id"]
+        control = cases_by_source["sg-031"]["candidate_id"]
+        for repeat in range(2):
+            failed_baseline = next(row for row in run["rows"] if
+                row["repeat"] == repeat and row["arm"] == "code" and row["candidate_id"] == target)
+            failed_baseline["error"] = "simulated baseline failure"
+            failed_baseline["response"] = {"error": "simulated baseline failure"}
+            uncertain_control = next(row for row in run["rows"] if
+                row["repeat"] == repeat and row["arm"] == "code_plus_architecture_profile" and row["candidate_id"] == control)
+            uncertain_control["response"]["output"]["opportunity"]["choice"] = "needs_review"
+        scored = experiment.score(self.study, run)
+        self.assertFalse(scored["directional_criteria"]["eligible_policy_promoted_in_both_repeats"])
+        self.assertFalse(scored["directional_criteria"]["mechanics_remain_excluded"])
+
 if __name__ == "__main__":
     unittest.main()

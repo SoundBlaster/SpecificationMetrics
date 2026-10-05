@@ -52,6 +52,10 @@ Never overwrite a prior receipt.
 The run completed all 32 requests with no provider/contract errors and no
 abstentions. Labels were identical between both repeats within each arm.
 API-reported token usage was 62,108 total; no monetary cost is inferred.
+Following review, the scorer was tightened so promotions require a valid
+non-eligible baseline label and every mechanical control must explicitly be
+`excluded`. The raw run is unchanged; `summary-final.json` is recomputed with
+those stricter checks. The prior report is retained as `summary-pre-review.json`.
 
 | Observation | Code only | Code + intent profile |
 | --- | ---: | ---: |

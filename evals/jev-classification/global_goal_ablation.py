@@ -125,10 +125,12 @@ def score(study, run):
                 and rows[repeat, arm, cid]["opportunity"] != "excluded"]
             summary["eligible_policy_promoted_from_baseline"] = [cid for cid, case in lookup.items()
                 if case["opportunity"] == "eligible" and case["concern_kind"] == "policy"
-                and rows[repeat, "code", cid]["opportunity"] != "eligible"
+                and rows[repeat, "code", cid]["opportunity"] in {"excluded", "needs_review"}
                 and rows[repeat, arm, cid]["opportunity"] == "eligible"]
             summary["mechanics_eligible"] = [cid for cid, case in lookup.items()
                 if case["concern_kind"] == "mechanics" and rows[repeat, arm, cid]["opportunity"] == "eligible"]
+            summary["mechanical_controls_not_excluded"] = [cid for cid, case in lookup.items()
+                if case["concern_kind"] == "mechanics" and rows[repeat, arm, cid]["opportunity"] != "excluded"]
             summaries[arm][str(repeat)] = summary
         summaries[arm]["repeat_disagreements"] = [cid for cid in lookup
             if rows[0, arm, cid] != rows[1, arm, cid]]
@@ -146,7 +148,7 @@ def score(study, run):
             & set(summaries["code_plus_architecture_profile"]["1"]["eligible_policy_promoted_from_baseline"])),
         "already_owned_cases_remain_excluded": all(not summaries["code_plus_architecture_profile"][str(r)]["already_owned_not_excluded"]
                                                     for r in range(study["repeats"])),
-        "mechanics_remain_excluded": all(not summaries["code_plus_architecture_profile"][str(r)]["mechanics_eligible"]
+        "mechanics_remain_excluded": all(not summaries["code_plus_architecture_profile"][str(r)]["mechanical_controls_not_excluded"]
                                           for r in range(study["repeats"])),
         "inherited_reference_disagreement_cases": sorted({cid
             for repeat in range(study["repeats"])

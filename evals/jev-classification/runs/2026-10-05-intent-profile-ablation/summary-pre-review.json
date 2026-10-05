@@ -130,8 +130,7 @@
           "review-d9832771164b2f85"
         ],
         "eligible_policy_promoted_from_baseline": [],
-        "mechanics_eligible": [],
-        "mechanical_controls_not_excluded": []
+        "mechanics_eligible": []
       },
       "1": {
         "opportunity": {
@@ -251,8 +250,7 @@
           "review-d9832771164b2f85"
         ],
         "eligible_policy_promoted_from_baseline": [],
-        "mechanics_eligible": [],
-        "mechanical_controls_not_excluded": []
+        "mechanics_eligible": []
       },
       "repeat_disagreements": []
     },
@@ -373,8 +371,7 @@
         "eligible_policy_promoted_from_baseline": [
           "review-627908aeebd7e376"
         ],
-        "mechanics_eligible": [],
-        "mechanical_controls_not_excluded": []
+        "mechanics_eligible": []
       },
       "1": {
         "opportunity": {
@@ -492,8 +489,7 @@
         "eligible_policy_promoted_from_baseline": [
           "review-627908aeebd7e376"
         ],
-        "mechanics_eligible": [],
-        "mechanical_controls_not_excluded": []
+        "mechanics_eligible": []
       },
       "repeat_disagreements": []
     }
