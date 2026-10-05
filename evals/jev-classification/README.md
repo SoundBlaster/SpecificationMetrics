@@ -112,3 +112,11 @@ Offline CI includes actual rendering of the checked-in prompt with the pinned
 Promptfoo evaluator and a fake provider, plus cache reuse/bypass/error tests.
 No live Jev requests are needed. The standard Nunjucks interpolation is
 `{{candidate_json}}`; triple-brace Mustache syntax is unsupported here.
+# Independent source-reference comparison
+
+The [independent experiment protocol](independent-experiment.md) adds blinded
+model annotation, complete family splits, six fixed prompt variants, separate
+confirmation and offline report scoring. The [recorded run](runs/2026-10-05-independent-reference/README.md)
+made 92 fresh Jev requests. No improvement over baseline was demonstrated;
+references are model annotations, not human-approved gold. This does not change
+the original source corpus hypotheses or authorize automatic exclusions.

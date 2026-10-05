@@ -1,0 +1,440 @@
+{
+  "reviewer_id": "blind_codex_reviewer",
+  "reference_kind": "independent_model_annotation",
+  "saw_proposed_labels": false,
+  "saw_jev_outputs": false,
+  "reviews": [
+    {
+      "candidate_id": "review-78614336ae5de317",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Readiness is decided by any ready_for_candidate_approval flag being exactly True; repair artifact presence without that evidence yields blocked, candidate graph presence yields not_reached. This is an ordered lifecycle rule.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-bab8d3586286452c",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The ready_for_candidate_approval OR, repair-content blocking and candidate-exists branches are already owned by named PredicateSpec rules inside FirstMatch.with_fallback(candidate_approval_state).",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-874d8dea17e42a29",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Absent approval_intent is interpreted differently depending on approval readiness; active_intent_count > 0 or requested status establishes requested, while blocked status establishes blocked. These are lifecycle decisions.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d07a5a6f65d9f010",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The absence/readiness, positive active_intent_count/requested and blocked predicates are already named PredicateSpec branches in candidate_approval_intent_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-6ccf82f44a98e95c",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "An approved decision plus readiness.ready is required for materialized; rejected/needs_context/superseded block, dry_run and failure have ordered outcomes, and execution decision references can establish materialization. These encode lifecycle evidence precedence.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-32a0197374538236",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Approved-ready, dry_run, failed, blocked and execution-materialized cases already belong to named PredicateSpec branches of candidate_approval_decision_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d01349d6824a814b",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Execution evidence takes priority unless unavailable/not_reached, then requested promotion takes priority, and materialized approval establishes ready. The selected site owns this ordered promotion lifecycle decision.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-b484c79a2a335210",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Execution precedence, requested state and approval-materialized readiness are already represented by named PredicateSpec branches in platform_promotion_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-7f98da62ce812b2f",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A missing promotion request is unavailable only after materialized approval; ok or promotion_ready establishes requested and positive error_count blocks. This is a lifecycle evidence rule.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-b6ca24526fb56f36",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The absent-after-approval, requested, blocked and unknown cases are already owned by named PredicateSpec branches of promotion_request_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-df3ae64fd44e5d1f",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "dry_run precedes error_count/failure and blocking; commit_created or review_opened establishes executed. Missing execution depends on requested promotion. These are durable lifecycle evidence decisions.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-26e48ebd678344c1",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The dry_run, failed, blocked, executed and unavailable-after-request outcomes already have named PredicateSpec ownership in promotion_execution_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-1098d534a6c6e4dd",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "review_probe_only with merged is deliberately unknown; canonical open/merged and closed states precede summary fallbacks. This defines what review evidence may establish lifecycle status.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d3520a00b92eff20",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Probe-only merged suppression and canonical/summary review-state precedence already appear as named PredicateSpec rules in review_status.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-e91e522471626f00",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Probe-only review evidence forces not_reached; absent publication is unavailable only after merged review, and published evidence precedes dry_run/failure/blocking. This is publication lifecycle policy.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-a0572e5fd02101e5",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Probe suppression, review prerequisite and publication result predicates are already owned by the named read_model_publication_state FirstMatch specification.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A non-ready original pre-SIB report blocks unless materialization_source is repair_loop_preview; that exception turns the condition into a warning. Supporting _pre_sib_original_blocked makes the repair allowance explicit.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "pre_sib_ready and the repair_loop_preview exception already determine READY/BLOCKED/REPAIRED_PREVIEW through named PredicateSpec branches of _PRE_SIB_STATE_DECISION.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Requirements receive placeholder acceptance criteria unless they already have nonempty refs and every ref names an existing criterion. This coverage rule drives add_acceptance_criterion actions, beyond the incidental ID formatting.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The nonempty references plus all-existing coverage condition is already owned by acceptance_criterion.already_covered in _ACCEPTANCE_CRITERION_DECISION with ADD_PLACEHOLDER fallback.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f140281981943c50",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A strong claim is downgraded to hypothesis when reliability is at most 2 or unavailable and evidence_refs is empty; stronger reliability or evidence prevents repair. Supporting helpers expose the threshold and strong-claim test.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-53a5233b28d07afe",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "Invalid/non-strong/supported claim cases and DOWNGRADE fallback are already owned by named PredicateSpec rules in _UNSUPPORTED_CLAIM_DECISION.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-80bd99f046e3d3aa",
+      "opportunity": "needs_review",
+      "concern_kind": "variant_behavior",
+      "rationale": "The whole function combines preview authority stamping (canonical_mutations_allowed and tracked_artifacts_written False), applied_to_preview filtering and op-specific graph mutation for append/add_acceptance_criterion/replace_claim_type. Behavioral dispatch is visible, but a single Specification opportunity for this mixed selection is unclear.",
+      "missing_context": [
+        "Intended boundary between preview authority invariants, action applicability and operation dispatch."
+      ]
+    },
+    {
+      "candidate_id": "review-3a8e416b997b3af8",
+      "opportunity": "excluded",
+      "concern_kind": "variant_behavior",
+      "rationale": "append /edges, add_acceptance_criterion and replace_claim_type already dispatch to distinct behaviors through named PredicateSpec branches in _PREVIEW_OPERATION_DECISION; handlers show graph updates rather than an unowned admissibility rule.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-fa4ec4f541044412",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "unresolved_count == 0 with resolved_count > 0 means improved; positive resolved_count means partially improved; unresolved ontology/candidate families establish distinct blocked states. This is candidate quality classification policy despite count/result packaging.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-04e91cf0b46fc04a",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "All-resolved, some-resolved and each unresolved gap-family predicate already belong to named PredicateSpec branches in candidate_quality_review_state.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d9c6188e527ff27d",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Readiness is normalized only when pre-SIB is ready, repair loop is not already ready, there are no findings and both applied_action_count and context_required_count are zero. Those explicit prerequisites authorize clean no-op pass-through.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-d83fa2a2c26429f9",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationale": "The pre-SIB-ready, repair-not-ready, no-findings and zero-count conjunction is already owned by CLEAN_PRE_SIB_NOOP_PASSTHROUGH PredicateSpec and its supporting predicate.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f2b23f48ed4942d7",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The exact selected expression merely counts prepared decision rows whose decision_state equals accepted. It does not decide whether any underlying proposal deserves acceptance.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-9929c781779bcfe8",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "count_decision_states aggregates already prepared exact state values into three counts; its docstring preserves traversal/KeyError semantics and supporting predicates already own the state comparisons.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "isinstance(value, dict) selects a representation or empty-dict fallback. There is no domain eligibility or lifecycle decision.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The selected function strips nonempty strings and otherwise returns a caller-supplied default. This is text normalization.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Allocation must match workspace_identity, source_ref, expected_commit and declaration hash while both allocation and initialization authorization flags are exactly True. The conjunction binds bootstrap authority to the specific requested workspace evidence.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Lowercasing, replacing non-alphanumeric runs, trimming dashes and applying a fallback construct a slug representation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-5aba8775bdd00154",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The function initializes node degrees and increments known endpoints for each from/to edge reference. This is graph aggregation without a domain admissibility outcome.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-bee56fb5baeef176",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The function finds the first node whose normalized id equals node_id or returns None. This is data lookup.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-b8b284ef77571870",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Nonempty string checking, Z offset replacement and datetime.fromisoformat with ValueError fallback parse a timestamp representation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-9c054fa8949b1c12",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Missing endpoints and negative elapsed values return None; otherwise duration is calculated and rounded. These are arithmetic validity and representation checks.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-5d3b5c9c1d3622ea",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "A nonpositive denominator prevents division and the ratio is rounded to six places. This is numerical computation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f3441aa2c5f86230",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "A composite record key built from node/gap/decision-or-request/match/resolution identifiers is used for first-occurrence deduplication. The selected site performs record representation cleanup, without deciding evidence acceptance.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-68c0d96b55b36722",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Repeated JSON keys raise ValueError while pairs build an object. This is unambiguous parsing enforcement.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-63a4b1a985991965",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "os.open/fstat enforce regular-file input; reading limit + 1 bytes and rejecting oversize data bounds I/O. No product authority or eligibility rule is shown.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-bcb7fbd88ef92831",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "sha256(data).hexdigest computes a digest representation; it does not decide trust or evidence admissibility.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-385b27c146495921",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Mapping type, unknown-field and required-field set checks enforce generic object shape supplied by callers.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-21fa99e1bc4afd72",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "Recursive string-key checks prevent YAML-to-JSON rewriting of trace mappings. This is representation preservation.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-c6e7be0fb9d4bc6c",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "asdict conversion, legacy field omission, provenance optional-field preservation and trace_context_json decoding implement exchange serialization.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-83f0c41f4d194d28",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The selected function checks request/container shape, parses references/topology, canonicalizes YAML and constructs immutable request/change values. It carries expected digests without deciding whether a write is authorized.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-f03e7e58ac5b09b2",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": "The string/type and [0-9a-f]{64} regex checks validate the lowercase complete SHA256 format.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-60ed1c033c09c857",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "rationale": "The function combines slash normalization and absolute/parent-traversal rejection with admission by PROMOTION_PATH_PREFIXES. The prefix allowlist could define promotion authority, but its values and ownership are omitted.",
+      "missing_context": [
+        "PROMOTION_PATH_PREFIXES values and the intended promotion authority boundary."
+      ]
+    },
+    {
+      "candidate_id": "review-97478793680175b9",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "rationale": "String normalization and absolute/parent/current-directory segment rejection are mixed with PROMOTION_PATH_PREFIXES admission. It is unclear whether this is a durable allowed promotion scope or a technical path guard.",
+      "missing_context": [
+        "PROMOTION_PATH_PREFIXES values and callers establishing the authority scope of approval."
+      ]
+    },
+    {
+      "candidate_id": "review-a925c728a12b3e64",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Approval requires a ready active candidate, canonical_mutations_allowed and tracked_artifacts_written exactly False, active_candidate source mode and specified product workflow/governance/repository roles. These explicit prerequisites define candidate admissibility beyond incidental artifact-format checks.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-c3a6aad69cb11619",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Claim support requires requested criteria to exist and be bound, required elements to exist, validation_issues to be empty, an exact nonambiguous anchor set, matching source identity and resolved anchors with blob identity. This is a durable evidence acceptance rule; malformed-evidence guards support that decision.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-faf2671c3972d87e",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "rationale": "The whole validator mixes exact fields/profile/digest/signature-envelope format checks with digest binding, canonical identity matching and issuer authority matching. Trust policy predicates are present, but no narrow selected decision boundary separates them from signed-format enforcement.",
+      "missing_context": [
+        "Intended Specification boundary between signed decision schema enforcement and authority/evidence binding."
+      ]
+    },
+    {
+      "candidate_id": "review-a793523e8aecba49",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Origin requires no existing subject, one revision and one activation; later writes must append exactly one immutable-history revision and preserve containment and disposition. These are explicit lifecycle transition permissions.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-185d2caec2e7f2ad",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "An ordered lifecycle decision gives published precedence over open/merged review, requested promotion and materialized/ready approval; later branches infer repaired/rerun/repair/intake stages from artifact presence. The selected site owns this stage precedence.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-9caee3bff9dbe0e8",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "The selected function decides lifecycle precedence and repaired readiness using candidate nodes, clarification questions and zero unresolved gap counts; medium/high findings and remaining blockers produce blocker identifiers. These are lifecycle and blocker rules.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-86c251ee78c5b0eb",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "Recursive dictionary export excludes keys in RAW_TRACE_FIELDS and every raw_ prefix while retaining other string keys. That explicit field-admissibility predicate defines a publication disclosure rule, even though traversal is mechanical.",
+      "missing_context": []
+    },
+    {
+      "candidate_id": "review-3636ba56782a5aae",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationale": "The exact function chooses the first truthy preferred/fallback artifact. Without callers it could be generic lookup mechanics or authoritative evidence selection; the shown helpers do not resolve which.",
+      "missing_context": [
+        "Callers defining what preferred/fallback artifacts mean and whether selection establishes authoritative evidence."
+      ]
+    },
+    {
+      "candidate_id": "review-a4b4493efcf2f97c",
+      "opportunity": "needs_review",
+      "concern_kind": "mechanics",
+      "rationale": "Most of the function calculates phase durations, but it extends the final phase to now when blocked_or_open or last_phase == lifecycle_state. Whether that inclusion test is measurement mechanics or lifecycle measurement policy cannot be established from the shown context.",
+      "missing_context": [
+        "Callers and metric definition for blocked_or_open and ongoing final-phase duration."
+      ]
+    },
+    {
+      "candidate_id": "review-20590908808d82ef",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": "A handoff preview must exist, be a candidate_spec_graph under the expected contract, have candidate nodes and forbid canonical mutations/tracked writes with exact False. These explicit requirements decide preview admissibility and constrain authority.",
+      "missing_context": []
+    }
+  ]
+}

@@ -55,14 +55,24 @@ calls on a fixed subset measure output repeatability, not additional independent
 accuracy evidence. Jev's returned model identifier is recorded, but the API does
 not provide an immutable checkpoint, so cross-date reproducibility is limited.
 
+Exclude provider and contract failures from the label confusion matrix so a
+failed response cannot count as a correct `needs_review` or `unknown` answer.
+Report those failures separately, retain all requested cases as the denominator
+for overall coverage, and report scored-case count so excluded failures stay
+visible. A valid model-selected abstention remains a label and is scored normally.
+
 ## Run provenance and budget
 
 Record dataset/split/rubric/prompt digests, exact contexts, requested/returned
 model, provider/adapter version, timestamp, failures and token usage. Preserve
 raw outputs before later human corrections. The current two-provider comparison
 requires one API request per candidate/provider pair, each containing both axes:
-60 cases would require **120 hosted requests** per run. No corpus run has been
-performed. The corpus's provisional labels cannot support accuracy claims.
+60 cases would require **120 hosted requests** per run. The separate
+[independent machine-reference experiment](independent-experiment.md) has now
+screened 12 development sites with six prompts and confirmed two finalists on
+10 held-out sites (92 requests). It did not evaluate all 60 corpus sites.
+The corpus's provisional labels cannot support accuracy claims; the separate
+machine reference is also not human-approved gold.
 
 The original one-case run is an integration check and sensitivity observation.
 Its original context also included a previous diagnostic label, so it is not a

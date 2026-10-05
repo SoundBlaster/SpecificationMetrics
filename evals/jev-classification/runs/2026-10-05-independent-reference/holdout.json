@@ -1,0 +1,1525 @@
+{
+  "phase": "holdout",
+  "candidate_ids": [
+    "review-6d62b1a3608ab698",
+    "review-2249072958bc9db4",
+    "review-490e54e617cfd961",
+    "review-627908aeebd7e376",
+    "review-bee56fb5baeef176",
+    "review-b8b284ef77571870",
+    "review-9c054fa8949b1c12",
+    "review-63a4b1a985991965",
+    "review-83f0c41f4d194d28",
+    "review-f03e7e58ac5b09b2"
+  ],
+  "variant_ids": [
+    "baseline-v1",
+    "bounded-evidence-v1"
+  ],
+  "requests": 20,
+  "manifest_sha256": "sha256:b685eb71f2433c9fa78310ee6d61b0fa23e6fd154e58aa26edefdf4ff7b40092",
+  "finalists_sha256": "sha256:2cd354c225c79854421dde4f250e9ee121682319536b5b7cf70a6ea6e77e5895",
+  "prompt_configs": {
+    "baseline-v1": {
+      "model": "jev-1.13.0",
+      "questions": {
+        "opportunity": {
+          "type": "choice",
+          "instructions": "Based only on the bounded state, decide whether this source site belongs in the Specification opportunity denominator. Choose eligible for a stable domain decision or policy suitable for a named, reusable Specification, including repeated decisions or variant dispatch. Choose excluded for mechanics or a local construct outside that opportunity, including a rule already owned by a Specification. Choose needs_review when evidence is ambiguous or insufficient. Do not infer hidden context.",
+          "criteria": {
+            "eligible": "Stable domain decision or policy suitable for a named, reusable Specification.",
+            "excluded": "Technical mechanics, a local construct outside the opportunity definition, or a rule already owned by a Specification.",
+            "needs_review": "Evidence is ambiguous or insufficient; this is unknown, not an exclusion."
+          }
+        },
+        "concern_kind": {
+          "type": "choice",
+          "instructions": "Independently classify the kind of logic expressed by this source site. Use only the bounded state and choose unknown if it does not support a reliable classification.",
+          "criteria": {
+            "policy": "Durable product rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+            "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement.",
+            "variant_behavior": "Domain variant dispatch such as an enum, type, or platform.",
+            "unknown": "Available evidence does not support a reliable concern-kind classification."
+          }
+        }
+      }
+    },
+    "bounded-evidence-v1": {
+      "model": "jev-1.13.0",
+      "questions": {
+        "opportunity": {
+          "type": "choice",
+          "instructions": "Based only on the bounded state, decide whether this source site belongs in the Specification opportunity denominator. Choose eligible for a stable domain decision or policy suitable for a named, reusable Specification, including repeated decisions or variant dispatch. Choose excluded for mechanics or a local construct outside that opportunity, including a rule already owned by a Specification. Choose needs_review when evidence is ambiguous or insufficient. Do not infer hidden context. Do not infer eligibility from length, require() calls or policy-sounding names. If the exact site mixes unrelated decisions or omitted context prevents locating a stable rule, choose needs_review.",
+          "criteria": {
+            "eligible": "Stable domain decision or policy suitable for a named, reusable Specification.",
+            "excluded": "Technical mechanics, a local construct outside the opportunity definition, or a rule already owned by a Specification.",
+            "needs_review": "Evidence is ambiguous or insufficient; this is unknown, not an exclusion."
+          }
+        },
+        "concern_kind": {
+          "type": "choice",
+          "instructions": "Independently classify the kind of logic expressed by this source site. Use only the bounded state and choose unknown if it does not support a reliable classification.",
+          "criteria": {
+            "policy": "Durable product rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+            "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement.",
+            "variant_behavior": "Domain variant dispatch such as an enum, type, or platform.",
+            "unknown": "Available evidence does not support a reliable concern-kind classification."
+          }
+        }
+      }
+    }
+  },
+  "prompt_configs_sha256": "sha256:94d35aaf0c3adea564b3f4c6d0d9f977c606ee35799433076c2de3986742a74b",
+  "model_revision": null,
+  "cache_replay": false,
+  "reference_kind": "independent_model_annotation",
+  "started_at": "2026-10-04T21:32:45.063Z",
+  "updated_at": "2026-10-04T21:32:53.307Z",
+  "completed": true,
+  "results": {
+    "results": [
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "eligible",
+              "confidence": 0.38,
+              "probabilities": {
+                "eligible": 0.58,
+                "needs_review": 0.04,
+                "excluded": 0.38
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "policy",
+              "confidence": 0.98,
+              "probabilities": {
+                "policy": 0.99,
+                "unknown": 0,
+                "mechanics": 0.01,
+                "variant_behavior": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1700,
+            "completion": 90,
+            "cached": 0,
+            "total": 1790,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1700,
+                "output_tokens": 90
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-6d62b1a3608ab698",
+        "context_sha256": "sha256:422288d9d407dd057d95beb162a9b83a3db792f098b8a4ee35dfc604a7f7b50d"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "eligible",
+              "confidence": 0.34,
+              "probabilities": {
+                "needs_review": 0.07,
+                "eligible": 0.56,
+                "excluded": 0.37
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "policy",
+              "confidence": 0.98,
+              "probabilities": {
+                "variant_behavior": 0,
+                "policy": 0.99,
+                "mechanics": 0.01,
+                "unknown": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1737,
+            "completion": 90,
+            "cached": 0,
+            "total": 1827,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1737,
+                "output_tokens": 90
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-6d62b1a3608ab698",
+        "context_sha256": "sha256:422288d9d407dd057d95beb162a9b83a3db792f098b8a4ee35dfc604a7f7b50d"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "eligible",
+              "confidence": 0.66,
+              "probabilities": {
+                "eligible": 0.78,
+                "excluded": 0.21,
+                "needs_review": 0.01
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "policy",
+              "confidence": 0.52,
+              "probabilities": {
+                "policy": 0.64,
+                "mechanics": 0.09,
+                "variant_behavior": 0.26,
+                "unknown": 0.01
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1513,
+            "completion": 90,
+            "cached": 0,
+            "total": 1603,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1513,
+                "output_tokens": 90
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-2249072958bc9db4",
+        "context_sha256": "sha256:cb83ca44e88b5fd0fcacc13ff22c5bdd6321c95c03198c352fef1195d7017f48"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "eligible",
+              "confidence": 0.5,
+              "probabilities": {
+                "excluded": 0.32,
+                "eligible": 0.66,
+                "needs_review": 0.02
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "policy",
+              "confidence": 0.47,
+              "probabilities": {
+                "unknown": 0.01,
+                "variant_behavior": 0.29,
+                "policy": 0.6,
+                "mechanics": 0.1
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1550,
+            "completion": 90,
+            "cached": 0,
+            "total": 1640,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1550,
+                "output_tokens": 90
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-2249072958bc9db4",
+        "context_sha256": "sha256:cb83ca44e88b5fd0fcacc13ff22c5bdd6321c95c03198c352fef1195d7017f48"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.99,
+              "probabilities": {
+                "eligible": 0,
+                "excluded": 1,
+                "needs_review": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.99,
+              "probabilities": {
+                "unknown": 0,
+                "policy": 0,
+                "variant_behavior": 0.01,
+                "mechanics": 0.99
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1440,
+            "completion": 94,
+            "cached": 0,
+            "total": 1534,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1440,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-490e54e617cfd961",
+        "context_sha256": "sha256:d5e8645dfc28ed6c96ec603824c52e30402c4f020aa3bcd7de74e57b642e472a"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.99,
+              "probabilities": {
+                "needs_review": 0,
+                "excluded": 1,
+                "eligible": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.99,
+              "probabilities": {
+                "variant_behavior": 0.01,
+                "mechanics": 0.99,
+                "policy": 0,
+                "unknown": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1477,
+            "completion": 94,
+            "cached": 0,
+            "total": 1571,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1477,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-490e54e617cfd961",
+        "context_sha256": "sha256:d5e8645dfc28ed6c96ec603824c52e30402c4f020aa3bcd7de74e57b642e472a"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.46,
+              "probabilities": {
+                "excluded": 0.64,
+                "eligible": 0.33,
+                "needs_review": 0.03
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "policy",
+              "confidence": 0.97,
+              "probabilities": {
+                "mechanics": 0.02,
+                "variant_behavior": 0,
+                "policy": 0.98,
+                "unknown": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1732,
+            "completion": 92,
+            "cached": 0,
+            "total": 1824,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1732,
+                "output_tokens": 92
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-627908aeebd7e376",
+        "context_sha256": "sha256:ead2beea31512d34d995ef597853638a19385d4b750a2120436d8d3836ef7dd4"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.43,
+              "probabilities": {
+                "excluded": 0.62,
+                "eligible": 0.24,
+                "needs_review": 0.14
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "policy",
+              "confidence": 0.98,
+              "probabilities": {
+                "mechanics": 0.02,
+                "policy": 0.98,
+                "variant_behavior": 0,
+                "unknown": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1769,
+            "completion": 92,
+            "cached": 0,
+            "total": 1861,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1769,
+                "output_tokens": 92
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-627908aeebd7e376",
+        "context_sha256": "sha256:ead2beea31512d34d995ef597853638a19385d4b750a2120436d8d3836ef7dd4"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 1,
+              "probabilities": {
+                "excluded": 1,
+                "eligible": 0,
+                "needs_review": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.98,
+              "probabilities": {
+                "variant_behavior": 0,
+                "mechanics": 0.98,
+                "policy": 0,
+                "unknown": 0.02
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1696,
+            "completion": 94,
+            "cached": 0,
+            "total": 1790,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1696,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-bee56fb5baeef176",
+        "context_sha256": "sha256:e2510951f0544c691762578fd6a967972dd4aa7d204b4d31a926c0fb7305db23"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 1,
+              "probabilities": {
+                "needs_review": 0,
+                "excluded": 1,
+                "eligible": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.97,
+              "probabilities": {
+                "mechanics": 0.98,
+                "policy": 0,
+                "unknown": 0.02,
+                "variant_behavior": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1733,
+            "completion": 94,
+            "cached": 0,
+            "total": 1827,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1733,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-bee56fb5baeef176",
+        "context_sha256": "sha256:e2510951f0544c691762578fd6a967972dd4aa7d204b4d31a926c0fb7305db23"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.99,
+              "probabilities": {
+                "eligible": 0,
+                "excluded": 1,
+                "needs_review": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 1,
+              "probabilities": {
+                "unknown": 0,
+                "policy": 0,
+                "variant_behavior": 0,
+                "mechanics": 1
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 2058,
+            "completion": 94,
+            "cached": 0,
+            "total": 2152,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 2058,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-b8b284ef77571870",
+        "context_sha256": "sha256:dfcb8543ce6af218e66b3308aabba3025579a2010645f584b0bde73ee04b04f1"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.99,
+              "probabilities": {
+                "needs_review": 0,
+                "excluded": 1,
+                "eligible": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 1,
+              "probabilities": {
+                "mechanics": 1,
+                "unknown": 0,
+                "policy": 0,
+                "variant_behavior": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 2095,
+            "completion": 94,
+            "cached": 0,
+            "total": 2189,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 2095,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-b8b284ef77571870",
+        "context_sha256": "sha256:dfcb8543ce6af218e66b3308aabba3025579a2010645f584b0bde73ee04b04f1"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.99,
+              "probabilities": {
+                "excluded": 1,
+                "eligible": 0,
+                "needs_review": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.99,
+              "probabilities": {
+                "mechanics": 1,
+                "unknown": 0,
+                "variant_behavior": 0,
+                "policy": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 2060,
+            "completion": 94,
+            "cached": 0,
+            "total": 2154,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 2060,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-9c054fa8949b1c12",
+        "context_sha256": "sha256:31ddb437a929a569fa8960ae9b65f0255fc165e04b04c6e2b1a90fa4256fb1c9"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.99,
+              "probabilities": {
+                "excluded": 1,
+                "eligible": 0,
+                "needs_review": 0
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.99,
+              "probabilities": {
+                "mechanics": 1,
+                "variant_behavior": 0,
+                "policy": 0,
+                "unknown": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 2097,
+            "completion": 94,
+            "cached": 0,
+            "total": 2191,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 2097,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-9c054fa8949b1c12",
+        "context_sha256": "sha256:31ddb437a929a569fa8960ae9b65f0255fc165e04b04c6e2b1a90fa4256fb1c9"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.94,
+              "probabilities": {
+                "eligible": 0.03,
+                "needs_review": 0.01,
+                "excluded": 0.96
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.99,
+              "probabilities": {
+                "mechanics": 0.99,
+                "policy": 0.01,
+                "unknown": 0,
+                "variant_behavior": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1357,
+            "completion": 94,
+            "cached": 0,
+            "total": 1451,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1357,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-63a4b1a985991965",
+        "context_sha256": "sha256:dd815d2626ba70da29a3879a876619f399272d1bed6c6b71dabfb8f5202dbabc"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.96,
+              "probabilities": {
+                "needs_review": 0.01,
+                "eligible": 0.02,
+                "excluded": 0.97
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 0.99,
+              "probabilities": {
+                "unknown": 0,
+                "variant_behavior": 0,
+                "policy": 0.01,
+                "mechanics": 0.99
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1394,
+            "completion": 94,
+            "cached": 0,
+            "total": 1488,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1394,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-63a4b1a985991965",
+        "context_sha256": "sha256:dd815d2626ba70da29a3879a876619f399272d1bed6c6b71dabfb8f5202dbabc"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.86,
+              "probabilities": {
+                "needs_review": 0.01,
+                "eligible": 0.08,
+                "excluded": 0.91
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 1,
+              "probabilities": {
+                "variant_behavior": 0,
+                "unknown": 0,
+                "mechanics": 1,
+                "policy": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1760,
+            "completion": 94,
+            "cached": 0,
+            "total": 1854,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1760,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-83f0c41f4d194d28",
+        "context_sha256": "sha256:b61db4aa612599ec3817fcd747f4b3b03fb13432cc7bedb10b54e599f3bf9035"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.87,
+              "probabilities": {
+                "excluded": 0.92,
+                "eligible": 0.05,
+                "needs_review": 0.03
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 1,
+              "probabilities": {
+                "policy": 0,
+                "mechanics": 1,
+                "unknown": 0,
+                "variant_behavior": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1797,
+            "completion": 94,
+            "cached": 0,
+            "total": 1891,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1797,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-83f0c41f4d194d28",
+        "context_sha256": "sha256:b61db4aa612599ec3817fcd747f4b3b03fb13432cc7bedb10b54e599f3bf9035"
+      },
+      {
+        "provider": {
+          "id": "baseline-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.86,
+              "probabilities": {
+                "eligible": 0.09,
+                "excluded": 0.9,
+                "needs_review": 0.01
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 1,
+              "probabilities": {
+                "policy": 0,
+                "unknown": 0,
+                "variant_behavior": 0,
+                "mechanics": 1
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1454,
+            "completion": 94,
+            "cached": 0,
+            "total": 1548,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1454,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-f03e7e58ac5b09b2",
+        "context_sha256": "sha256:c9b9395af853c993919fbb1579e924adaa2506d42d7f7d19f9302d93f062c52f"
+      },
+      {
+        "provider": {
+          "id": "bounded-evidence-v1"
+        },
+        "response": {
+          "cached": false,
+          "output": {
+            "opportunity": {
+              "type": "choice",
+              "choice": "excluded",
+              "confidence": 0.85,
+              "probabilities": {
+                "excluded": 0.9,
+                "eligible": 0.09,
+                "needs_review": 0.01
+              }
+            },
+            "concern_kind": {
+              "type": "choice",
+              "choice": "mechanics",
+              "confidence": 1,
+              "probabilities": {
+                "policy": 0,
+                "mechanics": 1,
+                "unknown": 0,
+                "variant_behavior": 0
+              }
+            }
+          },
+          "tokenUsage": {
+            "prompt": 1491,
+            "completion": 94,
+            "cached": 0,
+            "total": 1585,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "metadata": {
+            "typesafe": {
+              "requestedModel": "jev-1.13.0",
+              "returnedModel": "jev-1.13.0",
+              "usage": {
+                "input_tokens": 1491,
+                "output_tokens": 94
+              },
+              "responseSource": "live"
+            }
+          }
+        },
+        "candidate_id": "review-f03e7e58ac5b09b2",
+        "context_sha256": "sha256:c9b9395af853c993919fbb1579e924adaa2506d42d7f7d19f9302d93f062c52f"
+      }
+    ]
+  },
+  "token_usage_total": 35770,
+  "full_run_sha256": "sha256:8727e2385bcba017a160b09e32bd4143b0e92742b083d1b9082ec8746d15019f"
+}

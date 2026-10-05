@@ -1,0 +1,58 @@
+{
+  "variant_ids": [
+    "baseline-v1",
+    "bounded-evidence-v1"
+  ],
+  "manifest_sha256": "sha256:b685eb71f2433c9fa78310ee6d61b0fa23e6fd154e58aa26edefdf4ff7b40092",
+  "prompt_configs": {
+    "baseline-v1": {
+      "model": "jev-1.13.0",
+      "questions": {
+        "opportunity": {
+          "type": "choice",
+          "instructions": "Based only on the bounded state, decide whether this source site belongs in the Specification opportunity denominator. Choose eligible for a stable domain decision or policy suitable for a named, reusable Specification, including repeated decisions or variant dispatch. Choose excluded for mechanics or a local construct outside that opportunity, including a rule already owned by a Specification. Choose needs_review when evidence is ambiguous or insufficient. Do not infer hidden context.",
+          "criteria": {
+            "eligible": "Stable domain decision or policy suitable for a named, reusable Specification.",
+            "excluded": "Technical mechanics, a local construct outside the opportunity definition, or a rule already owned by a Specification.",
+            "needs_review": "Evidence is ambiguous or insufficient; this is unknown, not an exclusion."
+          }
+        },
+        "concern_kind": {
+          "type": "choice",
+          "instructions": "Independently classify the kind of logic expressed by this source site. Use only the bounded state and choose unknown if it does not support a reliable classification.",
+          "criteria": {
+            "policy": "Durable product rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+            "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement.",
+            "variant_behavior": "Domain variant dispatch such as an enum, type, or platform.",
+            "unknown": "Available evidence does not support a reliable concern-kind classification."
+          }
+        }
+      }
+    },
+    "bounded-evidence-v1": {
+      "model": "jev-1.13.0",
+      "questions": {
+        "opportunity": {
+          "type": "choice",
+          "instructions": "Based only on the bounded state, decide whether this source site belongs in the Specification opportunity denominator. Choose eligible for a stable domain decision or policy suitable for a named, reusable Specification, including repeated decisions or variant dispatch. Choose excluded for mechanics or a local construct outside that opportunity, including a rule already owned by a Specification. Choose needs_review when evidence is ambiguous or insufficient. Do not infer hidden context. Do not infer eligibility from length, require() calls or policy-sounding names. If the exact site mixes unrelated decisions or omitted context prevents locating a stable rule, choose needs_review.",
+          "criteria": {
+            "eligible": "Stable domain decision or policy suitable for a named, reusable Specification.",
+            "excluded": "Technical mechanics, a local construct outside the opportunity definition, or a rule already owned by a Specification.",
+            "needs_review": "Evidence is ambiguous or insufficient; this is unknown, not an exclusion."
+          }
+        },
+        "concern_kind": {
+          "type": "choice",
+          "instructions": "Independently classify the kind of logic expressed by this source site. Use only the bounded state and choose unknown if it does not support a reliable classification.",
+          "criteria": {
+            "policy": "Durable product rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+            "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement.",
+            "variant_behavior": "Domain variant dispatch such as an enum, type, or platform.",
+            "unknown": "Available evidence does not support a reliable concern-kind classification."
+          }
+        }
+      }
+    }
+  },
+  "development_run_sha256": "sha256:2913f12653dd7817ba3418a17413580c00ebf68d3228b7638eb0f0b66ca8d4ec"
+}

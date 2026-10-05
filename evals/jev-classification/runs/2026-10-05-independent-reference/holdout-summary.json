@@ -1,0 +1,245 @@
+{
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "phase": "holdout",
+  "variants": {
+    "baseline-v1": {
+      "opportunity": {
+        "count": 10,
+        "scored_cases": 10,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 7,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5
+          },
+          "excluded": {
+            "support": 8,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          },
+          "needs_review": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.6875,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.2,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 10,
+        "scored_cases": 10,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 7,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "mechanics": {
+            "support": 7,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "variant_behavior": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 1.0,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.0,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    },
+    "bounded-evidence-v1": {
+      "opportunity": {
+        "count": 10,
+        "scored_cases": 10,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 1,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 7,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5
+          },
+          "excluded": {
+            "support": 8,
+            "precision": 0.875,
+            "recall": 0.875,
+            "f1": 0.875
+          },
+          "needs_review": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.6875,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.2,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 1
+      },
+      "concern_kind": {
+        "count": 10,
+        "scored_cases": 10,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 7,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "mechanics": {
+            "support": 7,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "variant_behavior": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 1.0,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.0,
+        "provider_or_contract_errors": 0,
+        "false_exclusions": 0
+      }
+    }
+  },
+  "limits": "Agreement with one blind model reviewer on a purposive challenge corpus; not measured human accuracy or production prevalence.",
+  "paired_comparisons": {
+    "bounded-evidence-v1": {
+      "eligible_recall_delta_interval": [
+        0.0,
+        0.0
+      ],
+      "resampling_unit": "whole decision family",
+      "draws_with_eligible": 1790,
+      "limits": "Small-family diagnostic percentile bootstrap; no statistical-power claim."
+    }
+  }
+}
