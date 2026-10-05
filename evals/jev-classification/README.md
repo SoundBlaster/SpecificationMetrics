@@ -120,3 +120,9 @@ confirmation and offline report scoring. The [recorded run](runs/2026-10-05-inde
 made 92 fresh Jev requests. No improvement over baseline was demonstrated;
 references are model annotations, not human-approved gold. This does not change
 the original source corpus hypotheses or authorize automatic exclusions.
+
+The follow-up [context ablation](runs/2026-10-05-context-ablation/README.md)
+holds the prompt fixed and compares code, source task evidence and structural
+implementation facts on eight diagnostic examples, with two fresh repeats.
+It includes an explicit input correction and a separate static-filter view;
+it is development evidence, not a new confirmation holdout.
