@@ -1,3 +1,4 @@
+import copy
 import json
 from pathlib import Path
 import unittest
@@ -22,6 +23,14 @@ class ContextAblationTests(unittest.TestCase):
         self.assertTrue(structural_facts(imports + factory, factory, "RULE")["direct_library_construction"])
         mutated = structural_facts(imports + "FM.with_fallback = other\n" + factory, factory, "RULE")
         self.assertIsNone(mutated["direct_library_construction"])
+        import_rebound = structural_facts(
+            imports + "from other import Factory as FM\n" + code, code, "RULE")
+        self.assertIsNone(import_rebound["direct_library_construction"])
+        self.assertEqual({call["resolved_import"] for call in import_rebound["specification_core_constructor_calls"]},
+                         {"specification_core.PredicateSpec"})
+        module_import_rebound = structural_facts(
+            imports + "import other as FM\n" + code, code, "RULE")
+        self.assertIsNone(module_import_rebound["direct_library_construction"])
         local = "def f(FM):\n    return FM(1)\n"
         self.assertEqual(structural_facts(imports + local, local, "f")["specification_core_constructor_calls"], [])
 
@@ -49,6 +58,26 @@ class ContextAblationTests(unittest.TestCase):
         self.assertEqual(study["prompt_config"], baseline)
         run = json.loads((root / "run.json").read_text())
         score(study, run)
+        mismatched = copy.deepcopy(run)
+        mismatched["rows"][0]["response"]["metadata"]["typesafe"]["returnedModel"] = "jev-other"
+        with self.assertRaisesRegex(ValueError, "model mismatch"):
+            score(study, mismatched)
+        mismatched = copy.deepcopy(run)
+        mismatched["rows"][0]["response"]["metadata"]["typesafe"]["requestedModel"] = "jev-other"
+        with self.assertRaisesRegex(ValueError, "model mismatch"):
+            score(study, mismatched)
+        mismatched = copy.deepcopy(run)
+        mismatched["requested_model"] = "jev-other"
+        with self.assertRaisesRegex(ValueError, "run requested model mismatch"):
+            score(study, mismatched)
+        missing = copy.deepcopy(run)
+        missing["rows"][0]["response"]["metadata"]["typesafe"].pop("returnedModel")
+        with self.assertRaisesRegex(ValueError, "model mismatch"):
+            score(study, missing)
+        failed = copy.deepcopy(run)
+        failed["rows"][0]["error"] = "simulated provider failure"
+        failed["rows"][0]["response"] = {"error": "simulated provider failure"}
+        score(study, failed)
         run["rows"].pop()
         with self.assertRaises(ValueError):
             score(study, run)

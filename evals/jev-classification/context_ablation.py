@@ -53,10 +53,20 @@ def structural_facts(file_source, selected_code, symbol):
     for node in module.body:
         if node is target:
             break
-        if isinstance(node, ast.ImportFrom) and node.module == "specification_core":
+        if isinstance(node, ast.ImportFrom):
             for name in node.names:
-                if name.name in {"FirstMatch", "PredicateSpec"}:
-                    imports[name.asname or name.name] = name.name
+                local_name = name.asname or name.name
+                if node.module == "specification_core" and name.name in {"FirstMatch", "PredicateSpec"}:
+                    imports[local_name] = name.name
+                    rebound.discard(local_name)
+                else:
+                    imports.pop(local_name, None)
+                    rebound.add(local_name)
+        elif isinstance(node, ast.Import):
+            for name in node.names:
+                local_name = name.asname or name.name.split(".", 1)[0]
+                imports.pop(local_name, None)
+                rebound.add(local_name)
         else:
             # Conservatively include nested bindings; unsupported scope is unknown.
             rebound.update(n.id for n in ast.walk(node) if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store))
@@ -142,6 +152,9 @@ def score(study, run):
         raise ValueError("study digest mismatch")
     if run["prompt_sha256"] != digest(json.dumps(study["prompt_config"], ensure_ascii=False, separators=(",", ":")).encode()):
         raise ValueError("prompt digest mismatch")
+    expected_model = study["prompt_config"]["model"]
+    if run.get("requested_model") != expected_model:
+        raise ValueError("run requested model mismatch")
     lookup = {c["candidate_id"]: c for c in study["cases"]}
     rows = {}
     for row in run["rows"]:
@@ -150,7 +163,14 @@ def score(study, run):
             raise ValueError("duplicate/unexpected row")
         if row["context_sha256"] != lookup[row["candidate_id"]]["contexts"][row["arm"]]["sha256"]:
             raise ValueError("context receipt mismatch")
-        response = row["response"]
+        response = row.get("response")
+        if not row.get("error") and not (isinstance(response, dict) and response.get("error")):
+            response_metadata = response.get("metadata") if isinstance(response, dict) else None
+            metadata = response_metadata.get("typesafe") if isinstance(response_metadata, dict) else None
+            if not isinstance(metadata, dict) or metadata.get("requestedModel") != expected_model or metadata.get("returnedModel") != expected_model:
+                raise ValueError("response requested/returned model mismatch")
+        if not isinstance(response, dict):
+            response = {}
         output = response.get("output", {})
         if not isinstance(output, dict):
             output = {}
