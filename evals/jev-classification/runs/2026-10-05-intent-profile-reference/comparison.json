@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "study_kind": "independent_intent_profile_reference_comparison",
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "interpretation": "descriptive_diagnostic_only",
+  "provenance": {
+    "packet_sha256": "c5062efcea82310727400dc3bf463f63c42d1aef6e82e48bd84cfcd3cf650c3a",
+    "annotations_sha256": "75c32254c7f12d26612d654ee23d5c1ba021c726838cb9394a2c3c71917edfb5",
+    "mapping_sha256": "692ed274404a3caf943949c5a0cf2c47b140b8ad040ebc59964699ad959575e5",
+    "ablation_study_sha256": "aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+    "jev_run_sha256": "d12c560efa1b3de46c3b35613ed85cd0127fdd86c328c427936c604533134f0a",
+    "jev_model_requested_returned": "jev-1.13.0"
+  },
+  "sample": {
+    "cases": 8,
+    "selection": "the eight purposive cases from the intent-profile ablation; not a fresh holdout"
+  },
+  "summaries": {
+    "code": {
+      "0": {
+        "opportunity": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "excluded": 5,
+            "eligible": 3
+          },
+          "prediction_label_counts": {
+            "eligible": 3,
+            "excluded": 5
+          },
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 2,
+              "excluded": 3,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "exact_agreement": 4,
+          "scored_reference_count": 8,
+          "coverage": 1.0,
+          "eligible_recall": 0.3333333333333333,
+          "eligible_precision": 0.3333333333333333,
+          "false_exclusions": 2,
+          "eligible_reference_count": 3,
+          "eligible_prediction_count": 3
+        },
+        "concern_kind": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "policy": 5,
+            "mechanics": 3
+          },
+          "prediction_label_counts": {
+            "policy": 4,
+            "mechanics": 4
+          },
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "exact_agreement": 7,
+          "scored_reference_count": 8,
+          "coverage": 1.0
+        }
+      },
+      "1": {
+        "opportunity": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "excluded": 5,
+            "eligible": 3
+          },
+          "prediction_label_counts": {
+            "eligible": 3,
+            "excluded": 5
+          },
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 1,
+              "excluded": 2,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 2,
+              "excluded": 3,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "exact_agreement": 4,
+          "scored_reference_count": 8,
+          "coverage": 1.0,
+          "eligible_recall": 0.3333333333333333,
+          "eligible_precision": 0.3333333333333333,
+          "false_exclusions": 2,
+          "eligible_reference_count": 3,
+          "eligible_prediction_count": 3
+        },
+        "concern_kind": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "policy": 5,
+            "mechanics": 3
+          },
+          "prediction_label_counts": {
+            "policy": 4,
+            "mechanics": 4
+          },
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "exact_agreement": 7,
+          "scored_reference_count": 8,
+          "coverage": 1.0
+        }
+      },
+      "repeat_stability": {
+        "opportunity": 8,
+        "concern_kind": 8
+      }
+    },
+    "code_plus_architecture_profile": {
+      "0": {
+        "opportunity": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "excluded": 5,
+            "eligible": 3
+          },
+          "prediction_label_counts": {
+            "excluded": 6,
+            "eligible": 2
+          },
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 2,
+              "excluded": 1,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 0,
+              "excluded": 5,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "exact_agreement": 7,
+          "scored_reference_count": 8,
+          "coverage": 1.0,
+          "eligible_recall": 0.6666666666666666,
+          "eligible_precision": 1.0,
+          "false_exclusions": 1,
+          "eligible_reference_count": 3,
+          "eligible_prediction_count": 2
+        },
+        "concern_kind": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "policy": 5,
+            "mechanics": 3
+          },
+          "prediction_label_counts": {
+            "policy": 4,
+            "mechanics": 4
+          },
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "exact_agreement": 7,
+          "scored_reference_count": 8,
+          "coverage": 1.0
+        }
+      },
+      "1": {
+        "opportunity": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "excluded": 5,
+            "eligible": 3
+          },
+          "prediction_label_counts": {
+            "excluded": 6,
+            "eligible": 2
+          },
+          "confusion_matrix": {
+            "eligible": {
+              "eligible": 2,
+              "excluded": 1,
+              "needs_review": 0
+            },
+            "excluded": {
+              "eligible": 0,
+              "excluded": 5,
+              "needs_review": 0
+            },
+            "needs_review": {
+              "eligible": 0,
+              "excluded": 0,
+              "needs_review": 0
+            }
+          },
+          "exact_agreement": 7,
+          "scored_reference_count": 8,
+          "coverage": 1.0,
+          "eligible_recall": 0.6666666666666666,
+          "eligible_precision": 1.0,
+          "false_exclusions": 1,
+          "eligible_reference_count": 3,
+          "eligible_prediction_count": 2
+        },
+        "concern_kind": {
+          "case_count": 8,
+          "reference_label_counts": {
+            "policy": 5,
+            "mechanics": 3
+          },
+          "prediction_label_counts": {
+            "policy": 4,
+            "mechanics": 4
+          },
+          "confusion_matrix": {
+            "policy": {
+              "policy": 4,
+              "mechanics": 1,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "mechanics": {
+              "policy": 0,
+              "mechanics": 3,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "variant_behavior": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            },
+            "unknown": {
+              "policy": 0,
+              "mechanics": 0,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          },
+          "exact_agreement": 7,
+          "scored_reference_count": 8,
+          "coverage": 1.0
+        }
+      },
+      "repeat_stability": {
+        "opportunity": 8,
+        "concern_kind": 8
+      }
+    }
+  },
+  "paired_opportunity_changes": {
+    "counts_across_two_repeats": {
+      "profile_closer": 6,
+      "same": 10
+    },
+    "per_case": [
+      {
+        "case_id": "blind-v2-ff22cda3f245f90da902",
+        "source_candidate_id": "sg-018",
+        "family_id": "pre-sib",
+        "reference": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "excluded",
+            "code": "eligible",
+            "profile": "excluded",
+            "relation": "profile_closer"
+          },
+          {
+            "repeat": 1,
+            "reference": "excluded",
+            "code": "eligible",
+            "profile": "excluded",
+            "relation": "profile_closer"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-db939f2de0f6eb17d887",
+        "source_candidate_id": "sg-031",
+        "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_dict",
+        "reference": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "excluded",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          },
+          {
+            "repeat": 1,
+            "reference": "excluded",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-7d2b35736799ee150f66",
+        "source_candidate_id": "sg-019",
+        "family_id": "acceptance-criteria",
+        "reference": {
+          "opportunity": "eligible",
+          "concern_kind": "policy"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "eligible",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          },
+          {
+            "repeat": 1,
+            "reference": "eligible",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-d22ab961caf8cfabdc06",
+        "source_candidate_id": "sg-020",
+        "family_id": "acceptance-criteria",
+        "reference": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "excluded",
+            "code": "eligible",
+            "profile": "excluded",
+            "relation": "profile_closer"
+          },
+          {
+            "repeat": 1,
+            "reference": "excluded",
+            "code": "eligible",
+            "profile": "excluded",
+            "relation": "profile_closer"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-72214a9c215959c7f8aa",
+        "source_candidate_id": "sg-032",
+        "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_text",
+        "reference": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "excluded",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          },
+          {
+            "repeat": 1,
+            "reference": "excluded",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-511c4a78828db074dad7",
+        "source_candidate_id": "sg-017",
+        "family_id": "pre-sib",
+        "reference": {
+          "opportunity": "eligible",
+          "concern_kind": "policy"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "eligible",
+            "code": "eligible",
+            "profile": "eligible",
+            "relation": "same"
+          },
+          {
+            "repeat": 1,
+            "reference": "eligible",
+            "code": "eligible",
+            "profile": "eligible",
+            "relation": "same"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-6a2bf88fd85eb8abc436",
+        "source_candidate_id": "sg-033",
+        "family_id": "workspace-allocation",
+        "reference": {
+          "opportunity": "eligible",
+          "concern_kind": "policy"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "eligible",
+            "code": "excluded",
+            "profile": "eligible",
+            "relation": "profile_closer"
+          },
+          {
+            "repeat": 1,
+            "reference": "eligible",
+            "code": "excluded",
+            "profile": "eligible",
+            "relation": "profile_closer"
+          }
+        ]
+      },
+      {
+        "case_id": "blind-v2-3d1f72ef3a8e1fdaee26",
+        "source_candidate_id": "sg-034",
+        "family_id": "mechanics:tools/candidate_repair_loop.py:_slug",
+        "reference": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "repeats": [
+          {
+            "repeat": 0,
+            "reference": "excluded",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          },
+          {
+            "repeat": 1,
+            "reference": "excluded",
+            "code": "excluded",
+            "profile": "excluded",
+            "relation": "same"
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "One isolated model reviewer, not human-adjudicated gold.",
+    "The sample is small and purposive; do not infer prevalence or population accuracy.",
+    "Jev was run on these cases before the independent annotation was collected; the reviewer was not shown Jev outputs or prior labels, but this is not a fresh model holdout.",
+    "The annotation model/checkpoint is not exposed by the delegation interface."
+  ]
+}
