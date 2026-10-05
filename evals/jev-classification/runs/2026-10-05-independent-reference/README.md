@@ -69,8 +69,12 @@ rubric or treating labels as ground truth.
   corpus contexts. Local full-run digests are retained for provenance.
 - The annotation, split and targets were frozen before hosted calls; finalist
   configurations were frozen before holdout. Family splits were label-independent.
-- Nine offline Node tests and twelve Python checks passed. Source extraction
-  matched pinned SpecGraph Git objects. CI does not make hosted calls.
+- Nine offline Node tests and thirteen Python unit tests passed; corpus
+  validation covered 61 cases. Source extraction matched pinned SpecGraph Git
+  objects. CI does not make hosted calls.
+- Provider/contract failures are excluded from the label confusion matrix and
+  reported separately; failed calls cannot receive credit for a `needs_review`
+  or `unknown` reference. Coverage uses all requested cases as its denominator.
 
 ## Next experiment
 

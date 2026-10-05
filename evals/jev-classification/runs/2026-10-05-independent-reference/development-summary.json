@@ -6,6 +6,7 @@
     "baseline-v1": {
       "opportunity": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "eligible": {
             "eligible": 3,
@@ -45,6 +46,7 @@
         },
         "macro_f1": 0.5357142857142857,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.25,
         "provider_or_contract_errors": 0,
@@ -52,6 +54,7 @@
       },
       "concern_kind": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "policy": {
             "policy": 4,
@@ -106,6 +109,7 @@
         },
         "macro_f1": 0.9373219373219372,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.08333333333333333,
         "provider_or_contract_errors": 0,
@@ -115,6 +119,7 @@
     "boundary-test-v2": {
       "opportunity": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "eligible": {
             "eligible": 1,
@@ -154,6 +159,7 @@
         },
         "macro_f1": 0.3686274509803922,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.4166666666666667,
         "provider_or_contract_errors": 0,
@@ -161,6 +167,7 @@
       },
       "concern_kind": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "policy": {
             "policy": 4,
@@ -215,6 +222,7 @@
         },
         "macro_f1": 0.9373219373219372,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.08333333333333333,
         "provider_or_contract_errors": 0,
@@ -224,6 +232,7 @@
     "singleton-v1": {
       "opportunity": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "eligible": {
             "eligible": 3,
@@ -263,6 +272,7 @@
         },
         "macro_f1": 0.47863247863247865,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.3333333333333333,
         "provider_or_contract_errors": 0,
@@ -270,6 +280,7 @@
       },
       "concern_kind": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "policy": {
             "policy": 4,
@@ -324,6 +335,7 @@
         },
         "macro_f1": 0.9373219373219372,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.08333333333333333,
         "provider_or_contract_errors": 0,
@@ -333,6 +345,7 @@
     "owned-rule-v1": {
       "opportunity": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "eligible": {
             "eligible": 3,
@@ -372,6 +385,7 @@
         },
         "macro_f1": 0.47863247863247865,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.3333333333333333,
         "provider_or_contract_errors": 0,
@@ -379,6 +393,7 @@
       },
       "concern_kind": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "policy": {
             "policy": 4,
@@ -433,6 +448,7 @@
         },
         "macro_f1": 0.9373219373219372,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.08333333333333333,
         "provider_or_contract_errors": 0,
@@ -442,6 +458,7 @@
     "mechanical-boundary-v1": {
       "opportunity": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "eligible": {
             "eligible": 3,
@@ -481,6 +498,7 @@
         },
         "macro_f1": 0.5357142857142857,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.25,
         "provider_or_contract_errors": 0,
@@ -488,6 +506,7 @@
       },
       "concern_kind": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "policy": {
             "policy": 4,
@@ -542,6 +561,7 @@
         },
         "macro_f1": 0.9373219373219372,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.08333333333333333,
         "provider_or_contract_errors": 0,
@@ -551,6 +571,7 @@
     "bounded-evidence-v1": {
       "opportunity": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "eligible": {
             "eligible": 3,
@@ -590,6 +611,7 @@
         },
         "macro_f1": 0.5357142857142857,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.25,
         "provider_or_contract_errors": 0,
@@ -597,6 +619,7 @@
       },
       "concern_kind": {
         "count": 12,
+        "scored_cases": 12,
         "confusion_matrix": {
           "policy": {
             "policy": 4,
@@ -651,6 +674,7 @@
         },
         "macro_f1": 0.9373219373219372,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.08333333333333333,
         "provider_or_contract_errors": 0,

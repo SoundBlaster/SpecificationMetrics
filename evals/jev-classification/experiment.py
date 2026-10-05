@@ -50,6 +50,14 @@ def freeze(cases, annotations, mapping):
     if (len(by_id) != len(cases) or len(mapping) != len(by_id) or
             len(set(mapping.values())) != len(mapping) or set(mapping.values()) != set(by_id)):
         raise ValueError("mapping must cover corpus exactly")
+    expected_mapping = {}
+    for case in cases:
+        encoded = case["vars"]["candidate_json"]
+        state = json.loads(encoded)
+        opaque = "review-" + hashlib.sha256(encoded.encode()).hexdigest()[:16]
+        expected_mapping[opaque] = state["candidate_id"]
+    if mapping != expected_mapping:
+        raise ValueError("mapping context identity does not match current candidate JSON")
     seen, reviewed = set(), {}
     for review in annotations["reviews"]:
         opaque = review["candidate_id"]
@@ -97,12 +105,15 @@ def freeze(cases, annotations, mapping):
 def metrics(pairs, axis):
     labels = LABELS[axis]
     matrix = {truth: {pred: 0 for pred in labels} for truth in labels}
+    valid_pairs = []
     errors = 0
     abstain = "needs_review" if axis == "opportunity" else "unknown"
     for truth, prediction in pairs:
         if prediction is None:
             errors += 1
-        matrix[truth][prediction or abstain] += 1
+            continue
+        matrix[truth][prediction] += 1
+        valid_pairs.append((truth, prediction))
     scores = {}
     for label in labels:
         tp = matrix[label][label]
@@ -113,11 +124,12 @@ def metrics(pairs, axis):
         f1 = 2 * tp / (support + predicted) if support + predicted else None
         scores[label] = {"support": support, "precision": precision, "recall": recall, "f1": f1}
     count = len(pairs)
-    non_abstained = [(t, p) for t, p in pairs if p is not None and p != abstain]
-    return {"count": count, "confusion_matrix": matrix, "per_class": scores,
-            "macro_f1": sum(s["f1"] for s in scores.values() if s["f1"] is not None) /
-                        max(1, sum(s["f1"] is not None for s in scores.values())),
-            "abstention_rate": sum(p in (None, abstain) for _, p in pairs) / count if count else None,
+    non_abstained = [(t, p) for t, p in valid_pairs if p != abstain]
+    valid_f1 = [s["f1"] for s in scores.values() if s["f1"] is not None]
+    return {"count": count, "scored_cases": len(valid_pairs), "confusion_matrix": matrix, "per_class": scores,
+            "macro_f1": sum(valid_f1) / len(valid_f1) if valid_f1 else None,
+            "abstention_rate": sum(p == abstain for _, p in valid_pairs) / count if count else None,
+            "scored_abstention_rate": sum(p == abstain for _, p in valid_pairs) / len(valid_pairs) if valid_pairs else None,
             "coverage": len(non_abstained) / count if count else None,
             "non_abstained_error_rate": sum(t != p for t, p in non_abstained) / len(non_abstained) if non_abstained else None,
             "provider_or_contract_errors": errors,

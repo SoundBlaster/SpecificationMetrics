@@ -7,13 +7,14 @@ from experiment import freeze, metrics, prepare, rows_from_run
 
 class ExperimentTests(unittest.TestCase):
     def fixtures(self):
-        cases, mapping, reviews = [], {}, []
+        cases, reviews = [], []
         for i in range(8):
             context = json.dumps({"candidate_id": str(i), "site": {"code": "if allowed: pass"}})
             cases.append({"vars": {"candidate_json": context, "expected_opportunity": "excluded"},
                           "metadata": {"family_id": str(i // 2)}})
-            mapping[f"blind-{i}"] = str(i)
-            reviews.append({"candidate_id": f"blind-{i}", "opportunity": "eligible",
+        _, mapping = prepare(cases)
+        for opaque in mapping:
+            reviews.append({"candidate_id": opaque, "opportunity": "eligible",
                             "concern_kind": "policy", "rationale": "An admission decision"})
         annotations = {"reference_kind": "independent_model_annotation", "reviewer_id": "fixture",
                        "saw_proposed_labels": False, "saw_jev_outputs": False, "reviews": reviews}
@@ -31,6 +32,13 @@ class ExperimentTests(unittest.TestCase):
         self.assertFalse(manifest["human_adjudicated"])
         cases[0]["vars"]["expected_opportunity"] = "needs_review"
         self.assertEqual(manifest, freeze(cases, annotations, mapping))
+
+    def test_stale_mapping_rejected_when_candidate_context_changes(self):
+        cases, annotations, mapping = self.fixtures()
+        cases[0]["vars"]["candidate_json"] = cases[0]["vars"]["candidate_json"].replace(
+            "if allowed", "if allowed and approved")
+        with self.assertRaisesRegex(ValueError, "mapping context identity"):
+            freeze(cases, annotations, mapping)
 
     def test_packet_does_not_contain_proposals_or_split_metadata(self):
         cases, _, _ = self.fixtures()
@@ -72,7 +80,13 @@ class ExperimentTests(unittest.TestCase):
         m = metrics([("eligible", "needs_review"), ("eligible", None), ("excluded", "excluded")], "opportunity")
         self.assertEqual(m["per_class"]["eligible"]["recall"], 0)
         self.assertEqual(m["provider_or_contract_errors"], 1)
-        self.assertAlmostEqual(m["abstention_rate"], 2 / 3)
+        self.assertAlmostEqual(m["abstention_rate"], 1 / 3)
+        self.assertAlmostEqual(m["scored_abstention_rate"], 1 / 2)
+        self.assertEqual(m["scored_cases"], 2)
+        failed_abstention_reference = metrics([("needs_review", None)], "opportunity")
+        self.assertEqual(failed_abstention_reference["provider_or_contract_errors"], 1)
+        self.assertEqual(failed_abstention_reference["per_class"]["needs_review"]["support"], 0)
+        self.assertIsNone(failed_abstention_reference["macro_f1"])
         self.assertEqual(metrics([("eligible", "excluded")], "opportunity")["false_exclusions"], 1)
 
     def test_partial_runs_and_changed_context_rejected(self):

@@ -6,6 +6,7 @@
     "baseline-v1": {
       "opportunity": {
         "count": 10,
+        "scored_cases": 10,
         "confusion_matrix": {
           "eligible": {
             "eligible": 1,
@@ -45,6 +46,7 @@
         },
         "macro_f1": 0.6875,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.2,
         "provider_or_contract_errors": 0,
@@ -52,6 +54,7 @@
       },
       "concern_kind": {
         "count": 10,
+        "scored_cases": 10,
         "confusion_matrix": {
           "policy": {
             "policy": 3,
@@ -106,6 +109,7 @@
         },
         "macro_f1": 1.0,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.0,
         "provider_or_contract_errors": 0,
@@ -115,6 +119,7 @@
     "bounded-evidence-v1": {
       "opportunity": {
         "count": 10,
+        "scored_cases": 10,
         "confusion_matrix": {
           "eligible": {
             "eligible": 1,
@@ -154,6 +159,7 @@
         },
         "macro_f1": 0.6875,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.2,
         "provider_or_contract_errors": 0,
@@ -161,6 +167,7 @@
       },
       "concern_kind": {
         "count": 10,
+        "scored_cases": 10,
         "confusion_matrix": {
           "policy": {
             "policy": 3,
@@ -215,6 +222,7 @@
         },
         "macro_f1": 1.0,
         "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
         "coverage": 1.0,
         "non_abstained_error_rate": 0.0,
         "provider_or_contract_errors": 0,

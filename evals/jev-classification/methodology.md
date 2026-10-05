@@ -55,6 +55,12 @@ calls on a fixed subset measure output repeatability, not additional independent
 accuracy evidence. Jev's returned model identifier is recorded, but the API does
 not provide an immutable checkpoint, so cross-date reproducibility is limited.
 
+Exclude provider and contract failures from the label confusion matrix so a
+failed response cannot count as a correct `needs_review` or `unknown` answer.
+Report those failures separately, retain all requested cases as the denominator
+for overall coverage, and report scored-case count so excluded failures stay
+visible. A valid model-selected abstention remains a label and is scored normally.
+
 ## Run provenance and budget
 
 Record dataset/split/rubric/prompt digests, exact contexts, requested/returned
