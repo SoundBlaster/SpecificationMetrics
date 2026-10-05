@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "annotations"
+  ],
+  "properties": {
+    "annotations": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "opportunity",
+          "concern_kind",
+          "evidence",
+          "missing_context"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "enum": [
+              "effort-v1-292f6eb81ea61403895c",
+              "effort-v1-0a9d8cb220ea7807fa02",
+              "effort-v1-d52595bf4f4ccf322658",
+              "effort-v1-6ef1feb2a8c25b722eeb",
+              "effort-v1-9d8d9e4cc565184f2d92"
+            ]
+          },
+          "opportunity": {
+            "enum": [
+              "eligible",
+              "excluded",
+              "needs_review"
+            ]
+          },
+          "concern_kind": {
+            "enum": [
+              "policy",
+              "mechanics",
+              "variant_behavior",
+              "unknown"
+            ]
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "missing_context": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

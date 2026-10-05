@@ -1,0 +1,650 @@
+{
+  "schema_version": 1,
+  "study_kind": "codex_luna_reasoning_effort_comparison",
+  "interpretation": "descriptive_single_run_each_on_jevs_low_confidence_subset",
+  "threshold_note": "Jev confidence < 0.50 was a pre-run operational selection threshold, not a calibrated error probability or validated review cutoff.",
+  "sample": {
+    "cases": 5,
+    "selected_from": 8,
+    "selection": "Any Jev opportunity or concern-kind confidence below 0.50 in either profile arm or repeat.",
+    "reference": "One independent model annotation, not human-adjudicated gold."
+  },
+  "conditions": {
+    "low": {
+      "opportunity": {
+        "case_count": 5,
+        "exact_agreement": 3,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 3,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 2,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "eligible_reference_count": 3,
+        "eligible_prediction_count": 5,
+        "eligible_recall": 1.0,
+        "eligible_precision": 0.6,
+        "false_exclusions": 0,
+        "false_positives": 2,
+        "coverage": 1.0
+      },
+      "concern_kind": {
+        "case_count": 5,
+        "exact_agreement": 5,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 5,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        }
+      },
+      "cli_reported_tokens_used": 27408
+    },
+    "medium": {
+      "opportunity": {
+        "case_count": 5,
+        "exact_agreement": 2,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 2,
+            "excluded": 1,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 2,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "eligible_reference_count": 3,
+        "eligible_prediction_count": 4,
+        "eligible_recall": 0.6666666666666666,
+        "eligible_precision": 0.5,
+        "false_exclusions": 1,
+        "false_positives": 2,
+        "coverage": 1.0
+      },
+      "concern_kind": {
+        "case_count": 5,
+        "exact_agreement": 3,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 3,
+            "mechanics": 1,
+            "variant_behavior": 1,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        }
+      },
+      "cli_reported_tokens_used": 27383
+    }
+  },
+  "low_vs_medium_label_changes": {
+    "opportunity": 1,
+    "concern_kind": 2
+  },
+  "per_case": [
+    {
+      "case_id": "effort-v1-6ef1feb2a8c25b722eeb",
+      "source_candidate_id": "sg-017",
+      "selection_reason": {
+        "threshold": 0.5,
+        "axes_below_threshold": [
+          "opportunity"
+        ]
+      },
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_low": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_medium": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "jev_outputs": [
+        {
+          "repeat": 0,
+          "arm": "code",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.36,
+          "opportunity_probabilities": {
+            "needs_review": 0.03,
+            "eligible": 0.57,
+            "excluded": 0.4
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.98,
+          "concern_kind_probabilities": {
+            "unknown": 0,
+            "mechanics": 0.01,
+            "variant_behavior": 0,
+            "policy": 0.99
+          }
+        },
+        {
+          "repeat": 0,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.22,
+          "opportunity_probabilities": {
+            "eligible": 0.48,
+            "excluded": 0.39,
+            "needs_review": 0.13
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.99,
+          "concern_kind_probabilities": {
+            "mechanics": 0.01,
+            "policy": 0.99,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.31,
+          "opportunity_probabilities": {
+            "excluded": 0.43,
+            "eligible": 0.54,
+            "needs_review": 0.03
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.99,
+          "concern_kind_probabilities": {
+            "policy": 0.99,
+            "unknown": 0,
+            "mechanics": 0.01,
+            "variant_behavior": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.33,
+          "opportunity_probabilities": {
+            "eligible": 0.55,
+            "excluded": 0.34,
+            "needs_review": 0.11
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.99,
+          "concern_kind_probabilities": {
+            "unknown": 0,
+            "mechanics": 0.01,
+            "policy": 0.99,
+            "variant_behavior": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "effort-v1-0a9d8cb220ea7807fa02",
+      "source_candidate_id": "sg-018",
+      "selection_reason": {
+        "threshold": 0.5,
+        "axes_below_threshold": [
+          "concern_kind",
+          "opportunity"
+        ]
+      },
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "codex_low": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_medium": {
+        "opportunity": "eligible",
+        "concern_kind": "variant_behavior"
+      },
+      "jev_outputs": [
+        {
+          "repeat": 0,
+          "arm": "code",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.62,
+          "opportunity_probabilities": {
+            "excluded": 0.24,
+            "eligible": 0.74,
+            "needs_review": 0.02
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.5,
+          "concern_kind_probabilities": {
+            "variant_behavior": 0.24,
+            "unknown": 0.01,
+            "policy": 0.62,
+            "mechanics": 0.13
+          }
+        },
+        {
+          "repeat": 0,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.4,
+          "opportunity_probabilities": {
+            "eligible": 0.38,
+            "excluded": 0.6,
+            "needs_review": 0.02
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.65,
+          "concern_kind_probabilities": {
+            "unknown": 0.01,
+            "mechanics": 0.01,
+            "variant_behavior": 0.24,
+            "policy": 0.74
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.58,
+          "opportunity_probabilities": {
+            "eligible": 0.72,
+            "needs_review": 0.02,
+            "excluded": 0.26
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.39,
+          "concern_kind_probabilities": {
+            "policy": 0.54,
+            "unknown": 0.01,
+            "variant_behavior": 0.35,
+            "mechanics": 0.1
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.38,
+          "opportunity_probabilities": {
+            "excluded": 0.59,
+            "eligible": 0.38,
+            "needs_review": 0.03
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.62,
+          "concern_kind_probabilities": {
+            "mechanics": 0.01,
+            "unknown": 0.01,
+            "variant_behavior": 0.27,
+            "policy": 0.71
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "effort-v1-d52595bf4f4ccf322658",
+      "source_candidate_id": "sg-019",
+      "selection_reason": {
+        "threshold": 0.5,
+        "axes_below_threshold": [
+          "concern_kind"
+        ]
+      },
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_low": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_medium": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "jev_outputs": [
+        {
+          "repeat": 0,
+          "arm": "code",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.58,
+          "opportunity_probabilities": {
+            "needs_review": 0.02,
+            "eligible": 0.26,
+            "excluded": 0.72
+          },
+          "concern_kind": "mechanics",
+          "concern_kind_confidence": 0.46,
+          "concern_kind_probabilities": {
+            "variant_behavior": 0,
+            "unknown": 0.01,
+            "mechanics": 0.59,
+            "policy": 0.4
+          }
+        },
+        {
+          "repeat": 0,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.83,
+          "opportunity_probabilities": {
+            "eligible": 0.09,
+            "needs_review": 0.03,
+            "excluded": 0.88
+          },
+          "concern_kind": "mechanics",
+          "concern_kind_confidence": 0.42,
+          "concern_kind_probabilities": {
+            "unknown": 0,
+            "variant_behavior": 0,
+            "policy": 0.43,
+            "mechanics": 0.5700000000000001
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.58,
+          "opportunity_probabilities": {
+            "eligible": 0.25,
+            "needs_review": 0.02,
+            "excluded": 0.73
+          },
+          "concern_kind": "mechanics",
+          "concern_kind_confidence": 0.36,
+          "concern_kind_probabilities": {
+            "unknown": 0.01,
+            "variant_behavior": 0,
+            "policy": 0.47,
+            "mechanics": 0.52
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.8,
+          "opportunity_probabilities": {
+            "needs_review": 0.03,
+            "eligible": 0.1,
+            "excluded": 0.87
+          },
+          "concern_kind": "mechanics",
+          "concern_kind_confidence": 0.36,
+          "concern_kind_probabilities": {
+            "unknown": 0.01,
+            "variant_behavior": 0,
+            "policy": 0.47,
+            "mechanics": 0.52
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "effort-v1-9d8d9e4cc565184f2d92",
+      "source_candidate_id": "sg-020",
+      "selection_reason": {
+        "threshold": 0.5,
+        "axes_below_threshold": [
+          "opportunity"
+        ]
+      },
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "codex_low": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_medium": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "jev_outputs": [
+        {
+          "repeat": 0,
+          "arm": "code",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.52,
+          "opportunity_probabilities": {
+            "needs_review": 0.03,
+            "excluded": 0.29,
+            "eligible": 0.68
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.62,
+          "concern_kind_probabilities": {
+            "mechanics": 0.24,
+            "unknown": 0.01,
+            "variant_behavior": 0.03,
+            "policy": 0.72
+          }
+        },
+        {
+          "repeat": 0,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.22,
+          "opportunity_probabilities": {
+            "excluded": 0.48,
+            "eligible": 0.42,
+            "needs_review": 0.1
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.72,
+          "concern_kind_probabilities": {
+            "mechanics": 0.15,
+            "unknown": 0.01,
+            "variant_behavior": 0.05,
+            "policy": 0.79
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.49,
+          "opportunity_probabilities": {
+            "excluded": 0.32,
+            "eligible": 0.66,
+            "needs_review": 0.02
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.65,
+          "concern_kind_probabilities": {
+            "mechanics": 0.22,
+            "policy": 0.74,
+            "variant_behavior": 0.03,
+            "unknown": 0.01
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.32,
+          "opportunity_probabilities": {
+            "eligible": 0.36,
+            "excluded": 0.54,
+            "needs_review": 0.1
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.68,
+          "concern_kind_probabilities": {
+            "unknown": 0.01,
+            "policy": 0.76,
+            "variant_behavior": 0.05,
+            "mechanics": 0.18
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "effort-v1-292f6eb81ea61403895c",
+      "source_candidate_id": "sg-033",
+      "selection_reason": {
+        "threshold": 0.5,
+        "axes_below_threshold": [
+          "opportunity"
+        ]
+      },
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_low": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "codex_medium": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "jev_outputs": [
+        {
+          "repeat": 0,
+          "arm": "code",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.5,
+          "opportunity_probabilities": {
+            "excluded": 0.67,
+            "needs_review": 0.03,
+            "eligible": 0.3
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.97,
+          "concern_kind_probabilities": {
+            "policy": 0.97,
+            "variant_behavior": 0,
+            "unknown": 0,
+            "mechanics": 0.03
+          }
+        },
+        {
+          "repeat": 0,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.23,
+          "opportunity_probabilities": {
+            "eligible": 0.49,
+            "excluded": 0.41,
+            "needs_review": 0.1
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.98,
+          "concern_kind_probabilities": {
+            "variant_behavior": 0,
+            "mechanics": 0.01,
+            "policy": 0.99,
+            "unknown": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code",
+          "opportunity": "excluded",
+          "opportunity_confidence": 0.57,
+          "opportunity_probabilities": {
+            "excluded": 0.71,
+            "eligible": 0.26,
+            "needs_review": 0.03
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.96,
+          "concern_kind_probabilities": {
+            "policy": 0.97,
+            "mechanics": 0.03,
+            "unknown": 0,
+            "variant_behavior": 0
+          }
+        },
+        {
+          "repeat": 1,
+          "arm": "code_plus_architecture_profile",
+          "opportunity": "eligible",
+          "opportunity_confidence": 0.22,
+          "opportunity_probabilities": {
+            "excluded": 0.41,
+            "needs_review": 0.11,
+            "eligible": 0.48
+          },
+          "concern_kind": "policy",
+          "concern_kind_confidence": 0.98,
+          "concern_kind_probabilities": {
+            "variant_behavior": 0,
+            "mechanics": 0.01,
+            "policy": 0.99,
+            "unknown": 0
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "One Codex CLI run per effort; no estimate of run-to-run variability.",
+    "Selected cases are conditioned on low Jev confidence, so metrics do not generalize to all candidates.",
+    "The independent reference is a single model annotation and may be wrong.",
+    "Luna Medium is not shown to be more accurate than Low; it changed three axis labels but agreed with the reference on fewer opportunity cases here.",
+    "The previous independent Codex subagent model and effort remain unknown."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "unblinded_after_both_outputs_were_frozen": true,
+  "entries": [
+    {
+      "case_id": "effort-v1-6ef1feb2a8c25b722eeb",
+      "source_candidate_id": "sg-017",
+      "ablation_candidate_id": "review-6d62b1a3608ab698",
+      "family_id": "pre-sib"
+    },
+    {
+      "case_id": "effort-v1-0a9d8cb220ea7807fa02",
+      "source_candidate_id": "sg-018",
+      "ablation_candidate_id": "review-2249072958bc9db4",
+      "family_id": "pre-sib"
+    },
+    {
+      "case_id": "effort-v1-d52595bf4f4ccf322658",
+      "source_candidate_id": "sg-019",
+      "ablation_candidate_id": "review-3238205e0bfcab79",
+      "family_id": "acceptance-criteria"
+    },
+    {
+      "case_id": "effort-v1-9d8d9e4cc565184f2d92",
+      "source_candidate_id": "sg-020",
+      "ablation_candidate_id": "review-d9832771164b2f85",
+      "family_id": "acceptance-criteria"
+    },
+    {
+      "case_id": "effort-v1-292f6eb81ea61403895c",
+      "source_candidate_id": "sg-033",
+      "ablation_candidate_id": "review-627908aeebd7e376",
+      "family_id": "workspace-allocation"
+    }
+  ]
+}
