@@ -1,0 +1,2318 @@
+{
+  "requests": 32,
+  "study_sha256": "sha256:aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+  "prompt_sha256": "sha256:5f2f8e906b2488f842ef9f1bef956fe86a672130110ee42acf17b505f6c20ecf",
+  "architecture_profile_sha256": "sha256:337ad1fcbfb3e47d330948eebd0b958f77bba13e1e92a1c5f39142b5fdc1c95e",
+  "repeats": 2,
+  "cache_replay": false,
+  "started_at": "2026-10-05T05:36:17.812Z",
+  "requested_model": "jev-1.13.0",
+  "model_revision": null,
+  "completed": true,
+  "rows": [
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-6d62b1a3608ab698",
+      "context_sha256": "sha256:422288d9d407dd057d95beb162a9b83a3db792f098b8a4ee35dfc604a7f7b50d",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.36,
+            "probabilities": {
+              "needs_review": 0.03,
+              "eligible": 0.57,
+              "excluded": 0.4
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.98,
+            "probabilities": {
+              "unknown": 0,
+              "mechanics": 0.01,
+              "variant_behavior": 0,
+              "policy": 0.99
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1700,
+          "completion": 90,
+          "cached": 0,
+          "total": 1790,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1700,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:19.298Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-6d62b1a3608ab698",
+      "context_sha256": "sha256:dfd09a49f1dc58046885679686f947f740dc040b114b21fd50ad003c7c437949",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.22,
+            "probabilities": {
+              "eligible": 0.48,
+              "excluded": 0.39,
+              "needs_review": 0.13
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.99,
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "variant_behavior": 0,
+              "unknown": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2120,
+          "completion": 90,
+          "cached": 0,
+          "total": 2210,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2120,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:19.857Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-2249072958bc9db4",
+      "context_sha256": "sha256:cb83ca44e88b5fd0fcacc13ff22c5bdd6321c95c03198c352fef1195d7017f48",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.62,
+            "probabilities": {
+              "excluded": 0.24,
+              "eligible": 0.74,
+              "needs_review": 0.02
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.5,
+            "probabilities": {
+              "variant_behavior": 0.24,
+              "unknown": 0.01,
+              "policy": 0.62,
+              "mechanics": 0.13
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1513,
+          "completion": 90,
+          "cached": 0,
+          "total": 1603,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1513,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:20.165Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-2249072958bc9db4",
+      "context_sha256": "sha256:e4c3407441e12a8d6e0c6392f96c6837d5de4f53b081a6008b64057a9861a093",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.4,
+            "probabilities": {
+              "eligible": 0.38,
+              "excluded": 0.6,
+              "needs_review": 0.02
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.65,
+            "probabilities": {
+              "unknown": 0.01,
+              "mechanics": 0.01,
+              "variant_behavior": 0.24,
+              "policy": 0.74
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1933,
+          "completion": 92,
+          "cached": 0,
+          "total": 2025,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1933,
+              "output_tokens": 92
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:20.485Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-3238205e0bfcab79",
+      "context_sha256": "sha256:6316577accdf4fe09a16f3550a3758f016b54d646c5aa31e70a1911d4e76c2d5",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.58,
+            "probabilities": {
+              "needs_review": 0.02,
+              "eligible": 0.26,
+              "excluded": 0.72
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.46,
+            "probabilities": {
+              "variant_behavior": 0,
+              "unknown": 0.01,
+              "mechanics": 0.59,
+              "policy": 0.4
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1835,
+          "completion": 94,
+          "cached": 0,
+          "total": 1929,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1835,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:20.773Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-3238205e0bfcab79",
+      "context_sha256": "sha256:7693b2a5c4ff5708a6d66224308a678a1dbacaa2affb3d80f2972b1b884392ed",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.83,
+            "probabilities": {
+              "eligible": 0.09,
+              "needs_review": 0.03,
+              "excluded": 0.88
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.42,
+            "probabilities": {
+              "unknown": 0,
+              "variant_behavior": 0,
+              "policy": 0.43,
+              "mechanics": 0.5700000000000001
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2255,
+          "completion": 94,
+          "cached": 0,
+          "total": 2349,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2255,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:21.101Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-d9832771164b2f85",
+      "context_sha256": "sha256:2dce0925cfc91b0233ac09f18107e6f7e5d09c22c1c7d812d628c52e24a56200",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.52,
+            "probabilities": {
+              "needs_review": 0.03,
+              "excluded": 0.29,
+              "eligible": 0.68
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.62,
+            "probabilities": {
+              "mechanics": 0.24,
+              "unknown": 0.01,
+              "variant_behavior": 0.03,
+              "policy": 0.72
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1755,
+          "completion": 90,
+          "cached": 0,
+          "total": 1845,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1755,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:21.452Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-d9832771164b2f85",
+      "context_sha256": "sha256:65abf2b3c73bbea997e337b189e7bd5d7652c8ca430522a1a6da37dcbd60b6fb",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.22,
+            "probabilities": {
+              "excluded": 0.48,
+              "eligible": 0.42,
+              "needs_review": 0.1
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.72,
+            "probabilities": {
+              "mechanics": 0.15,
+              "unknown": 0.01,
+              "variant_behavior": 0.05,
+              "policy": 0.79
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2175,
+          "completion": 92,
+          "cached": 0,
+          "total": 2267,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2175,
+              "output_tokens": 92
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:21.743Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-490e54e617cfd961",
+      "context_sha256": "sha256:d5e8645dfc28ed6c96ec603824c52e30402c4f020aa3bcd7de74e57b642e472a",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.99,
+            "probabilities": {
+              "eligible": 0,
+              "excluded": 1,
+              "needs_review": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.99,
+            "probabilities": {
+              "variant_behavior": 0.01,
+              "mechanics": 0.99,
+              "unknown": 0,
+              "policy": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1440,
+          "completion": 94,
+          "cached": 0,
+          "total": 1534,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1440,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:22.018Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-490e54e617cfd961",
+      "context_sha256": "sha256:6b02b7cb772fb860d4c70d4d5d4abd7a29b476792161fa0ec20bb8b3194dea97",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 1,
+            "probabilities": {
+              "excluded": 1,
+              "eligible": 0,
+              "needs_review": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.99,
+            "probabilities": {
+              "policy": 0,
+              "unknown": 0,
+              "mechanics": 1,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1860,
+          "completion": 94,
+          "cached": 0,
+          "total": 1954,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1860,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:22.296Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "context_sha256": "sha256:475539fd9482f71edb1d8925aa0a50a8df68026942c875895fc04ae7c343bba0",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.99,
+            "probabilities": {
+              "eligible": 0,
+              "excluded": 1,
+              "needs_review": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "variant_behavior": 0,
+              "mechanics": 1,
+              "unknown": 0,
+              "policy": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1448,
+          "completion": 94,
+          "cached": 0,
+          "total": 1542,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1448,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:22.588Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "context_sha256": "sha256:ab499852ce5481cc5471e07a0b09133eefae7af869c2e862aa12f9555ad06ab2",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 1,
+            "probabilities": {
+              "eligible": 0,
+              "needs_review": 0,
+              "excluded": 1
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "policy": 0,
+              "unknown": 0,
+              "mechanics": 1,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1868,
+          "completion": 94,
+          "cached": 0,
+          "total": 1962,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1868,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:22.860Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-627908aeebd7e376",
+      "context_sha256": "sha256:ead2beea31512d34d995ef597853638a19385d4b750a2120436d8d3836ef7dd4",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.5,
+            "probabilities": {
+              "excluded": 0.67,
+              "needs_review": 0.03,
+              "eligible": 0.3
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.97,
+            "probabilities": {
+              "policy": 0.97,
+              "variant_behavior": 0,
+              "unknown": 0,
+              "mechanics": 0.03
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1732,
+          "completion": 92,
+          "cached": 0,
+          "total": 1824,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1732,
+              "output_tokens": 92
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:23.192Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-627908aeebd7e376",
+      "context_sha256": "sha256:820cb411d6fc667817521c3f09a14b1a995a7a520c2bff374cc93dddab11e74f",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.23,
+            "probabilities": {
+              "eligible": 0.49,
+              "excluded": 0.41,
+              "needs_review": 0.1
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.98,
+            "probabilities": {
+              "variant_behavior": 0,
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "unknown": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2152,
+          "completion": 90,
+          "cached": 0,
+          "total": 2242,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2152,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:23.499Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code",
+      "candidate_id": "review-135a902980c25b84",
+      "context_sha256": "sha256:abc27e62ef52c741dc4af699b216649ce2bbae5cb6c990abe69fbd901b794119",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.92,
+            "probabilities": {
+              "needs_review": 0.01,
+              "eligible": 0.04,
+              "excluded": 0.95
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "unknown": 0,
+              "policy": 0,
+              "mechanics": 1,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1685,
+          "completion": 94,
+          "cached": 0,
+          "total": 1779,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1685,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:23.799Z"
+    },
+    {
+      "repeat": 0,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-135a902980c25b84",
+      "context_sha256": "sha256:7784fb22533517676d7996020ac7d3cce87756ec1d019ab75e2c34979249b4c5",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.99,
+            "probabilities": {
+              "excluded": 1,
+              "eligible": 0,
+              "needs_review": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "policy": 0,
+              "variant_behavior": 0,
+              "unknown": 0,
+              "mechanics": 1
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2105,
+          "completion": 94,
+          "cached": 0,
+          "total": 2199,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2105,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:24.072Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-135a902980c25b84",
+      "context_sha256": "sha256:7784fb22533517676d7996020ac7d3cce87756ec1d019ab75e2c34979249b4c5",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 1,
+            "probabilities": {
+              "excluded": 1,
+              "eligible": 0,
+              "needs_review": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "variant_behavior": 0,
+              "mechanics": 1,
+              "unknown": 0,
+              "policy": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2105,
+          "completion": 94,
+          "cached": 0,
+          "total": 2199,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2105,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:24.375Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-135a902980c25b84",
+      "context_sha256": "sha256:abc27e62ef52c741dc4af699b216649ce2bbae5cb6c990abe69fbd901b794119",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.9,
+            "probabilities": {
+              "eligible": 0.05,
+              "excluded": 0.94,
+              "needs_review": 0.01
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "variant_behavior": 0,
+              "mechanics": 1,
+              "unknown": 0,
+              "policy": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1685,
+          "completion": 94,
+          "cached": 0,
+          "total": 1779,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1685,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:24.674Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-627908aeebd7e376",
+      "context_sha256": "sha256:820cb411d6fc667817521c3f09a14b1a995a7a520c2bff374cc93dddab11e74f",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.22,
+            "probabilities": {
+              "excluded": 0.41,
+              "needs_review": 0.11,
+              "eligible": 0.48
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.98,
+            "probabilities": {
+              "variant_behavior": 0,
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "unknown": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2152,
+          "completion": 90,
+          "cached": 0,
+          "total": 2242,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2152,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:24.945Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-627908aeebd7e376",
+      "context_sha256": "sha256:ead2beea31512d34d995ef597853638a19385d4b750a2120436d8d3836ef7dd4",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.57,
+            "probabilities": {
+              "excluded": 0.71,
+              "eligible": 0.26,
+              "needs_review": 0.03
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.96,
+            "probabilities": {
+              "policy": 0.97,
+              "mechanics": 0.03,
+              "unknown": 0,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1732,
+          "completion": 92,
+          "cached": 0,
+          "total": 1824,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1732,
+              "output_tokens": 92
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:25.277Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "context_sha256": "sha256:ab499852ce5481cc5471e07a0b09133eefae7af869c2e862aa12f9555ad06ab2",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 1,
+            "probabilities": {
+              "excluded": 1,
+              "needs_review": 0,
+              "eligible": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "unknown": 0,
+              "policy": 0,
+              "mechanics": 1,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1868,
+          "completion": 94,
+          "cached": 0,
+          "total": 1962,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1868,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:25.580Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "context_sha256": "sha256:475539fd9482f71edb1d8925aa0a50a8df68026942c875895fc04ae7c343bba0",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.99,
+            "probabilities": {
+              "excluded": 1,
+              "needs_review": 0,
+              "eligible": 0
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 1,
+            "probabilities": {
+              "unknown": 0,
+              "policy": 0,
+              "variant_behavior": 0,
+              "mechanics": 1
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1448,
+          "completion": 94,
+          "cached": 0,
+          "total": 1542,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1448,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:25.930Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-490e54e617cfd961",
+      "context_sha256": "sha256:6b02b7cb772fb860d4c70d4d5d4abd7a29b476792161fa0ec20bb8b3194dea97",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 1,
+            "probabilities": {
+              "needs_review": 0,
+              "eligible": 0,
+              "excluded": 1
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.99,
+            "probabilities": {
+              "unknown": 0,
+              "variant_behavior": 0,
+              "mechanics": 1,
+              "policy": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1860,
+          "completion": 94,
+          "cached": 0,
+          "total": 1954,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1860,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:26.247Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-490e54e617cfd961",
+      "context_sha256": "sha256:d5e8645dfc28ed6c96ec603824c52e30402c4f020aa3bcd7de74e57b642e472a",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_review": 0,
+              "eligible": 0,
+              "excluded": 1
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.99,
+            "probabilities": {
+              "unknown": 0,
+              "variant_behavior": 0.01,
+              "policy": 0,
+              "mechanics": 0.99
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1440,
+          "completion": 94,
+          "cached": 0,
+          "total": 1534,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1440,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:26.567Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-d9832771164b2f85",
+      "context_sha256": "sha256:65abf2b3c73bbea997e337b189e7bd5d7652c8ca430522a1a6da37dcbd60b6fb",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.32,
+            "probabilities": {
+              "eligible": 0.36,
+              "excluded": 0.54,
+              "needs_review": 0.1
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.68,
+            "probabilities": {
+              "unknown": 0.01,
+              "policy": 0.76,
+              "variant_behavior": 0.05,
+              "mechanics": 0.18
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2175,
+          "completion": 92,
+          "cached": 0,
+          "total": 2267,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2175,
+              "output_tokens": 92
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:26.893Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-d9832771164b2f85",
+      "context_sha256": "sha256:2dce0925cfc91b0233ac09f18107e6f7e5d09c22c1c7d812d628c52e24a56200",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.49,
+            "probabilities": {
+              "excluded": 0.32,
+              "eligible": 0.66,
+              "needs_review": 0.02
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.65,
+            "probabilities": {
+              "mechanics": 0.22,
+              "policy": 0.74,
+              "variant_behavior": 0.03,
+              "unknown": 0.01
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1755,
+          "completion": 90,
+          "cached": 0,
+          "total": 1845,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1755,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:27.198Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-3238205e0bfcab79",
+      "context_sha256": "sha256:7693b2a5c4ff5708a6d66224308a678a1dbacaa2affb3d80f2972b1b884392ed",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.8,
+            "probabilities": {
+              "needs_review": 0.03,
+              "eligible": 0.1,
+              "excluded": 0.87
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.36,
+            "probabilities": {
+              "unknown": 0.01,
+              "variant_behavior": 0,
+              "policy": 0.47,
+              "mechanics": 0.52
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2255,
+          "completion": 94,
+          "cached": 0,
+          "total": 2349,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2255,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:27.507Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-3238205e0bfcab79",
+      "context_sha256": "sha256:6316577accdf4fe09a16f3550a3758f016b54d646c5aa31e70a1911d4e76c2d5",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.58,
+            "probabilities": {
+              "eligible": 0.25,
+              "needs_review": 0.02,
+              "excluded": 0.73
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "confidence": 0.36,
+            "probabilities": {
+              "unknown": 0.01,
+              "variant_behavior": 0,
+              "policy": 0.47,
+              "mechanics": 0.52
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1835,
+          "completion": 94,
+          "cached": 0,
+          "total": 1929,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1835,
+              "output_tokens": 94
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:27.857Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-2249072958bc9db4",
+      "context_sha256": "sha256:e4c3407441e12a8d6e0c6392f96c6837d5de4f53b081a6008b64057a9861a093",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "confidence": 0.38,
+            "probabilities": {
+              "excluded": 0.59,
+              "eligible": 0.38,
+              "needs_review": 0.03
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.62,
+            "probabilities": {
+              "mechanics": 0.01,
+              "unknown": 0.01,
+              "variant_behavior": 0.27,
+              "policy": 0.71
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1933,
+          "completion": 92,
+          "cached": 0,
+          "total": 2025,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1933,
+              "output_tokens": 92
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:28.192Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-2249072958bc9db4",
+      "context_sha256": "sha256:cb83ca44e88b5fd0fcacc13ff22c5bdd6321c95c03198c352fef1195d7017f48",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.58,
+            "probabilities": {
+              "eligible": 0.72,
+              "needs_review": 0.02,
+              "excluded": 0.26
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.39,
+            "probabilities": {
+              "policy": 0.54,
+              "unknown": 0.01,
+              "variant_behavior": 0.35,
+              "mechanics": 0.1
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1513,
+          "completion": 90,
+          "cached": 0,
+          "total": 1603,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1513,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:28.490Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code_plus_architecture_profile",
+      "candidate_id": "review-6d62b1a3608ab698",
+      "context_sha256": "sha256:dfd09a49f1dc58046885679686f947f740dc040b114b21fd50ad003c7c437949",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.33,
+            "probabilities": {
+              "eligible": 0.55,
+              "excluded": 0.34,
+              "needs_review": 0.11
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.99,
+            "probabilities": {
+              "unknown": 0,
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 2120,
+          "completion": 90,
+          "cached": 0,
+          "total": 2210,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 2120,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:28.785Z"
+    },
+    {
+      "repeat": 1,
+      "arm": "code",
+      "candidate_id": "review-6d62b1a3608ab698",
+      "context_sha256": "sha256:422288d9d407dd057d95beb162a9b83a3db792f098b8a4ee35dfc604a7f7b50d",
+      "response": {
+        "cached": false,
+        "output": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "confidence": 0.31,
+            "probabilities": {
+              "excluded": 0.43,
+              "eligible": 0.54,
+              "needs_review": 0.03
+            }
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "confidence": 0.99,
+            "probabilities": {
+              "policy": 0.99,
+              "unknown": 0,
+              "mechanics": 0.01,
+              "variant_behavior": 0
+            }
+          }
+        },
+        "tokenUsage": {
+          "prompt": 1700,
+          "completion": 90,
+          "cached": 0,
+          "total": 1790,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "metadata": {
+          "typesafe": {
+            "requestedModel": "jev-1.13.0",
+            "returnedModel": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1700,
+              "output_tokens": 90
+            },
+            "responseSource": "live"
+          }
+        }
+      },
+      "received_at": "2026-10-05T05:36:29.076Z"
+    }
+  ]
+}

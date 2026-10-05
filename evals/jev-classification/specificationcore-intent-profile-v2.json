@@ -1,0 +1,26 @@
+{
+  "id": "specificationcore.intent-centric",
+  "version": 2,
+  "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+  "architecture_intent": [
+    "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+    "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+    "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+  ],
+  "decision_principles": [
+    "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+    "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+    "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+  ],
+  "preferred_patterns": [
+    "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+    "Keep specifications with their owning feature or bounded context.",
+    "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+  ],
+  "boundaries": [
+    "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+    "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+    "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+  ],
+  "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence."
+}
