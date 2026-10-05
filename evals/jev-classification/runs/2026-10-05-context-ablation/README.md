@@ -98,6 +98,9 @@ digest is verified during scoring. Model requested/returned: `jev-1.13.0`;
 immutable model revision unavailable. Both runs use no cache/retries and
 concurrency one. API-reported usage: 111,024 initial + 111,106 corrected =
 **222,130 tokens over 96 hosted requests**. Monetary cost is not inferred.
+The scorer binds every successful response to the recorded requested and
+returned model, `jev-1.13.0`; provider errors remain failed rows. This prevents
+the comparison from silently mixing responses from different models.
 
 Offline score, from the eval directory:
 
