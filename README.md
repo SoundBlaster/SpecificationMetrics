@@ -10,6 +10,10 @@ what kind of logic they express. Suggestions never update reviewed registry
 entries or S/U counts. See the [classification contract](docs/candidate-classification-contract.md)
 for privacy boundaries, provenance, and review semantics.
 
+The proposed [formal analysis roadmap](docs/formal-analysis-roadmap.md) describes
+decision contracts, structural evidence, transformation tests and a bounded
+predicate-equivalence pilot before extending semantic review or PR gates.
+
 ## Unified collection
 
 `collect` uses a TOML config to collect **S, U and S/U first**, then optional
