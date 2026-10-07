@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "purpose": "Unblind only after the independent annotations were frozen; map the opaque reference IDs to the already-run Jev ablation cases.",
+  "source_study_sha256": "aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+  "entries": [
+    {
+      "case_id": "blind-v2-3d1f72ef3a8e1fdaee26",
+      "ablation_candidate_id": "review-135a902980c25b84",
+      "source_candidate_id": "sg-034",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_slug",
+      "source_context_sha256": "sha256:abc27e62ef52c741dc4af699b216649ce2bbae5cb6c990abe69fbd901b794119"
+    },
+    {
+      "case_id": "blind-v2-511c4a78828db074dad7",
+      "ablation_candidate_id": "review-6d62b1a3608ab698",
+      "source_candidate_id": "sg-017",
+      "family_id": "pre-sib",
+      "source_context_sha256": "sha256:422288d9d407dd057d95beb162a9b83a3db792f098b8a4ee35dfc604a7f7b50d"
+    },
+    {
+      "case_id": "blind-v2-6a2bf88fd85eb8abc436",
+      "ablation_candidate_id": "review-627908aeebd7e376",
+      "source_candidate_id": "sg-033",
+      "family_id": "workspace-allocation",
+      "source_context_sha256": "sha256:ead2beea31512d34d995ef597853638a19385d4b750a2120436d8d3836ef7dd4"
+    },
+    {
+      "case_id": "blind-v2-72214a9c215959c7f8aa",
+      "ablation_candidate_id": "review-80cfb8df0e3d8882",
+      "source_candidate_id": "sg-032",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_text",
+      "source_context_sha256": "sha256:475539fd9482f71edb1d8925aa0a50a8df68026942c875895fc04ae7c343bba0"
+    },
+    {
+      "case_id": "blind-v2-7d2b35736799ee150f66",
+      "ablation_candidate_id": "review-3238205e0bfcab79",
+      "source_candidate_id": "sg-019",
+      "family_id": "acceptance-criteria",
+      "source_context_sha256": "sha256:6316577accdf4fe09a16f3550a3758f016b54d646c5aa31e70a1911d4e76c2d5"
+    },
+    {
+      "case_id": "blind-v2-d22ab961caf8cfabdc06",
+      "ablation_candidate_id": "review-d9832771164b2f85",
+      "source_candidate_id": "sg-020",
+      "family_id": "acceptance-criteria",
+      "source_context_sha256": "sha256:2dce0925cfc91b0233ac09f18107e6f7e5d09c22c1c7d812d628c52e24a56200"
+    },
+    {
+      "case_id": "blind-v2-db939f2de0f6eb17d887",
+      "ablation_candidate_id": "review-490e54e617cfd961",
+      "source_candidate_id": "sg-031",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_dict",
+      "source_context_sha256": "sha256:d5e8645dfc28ed6c96ec603824c52e30402c4f020aa3bcd7de74e57b642e472a"
+    },
+    {
+      "case_id": "blind-v2-ff22cda3f245f90da902",
+      "ablation_candidate_id": "review-2249072958bc9db4",
+      "source_candidate_id": "sg-018",
+      "family_id": "pre-sib",
+      "source_context_sha256": "sha256:cb83ca44e88b5fd0fcacc13ff22c5bdd6321c95c03198c352fef1195d7017f48"
+    }
+  ]
+}

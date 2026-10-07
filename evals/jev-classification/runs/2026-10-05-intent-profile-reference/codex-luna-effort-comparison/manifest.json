@@ -1,0 +1,46 @@
+{
+  "study_kind": "codex_luna_reasoning_effort_comparison",
+  "selected_case_count": 5,
+  "selection_rule": "include a source case when any Jev opportunity or concern_kind confidence in either arm/repeat is < 0.50",
+  "selection_source_run_sha256": "d12c560efa1b3de46c3b35613ed85cd0127fdd86c328c427936c604533134f0a",
+  "packet_sha256": "087b0f8f94176b4a79a5b251534a8edc86595551cd73b8108bc71ed401672aea",
+  "prompt_sha256": "38044c7574fdaad9b2bebd1fc439fce2c6d703c89d9e24577fc23ec53deb3400",
+  "output_schema_sha256": "79cb914487be89729c3ad9492f1aa7b86a1df357930c7b9dc245ced58feba702",
+  "case_ids": [
+    "effort-v1-292f6eb81ea61403895c",
+    "effort-v1-0a9d8cb220ea7807fa02",
+    "effort-v1-d52595bf4f4ccf322658",
+    "effort-v1-6ef1feb2a8c25b722eeb",
+    "effort-v1-9d8d9e4cc565184f2d92"
+  ],
+  "conditions": [
+    "gpt-6-luna / low",
+    "gpt-6-luna / medium"
+  ],
+  "adjudication_reference": "independent model annotation exists but is not shown to either CLI run; compare only after both outputs are frozen",
+  "codex_cli_version": "0.156.1",
+  "cwd": "/tmp/specmetrics-luna-effort-compare",
+  "sandbox": "read-only",
+  "ephemeral": true,
+  "ignore_user_config": true,
+  "ignore_rules": true,
+  "repo_access": "No repository was supplied as workspace; the packet was passed on stdin.",
+  "runs": {
+    "low": {
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "exit_code": 0,
+      "reported_tokens_used": 27408
+    },
+    "medium": {
+      "model": "gpt-6-luna",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "reported_tokens_used": 27383
+    }
+  },
+  "low_output_sha256": "a0c9b163a3bda969684458db6b3eec0b6bfedda66514413fe87d96c6152dfc53",
+  "medium_output_sha256": "28078989336220c982980443204c7f490ddc95e3ecaeea947a5ce5fac7a25dad",
+  "comparison_sha256": "b4af53ce652647d6ec29d398fdedf52767a8750c53960c8dfec4e60e9276312e",
+  "mapping_sha256": "bfa9b981a1dab593db8cc88133a143e81cb02a3a5722c0c8edc96eee4c73f097"
+}

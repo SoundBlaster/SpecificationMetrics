@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "study_kind": "independent_intent_profile_reference",
+  "case_count": 8,
+  "source_study_sha256": "aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+  "profile_sha256": "337ad1fcbfb3e47d330948eebd0b958f77bba13e1e92a1c5f39142b5fdc1c95e",
+  "packet_sha256": "c5062efcea82310727400dc3bf463f63c42d1aef6e82e48bd84cfcd3cf650c3a",
+  "blind_review": true,
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "annotation_completed_utc": "2026-10-05T07:54:20Z",
+  "annotator_kind": "isolated_codex_subagent",
+  "annotator_model_id": null,
+  "annotation_sha256": "75c32254c7f12d26612d654ee23d5c1ba021c726838cb9394a2c3c71917edfb5",
+  "mapping_sha256": "692ed274404a3caf943949c5a0cf2c47b140b8ad040ebc59964699ad959575e5",
+  "comparison_sha256": "f9fb3ba4fb18e34d61645f792ed0fc85355c44cd45e38d0649713b7adea2b6cd",
+  "blindness_method": "fresh subagent with no conversation history; instructed to read only packet.json; label output frozen before mapping was opened",
+  "blindness_limit": "instructions are procedural, not technically enforced; shared model biases and source recognition cannot be ruled out"
+}

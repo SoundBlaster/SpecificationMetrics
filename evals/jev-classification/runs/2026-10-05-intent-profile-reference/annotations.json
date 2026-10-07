@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "packet_sha256": "c5062efcea82310727400dc3bf463f63c42d1aef6e82e48bd84cfcd3cf650c3a",
+  "annotations": [
+    {
+      "case_id": "blind-v2-ff22cda3f245f90da902",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence": "The decision maps readiness and materialization source to READY, BLOCKED, or REPAIRED_PREVIEW. It is already represented by the named FirstMatch decision pre_sib_state.",
+      "missing_context": null
+    },
+    {
+      "case_id": "blind-v2-db939f2de0f6eb17d887",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": "_dict returns its input only when it is a dictionary and otherwise supplies an empty dictionary. This is data-shape normalization, with no distinct product decision shown.",
+      "missing_context": null
+    },
+    {
+      "case_id": "blind-v2-7d2b35736799ee150f66",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": "The function finds requirements without references to existing acceptance criteria and creates a reviewable placeholder action for each uncovered requirement. That expresses a rule for addressing acceptance-criteria gaps, not only data conversion or action formatting.",
+      "missing_context": "The supplied context does not show the owning feature or whether another named Specification already owns this gap policy."
+    },
+    {
+      "case_id": "blind-v2-d22ab961caf8cfabdc06",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence": "The named FirstMatch decision acceptance_criterion_repair maps invalid and already-covered requirements to IGNORE and otherwise falls back to ADD_PLACEHOLDER. The decision is already represented by a named Specification.",
+      "missing_context": null
+    },
+    {
+      "case_id": "blind-v2-72214a9c215959c7f8aa",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": "_text strips surrounding whitespace from nonempty strings and returns a default for other inputs. This is input normalization without a distinct product rule.",
+      "missing_context": null
+    },
+    {
+      "case_id": "blind-v2-511c4a78828db074dad7",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": "The branch requires review when the original pre-SIB report is not ready and no repair preview was used; with a preview, it emits a warning instead. This governs acceptance of readiness evidence and the review lifecycle.",
+      "missing_context": "The supplied context does not show whether a named Specification already owns this gate policy."
+    },
+    {
+      "case_id": "blind-v2-6a2bf88fd85eb8abc436",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": "The check binds workspace identity, source reference, expected commit, authorization flags, and the declaration hash to the requested bootstrap. Those conditions express an identity and authority policy, beyond the mechanics of raising an error.",
+      "missing_context": "The supplied context does not show whether a named Specification already owns workspace allocation authorization."
+    },
+    {
+      "case_id": "blind-v2-3d1f72ef3a8e1fdaee26",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": "_slug lowercases a value, replaces non-alphanumeric runs with hyphens, trims edge hyphens, and uses a fallback for an empty result. This is identifier formatting without a distinct product decision.",
+      "missing_context": null
+    }
+  ]
+}
