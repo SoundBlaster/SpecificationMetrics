@@ -19,9 +19,13 @@ excludes a site from the remaining-opportunity count.
 review instructions, and eight bounded source contexts. It uses fresh opaque
 case IDs and a shuffled order. It omits the prior labels, source candidate IDs,
 family IDs, historical roles, and Jev responses. `manifest.json` records the
-packet, source-study, and profile digests. The private case mapping is kept
-outside the repository in the ignored `evals/jev-classification/results/`
-directory and is not part of this packet.
+packet, source-study, and profile digests. During annotation, the case mapping
+was stored privately in the ignored `evals/jev-classification/results/`
+directory and was not included in the reviewer packet. After the annotations
+were frozen, the mapping was published as the tracked `mapping.json` beside
+this README so that the comparison can be audited and reproduced. The current
+tracked directory therefore exposes the mapping and must not be supplied in
+full to a new blind reviewer; supply only `packet.json`.
 
 The isolated reviewer was instructed to use only `packet.json` and returned
 one label per case with source-based evidence and any missing context. No
