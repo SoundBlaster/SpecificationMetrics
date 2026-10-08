@@ -34,6 +34,8 @@ jobs:
           python3 -m unittest -v test_experiment.py
           python3 -m unittest -v test_context_ablation.py
           python3 -m unittest -v test_score_rustjev.py
+          python3 -m unittest -v test_question_grouping.py
+          python3 question_grouping.py --run runs/2026-10-08-question-grouping-persistent --transport persistent
         working-directory: evals/jev-classification
       - run: python -m pip install -r scripts/requirements-metrics.txt
       - run: python scripts/test_classic_metrics.py
