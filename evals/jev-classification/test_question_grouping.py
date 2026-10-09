@@ -41,6 +41,16 @@ class GroupingTests(unittest.TestCase):
         for broken in [b'{"model":"a","model":"b"}', b'{"model":NaN}', b'{}']:
             with self.assertRaises(ValueError):
                 parse_response(broken, q)
+        body["usage"] = {"input_tokens": 2, "output_tokens": 0, "provider_private": {"anything": "omitted"}}
+        self.assertEqual(parse_response(canonical(body), q)["usage"], {"input_tokens": 2, "output_tokens": 0})
+        for invalid in [[], "tokens", True, 2, {"input_tokens": True}, {"output_tokens": -1},
+                        {"input_tokens": 2.5}, {"input_tokens": "2"}, {"output_tokens": None}]:
+            body["usage"] = invalid
+            with self.subTest(usage=invalid), self.assertRaises(ValueError):
+                parse_response(canonical(body), q)
+        for absent in [None, {}]:
+            body["usage"] = absent
+            self.assertEqual(parse_response(canonical(body), q)["usage"], absent)
         body["answers"]["x"]["probabilities"]["b"] = 0.4
         with self.assertRaises(ValueError):
             parse_response(canonical(body), q)

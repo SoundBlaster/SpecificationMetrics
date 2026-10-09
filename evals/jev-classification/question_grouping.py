@@ -93,9 +93,16 @@ def parse_response(raw, questions):
             raise ValueError("Invalid confidence")
         if abs(math.fsum(probs.values()) - 1) > 1e-6 or probs[a["choice"]] != max(probs.values()):
             raise ValueError("Invalid normalization or selected maximum")
+    usage = body.get("usage")
+    if usage is not None:
+        if not isinstance(usage, dict):
+            raise ValueError("Invalid usage object")
+        usage = {key: usage[key] for key in ["input_tokens", "output_tokens"] if key in usage}
+        if any(type(value) is not int or value < 0 for value in usage.values()):
+            raise ValueError("Invalid token count")
     # Whitelist evidence; arbitrary provider fields and error bodies are not retained.
     return {"model": body["model"], "answers": {axis: {key: body["answers"][axis][key] for key in ["type", "choice", "probabilities", "confidence"]} for axis in questions},
-            "usage": body.get("usage")}
+            "usage": usage}
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
