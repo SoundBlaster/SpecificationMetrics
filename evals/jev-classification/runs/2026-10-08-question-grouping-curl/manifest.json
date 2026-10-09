@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "study_kind": "paired_native_question_grouping",
+  "cases": 8,
+  "planned_requests": 24,
+  "repeats": 1,
+  "requested_model": "jev-1.13.0",
+  "endpoint": "https://hub.coreinfra.ai/typesafe/api/v1/systemone",
+  "order_seed": 20261009,
+  "orders": "joint first for four cases, separate first for four; alternate axis order",
+  "sole_planned_factor": "questions combined or separated; same transport, canonical state, prompt, rubric, endpoint, model and headers",
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "automatic_retries": 0,
+  "cache": false,
+  "max_observed_tokens": 60000,
+  "timeout_seconds": 30,
+  "max_response_bytes": 1048576,
+  "digests": {
+    "runs/2026-10-05-intent-profile-reference/annotations.json": "75c32254c7f12d26612d654ee23d5c1ba021c726838cb9394a2c3c71917edfb5",
+    "runs/2026-10-05-intent-profile-reference/mapping.json": "692ed274404a3caf943949c5a0cf2c47b140b8ad040ebc59964699ad959575e5",
+    "runs/2026-10-08-question-grouping/plan.json": "befc007300c5333d1d48afb7b0df34d8e25072edd74cd843999041cbebc6be58"
+  },
+  "implementation_digests": {
+    "question_grouping.py": "4df32507f9391c5f36130d93e44125b12b21397a598943f1dbf6ab8fe9f4a856",
+    "score_question_grouping.py": "e41207aa6593b88217d008ff7e47ef0d3fd0cfeb88cd0180ff15ac2932dabdf7"
+  },
+  "source_commit": "03a94a0ec7772d04997266e3277dfc5b0e8e8e52",
+  "transport": "curl",
+  "previous_incomplete_attempt": "runs/2026-10-08-question-grouping",
+  "curl_version": "curl 8.7.1 (x86_64-apple-darwin26.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.69.0",
+  "analysis_implementation_digest": "4717c8550f0e74531f58add41884edeeb4dfde974ee2a38f7e9941278db627fb",
+  "plan_path": "runs/2026-10-08-question-grouping/plan.json"
+}

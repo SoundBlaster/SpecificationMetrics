@@ -144,3 +144,13 @@ question grouping, serialization and date differ, so the cause remains unproven.
 The separate git-pinned `rust-driver` and `score_rustjev.py` preserve reproducible
 inputs and offline scoring. No production classifier, registry disposition, S/U
 count or confidence threshold was changed.
+
+## Paired question grouping
+
+The [native paired comparison](runs/2026-10-08-question-grouping-persistent/README.md)
+held transport, endpoint, explicit model, canonical state and prompts fixed.
+Joint and separate questions agreed on all labels: both scored 4/8 opportunity
+and 7/8 concern-kind agreement. Joint requests used 44.6% fewer reported tokens
+but numeric probability/confidence differences remain. Three operationally
+stopped attempts are preserved separately. This diagnostic is not a RustJev
+batch feature or a basis for autonomous exclusion.
