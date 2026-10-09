@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-10-09T21:39:01.369554+00:00",
+  "finished_at": "2026-10-09T21:39:30.674130+00:00",
+  "elapsed_seconds": 29.304,
+  "planned_requests": 32,
+  "attempted_requests": 32,
+  "completed": true,
+  "observed_tokens": 71176,
+  "inference_retries": 0,
+  "tls_preflights": [
+    {
+      "error": "SSLEOFError",
+      "elapsed_seconds": 6.695998
+    },
+    {
+      "error": null,
+      "elapsed_seconds": 0.938471
+    }
+  ],
+  "stop_reason": null
+}
