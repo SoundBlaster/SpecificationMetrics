@@ -163,3 +163,11 @@ insertion order scored 3/8 versus canonical 4/8; neither recovered earlier 7/8.
 One response per arm cannot isolate ordering from baseline model variability.
 All findings and their limits are collected in the [insight ledger](insights.md).
 The frozen plan, receipts and report are validated offline in CI.
+
+## Same-byte repeat controls
+
+[Two fresh repeat rounds](runs/2026-10-09-repeat-controls/README.md) completed
+32 requests. Labels stayed unchanged both across identical wires and key-order
+arms, while probability/confidence varied. The earlier label flip did not
+reproduce; opportunity agreement remains 4/8 and eligible recall 0/3.
+`score_repeat_controls.py` reproduces the comparisons without inference.

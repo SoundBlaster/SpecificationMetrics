@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "study_kind": "same_byte_repeat_controls",
+  "source_commit": "5b5d85e",
+  "rounds": 2,
+  "requests_per_round": 16,
+  "max_requests": 32,
+  "repeats_per_arm": 2,
+  "stop_on_first_operational_failure": true,
+  "max_observed_tokens_per_round": 40000,
+  "cache": "No local cache; upstream caching is not observable",
+  "limits": "Two fresh repeats per exact wire; diagnostic development cases, not human gold. No claim of deterministic backend or statistical significance. Historical runs reported separately, not pooled.",
+  "runs": [
+    {
+      "path": "runs/2026-10-09-repeat-controls/round-1",
+      "manifest_sha256": "aa816a8d0bb4805535cfc2c16a794c5dc0b6e9c2bac55c7f0834f13d95d697e9"
+    },
+    {
+      "path": "runs/2026-10-09-repeat-controls/round-2",
+      "manifest_sha256": "d77c26916f044c569467bc8e489af454b13535c68454c626a32f60919f69549d"
+    }
+  ]
+}

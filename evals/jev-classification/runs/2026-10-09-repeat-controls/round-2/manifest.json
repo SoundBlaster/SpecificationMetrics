@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "study_kind": "paired_state_object_key_order_repeat",
+  "source_commit": "5b5d85e",
+  "cases": 8,
+  "planned_requests": 16,
+  "arms": [
+    "insertion",
+    "canonical"
+  ],
+  "repeats": 1,
+  "requested_model": "jev-1.13.0",
+  "endpoint": "https://hub.coreinfra.ai/typesafe/api/v1/systemone",
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "seed": 20261010,
+  "order": "Reverse each pair; fixed case order",
+  "factor": "Recursive state object-key order only; source insertion order versus sorted keys. Root fields, question/rubric order, JSON whitespace, semantic state, model, endpoint and pooled HTTPS transport fixed.",
+  "max_observed_tokens": 40000,
+  "max_response_bytes": 1048576,
+  "socket_timeout_seconds": 30,
+  "inference_retries": 0,
+  "tls_preflight_max_attempts": 3,
+  "digests": {
+    "runs/2026-10-05-intent-profile-ablation/study.json": "aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+    "runs/2026-10-05-intent-profile-reference/annotations.json": "75c32254c7f12d26612d654ee23d5c1ba021c726838cb9394a2c3c71917edfb5",
+    "runs/2026-10-05-intent-profile-reference/mapping.json": "692ed274404a3caf943949c5a0cf2c47b140b8ad040ebc59964699ad959575e5",
+    "runs/2026-10-09-repeat-controls/round-2/plan.json": "3335a9c58009f0bef6e0716684b6046d1ad5da49a95e90a5c8e579d458977a6f"
+  },
+  "implementation_digests": {
+    "state_key_order.py": "1d420346310d196eb0991ae8347e7ca08f6490065a739478cd6798b9eb31de39",
+    "question_grouping.py": "5de0e53198cefcd5100ff6c8866def6e277db5fd3123740ac77464c53ff3ef28"
+  },
+  "analysis_implementation_digests": {},
+  "repeat_control_round": 2
+}
