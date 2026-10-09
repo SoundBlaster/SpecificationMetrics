@@ -177,5 +177,6 @@ reproduce; opportunity agreement remains 4/8 and eligible recall 0/3.
 [Three Astra Medium brainstorms](runs/2026-10-09-eligibility-diagnosis/README.md)
 identify a verified task-phrasing difference between Jev and its model reference,
 a mixed-function decision-boundary problem, and untested ownership/provider
-hypotheses. No new inference was made. The report separates verified facts from
+hypotheses. Three fresh `gpt-6-astra` agents generated these hypotheses; no new
+Jev inference or provider calls were made for this diagnosis. The report separates verified facts from
 possible causes and proposes matched-task evaluation before prompt tuning.
