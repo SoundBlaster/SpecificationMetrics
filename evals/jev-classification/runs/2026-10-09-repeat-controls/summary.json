@@ -1,5 +1,6 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "analysis_revision": 2,
   "completed": true,
   "planned_requests": 32,
   "attempted_requests": 32,
@@ -1633,6 +1634,14 @@
     }
   ],
   "protocol_sha256": "8bd57f4fb0881aef63eb6fd60684a8e65d578fd8891d907c6a9418c03299e849",
-  "analysis_implementation_sha256": "6daf8dd9d567aad89ecb249221c21ee39a699fe51a9b62c467170e5f3631b4f4",
+  "analysis_implementation_sha256": "46160b8ef0720f2e0b171e13387ddbe5ee4300e0c6f8172510139aa6c7bd280b",
+  "analysis_implementation_digests": {
+    "score_repeat_controls.py": "46160b8ef0720f2e0b171e13387ddbe5ee4300e0c6f8172510139aa6c7bd280b",
+    "score_state_key_order.py": "b7c47e46bf80f4ba2dfed317e7e2c82e682f09921862ac654081775dee3d6256",
+    "state_key_order.py": "1d420346310d196eb0991ae8347e7ca08f6490065a739478cd6798b9eb31de39",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035",
+    "experiment.py": "da836ddd74df5149a5abd6023b59d6ecb2031942a5196ac92b7dbb774f69554a"
+  },
+  "analysis_manifest_sha256": "1e9402d23e05b0d07b335e410a9f9a27836f99899cb131fe93a975ea2b6ff72f",
   "limits": "Two repeats per arm; no human gold, holdout or statistical significance. Upstream cache and immutable backend checkpoint are not observable. Previous runs are not pooled with these controls."
 }

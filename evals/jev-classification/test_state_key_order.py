@@ -72,6 +72,14 @@ class KeyOrderTests(unittest.TestCase):
             failed.update(response=None, error="HTTP 503")
             (run / "responses.jsonl").write_text(json.dumps(failed) + "\n")
             self.assertEqual(score(run)["summaries"]["insertion"]["opportunity"]["unscored_cases"], 8)
+            # Legacy senders could retain otherwise valid answers before usage accounting failed.
+            for usage in [["invalid"], "tokens", {"input_tokens": "invalid"}]:
+                failed.update(response=dict(rows[0]["response"] or json.loads(original[0])["response"], usage=usage), error="AttributeError")
+                (run / "responses.jsonl").write_text(json.dumps(failed) + "\n")
+                report = score(run)
+                self.assertEqual(report["summaries"]["insertion"]["opportunity"]["unscored_cases"], 8)
+                self.assertEqual(report["usage"]["insertion"], {"input_tokens": 0, "output_tokens": 0})
+                self.assertEqual(report["paired"]["opportunity"]["paired_scored_cases"], 0)
 
 
 if __name__ == "__main__":

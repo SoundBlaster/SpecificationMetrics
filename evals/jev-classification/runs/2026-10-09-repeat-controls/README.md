@@ -90,6 +90,15 @@ python3 state_key_order.py --run runs/2026-10-09-repeat-controls/round-2
 python3 score_repeat_controls.py --run runs/2026-10-09-repeat-controls --output /tmp/repeat-controls-summary.json
 ```
 
+`summary.json` uses analysis revision 2, recalculated offline after review.
+`analysis-v2.json` pins the unchanged historical protocol and every local analysis
+module, including the round scorer and `experiment.py` metrics. The scorer
+verifies this complete set before producing a report; dependency drift fails
+closed. Historical live manifests (including their empty analysis digest fields),
+producer hashes, wire plans, responses and receipts remain unchanged. The new
+analysis manifest describes this recalculation, not the implementation at live
+execution time. Agreement and stability measurements are unchanged.
+
 No keys or inference are needed. The report is derived from stored responses,
 receipts and frozen plans. The sender requires explicit `--live` to infer and
 refuses to overwrite completed run directories; the scorer likewise refuses to

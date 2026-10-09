@@ -8,6 +8,20 @@ from score_state_key_order import score as score_round
 from state_key_order import load
 
 ROOT = Path(__file__).parent
+ANALYSIS_SOURCES = (
+    "score_repeat_controls.py", "score_state_key_order.py", "state_key_order.py",
+    "question_grouping.py", "experiment.py",
+)
+
+
+def verify_analysis(parent):
+    analysis = json.loads((parent / "analysis-v2.json").read_text())
+    actual = {name: digest((ROOT / name).read_bytes()) for name in ANALYSIS_SOURCES}
+    if (analysis["analysis_revision"] != 2
+            or analysis["implementation_digests"] != actual
+            or analysis["protocol_sha256"] != digest((parent / "protocol.json").read_bytes())):
+        raise ValueError("Analysis implementation or protocol provenance mismatch")
+    return analysis
 
 
 def compare(a, b):
@@ -19,6 +33,7 @@ def compare(a, b):
 
 
 def score(parent):
+    analysis = verify_analysis(parent)
     protocol = json.loads((parent / "protocol.json").read_text())
     if protocol["rounds"] != 2 or protocol["max_requests"] != 32 or len(protocol["runs"]) != 2:
         raise ValueError("Unexpected repeat protocol")
@@ -66,14 +81,16 @@ def score(parent):
                 "max_confidence_delta":max((c["confidence_delta"] for c in selected), default=None),
             }
     return {
-        "schema_version":1, "completed":all(r is not None and r["completed"] for r in reports),
+        "schema_version":2, "analysis_revision":2, "completed":all(r is not None and r["completed"] for r in reports),
         "planned_requests":32,
         "attempted_requests":sum(r["receipt"]["attempted_requests"] for r in reports if r),
         "observed_tokens":sum(r["receipt"]["observed_tokens"] for r in reports if r),
         "rounds":reports, "comparisons":summary,
         "same_byte_details":same_byte,"cross_arm_details":cross_arm,
         "protocol_sha256":digest((parent / "protocol.json").read_bytes()),
-        "analysis_implementation_sha256":digest(Path(__file__).read_bytes()),
+        "analysis_implementation_sha256":analysis["implementation_digests"]["score_repeat_controls.py"],
+        "analysis_implementation_digests":analysis["implementation_digests"],
+        "analysis_manifest_sha256":digest((parent / "analysis-v2.json").read_bytes()),
         "limits":"Two repeats per arm; no human gold, holdout or statistical significance. Upstream cache and immutable backend checkpoint are not observable. Previous runs are not pooled with these controls.",
     }
 

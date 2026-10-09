@@ -4,6 +4,8 @@ import shutil
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+import score_repeat_controls
 from score_repeat_controls import compare, score
 
 RUN = Path(__file__).parent / "runs/2026-10-09-repeat-controls"
@@ -20,6 +22,30 @@ class RepeatTests(unittest.TestCase):
                 self.assertEqual(axis["scored_comparisons"],16)
                 self.assertEqual(axis["label_changes"],0)
         self.assertGreater(report["comparisons"]["same_byte"]["opportunity"]["max_probability_delta"],0)
+
+    def test_analysis_dependency_and_manifest_tampering_are_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            run = Path(folder) / "study"
+            shutil.copytree(RUN, run)
+            implementation = Path(folder) / "implementation"
+            implementation.mkdir()
+            for name in score_repeat_controls.ANALYSIS_SOURCES:
+                shutil.copyfile(Path(__file__).parent / name, implementation / name)
+            with patch.object(score_repeat_controls, "ROOT", implementation):
+                self.assertTrue(score(run)["completed"])
+                for name in ["score_state_key_order.py", "experiment.py"]:
+                    path = implementation / name
+                    original = path.read_bytes()
+                    path.write_bytes(original + b"\n# changed analysis dependency\n")
+                    with self.subTest(dependency=name), self.assertRaises(ValueError):
+                        score(run)
+                    path.write_bytes(original)
+            path = run / "analysis-v2.json"
+            manifest = json.loads(path.read_text())
+            manifest["implementation_digests"].pop("experiment.py")
+            path.write_text(json.dumps(manifest))
+            with self.assertRaises(ValueError):
+                score(run)
 
     def test_labels_and_numeric_stability_are_distinct(self):
         answer = {"choice":"eligible","probabilities":{"eligible":0.8,"excluded":0.2},"confidence":0.6}
