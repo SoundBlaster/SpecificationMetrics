@@ -80,7 +80,8 @@ def score(run):
               "returned_models": sorted({r["metadata"]["returned_model"] for r in rows if r.get("metadata")}),
               "historical_profile_agreement": {axis: historical[axis]["exact_agreement"] for axis in LABELS},
               "historical_label_changes": [case["source_candidate_id"] for case in cases if
-                    any(case["predictions"][axis] != historical_rows[case["candidate_id"]][axis]["choice"] for axis in LABELS)],
+                    any(case["predictions"][axis] is not None and
+                        case["predictions"][axis] != historical_rows[case["candidate_id"]][axis]["choice"] for axis in LABELS)],
               "limits": manifest["comparison_limits"] + " Eight purposive diagnostic cases with one model reference, not human-approved gold. No representative prevalence, calibration or generalization claim.",
               "artifact_digests": {name: sha(run / name) for name in ["manifest.json", "responses.jsonl", "receipt.json"]}}
     return report
