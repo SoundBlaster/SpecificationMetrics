@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "study_kind": "paired_state_object_key_order",
+  "completed": true,
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "receipt": {
+    "started_at": "2026-10-09T06:47:08.799396+00:00",
+    "finished_at": "2026-10-09T06:47:20.802311+00:00",
+    "elapsed_seconds": 12.003,
+    "planned_requests": 16,
+    "attempted_requests": 16,
+    "completed": true,
+    "observed_tokens": 34418,
+    "inference_retries": 0,
+    "tls_preflights": [
+      {
+        "error": null,
+        "elapsed_seconds": 1.231533
+      }
+    ],
+    "stop_reason": null
+  },
+  "summaries": {
+    "insertion": {
+      "opportunity": {
+        "count": 8,
+        "scored_cases": 8,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 2,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "excluded": {
+            "support": 5,
+            "precision": 0.5,
+            "recall": 0.6,
+            "f1": 0.5454545454545454
+          },
+          "needs_review": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.2727272727272727,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.625,
+        "false_exclusions": 3,
+        "unscored_cases": 0,
+        "not_run_cases": 0,
+        "agreement_count": 3,
+        "agreement_denominator": 8
+      },
+      "concern_kind": {
+        "count": 8,
+        "scored_cases": 8,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 3,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571
+          },
+          "variant_behavior": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.873015873015873,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.125,
+        "false_exclusions": 0,
+        "unscored_cases": 0,
+        "not_run_cases": 0,
+        "agreement_count": 7,
+        "agreement_denominator": 8
+      }
+    },
+    "canonical": {
+      "opportunity": {
+        "count": 8,
+        "scored_cases": 8,
+        "confusion_matrix": {
+          "eligible": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "excluded": {
+            "eligible": 1,
+            "excluded": 4,
+            "needs_review": 0
+          },
+          "needs_review": {
+            "eligible": 0,
+            "excluded": 0,
+            "needs_review": 0
+          }
+        },
+        "per_class": {
+          "eligible": {
+            "support": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "excluded": {
+            "support": 5,
+            "precision": 0.5714285714285714,
+            "recall": 0.8,
+            "f1": 0.6666666666666666
+          },
+          "needs_review": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.3333333333333333,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.5,
+        "false_exclusions": 3,
+        "unscored_cases": 0,
+        "not_run_cases": 0,
+        "agreement_count": 4,
+        "agreement_denominator": 8
+      },
+      "concern_kind": {
+        "count": 8,
+        "scored_cases": 8,
+        "confusion_matrix": {
+          "policy": {
+            "policy": 4,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "mechanics": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "variant_behavior": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "unknown": {
+            "policy": 0,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          }
+        },
+        "per_class": {
+          "policy": {
+            "support": 5,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888
+          },
+          "mechanics": {
+            "support": 3,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571
+          },
+          "variant_behavior": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          },
+          "unknown": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "macro_f1": 0.873015873015873,
+        "abstention_rate": 0.0,
+        "scored_abstention_rate": 0.0,
+        "coverage": 1.0,
+        "non_abstained_error_rate": 0.125,
+        "false_exclusions": 0,
+        "unscored_cases": 0,
+        "not_run_cases": 0,
+        "agreement_count": 7,
+        "agreement_denominator": 8
+      }
+    }
+  },
+  "paired": {
+    "opportunity": {
+      "paired_scored_cases": 8,
+      "changed_labels": [
+        "sg-018"
+      ]
+    },
+    "concern_kind": {
+      "paired_scored_cases": 8,
+      "changed_labels": []
+    }
+  },
+  "cases": [
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "source_candidate_id": "sg-031",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "source_candidate_id": "sg-020",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "eligible",
+          "concern_kind": "policy"
+        },
+        "canonical": {
+          "opportunity": "eligible",
+          "concern_kind": "policy"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "source_candidate_id": "sg-033",
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "source_candidate_id": "sg-019",
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "source_candidate_id": "sg-017",
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "source_candidate_id": "sg-034",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "source_candidate_id": "sg-018",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "eligible",
+          "concern_kind": "policy"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "policy"
+        }
+      }
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "source_candidate_id": "sg-032",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "predictions": {
+        "insertion": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        },
+        "canonical": {
+          "opportunity": "excluded",
+          "concern_kind": "mechanics"
+        }
+      }
+    }
+  ],
+  "numeric_differences": [
+    {
+      "source_candidate_id": "sg-031",
+      "axis": "opportunity",
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "source_candidate_id": "sg-020",
+      "axis": "opportunity",
+      "max_probability_delta": 0.06,
+      "confidence_delta": 0.03
+    },
+    {
+      "source_candidate_id": "sg-033",
+      "axis": "opportunity",
+      "max_probability_delta": 0.17000000000000004,
+      "confidence_delta": 0.25
+    },
+    {
+      "source_candidate_id": "sg-019",
+      "axis": "opportunity",
+      "max_probability_delta": 0.05999999999999994,
+      "confidence_delta": 0.08999999999999997
+    },
+    {
+      "source_candidate_id": "sg-017",
+      "axis": "opportunity",
+      "max_probability_delta": 0.13,
+      "confidence_delta": 0.18999999999999997
+    },
+    {
+      "source_candidate_id": "sg-034",
+      "axis": "opportunity",
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "source_candidate_id": "sg-018",
+      "axis": "opportunity",
+      "max_probability_delta": 0.08000000000000002,
+      "confidence_delta": 0.09000000000000002
+    },
+    {
+      "source_candidate_id": "sg-032",
+      "axis": "opportunity",
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "source_candidate_id": "sg-031",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "source_candidate_id": "sg-020",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.10999999999999999,
+      "confidence_delta": 0.12
+    },
+    {
+      "source_candidate_id": "sg-033",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.09000000000000001,
+      "confidence_delta": 0.12
+    },
+    {
+      "source_candidate_id": "sg-019",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.12,
+      "confidence_delta": 0.16000000000000003
+    },
+    {
+      "source_candidate_id": "sg-017",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.050000000000000044,
+      "confidence_delta": 0.07000000000000006
+    },
+    {
+      "source_candidate_id": "sg-034",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "source_candidate_id": "sg-018",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.14,
+      "confidence_delta": 0.18
+    },
+    {
+      "source_candidate_id": "sg-032",
+      "axis": "concern_kind",
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    }
+  ],
+  "usage": {
+    "insertion": {
+      "input_tokens": 16468,
+      "output_tokens": 740
+    },
+    "canonical": {
+      "input_tokens": 16468,
+      "output_tokens": 742
+    }
+  },
+  "label_invariance": false,
+  "max_probability_delta": 0.17000000000000004,
+  "max_confidence_delta": 0.25,
+  "artifact_digests": {
+    "manifest.json": "ac2b39c030c5a43ab599b9a6764eca4488132ceef2324a843d6a4c855afda89e",
+    "responses.jsonl": "a8d2045b4dc709301520e8fccfa97882c316af7165504bbd1a271b0c6dd9d8b0",
+    "receipt.json": "4763b7abc84b7da7a9ed47ff5c5a744137d8dd93bca43ffdaa02fdfd26ad5a49"
+  },
+  "limits": "Eight purposive cases, one sample per arm and one model reference. Wire-order sensitivity is separate from correctness; it does not establish human gold, project-wide accuracy, statistical significance or immutable model behavior."
+}

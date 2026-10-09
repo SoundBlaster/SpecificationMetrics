@@ -35,6 +35,8 @@ jobs:
           python3 -m unittest -v test_context_ablation.py
           python3 -m unittest -v test_score_rustjev.py
           python3 -m unittest -v test_question_grouping.py
+          python3 -m unittest -v test_state_key_order.py
+          python3 state_key_order.py --run runs/2026-10-09-state-key-order
           python3 question_grouping.py --run runs/2026-10-08-question-grouping-persistent --transport persistent
         working-directory: evals/jev-classification
       - run: python -m pip install -r scripts/requirements-metrics.txt

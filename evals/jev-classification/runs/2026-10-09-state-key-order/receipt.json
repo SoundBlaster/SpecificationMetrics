@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-10-09T06:47:08.799396+00:00",
+  "finished_at": "2026-10-09T06:47:20.802311+00:00",
+  "elapsed_seconds": 12.003,
+  "planned_requests": 16,
+  "attempted_requests": 16,
+  "completed": true,
+  "observed_tokens": 34418,
+  "inference_retries": 0,
+  "tls_preflights": [
+    {
+      "error": null,
+      "elapsed_seconds": 1.231533
+    }
+  ],
+  "stop_reason": null
+}
