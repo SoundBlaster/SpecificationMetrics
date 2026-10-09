@@ -31,6 +31,8 @@ class ConstructionGateTests(unittest.TestCase):
                     "from specification_core import FirstMatch as FM\nFM.with_fallback = other\n",
                     "from specification_core import FirstMatch as FM\nfrom elsewhere import *\n",
                     "from specification_core import FirstMatch as FM\nexec(code)\n",
+                    "from specification_core import FirstMatch as FM\nvars()[\"FM\"] = other\n",
+                    "from specification_core import FirstMatch as FM\nvars().update(FM=other)\n",
                     "from specification_core import FirstMatch as FM\ntry:\n    pass\nexcept Exception as FM:\n    pass\n",
                     "from specification_core import FirstMatch as FM\ndef FM(): pass\n",
                     "import specification_core as sc\n"]

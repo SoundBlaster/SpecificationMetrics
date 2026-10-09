@@ -104,13 +104,23 @@ python3 ownership_gate.py \
 python3 -m unittest -v test_ownership_gate.py
 ```
 
-The binary digest is machine/build dependent; source revision, source digests,
-input digests and selected evidence identify the recorded audit. The runner
-does not fetch source or contact an inference endpoint. Unit tests exercise
+The runner now rebuilds this checkout's Cargo debug binary with `--locked`,
+rejects a foreign `--scanner` path, and verifies that the binary and Rust inputs
+remain unchanged throughout the audit. Build provenance records the checkout
+revision, dirty state, hashes of all `src/*.rs` inputs and Cargo files, and the
+actual executed binary digest. That digest is machine/build dependent. The
+runner does not contact an inference endpoint; Cargo may fetch locked dependencies.
+Unit tests exercise
 source freshness, aliases, rebinding/deletion, wrong/relative imports, namespace
 mutation, neighboring constructors, provider bypass and preservation of unknown
 and raw predictions. CI runs these without a SpecGraph clone or API key; a full
 source replay additionally needs the historical Git objects.
+
+The original [report.json](report.json) predates this build verification. Its
+`scanner_source_revision`/`scanner_source_digests` identify the analysis checkout
+only; they do not verify that the supplied binary came from it. Preserve that
+historical receipt with this limitation. The corrected rerun in
+[verified-report.json](verified-report.json) records verified build provenance.
 
 ## Next slice
 

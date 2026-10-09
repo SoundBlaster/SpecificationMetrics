@@ -16,6 +16,7 @@ import tempfile
 from experiment import metrics, digest as source_digest
 from question_grouping import digest
 from score_rubric_alignment import score
+from scanner_build import verified_build, verify_unchanged
 
 ROOT = Path(__file__).parent
 CONSTRUCTORS = {"FirstMatch", "PredicateSpec", "AsyncFirstMatch", "AsyncPredicateSpec"}
@@ -71,7 +72,7 @@ def construction_evidence(raw, site):
                 aliases.pop(getattr(n, "rest", None), None)
             elif isinstance(n, ast.Attribute) and isinstance(n.ctx, (ast.Store, ast.Del)) and isinstance(n.value, ast.Name):
                 aliases.pop(n.value.id, None)
-            elif isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id in {"exec", "eval", "globals", "locals", "setattr", "delattr"}:
+            elif isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id in {"exec", "eval", "globals", "locals", "vars", "setattr", "delattr"}:
                 # Unsupported dynamic namespace mutation is not negative proof.
                 aliases.clear()
     function = value.func
@@ -98,6 +99,7 @@ def route(evidence, semantic_provider):
 
 
 def build(repo, scanner, run):
+    scanner_provenance = verified_build(ROOT.parent.parent, scanner)
     raw_score = score(run)
     corpus = {c["description"]: c["metadata"]["source"]["site"] for c in json.loads((ROOT/"corpus/cases.json").read_text())}
     cases = []
@@ -134,14 +136,14 @@ def build(repo, scanner, run):
             summary["agreement_count"] = sum(a == b for a, b in pairs)
             summary["agreement_denominator"] = len(cases)
             summaries[repeat][arm] = summary
+    verify_unchanged(ROOT.parent.parent, scanner, scanner_provenance)
     return {"schema_version": 1, "study_kind": "source_bound_static_gate_recorded_replay", "new_inference_requests": 0,
             "recorded_run_completed": raw_score["completed"], "reference_kind": raw_score["reference_kind"],
             "human_adjudicated": False, "holdout": False, "cases": cases, "routed_opportunity_summaries": summaries,
             "raw_opportunity_summaries": {r: {a: v["opportunity"] for a, v in arms.items()} for r, arms in raw_score["summaries"].items()},
             "input_artifact_digests": {**raw_score["artifact_digests"], "corpus/cases.json": digest((ROOT/"corpus/cases.json").read_bytes())},
-            "scanner_source_revision": subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(),
-            "scanner_source_digests": {name: digest((ROOT.parent.parent/name).read_bytes()) for name in ["src/scan.rs", "src/classify.rs", "src/model.rs", "Cargo.lock"]},
-            "implementation_digests": {**raw_score["analysis_implementation_digests"], "ownership_gate.py": digest(Path(__file__).read_bytes()), "scanner_binary": digest(scanner.read_bytes())},
+            "scanner_provenance": scanner_provenance,
+            "implementation_digests": {**raw_score["analysis_implementation_digests"], "ownership_gate.py": digest(Path(__file__).read_bytes()), "scanner_build.py": digest((ROOT/"scanner_build.py").read_bytes())},
             "limits": "Development-only eight-case replay against model annotations. Static construction assumes ordinary Python bindings and trusted library semantics. Unknown is not unowned. Rust factory names are syntactic, not import-resolved proof. Recorded semantic answers were already paid for; routing is offline, not a new end-to-end live evaluation. Concern-kind answers remain recorded model answers. No registry or production metric changes."}
 
 
