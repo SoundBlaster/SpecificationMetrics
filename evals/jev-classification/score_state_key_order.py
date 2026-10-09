@@ -59,7 +59,7 @@ def score(run):
             differences.append({"source_candidate_id":c["source_candidate_id"],"axis":axis,
                                 "max_probability_delta":max(abs(a["probabilities"][label]-b["probabilities"][label]) for label in a["probabilities"]),
                                 "confidence_delta":abs(a["confidence"]-b["confidence"])})
-    usage = {arm:{key:sum(((row.get("response") or {}).get("usage") or {}).get(key) or 0 for row in rows if row["arm"] == arm) for key in ["input_tokens","output_tokens"]} for arm in summaries}
+    usage = {arm:{key:sum(((row.get("response") or {}).get("usage") or {}).get(key) or 0 for row in rows if row["arm"] == arm and row["error"] is None) for key in ["input_tokens","output_tokens"]} for arm in summaries}
     return {"schema_version":1,"study_kind":manifest["study_kind"],"completed":receipt["completed"],"reference_kind":"independent_model_annotation","human_adjudicated":False,"holdout":False,
             "receipt":receipt,"summaries":summaries,"paired":paired,"cases":cases,"numeric_differences":differences,"usage":usage,
             "label_invariance":None if not receipt["completed"] else not any(p["changed_labels"] for p in paired.values()),
