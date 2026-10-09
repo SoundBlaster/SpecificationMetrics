@@ -28,6 +28,7 @@ registry exclusions or changes to Specification counts (S/U).
 | I16 | [Matched-rubric diagnostic](runs/2026-10-10-rubric-alignment/README.md): both repeats move opportunity agreement 4/8 to 5/8, eligible recall 0/3 to 2/3 and concern-kind 7/8 to 8/8, but owned false positives 1/2 to 2/2. Fresh isolated model reference retains all prior labels. | Composite task alignment helps semantic discovery on these cases but fails the no-new-control-errors success criterion. Separate formal ownership from semantic suitability before rollout; do not claim a universal prompt win or individual-word causality. |
 | I17 | [Source-bound construction replay](runs/2026-10-10-ownership-gate/README.md): exact historical source, symbol/span and resolved imports identify two direct constructions. Routing them before the semantic callback moves recorded aligned agreement 5/8 to 7/8, owned false positives 2/2 to 0/2; recall remains 2/3. No new inference. | Deterministic construction evidence can protect a semantic discovery rubric. Unknown construction stays on the semantic route. This development-set composition result does not change the old prompt hypothesis or establish production quality, runtime identity or whole-project ownership. |
 | I18 | The same [audit](runs/2026-10-10-ownership-gate/README.md) runs the actual Rust scanner on all eight full historical files. Both already-constructed declarations and sg-033 have zero selected-range control-flow candidates. Rust already filters `inside_specification`, but names are syntactic and outer `FirstMatch.with_fallback` is not recognized. | Whole-declaration API examples and Rust branch candidates are different units. Zero discovery is not semantic exclusion; do not attribute this replay's improvement to the production filter. Define a shared target unit and import-identity contract before generalizing the classifier evaluation. |
+| I19 | [Explicit target alignment](runs/2026-10-10-decision-targets/README.md): the Rust exporter binds 8/8 proposed expression targets to exact historical bytes; 4/8 match legacy branch anchors. The sg-019 target becomes its internal coverage predicate; sg-033 is a `require` argument. No inference or old-label transfer. | Distinguish target expression from supporting declaration and assembly controls. A changed boundary requires fresh annotation; anchor equality does not prove semantic equivalence. Shared target artifacts are implemented experimentally, while production scanner/classifier units and S/U remain unchanged. |
 
 ## Current decision
 
@@ -42,8 +43,9 @@ changed by the transport/grouping/order experiments.
 The [source-bound replay](runs/2026-10-10-ownership-gate/README.md) now protects
 two existing constructions while preserving semantic recall. Define a shared
 target unit for Rust discovery and semantic evaluation, with resolved import
-identity and evidence provenance. The sg-019 mixed-function target still needs
-adjudication and a separate predicate-target context study. New-family,
+identity and evidence provenance. The [explicit exporter](runs/2026-10-10-decision-targets/README.md)
+now binds expressions and legacy anchors. Add bounded helper/data dependencies
+and fresh target-specific annotation before the predicate-context study. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.
