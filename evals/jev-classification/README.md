@@ -154,3 +154,12 @@ and 7/8 concern-kind agreement. Joint requests used 44.6% fewer reported tokens
 but numeric probability/confidence differences remain. Three operationally
 stopped attempts are preserved separately. This diagnostic is not a RustJev
 batch feature or a basis for autonomous exclusion.
+
+## State key order and cumulative insights
+
+The [exact-wire key-order comparison](runs/2026-10-09-state-key-order/README.md)
+kept JSON semantics fixed but observed one changed opportunity label. Historical
+insertion order scored 3/8 versus canonical 4/8; neither recovered earlier 7/8.
+One response per arm cannot isolate ordering from baseline model variability.
+All findings and their limits are collected in the [insight ledger](insights.md).
+The frozen plan, receipts and report are validated offline in CI.
