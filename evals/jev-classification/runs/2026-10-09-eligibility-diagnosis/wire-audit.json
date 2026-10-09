@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "kind": "offline_task_and_wire_audit",
+  "inference_requests": 0,
+  "notes": "Historical format reconstructed from recorded study and the checked-in provider serializer; not a captured historical HTTP body. No causal inference about order or provider backend.",
+  "source_digests": {
+    "runs/2026-10-05-intent-profile-ablation/study.json": "aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+    "runs/2026-10-09-repeat-controls/round-1/plan.json": "3e01e73745744c73d8a39bac8fc81a0a2af29e9d32ead4ddc8b786446b1dc805",
+    "runs/2026-10-05-intent-profile-reference/packet.json": "c5062efcea82310727400dc3bf463f63c42d1aef6e82e48bd84cfcd3cf650c3a",
+    "providers/jev.mjs": "bbe7d2be6cbccc7d62c468d64739046bd65a95d3e9e62c9f73dad66d42d5f492"
+  },
+  "historical_root_order": [
+    "model",
+    "state",
+    "questions"
+  ],
+  "current_root_order": [
+    "model",
+    "questions",
+    "state"
+  ],
+  "historical_question_order": [
+    "opportunity",
+    "concern_kind"
+  ],
+  "current_question_order": [
+    "concern_kind",
+    "opportunity"
+  ],
+  "cases": [
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "5a88493606201251b42d955b88287b733aaba307856507504d4b5883990040f2",
+      "current_wire_sha256": "3f119aac31aba4ba36c0560f54c440bdff1bcfef48340e670038b791624f9435",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "fb058865d27c0c91f57551359df61621cbf83584ce5dfbda206453cd5faa501b",
+      "current_wire_sha256": "0bd5d718b37a653f69d3a33de8e54762bc91a367f508494089aeb0af5ce93755",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "03bf401e3bc02d2e164180a5c0d8f54fcb7930494d972435e4e585537c68b289",
+      "current_wire_sha256": "cb0866cb2fda947a533fae225afee1acd2c445cced55528cfe8e06ec8e1b266c",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "914b5bfb7ee5f2ad5ade146904fa35dbc1710fc643b2587d6a9fa3c75b6d5b36",
+      "current_wire_sha256": "7b69b65b7d0d169dc734ec19859eb7564b22f4d3d680456edff1d75ada1ba29a",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "6ebfd049e0b59a3c0d54023562811b157d9ccab3f6718e97deb1201e4ac7e5aa",
+      "current_wire_sha256": "fbd83caf393efc610966bb977a43610b506e3ea99a74523d5e89075bc06f22bd",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "229a91f39db471c6e132ba00d26bccc95743633182bea3702ec24db24a01760f",
+      "current_wire_sha256": "04aa962a79c691984d11f3df1318bfe11def206649975396494cddfebf70453a",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "64d296dd5c0a990d6838f7bfb51a4a1cf1f39ec2e37f6ef722593468b7298bac",
+      "current_wire_sha256": "d0624bd9b7159c8d927ad15a3131c9ec72bf003a7e661f4d662d358eea9bdfdc",
+      "bytes_equal": false
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "semantic_body_equal": true,
+      "reconstructed_historical_format_sha256": "a8262a02a4796e9289a90aafb2a0883c23b4a757d67c78580deff5417b93a658",
+      "current_wire_sha256": "f7764e338d4aeaa446af5c96afe7ba255bbd2dd2650d6bd694a13a70769688f3",
+      "bytes_equal": false
+    }
+  ]
+}
