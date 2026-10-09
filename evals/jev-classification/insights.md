@@ -22,6 +22,7 @@ registry exclusions or changes to Specification counts (S/U).
 | I10 | Equivalent JSON representations did not preserve all observed labels. [State key order](runs/2026-10-09-state-key-order/README.md): sg-018 changed; insertion scored 3/8, canonical 4/8, eligible recall 0/3 both. Numeric changes reached 0.17 probability and 0.25 confidence. | Freeze serialization for reproducibility and add metamorphic evaluation. One sample per arm lacks a same-byte variability control; do not assert ordering as the sole causal mechanism or select thresholds from this sample. |
 | I11 | Restoring historical insertion order did not restore historical 7/8 performance. Grouping also did not recover it. | Do not blame sorting or grouping for the whole regression. Provider path, date/checkpoint and envelope/question-order differences remain hypotheses, not findings. |
 | I12 | Model names and valid responses do not establish reproducibility or calibrated confidence. Recorded runs share the returned name `jev-1.13.0`, with numerical and categorical differences. | Record requested/returned model, endpoint, time, exact inputs and digests. Calibrate fallback thresholds on adjudicated validation data and test on a held-out family split. |
+| I13 | [Same-byte repeat controls](runs/2026-10-09-repeat-controls/README.md): 32/32 responses, zero categorical differences in 16 same-byte and 16 cross-arm comparisons per axis. Identical-wire probability/confidence deltas reach 0.09/0.14 for opportunity. The earlier sg-018 flip does not reproduce, and semantic recall remains 0/3. | Numerical stability is separate from label stability and semantic quality. The previous pair cannot establish deterministic key-order causality. Two repeats do not prove invariance or justify thresholds; stop repetition and inspect eligibility criteria before prompt tuning. |
 
 ## Current decision
 
@@ -33,10 +34,11 @@ changed by the transport/grouping/order experiments.
 
 ## Next evaluation slice
 
-Before tuning or widening the corpus, add a frozen robustness protocol with
-same-byte repeat controls alongside semantics-preserving transformations. Keep
-provider/model/prompt fixed, predeclare the budget and retain every response.
-This will distinguish baseline variability from representation sensitivity.
+The [frozen repeat controls](runs/2026-10-09-repeat-controls/README.md) now provide
+a first baseline for numerical variability, without a reproduced label flip.
+Before more prompt tuning, inspect the false-exclusion cases against explicit
+eligibility criteria, keeping ownership and responsibility kind separate.
+Any further inference needs a frozen hypothesis, fixed inputs and a bounded budget.
 Adjudicate disputed sg-019 against the architecture goal before calling its
 reference authoritative. A separate direct-provider/proxy comparison needs
 provider-specific credentials, its own budget and an otherwise matched protocol.

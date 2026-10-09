@@ -1,0 +1,1647 @@
+{
+  "schema_version": 2,
+  "analysis_revision": 2,
+  "completed": true,
+  "planned_requests": 32,
+  "attempted_requests": 32,
+  "observed_tokens": 68840,
+  "rounds": [
+    {
+      "schema_version": 1,
+      "study_kind": "paired_state_object_key_order_repeat",
+      "completed": true,
+      "reference_kind": "independent_model_annotation",
+      "human_adjudicated": false,
+      "holdout": false,
+      "receipt": {
+        "started_at": "2026-10-09T07:27:43.556308+00:00",
+        "finished_at": "2026-10-09T07:27:55.395937+00:00",
+        "elapsed_seconds": 11.839,
+        "planned_requests": 16,
+        "attempted_requests": 16,
+        "completed": true,
+        "observed_tokens": 34420,
+        "inference_retries": 0,
+        "tls_preflights": [
+          {
+            "error": null,
+            "elapsed_seconds": 1.273499
+          }
+        ],
+        "stop_reason": null
+      },
+      "summaries": {
+        "insertion": {
+          "opportunity": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "eligible": {
+                "eligible": 0,
+                "excluded": 3,
+                "needs_review": 0
+              },
+              "excluded": {
+                "eligible": 1,
+                "excluded": 4,
+                "needs_review": 0
+              },
+              "needs_review": {
+                "eligible": 0,
+                "excluded": 0,
+                "needs_review": 0
+              }
+            },
+            "per_class": {
+              "eligible": {
+                "support": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "excluded": {
+                "support": 5,
+                "precision": 0.5714285714285714,
+                "recall": 0.8,
+                "f1": 0.6666666666666666
+              },
+              "needs_review": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.3333333333333333,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.5,
+            "false_exclusions": 3,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 4,
+            "agreement_denominator": 8
+          },
+          "concern_kind": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "policy": {
+                "policy": 4,
+                "mechanics": 1,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "mechanics": {
+                "policy": 0,
+                "mechanics": 3,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "variant_behavior": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "unknown": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              }
+            },
+            "per_class": {
+              "policy": {
+                "support": 5,
+                "precision": 1.0,
+                "recall": 0.8,
+                "f1": 0.8888888888888888
+              },
+              "mechanics": {
+                "support": 3,
+                "precision": 0.75,
+                "recall": 1.0,
+                "f1": 0.8571428571428571
+              },
+              "variant_behavior": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              },
+              "unknown": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.873015873015873,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.125,
+            "false_exclusions": 0,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 7,
+            "agreement_denominator": 8
+          }
+        },
+        "canonical": {
+          "opportunity": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "eligible": {
+                "eligible": 0,
+                "excluded": 3,
+                "needs_review": 0
+              },
+              "excluded": {
+                "eligible": 1,
+                "excluded": 4,
+                "needs_review": 0
+              },
+              "needs_review": {
+                "eligible": 0,
+                "excluded": 0,
+                "needs_review": 0
+              }
+            },
+            "per_class": {
+              "eligible": {
+                "support": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "excluded": {
+                "support": 5,
+                "precision": 0.5714285714285714,
+                "recall": 0.8,
+                "f1": 0.6666666666666666
+              },
+              "needs_review": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.3333333333333333,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.5,
+            "false_exclusions": 3,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 4,
+            "agreement_denominator": 8
+          },
+          "concern_kind": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "policy": {
+                "policy": 4,
+                "mechanics": 1,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "mechanics": {
+                "policy": 0,
+                "mechanics": 3,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "variant_behavior": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "unknown": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              }
+            },
+            "per_class": {
+              "policy": {
+                "support": 5,
+                "precision": 1.0,
+                "recall": 0.8,
+                "f1": 0.8888888888888888
+              },
+              "mechanics": {
+                "support": 3,
+                "precision": 0.75,
+                "recall": 1.0,
+                "f1": 0.8571428571428571
+              },
+              "variant_behavior": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              },
+              "unknown": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.873015873015873,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.125,
+            "false_exclusions": 0,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 7,
+            "agreement_denominator": 8
+          }
+        }
+      },
+      "paired": {
+        "opportunity": {
+          "paired_scored_cases": 8,
+          "changed_labels": []
+        },
+        "concern_kind": {
+          "paired_scored_cases": 8,
+          "changed_labels": []
+        }
+      },
+      "cases": [
+        {
+          "candidate_id": "review-490e54e617cfd961",
+          "source_candidate_id": "sg-031",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-d9832771164b2f85",
+          "source_candidate_id": "sg-020",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "eligible",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "eligible",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-627908aeebd7e376",
+          "source_candidate_id": "sg-033",
+          "reference": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-3238205e0bfcab79",
+          "source_candidate_id": "sg-019",
+          "reference": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-6d62b1a3608ab698",
+          "source_candidate_id": "sg-017",
+          "reference": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-135a902980c25b84",
+          "source_candidate_id": "sg-034",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-2249072958bc9db4",
+          "source_candidate_id": "sg-018",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-80cfb8df0e3d8882",
+          "source_candidate_id": "sg-032",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        }
+      ],
+      "numeric_differences": [
+        {
+          "source_candidate_id": "sg-031",
+          "axis": "opportunity",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-020",
+          "axis": "opportunity",
+          "max_probability_delta": 0.06,
+          "confidence_delta": 0.010000000000000009
+        },
+        {
+          "source_candidate_id": "sg-033",
+          "axis": "opportunity",
+          "max_probability_delta": 0.17999999999999994,
+          "confidence_delta": 0.26999999999999996
+        },
+        {
+          "source_candidate_id": "sg-019",
+          "axis": "opportunity",
+          "max_probability_delta": 0.04999999999999993,
+          "confidence_delta": 0.07999999999999996
+        },
+        {
+          "source_candidate_id": "sg-017",
+          "axis": "opportunity",
+          "max_probability_delta": 0.05999999999999994,
+          "confidence_delta": 0.09000000000000002
+        },
+        {
+          "source_candidate_id": "sg-034",
+          "axis": "opportunity",
+          "max_probability_delta": 0.010000000000000009,
+          "confidence_delta": 0.020000000000000018
+        },
+        {
+          "source_candidate_id": "sg-018",
+          "axis": "opportunity",
+          "max_probability_delta": 0.01999999999999999,
+          "confidence_delta": 0.020000000000000018
+        },
+        {
+          "source_candidate_id": "sg-032",
+          "axis": "opportunity",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-031",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-020",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.09999999999999999,
+          "confidence_delta": 0.10999999999999999
+        },
+        {
+          "source_candidate_id": "sg-033",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.08000000000000007,
+          "confidence_delta": 0.09999999999999998
+        },
+        {
+          "source_candidate_id": "sg-019",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.09,
+          "confidence_delta": 0.1200000000000001
+        },
+        {
+          "source_candidate_id": "sg-017",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.04999999999999993,
+          "confidence_delta": 0.06000000000000005
+        },
+        {
+          "source_candidate_id": "sg-034",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-018",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.040000000000000036,
+          "confidence_delta": 0.050000000000000044
+        },
+        {
+          "source_candidate_id": "sg-032",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        }
+      ],
+      "usage": {
+        "insertion": {
+          "input_tokens": 16468,
+          "output_tokens": 742
+        },
+        "canonical": {
+          "input_tokens": 16468,
+          "output_tokens": 742
+        }
+      },
+      "label_invariance": true,
+      "max_probability_delta": 0.17999999999999994,
+      "max_confidence_delta": 0.26999999999999996,
+      "artifact_digests": {
+        "manifest.json": "aa816a8d0bb4805535cfc2c16a794c5dc0b6e9c2bac55c7f0834f13d95d697e9",
+        "responses.jsonl": "0640be44edeb1d4e328ac9d391d43cf3084f01fd6b1f386a7f8363a490d35c0c",
+        "receipt.json": "ea4f8aadbecbe1cae0853339bf39f2315627dbadf510ed6f21bca33de5948c36"
+      },
+      "limits": "Eight purposive cases, one sample per arm and one model reference. Wire-order sensitivity is separate from correctness; it does not establish human gold, project-wide accuracy, statistical significance or immutable model behavior."
+    },
+    {
+      "schema_version": 1,
+      "study_kind": "paired_state_object_key_order_repeat",
+      "completed": true,
+      "reference_kind": "independent_model_annotation",
+      "human_adjudicated": false,
+      "holdout": false,
+      "receipt": {
+        "started_at": "2026-10-09T07:27:55.462287+00:00",
+        "finished_at": "2026-10-09T07:28:09.582519+00:00",
+        "elapsed_seconds": 14.12,
+        "planned_requests": 16,
+        "attempted_requests": 16,
+        "completed": true,
+        "observed_tokens": 34420,
+        "inference_retries": 0,
+        "tls_preflights": [
+          {
+            "error": null,
+            "elapsed_seconds": 0.879323
+          }
+        ],
+        "stop_reason": null
+      },
+      "summaries": {
+        "insertion": {
+          "opportunity": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "eligible": {
+                "eligible": 0,
+                "excluded": 3,
+                "needs_review": 0
+              },
+              "excluded": {
+                "eligible": 1,
+                "excluded": 4,
+                "needs_review": 0
+              },
+              "needs_review": {
+                "eligible": 0,
+                "excluded": 0,
+                "needs_review": 0
+              }
+            },
+            "per_class": {
+              "eligible": {
+                "support": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "excluded": {
+                "support": 5,
+                "precision": 0.5714285714285714,
+                "recall": 0.8,
+                "f1": 0.6666666666666666
+              },
+              "needs_review": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.3333333333333333,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.5,
+            "false_exclusions": 3,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 4,
+            "agreement_denominator": 8
+          },
+          "concern_kind": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "policy": {
+                "policy": 4,
+                "mechanics": 1,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "mechanics": {
+                "policy": 0,
+                "mechanics": 3,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "variant_behavior": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "unknown": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              }
+            },
+            "per_class": {
+              "policy": {
+                "support": 5,
+                "precision": 1.0,
+                "recall": 0.8,
+                "f1": 0.8888888888888888
+              },
+              "mechanics": {
+                "support": 3,
+                "precision": 0.75,
+                "recall": 1.0,
+                "f1": 0.8571428571428571
+              },
+              "variant_behavior": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              },
+              "unknown": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.873015873015873,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.125,
+            "false_exclusions": 0,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 7,
+            "agreement_denominator": 8
+          }
+        },
+        "canonical": {
+          "opportunity": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "eligible": {
+                "eligible": 0,
+                "excluded": 3,
+                "needs_review": 0
+              },
+              "excluded": {
+                "eligible": 1,
+                "excluded": 4,
+                "needs_review": 0
+              },
+              "needs_review": {
+                "eligible": 0,
+                "excluded": 0,
+                "needs_review": 0
+              }
+            },
+            "per_class": {
+              "eligible": {
+                "support": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0
+              },
+              "excluded": {
+                "support": 5,
+                "precision": 0.5714285714285714,
+                "recall": 0.8,
+                "f1": 0.6666666666666666
+              },
+              "needs_review": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.3333333333333333,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.5,
+            "false_exclusions": 3,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 4,
+            "agreement_denominator": 8
+          },
+          "concern_kind": {
+            "count": 8,
+            "scored_cases": 8,
+            "confusion_matrix": {
+              "policy": {
+                "policy": 4,
+                "mechanics": 1,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "mechanics": {
+                "policy": 0,
+                "mechanics": 3,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "variant_behavior": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              },
+              "unknown": {
+                "policy": 0,
+                "mechanics": 0,
+                "variant_behavior": 0,
+                "unknown": 0
+              }
+            },
+            "per_class": {
+              "policy": {
+                "support": 5,
+                "precision": 1.0,
+                "recall": 0.8,
+                "f1": 0.8888888888888888
+              },
+              "mechanics": {
+                "support": 3,
+                "precision": 0.75,
+                "recall": 1.0,
+                "f1": 0.8571428571428571
+              },
+              "variant_behavior": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              },
+              "unknown": {
+                "support": 0,
+                "precision": null,
+                "recall": null,
+                "f1": null
+              }
+            },
+            "macro_f1": 0.873015873015873,
+            "abstention_rate": 0.0,
+            "scored_abstention_rate": 0.0,
+            "coverage": 1.0,
+            "non_abstained_error_rate": 0.125,
+            "false_exclusions": 0,
+            "unscored_cases": 0,
+            "not_run_cases": 0,
+            "agreement_count": 7,
+            "agreement_denominator": 8
+          }
+        }
+      },
+      "paired": {
+        "opportunity": {
+          "paired_scored_cases": 8,
+          "changed_labels": []
+        },
+        "concern_kind": {
+          "paired_scored_cases": 8,
+          "changed_labels": []
+        }
+      },
+      "cases": [
+        {
+          "candidate_id": "review-490e54e617cfd961",
+          "source_candidate_id": "sg-031",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-d9832771164b2f85",
+          "source_candidate_id": "sg-020",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "eligible",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "eligible",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-627908aeebd7e376",
+          "source_candidate_id": "sg-033",
+          "reference": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-3238205e0bfcab79",
+          "source_candidate_id": "sg-019",
+          "reference": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-6d62b1a3608ab698",
+          "source_candidate_id": "sg-017",
+          "reference": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-135a902980c25b84",
+          "source_candidate_id": "sg-034",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-2249072958bc9db4",
+          "source_candidate_id": "sg-018",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "policy"
+            }
+          }
+        },
+        {
+          "candidate_id": "review-80cfb8df0e3d8882",
+          "source_candidate_id": "sg-032",
+          "reference": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          "predictions": {
+            "insertion": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            },
+            "canonical": {
+              "opportunity": "excluded",
+              "concern_kind": "mechanics"
+            }
+          }
+        }
+      ],
+      "numeric_differences": [
+        {
+          "source_candidate_id": "sg-031",
+          "axis": "opportunity",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-020",
+          "axis": "opportunity",
+          "max_probability_delta": 0.01999999999999999,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-033",
+          "axis": "opportunity",
+          "max_probability_delta": 0.1499999999999999,
+          "confidence_delta": 0.22000000000000003
+        },
+        {
+          "source_candidate_id": "sg-019",
+          "axis": "opportunity",
+          "max_probability_delta": 0.06999999999999995,
+          "confidence_delta": 0.10999999999999999
+        },
+        {
+          "source_candidate_id": "sg-017",
+          "axis": "opportunity",
+          "max_probability_delta": 0.21000000000000002,
+          "confidence_delta": 0.31999999999999995
+        },
+        {
+          "source_candidate_id": "sg-034",
+          "axis": "opportunity",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-018",
+          "axis": "opportunity",
+          "max_probability_delta": 0.010000000000000009,
+          "confidence_delta": 0.020000000000000018
+        },
+        {
+          "source_candidate_id": "sg-032",
+          "axis": "opportunity",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-031",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-020",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.07999999999999999,
+          "confidence_delta": 0.10000000000000009
+        },
+        {
+          "source_candidate_id": "sg-033",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.09000000000000008,
+          "confidence_delta": 0.12
+        },
+        {
+          "source_candidate_id": "sg-019",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.12,
+          "confidence_delta": 0.16000000000000003
+        },
+        {
+          "source_candidate_id": "sg-017",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.08999999999999997,
+          "confidence_delta": 0.12
+        },
+        {
+          "source_candidate_id": "sg-034",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        },
+        {
+          "source_candidate_id": "sg-018",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.08000000000000002,
+          "confidence_delta": 0.08000000000000002
+        },
+        {
+          "source_candidate_id": "sg-032",
+          "axis": "concern_kind",
+          "max_probability_delta": 0.0,
+          "confidence_delta": 0.0
+        }
+      ],
+      "usage": {
+        "insertion": {
+          "input_tokens": 16468,
+          "output_tokens": 742
+        },
+        "canonical": {
+          "input_tokens": 16468,
+          "output_tokens": 742
+        }
+      },
+      "label_invariance": true,
+      "max_probability_delta": 0.21000000000000002,
+      "max_confidence_delta": 0.31999999999999995,
+      "artifact_digests": {
+        "manifest.json": "d77c26916f044c569467bc8e489af454b13535c68454c626a32f60919f69549d",
+        "responses.jsonl": "c89856eabf63f01d700957b15500dde3da5c664c53d3a7ca2042c49bb4226112",
+        "receipt.json": "63c443620475918d4ff215b676e082b62ed68039f751e9be6fc6206705a4b56a"
+      },
+      "limits": "Eight purposive cases, one sample per arm and one model reference. Wire-order sensitivity is separate from correctness; it does not establish human gold, project-wide accuracy, statistical significance or immutable model behavior."
+    }
+  ],
+  "comparisons": {
+    "same_byte": {
+      "opportunity": {
+        "scored_comparisons": 16,
+        "planned_comparisons": 16,
+        "label_changes": 0,
+        "max_probability_delta": 0.09000000000000008,
+        "max_confidence_delta": 0.13999999999999996
+      },
+      "concern_kind": {
+        "scored_comparisons": 16,
+        "planned_comparisons": 16,
+        "label_changes": 0,
+        "max_probability_delta": 0.06000000000000005,
+        "max_confidence_delta": 0.08000000000000002
+      }
+    },
+    "cross_arm": {
+      "opportunity": {
+        "scored_comparisons": 16,
+        "planned_comparisons": 16,
+        "label_changes": 0,
+        "max_probability_delta": 0.21000000000000002,
+        "max_confidence_delta": 0.31999999999999995
+      },
+      "concern_kind": {
+        "scored_comparisons": 16,
+        "planned_comparisons": 16,
+        "label_changes": 0,
+        "max_probability_delta": 0.12,
+        "max_confidence_delta": 0.16000000000000003
+      }
+    }
+  },
+  "same_byte_details": [
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.01999999999999999
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.010000000000000009
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.04000000000000001,
+      "confidence_delta": 0.03
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.020000000000000004,
+      "confidence_delta": 0.019999999999999907
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.020000000000000018,
+      "confidence_delta": 0.030000000000000027
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.050000000000000044,
+      "confidence_delta": 0.07999999999999996
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.010000000000000009
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.020000000000000018,
+      "confidence_delta": 0.030000000000000027
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.040000000000000036,
+      "confidence_delta": 0.04999999999999993
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.06,
+      "confidence_delta": 0.09
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.09000000000000008,
+      "confidence_delta": 0.13999999999999996
+    },
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.040000000000000036,
+      "confidence_delta": 0.05999999999999994
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.06000000000000005,
+      "confidence_delta": 0.08000000000000002
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.03,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.04999999999999999,
+      "confidence_delta": 0.050000000000000044
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "arm": "canonical",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "arm": "canonical",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "arm": "insertion",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "arm": "insertion",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    }
+  ],
+  "cross_arm_details": [
+    {
+      "round": 1,
+      "candidate_id": "review-490e54e617cfd961",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-490e54e617cfd961",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-d9832771164b2f85",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.06,
+      "confidence_delta": 0.010000000000000009
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-d9832771164b2f85",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.09999999999999999,
+      "confidence_delta": 0.10999999999999999
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-627908aeebd7e376",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.17999999999999994,
+      "confidence_delta": 0.26999999999999996
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-627908aeebd7e376",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.08000000000000007,
+      "confidence_delta": 0.09999999999999998
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-3238205e0bfcab79",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.04999999999999993,
+      "confidence_delta": 0.07999999999999996
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-3238205e0bfcab79",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.09,
+      "confidence_delta": 0.1200000000000001
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-6d62b1a3608ab698",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.05999999999999994,
+      "confidence_delta": 0.09000000000000002
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-6d62b1a3608ab698",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.04999999999999993,
+      "confidence_delta": 0.06000000000000005
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-135a902980c25b84",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-135a902980c25b84",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-2249072958bc9db4",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.01999999999999999,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-2249072958bc9db4",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.040000000000000036,
+      "confidence_delta": 0.050000000000000044
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 1,
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-490e54e617cfd961",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-490e54e617cfd961",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-d9832771164b2f85",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.01999999999999999,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-d9832771164b2f85",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.07999999999999999,
+      "confidence_delta": 0.10000000000000009
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-627908aeebd7e376",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.1499999999999999,
+      "confidence_delta": 0.22000000000000003
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-627908aeebd7e376",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.09000000000000008,
+      "confidence_delta": 0.12
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-3238205e0bfcab79",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.06999999999999995,
+      "confidence_delta": 0.10999999999999999
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-3238205e0bfcab79",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.12,
+      "confidence_delta": 0.16000000000000003
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-6d62b1a3608ab698",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.21000000000000002,
+      "confidence_delta": 0.31999999999999995
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-6d62b1a3608ab698",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.08999999999999997,
+      "confidence_delta": 0.12
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-135a902980c25b84",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-135a902980c25b84",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-2249072958bc9db4",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.010000000000000009,
+      "confidence_delta": 0.020000000000000018
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-2249072958bc9db4",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.08000000000000002,
+      "confidence_delta": 0.08000000000000002
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "axis": "opportunity",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    },
+    {
+      "round": 2,
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "axis": "concern_kind",
+      "label_changed": false,
+      "max_probability_delta": 0.0,
+      "confidence_delta": 0.0
+    }
+  ],
+  "protocol_sha256": "8bd57f4fb0881aef63eb6fd60684a8e65d578fd8891d907c6a9418c03299e849",
+  "analysis_implementation_sha256": "46160b8ef0720f2e0b171e13387ddbe5ee4300e0c6f8172510139aa6c7bd280b",
+  "analysis_implementation_digests": {
+    "score_repeat_controls.py": "46160b8ef0720f2e0b171e13387ddbe5ee4300e0c6f8172510139aa6c7bd280b",
+    "score_state_key_order.py": "b7c47e46bf80f4ba2dfed317e7e2c82e682f09921862ac654081775dee3d6256",
+    "state_key_order.py": "1d420346310d196eb0991ae8347e7ca08f6490065a739478cd6798b9eb31de39",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035",
+    "experiment.py": "da836ddd74df5149a5abd6023b59d6ecb2031942a5196ac92b7dbb774f69554a"
+  },
+  "analysis_manifest_sha256": "1e9402d23e05b0d07b335e410a9f9a27836f99899cb131fe93a975ea2b6ff72f",
+  "limits": "Two repeats per arm; no human gold, holdout or statistical significance. Upstream cache and immutable backend checkpoint are not observable. Previous runs are not pooled with these controls."
+}
