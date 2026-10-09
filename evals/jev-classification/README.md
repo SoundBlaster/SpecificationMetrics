@@ -171,3 +171,12 @@ The frozen plan, receipts and report are validated offline in CI.
 arms, while probability/confidence varied. The earlier label flip did not
 reproduce; opportunity agreement remains 4/8 and eligible recall 0/3.
 `score_repeat_controls.py` reproduces the comparisons without inference.
+
+## Eligibility diagnosis and brainstorm
+
+[Three Astra Medium brainstorms](runs/2026-10-09-eligibility-diagnosis/README.md)
+identify a verified task-phrasing difference between Jev and its model reference,
+a mixed-function decision-boundary problem, and untested ownership/provider
+hypotheses. Three fresh `gpt-6-astra` agents generated these hypotheses; no new
+Jev inference or provider calls were made for this diagnosis. The report separates verified facts from
+possible causes and proposes matched-task evaluation before prompt tuning.
