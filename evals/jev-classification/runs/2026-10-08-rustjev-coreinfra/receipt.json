@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-10-08T23:34:39.234232+00:00",
+  "finished_at": "2026-10-08T23:34:51.200851+00:00",
+  "elapsed_seconds": 11.967,
+  "exit_code": 0,
+  "saved_responses": 16,
+  "planned_requests": 16,
+  "completed": true,
+  "automatic_retries": 0
+}

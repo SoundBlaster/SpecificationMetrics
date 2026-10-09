@@ -1,0 +1,43 @@
+{
+  "source_commit": "169ebfd",
+  "adapter_commit": "67cc832f0cafc57788f3a2e8dd20978b1c94dca6",
+  "core_commit": "ce6665ab6c4c85e68b8596c92ede009fc8fc7f45",
+  "cases": 8,
+  "requests": 16,
+  "axes": [
+    "opportunity",
+    "concern_kind"
+  ],
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "requested_model": "jev-latest",
+  "max_observed_tokens": 40000,
+  "automatic_retries": 0,
+  "comparison_limits": "Historical direct run had both questions per request; this run uses separate RustJev requests. Provider, question grouping and date differ, so it is not an isolated transport effect experiment.",
+  "digests": {
+    "runs/2026-10-05-intent-profile-ablation/study.json": "aaba74cb11b94f98468f3b01e820b2cd7428a0718c79a7d068719254fbfbd6d1",
+    "runs/2026-10-05-intent-profile-reference/annotations.json": "75c32254c7f12d26612d654ee23d5c1ba021c726838cb9394a2c3c71917edfb5",
+    "runs/2026-10-05-intent-profile-reference/mapping.json": "692ed274404a3caf943949c5a0cf2c47b140b8ad040ebc59964699ad959575e5",
+    "runs/2026-10-08-rustjev-coreinfra/requests.json": "74f86e93f405dcf18b606a3fc9569a72627fb4164ec797f2913c8b823baca180",
+    "specificationcore-intent-profile-v2.json": "337ad1fcbfb3e47d330948eebd0b958f77bba13e1e92a1c5f39142b5fdc1c95e",
+    "runs/2026-10-05-intent-profile-reference/comparison.json": "f9fb3ba4fb18e34d61645f792ed0fc85355c44cd45e38d0649713b7adea2b6cd",
+    "runs/2026-10-05-intent-profile-ablation/run-1/run.json": "d12c560efa1b3de46c3b35613ed85cd0127fdd86c328c427936c604533134f0a"
+  },
+  "policy": {
+    "min_probability": null,
+    "min_confidence": null,
+    "epsilon": 1e-06,
+    "fallback": null
+  },
+  "state_encoding": "JSON object, not text string",
+  "timeout_seconds": 30,
+  "connect_timeout_seconds": 10,
+  "endpoint": "https://hub.coreinfra.ai/typesafe/api/v1/systemone",
+  "implementation_digests": {
+    "rust-driver/src/main.rs": "9f76d7a1d658054cfb4e21047b904a5cb03544a2ed751173ccb6d2f47b0b0ae3",
+    "rust-driver/Cargo.toml": "f39afcf7445f45ca5e415a167cb5690801547245954332cf09df7144d320035b",
+    "rust-driver/Cargo.lock": "2d4fbf8d3d53478116aee57ab110522a25c41c6d7e95d48a87e88fe740899ee5",
+    "score_rustjev.py": "0e45f9c8837e3f18d534b9b3f37cc02bf30b1b18026a30521ce0c2c7c7bc9cd7"
+  }
+}

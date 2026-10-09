@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "holdout": false,
+  "completed": true,
+  "summaries": {
+    "opportunity": {
+      "count": 8,
+      "scored_cases": 8,
+      "confusion_matrix": {
+        "eligible": {
+          "eligible": 0,
+          "excluded": 3,
+          "needs_review": 0
+        },
+        "excluded": {
+          "eligible": 1,
+          "excluded": 4,
+          "needs_review": 0
+        },
+        "needs_review": {
+          "eligible": 0,
+          "excluded": 0,
+          "needs_review": 0
+        }
+      },
+      "per_class": {
+        "eligible": {
+          "support": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "excluded": {
+          "support": 5,
+          "precision": 0.5714285714285714,
+          "recall": 0.8,
+          "f1": 0.6666666666666666
+        },
+        "needs_review": {
+          "support": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        }
+      },
+      "macro_f1": 0.3333333333333333,
+      "abstention_rate": 0.0,
+      "scored_abstention_rate": 0.0,
+      "coverage": 1.0,
+      "non_abstained_error_rate": 0.5,
+      "false_exclusions": 3,
+      "unscored_cases": 0,
+      "agreement_count": 4,
+      "agreement_denominator": 8,
+      "terminal_outcomes": {
+        "Accepted": 8
+      }
+    },
+    "concern_kind": {
+      "count": 8,
+      "scored_cases": 8,
+      "confusion_matrix": {
+        "policy": {
+          "policy": 4,
+          "mechanics": 1,
+          "variant_behavior": 0,
+          "unknown": 0
+        },
+        "mechanics": {
+          "policy": 0,
+          "mechanics": 3,
+          "variant_behavior": 0,
+          "unknown": 0
+        },
+        "variant_behavior": {
+          "policy": 0,
+          "mechanics": 0,
+          "variant_behavior": 0,
+          "unknown": 0
+        },
+        "unknown": {
+          "policy": 0,
+          "mechanics": 0,
+          "variant_behavior": 0,
+          "unknown": 0
+        }
+      },
+      "per_class": {
+        "policy": {
+          "support": 5,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8888888888888888
+        },
+        "mechanics": {
+          "support": 3,
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571428571428571
+        },
+        "variant_behavior": {
+          "support": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        },
+        "unknown": {
+          "support": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        }
+      },
+      "macro_f1": 0.873015873015873,
+      "abstention_rate": 0.0,
+      "scored_abstention_rate": 0.0,
+      "coverage": 1.0,
+      "non_abstained_error_rate": 0.125,
+      "false_exclusions": 0,
+      "unscored_cases": 0,
+      "agreement_count": 7,
+      "agreement_denominator": 8,
+      "terminal_outcomes": {
+        "Accepted": 8
+      }
+    }
+  },
+  "cases": [
+    {
+      "candidate_id": "review-6d62b1a3608ab698",
+      "source_candidate_id": "sg-017",
+      "family_id": "pre-sib",
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"policy\")"
+      }
+    },
+    {
+      "candidate_id": "review-2249072958bc9db4",
+      "source_candidate_id": "sg-018",
+      "family_id": "pre-sib",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"policy\")"
+      }
+    },
+    {
+      "candidate_id": "review-3238205e0bfcab79",
+      "source_candidate_id": "sg-019",
+      "family_id": "acceptance-criteria",
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"mechanics\")"
+      }
+    },
+    {
+      "candidate_id": "review-d9832771164b2f85",
+      "source_candidate_id": "sg-020",
+      "family_id": "acceptance-criteria",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"eligible\")",
+        "concern_kind": "Accepted(\"policy\")"
+      }
+    },
+    {
+      "candidate_id": "review-490e54e617cfd961",
+      "source_candidate_id": "sg-031",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_dict",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"mechanics\")"
+      }
+    },
+    {
+      "candidate_id": "review-80cfb8df0e3d8882",
+      "source_candidate_id": "sg-032",
+      "family_id": "mechanics:tools/idea_to_spec_promotion_gate.py:_text",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"mechanics\")"
+      }
+    },
+    {
+      "candidate_id": "review-627908aeebd7e376",
+      "source_candidate_id": "sg-033",
+      "family_id": "workspace-allocation",
+      "reference": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"policy\")"
+      }
+    },
+    {
+      "candidate_id": "review-135a902980c25b84",
+      "source_candidate_id": "sg-034",
+      "family_id": "mechanics:tools/candidate_repair_loop.py:_slug",
+      "reference": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "predictions": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "decisions": {
+        "opportunity": "Accepted(\"excluded\")",
+        "concern_kind": "Accepted(\"mechanics\")"
+      }
+    }
+  ],
+  "usage": {
+    "input_tokens": 30288,
+    "output_tokens": 766
+  },
+  "elapsed_seconds": 11.967,
+  "returned_models": [
+    "jev-1.13.0"
+  ],
+  "historical_profile_agreement": {
+    "opportunity": 7,
+    "concern_kind": 7
+  },
+  "historical_label_changes": [
+    "sg-017",
+    "sg-020",
+    "sg-033"
+  ],
+  "limits": "Historical direct run had both questions per request; this run uses separate RustJev requests. Provider, question grouping and date differ, so it is not an isolated transport effect experiment. Eight purposive diagnostic cases with one model reference, not human-approved gold. No representative prevalence, calibration or generalization claim.",
+  "artifact_digests": {
+    "manifest.json": "577bca6a2c1f129515c14fa7e9de09a2366fe3203279735088c1a52e47e78f16",
+    "responses.jsonl": "3125c8a1057220c86ee04c0238a7db9a56ed10aca7de8a805aeb8bea5a21547b",
+    "receipt.json": "326337ef89417549d815b7abbde9e155a7b0fdac03381c94b6e627f9be189e0a"
+  }
+}

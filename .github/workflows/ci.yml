@@ -33,8 +33,24 @@ jobs:
           python3 -m unittest -v test_validate_cases.py
           python3 -m unittest -v test_experiment.py
           python3 -m unittest -v test_context_ablation.py
+          python3 -m unittest -v test_score_rustjev.py
         working-directory: evals/jev-classification
       - run: python -m pip install -r scripts/requirements-metrics.txt
       - run: python scripts/test_classic_metrics.py
       - run: rustc --edition=2024 --crate-type=lib tests/fixtures/markers/rust/SpecificationMetric.rs --emit=metadata -o /tmp/specmetrics-rust-marker.rmeta
       - run: python tests/python_marker_classvar.py
+
+  rustjev-evaluation-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - name: Validate bounded RustJev evaluation driver without inference
+        working-directory: evals/jev-classification
+        run: |
+          cargo fmt --check --manifest-path rust-driver/Cargo.toml
+          cargo test --locked --manifest-path rust-driver/Cargo.toml
+          cargo clippy --locked --manifest-path rust-driver/Cargo.toml --all-targets -- -D warnings
+          cargo run --locked --manifest-path rust-driver/Cargo.toml -- --validate runs/2026-10-08-rustjev-coreinfra/requests.json

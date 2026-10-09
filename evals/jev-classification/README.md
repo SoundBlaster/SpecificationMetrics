@@ -133,3 +133,14 @@ versioned description of the project's global architecture goal. The prompt and
 code state otherwise remain fixed. The result supports adding project intent as
 an explicit classifier input on these examples, but inherited pre-profile labels
 are not gold for the new goal.
+
+## RustJev / proxy diagnostic evaluation
+
+The [recorded RustJev / CoreInfra run](runs/2026-10-08-rustjev-coreinfra/README.md)
+uses the frozen eight-case independent intent-profile model reference. Sixteen
+single-question calls passed transport/core validation, but opportunity agreement
+was 4/8 and eligible recall 0/3. Historical profile agreement was 7/8; provider,
+question grouping, serialization and date differ, so the cause remains unproven.
+The separate git-pinned `rust-driver` and `score_rustjev.py` preserve reproducible
+inputs and offline scoring. No production classifier, registry disposition, S/U
+count or confidence threshold was changed.
