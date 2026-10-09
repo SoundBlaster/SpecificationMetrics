@@ -1,0 +1,25 @@
+{
+  "id": "specification_metrics.architectural_fit.aligned.v1-diagnostic",
+  "status": "evaluation-only, not production",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Use only the supplied site and bounded context under the architecture profile. The site is the target; supporting declarations are evidence, not separate candidates. For a mixed site, judge whether it contains a distinct product decision rather than whether most statements are mechanics. Do not infer omitted context. A stable product/domain rule can qualify with one use; procedural syntax and local scope alone do not exclude it. Choose eligible when such a rule benefits from a named, addressable, observable Specification. Choose excluded for technical mechanics without a distinct product decision, or explicit evidence that a Specification already owns this SAME decision. A library import or ordinary helper name alone is not ownership. Choose needs_review when material ambiguity prevents a reliable judgment.",
+      "criteria": {
+        "eligible": "The target contains a stable product/domain decision suitable for a named, addressable, observable Specification; one use is sufficient.",
+        "excluded": "Technical mechanics or coordination without a distinct product decision, or the same decision is explicitly already owned by a Specification.",
+        "needs_review": "Evidence is materially ambiguous or insufficient; unknown, not an exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Use only the supplied site and bounded context under the architecture profile. The site is the target; supporting declarations are evidence, not separate candidates. For a mixed site, judge whether it contains a distinct product decision rather than whether most statements are mechanics. Do not infer omitted context. Independently classify the kind of decision expressed at the target site. Product/domain integrity and authority rules can be policy even when enforced through validation. Use unknown when the available evidence does not support a reliable kind.",
+      "criteria": {
+        "policy": "A durable product/domain rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+        "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement WITHOUT a distinct product decision.",
+        "variant_behavior": "Dispatch over domain variants such as enum cases, types, or platforms.",
+        "unknown": "The supplied evidence does not support a reliable concern-kind label."
+      }
+    }
+  }
+}

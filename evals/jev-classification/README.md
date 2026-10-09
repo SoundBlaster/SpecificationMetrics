@@ -180,3 +180,11 @@ a mixed-function decision-boundary problem, and untested ownership/provider
 hypotheses. Three fresh `gpt-6-astra` agents generated these hypotheses; no new
 Jev inference or provider calls were made for this diagnosis. The report separates verified facts from
 possible causes and proposes matched-task evaluation before prompt tuning.
+
+## Matched-rubric comparison
+
+The [aligned-rubric diagnostic](runs/2026-10-10-rubric-alignment/README.md)
+used a fresh isolated reference agent and 32 paired Jev requests. Both repeats
+improved eligible recall from 0/3 to 2/3 and concern-kind agreement to 8/8,
+but owned false positives increased from one to two. The preregistered full
+success criterion failed. Production prompts and metrics remain unchanged.

@@ -37,6 +37,8 @@ jobs:
           python3 -m unittest -v test_question_grouping.py
           python3 -m unittest -v test_state_key_order.py
           python3 -m unittest -v test_repeat_controls.py
+          python3 -m unittest -v test_rubric_alignment.py
+          python3 rubric_alignment.py --run runs/2026-10-10-rubric-alignment
           python3 state_key_order.py --run runs/2026-10-09-repeat-controls/round-1
           python3 state_key_order.py --run runs/2026-10-09-repeat-controls/round-2
           python3 state_key_order.py --run runs/2026-10-09-state-key-order
