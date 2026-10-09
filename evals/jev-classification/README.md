@@ -188,3 +188,13 @@ used a fresh isolated reference agent and 32 paired Jev requests. Both repeats
 improved eligible recall from 0/3 to 2/3 and concern-kind agreement to 8/8,
 but owned false positives increased from one to two. The preregistered full
 success criterion failed. Production prompts and metrics remain unchanged.
+
+## Source-bound construction gate
+
+The [offline composition replay](runs/2026-10-10-ownership-gate/README.md)
+checks pinned source and resolved constructor imports before semantic routing.
+It excludes two existing constructions, raising aligned opportunity agreement
+from 5/8 to 7/8 without new inference. Six unknown sites retain recorded answers.
+An actual Rust scanner audit also exposes different evaluation/discovery units
+and missing outer `FirstMatch.with_fallback` recognition. This is bounded
+diagnostic evidence, not a change to production ownership or S/U.
