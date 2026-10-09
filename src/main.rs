@@ -8,6 +8,7 @@ mod reuse;
 mod scan;
 mod scope;
 mod store;
+mod target;
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -28,6 +29,27 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Extract one explicitly selected Python decision expression (experimental).
+    ExtractDecisionTarget {
+        root: PathBuf,
+        #[arg(long)]
+        path: String,
+        /// 1-based line of the exact syntax-node anchor.
+        #[arg(long)]
+        line: usize,
+        /// 1-based UTF-8 byte column of the exact syntax-node anchor.
+        #[arg(long)]
+        column: usize,
+        #[arg(long)]
+        syntax_kind: String,
+        #[arg(long, value_enum)]
+        select: target::Selection,
+        /// Optional blake3:<hex> file digest from a previous snapshot.
+        #[arg(long)]
+        expected_source_digest: Option<String>,
+        #[arg(long)]
+        output: Option<PathBuf>,
+    },
     /// Detect new Python procedural copies of registered Specification rules.
     CheckRuleReuse {
         root: PathBuf,
@@ -205,6 +227,27 @@ struct SyncResult {
 fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.command {
+        Command::ExtractDecisionTarget {
+            root,
+            path,
+            line,
+            column,
+            syntax_kind,
+            select,
+            expected_source_digest,
+            output,
+        } => {
+            let report = target::extract(
+                &root,
+                &path,
+                line,
+                column,
+                &syntax_kind,
+                select,
+                expected_source_digest.as_deref(),
+            )?;
+            emit_json(&report, output.as_deref())?;
+        }
         Command::CheckRuleReuse {
             root,
             catalog,
