@@ -26,6 +26,8 @@ registry exclusions or changes to Specification counts (S/U).
 | I14 | [Eligibility diagnosis](runs/2026-10-09-eligibility-diagnosis/README.md): reference explicitly allows single-use addressable/observable rules and qualifies mechanics; Jev's direct criterion uses reusable and unqualified technical enforcement. All three references acknowledge missing ownership context. | Low agreement remains measured relative to that model reference, but task mismatch and unresolved target boundaries prevent declaring each disagreement an objective Jev error. Align tasks before tuning or assigning causes. |
 | I15 | [Source-boundary diagnosis](runs/2026-10-09-eligibility-diagnosis/README.md): sg-019 is a 44-line mixed function, while its reference selects an internal coverage predicate. Historical sg-017 consumer confirms findings affect readiness, but that consumer was omitted from Jev input. | Define target decision versus supporting code and avoid duplicate caller/helper opportunities. Context facts discovered afterward cannot retroactively change the old input or score. |
 | I16 | [Matched-rubric diagnostic](runs/2026-10-10-rubric-alignment/README.md): both repeats move opportunity agreement 4/8 to 5/8, eligible recall 0/3 to 2/3 and concern-kind 7/8 to 8/8, but owned false positives 1/2 to 2/2. Fresh isolated model reference retains all prior labels. | Composite task alignment helps semantic discovery on these cases but fails the no-new-control-errors success criterion. Separate formal ownership from semantic suitability before rollout; do not claim a universal prompt win or individual-word causality. |
+| I17 | [Source-bound construction replay](runs/2026-10-10-ownership-gate/README.md): exact historical source, symbol/span and resolved imports identify two direct constructions. Routing them before the semantic callback moves recorded aligned agreement 5/8 to 7/8, owned false positives 2/2 to 0/2; recall remains 2/3. No new inference. | Deterministic construction evidence can protect a semantic discovery rubric. Unknown construction stays on the semantic route. This development-set composition result does not change the old prompt hypothesis or establish production quality, runtime identity or whole-project ownership. |
+| I18 | The same [audit](runs/2026-10-10-ownership-gate/README.md) runs the actual Rust scanner on all eight full historical files. Both already-constructed declarations and sg-033 have zero selected-range control-flow candidates. Rust already filters `inside_specification`, but names are syntactic and outer `FirstMatch.with_fallback` is not recognized. | Whole-declaration API examples and Rust branch candidates are different units. Zero discovery is not semantic exclusion; do not attribute this replay's improvement to the production filter. Define a shared target unit and import-identity contract before generalizing the classifier evaluation. |
 
 ## Current decision
 
@@ -37,10 +39,10 @@ changed by the transport/grouping/order experiments.
 
 ## Next evaluation slice
 
-The [matched-task comparison](runs/2026-10-10-rubric-alignment/README.md) now
-shows improved discovery with a reproducible ownership regression. Evaluate a
-formal ownership filter followed by AI semantic suitability; keep proof and
-suggestion provenance distinct. The sg-019 mixed-function target still needs
+The [source-bound replay](runs/2026-10-10-ownership-gate/README.md) now protects
+two existing constructions while preserving semantic recall. Define a shared
+target unit for Rust discovery and semantic evaluation, with resolved import
+identity and evidence provenance. The sg-019 mixed-function target still needs
 adjudication and a separate predicate-target context study. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
