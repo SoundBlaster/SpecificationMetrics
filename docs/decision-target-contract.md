@@ -32,7 +32,7 @@ column, the exact tree-sitter syntax kind starting there, and one selector:
 | `value` | `return_statement` | returned expression |
 | `value` | `assignment` | right-hand value |
 | `value` | `lambda` | lambda body |
-| `expression` | call, boolean/comparison/unary operator, identifier, attribute, subscript, ternary | same expression |
+| `expression` | call, boolean/comparison/unary operator, logical negation (`not_operator`), identifier, attribute, subscript, ternary | same expression |
 
 When multiple nodes of the same kind start at the exact same position, the
 outermost matching node is selected. This matters for `a and b and c`; the full

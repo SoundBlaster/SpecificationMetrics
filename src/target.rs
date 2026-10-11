@@ -124,6 +124,7 @@ fn expression(anchor: Node<'_>, selection: Selection) -> Result<Node<'_>> {
                 "boolean_operator",
                 "comparison_operator",
                 "unary_operator",
+                "not_operator",
                 "identifier",
                 "attribute",
                 "subscript",
@@ -335,6 +336,18 @@ mod tests {
             )
             .is_err()
         );
+    }
+
+    #[test]
+    fn extracts_explicit_logical_negation_in_require_arguments() {
+        for expression in ["not ready", "not (ready and allowed)"] {
+            let source = format!("require({expression})\n");
+            let target = fixture(&source, 1, 9, "not_operator", Selection::Expression).unwrap();
+            assert_eq!(target.expression.code, expression);
+            assert_eq!(target.expression.syntax_kind, "not_operator");
+            assert_eq!(target.expression.span.start_byte, 8);
+            assert_eq!(target.expression.span.end_byte, 8 + expression.len());
+        }
     }
 
     #[test]
