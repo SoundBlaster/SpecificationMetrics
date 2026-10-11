@@ -13,13 +13,23 @@ from state_key_order import load_wire
 
 ROOT = Path(__file__).parent
 ENDPOINT = "https://hub.coreinfra.ai/typesafe/api/v1/systemone"
+FROZEN_RUN_PATH = Path("runs/2026-10-10-rubric-alignment")
 
 
 def load(run):
     manifest = json.loads((run / "manifest.json").read_text())
     for name, expected in manifest["digests"].items():
-        p = (ROOT / name).resolve()
-        if ROOT.resolve() not in p.parents or digest(p.read_bytes()) != expected:
+        relative = Path(name)
+        if relative.is_relative_to(FROZEN_RUN_PATH):
+            # Run artifacts must come from the selected directory, including
+            # when it is a copied/alternate run. Other frozen inputs remain
+            # repository-relative dependencies.
+            base = run.resolve()
+            p = (base / relative.relative_to(FROZEN_RUN_PATH)).resolve()
+        else:
+            base = ROOT.resolve()
+            p = (base / relative).resolve()
+        if base not in p.parents or digest(p.read_bytes()) != expected:
             raise ValueError("Frozen input digest mismatch")
     if manifest["planned_requests"] != 32 or manifest["endpoint"] != ENDPOINT:
         raise ValueError("Unexpected request budget or endpoint")

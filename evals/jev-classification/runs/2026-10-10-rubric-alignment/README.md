@@ -150,3 +150,18 @@ These commands need no keys or inference. CI uses only offline validation.
 validator and parser dependencies) and all input/output artifacts. Operational
 failures and unattempted cases remain unscored with planned denominators; a
 partial run cannot support or refute the full paired success criterion.
+
+## Review hardening: selected run integrity
+
+The validator now checks run-local artifacts inside the supplied `--run`
+directory, including copied runs. Shared historical dependencies remain rooted
+in the evaluation repository. Changing copied annotations while leaving their
+manifest unchanged is rejected before scoring; all five run-local frozen
+inputs have regression coverage. Valid copies retain the same scores.
+
+The original `summary.json` remains the historical analysis receipt. The
+[reviewed-summary.json](reviewed-summary.json) records the corrected validator's
+implementation digest; measurements, reference labels, raw provider responses
+and their digests are unchanged. No new inference was performed. The original
+manifest's producer hashes remain frozen rather than authorizing new live runs
+with changed code.

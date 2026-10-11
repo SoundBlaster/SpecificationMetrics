@@ -19,7 +19,7 @@ class AlignmentTests(unittest.TestCase):
     def test_changed_context_or_duplicate_request_is_rejected(self):
         with tempfile.TemporaryDirectory() as folder:
             run=Path(folder)
-            for name in ["manifest.json","plan.json","rubric.json","reference-packet.json","reference-mapping.json"]:
+            for name in ["manifest.json","plan.json","rubric.json","reference-packet.json","reference-mapping.json","annotations.json"]:
                 shutil.copyfile(RUN/name,run/name)
             original=json.loads((run/"plan.json").read_text())
             for mode in ["context","duplicate"]:
@@ -41,13 +41,40 @@ class AlignmentTests(unittest.TestCase):
 
     def test_recorded_report_reproduces_without_inference(self):
         report=score(RUN)
-        self.assertEqual(report,json.loads((RUN/"summary.json").read_text()))
+        historical=json.loads((RUN/"summary.json").read_text())
+        # The validator changed; preserve the original receipt and compare
+        # measurements separately from the current implementation identity.
+        self.assertEqual({k:v for k,v in report.items() if k!="analysis_implementation_digests"},
+                         {k:v for k,v in historical.items() if k!="analysis_implementation_digests"})
+        self.assertEqual(report["analysis_implementation_digests"]["rubric_alignment.py"],
+                         digest((RUN.parent.parent/"rubric_alignment.py").read_bytes()))
         self.assertTrue(report["completed"])
         self.assertFalse(report["alignment_hypothesis_supported"])
         for repeat in ["1","2"]:
             self.assertEqual(report["summaries"][repeat]["baseline"]["opportunity"]["agreement_count"],4)
             self.assertEqual(report["summaries"][repeat]["aligned"]["opportunity"]["agreement_count"],5)
             self.assertEqual(set(report["controls"][repeat]["aligned"]["owned_false_positive_ids"]),{"sg-018","sg-020"})
+
+    def test_selected_run_artifacts_are_validated_instead_of_canonical_files(self):
+        with tempfile.TemporaryDirectory() as folder:
+            run=Path(folder)/"alternate-run"
+            shutil.copytree(RUN,run)
+            self.assertEqual(score(run),score(RUN))
+            for name in ["annotations.json","plan.json","rubric.json","reference-packet.json","reference-mapping.json"]:
+                with self.subTest(name=name):
+                    original=(run/name).read_bytes()
+                    if name=="annotations.json":
+                        value=json.loads(original)
+                        value["annotations"][0]["opportunity"]="needs_review"
+                        (run/name).write_text(json.dumps(value))
+                    else:
+                        # Even a semantically equivalent serialization changes
+                        # frozen bytes and must be rejected in the selected run.
+                        (run/name).write_bytes(original+b"\n")
+                    with self.assertRaisesRegex(ValueError,"Frozen input digest mismatch"):
+                        score(run)
+                    (run/name).write_bytes(original)
+            self.assertEqual(score(run),score(RUN))
 
     def test_false_completion_and_wrong_wire_receipts_are_rejected(self):
         with tempfile.TemporaryDirectory() as folder:
