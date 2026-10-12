@@ -1,0 +1,1135 @@
+{
+  "planned_requests": 32,
+  "received_rows": 32,
+  "missing_result_request_ids": [],
+  "attempted_without_result_request_ids": [],
+  "unattempted_request_ids": [],
+  "attempt_status_unknown_request_ids": [],
+  "attempt_ledger_complete": true,
+  "native_valid": 32,
+  "native_invalid": 0,
+  "rows": [
+    {
+      "request_id": "r1-expression-01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-01",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.88,
+              "excluded": 0.07,
+              "needs_review": 0.05
+            },
+            "confidence": 0.82
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.99
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-01",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.53,
+              "excluded": 0.39,
+              "needs_review": 0.08
+            },
+            "confidence": 0.3
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.5,
+              "policy": 0.48,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.33
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-02-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-02",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.99,
+              "excluded": 0.0,
+              "needs_review": 0.01
+            },
+            "confidence": 0.99
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.9,
+              "unknown": 0.05,
+              "variant_behavior": 0.04
+            },
+            "confidence": 0.87
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-02-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-02",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.75,
+              "excluded": 0.2,
+              "needs_review": 0.05
+            },
+            "confidence": 0.62
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.73,
+              "unknown": 0.0,
+              "variant_behavior": 0.26
+            },
+            "confidence": 0.64
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-03",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.19,
+              "excluded": 0.78,
+              "needs_review": 0.03
+            },
+            "confidence": 0.67
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.76,
+              "policy": 0.23,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.68
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-03",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.36,
+              "excluded": 0.61,
+              "needs_review": 0.03
+            },
+            "confidence": 0.42
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.49,
+              "policy": 0.37,
+              "unknown": 0.14,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.32
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-04-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-04",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.94,
+              "excluded": 0.02,
+              "needs_review": 0.04
+            },
+            "confidence": 0.91
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.04,
+              "policy": 0.93,
+              "unknown": 0.03,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.91
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-04-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-04",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.82,
+              "excluded": 0.06,
+              "needs_review": 0.12
+            },
+            "confidence": 0.73
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.17,
+              "policy": 0.69,
+              "unknown": 0.01,
+              "variant_behavior": 0.13
+            },
+            "confidence": 0.59
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-05-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-05",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.0,
+              "excluded": 0.99,
+              "needs_review": 0.01
+            },
+            "confidence": 0.98
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.96,
+              "policy": 0.0,
+              "unknown": 0.0,
+              "variant_behavior": 0.04
+            },
+            "confidence": 0.95
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-05-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-05",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.98,
+              "needs_review": 0.01
+            },
+            "confidence": 0.97
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.86,
+              "policy": 0.07,
+              "unknown": 0.07,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.81
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-06-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-06",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.06,
+              "excluded": 0.89,
+              "needs_review": 0.05
+            },
+            "confidence": 0.83
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.8,
+              "policy": 0.18,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.73
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-06-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-06",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.0,
+              "excluded": 0.99,
+              "needs_review": 0.01
+            },
+            "confidence": 0.98
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.96,
+              "policy": 0.0,
+              "unknown": 0.01,
+              "variant_behavior": 0.03
+            },
+            "confidence": 0.95
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-07-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-07",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.8,
+              "excluded": 0.12,
+              "needs_review": 0.08
+            },
+            "confidence": 0.7
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.99
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-07-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-07",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.63,
+              "excluded": 0.3,
+              "needs_review": 0.07
+            },
+            "confidence": 0.45
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.08,
+              "policy": 0.91,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.88
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-08-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-08",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.94,
+              "needs_review": 0.05
+            },
+            "confidence": 0.91
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.68,
+              "policy": 0.26,
+              "unknown": 0.06,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.57
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r1-expression-08-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-08",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.96,
+              "needs_review": 0.03
+            },
+            "confidence": 0.94
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.98,
+              "policy": 0.01,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-01",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.53,
+              "excluded": 0.39,
+              "needs_review": 0.08
+            },
+            "confidence": 0.3
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.5,
+              "policy": 0.48,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.33
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-01",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.87,
+              "excluded": 0.08,
+              "needs_review": 0.05
+            },
+            "confidence": 0.8
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.99
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-02-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-02",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.76,
+              "excluded": 0.17,
+              "needs_review": 0.07
+            },
+            "confidence": 0.64
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.73,
+              "unknown": 0.0,
+              "variant_behavior": 0.26
+            },
+            "confidence": 0.64
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-02-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-02",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.99,
+              "excluded": 0.0,
+              "needs_review": 0.01
+            },
+            "confidence": 0.99
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.9,
+              "unknown": 0.05,
+              "variant_behavior": 0.04
+            },
+            "confidence": 0.87
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-03",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.36,
+              "excluded": 0.61,
+              "needs_review": 0.03
+            },
+            "confidence": 0.42
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.49,
+              "policy": 0.37,
+              "unknown": 0.14,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.32
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-03",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.19,
+              "excluded": 0.78,
+              "needs_review": 0.03
+            },
+            "confidence": 0.67
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.6900000000000001,
+              "policy": 0.3,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.59
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-04-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-04",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.83,
+              "excluded": 0.06,
+              "needs_review": 0.11
+            },
+            "confidence": 0.74
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.17,
+              "policy": 0.7,
+              "unknown": 0.01,
+              "variant_behavior": 0.12
+            },
+            "confidence": 0.6
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-04-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-04",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.94,
+              "excluded": 0.02,
+              "needs_review": 0.04
+            },
+            "confidence": 0.91
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.04,
+              "policy": 0.93,
+              "unknown": 0.03,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.91
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-05-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-05",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.98,
+              "needs_review": 0.01
+            },
+            "confidence": 0.97
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.86,
+              "policy": 0.07,
+              "unknown": 0.07,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.81
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-05-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-05",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.0,
+              "excluded": 0.99,
+              "needs_review": 0.01
+            },
+            "confidence": 0.98
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.92,
+              "policy": 0.0,
+              "unknown": 0.01,
+              "variant_behavior": 0.07
+            },
+            "confidence": 0.89
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-06-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-06",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.0,
+              "excluded": 0.98,
+              "needs_review": 0.02
+            },
+            "confidence": 0.97
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.96,
+              "policy": 0.0,
+              "unknown": 0.01,
+              "variant_behavior": 0.03
+            },
+            "confidence": 0.95
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-06-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-06",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.06,
+              "excluded": 0.89,
+              "needs_review": 0.05
+            },
+            "confidence": 0.83
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.8,
+              "policy": 0.18,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.73
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-07-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-07",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.63,
+              "excluded": 0.3,
+              "needs_review": 0.07
+            },
+            "confidence": 0.45
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.08,
+              "policy": 0.91,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.88
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-07-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-07",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.8,
+              "excluded": 0.12,
+              "needs_review": 0.08
+            },
+            "confidence": 0.7
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.99,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.99
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-08-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "expression-08",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.97,
+              "needs_review": 0.02
+            },
+            "confidence": 0.95
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.98,
+              "policy": 0.01,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    },
+    {
+      "request_id": "r2-expression-08-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "expression-08",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.94,
+              "needs_review": 0.05
+            },
+            "confidence": 0.91
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.68,
+              "policy": 0.26,
+              "unknown": 0.06,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.57
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      }
+    }
+  ],
+  "semantic_status": "unscored",
+  "metric_effect": "none"
+}

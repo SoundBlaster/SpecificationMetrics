@@ -233,3 +233,9 @@ native CoreInfra operation/schema and typed decoders still require verification.
 provides identical state/rubric inputs for Jev and Luna, with strict native Choice
 decoding. Preparation and validation are offline; explicit live execution is a
 separate bounded step. No classifier quality score or S/U change is implied.
+
+The [first live matched comparison](runs/2026-10-12-matched-expression-wires/README.md)
+completed 32/32 native-valid responses in 61.52 seconds. Both providers achieved
+5/8 opportunity agreement and 2/3 eligible recall per repeat, failing the frozen
+criterion. This is model-reference development evidence; raw results are preserved
+and no S/U writes or production changes were made.

@@ -38,6 +38,10 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I24 | PR review found that a missing result row was called an unattempted request even after a possible POST. [Result inspection](runs/2026-10-12-matched-expression-wires/README.md) now uses the manifest-bound complete receipt and attempt ledger to distinguish missing results, started-without-result, proven unattempted and unknown status. | Output absence is not execution absence. Preserve ambiguity after interruptions; never use missing output alone to authorize a retry or assert no inference/billing occurred. No live comparison had started when the manifest was re-frozen. |
 
+| I25 | [Matched expression live comparison](runs/2026-10-12-matched-expression-wires/README.md): 32/32 native-valid responses, no retries, 61.52 seconds. Both providers score opportunity 5/8 and recall 2/3 in each repeat; Jev concern-kind 7/8, Luna 6/8. Both wrongly propose the two existing compositions and exclude expression-03; labels repeat unchanged. | Native acceptance and repeat stability do not imply correctness. The preregistered strong reliability claim fails for both on this model-reference development set. Keep formal construction routing separate, inspect the shared false exclusion, and preserve raw outcomes rather than iterating prompts until the set passes. |
+
+| I26 | [Post-results diagnosis and exact-expression construction replay](runs/2026-10-12-matched-expression-wires/expression-03-diagnosis.md): expression-03 suppresses repair-placeholder generation when nonempty references resolve in the current node. This supports a narrow policy interpretation under the supplied profile, not semantic requirement coverage. Static whole-construction routing fixes expression-02/04, moving both providers' recorded opportunity agreement 5/8 to 7/8 and existing-composition false positives 2/2 to 0/2; recall stays 2/3 and strong criteria still fail. No new inference. | Prove construction formally and judge semantic fit separately. A predicate's decision/effect matters alongside its syntax; empty `refs and all(...)` returns `[]`, so preserve truthiness explicitly in a future Boolean refactor. This nonblind interpretation is not independent gold or canonical intent. Models returned no rationale; syntax bias, missing domain context and rubric ambiguity remain untested hypotheses. Preserve raw results and use frozen contrastive probes before more prompt tuning. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -54,7 +58,14 @@ target unit for Rust discovery and semantic evaluation, with resolved import
 identity and evidence provenance. The [explicit exporter](runs/2026-10-10-decision-targets/README.md)
 now binds expressions and legacy anchors. The [prepared expression packet](runs/2026-10-12-expression-reference/README.md)
 adds bounded helper/data dependencies and a fresh target-specific model reference;
-Luna's native mixed smoke now passes; strict two-axis validators and matched wires are now frozen; execute the bounded matched-provider study once before scoring. New-family,
+Luna's native mixed smoke passes; strict two-axis validators and matched wires
+are frozen. The bounded study has completed and both raw providers fail the
+preregistered semantic criterion. Exact-expression construction replay raises
+opportunity agreement to 7/8 for both without improving recall. The post-results
+expression-03 review supports a narrow repair policy under the profile, while
+canonical intent and the cause of model disagreement remain unproved. Review
+that interpretation, then prepare contrastive domain/mechanics probes with
+fixed source contexts and a separately frozen reference. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.
