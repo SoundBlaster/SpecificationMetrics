@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "status": "independent_model_reference_reviewed_native_wires_pending",
+  "authority": "model_reference_for_authored_development_scenarios_not_human_gold",
+  "reviewer_mode": "nonblind_integrator_review_after_independent_annotation",
+  "reference_sha256": "ce000ea0f79a88d299cadb34fa40c7ace0e9752845c358899130c77b8fdbecf1",
+  "packet_file_sha256": "ce3ab715371a00659b694a13082530c4393879f87f51d32393d724fd956feaa7",
+  "template_sha256": "fe09533a7e3ac7b70c96db4f71d4a1a0d42a6b66707bb6710489192801082bb8",
+  "proposals_sha256": "28c801c11139166a17982490cfb35c0fc314425beabcad61deee9aa981f8c326",
+  "mapping_sha256": "e32fdc4a7c96242831890945b46911197c2fbbbbb5bb3933a6fdcb872faa510a",
+  "validator_sha256": "9688a05f798459dea6221c3c0f5f0c9ff29af4970053175e87dcb415b0cfe996",
+  "comparison": {
+    "validation": {
+      "annotated_cases": 12,
+      "packet_sha256": "92fe2ffdb822fae345cf8c9a56d9c84466fa99e15a145421491e2a12c8c4168e",
+      "authority": "independent_model_annotation_not_human_gold",
+      "structural_evidence_validation": "passed",
+      "semantic_correctness_verified": false,
+      "isolation_validation": "self_report_and_assignment_scope_not_filesystem_enforcement"
+    },
+    "proposal_agreement": {
+      "opportunity": {
+        "matched": 12,
+        "total": 12
+      },
+      "concern_kind": {
+        "matched": 12,
+        "total": 12
+      }
+    },
+    "disagreements": [],
+    "uncertainties": [
+      {
+        "case_id": "case-01",
+        "original_uncertainties": [
+          "The supplied rule covers reference resolution for this repair pass only; it does not establish criterion quality or complete coverage."
+        ]
+      },
+      {
+        "case_id": "case-02",
+        "original_uncertainties": [
+          "Input semantics, downstream effects, and whether this same decision is already owned by a Specification are not supplied."
+        ]
+      },
+      {
+        "case_id": "case-03",
+        "original_uncertainties": [
+          "The collection meanings, predicate consumer, product significance, and Specification ownership are unknown."
+        ]
+      },
+      {
+        "case_id": "case-05",
+        "original_uncertainties": [
+          "Passing this particular gate does not establish overall promotion readiness; other gates can still require review."
+        ]
+      },
+      {
+        "case_id": "case-06",
+        "original_uncertainties": [
+          "The selected values, downstream effect, product significance, and Specification ownership are not established."
+        ]
+      },
+      {
+        "case_id": "case-09",
+        "original_uncertainties": [
+          "The meanings of ready and mode, resulting behavior, and Specification ownership are expressly unavailable."
+        ]
+      },
+      {
+        "case_id": "case-11",
+        "original_uncertainties": [
+          "This predicate supplies only the described publish/hold gate; it does not itself publish, verify a signature, or establish any omitted checks."
+        ]
+      }
+    ],
+    "label_overrides": [],
+    "jev_luna_requests": 0,
+    "interpretation": "Agreement with author hypotheses is not provider accuracy, human gold or automatic semantic approval."
+  },
+  "review_disposition": "Accept unchanged model labels for this diagnostic under the supplied profile; no preparation revision required by these annotations.",
+  "uncertainty_review": [
+    {
+      "case_id": "case-01",
+      "assessment": "Accept narrow repair-reference resolution policy; no criterion-quality or complete-coverage inference."
+    },
+    {
+      "case_id": "case-02",
+      "assessment": "Retain needs_review/unknown: input meanings/effects/ownership withheld."
+    },
+    {
+      "case_id": "case-03",
+      "assessment": "Retain needs_review/unknown: collection meanings/consumer/ownership withheld."
+    },
+    {
+      "case_id": "case-05",
+      "assessment": "Accept this promotion blocker policy; passing it is not overall readiness."
+    },
+    {
+      "case_id": "case-06",
+      "assessment": "Retain needs_review/unknown: selected values/effects/ownership withheld."
+    },
+    {
+      "case_id": "case-09",
+      "assessment": "Retain needs_review/unknown: readiness/mode meanings/effects/ownership withheld."
+    },
+    {
+      "case_id": "case-11",
+      "assessment": "Accept allocation publication gate under stipulated validated facts; not signature verification or end-to-end authorization assurance."
+    }
+  ],
+  "label_overrides": [],
+  "jev_luna_requests": 0,
+  "metric_effect": "none",
+  "next_stage": "freeze_separate_native_manifest_not_live_execution",
+  "original_preparation_snapshot_preserved": true,
+  "isolation_provenance": {
+    "agent_task": "/root/fresh_scenario_annotation",
+    "fork_turns": "none",
+    "model_override_requested": false,
+    "allowed_inputs": [
+      "case-packet.json",
+      "annotation-template.json"
+    ],
+    "copied_input_bytes_match_repository_packet_and_template": true,
+    "author_proposals_mappings_previous_labels_and_provider_results_disclosed": false,
+    "requested_output_scope": "temporary annotations.json only; integration owned by main agent",
+    "restrictions": "No repository/memory/web searches, credentials, provider calls, branch/PR mutations or further delegation.",
+    "actual_access_evidence": "Agent self-report states only two allowed input files read; no filesystem sandbox or statistical model-independence proof."
+  },
+  "limits": [
+    "One model annotation, shared explicit architecture profile/rubric, nonblind integrator review; not human gold or provider accuracy.",
+    "Authored contracts make outcomes explicit; this does not establish recovery of intent from raw historical code.",
+    "Withheld controls announce missing context; real implicit gaps may be harder.",
+    "Four development pairs and two planned provider repeats are not population evidence or calibrated confidence.",
+    "No native wire manifest yet; original plan/template/preparation receipt retain historical pending status."
+  ]
+}

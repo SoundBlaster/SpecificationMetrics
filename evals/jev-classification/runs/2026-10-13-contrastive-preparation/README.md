@@ -2,8 +2,15 @@
 
 ## Status and question
 
-**Prepared offline. Fresh independent annotation and executable native wires are
-pending. No provider requests or semantic scores.**
+**Independent model annotation and integrator review completed; executable native
+wires remain pending. No Jev/Luna requests or provider semantic scores.**
+
+The fresh subagent's labels agree with author hypotheses on 12/12 cases on each
+axis. [Reference review](reference-review.md) preserves all uncertainties and
+records the limited isolation scope. Agreement is not provider accuracy or human
+gold. The original plan, blank template and preparation receipt are historical
+pre-annotation snapshots; current reference readiness is recorded in
+[reference-review.json](reference-review.json).
 
 The preceding [matched study](../2026-10-12-matched-expression-wires/README.md)
 left a common disagreement: a membership/all expression was excluded as
@@ -20,8 +27,9 @@ not canonical approval of the new scenario or its proposed label.
 ## The four pairs
 
 Each row has two full-context members with **identical expression bytes**.
-`mechanics / excluded` and `policy / eligible` below are author hypotheses;
-independent reviewers may disagree. No labels are transferred from earlier runs.
+`mechanics / excluded` and `policy / eligible` below were the author hypotheses;
+the fresh independent annotation retains them. No labels were transferred from
+earlier runs.
 
 | Pair | Shared target | Proposed mechanical role | Proposed domain role |
 |---|---|---|---|
@@ -107,15 +115,17 @@ hides opposite-role errors or rewards abstention as full-context success.
 
 ## Reference and execution sequence
 
-1. Give only [case-packet.json](case-packet.json) and the blank
+1. **Completed:** gave only [case-packet.json](case-packet.json) and the blank
    [annotation template](annotation-template.json) to a fresh independent
    annotator, without previous labels, author proposals, mappings or provider
-   results. Ask for both axes, exact evidence quotes and uncertainty. Isolation
-   cannot prevent noticing repeated expression shapes; record its actual scope.
-2. Review disagreements before provider inference. If a full pair does not
-   support opposed roles, or a withheld state supports a definite classification,
-   revise the preparation/version and repeat independent review. Do not force
-   the intended labels or quietly drop inconvenient cases.
+   results. The assignment required both axes, exact evidence quotes and
+   uncertainty. The review records isolation scope and the possibility of
+   noticing repeated expression shapes.
+2. **Completed:** reviewed annotations before provider inference; no label
+   disagreements or overrides, with seven uncertainty notes preserved. No corpus
+   revision was required. For future revisions, a full pair without opposed roles
+   or an answerable withheld control requires a new preparation/version and
+   independent review. Do not force labels or quietly drop inconvenient cases.
 3. Freeze the reviewed reference and executable native request manifest, with
    exact state/question/decoder/producer/reference hashes. The existing
    [logical schedule](logical-schedule.json) is **not executable native wires**.
@@ -127,9 +137,11 @@ hides opposite-role errors or rewards abstention as full-context success.
    outputs. No production exclusions, registry dispositions or S/U updates.
 
 [author-proposals.json](author-proposals.json) is nonblind and deliberately
-separate. [preparation-receipt.json](preparation-receipt.json) records artifact,
-input and producer hashes, byte inventories and pending reference status. It
-proves neither annotation completion nor provider quality.
+separate. [preparation-receipt.json](preparation-receipt.json) records the original
+artifact/input/producer hashes, byte inventories and pre-annotation pending
+status. [independent-annotations.json](independent-annotations.json) preserves the
+raw annotation; the separate review records its current acceptance and limits.
+Neither artifact establishes provider quality.
 
 ## Offline verification
 
@@ -139,6 +151,8 @@ From `evals/jev-classification`:
 python3 prepare_contrastive_pairs.py
 python3 prepare_contrastive_pairs.py --source-repo /path/to/SpecGraph
 python3 -m unittest -v test_prepare_contrastive_pairs.py
+python3 validate_contrastive_reference.py
+python3 -m unittest -v test_validate_contrastive_reference.py
 ```
 
 Default mode rebuilds in memory and checks saved artifacts; the optional Git
@@ -162,5 +176,5 @@ here; it does not collapse those orthogonal axes in the general classifier.
 Already-composed controls remain evidence from the previous study. Future
 confirmation needs new natural-code families and human adjudication.
 
-**Next step:** independently annotate and review this packet before generating
-native wires or spending any provider budget.
+**Next step:** freeze a separate native-wire manifest bound to the reviewed model
+reference before any separately requested provider execution.
