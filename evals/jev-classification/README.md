@@ -226,3 +226,10 @@ protocol. The reference agrees with author proposals on both axes for all eight
 cases; this is annotator agreement, not provider accuracy or human gold.
 No historical labels were transferred and no Jev/Luna calls were made. Luna's
 native CoreInfra operation/schema and typed decoders still require verification.
+
+### Matched expression provider comparison
+
+[The frozen wire plan](runs/2026-10-12-matched-expression-wires/README.md) now
+provides identical state/rubric inputs for Jev and Luna, with strict native Choice
+decoding. Preparation and validation are offline; explicit live execution is a
+separate bounded step. No classifier quality score or S/U change is implied.

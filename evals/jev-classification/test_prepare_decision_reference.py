@@ -83,11 +83,11 @@ class ReferencePreparationTests(unittest.TestCase):
             self.assertEqual(annotation["state_sha256"], states[annotation["case_id"]])
             self.assertEqual(annotation["status"], "proposed")
 
-    def test_comparison_has_reference_and_smoke_but_still_requires_frozen_wires(self):
+    def test_comparison_has_reference_smoke_and_separate_frozen_manifest(self):
         packet = json.loads((RUN / "reference-packet.json").read_text())
         plan = json.loads((RUN / "comparison-plan.json").read_text())
         self.assertEqual(plan["packet_sha256"], digest(canonical(packet)))
-        self.assertEqual(plan["status"], "prepared_not_executable")
+        self.assertEqual(plan["status"], "native_wires_frozen_separate_manifest")
         self.assertEqual(plan["reference_status"], "independent_model_reference_reviewed_not_human_gold")
         self.assertEqual(plan["reference_sha256"], digest((RUN / plan["reference_artifact"]).read_bytes()))
         self.assertEqual(plan["reference_review_sha256"], digest((RUN / plan["reference_review_artifact"]).read_bytes()))

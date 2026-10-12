@@ -143,3 +143,9 @@ The [separate CoreInfra Luna smoke](../2026-10-12-coreinfra-luna-contract-smoke/
 now verifies the native operation/model on one mixed request. Original packet and
 annotation provenance above remain unchanged. The matched comparison itself has
 sent zero requests; general typed decoders and frozen wires are still pending.
+
+## Frozen matched-provider wires
+
+The [separate executable manifest](../2026-10-12-matched-expression-wires/README.md)
+now binds all 32 exact native requests and strict two-axis response decoding.
+Preparation is offline; comparison inference and semantic scoring have not run.

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "study_kind": "matched_expression_provider_comparison",
-  "status": "prepared_not_executable",
+  "status": "native_wires_frozen_separate_manifest",
   "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
   "reference_status": "independent_model_reference_reviewed_not_human_gold",
   "providers": [
@@ -58,5 +58,7 @@
   "reference_sha256": "09933534ec1c9f0dd3e9c03799ba7eb55d13f62510416d6dfc121d66d8af7e1b",
   "reference_review_artifact": "reference-review.json",
   "reference_review_sha256": "4a43034e5d1b1ae7ecac85489e39ede19edd50ef1a2d109a8ba6be28b7df1365",
-  "contract_smoke_logical_requests": 1
+  "contract_smoke_logical_requests": 1,
+  "executable_manifest": "../2026-10-12-matched-expression-wires/manifest.json",
+  "native_decoder": "../../decision_choice_contract.py"
 }

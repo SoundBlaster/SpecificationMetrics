@@ -34,6 +34,8 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I22 | [CoreInfra Luna native smoke](runs/2026-10-12-coreinfra-luna-contract-smoke/README.md): one mixed Predicate/Choice/Score POST completed in 3.02 seconds without retries; returned `gpt-6-luna` and validated native fields/distributions. | CoreInfra accepts the native Decisions route on this credential and sample. Keep this operational evidence separate from classifier accuracy and gateway upstream identity. The comparison still needs a general strict decoder and frozen matched wires; one smoke does not measure TLS reliability. |
 
+| I23 | [Matched native wires](runs/2026-10-12-matched-expression-wires/README.md) now freeze 32 requests with identical canonical state text and rubric across APIs, counterbalanced order, native Choice decoding and a 96-attempt ceiling. Offline checks preserve missing and invalid results. | API compatibility and matched inputs are prerequisites, not semantic improvement. Native confidence scales remain separate; do not relabel protocol failures as abstentions or transfer historical accuracy into this new serialization regime. No new inference performed. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -50,7 +52,7 @@ target unit for Rust discovery and semantic evaluation, with resolved import
 identity and evidence provenance. The [explicit exporter](runs/2026-10-10-decision-targets/README.md)
 now binds expressions and legacy anchors. The [prepared expression packet](runs/2026-10-12-expression-reference/README.md)
 adds bounded helper/data dependencies and a fresh target-specific model reference;
-Luna's native mixed smoke now passes; implement general typed validators and freeze matched wires before the matched-provider study. New-family,
+Luna's native mixed smoke now passes; strict two-axis validators and matched wires are now frozen; execute the bounded matched-provider study once before scoring. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.
