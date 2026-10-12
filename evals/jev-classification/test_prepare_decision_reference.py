@@ -83,7 +83,7 @@ class ReferencePreparationTests(unittest.TestCase):
             self.assertEqual(annotation["state_sha256"], states[annotation["case_id"]])
             self.assertEqual(annotation["status"], "proposed")
 
-    def test_comparison_has_reference_but_still_requires_native_luna_schema(self):
+    def test_comparison_has_reference_and_smoke_but_still_requires_frozen_wires(self):
         packet = json.loads((RUN / "reference-packet.json").read_text())
         plan = json.loads((RUN / "comparison-plan.json").read_text())
         self.assertEqual(plan["packet_sha256"], digest(canonical(packet)))
@@ -91,8 +91,9 @@ class ReferencePreparationTests(unittest.TestCase):
         self.assertEqual(plan["reference_status"], "independent_model_reference_reviewed_not_human_gold")
         self.assertEqual(plan["reference_sha256"], digest((RUN / plan["reference_artifact"]).read_bytes()))
         self.assertEqual(plan["reference_review_sha256"], digest((RUN / plan["reference_review_artifact"]).read_bytes()))
-        self.assertIsNone(plan["providers"][1]["endpoint"])
-        self.assertIsNone(plan["providers"][1]["requested_model"])
+        self.assertEqual(plan["providers"][1]["endpoint"], "https://hub.coreinfra.ai/openai/api/v1/decisions")
+        self.assertEqual(plan["providers"][1]["requested_model"], "gpt-6-luna")
+        self.assertEqual(plan["contract_smoke_logical_requests"], 1)
         self.assertEqual(plan["planned_logical_requests"], len(packet["cases"]) * len(plan["providers"]) * plan["repeats"])
         self.assertEqual(plan["max_network_attempts"], plan["planned_logical_requests"] * plan["max_attempts_per_request"])
         self.assertEqual(plan["new_inference_requests"], 0)

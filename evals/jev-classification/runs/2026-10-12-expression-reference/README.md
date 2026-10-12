@@ -136,3 +136,10 @@ python3 -m unittest -v test_validate_expression_reference.py
 saved artifacts. CI performs offline artifact/budget/template checks without
 requiring a SpecGraph clone. Creating a new preparation directory uses the same
 command without `--check` and exclusive output creation.
+
+## Subsequent transport prerequisite verification
+
+The [separate CoreInfra Luna smoke](../2026-10-12-coreinfra-luna-contract-smoke/README.md)
+now verifies the native operation/model on one mixed request. Original packet and
+annotation provenance above remain unchanged. The matched comparison itself has
+sent zero requests; general typed decoders and frozen wires are still pending.

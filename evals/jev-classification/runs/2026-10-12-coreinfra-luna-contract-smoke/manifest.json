@@ -1,0 +1,27 @@
+{
+  "protocol": "specmetrics.coreinfra-tls-retry/v1",
+  "semantic_status": "unscored",
+  "producer_digests": {
+    "coreinfra_transport.py": "cd91b127e5c413da153fea6dabdf7e89d7c6f1ff25b59a97de535cef6684bbcf",
+    "coreinfra_retry_run.py": "9784804e6a0b0cfe44eff99619ceeb952349e80bb52911bc6b0e956de4f474e3",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "retry_policy": {
+    "max_attempts": 3,
+    "backoff_seconds": [
+      1.0,
+      2.0
+    ],
+    "timeout_seconds": 30.0,
+    "max_response_bytes": 1048576
+  },
+  "max_network_attempts": 3,
+  "requests": [
+    {
+      "request_id": "native-luna-mixed-smoke",
+      "endpoint": "https://hub.coreinfra.ai/openai/api/v1/decisions",
+      "wire_json": "{\"model\":\"gpt-6-luna\",\"input\":\"The deployment is blocked because approval is missing.\",\"questions\":[{\"type\":\"predicate\",\"name\":\"blocked\",\"instructions\":\"Is the deployment blocked?\"},{\"type\":\"choice\",\"name\":\"state\",\"instructions\":\"Choose the deployment state.\",\"choices\":[{\"value\":\"blocked\",\"description\":\"Deployment is blocked.\"},{\"value\":\"ready\",\"description\":\"Deployment is ready.\"}]},{\"type\":\"score\",\"name\":\"severity\",\"instructions\":\"Rate the deployment restriction.\",\"levels\":[{\"label\":\"none\",\"description\":\"Deployment can proceed.\"},{\"label\":\"blocked\",\"description\":\"Deployment cannot proceed.\"}]}]}",
+      "wire_sha256": "a31e49216c3174e2dcebefe33902893a8a49457fe39a395c232cafc4de0f1024"
+    }
+  ]
+}

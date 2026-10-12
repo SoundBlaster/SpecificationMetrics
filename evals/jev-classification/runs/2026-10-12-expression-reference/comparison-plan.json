@@ -13,9 +13,10 @@
     },
     {
       "id": "luna-decision-coreinfra",
-      "endpoint": null,
-      "requested_model": null,
-      "native_contract_status": "availability_user_reported_operation_and_schema_unverified"
+      "endpoint": "https://hub.coreinfra.ai/openai/api/v1/decisions",
+      "requested_model": "gpt-6-luna",
+      "native_contract_status": "mixed_smoke_verified_predicate_choice_score_general_decoder_pending",
+      "contract_evidence": "../2026-10-12-coreinfra-luna-contract-smoke/README.md"
     }
   ],
   "planned_cases": 8,
@@ -56,5 +57,6 @@
   "reference_artifact": "independent-annotations.json",
   "reference_sha256": "09933534ec1c9f0dd3e9c03799ba7eb55d13f62510416d6dfc121d66d8af7e1b",
   "reference_review_artifact": "reference-review.json",
-  "reference_review_sha256": "4a43034e5d1b1ae7ecac85489e39ede19edd50ef1a2d109a8ba6be28b7df1365"
+  "reference_review_sha256": "4a43034e5d1b1ae7ecac85489e39ede19edd50ef1a2d109a8ba6be28b7df1365",
+  "contract_smoke_logical_requests": 1
 }

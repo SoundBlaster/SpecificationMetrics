@@ -32,6 +32,8 @@ registry exclusions or changes to Specification counts (S/U).
 | I20 | [Expression reference preparation](runs/2026-10-12-expression-reference/README.md): all eight exact targets now have explicit source-bound helper/data/use fragments. Canonical states are 2,539–5,368 bytes, without truncation; source regeneration matches saved artifacts. | The shared task is ready for independent annotation, not scored evaluation. Context-author proposals are non-blind and kept separate. The draft comparison cannot isolate context causality, transfer old labels, guess Luna's native API or claim semantic improvement before new evidence. |
 | I21 | A fresh no-history subagent [annotated the expression packet](runs/2026-10-12-expression-reference/README.md): three eligible policies, two already-composed policy controls and three excluded mechanics. Exact quotes/digests validate; both axes agree with author proposals on 8/8 cases. Runtime/trace uncertainty for the controls is retained without label overrides. | A target-specific model reference is now available for this shared task. Annotation agreement is not provider accuracy, human gold or population evidence. Isolation is prompt-scoped and self-reported; typed provider validation and a frozen native wire plan are still required before Jev/Luna comparison. |
 
+| I22 | [CoreInfra Luna native smoke](runs/2026-10-12-coreinfra-luna-contract-smoke/README.md): one mixed Predicate/Choice/Score POST completed in 3.02 seconds without retries; returned `gpt-6-luna` and validated native fields/distributions. | CoreInfra accepts the native Decisions route on this credential and sample. Keep this operational evidence separate from classifier accuracy and gateway upstream identity. The comparison still needs a general strict decoder and frozen matched wires; one smoke does not measure TLS reliability. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -48,7 +50,7 @@ target unit for Rust discovery and semantic evaluation, with resolved import
 identity and evidence provenance. The [explicit exporter](runs/2026-10-10-decision-targets/README.md)
 now binds expressions and legacy anchors. The [prepared expression packet](runs/2026-10-12-expression-reference/README.md)
 adds bounded helper/data dependencies and a fresh target-specific model reference;
-verify Luna's native API and typed validators before the matched-provider study. New-family,
+Luna's native mixed smoke now passes; implement general typed validators and freeze matched wires before the matched-provider study. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.
