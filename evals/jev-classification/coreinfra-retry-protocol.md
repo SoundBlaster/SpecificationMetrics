@@ -15,8 +15,11 @@ not translate Jev requests into Luna requests or assume that their APIs match.
 - At most three connection attempts per logical request, including the first.
   A fresh verified HTTPS connection is used each time.
 - Backoff is one second, then two seconds. A one-attempt policy is also allowed.
-- Repeat only TLS EOF/closed-session errors and explicitly recognized transient
-  internal TLS alerts. Other SSL errors, certificate validation failures, timeout,
+- Repeat only TLS EOF/closed-session errors, explicitly recognized transient
+  internal TLS alerts, and premature HTTP body termination (`IncompleteRead`
+  or unsatisfied Content-Length/chunked framing). A valid JSON prefix cannot
+  establish body completeness. Known non-200 HTTP responses are never retried,
+  even if their body terminates prematurely. Other SSL errors, certificate validation failures, timeout,
   reset/disconnect, HTTP errors (including 429/5xx), redirects and decoder errors
   stop the run. Certificate verification is never disabled.
 - Retry sends the identical request bytes to the identical explicit operation
@@ -25,6 +28,8 @@ not translate Jev requests into Luna requests or assume that their APIs match.
   1 MiB. The socket timeout is **not** a total wall-clock deadline: DNS and a peer
   that keeps sending data can take longer. This protocol bounds attempt count,
   not total runtime or dollar cost.
+  The response byte limit must be a JSON integer, not an equal-valued float;
+  malformed policies are rejected before any connection or POST.
 - Before TLS connects, no Authorization header or inference is sent. Once
   `request()` might have begun, a failure is ambiguous: the provider may have
   executed and billed it. Retrying can duplicate execution; no exactly-once or

@@ -1,4 +1,5 @@
 import http.client
+import io
 import json
 import ssl
 import unittest
@@ -15,6 +16,7 @@ class FakeConnection:
         self.fail_at, self.error, self.status, self.body = fail_at, error, status, body
         self.requests = []
         self.closed = False
+        self.length, self.chunked = None, False
 
     def fail(self, stage):
         if self.fail_at == stage:
@@ -40,6 +42,16 @@ class FakeConnection:
 
 
 class TransportTests(unittest.TestCase):
+    def framed_connection(self, wire):
+        class Socket:
+            def makefile(self, *args):
+                return io.BytesIO(wire)
+        response = http.client.HTTPResponse(Socket())
+        response.begin()
+        conn = FakeConnection()
+        conn.getresponse = lambda: response
+        return conn
+
     def call(self, connections, **kwargs):
         self.events, self.delays, self.created = [], [], []
         def factory(timeout):
@@ -121,6 +133,43 @@ class TransportTests(unittest.TestCase):
         self.assertIsNone(result["body"])
         self.assertEqual(self.delays, [])
 
+    def test_real_http_truncation_retries_even_when_prefix_is_valid_json(self):
+        for wire in [b'HTTP/1.1 200 OK\r\nContent-Length: 10\r\n\r\n{}',
+                     b'HTTP/1.1 200 OK\r\nContent-Length: 10\r\n\r\n',
+                     b'HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n2\r\n{}\r\n',
+                     b'HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n5\r\n{}']:
+            with self.subTest(wire=wire):
+                failed = self.framed_connection(wire)
+                ok = FakeConnection()
+                result = self.call([failed, ok])
+                self.assertEqual(result["body"], b'{}')
+                self.assertEqual(result["network_attempts"], 2)
+                self.assertTrue(result["attempts"][0]["incomplete_http_body"])
+                self.assertTrue(result["duplicate_execution_possible"])
+                self.assertEqual(failed.requests, ok.requests)
+
+    def test_real_complete_framed_responses_are_not_retried(self):
+        for wire in [b'HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\n{}',
+                     b'HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n2\r\n{}\r\n0\r\n\r\n']:
+            with self.subTest(wire=wire):
+                result = self.call([self.framed_connection(wire)])
+                self.assertEqual(result["body"], b'{}')
+                self.assertEqual(result["network_attempts"], 1)
+
+    def test_truncated_body_exhaustion_never_returns_json_prefix(self):
+        wire = b'HTTP/1.1 200 OK\r\nContent-Length: 10\r\n\r\n{}'
+        result = self.call([self.framed_connection(wire) for _ in range(3)])
+        self.assertEqual(result["status"], "transport_error")
+        self.assertIsNone(result["body"])
+        self.assertEqual(self.delays, [1.0, 2.0])
+
+    def test_truncated_http_error_does_not_retry(self):
+        wire = b'HTTP/1.1 503 Unavailable\r\nContent-Length: 10\r\n\r\n{}'
+        result = self.call([self.framed_connection(wire)])
+        self.assertEqual(result["network_attempts"], 1)
+        self.assertEqual(result["attempts"][0]["http_status"], 503)
+        self.assertEqual(self.delays, [])
+
     def test_verified_tls_is_required_before_post(self):
         real = connection(30)
         self.assertEqual(real.host, "hub.coreinfra.ai")
@@ -166,7 +215,8 @@ class TransportTests(unittest.TestCase):
     def test_invalid_policy_rejected(self):
         for kwargs in [{"max_attempts": 4}, {"max_attempts": True},
                        {"backoff_seconds": (0, 0)}, {"timeout_seconds": 0},
-                       {"max_response_bytes": 0}]:
+                       {"max_response_bytes": 0}, {"max_response_bytes": 1048576.0},
+                       {"max_response_bytes": True}]:
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 RetryPolicy(**kwargs)
 

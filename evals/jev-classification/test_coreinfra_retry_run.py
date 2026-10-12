@@ -104,6 +104,15 @@ class RunnerTests(unittest.TestCase):
                     load(run)
                 self.assertFalse((run / "attempts.jsonl").exists())
 
+    def test_float_response_limit_is_rejected_before_live_artifacts_or_send(self):
+        with tempfile.TemporaryDirectory() as root, patch.dict(os.environ, {"COREINFRA_API_KEY": "test-key"}):
+            run, manifest = self.make_run(root)
+            manifest["retry_policy"]["max_response_bytes"] = 1048576.0
+            (run / "manifest.json").write_text(json.dumps(manifest))
+            with self.assertRaises(ValueError):
+                execute(run, live=True, sender=lambda *a, **k: self.fail("must not send"))
+            self.assertEqual(sorted(p.name for p in run.iterdir()), ["manifest.json"])
+
     def test_unexpected_failure_keeps_incomplete_receipt_and_blocks_rerun(self):
         with tempfile.TemporaryDirectory() as root, patch.dict(os.environ, {"COREINFRA_API_KEY": "test-key"}):
             run, _ = self.make_run(root)

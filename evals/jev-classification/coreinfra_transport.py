@@ -29,7 +29,8 @@ class RetryPolicy:
         if tuple(self.backoff_seconds) != (1.0, 2.0):
             raise ValueError("Protocol v1 fixes backoff to one and two seconds")
         object.__setattr__(self, "backoff_seconds", tuple(self.backoff_seconds))
-        if self.timeout_seconds != 30.0 or self.max_response_bytes != 1024 * 1024:
+        if (self.timeout_seconds != 30.0 or type(self.max_response_bytes) is not int
+                or self.max_response_bytes != 1024 * 1024):
             raise ValueError("Protocol v1 fixes socket timeout and response bound")
 
     def receipt(self):
@@ -61,6 +62,18 @@ def connection(timeout):
     return http.client.HTTPSConnection(HOST, timeout=timeout, context=ssl.create_default_context())
 
 
+def read_bounded(response, limit):
+    raw = response.read(limit + 1)
+    if len(raw) > limit:
+        return raw  # Size rejection takes precedence; never retry oversized data.
+    # read(amt) can silently return a short Content-Length body. For chunked
+    # bodies the standard parser must have consumed the terminating zero chunk.
+    remaining = response.length
+    if remaining not in (None, 0) or (response.chunked and response.chunk_left is not None):
+        raise http.client.IncompleteRead(b"", remaining)
+    return raw
+
+
 def post(endpoint, wire, key, *, live=False, policy=RetryPolicy(), emit,
          connection_factory=connection, sleep=time.sleep, monotonic=time.monotonic):
     """Send identical bytes at most three times, with a caller-owned durable ledger.
@@ -87,7 +100,7 @@ def post(endpoint, wire, key, *, live=False, policy=RetryPolicy(), emit,
 
     attempts, ambiguous_posts = [], 0
     for number in range(1, policy.max_attempts + 1):
-        stage, sent, retry, conn = "connect", False, False, None
+        stage, sent, retry, conn, http_status = "connect", False, False, None, None
         t = monotonic()
         record({**identity, "event": "attempt_started", "attempt": number})
         try:
@@ -103,8 +116,9 @@ def post(endpoint, wire, key, *, live=False, policy=RetryPolicy(), emit,
             })
             stage = "response"
             response = conn.getresponse()
+            http_status = response.status
             stage = "read"
-            raw = response.read(policy.max_response_bytes + 1)
+            raw = read_bounded(response, policy.max_response_bytes)
             status = "http_response" if len(raw) <= policy.max_response_bytes else "response_too_large"
             result = {"status": status, "http_status": response.status, "body": raw if status == "http_response" else None}
             attempt = {"attempt": number, "stage": stage, "status": status,
@@ -113,9 +127,12 @@ def post(endpoint, wire, key, *, live=False, policy=RetryPolicy(), emit,
         except (ssl.SSLError, OSError, http.client.HTTPException) as error:
             if sent:
                 ambiguous_posts += 1
-            retry = transient_tls(error) and number < policy.max_attempts
+            incomplete = isinstance(error, http.client.IncompleteRead)
+            retry = ((transient_tls(error) or incomplete) and http_status in (None, 200)
+                     and number < policy.max_attempts)
             attempt = {"attempt": number, "stage": stage, "status": "transport_error",
                        "error_type": type(error).__name__, "transient_tls": transient_tls(error),
+                       "incomplete_http_body": incomplete, "http_status": http_status,
                        "post_may_have_been_sent": sent, "retry_scheduled": retry}
             result = {"status": "transport_error", "http_status": None, "body": None}
         finally:
