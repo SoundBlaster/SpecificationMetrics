@@ -1,0 +1,25 @@
+{
+  "id": "specification_metrics.expression-fit.v1-diagnostic",
+  "status": "evaluation-only, not production",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Judge only the exact target expression under the supplied architecture profile. Supporting fragments explain inputs and effects; they are not additional candidates. A helper call is judged using its supplied implementation. A factory assembly is judged as the selected expression, not as each lambda separately. Do not infer omitted context. A durable product/domain rule can qualify with one use. Choose eligible when this same decision benefits from a named, addressable, observable Specification. Choose excluded for technical mechanics without a distinct product decision, or explicit evidence that a Specification already owns this SAME decision. Unrelated Specifications, imports alone and ordinary helper names do not establish ownership. Choose needs_review when material ambiguity prevents reliable judgment.",
+      "criteria": {
+        "eligible": "This exact expression expresses a durable product/domain decision suitable for a named, addressable, observable Specification; one use is sufficient.",
+        "excluded": "Technical mechanics or coordination without a distinct product decision, or the same decision is explicitly already owned by a Specification.",
+        "needs_review": "Evidence is materially ambiguous or insufficient; unknown, not an exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Independently classify the primary responsibility expressed by the exact target expression, using the supplied profile and context. Supporting declarations are evidence, not additional classification targets. Product/domain integrity and authority rules can be policy even when enforced through validation or composed as an existing Specification. A mechanical guard inside a factory assembly does not by itself determine the primary responsibility of the whole selected assembly. Use unknown for material ambiguity. Do not infer omitted dependencies.",
+      "criteria": {
+        "policy": "A durable product/domain rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+        "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement WITHOUT a distinct product decision.",
+        "variant_behavior": "Dispatch over domain variants such as enum cases, types, or platforms.",
+        "unknown": "The supplied evidence does not support a reliable concern-kind label."
+      }
+    }
+  }
+}

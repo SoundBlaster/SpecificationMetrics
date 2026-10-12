@@ -1,0 +1,640 @@
+{
+  "schema_version": 1,
+  "target_report_sha256": "12a167c811ddd0b4eb2d5c81d9d456bf62cb3c9e07f34479a7a20fda91141737",
+  "implementation_digests": {
+    "prepare_decision_reference.py": "8ed36d088aa970e77be8f5f7439f00681ce201b7cf884ed33b90d936aef02d2a",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "profile_source_sha256": "67d5915bbb34ca7d7c2642c87922ba00a1521de10b52c5e88c48956a359ec1e7",
+  "selector_sha256": "0a25e4e60744fe26828091c9d64d06d47b4e49d226d8e4a937ebcc185e45dca7",
+  "rubric_sha256": "034e76afb0fe573f9f3f6449325c65da09e24f0791688fd94b4ac2a3382d8a75",
+  "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+  "cases": [
+    {
+      "case_id": "expression-01",
+      "source_candidate_id": "sg-017",
+      "target_id": "blake3:82bf75f9492d3546d79e24b6c0e4b45dd131d611e200a10e95dc3e3bcd869b72",
+      "source": {
+        "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_gate_findings",
+        "start_line": 189,
+        "end_line": 213,
+        "file_sha256": "sha256:218f37fb3f0dc01352f284dd8979f3c5191f1d781ae055e24dae2707327363f5",
+        "excerpt_sha256": "sha256:2f45d9e93250d297eeca3481e9f35eaa2e26efacee1e6a540fbbfbdc4402be39"
+      },
+      "expression_span": {
+        "start_byte": 6468,
+        "end_byte": 6519,
+        "start_line": 189,
+        "start_column": 8,
+        "end_line": 189,
+        "end_column": 59
+      },
+      "expression_sha256": "111901b3ef2b1359d66bebe4f4a552f1a51bc0f447bdf2693037e01a80b758c5",
+      "fragments": [
+        {
+          "start_line": 189,
+          "end_line": 213,
+          "start_byte": 6461,
+          "end_byte": 7518,
+          "sha256": "2f45d9e93250d297eeca3481e9f35eaa2e26efacee1e6a540fbbfbdc4402be39",
+          "purpose": "Selected decision and immediate findings/warnings",
+          "code": "    if _pre_sib_original_blocked(pre_sib, materialization):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        findings.append(\n            _finding(\n                finding_id=\"pre_sib_not_ready_without_repair_preview\",\n                severity=\"review_required\",\n                message=(\n                    \"Original pre-SIB report is not ready and materialization did not \"\n                    \"use a repair loop preview.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n    elif not _readiness_ready(pre_sib):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        warnings.append(\n            _finding(\n                finding_id=\"pre_sib_findings_repaired_by_preview\",\n                severity=\"warning\",\n                message=(\n                    \"Original pre-SIB findings are allowed only because repair preview was used.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n"
+        },
+        {
+          "start_line": 155,
+          "end_line": 158,
+          "start_byte": 5268,
+          "end_byte": 5509,
+          "sha256": "b3127cba59d9f3983174f2bd6af05862645fff82bb0dfdca130711bcb69a6bd4",
+          "purpose": "Selected helper implementation",
+          "code": "def _pre_sib_original_blocked(pre_sib: dict[str, Any], materialization: dict[str, Any]) -> bool:\n    if _readiness_ready(pre_sib):\n        return False\n    return _text(materialization.get(\"materialization_source\")) != \"repair_loop_preview\"\n"
+        },
+        {
+          "start_line": 151,
+          "end_line": 152,
+          "start_byte": 5145,
+          "end_byte": 5266,
+          "sha256": "83bad3d3c7c2696d21aa207c96431b22b11b4d18520ba52483cec9afa3ba10c8",
+          "purpose": "Readiness input interpretation",
+          "code": "def _readiness_ready(artifact: dict[str, Any]) -> bool:\n    return _dict(artifact.get(\"readiness\")).get(\"ready\") is True\n"
+        },
+        {
+          "start_line": 29,
+          "end_line": 30,
+          "start_byte": 1086,
+          "end_byte": 1179,
+          "sha256": "202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed",
+          "purpose": "Readiness helper dependency",
+          "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}\n"
+        },
+        {
+          "start_line": 37,
+          "end_line": 38,
+          "start_byte": 1271,
+          "end_byte": 1402,
+          "sha256": "7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a",
+          "purpose": "Materialization input interpretation",
+          "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default\n"
+        }
+      ],
+      "state_sha256": "aead8ffb8213107693819a2d626506913f7c31f2f54f1dc64e74e9f206e193e2",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_gate_findings",
+          "start_line": 189,
+          "end_line": 213,
+          "file_sha256": "sha256:218f37fb3f0dc01352f284dd8979f3c5191f1d781ae055e24dae2707327363f5",
+          "excerpt_sha256": "sha256:2f45d9e93250d297eeca3481e9f35eaa2e26efacee1e6a540fbbfbdc4402be39"
+        },
+        "resolved_constructor": null
+      }
+    },
+    {
+      "case_id": "expression-02",
+      "source_candidate_id": "sg-018",
+      "target_id": "blake3:9a935acd491934e0a6698f958c700e0311afeda638fef01f5cb16ed520b17652",
+      "source": {
+        "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_PRE_SIB_STATE_DECISION",
+        "start_line": 172,
+        "end_line": 200,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:6250745607ba9155937bb1bdae5976fa93aa2c8e92a16bb4eff1b8018d495d53"
+      },
+      "expression_span": {
+        "start_byte": 5665,
+        "end_byte": 6508,
+        "start_line": 172,
+        "start_column": 27,
+        "end_line": 200,
+        "end_column": 2
+      },
+      "expression_sha256": "374ae985c5acf8c4ac0f49e4419dfbd690eac03c589b04f521adb1c77cdd5468",
+      "fragments": [
+        {
+          "start_line": 172,
+          "end_line": 200,
+          "start_byte": 5639,
+          "end_byte": 6509,
+          "sha256": "6250745607ba9155937bb1bdae5976fa93aa2c8e92a16bb4eff1b8018d495d53",
+          "purpose": "Containing assignment",
+          "code": "_PRE_SIB_STATE_DECISION = FirstMatch(\n    (\n        (\n            PredicateSpec(lambda context: context.pre_sib_ready, name=\"pre_sib.ready\"),\n            _PreSibState.READY,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source != \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.blocked\",\n            ),\n            _PreSibState.BLOCKED,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source == \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.repaired_preview\",\n            ),\n            _PreSibState.REPAIRED_PREVIEW,\n        ),\n    ),\n    name=\"pre_sib_state\",\n)\n"
+        },
+        {
+          "start_line": 14,
+          "end_line": 14,
+          "start_byte": 301,
+          "end_byte": 373,
+          "sha256": "d1ebd093f7de57e532f6bf3e9b43acba4e04e7c0e4172e795baeac9a025cbbe2",
+          "purpose": "Constructor bindings",
+          "code": "from specification_core import FirstMatch, PredicateSpec, TraceRecorder\n"
+        },
+        {
+          "start_line": 160,
+          "end_line": 163,
+          "start_byte": 5408,
+          "end_byte": 5525,
+          "sha256": "299fca87e27b89f6ebf94b975c5c322d5baf7391fb0a4651ee02f647509295e7",
+          "purpose": "Decision outcomes",
+          "code": "class _PreSibState(str, Enum):\n    READY = \"ready\"\n    BLOCKED = \"blocked\"\n    REPAIRED_PREVIEW = \"repaired_preview\"\n"
+        },
+        {
+          "start_line": 166,
+          "end_line": 169,
+          "start_byte": 5527,
+          "end_byte": 5637,
+          "sha256": "44ef7483466b182fa3fc654fcee0dbdfe34b4add9a8e9a0e46c4e9311e7dc0ea",
+          "purpose": "Decision input fields",
+          "code": "@dataclass(frozen=True)\nclass _PreSibDecisionContext:\n    pre_sib_ready: bool\n    materialization_source: str\n"
+        }
+      ],
+      "state_sha256": "9f4dd21bc071f0df2170e8db47969385f2ec77c844d6b39f3dd7134340097b3b",
+      "construction_evidence": {
+        "status": "direct_specification_construction",
+        "source": {
+          "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_PRE_SIB_STATE_DECISION",
+          "start_line": 172,
+          "end_line": 200,
+          "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+          "excerpt_sha256": "sha256:6250745607ba9155937bb1bdae5976fa93aa2c8e92a16bb4eff1b8018d495d53"
+        },
+        "resolved_constructor": "specification_core.FirstMatch"
+      }
+    },
+    {
+      "case_id": "expression-03",
+      "source_candidate_id": "sg-019",
+      "target_id": "blake3:6a9f198c83d2501eb3340b221d1eac087fc4c7ac32026b63097fe661f89f7836",
+      "source": {
+        "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_repair_acceptance_criteria",
+        "start_line": 335,
+        "end_line": 378,
+        "file_sha256": "sha256:183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+        "excerpt_sha256": "sha256:252749d18c250ebbf66313e7d81f5082eb681a6a2799037473477744df79b867"
+      },
+      "expression_span": {
+        "start_byte": 12336,
+        "end_byte": 12384,
+        "start_line": 348,
+        "start_column": 16,
+        "end_line": 348,
+        "end_column": 64
+      },
+      "expression_sha256": "4019fa210a0807c03aba6048eae75d2bb766cbf7ca3f4b9b8eca896e9f2b0a15",
+      "fragments": [
+        {
+          "start_line": 335,
+          "end_line": 378,
+          "start_byte": 11738,
+          "end_byte": 13717,
+          "sha256": "252749d18c250ebbf66313e7d81f5082eb681a6a2799037473477744df79b867",
+          "purpose": "Input derivation and immediate effect",
+          "code": "def _repair_acceptance_criteria(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        node_id = _text(node.get(\"id\"))\n        existing_ac = {\n            _text(ac.get(\"id\"))\n            for ac in _list(node.get(\"acceptance_criteria\"))\n            if isinstance(ac, dict)\n        }\n        for requirement in _list(node.get(\"requirements\")):\n            if not isinstance(requirement, dict):\n                continue\n            refs = _text_list(requirement.get(\"acceptance_criteria_refs\"))\n            if refs and all(ref in existing_ac for ref in refs):\n                continue\n            req_id = _text(requirement.get(\"id\"), \"requirement\")\n            ac_id = f\"ac.repair.{_slug(req_id, 'requirement')}\"\n            actions.append(\n                _action(\n                    action_id=f\"repair.add-ac.{_slug(req_id, 'requirement')}\",\n                    kind=\"add_acceptance_criterion\",\n                    status=\"applied_to_preview\",\n                    target_ref=req_id,\n                    source_findings=[\"pre_sib_acceptance_criteria_gap\"],\n                    rationale=(\n                        \"Add a reviewable placeholder acceptance criterion for \"\n                        \"uncovered requirement.\"\n                    ),\n                    operation={\n                        \"op\": \"add_acceptance_criterion\",\n                        \"node_id\": node_id,\n                        \"requirement_id\": req_id,\n                        \"value\": {\n                            \"id\": ac_id,\n                            \"statement\": (\n                                \"Review criterion needed for requirement: \"\n                                f\"{_text(requirement.get('statement'), req_id)}\"\n                            ),\n                            \"repair_generated\": True,\n                        },\n                    },\n                )\n            )\n    return actions\n"
+        },
+        {
+          "start_line": 193,
+          "end_line": 194,
+          "start_byte": 6568,
+          "end_byte": 6729,
+          "sha256": "39c73b0637ed0e60f7c95f3129defa40e3e229d14d7af5fc9639296fe5c68cc9",
+          "purpose": "Node input interpretation",
+          "code": "def _nodes(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    return [node for node in _list(candidate_graph.get(\"nodes\")) if isinstance(node, dict)]\n"
+        },
+        {
+          "start_line": 47,
+          "end_line": 48,
+          "start_byte": 1303,
+          "end_byte": 1396,
+          "sha256": "202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed",
+          "purpose": "Node helper dependency",
+          "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}\n"
+        },
+        {
+          "start_line": 55,
+          "end_line": 56,
+          "start_byte": 1488,
+          "end_byte": 1619,
+          "sha256": "7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a",
+          "purpose": "Existing criterion identifier interpretation",
+          "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default\n"
+        },
+        {
+          "start_line": 51,
+          "end_line": 52,
+          "start_byte": 1398,
+          "end_byte": 1486,
+          "sha256": "47111ddce518334f8b9d2a08434497524f31e78886791852dfcea86f4810039e",
+          "purpose": "Collection input interpretation",
+          "code": "def _list(value: Any) -> list[Any]:\n    return value if isinstance(value, list) else []\n"
+        },
+        {
+          "start_line": 59,
+          "end_line": 60,
+          "start_byte": 1621,
+          "end_byte": 1755,
+          "sha256": "b1739e0f1e523ad86d4649b87791d13999c3755371a01f36400cccfe3d17e14e",
+          "purpose": "Reference input interpretation",
+          "code": "def _text_list(value: Any) -> list[str]:\n    return [item.strip() for item in _list(value) if isinstance(item, str) and item.strip()]\n"
+        }
+      ],
+      "state_sha256": "39611fa4b9e41c7aed7543f7e69a1a62e04f34c2b3ee38d30cbbca5d15f29289",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+          "path": "tools/candidate_repair_loop.py",
+          "symbol": "_repair_acceptance_criteria",
+          "start_line": 335,
+          "end_line": 378,
+          "file_sha256": "sha256:183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+          "excerpt_sha256": "sha256:252749d18c250ebbf66313e7d81f5082eb681a6a2799037473477744df79b867"
+        },
+        "resolved_constructor": null
+      }
+    },
+    {
+      "case_id": "expression-04",
+      "source_candidate_id": "sg-020",
+      "target_id": "blake3:066a089de903451fa039c925f4b6e35d49898035aac55c72710459072f6b7983",
+      "source": {
+        "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_ACCEPTANCE_CRITERION_DECISION",
+        "start_line": 83,
+        "end_line": 108,
+        "file_sha256": "sha256:2c80c6f5e67f761cbe33868c40daa9d0d04bce7e2b094e70fe21ab7c3314cc8c",
+        "excerpt_sha256": "sha256:03387985e95120d953b975a7dc7b46cffdb617202d5506728de0b588edccec82"
+      },
+      "expression_span": {
+        "start_byte": 2593,
+        "end_byte": 3518,
+        "start_line": 83,
+        "start_column": 34,
+        "end_line": 108,
+        "end_column": 2
+      },
+      "expression_sha256": "fbac2ed25eeb188b9ec1b4cfec479a559db953d50eb4a5d567fee1ed14d1d056",
+      "fragments": [
+        {
+          "start_line": 83,
+          "end_line": 108,
+          "start_byte": 2560,
+          "end_byte": 3519,
+          "sha256": "03387985e95120d953b975a7dc7b46cffdb617202d5506728de0b588edccec82",
+          "purpose": "Containing assignment",
+          "code": "_ACCEPTANCE_CRITERION_DECISION = FirstMatch.with_fallback(\n    (\n        (\n            PredicateSpec(\n                lambda context: not isinstance(context.requirement, dict),\n                name=\"acceptance_criterion.invalid_requirement\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    bool(_text_list(context.requirement.get(\"acceptance_criteria_refs\")))\n                    and all(\n                        ref in context.existing_acceptance_criteria\n                        for ref in _text_list(context.requirement.get(\"acceptance_criteria_refs\"))\n                    )\n                ),\n                name=\"acceptance_criterion.already_covered\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n    ),\n    _AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\",\n)\n"
+        },
+        {
+          "start_line": 16,
+          "end_line": 16,
+          "start_byte": 348,
+          "end_byte": 405,
+          "sha256": "a1c10ac8b921f42463145fc3aa850aaf0084d933acc9b7a4020345d235f35f38",
+          "purpose": "Constructor bindings",
+          "code": "from specification_core import FirstMatch, PredicateSpec\n"
+        },
+        {
+          "start_line": 44,
+          "end_line": 48,
+          "start_byte": 1247,
+          "end_byte": 1393,
+          "sha256": "973d505d767165901904ab8741a8beba6e1bfef91442b96a8eccf0f1118294ec",
+          "purpose": "Decision input fields",
+          "code": "@dataclass(frozen=True)\nclass _AcceptanceCriterionContext:\n    node_id: str\n    requirement: Any\n    existing_acceptance_criteria: frozenset[str]\n"
+        },
+        {
+          "start_line": 51,
+          "end_line": 53,
+          "start_byte": 1395,
+          "end_byte": 1502,
+          "sha256": "bad6d1068bee140c8b603eb580dfc016abc9eba3ac5da554dad0c9a855443633",
+          "purpose": "Decision outcomes",
+          "code": "class _AcceptanceCriterionDisposition(Enum):\n    IGNORE = \"ignore\"\n    ADD_PLACEHOLDER = \"add_placeholder\"\n"
+        },
+        {
+          "start_line": 127,
+          "end_line": 128,
+          "start_byte": 3917,
+          "end_byte": 4051,
+          "sha256": "b1739e0f1e523ad86d4649b87791d13999c3755371a01f36400cccfe3d17e14e",
+          "purpose": "Reference input interpretation",
+          "code": "def _text_list(value: Any) -> list[str]:\n    return [item.strip() for item in _list(value) if isinstance(item, str) and item.strip()]\n"
+        },
+        {
+          "start_line": 119,
+          "end_line": 120,
+          "start_byte": 3694,
+          "end_byte": 3782,
+          "sha256": "47111ddce518334f8b9d2a08434497524f31e78886791852dfcea86f4810039e",
+          "purpose": "Reference helper dependency",
+          "code": "def _list(value: Any) -> list[Any]:\n    return value if isinstance(value, list) else []\n"
+        }
+      ],
+      "state_sha256": "7f463275051f747a4710aa3fe6ede9c709bc4b692d8f92efc35860a5a0b58723",
+      "construction_evidence": {
+        "status": "direct_specification_construction",
+        "source": {
+          "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+          "path": "tools/candidate_repair_loop.py",
+          "symbol": "_ACCEPTANCE_CRITERION_DECISION",
+          "start_line": 83,
+          "end_line": 108,
+          "file_sha256": "sha256:2c80c6f5e67f761cbe33868c40daa9d0d04bce7e2b094e70fe21ab7c3314cc8c",
+          "excerpt_sha256": "sha256:03387985e95120d953b975a7dc7b46cffdb617202d5506728de0b588edccec82"
+        },
+        "resolved_constructor": "specification_core.FirstMatch.with_fallback"
+      }
+    },
+    {
+      "case_id": "expression-05",
+      "source_candidate_id": "sg-031",
+      "target_id": "blake3:bc1e29f54e2dc70afc24adbfa15b4a85cc0115106ef57abdd00f0211c69fc1ba",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_dict",
+        "start_line": 34,
+        "end_line": 35,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed"
+      },
+      "expression_span": {
+        "start_byte": 1287,
+        "end_byte": 1310,
+        "start_line": 35,
+        "start_column": 21,
+        "end_line": 35,
+        "end_column": 44
+      },
+      "expression_sha256": "30285f74d0cd9e494ded7609e452660a0b64fda982da90747ab403e999a5cb65",
+      "fragments": [
+        {
+          "start_line": 34,
+          "end_line": 35,
+          "start_byte": 1226,
+          "end_byte": 1319,
+          "sha256": "202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed",
+          "purpose": "Immediate application and fallback",
+          "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}\n"
+        }
+      ],
+      "state_sha256": "ddf82ad0fe301a40e5cd10f263588d16294686a9fb11c663408bc0e7c893bcde",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_dict",
+          "start_line": 34,
+          "end_line": 35,
+          "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+          "excerpt_sha256": "sha256:202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed"
+        },
+        "resolved_constructor": null
+      }
+    },
+    {
+      "case_id": "expression-06",
+      "source_candidate_id": "sg-032",
+      "target_id": "blake3:a5c39749bc81046a4aa80ff46870456c392de93ba5c3a5f47d350733df16ef38",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_text",
+        "start_line": 42,
+        "end_line": 43,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a"
+      },
+      "expression_span": {
+        "start_byte": 1488,
+        "end_byte": 1528,
+        "start_line": 43,
+        "start_column": 29,
+        "end_line": 43,
+        "end_column": 69
+      },
+      "expression_sha256": "42cb73d1fe3b93b15221d7649001671b6f99d934f629c15ee4ea5832cec612c9",
+      "fragments": [
+        {
+          "start_line": 42,
+          "end_line": 43,
+          "start_byte": 1411,
+          "end_byte": 1542,
+          "sha256": "7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a",
+          "purpose": "Immediate application and fallback",
+          "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default\n"
+        }
+      ],
+      "state_sha256": "21761cf940cb420064f12baa651dac3d243920e5e070d8d634a9c59b826e0009",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_text",
+          "start_line": 42,
+          "end_line": 43,
+          "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+          "excerpt_sha256": "sha256:7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a"
+        },
+        "resolved_constructor": null
+      }
+    },
+    {
+      "case_id": "expression-07",
+      "source_candidate_id": "sg-033",
+      "target_id": "blake3:94b7481e87841c8f8acf7daa5b01199ffbe1f3398dab80d149f2f86bf400a7d7",
+      "source": {
+        "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+        "path": "tools/subject_publication.py",
+        "symbol": "_verify_publication",
+        "start_line": 499,
+        "end_line": 508,
+        "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+        "excerpt_sha256": "sha256:00a535a8c89379d702e87eb39b8c7abec1ee659cb87186e36344245344711579"
+      },
+      "expression_span": {
+        "start_byte": 19773,
+        "end_byte": 20260,
+        "start_line": 500,
+        "start_column": 13,
+        "end_line": 506,
+        "end_column": 87
+      },
+      "expression_sha256": "d3e7a97f262a8e19a1d6e92a3fbf3c36f1cd9cd2a50bec4a42d443f00936a905",
+      "fragments": [
+        {
+          "start_line": 494,
+          "end_line": 509,
+          "start_byte": 19483,
+          "end_byte": 20428,
+          "sha256": "d4d81524583ecb88d24b27abeb450f068ced74a7641d2c4afc30978abf0eb680",
+          "purpose": "Allocation input derivation and selected require call",
+          "code": "    if request.workspace_declaration_yaml is not None:\n        declaration = load_yaml_text(request.workspace_declaration_yaml)\n        allocation = _effect(\n            snapshot, decisions, evidence, declaration[\"provenance\"], \"workspace_allocation\"\n        )\n        require(\n            allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest(),\n            \"workspace allocation covers a different bootstrap\",\n        )\n        reviewed_declaration = _input(packet, reviewed, workspace[\"proposed_declaration\"])\n"
+        },
+        {
+          "start_line": 357,
+          "end_line": 377,
+          "start_byte": 13767,
+          "end_byte": 14477,
+          "sha256": "f74efbe6e5cb7424d877a1947ab0abf79fec34fea2ecbdb0094f3524f647054d",
+          "purpose": "Selected authorization record resolution",
+          "code": "def _effect(\n    snapshot: DecisionSnapshot,\n    decisions: dict,\n    evidence: SubjectPublicationEvidence,\n    reference: str,\n    effect: str,\n    selection: dict | None = None,\n) -> dict:\n    require(\n        reference.startswith(evidence.decision_path + \"#/effects/\"),\n        \"provenance must resolve an effect in the selected decision artifact\",\n    )\n    record = snapshot.resolve(reference)\n    require(\n        record in decisions[\"effects\"] and record[\"effect\"] == effect,\n        f\"decision does not authorize {effect}\",\n    )\n    if selection is not None:\n        require(record[\"subject\"] == selection, \"effect belongs to another subject/revision\")\n    _review(record, snapshot)\n    return record\n"
+        },
+        {
+          "start_line": 41,
+          "end_line": 43,
+          "start_byte": 1287,
+          "end_byte": 1440,
+          "sha256": "4bfc0fb369b9ea70824cdb3477320129bae850a6bbb421b131633d4851497924",
+          "purpose": "Condition enforcement semantics",
+          "code": "def require(condition: bool, message: str) -> None:\n    if not condition:\n        raise PublicationGovernanceError(f\"publication governance: {message}\")\n"
+        },
+        {
+          "start_line": 9,
+          "end_line": 9,
+          "start_byte": 277,
+          "end_byte": 292,
+          "sha256": "3b3ea3cdc7068a9e97cfcddbcd9d8e0c54fe4d068347b80b158fdd8b14676e3b",
+          "purpose": "Declaration digest binding",
+          "code": "import hashlib\n"
+        }
+      ],
+      "state_sha256": "edfc0d96005210ef213a608163952092ac7988fae8befca4641692f59bfb1c04",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+          "path": "tools/subject_publication.py",
+          "symbol": "_verify_publication",
+          "start_line": 499,
+          "end_line": 508,
+          "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+          "excerpt_sha256": "sha256:00a535a8c89379d702e87eb39b8c7abec1ee659cb87186e36344245344711579"
+        },
+        "resolved_constructor": null
+      }
+    },
+    {
+      "case_id": "expression-08",
+      "source_candidate_id": "sg-034",
+      "target_id": "blake3:b3de9795e654452ebe571fa6d6a1894fe4e3104a643e4b3d64d72d53191fa3bf",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_slug",
+        "start_line": 139,
+        "end_line": 141,
+        "file_sha256": "sha256:ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+        "excerpt_sha256": "sha256:c02bb5be1209d2ab66c7a3f4775ea3b6d07290a2f39ea41fc04d2e80f7de229c"
+      },
+      "expression_span": {
+        "start_byte": 4482,
+        "end_byte": 4498,
+        "start_line": 141,
+        "start_column": 12,
+        "end_line": 141,
+        "end_column": 28
+      },
+      "expression_sha256": "eb1f75d617e29d67f7c086dea27aed9f6b3a47a9a2b96ac41f4f03cc14006e7e",
+      "fragments": [
+        {
+          "start_line": 139,
+          "end_line": 141,
+          "start_byte": 4362,
+          "end_byte": 4499,
+          "sha256": "c02bb5be1209d2ab66c7a3f4775ea3b6d07290a2f39ea41fc04d2e80f7de229c",
+          "purpose": "Slug derivation and fallback",
+          "code": "def _slug(value: str, fallback: str) -> str:\n    slug = re.sub(r\"[^a-z0-9]+\", \"-\", value.lower()).strip(\"-\")\n    return slug or fallback\n"
+        },
+        {
+          "start_line": 8,
+          "end_line": 8,
+          "start_byte": 156,
+          "end_byte": 166,
+          "sha256": "a830333312c4c9c2233bb02762bd498203b1c3bf0527614735693b4b79f6d167",
+          "purpose": "Representation helper binding",
+          "code": "import re\n"
+        }
+      ],
+      "state_sha256": "a00a8c561c760501a5f2359c98227e880d8aad06a4ae92674610270c993acfc6",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+          "path": "tools/candidate_repair_loop.py",
+          "symbol": "_slug",
+          "start_line": 139,
+          "end_line": 141,
+          "file_sha256": "sha256:ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+          "excerpt_sha256": "sha256:c02bb5be1209d2ab66c7a3f4775ea3b6d07290a2f39ea41fc04d2e80f7de229c"
+        },
+        "resolved_constructor": null
+      }
+    }
+  ],
+  "inventory": [
+    {
+      "case_id": "expression-01",
+      "context_code_bytes": 1643,
+      "state_bytes": 4342,
+      "fragment_count": 5
+    },
+    {
+      "case_id": "expression-02",
+      "context_code_bytes": 1169,
+      "state_bytes": 4646,
+      "fragment_count": 4
+    },
+    {
+      "case_id": "expression-03",
+      "context_code_bytes": 2586,
+      "state_bytes": 5368,
+      "fragment_count": 6
+    },
+    {
+      "case_id": "expression-04",
+      "context_code_bytes": 1491,
+      "state_bytes": 5120,
+      "fragment_count": 6
+    },
+    {
+      "case_id": "expression-05",
+      "context_code_bytes": 93,
+      "state_bytes": 2539,
+      "fragment_count": 1
+    },
+    {
+      "case_id": "expression-06",
+      "context_code_bytes": 131,
+      "state_bytes": 2608,
+      "fragment_count": 1
+    },
+    {
+      "case_id": "expression-07",
+      "context_code_bytes": 1823,
+      "state_bytes": 4955,
+      "fragment_count": 4
+    },
+    {
+      "case_id": "expression-08",
+      "context_code_bytes": 147,
+      "state_bytes": 2645,
+      "fragment_count": 2
+    }
+  ],
+  "new_inference_requests": 0,
+  "prior_labels_transferred": false,
+  "reference_status": "awaiting_independent_annotation"
+}

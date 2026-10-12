@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+  "authority": "pending_independent_reference_not_gold",
+  "annotations": [
+    {
+      "case_id": "expression-01",
+      "state_sha256": "aead8ffb8213107693819a2d626506913f7c31f2f54f1dc64e74e9f206e193e2",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-02",
+      "state_sha256": "9f4dd21bc071f0df2170e8db47969385f2ec77c844d6b39f3dd7134340097b3b",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-03",
+      "state_sha256": "39611fa4b9e41c7aed7543f7e69a1a62e04f34c2b3ee38d30cbbca5d15f29289",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-04",
+      "state_sha256": "7f463275051f747a4710aa3fe6ede9c709bc4b692d8f92efc35860a5a0b58723",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-05",
+      "state_sha256": "ddf82ad0fe301a40e5cd10f263588d16294686a9fb11c663408bc0e7c893bcde",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-06",
+      "state_sha256": "21761cf940cb420064f12baa651dac3d243920e5e070d8d634a9c59b826e0009",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-07",
+      "state_sha256": "edfc0d96005210ef213a608163952092ac7988fae8befca4641692f59bfb1c04",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-08",
+      "state_sha256": "a00a8c561c760501a5f2359c98227e880d8aad06a4ae92674610270c993acfc6",
+      "status": "pending",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence": [],
+      "uncertainties": []
+    }
+  ]
+}

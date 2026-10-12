@@ -1,0 +1,496 @@
+{
+  "schema_version": 1,
+  "study_kind": "decision_expression_reference",
+  "instructions": "Judge only the exact target expression under this profile and rubric. Supporting fragments are evidence, not additional candidates. Do not infer omitted dependencies. Return both axes and cite supplied fragment/target evidence. No prior labels or provider predictions are supplied.",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Judge only the exact target expression under the supplied architecture profile. Supporting fragments explain inputs and effects; they are not additional candidates. A helper call is judged using its supplied implementation. A factory assembly is judged as the selected expression, not as each lambda separately. Do not infer omitted context. A durable product/domain rule can qualify with one use. Choose eligible when this same decision benefits from a named, addressable, observable Specification. Choose excluded for technical mechanics without a distinct product decision, or explicit evidence that a Specification already owns this SAME decision. Unrelated Specifications, imports alone and ordinary helper names do not establish ownership. Choose needs_review when material ambiguity prevents reliable judgment.",
+      "criteria": {
+        "eligible": "This exact expression expresses a durable product/domain decision suitable for a named, addressable, observable Specification; one use is sufficient.",
+        "excluded": "Technical mechanics or coordination without a distinct product decision, or the same decision is explicitly already owned by a Specification.",
+        "needs_review": "Evidence is materially ambiguous or insufficient; unknown, not an exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Independently classify the primary responsibility expressed by the exact target expression, using the supplied profile and context. Supporting declarations are evidence, not additional classification targets. Product/domain integrity and authority rules can be policy even when enforced through validation or composed as an existing Specification. A mechanical guard inside a factory assembly does not by itself determine the primary responsibility of the whole selected assembly. Use unknown for material ambiguity. Do not infer omitted dependencies.",
+      "criteria": {
+        "policy": "A durable product/domain rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+        "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement WITHOUT a distinct product decision.",
+        "variant_behavior": "Dispatch over domain variants such as enum cases, types, or platforms.",
+        "unknown": "The supplied evidence does not support a reliable concern-kind label."
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "expression-01",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "_pre_sib_original_blocked(pre_sib, materialization)",
+          "syntax_kind": "call",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "    if _pre_sib_original_blocked(pre_sib, materialization):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        findings.append(\n            _finding(\n                finding_id=\"pre_sib_not_ready_without_repair_preview\",\n                severity=\"review_required\",\n                message=(\n                    \"Original pre-SIB report is not ready and materialization did not \"\n                    \"use a repair loop preview.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n    elif not _readiness_ready(pre_sib):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        warnings.append(\n            _finding(\n                finding_id=\"pre_sib_findings_repaired_by_preview\",\n                severity=\"warning\",\n                message=(\n                    \"Original pre-SIB findings are allowed only because repair preview was used.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n"
+            },
+            {
+              "fragment_id": "context-02",
+              "code": "def _pre_sib_original_blocked(pre_sib: dict[str, Any], materialization: dict[str, Any]) -> bool:\n    if _readiness_ready(pre_sib):\n        return False\n    return _text(materialization.get(\"materialization_source\")) != \"repair_loop_preview\"\n"
+            },
+            {
+              "fragment_id": "context-03",
+              "code": "def _readiness_ready(artifact: dict[str, Any]) -> bool:\n    return _dict(artifact.get(\"readiness\")).get(\"ready\") is True\n"
+            },
+            {
+              "fragment_id": "context-04",
+              "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}\n"
+            },
+            {
+              "fragment_id": "context-05",
+              "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "aead8ffb8213107693819a2d626506913f7c31f2f54f1dc64e74e9f206e193e2"
+    },
+    {
+      "case_id": "expression-02",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "FirstMatch(\n    (\n        (\n            PredicateSpec(lambda context: context.pre_sib_ready, name=\"pre_sib.ready\"),\n            _PreSibState.READY,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source != \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.blocked\",\n            ),\n            _PreSibState.BLOCKED,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source == \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.repaired_preview\",\n            ),\n            _PreSibState.REPAIRED_PREVIEW,\n        ),\n    ),\n    name=\"pre_sib_state\",\n)",
+          "syntax_kind": "call",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "_PRE_SIB_STATE_DECISION = FirstMatch(\n    (\n        (\n            PredicateSpec(lambda context: context.pre_sib_ready, name=\"pre_sib.ready\"),\n            _PreSibState.READY,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source != \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.blocked\",\n            ),\n            _PreSibState.BLOCKED,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source == \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.repaired_preview\",\n            ),\n            _PreSibState.REPAIRED_PREVIEW,\n        ),\n    ),\n    name=\"pre_sib_state\",\n)\n"
+            },
+            {
+              "fragment_id": "context-02",
+              "code": "from specification_core import FirstMatch, PredicateSpec, TraceRecorder\n"
+            },
+            {
+              "fragment_id": "context-03",
+              "code": "class _PreSibState(str, Enum):\n    READY = \"ready\"\n    BLOCKED = \"blocked\"\n    REPAIRED_PREVIEW = \"repaired_preview\"\n"
+            },
+            {
+              "fragment_id": "context-04",
+              "code": "@dataclass(frozen=True)\nclass _PreSibDecisionContext:\n    pre_sib_ready: bool\n    materialization_source: str\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "9f4dd21bc071f0df2170e8db47969385f2ec77c844d6b39f3dd7134340097b3b"
+    },
+    {
+      "case_id": "expression-03",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "refs and all(ref in existing_ac for ref in refs)",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def _repair_acceptance_criteria(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        node_id = _text(node.get(\"id\"))\n        existing_ac = {\n            _text(ac.get(\"id\"))\n            for ac in _list(node.get(\"acceptance_criteria\"))\n            if isinstance(ac, dict)\n        }\n        for requirement in _list(node.get(\"requirements\")):\n            if not isinstance(requirement, dict):\n                continue\n            refs = _text_list(requirement.get(\"acceptance_criteria_refs\"))\n            if refs and all(ref in existing_ac for ref in refs):\n                continue\n            req_id = _text(requirement.get(\"id\"), \"requirement\")\n            ac_id = f\"ac.repair.{_slug(req_id, 'requirement')}\"\n            actions.append(\n                _action(\n                    action_id=f\"repair.add-ac.{_slug(req_id, 'requirement')}\",\n                    kind=\"add_acceptance_criterion\",\n                    status=\"applied_to_preview\",\n                    target_ref=req_id,\n                    source_findings=[\"pre_sib_acceptance_criteria_gap\"],\n                    rationale=(\n                        \"Add a reviewable placeholder acceptance criterion for \"\n                        \"uncovered requirement.\"\n                    ),\n                    operation={\n                        \"op\": \"add_acceptance_criterion\",\n                        \"node_id\": node_id,\n                        \"requirement_id\": req_id,\n                        \"value\": {\n                            \"id\": ac_id,\n                            \"statement\": (\n                                \"Review criterion needed for requirement: \"\n                                f\"{_text(requirement.get('statement'), req_id)}\"\n                            ),\n                            \"repair_generated\": True,\n                        },\n                    },\n                )\n            )\n    return actions\n"
+            },
+            {
+              "fragment_id": "context-02",
+              "code": "def _nodes(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    return [node for node in _list(candidate_graph.get(\"nodes\")) if isinstance(node, dict)]\n"
+            },
+            {
+              "fragment_id": "context-03",
+              "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}\n"
+            },
+            {
+              "fragment_id": "context-04",
+              "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default\n"
+            },
+            {
+              "fragment_id": "context-05",
+              "code": "def _list(value: Any) -> list[Any]:\n    return value if isinstance(value, list) else []\n"
+            },
+            {
+              "fragment_id": "context-06",
+              "code": "def _text_list(value: Any) -> list[str]:\n    return [item.strip() for item in _list(value) if isinstance(item, str) and item.strip()]\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "39611fa4b9e41c7aed7543f7e69a1a62e04f34c2b3ee38d30cbbca5d15f29289"
+    },
+    {
+      "case_id": "expression-04",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "FirstMatch.with_fallback(\n    (\n        (\n            PredicateSpec(\n                lambda context: not isinstance(context.requirement, dict),\n                name=\"acceptance_criterion.invalid_requirement\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    bool(_text_list(context.requirement.get(\"acceptance_criteria_refs\")))\n                    and all(\n                        ref in context.existing_acceptance_criteria\n                        for ref in _text_list(context.requirement.get(\"acceptance_criteria_refs\"))\n                    )\n                ),\n                name=\"acceptance_criterion.already_covered\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n    ),\n    _AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\",\n)",
+          "syntax_kind": "call",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "_ACCEPTANCE_CRITERION_DECISION = FirstMatch.with_fallback(\n    (\n        (\n            PredicateSpec(\n                lambda context: not isinstance(context.requirement, dict),\n                name=\"acceptance_criterion.invalid_requirement\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    bool(_text_list(context.requirement.get(\"acceptance_criteria_refs\")))\n                    and all(\n                        ref in context.existing_acceptance_criteria\n                        for ref in _text_list(context.requirement.get(\"acceptance_criteria_refs\"))\n                    )\n                ),\n                name=\"acceptance_criterion.already_covered\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n    ),\n    _AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\",\n)\n"
+            },
+            {
+              "fragment_id": "context-02",
+              "code": "from specification_core import FirstMatch, PredicateSpec\n"
+            },
+            {
+              "fragment_id": "context-03",
+              "code": "@dataclass(frozen=True)\nclass _AcceptanceCriterionContext:\n    node_id: str\n    requirement: Any\n    existing_acceptance_criteria: frozenset[str]\n"
+            },
+            {
+              "fragment_id": "context-04",
+              "code": "class _AcceptanceCriterionDisposition(Enum):\n    IGNORE = \"ignore\"\n    ADD_PLACEHOLDER = \"add_placeholder\"\n"
+            },
+            {
+              "fragment_id": "context-05",
+              "code": "def _text_list(value: Any) -> list[str]:\n    return [item.strip() for item in _list(value) if isinstance(item, str) and item.strip()]\n"
+            },
+            {
+              "fragment_id": "context-06",
+              "code": "def _list(value: Any) -> list[Any]:\n    return value if isinstance(value, list) else []\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "7f463275051f747a4710aa3fe6ede9c709bc4b692d8f92efc35860a5a0b58723"
+    },
+    {
+      "case_id": "expression-05",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "isinstance(value, dict)",
+          "syntax_kind": "call",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "ddf82ad0fe301a40e5cd10f263588d16294686a9fb11c663408bc0e7c893bcde"
+    },
+    {
+      "case_id": "expression-06",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "isinstance(value, str) and value.strip()",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "21761cf940cb420064f12baa651dac3d243920e5e070d8d634a9c59b826e0009"
+    },
+    {
+      "case_id": "expression-07",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest()",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "    if request.workspace_declaration_yaml is not None:\n        declaration = load_yaml_text(request.workspace_declaration_yaml)\n        allocation = _effect(\n            snapshot, decisions, evidence, declaration[\"provenance\"], \"workspace_allocation\"\n        )\n        require(\n            allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest(),\n            \"workspace allocation covers a different bootstrap\",\n        )\n        reviewed_declaration = _input(packet, reviewed, workspace[\"proposed_declaration\"])\n"
+            },
+            {
+              "fragment_id": "context-02",
+              "code": "def _effect(\n    snapshot: DecisionSnapshot,\n    decisions: dict,\n    evidence: SubjectPublicationEvidence,\n    reference: str,\n    effect: str,\n    selection: dict | None = None,\n) -> dict:\n    require(\n        reference.startswith(evidence.decision_path + \"#/effects/\"),\n        \"provenance must resolve an effect in the selected decision artifact\",\n    )\n    record = snapshot.resolve(reference)\n    require(\n        record in decisions[\"effects\"] and record[\"effect\"] == effect,\n        f\"decision does not authorize {effect}\",\n    )\n    if selection is not None:\n        require(record[\"subject\"] == selection, \"effect belongs to another subject/revision\")\n    _review(record, snapshot)\n    return record\n"
+            },
+            {
+              "fragment_id": "context-03",
+              "code": "def require(condition: bool, message: str) -> None:\n    if not condition:\n        raise PublicationGovernanceError(f\"publication governance: {message}\")\n"
+            },
+            {
+              "fragment_id": "context-04",
+              "code": "import hashlib\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "edfc0d96005210ef213a608163952092ac7988fae8befca4641692f59bfb1c04"
+    },
+    {
+      "case_id": "expression-08",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "slug or fallback",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def _slug(value: str, fallback: str) -> str:\n    slug = re.sub(r\"[^a-z0-9]+\", \"-\", value.lower()).strip(\"-\")\n    return slug or fallback\n"
+            },
+            {
+              "fragment_id": "context-02",
+              "code": "import re\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Selected same-file declarations and data/use regions only. Unlisted callers, cross-file declarations and runtime bindings are not proved. A factory assembly is one selected expression, not a claim of one indivisible rule."
+        }
+      },
+      "state_sha256": "a00a8c561c760501a5f2359c98227e880d8aad06a4ae92674610270c993acfc6"
+    }
+  ]
+}

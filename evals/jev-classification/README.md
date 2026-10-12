@@ -215,3 +215,12 @@ explicit worst-case attempt budget. `coreinfra_retry_run.py` is offline by
 default and keeps all responses unscored until provider-specific validation.
 Existing experiments retain their original zero-inference-retry protocols.
 No new hosted calls or Jev/Luna semantic comparison have run under this version.
+
+## Expression reference preparation
+
+The [new eight-expression packet](runs/2026-10-12-expression-reference/README.md)
+adds explicit source-bound helper/data context and a rubric for exact expressions.
+It contains an unlabelled independent-annotation template, separate non-blind
+author proposals, and a draft Jev/Luna comparison protocol. No historical labels
+were transferred and no hosted calls were made. Independent reference and Luna's
+native CoreInfra operation/schema remain prerequisites for execution.

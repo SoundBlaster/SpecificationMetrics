@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "study_kind": "matched_expression_provider_comparison",
+  "status": "prepared_not_executable",
+  "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+  "reference_status": "awaiting_independent_annotation",
+  "providers": [
+    {
+      "id": "jev-coreinfra",
+      "endpoint": "https://hub.coreinfra.ai/typesafe/api/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "native_contract_status": "historical_jev_runs_verified_current_live_not_probed"
+    },
+    {
+      "id": "luna-decision-coreinfra",
+      "endpoint": null,
+      "requested_model": null,
+      "native_contract_status": "availability_user_reported_operation_and_schema_unverified"
+    }
+  ],
+  "planned_cases": 8,
+  "repeats": 2,
+  "planned_logical_requests": 32,
+  "retry_protocol": "specmetrics.coreinfra-tls-retry/v1",
+  "max_attempts_per_request": 3,
+  "max_network_attempts": 96,
+  "semantic_inputs": "Identical target/context/profile/rubric bytes for both providers; document only necessary native schema encoding differences. Never include annotations or source-mapping judgments.",
+  "order": "Alternate provider order by case and repeat after native schemas are verified; freeze the complete wire plan before live calls.",
+  "hypothesis": "On these source-bound development expressions, matched intent/profile/rubric and explicit helper/data context permit reliable opportunity and responsibility classification, with formal construction routing evaluated separately.",
+  "criteria": {
+    "prerequisites": [
+      "Independent target-specific annotations completed and disagreements adjudicated before seeing new provider results",
+      "Luna native operation URL/model/schema verified and typed response validators available",
+      "Exact native request bytes, decoder and producer digests frozen in a separate executable manifest",
+      "Worst-case attempt budget reviewed; interrupted runs recorded separately, never silently replaced"
+    ],
+    "per_provider_per_repeat": [
+      "All eight planned cases have native-valid responses; report operational failures separately without shrinking the planned denominator",
+      "Opportunity agreement at least 7/8 and concern-kind agreement at least 7/8",
+      "No false positives among independently annotated mechanics/owned controls; report each stratum denominator from the new reference",
+      "Recover every independently annotated eligible case; if no eligible cases exist, recall criterion is not evaluable"
+    ],
+    "repeat_consistency": "No label disagreement across the two same-input repeats; report numeric confidence variation separately",
+    "interpretation": "Failure rejects this strong reliability claim for the development set, not the usefulness of SpecificationCore. Passing is development evidence only, not generalization, human gold, calibrated confidence or permission to mutate S/U."
+  },
+  "reporting": [
+    "Raw provider answers versus the same fresh reference",
+    "Offline formal construction gate composition as a separate result, preserving raw predictions",
+    "Planned cases, attempted logical requests, native-valid responses, attempts and failure stages",
+    "Opportunity confusion matrix/recall, responsibility agreement, abstentions and repeated-label disagreements",
+    "Potentially billable posts, ambiguous failures and possible duplicate execution; actual failed-call costs may be unknown"
+  ],
+  "causal_limits": "No missing-context ablation is included, so this study cannot isolate a causal effect of helper context or compare against historical whole-function accuracy. Eight development cases and two repeats are not independent population samples.",
+  "metric_effect": "none",
+  "new_inference_requests": 0
+}

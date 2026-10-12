@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "selection_authority": "agent_proposed_explicit_source_regions",
+  "cases": {
+    "sg-017": [
+      {"start_line": 189, "end_line": 213, "purpose": "Selected decision and immediate findings/warnings"},
+      {"symbol": "_pre_sib_original_blocked", "purpose": "Selected helper implementation"},
+      {"symbol": "_readiness_ready", "purpose": "Readiness input interpretation"},
+      {"symbol": "_dict", "purpose": "Readiness helper dependency"},
+      {"symbol": "_text", "purpose": "Materialization input interpretation"}
+    ],
+    "sg-018": [
+      {"start_line": 172, "end_line": 200, "purpose": "Containing assignment"},
+      {"symbol": "import:specification_core", "purpose": "Constructor bindings"},
+      {"symbol": "_PreSibState", "purpose": "Decision outcomes"},
+      {"symbol": "_PreSibDecisionContext", "purpose": "Decision input fields"}
+    ],
+    "sg-019": [
+      {"symbol": "_repair_acceptance_criteria", "purpose": "Input derivation and immediate effect"},
+      {"symbol": "_nodes", "purpose": "Node input interpretation"},
+      {"symbol": "_dict", "purpose": "Node helper dependency"},
+      {"symbol": "_text", "purpose": "Existing criterion identifier interpretation"},
+      {"symbol": "_list", "purpose": "Collection input interpretation"},
+      {"symbol": "_text_list", "purpose": "Reference input interpretation"}
+    ],
+    "sg-020": [
+      {"start_line": 83, "end_line": 108, "purpose": "Containing assignment"},
+      {"symbol": "import:specification_core", "purpose": "Constructor bindings"},
+      {"symbol": "_AcceptanceCriterionContext", "purpose": "Decision input fields"},
+      {"symbol": "_AcceptanceCriterionDisposition", "purpose": "Decision outcomes"},
+      {"symbol": "_text_list", "purpose": "Reference input interpretation"},
+      {"symbol": "_list", "purpose": "Reference helper dependency"}
+    ],
+    "sg-031": [
+      {"symbol": "_dict", "purpose": "Immediate application and fallback"}
+    ],
+    "sg-032": [
+      {"symbol": "_text", "purpose": "Immediate application and fallback"}
+    ],
+    "sg-033": [
+      {"start_line": 494, "end_line": 509, "purpose": "Allocation input derivation and selected require call"},
+      {"symbol": "_effect", "purpose": "Selected authorization record resolution"},
+      {"symbol": "require", "purpose": "Condition enforcement semantics"},
+      {"symbol": "import:hashlib", "purpose": "Declaration digest binding"}
+    ],
+    "sg-034": [
+      {"symbol": "_slug", "purpose": "Slug derivation and fallback"},
+      {"symbol": "import:re", "purpose": "Representation helper binding"}
+    ]
+  }
+}
