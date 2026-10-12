@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "study_kind": "explicit_target_alignment",
+  "selection_authority": "agent_proposal_not_human_adjudicated",
+  "cases": [
+    {"source_candidate_id": "sg-017", "anchor_text": "if _pre_sib_original_blocked", "syntax_kind": "if_statement", "select": "condition"},
+    {"source_candidate_id": "sg-018", "anchor_text": "_PRE_SIB_STATE_DECISION =", "syntax_kind": "assignment", "select": "value"},
+    {"source_candidate_id": "sg-019", "anchor_text": "if refs and all", "syntax_kind": "if_statement", "select": "condition"},
+    {"source_candidate_id": "sg-020", "anchor_text": "_ACCEPTANCE_CRITERION_DECISION =", "syntax_kind": "assignment", "select": "value"},
+    {"source_candidate_id": "sg-031", "anchor_text": "value if isinstance", "syntax_kind": "conditional_expression", "select": "condition"},
+    {"source_candidate_id": "sg-032", "anchor_text": "value.strip() if isinstance", "syntax_kind": "conditional_expression", "select": "condition"},
+    {"source_candidate_id": "sg-033", "anchor_text": "allocation[\"workspace_identity\"] ==", "syntax_kind": "boolean_operator", "select": "expression"},
+    {"source_candidate_id": "sg-034", "anchor_text": "return slug or fallback", "syntax_kind": "return_statement", "select": "value"}
+  ]
+}

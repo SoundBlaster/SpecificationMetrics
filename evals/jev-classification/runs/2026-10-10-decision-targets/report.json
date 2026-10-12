@@ -1,0 +1,771 @@
+{
+  "schema_version": 1,
+  "study_kind": "explicit_target_alignment",
+  "new_inference_requests": 0,
+  "planned_cases": 8,
+  "extracted_targets": 8,
+  "cases": [
+    {
+      "source_candidate_id": "sg-017",
+      "source": {
+        "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_gate_findings",
+        "start_line": 189,
+        "end_line": 213,
+        "file_sha256": "sha256:218f37fb3f0dc01352f284dd8979f3c5191f1d781ae055e24dae2707327363f5",
+        "excerpt_sha256": "sha256:2f45d9e93250d297eeca3481e9f35eaa2e26efacee1e6a540fbbfbdc4402be39"
+      },
+      "selector": {
+        "source_candidate_id": "sg-017",
+        "anchor_text": "if _pre_sib_original_blocked",
+        "syntax_kind": "if_statement",
+        "select": "condition"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:82bf75f9492d3546d79e24b6c0e4b45dd131d611e200a10e95dc3e3bcd869b72",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "source_digest": "blake3:248c8681d979c945b491579b8fee625f0136236ddba2b51e9df726f2b4f901eb",
+        "selection": "condition",
+        "anchor": {
+          "syntax_kind": "if_statement",
+          "span": {
+            "start_byte": 6465,
+            "end_byte": 7517,
+            "start_line": 189,
+            "start_column": 5,
+            "end_line": 213,
+            "end_column": 10
+          },
+          "digest": "blake3:4b36e1425f033a4cb251a60da5b53338a64a4cfdec38359bafae4203ac8d7666",
+          "code": "if _pre_sib_original_blocked(pre_sib, materialization):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        findings.append(\n            _finding(\n                finding_id=\"pre_sib_not_ready_without_repair_preview\",\n                severity=\"review_required\",\n                message=(\n                    \"Original pre-SIB report is not ready and materialization did not \"\n                    \"use a repair loop preview.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n    elif not _readiness_ready(pre_sib):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        warnings.append(\n            _finding(\n                finding_id=\"pre_sib_findings_repaired_by_preview\",\n                severity=\"warning\",\n                message=(\n                    \"Original pre-SIB findings are allowed only because repair preview was used.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "call",
+          "span": {
+            "start_byte": 6468,
+            "end_byte": 6519,
+            "start_line": 189,
+            "start_column": 8,
+            "end_line": 189,
+            "end_column": 59
+          },
+          "digest": "blake3:747a8fe9fa6ff48cce2d29e9459a500e3529ec2da4e1e8ec79655b16a343a299",
+          "code": "_pre_sib_original_blocked(pre_sib, materialization)",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "function_definition",
+          "span": {
+            "start_byte": 5511,
+            "end_byte": 10223,
+            "start_line": 161,
+            "start_column": 1,
+            "end_line": 281,
+            "end_column": 30
+          },
+          "digest": "blake3:ab188502758f4198979ce56869fb97b23762ed96664711e68b2c09bbd176a6c9",
+          "code": "def _gate_findings(\n    *,\n    pre_sib: dict[str, Any],\n    repair_loop: dict[str, Any],\n    materialization: dict[str, Any],\n) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:\n    findings = (\n        _validate_artifact(\n            artifact=pre_sib,\n            artifact_name=\"pre_sib_report\",\n            expected_kind=\"pre_sib_coherence_report\",\n            expected_contract=PRE_SIB_CONTRACT_REF,\n        )\n        + _validate_artifact(\n            artifact=repair_loop,\n            artifact_name=\"repair_loop\",\n            expected_kind=\"candidate_repair_loop_report\",\n            expected_contract=REPAIR_LOOP_CONTRACT_REF,\n        )\n        + _validate_artifact(\n            artifact=materialization,\n            artifact_name=\"materialization_report\",\n            expected_kind=\"candidate_spec_materialization_report\",\n            expected_contract=MATERIALIZATION_CONTRACT_REF,\n        )\n    )\n    warnings: list[dict[str, Any]] = []\n\n    if _pre_sib_original_blocked(pre_sib, materialization):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        findings.append(\n            _finding(\n                finding_id=\"pre_sib_not_ready_without_repair_preview\",\n                severity=\"review_required\",\n                message=(\n                    \"Original pre-SIB report is not ready and materialization did not \"\n                    \"use a repair loop preview.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n    elif not _readiness_ready(pre_sib):\n        blocked_by = _text_list(_dict(pre_sib.get(\"readiness\")).get(\"blocked_by\"))\n        warnings.append(\n            _finding(\n                finding_id=\"pre_sib_findings_repaired_by_preview\",\n                severity=\"warning\",\n                message=(\n                    \"Original pre-SIB findings are allowed only because repair preview was used.\"\n                ),\n                evidence={\"blocked_by\": blocked_by},\n            )\n        )\n\n    if not _readiness_ready(repair_loop):\n        findings.append(\n            _finding(\n                finding_id=\"repair_loop_not_ready\",\n                severity=\"review_required\",\n                message=\"Repair loop must be ready before promotion handoff.\",\n                evidence={\"readiness\": _dict(repair_loop.get(\"readiness\"))},\n            )\n        )\n\n    context_required_count = _dict(repair_loop.get(\"summary\")).get(\"context_required_count\", 0)\n    if not isinstance(context_required_count, int):\n        context_required_count = 0\n    if context_required_count > 0:\n        findings.append(\n            _finding(\n                finding_id=\"repair_context_required\",\n                severity=\"review_required\",\n                message=\"Owner/operator context is still required before Platform promotion.\",\n                evidence={\"context_required_count\": context_required_count},\n            )\n        )\n\n    if not _readiness_ready(materialization):\n        findings.append(\n            _finding(\n                finding_id=\"materialization_not_ready\",\n                severity=\"review_required\",\n                message=\"Candidate spec materialization must be ready before promotion handoff.\",\n                evidence={\"readiness\": _dict(materialization.get(\"readiness\"))},\n            )\n        )\n\n    paths = _promotion_paths(materialization)\n    if not paths:\n        findings.append(\n            _finding(\n                finding_id=\"promotion_paths_missing\",\n                severity=\"review_required\",\n                message=\"Platform promotion request requires at least one materialized path.\",\n            )\n        )\n    for index, path in enumerate(paths):\n        if not _promotion_path_allowed(path):\n            findings.append(\n                _finding(\n                    finding_id=\"promotion_path_not_allowed\",\n                    severity=\"review_required\",\n                    message=\"Promotion paths must stay under specs/, docs/proposals/, or runs/.\",\n                    evidence={\"index\": index, \"path\": path},\n                )\n            )\n\n    materialized_count = len(_list(materialization.get(\"materialized_files\")))\n    if paths and materialized_count and len(paths) != materialized_count:\n        findings.append(\n            _finding(\n                finding_id=\"promotion_path_count_mismatch\",\n                severity=\"review_required\",\n                message=\"Promotion path count must match materialized file count.\",\n                evidence={\n                    \"promotion_path_count\": len(paths),\n                    \"materialized_file_count\": materialized_count,\n                },\n            )\n        )\n    return findings, warnings",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [
+        "python:tools/idea_to_spec_promotion_gate.py:if:9367424cbdfe136d:1"
+      ],
+      "legacy_mapping_status": "exact_anchor_match",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_gate_findings",
+          "start_line": 189,
+          "end_line": 213,
+          "file_sha256": "sha256:218f37fb3f0dc01352f284dd8979f3c5191f1d781ae055e24dae2707327363f5",
+          "excerpt_sha256": "sha256:2f45d9e93250d297eeca3481e9f35eaa2e26efacee1e6a540fbbfbdc4402be39"
+        },
+        "resolved_constructor": null
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-018",
+      "source": {
+        "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_PRE_SIB_STATE_DECISION",
+        "start_line": 172,
+        "end_line": 200,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:6250745607ba9155937bb1bdae5976fa93aa2c8e92a16bb4eff1b8018d495d53"
+      },
+      "selector": {
+        "source_candidate_id": "sg-018",
+        "anchor_text": "_PRE_SIB_STATE_DECISION =",
+        "syntax_kind": "assignment",
+        "select": "value"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:9a935acd491934e0a6698f958c700e0311afeda638fef01f5cb16ed520b17652",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "source_digest": "blake3:347c2cf4e48253b24f54725534a3e8d98b10acf2398785e1377042a4dbe015b0",
+        "selection": "value",
+        "anchor": {
+          "syntax_kind": "assignment",
+          "span": {
+            "start_byte": 5639,
+            "end_byte": 6508,
+            "start_line": 172,
+            "start_column": 1,
+            "end_line": 200,
+            "end_column": 2
+          },
+          "digest": "blake3:5369cf333dfedba042b9e5dc6ec8ef9b51ca898c74c70e2a2a0fe512d9f923df",
+          "code": "_PRE_SIB_STATE_DECISION = FirstMatch(\n    (\n        (\n            PredicateSpec(lambda context: context.pre_sib_ready, name=\"pre_sib.ready\"),\n            _PreSibState.READY,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source != \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.blocked\",\n            ),\n            _PreSibState.BLOCKED,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source == \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.repaired_preview\",\n            ),\n            _PreSibState.REPAIRED_PREVIEW,\n        ),\n    ),\n    name=\"pre_sib_state\",\n)",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "call",
+          "span": {
+            "start_byte": 5665,
+            "end_byte": 6508,
+            "start_line": 172,
+            "start_column": 27,
+            "end_line": 200,
+            "end_column": 2
+          },
+          "digest": "blake3:314f3668af417a6038f9e5212a292be76720a5bad4c006984c7b277cee31c858",
+          "code": "FirstMatch(\n    (\n        (\n            PredicateSpec(lambda context: context.pre_sib_ready, name=\"pre_sib.ready\"),\n            _PreSibState.READY,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source != \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.blocked\",\n            ),\n            _PreSibState.BLOCKED,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source == \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.repaired_preview\",\n            ),\n            _PreSibState.REPAIRED_PREVIEW,\n        ),\n    ),\n    name=\"pre_sib_state\",\n)",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "assignment",
+          "span": {
+            "start_byte": 5639,
+            "end_byte": 6508,
+            "start_line": 172,
+            "start_column": 1,
+            "end_line": 200,
+            "end_column": 2
+          },
+          "digest": "blake3:5369cf333dfedba042b9e5dc6ec8ef9b51ca898c74c70e2a2a0fe512d9f923df",
+          "code": "_PRE_SIB_STATE_DECISION = FirstMatch(\n    (\n        (\n            PredicateSpec(lambda context: context.pre_sib_ready, name=\"pre_sib.ready\"),\n            _PreSibState.READY,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source != \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.blocked\",\n            ),\n            _PreSibState.BLOCKED,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    not context.pre_sib_ready\n                    and context.materialization_source == \"repair_loop_preview\"\n                ),\n                name=\"pre_sib.repaired_preview\",\n            ),\n            _PreSibState.REPAIRED_PREVIEW,\n        ),\n    ),\n    name=\"pre_sib_state\",\n)",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [],
+      "legacy_mapping_status": "no_anchor_match",
+      "construction_evidence": {
+        "status": "direct_specification_construction",
+        "source": {
+          "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_PRE_SIB_STATE_DECISION",
+          "start_line": 172,
+          "end_line": 200,
+          "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+          "excerpt_sha256": "sha256:6250745607ba9155937bb1bdae5976fa93aa2c8e92a16bb4eff1b8018d495d53"
+        },
+        "resolved_constructor": "specification_core.FirstMatch"
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-019",
+      "source": {
+        "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_repair_acceptance_criteria",
+        "start_line": 335,
+        "end_line": 378,
+        "file_sha256": "sha256:183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+        "excerpt_sha256": "sha256:252749d18c250ebbf66313e7d81f5082eb681a6a2799037473477744df79b867"
+      },
+      "selector": {
+        "source_candidate_id": "sg-019",
+        "anchor_text": "if refs and all",
+        "syntax_kind": "if_statement",
+        "select": "condition"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:6a9f198c83d2501eb3340b221d1eac087fc4c7ac32026b63097fe661f89f7836",
+        "path": "tools/candidate_repair_loop.py",
+        "source_digest": "blake3:aa398498a49a04817c4fe960928532c51e4888ff2f43a4b7284326522d39db1c",
+        "selection": "condition",
+        "anchor": {
+          "syntax_kind": "if_statement",
+          "span": {
+            "start_byte": 12333,
+            "end_byte": 12410,
+            "start_line": 348,
+            "start_column": 13,
+            "end_line": 349,
+            "end_column": 25
+          },
+          "digest": "blake3:9b0eaa9f8d809b3bc5102481daf1608c71e4718c2f9d4bbdb693c4435367226e",
+          "code": "if refs and all(ref in existing_ac for ref in refs):\n                continue",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "boolean_operator",
+          "span": {
+            "start_byte": 12336,
+            "end_byte": 12384,
+            "start_line": 348,
+            "start_column": 16,
+            "end_line": 348,
+            "end_column": 64
+          },
+          "digest": "blake3:5df38fa6268bc88cd51f14caf3df3d2cc46eebe2163d16ab41c99c531490c174",
+          "code": "refs and all(ref in existing_ac for ref in refs)",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "function_definition",
+          "span": {
+            "start_byte": 11738,
+            "end_byte": 13716,
+            "start_line": 335,
+            "start_column": 1,
+            "end_line": 378,
+            "end_column": 19
+          },
+          "digest": "blake3:4f9258623939ad8f21d144d0557c6355418756f08b9572c8baccbff707cb1a88",
+          "code": "def _repair_acceptance_criteria(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        node_id = _text(node.get(\"id\"))\n        existing_ac = {\n            _text(ac.get(\"id\"))\n            for ac in _list(node.get(\"acceptance_criteria\"))\n            if isinstance(ac, dict)\n        }\n        for requirement in _list(node.get(\"requirements\")):\n            if not isinstance(requirement, dict):\n                continue\n            refs = _text_list(requirement.get(\"acceptance_criteria_refs\"))\n            if refs and all(ref in existing_ac for ref in refs):\n                continue\n            req_id = _text(requirement.get(\"id\"), \"requirement\")\n            ac_id = f\"ac.repair.{_slug(req_id, 'requirement')}\"\n            actions.append(\n                _action(\n                    action_id=f\"repair.add-ac.{_slug(req_id, 'requirement')}\",\n                    kind=\"add_acceptance_criterion\",\n                    status=\"applied_to_preview\",\n                    target_ref=req_id,\n                    source_findings=[\"pre_sib_acceptance_criteria_gap\"],\n                    rationale=(\n                        \"Add a reviewable placeholder acceptance criterion for \"\n                        \"uncovered requirement.\"\n                    ),\n                    operation={\n                        \"op\": \"add_acceptance_criterion\",\n                        \"node_id\": node_id,\n                        \"requirement_id\": req_id,\n                        \"value\": {\n                            \"id\": ac_id,\n                            \"statement\": (\n                                \"Review criterion needed for requirement: \"\n                                f\"{_text(requirement.get('statement'), req_id)}\"\n                            ),\n                            \"repair_generated\": True,\n                        },\n                    },\n                )\n            )\n    return actions",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [
+        "python:tools/candidate_repair_loop.py:if:85314236c7b0c66c:1"
+      ],
+      "legacy_mapping_status": "exact_anchor_match",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+          "path": "tools/candidate_repair_loop.py",
+          "symbol": "_repair_acceptance_criteria",
+          "start_line": 335,
+          "end_line": 378,
+          "file_sha256": "sha256:183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+          "excerpt_sha256": "sha256:252749d18c250ebbf66313e7d81f5082eb681a6a2799037473477744df79b867"
+        },
+        "resolved_constructor": null
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-020",
+      "source": {
+        "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_ACCEPTANCE_CRITERION_DECISION",
+        "start_line": 83,
+        "end_line": 108,
+        "file_sha256": "sha256:2c80c6f5e67f761cbe33868c40daa9d0d04bce7e2b094e70fe21ab7c3314cc8c",
+        "excerpt_sha256": "sha256:03387985e95120d953b975a7dc7b46cffdb617202d5506728de0b588edccec82"
+      },
+      "selector": {
+        "source_candidate_id": "sg-020",
+        "anchor_text": "_ACCEPTANCE_CRITERION_DECISION =",
+        "syntax_kind": "assignment",
+        "select": "value"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:066a089de903451fa039c925f4b6e35d49898035aac55c72710459072f6b7983",
+        "path": "tools/candidate_repair_loop.py",
+        "source_digest": "blake3:a90b8f6b8f6e0605d18cefb3730fd49a356620641536b53aa81b820df3221322",
+        "selection": "value",
+        "anchor": {
+          "syntax_kind": "assignment",
+          "span": {
+            "start_byte": 2560,
+            "end_byte": 3518,
+            "start_line": 83,
+            "start_column": 1,
+            "end_line": 108,
+            "end_column": 2
+          },
+          "digest": "blake3:4352cc146bae5d13c6cbd260a319d57cb1b87a3393f424aa4d747cfd9e5e8ff3",
+          "code": "_ACCEPTANCE_CRITERION_DECISION = FirstMatch.with_fallback(\n    (\n        (\n            PredicateSpec(\n                lambda context: not isinstance(context.requirement, dict),\n                name=\"acceptance_criterion.invalid_requirement\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    bool(_text_list(context.requirement.get(\"acceptance_criteria_refs\")))\n                    and all(\n                        ref in context.existing_acceptance_criteria\n                        for ref in _text_list(context.requirement.get(\"acceptance_criteria_refs\"))\n                    )\n                ),\n                name=\"acceptance_criterion.already_covered\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n    ),\n    _AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\",\n)",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "call",
+          "span": {
+            "start_byte": 2593,
+            "end_byte": 3518,
+            "start_line": 83,
+            "start_column": 34,
+            "end_line": 108,
+            "end_column": 2
+          },
+          "digest": "blake3:9e47e8cba5636f813b1f29722730ad88d1cd4d8a52a48fd997db3948a86b07d3",
+          "code": "FirstMatch.with_fallback(\n    (\n        (\n            PredicateSpec(\n                lambda context: not isinstance(context.requirement, dict),\n                name=\"acceptance_criterion.invalid_requirement\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    bool(_text_list(context.requirement.get(\"acceptance_criteria_refs\")))\n                    and all(\n                        ref in context.existing_acceptance_criteria\n                        for ref in _text_list(context.requirement.get(\"acceptance_criteria_refs\"))\n                    )\n                ),\n                name=\"acceptance_criterion.already_covered\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n    ),\n    _AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\",\n)",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "assignment",
+          "span": {
+            "start_byte": 2560,
+            "end_byte": 3518,
+            "start_line": 83,
+            "start_column": 1,
+            "end_line": 108,
+            "end_column": 2
+          },
+          "digest": "blake3:4352cc146bae5d13c6cbd260a319d57cb1b87a3393f424aa4d747cfd9e5e8ff3",
+          "code": "_ACCEPTANCE_CRITERION_DECISION = FirstMatch.with_fallback(\n    (\n        (\n            PredicateSpec(\n                lambda context: not isinstance(context.requirement, dict),\n                name=\"acceptance_criterion.invalid_requirement\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n        (\n            PredicateSpec(\n                lambda context: (\n                    bool(_text_list(context.requirement.get(\"acceptance_criteria_refs\")))\n                    and all(\n                        ref in context.existing_acceptance_criteria\n                        for ref in _text_list(context.requirement.get(\"acceptance_criteria_refs\"))\n                    )\n                ),\n                name=\"acceptance_criterion.already_covered\",\n            ),\n            _AcceptanceCriterionDisposition.IGNORE,\n        ),\n    ),\n    _AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\",\n)",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [],
+      "legacy_mapping_status": "no_anchor_match",
+      "construction_evidence": {
+        "status": "direct_specification_construction",
+        "source": {
+          "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+          "path": "tools/candidate_repair_loop.py",
+          "symbol": "_ACCEPTANCE_CRITERION_DECISION",
+          "start_line": 83,
+          "end_line": 108,
+          "file_sha256": "sha256:2c80c6f5e67f761cbe33868c40daa9d0d04bce7e2b094e70fe21ab7c3314cc8c",
+          "excerpt_sha256": "sha256:03387985e95120d953b975a7dc7b46cffdb617202d5506728de0b588edccec82"
+        },
+        "resolved_constructor": "specification_core.FirstMatch.with_fallback"
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-031",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_dict",
+        "start_line": 34,
+        "end_line": 35,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed"
+      },
+      "selector": {
+        "source_candidate_id": "sg-031",
+        "anchor_text": "value if isinstance",
+        "syntax_kind": "conditional_expression",
+        "select": "condition"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:bc1e29f54e2dc70afc24adbfa15b4a85cc0115106ef57abdd00f0211c69fc1ba",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "source_digest": "blake3:347c2cf4e48253b24f54725534a3e8d98b10acf2398785e1377042a4dbe015b0",
+        "selection": "condition",
+        "anchor": {
+          "syntax_kind": "conditional_expression",
+          "span": {
+            "start_byte": 1278,
+            "end_byte": 1318,
+            "start_line": 35,
+            "start_column": 12,
+            "end_line": 35,
+            "end_column": 52
+          },
+          "digest": "blake3:b401cabbbf859429257975e8194214ec7ad050baa60c05495225ecfe00846da0",
+          "code": "value if isinstance(value, dict) else {}",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "call",
+          "span": {
+            "start_byte": 1287,
+            "end_byte": 1310,
+            "start_line": 35,
+            "start_column": 21,
+            "end_line": 35,
+            "end_column": 44
+          },
+          "digest": "blake3:9048492d78d3dd04a2c040b4f5a4fb1f14901f0cdd1f32561354cd40af01eb3f",
+          "code": "isinstance(value, dict)",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "function_definition",
+          "span": {
+            "start_byte": 1226,
+            "end_byte": 1318,
+            "start_line": 34,
+            "start_column": 1,
+            "end_line": 35,
+            "end_column": 52
+          },
+          "digest": "blake3:a9226bb6ef2dfddbd9e41a22f0906efd70d6af439a704c87eb4b7a8895a26611",
+          "code": "def _dict(value: Any) -> dict[str, Any]:\n    return value if isinstance(value, dict) else {}",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [
+        "python:tools/idea_to_spec_promotion_gate.py:conditional_expression:ccceb37e1c4777b5:1"
+      ],
+      "legacy_mapping_status": "exact_anchor_match",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_dict",
+          "start_line": 34,
+          "end_line": 35,
+          "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+          "excerpt_sha256": "sha256:202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed"
+        },
+        "resolved_constructor": null
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-032",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_text",
+        "start_line": 42,
+        "end_line": 43,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a"
+      },
+      "selector": {
+        "source_candidate_id": "sg-032",
+        "anchor_text": "value.strip() if isinstance",
+        "syntax_kind": "conditional_expression",
+        "select": "condition"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:a5c39749bc81046a4aa80ff46870456c392de93ba5c3a5f47d350733df16ef38",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "source_digest": "blake3:347c2cf4e48253b24f54725534a3e8d98b10acf2398785e1377042a4dbe015b0",
+        "selection": "condition",
+        "anchor": {
+          "syntax_kind": "conditional_expression",
+          "span": {
+            "start_byte": 1471,
+            "end_byte": 1541,
+            "start_line": 43,
+            "start_column": 12,
+            "end_line": 43,
+            "end_column": 82
+          },
+          "digest": "blake3:9644327130ce5c6b992ca3a9de93a799202b7939c3d6641bc7a5834935a75944",
+          "code": "value.strip() if isinstance(value, str) and value.strip() else default",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "boolean_operator",
+          "span": {
+            "start_byte": 1488,
+            "end_byte": 1528,
+            "start_line": 43,
+            "start_column": 29,
+            "end_line": 43,
+            "end_column": 69
+          },
+          "digest": "blake3:bee285e9c40f3352044c68489eb6ca555675be909de47dc067c4cda8693c970d",
+          "code": "isinstance(value, str) and value.strip()",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "function_definition",
+          "span": {
+            "start_byte": 1411,
+            "end_byte": 1541,
+            "start_line": 42,
+            "start_column": 1,
+            "end_line": 43,
+            "end_column": 82
+          },
+          "digest": "blake3:459df4a62c88fe0fea5d151f8567bb6f47b97a39ed415e6fec8a85934bf5b1f6",
+          "code": "def _text(value: Any, default: str = \"\") -> str:\n    return value.strip() if isinstance(value, str) and value.strip() else default",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [
+        "python:tools/idea_to_spec_promotion_gate.py:conditional_expression:295d742b8627bde5:1"
+      ],
+      "legacy_mapping_status": "exact_anchor_match",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "symbol": "_text",
+          "start_line": 42,
+          "end_line": 43,
+          "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+          "excerpt_sha256": "sha256:7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a"
+        },
+        "resolved_constructor": null
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-033",
+      "source": {
+        "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+        "path": "tools/subject_publication.py",
+        "symbol": "_verify_publication",
+        "start_line": 499,
+        "end_line": 508,
+        "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+        "excerpt_sha256": "sha256:00a535a8c89379d702e87eb39b8c7abec1ee659cb87186e36344245344711579"
+      },
+      "selector": {
+        "source_candidate_id": "sg-033",
+        "anchor_text": "allocation[\"workspace_identity\"] ==",
+        "syntax_kind": "boolean_operator",
+        "select": "expression"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:94b7481e87841c8f8acf7daa5b01199ffbe1f3398dab80d149f2f86bf400a7d7",
+        "path": "tools/subject_publication.py",
+        "source_digest": "blake3:e449ad2c9497d6c9d55c56fb910f55adde5874bb5ad6bbc0299d1c9a9e397f21",
+        "selection": "expression",
+        "anchor": {
+          "syntax_kind": "boolean_operator",
+          "span": {
+            "start_byte": 19773,
+            "end_byte": 20260,
+            "start_line": 500,
+            "start_column": 13,
+            "end_line": 506,
+            "end_column": 87
+          },
+          "digest": "blake3:e1d5b0a642649f10198f88998227834938f0e10dd4a01455ebc3b6bc1ca34c5a",
+          "code": "allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest()",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "boolean_operator",
+          "span": {
+            "start_byte": 19773,
+            "end_byte": 20260,
+            "start_line": 500,
+            "start_column": 13,
+            "end_line": 506,
+            "end_column": 87
+          },
+          "digest": "blake3:e1d5b0a642649f10198f88998227834938f0e10dd4a01455ebc3b6bc1ca34c5a",
+          "code": "allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest()",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "function_definition",
+          "span": {
+            "start_byte": 14479,
+            "end_byte": 22363,
+            "start_line": 380,
+            "start_column": 1,
+            "end_line": 552,
+            "end_column": 6
+          },
+          "digest": "blake3:a22361495170582d3b552f5f4b9133e9cd44692edc132296edd806334f45baf1",
+          "code": "def _verify_publication(\n    evidence: SubjectPublicationEvidence | None,\n    request: SubjectSourceWriteRequest,\n    authorization: SubjectWriteAuthorization,\n) -> dict:\n    require(\n        isinstance(evidence, SubjectPublicationEvidence), \"resolved publication evidence required\"\n    )\n    snapshot = DecisionSnapshot(evidence.repository_root, evidence.evidence_commit)\n    decisions = snapshot.resolve(evidence.decision_path)\n    require(\n        decisions[\"artifact_kind\"] == \"subject_publication_decisions\"\n        and type(decisions[\"schema_version\"]) is int\n        and decisions[\"schema_version\"] == 1,\n        \"schema approval is not subject-publication permission\",\n    )\n    _review(decisions[\"packet_approval\"], snapshot)\n    binding = decisions[\"packet_binding\"]\n    require(\n        decisions[\"packet_approval\"][\"packet_binding\"] == binding,\n        \"packet approval binding mismatch\",\n    )\n    packet, reviewed = _packet(snapshot, binding)\n    workspace = packet[\"workspace\"]\n    require(\n        workspace[\"workspace_identity\"] == request.topology.workspace_identity\n        and workspace[\"source_ref\"] == request.source_ref,\n        \"workspace/source ref scope mismatch\",\n    )\n    records = _transitions(packet, decisions, reviewed, snapshot)\n    subjects = packet[\"subjects\"]\n    require(\n        len(subjects) == len(request.changes)\n        and len({s[\"local_subject_id\"] for s in subjects}) == len(subjects),\n        \"request subject inventory differs from reviewed scope\",\n    )\n    used = set()\n    used_transitions = set()\n    for change in request.changes:\n        subject = next(\n            (\n                s\n                for s in subjects\n                if s[\"canonical_revision_selection\"][\"subject\"] == asdict(change.subject)\n            ),\n            None,\n        )\n        require(subject is not None, \"request contains an unreviewed subject\")\n        selection = subject[\"canonical_revision_selection\"]\n        document = load_yaml_text(change.document_yaml)\n        revision = document[\"revisions\"][-1]\n        require(\n            selection\n            == {\"subject\": asdict(change.subject), \"mode\": \"exact\", \"revision\": revision[\"number\"]},\n            \"request revision differs from reviewed exact target\",\n        )\n        draft = _input(packet, reviewed, subject[\"source_draft_ref\"])\n        require(\n            subject[\"source_draft_ref\"] == subject[\"candidate_file\"] + \"#/proposed_record\"\n            and subject[\"candidate_sha256\"]\n            == packet[\"inputs\"][\"review_tree_file_sha256\"][subject[\"candidate_file\"]]\n            and subject[\"canonical_target_ref\"] == change.path + \"#/subject\"\n            and revision[\"statement\"] == subject[\"statement\"],\n            \"request target differs from reviewed draft\",\n        )\n        require(\n            REVIEWED_RECORD_SPEC.is_satisfied_by(\n                ReviewedRecordContext(scope_digest(draft), scope_digest(document))\n            ),\n            \"request complete record differs from reviewed draft\",\n        )\n        ingress = [\n            r\n            for r in records.values()\n            if r[\"promotion_edge\"] == \"proposal -> spec_draft\"\n            and r[\"target_ref\"] == subject[\"source_draft_ref\"]\n        ]\n        canonical = [\n            r\n            for r in records.values()\n            if r[\"promotion_edge\"] == \"spec_draft -> canonical_artifact\"\n            and r[\"source_ref\"] == subject[\"source_draft_ref\"]\n            and r[\"target_ref\"] == subject[\"canonical_target_ref\"]\n        ]\n        require(\n            len(ingress) == len(canonical) == 1,\n            \"missing unique approved ingress/canonical transition\",\n        )\n        require(\n            ingress[0][\"source_ref\"] == subject[\"source_proposal_ref\"]\n            and canonical[0][\"ingress_transition_id\"] == ingress[0][\"transition_record_id\"]\n            and canonical[0][\"target_revision_selection\"] == selection,\n            \"canonical transition lacks its approved ingress or exact target\",\n        )\n        used_transitions.update(\n            [ingress[0][\"transition_record_id\"], canonical[0][\"transition_record_id\"]]\n        )\n        effect = _effect(\n            snapshot, decisions, evidence, revision[\"provenance\"], change.operation, selection\n        )\n        require(\n            effect[\"canonical_transition_id\"] == canonical[0][\"transition_record_id\"],\n            \"revision provenance does not authorize this canonical transition\",\n        )\n        used.add(revision[\"provenance\"])\n        if change.operation == \"origin\":\n            events = document[\"retained_disposition_transitions\"]\n            require(\n                len(events) == 1 and events[0][\"transition\"] == \"activation\",\n                \"origin needs one activation\",\n            )\n            _effect(snapshot, decisions, evidence, events[0][\"provenance\"], \"activation\", selection)\n            used.add(events[0][\"provenance\"])\n    require(used_transitions == set(records), \"unused or mismatched transition decisions\")\n    if request.workspace_declaration_yaml is not None:\n        declaration = load_yaml_text(request.workspace_declaration_yaml)\n        allocation = _effect(\n            snapshot, decisions, evidence, declaration[\"provenance\"], \"workspace_allocation\"\n        )\n        require(\n            allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest(),\n            \"workspace allocation covers a different bootstrap\",\n        )\n        reviewed_declaration = _input(packet, reviewed, workspace[\"proposed_declaration\"])\n        require(\n            REVIEWED_RECORD_SPEC.is_satisfied_by(\n                ReviewedRecordContext(scope_digest(reviewed_declaration), scope_digest(declaration))\n            ),\n            \"request declaration differs from reviewed candidate\",\n        )\n        used.add(declaration[\"provenance\"])\n    topology = _effect(\n        snapshot, decisions, evidence, decisions[\"topology_decision_ref\"], \"topology\"\n    )\n    require(\n        asdict(parse_topology_selection(topology[\"selection\"])) == asdict(request.topology),\n        \"unapproved dataset/topology selection\",\n    )\n    publication = decisions[\"publication\"]\n    review = _review(publication, snapshot)\n    require(\n        publication[\"request_sha256\"] == request.digest() == authorization.request_sha256,\n        \"publication decision covers another exact request\",\n    )\n    require(\n        authorization.decision_ref == evidence.decision_path + \"#/publication\"\n        and authorization.reviewer == review[\"reviewer\"]\n        and authorization.recorded_at == review[\"decision_timestamp\"],\n        \"writer authorization differs from the actual publication decision\",\n    )\n    require(\n        set(publication[\"transition_refs\"]) == used == set(authorization.transition_refs)\n        and len(publication[\"transition_refs\"]) == len(used),\n        \"publication effect-reference coverage mismatch\",\n    )\n    require(\n        used | {decisions[\"topology_decision_ref\"]}\n        == {evidence.decision_path + f\"#/effects/{i}\" for i in range(len(decisions[\"effects\"]))},\n        \"unrequested effects in publication decisions\",\n    )\n    return {\n        \"authorization_verification\": \"scope_bound_recorded_decisions_verified_not_attested\",\n        \"governance_evidence_commit\": evidence.evidence_commit,\n        \"reviewed_head\": binding[\"reviewed_head\"],\n        \"approval_scope_sha256\": binding[\"approval_scope_sha256\"],\n        \"reviewer_identity_attested\": False,\n    }",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [],
+      "legacy_mapping_status": "no_anchor_match",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+          "path": "tools/subject_publication.py",
+          "symbol": "_verify_publication",
+          "start_line": 499,
+          "end_line": 508,
+          "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+          "excerpt_sha256": "sha256:00a535a8c89379d702e87eb39b8c7abec1ee659cb87186e36344245344711579"
+        },
+        "resolved_constructor": null
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    },
+    {
+      "source_candidate_id": "sg-034",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_slug",
+        "start_line": 139,
+        "end_line": 141,
+        "file_sha256": "sha256:ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+        "excerpt_sha256": "sha256:c02bb5be1209d2ab66c7a3f4775ea3b6d07290a2f39ea41fc04d2e80f7de229c"
+      },
+      "selector": {
+        "source_candidate_id": "sg-034",
+        "anchor_text": "return slug or fallback",
+        "syntax_kind": "return_statement",
+        "select": "value"
+      },
+      "target": {
+        "artifact_type": "specification_metrics.decision_target",
+        "schema_version": 1,
+        "experimental": true,
+        "language": "python",
+        "target_id": "blake3:b3de9795e654452ebe571fa6d6a1894fe4e3104a643e4b3d64d72d53191fa3bf",
+        "path": "tools/candidate_repair_loop.py",
+        "source_digest": "blake3:ee396028c51b421cf72e237ca843e770d354834b53729318f4417f6370d1ba69",
+        "selection": "value",
+        "anchor": {
+          "syntax_kind": "return_statement",
+          "span": {
+            "start_byte": 4475,
+            "end_byte": 4498,
+            "start_line": 141,
+            "start_column": 5,
+            "end_line": 141,
+            "end_column": 28
+          },
+          "digest": "blake3:fa5cf256fcac92780e7cdb8c7cb652a13e15a5c3fc11799b79c49c978248ddeb",
+          "code": "return slug or fallback",
+          "truncated": false
+        },
+        "expression": {
+          "syntax_kind": "boolean_operator",
+          "span": {
+            "start_byte": 4482,
+            "end_byte": 4498,
+            "start_line": 141,
+            "start_column": 12,
+            "end_line": 141,
+            "end_column": 28
+          },
+          "digest": "blake3:ed31abf0aa439508180f41f52248295f820aba29bd2f045db433eaa2a6b02e74",
+          "code": "slug or fallback",
+          "truncated": false
+        },
+        "context": {
+          "syntax_kind": "function_definition",
+          "span": {
+            "start_byte": 4362,
+            "end_byte": 4498,
+            "start_line": 139,
+            "start_column": 1,
+            "end_line": 141,
+            "end_column": 28
+          },
+          "digest": "blake3:76e8fcba597109ed5c3849bd2cfbe8f30533ce643c250e241fbac17a7ca959d2",
+          "code": "def _slug(value: str, fallback: str) -> str:\n    slug = re.sub(r\"[^a-z0-9]+\", \"-\", value.lower()).strip(\"-\")\n    return slug or fallback",
+          "truncated": false
+        },
+        "ownership_status": "unknown",
+        "metric_effect": "none"
+      },
+      "legacy_anchor_fingerprints": [],
+      "legacy_mapping_status": "no_anchor_match",
+      "construction_evidence": {
+        "status": "unknown",
+        "source": {
+          "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+          "path": "tools/candidate_repair_loop.py",
+          "symbol": "_slug",
+          "start_line": 139,
+          "end_line": 141,
+          "file_sha256": "sha256:ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+          "excerpt_sha256": "sha256:c02bb5be1209d2ab66c7a3f4775ea3b6d07290a2f39ea41fc04d2e80f7de229c"
+        },
+        "resolved_constructor": null
+      },
+      "reference_status": "requires_new_annotation",
+      "prior_labels_transferred": false
+    }
+  ],
+  "selector_manifest_sha256": "6e1c2a75417295dc5b4e8374558f4a0c1dec9cac70736c23db4855b2a17c3c1b",
+  "corpus_sha256": "3dcd2d99ca41a043c8bb5da12b883d7a5f3d5c40d78d1b2b23115b61dfe6e3da",
+  "implementation_digests": {
+    "decision_target_alignment.py": "3666461ad78487c1a1d559a35433efa54cfa3d166187354f05980722cfe1c736",
+    "ownership_gate.py": "673778d738f89d19f804172461f7380ed945c55ee7273d451060c66433ac29a0",
+    "scanner_build.py": "975bd49c72f58877f613df96287472d5bd2663118c832553adcd4297d513529c",
+    "experiment.py": "da836ddd74df5149a5abd6023b59d6ecb2031942a5196ac92b7dbb774f69554a",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "scanner_provenance": {
+    "build_verified": true,
+    "build_command": [
+      "cargo",
+      "build",
+      "--locked",
+      "--manifest-path",
+      "Cargo.toml"
+    ],
+    "source_revision": "ebd3ba246324b92b1ccce6221c2bf3ca5868f327",
+    "checkout_dirty": true,
+    "source_digests": {
+      "src/classify.rs": "831fb7114af7d3b74fc348f96ebb6e9e5ead73facc691ee686d5aa2668247269",
+      "src/collection.rs": "cfbab00251154788ce4245dd8f629462643fb8e4269ee31d9f88be95b688fa98",
+      "src/live.rs": "8050d4c75a8401c5bca35f87744931ca443ba4bf3be139be214f6a7cb5eede62",
+      "src/liveness.rs": "be2c2cc5623cec177512f6b861fdc6a2ef2f9da7fde146100634324c098392f3",
+      "src/main.rs": "d649461a595ac0a1ab34b6013b6259492a39ce0e1cb95babb773ea4ef410aabb",
+      "src/metric.rs": "0deae1e9211f28b104317fd41ba0157995478a7b6e2656bcf2c10de8e48485af",
+      "src/model.rs": "2cb194cbfec2085ad64f917253902e6a7b1f0f87cf0c23c87cc12b8a9665f023",
+      "src/reuse/ast.rs": "b2c1d8ce6fda5b507831732bc74b7941b9c30bbdf6b22c9dedf5195ccf7192df",
+      "src/reuse/git.rs": "64f0cc0db3868905467ad52a141c4504285b3fc511e5ce5f96fbe50d88ccdfb4",
+      "src/reuse/mod.rs": "0cc2799e4d6286b99d1e76e96abc074ba11f0902ed7ed608f5cdd65e422674a5",
+      "src/reuse/tests.rs": "fc06649166e579cba67c270201fec2a4f24298234e5b71dadda8abaf0e3405d1",
+      "src/scan.rs": "84cc1587ed3b57d2abf11e19502313cab939227a186af0df7b8693395654fe14",
+      "src/scope.rs": "ddb0c791136b20c1f2df2e247c53593694e630ec6939311e576c824f34ec7903",
+      "src/store.rs": "d2baf5afb9d875f6553154e9cc1ae0bf59b5969b0e35f5790493b0271edb6b5f",
+      "src/target.rs": "bfd19bac1e12cdb1079ea074fe6479569e966ea3dceb2b67221238c7c2ac0e8b",
+      "Cargo.toml": "8c642db114dd9a0833a5f028aeecf8fae0cf6c34d517a6aca97c9c3d5eeef774",
+      "Cargo.lock": "3519674cc28db98fb86d800f6e1b9f568c200a88b71a6d01e5f5d22de9daca12"
+    },
+    "binary_sha256": "aca7cad27cb25eeb2d13a1bd8d75ff73d411a195acfd6d955eb779e357852779"
+  },
+  "limits": "Explicit agent-proposed development selectors, not automatic discovery or human-approved targets. Exact anchor mapping is syntactic, not a registry fingerprint migration. New expression units need new semantic annotations. Construction facts refer to their verified containing assignment; the Rust target itself reports ownership unknown. No production classification, registry, S/U, network or provider calls."
+}

@@ -198,3 +198,11 @@ from 5/8 to 7/8 without new inference. Six unknown sites retain recorded answers
 An actual Rust scanner audit also exposes different evaluation/discovery units
 and missing outer `FirstMatch.with_fallback` recognition. This is bounded
 diagnostic evidence, not a change to production ownership or S/U.
+
+## Explicit target alignment
+
+The [eight-case Rust export](runs/2026-10-10-decision-targets/README.md)
+binds one explicitly selected expression per development case to exact source
+bytes. Four targets match legacy scanner anchors; four have no such candidate.
+No old semantic labels were copied and no inference ran. The next comparison
+needs fresh target-specific annotations and bounded helper/data context.

@@ -10,6 +10,10 @@ what kind of logic they express. Suggestions never update reviewed registry
 entries or S/U counts. See the [classification contract](docs/candidate-classification-contract.md)
 for privacy boundaries, provenance, and review semantics.
 
+The experimental offline `extract-decision-target` command addresses an exact
+Python expression separately from its enclosing context. It does not change
+discovery, classification or S/U. See the [decision-target contract](docs/decision-target-contract.md).
+
 The proposed [formal analysis roadmap](docs/formal-analysis-roadmap.md) describes
 decision contracts, structural evidence, transformation tests and a bounded
 predicate-equivalence pilot before extending semantic review or PR gates.
