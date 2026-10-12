@@ -46,6 +46,7 @@ jobs:
           python3 -m unittest -v test_validate_expression_reference.py
           python3 -m unittest -v test_matched_expression_plan.py
           python3 -m unittest -v test_score_matched_expressions.py
+          python3 -m unittest -v test_replay_expression_construction.py
           python3 rubric_alignment.py --run runs/2026-10-10-rubric-alignment
           python3 state_key_order.py --run runs/2026-10-09-repeat-controls/round-1
           python3 state_key_order.py --run runs/2026-10-09-repeat-controls/round-2

@@ -79,9 +79,8 @@ provider order, invalid probability/identity/type cases, stale manifests/results
 and preservation of missing/failed response rows. 50 focused tests passed before
 publication. No Rust implementation or production defaults changed.
 
-Next: execute this exact bounded plan once, inspect native acceptance, then score
-each provider/repeat against the same frozen model reference. Keep raw results and
-offline ownership-gate composition separate. The preregistered success criteria
+The plan was executed once; native acceptance, raw scoring and a separate formal
+construction replay are recorded below. The preregistered success criteria
 remain in the [comparison plan](../2026-10-12-expression-reference/comparison-plan.json).
 This small development set is not human gold or evidence of generalization.
 
@@ -166,7 +165,43 @@ performance or evidence that one provider is generally better. The state/profile
 and serialization differ from historical whole-function studies; there is no
 missing-context ablation, so context causality is not measured. No S/U updates.
 
-**Next step:** inspect `expression-03`'s code/context/reference to distinguish a
-reference disagreement from a missed domain rule, and separately replay the
-existing formal construction proof for `expression-02`/`expression-04`. Preserve
-the raw 5/8 results; do not retune prompts until this diagnostic is understood.
+## Post-results diagnosis and separate construction routing
+
+The [expression-03 diagnosis](expression-03-diagnosis.md) identifies a narrow
+skip/add-placeholder repair policy. Its references must be nonempty and resolve
+within the current node. This supports the frozen `eligible / policy` reference
+under the supplied profile; it does not prove semantic coverage or canonical
+human intent. This review is nonblind and post-results. Neither provider gave
+a textual rationale, so reasons for their `excluded / mechanics` answers remain
+hypotheses. Empty input returns `[]`; a refactor must preserve conditional
+truthiness, not silently assume the original returns only Booleans.
+
+The separate [construction replay](construction-replay.json) revalidates all
+eight pinned source/target/context mappings and recognizes the exact whole
+construction expressions `expression-02` and `expression-04`. It bypasses the
+recorded semantic opportunity callback for those two controls and preserves all
+raw provider answers. Nested predicates do not inherit whole-assembly exclusion.
+
+| Metric, per repeat | Jev raw → routed | Luna raw → routed |
+|---|---:|---:|
+| Opportunity agreement | 5/8 → 7/8 | 5/8 → 7/8 |
+| Existing-composition false positives | 2/2 → 0/2 | 2/2 → 0/2 |
+| Eligible recall | 2/3 → 2/3 | 2/3 → 2/3 |
+| Concern-kind agreement | 7/8 → 7/8 | 6/8 → 6/8 |
+| Preregistered strong criterion | fail → fail | fail → fail |
+
+No new inference: 24 callbacks read recorded answers, eight construction routes
+bypass them. The proof assumes ordinary static Python bindings and trusted
+library semantics; runtime identity/liveness and whole-project ownership are not
+established. Unknown construction is not proof of being unowned. This offline
+composition is not a fresh end-to-end provider result and makes no S/U changes.
+
+```sh
+# Needs a Git checkout containing the pinned historical SpecGraph objects.
+# Use a NEW output path; no provider calls or overwrite of saved reports.
+python3 replay_expression_construction.py --source-repo /path/to/SpecGraph --run runs/2026-10-12-matched-expression-wires --output /tmp/expression-construction-replay.json
+```
+
+**Next step:** review this narrow repair-rule interpretation, then freeze
+contrastive domain/mechanics probes before further inference. Preserve the raw
+5/8 result, remaining recall gap and model-reference limits.

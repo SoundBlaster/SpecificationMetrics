@@ -1,0 +1,1070 @@
+{
+  "schema_version": 1,
+  "study_kind": "exact_expression_construction_recorded_replay",
+  "new_inference_requests": 0,
+  "metric_effect": "none",
+  "planned_requests": 32,
+  "native_valid": 32,
+  "evidence": {
+    "expression-01": {
+      "status": "unknown",
+      "source": {
+        "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_gate_findings",
+        "start_line": 189,
+        "end_line": 213,
+        "file_sha256": "sha256:218f37fb3f0dc01352f284dd8979f3c5191f1d781ae055e24dae2707327363f5",
+        "excerpt_sha256": "sha256:2f45d9e93250d297eeca3481e9f35eaa2e26efacee1e6a540fbbfbdc4402be39"
+      },
+      "resolved_constructor": null,
+      "target_id": "blake3:82bf75f9492d3546d79e24b6c0e4b45dd131d611e200a10e95dc3e3bcd869b72",
+      "state_sha256": "aead8ffb8213107693819a2d626506913f7c31f2f54f1dc64e74e9f206e193e2",
+      "expression_sha256": "111901b3ef2b1359d66bebe4f4a552f1a51bc0f447bdf2693037e01a80b758c5"
+    },
+    "expression-02": {
+      "status": "direct_specification_construction",
+      "source": {
+        "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_PRE_SIB_STATE_DECISION",
+        "start_line": 172,
+        "end_line": 200,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:6250745607ba9155937bb1bdae5976fa93aa2c8e92a16bb4eff1b8018d495d53"
+      },
+      "resolved_constructor": "specification_core.FirstMatch",
+      "target_id": "blake3:9a935acd491934e0a6698f958c700e0311afeda638fef01f5cb16ed520b17652",
+      "state_sha256": "9f4dd21bc071f0df2170e8db47969385f2ec77c844d6b39f3dd7134340097b3b",
+      "expression_sha256": "374ae985c5acf8c4ac0f49e4419dfbd690eac03c589b04f521adb1c77cdd5468"
+    },
+    "expression-03": {
+      "status": "unknown",
+      "source": {
+        "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_repair_acceptance_criteria",
+        "start_line": 335,
+        "end_line": 378,
+        "file_sha256": "sha256:183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+        "excerpt_sha256": "sha256:252749d18c250ebbf66313e7d81f5082eb681a6a2799037473477744df79b867"
+      },
+      "resolved_constructor": null,
+      "target_id": "blake3:6a9f198c83d2501eb3340b221d1eac087fc4c7ac32026b63097fe661f89f7836",
+      "state_sha256": "39611fa4b9e41c7aed7543f7e69a1a62e04f34c2b3ee38d30cbbca5d15f29289",
+      "expression_sha256": "4019fa210a0807c03aba6048eae75d2bb766cbf7ca3f4b9b8eca896e9f2b0a15"
+    },
+    "expression-04": {
+      "status": "direct_specification_construction",
+      "source": {
+        "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_ACCEPTANCE_CRITERION_DECISION",
+        "start_line": 83,
+        "end_line": 108,
+        "file_sha256": "sha256:2c80c6f5e67f761cbe33868c40daa9d0d04bce7e2b094e70fe21ab7c3314cc8c",
+        "excerpt_sha256": "sha256:03387985e95120d953b975a7dc7b46cffdb617202d5506728de0b588edccec82"
+      },
+      "resolved_constructor": "specification_core.FirstMatch.with_fallback",
+      "target_id": "blake3:066a089de903451fa039c925f4b6e35d49898035aac55c72710459072f6b7983",
+      "state_sha256": "7f463275051f747a4710aa3fe6ede9c709bc4b692d8f92efc35860a5a0b58723",
+      "expression_sha256": "fbac2ed25eeb188b9ec1b4cfec479a559db953d50eb4a5d567fee1ed14d1d056"
+    },
+    "expression-05": {
+      "status": "unknown",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_dict",
+        "start_line": 34,
+        "end_line": 35,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:202bf42eebf95cf5e337275f7b1225e74f06c762ec8eb71adb2c6198f6ef8eed"
+      },
+      "resolved_constructor": null,
+      "target_id": "blake3:bc1e29f54e2dc70afc24adbfa15b4a85cc0115106ef57abdd00f0211c69fc1ba",
+      "state_sha256": "ddf82ad0fe301a40e5cd10f263588d16294686a9fb11c663408bc0e7c893bcde",
+      "expression_sha256": "30285f74d0cd9e494ded7609e452660a0b64fda982da90747ab403e999a5cb65"
+    },
+    "expression-06": {
+      "status": "unknown",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/idea_to_spec_promotion_gate.py",
+        "symbol": "_text",
+        "start_line": 42,
+        "end_line": 43,
+        "file_sha256": "sha256:e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+        "excerpt_sha256": "sha256:7d8ce33cc991ab890e24b5fe53658051308c971884226d3fcd26ba325f451e2a"
+      },
+      "resolved_constructor": null,
+      "target_id": "blake3:a5c39749bc81046a4aa80ff46870456c392de93ba5c3a5f47d350733df16ef38",
+      "state_sha256": "21761cf940cb420064f12baa651dac3d243920e5e070d8d634a9c59b826e0009",
+      "expression_sha256": "42cb73d1fe3b93b15221d7649001671b6f99d934f629c15ee4ea5832cec612c9"
+    },
+    "expression-07": {
+      "status": "unknown",
+      "source": {
+        "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+        "path": "tools/subject_publication.py",
+        "symbol": "_verify_publication",
+        "start_line": 499,
+        "end_line": 508,
+        "file_sha256": "sha256:2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+        "excerpt_sha256": "sha256:00a535a8c89379d702e87eb39b8c7abec1ee659cb87186e36344245344711579"
+      },
+      "resolved_constructor": null,
+      "target_id": "blake3:94b7481e87841c8f8acf7daa5b01199ffbe1f3398dab80d149f2f86bf400a7d7",
+      "state_sha256": "edfc0d96005210ef213a608163952092ac7988fae8befca4641692f59bfb1c04",
+      "expression_sha256": "d3e7a97f262a8e19a1d6e92a3fbf3c36f1cd9cd2a50bec4a42d443f00936a905"
+    },
+    "expression-08": {
+      "status": "unknown",
+      "source": {
+        "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+        "path": "tools/candidate_repair_loop.py",
+        "symbol": "_slug",
+        "start_line": 139,
+        "end_line": 141,
+        "file_sha256": "sha256:ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+        "excerpt_sha256": "sha256:c02bb5be1209d2ab66c7a3f4775ea3b6d07290a2f39ea41fc04d2e80f7de229c"
+      },
+      "resolved_constructor": null,
+      "target_id": "blake3:b3de9795e654452ebe571fa6d6a1894fe4e3104a643e4b3d64d72d53191fa3bf",
+      "state_sha256": "a00a8c561c760501a5f2359c98227e880d8aad06a4ae92674610270c993acfc6",
+      "expression_sha256": "eb1f75d617e29d67f7c086dea27aed9f6b3a47a9a2b96ac41f4f03cc14006e7e"
+    }
+  },
+  "routes": [
+    {
+      "request_id": "r1-expression-01-jev-coreinfra",
+      "case_id": "expression-01",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-01-luna-decision-coreinfra",
+      "case_id": "expression-01",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-02-luna-decision-coreinfra",
+      "case_id": "expression-02",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-02-jev-coreinfra",
+      "case_id": "expression-02",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-03-jev-coreinfra",
+      "case_id": "expression-03",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-03-luna-decision-coreinfra",
+      "case_id": "expression-03",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-04-luna-decision-coreinfra",
+      "case_id": "expression-04",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-04-jev-coreinfra",
+      "case_id": "expression-04",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-05-jev-coreinfra",
+      "case_id": "expression-05",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-05-luna-decision-coreinfra",
+      "case_id": "expression-05",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-06-luna-decision-coreinfra",
+      "case_id": "expression-06",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-06-jev-coreinfra",
+      "case_id": "expression-06",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-07-jev-coreinfra",
+      "case_id": "expression-07",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-07-luna-decision-coreinfra",
+      "case_id": "expression-07",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r1-expression-08-luna-decision-coreinfra",
+      "case_id": "expression-08",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r1-expression-08-jev-coreinfra",
+      "case_id": "expression-08",
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-01-luna-decision-coreinfra",
+      "case_id": "expression-01",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-01-jev-coreinfra",
+      "case_id": "expression-01",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-02-jev-coreinfra",
+      "case_id": "expression-02",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-02-luna-decision-coreinfra",
+      "case_id": "expression-02",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-03-luna-decision-coreinfra",
+      "case_id": "expression-03",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-03-jev-coreinfra",
+      "case_id": "expression-03",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-04-jev-coreinfra",
+      "case_id": "expression-04",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-04-luna-decision-coreinfra",
+      "case_id": "expression-04",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "static_construction",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-05-luna-decision-coreinfra",
+      "case_id": "expression-05",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-05-jev-coreinfra",
+      "case_id": "expression-05",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-06-jev-coreinfra",
+      "case_id": "expression-06",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-06-luna-decision-coreinfra",
+      "case_id": "expression-06",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-07-luna-decision-coreinfra",
+      "case_id": "expression-07",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-07-jev-coreinfra",
+      "case_id": "expression-07",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "effective_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "request_id": "r2-expression-08-jev-coreinfra",
+      "case_id": "expression-08",
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "request_id": "r2-expression-08-luna-decision-coreinfra",
+      "case_id": "expression-08",
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "origin": "recorded_semantic_answer",
+      "raw_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "effective_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    }
+  ],
+  "recorded_semantic_callback_calls": 24,
+  "summaries": [
+    {
+      "provider": "jev-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "native_valid": 8,
+          "planned": 8,
+          "matched": {
+            "opportunity": 7,
+            "concern_kind": 7
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "false_positive_ids": [],
+          "repeat_criteria_passed": false
+        },
+        {
+          "repeat": 2,
+          "native_valid": 8,
+          "planned": 8,
+          "matched": {
+            "opportunity": 7,
+            "concern_kind": 7
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "false_positive_ids": [],
+          "repeat_criteria_passed": false
+        }
+      ]
+    },
+    {
+      "provider": "luna-decision-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "native_valid": 8,
+          "planned": 8,
+          "matched": {
+            "opportunity": 7,
+            "concern_kind": 6
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "false_positive_ids": [],
+          "repeat_criteria_passed": false
+        },
+        {
+          "repeat": 2,
+          "native_valid": 8,
+          "planned": 8,
+          "matched": {
+            "opportunity": 7,
+            "concern_kind": 6
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "false_positive_ids": [],
+          "repeat_criteria_passed": false
+        }
+      ]
+    }
+  ],
+  "raw_provider_score": [
+    {
+      "provider": "jev-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 7,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 1
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        },
+        {
+          "repeat": 2,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 7,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 1
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        }
+      ],
+      "repeat_consistency": {
+        "paired_axis_answers": 16,
+        "planned_axis_pairs": 16,
+        "label_disagreements": [],
+        "max_native_confidence_delta": 0.09000000000000008,
+        "max_option_probability_delta": 0.06999999999999998,
+        "passed": true
+      },
+      "preregistered_provider_criteria_passed": false
+    },
+    {
+      "provider": "luna-decision-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 6,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 2
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 3
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        },
+        {
+          "repeat": 2,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 6,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 2
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 3
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        }
+      ],
+      "repeat_consistency": {
+        "paired_axis_answers": 16,
+        "planned_axis_pairs": 16,
+        "label_disagreements": [],
+        "max_native_confidence_delta": 0.0,
+        "max_option_probability_delta": 0.0,
+        "passed": true
+      },
+      "preregistered_provider_criteria_passed": false
+    }
+  ],
+  "input_sha256": {
+    "packet": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+    "mapping": "86e8564e320cbc628a5378bbb6da4a9c785f5388537e30839ab78719aa7411bd",
+    "responses": "eb08bebf22d405adc7cc6aa8bd24f5cd8e133056f7ab08b3773b5684c2bd823f",
+    "reference": "09933534ec1c9f0dd3e9c03799ba7eb55d13f62510416d6dfc121d66d8af7e1b",
+    "manifest": "e44b427d5c8dd32b99a346309ecca8c13896e66333e07fc25bca0bdc20b5a9f6"
+  },
+  "implementation_sha256": {
+    "replay_expression_construction.py": "d22f277539c8eea344f8b153b89afe5a8dcc675d42403d23e83f0b76f3b283cc",
+    "ownership_gate.py": "673778d738f89d19f804172461f7380ed945c55ee7273d451060c66433ac29a0",
+    "prepare_decision_reference.py": "8ed36d088aa970e77be8f5f7439f00681ce201b7cf884ed33b90d936aef02d2a",
+    "matched_expression_plan.py": "f52adcebd477262ac0510f013529421f908599009b5b6ef91f4cde85b1545a45",
+    "score_matched_expressions.py": "0926438bddd392dcebd27d72af3d3ef4f595668040b4fe4a09af1b495e16d92d"
+  },
+  "limits": "Offline composition over previously paid answers, not a fresh end-to-end live study. Positive proof assumes ordinary static Python bindings and trusted specification_core constructor semantics; not runtime identity/liveness. Exact whole construction only. Unknown is not unowned. Concern-kind and all raw probabilities/confidence remain unchanged. Model reference, eight development cases, no human gold or S/U changes."
+}
