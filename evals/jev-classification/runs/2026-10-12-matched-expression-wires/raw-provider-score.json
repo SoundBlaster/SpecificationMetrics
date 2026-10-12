@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "study_kind": "matched_expression_raw_provider_score",
+  "reference_authority": "independent_model_reference_not_human_gold",
+  "planned_requests": 32,
+  "received_rows": 32,
+  "native_valid": 32,
+  "native_invalid": 0,
+  "missing_result_request_ids": [],
+  "unattempted_request_ids": [],
+  "attempt_status_unknown_request_ids": [],
+  "attempted_without_result_request_ids": [],
+  "providers": [
+    {
+      "provider": "jev-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 7,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 1
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        },
+        {
+          "repeat": 2,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 7,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 1
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        }
+      ],
+      "repeat_consistency": {
+        "paired_axis_answers": 16,
+        "planned_axis_pairs": 16,
+        "label_disagreements": [],
+        "max_native_confidence_delta": 0.09000000000000008,
+        "max_option_probability_delta": 0.06999999999999998,
+        "passed": true
+      },
+      "preregistered_provider_criteria_passed": false
+    },
+    {
+      "provider": "luna-decision-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 6,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 2
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 3
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        },
+        {
+          "repeat": 2,
+          "native_valid": 8,
+          "planned": 8,
+          "axes": {
+            "opportunity": {
+              "matched": 5,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "eligible",
+                  "prediction": "excluded",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 2
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 6,
+              "planned": 8,
+              "native_valid": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 3
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "mechanics",
+                  "count": 2
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 3
+                }
+              ]
+            }
+          },
+          "eligible_recall": {
+            "recovered": 2,
+            "planned": 3
+          },
+          "missed_or_unavailable_eligible_ids": [
+            "expression-03"
+          ],
+          "excluded_control_strata": {
+            "policy": {
+              "planned": 2,
+              "native_valid": 2,
+              "false_positive_ids": [
+                "expression-02",
+                "expression-04"
+              ]
+            },
+            "mechanics": {
+              "planned": 3,
+              "native_valid": 3,
+              "false_positive_ids": []
+            }
+          },
+          "false_positive_ids": [
+            "expression-02",
+            "expression-04"
+          ],
+          "preregistered_repeat_criteria_passed": false
+        }
+      ],
+      "repeat_consistency": {
+        "paired_axis_answers": 16,
+        "planned_axis_pairs": 16,
+        "label_disagreements": [],
+        "max_native_confidence_delta": 0.0,
+        "max_option_probability_delta": 0.0,
+        "passed": true
+      },
+      "preregistered_provider_criteria_passed": false
+    }
+  ],
+  "formal_ownership_gate": "not_applied_raw_predictions_only",
+  "metric_effect": "none",
+  "inference_performed_by_scorer": false,
+  "limits": "Eight development expressions, model reference not human gold. Repeats are not independent samples. No context-causality, calibration, generalization or production-readiness claim.",
+  "evidence_sha256": {
+    "manifest.json": "e44b427d5c8dd32b99a346309ecca8c13896e66333e07fc25bca0bdc20b5a9f6",
+    "responses.jsonl": "eb08bebf22d405adc7cc6aa8bd24f5cd8e133056f7ab08b3773b5684c2bd823f",
+    "attempts.jsonl": "d864e46dce6cc3657a152449f47111b46204f237336b6dbdfe81f35557ad2a79",
+    "receipt.json": "09c9de467fe79987d8c54a0141d1966cc240f82f6004cb790b19337595f9af26"
+  },
+  "reference_sha256": "09933534ec1c9f0dd3e9c03799ba7eb55d13f62510416d6dfc121d66d8af7e1b",
+  "scorer_sha256": "0926438bddd392dcebd27d72af3d3ef4f595668040b4fe4a09af1b495e16d92d",
+  "native_decoder_sha256": "5e3d2a46d2eaad7a82a2f49a71b2936178eae059992e15a0da2154780f8c850e"
+}

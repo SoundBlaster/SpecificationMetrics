@@ -2,7 +2,10 @@
 
 ## Status
 
-**Prepared and validated offline. No inference performed.**
+**Live run completed. 32/32 responses are native-valid; both providers fail the preregistered semantic criterion against the model reference.**
+
+Preparation and validation were offline. Explicitly authorized inference ran on
+2026-10-12 from 20:36:33.656772 to 20:37:35.173377 UTC (61.52 seconds).
 
 The frozen `manifest.json` contains 32 logical requests: eight independently
 annotated development expressions × Jev/Luna × two repeats. The retry budget
@@ -94,3 +97,76 @@ status unknown. No automatic rerun is inferred from any missing row.
 The manifest was re-frozen after this code correction while the study still had
 no attempts, responses or receipt. The preceding manifest remains in Git history;
 no hosted-run artifacts or historical experiment producer hashes were modified.
+
+## Live comparison results
+
+| Metric, per repeat | Jev repeat 1 | Jev repeat 2 | Luna repeat 1 | Luna repeat 2 |
+|---|---:|---:|---:|---:|
+| Native-valid / planned | 8/8 | 8/8 | 8/8 | 8/8 |
+| Opportunity agreement | 5/8 | 5/8 | 5/8 | 5/8 |
+| Concern-kind agreement | 7/8 | 7/8 | 6/8 | 6/8 |
+| Eligible recall | 2/3 | 2/3 | 2/3 | 2/3 |
+| False positives: excluded policy compositions | 2/2 | 2/2 | 2/2 | 2/2 |
+| False positives: mechanics controls | 0/3 | 0/3 | 0/3 | 0/3 |
+| Full preregistered repeat criterion | fail | fail | fail | fail |
+
+Both providers are categorically stable across the two repeats (16/16 paired axis
+answers available per provider; zero label disagreements). Jev's maximum numeric
+variation is 0.09 native confidence and 0.07 option probability; Luna's observed
+variation is zero. Two repeats do not establish general determinism or reliability.
+
+### Where the labels disagree with the reference
+
+- `expression-02` and `expression-04`: both providers return eligible/policy for
+  already-composed Specification controls; reference opportunity is excluded.
+- `expression-03`: both return excluded/mechanics; reference is eligible/policy.
+- `expression-01`: Luna returns eligible/mechanics; reference is eligible/policy.
+  Jev returns eligible/policy.
+- `expression-05`, `expression-06`, `expression-08`: both correctly match the
+  mechanics exclusions. Both also match `expression-07` as eligible/policy.
+
+The strong criterion was at least 7/8 agreement on each axis, recovery of all three
+eligible cases, no false positives on the excluded controls and stable repeated
+labels. Both providers fail it. The error pattern suggests existing Specification
+construction should be formally routed before semantic classification; it does
+not prove a cause for the remaining false exclusion. No formal ownership gate
+was applied in this report and raw predictions have not been rewritten.
+
+### Transport and usage
+
+All 32 logical requests completed with HTTP 200/native JSON: 32 network attempts,
+32 potentially billable POSTs, no retries, no missing results, no ambiguous POSTs.
+Requested/returned models are `jev-1.13.0` and `gpt-6-luna`.
+
+| Provider | Reported input tokens | Reported output tokens |
+|---|---:|---:|
+| Jev | 25,066 | 1,472 |
+| Luna | 21,518 | 0 |
+
+Token accounting is provider-reported and may differ between native APIs. It is
+not a dollar-cost comparison; actual billed amounts and key balance are unknown.
+
+### Evidence and offline replay
+
+- `attempts.jsonl`, `responses.jsonl`, `receipt.json`: original transport evidence.
+- `native-validation.json`: normalized acceptance and preserved request status.
+- `raw-provider-score.json`: per-provider/repeat confusion matrices, control
+  strata, recall, repeated-label comparisons and evidence/scorer hashes.
+- `score_matched_expressions.py`: offline scorer; the existing model reference
+  and frozen criteria were used without new labels or threshold tuning.
+
+```sh
+# Use a NEW output path: the scorer refuses to overwrite an existing report.
+python3 score_matched_expressions.py --run runs/2026-10-12-matched-expression-wires --output /tmp/matched-expression-score-replay.json
+```
+
+The saved report is reproduced by a CI regression without network calls. This is
+a small development set with a model-authored reference, not human gold, held-out
+performance or evidence that one provider is generally better. The state/profile
+and serialization differ from historical whole-function studies; there is no
+missing-context ablation, so context causality is not measured. No S/U updates.
+
+**Next step:** inspect `expression-03`'s code/context/reference to distinguish a
+reference disagreement from a missed domain rule, and separately replay the
+existing formal construction proof for `expression-02`/`expression-04`. Preserve
+the raw 5/8 results; do not retune prompts until this diagnostic is understood.
