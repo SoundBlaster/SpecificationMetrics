@@ -1,0 +1,592 @@
+{
+  "schema_version": 1,
+  "study_kind": "contrastive_scenario_annotation_packet",
+  "instructions": "Judge each exact expression independently under the supplied architecture profile and rubric. The supplied scenario contract and code are evidence. Do not infer omitted inputs or effects. Cite exact supplied text for both axes. No author proposals or provider predictions are supplied.",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Judge only the exact target expression under the supplied architecture profile. Supporting fragments explain inputs and effects; they are not additional candidates. A helper call is judged using its supplied implementation. A factory assembly is judged as the selected expression, not as each lambda separately. Do not infer omitted context. A durable product/domain rule can qualify with one use. Choose eligible when this same decision benefits from a named, addressable, observable Specification. Choose excluded for technical mechanics without a distinct product decision, or explicit evidence that a Specification already owns this SAME decision. Unrelated Specifications, imports alone and ordinary helper names do not establish ownership. Choose needs_review when material ambiguity prevents reliable judgment.",
+      "criteria": {
+        "eligible": "This exact expression expresses a durable product/domain decision suitable for a named, addressable, observable Specification; one use is sufficient.",
+        "excluded": "Technical mechanics or coordination without a distinct product decision, or the same decision is explicitly already owned by a Specification.",
+        "needs_review": "Evidence is materially ambiguous or insufficient; unknown, not an exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Independently classify the primary responsibility expressed by the exact target expression, using the supplied profile and context. Supporting declarations are evidence, not additional classification targets. Product/domain integrity and authority rules can be policy even when enforced through validation or composed as an existing Specification. A mechanical guard inside a factory assembly does not by itself determine the primary responsibility of the whole selected assembly. Use unknown for material ambiguity. Do not infer omitted dependencies.",
+      "criteria": {
+        "policy": "A durable product/domain rule, authority, trust, evidence, eligibility, or lifecycle decision.",
+        "mechanics": "Parsing, representation, I/O, adaptation, or technical enforcement WITHOUT a distinct product decision.",
+        "variant_behavior": "Dispatch over domain variants such as enum cases, types, or platforms.",
+        "unknown": "The supplied evidence does not support a reliable concern-kind label."
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case-01",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "items and all(item in known for item in items)",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "items contains the current requirement's nonempty, stripped acceptance-criterion references; known contains criterion IDs in the current node. This repair pass produces no action when there is at least one reference and every reference resolves in that node. Otherwise it proposes a reviewable acceptance-criterion placeholder. Resolving references alone says nothing about criterion quality or complete coverage. The return value is a repair instruction consumed by the application.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def plan_repair(items: list[str], known: set[str]) -> tuple[str, ...]:\n    if items and all(item in known for item in items):\n        return ()\n    return (\"add_acceptance_criterion_placeholder\",)\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6"
+    },
+    {
+      "case_id": "case-02",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [],
+          "truncated": false,
+          "limitations": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them."
+        }
+      },
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0"
+    },
+    {
+      "case_id": "case-03",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "items and all(item in known for item in items)",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [],
+          "truncated": false,
+          "limitations": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them."
+        }
+      },
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba"
+    },
+    {
+      "case_id": "case-04",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "record and expected are rows in a diagnostic table. identity, ref, commit and digest are literal columns. flag_a and flag_b are two checkboxes that the table's exact-match row format requires to be checked. All columns are present; expected_digest is the comparison value for the digest column. The function returns the printable marker = for a matching row and ! otherwise. The caller prints the marker beside the raw row; it does not use the marker to approve an operation.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def row_marker(record: dict, expected: dict, expected_digest: str) -> str:\n    if record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest:\n        return \"=\"\n    return \"!\"\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba"
+    },
+    {
+      "case_id": "case-05",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not ready and mode != \"preview\"",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "ready is the original pre-SIB report's readiness. mode=preview means materialization used a repair-loop preview. Promotion must require review when the original report is not ready and no repair-loop preview was used. Otherwise this particular gate contributes no blocker; other gates can still require review. The return value contributes to promotion readiness.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def promotion_blockers(ready: bool, mode: str) -> tuple[str, ...]:\n    if not ready and mode != \"preview\":\n        return (\"review_required\",)\n    return ()\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104"
+    },
+    {
+      "case_id": "case-06",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "preferred or default",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [],
+          "truncated": false,
+          "limitations": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them."
+        }
+      },
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d"
+    },
+    {
+      "case_id": "case-07",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "items and all(item in known for item in items)",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "items is a list of string tokens. known maps string tokens to rendered string chunks. Unknown tokens must be preserved literally. The function returns a tuple of rendered chunks. Both branches must produce the same rendering; the guard selects the direct-lookup path when every key is present.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def materialize(items: list[str], known: dict[str, str]) -> tuple[str, ...]:\n    if items and all(item in known for item in items):\n        return tuple(known[item] for item in items)\n    return tuple(known.get(item, item) for item in items)\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781"
+    },
+    {
+      "case_id": "case-08",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "preferred or default",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "preferred is the requested delivery queue name, possibly empty. default is the configured nonempty review queue name. New review tasks are assigned to the requested queue when one is supplied and to the configured review queue otherwise. This function selects that task destination; an application effect later enqueues the task. Input validation has already checked any supplied queue name.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def review_destination(preferred: str, default: str) -> str:\n    return preferred or default\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4"
+    },
+    {
+      "case_id": "case-09",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not ready and mode != \"preview\"",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [],
+          "truncated": false,
+          "limitations": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them."
+        }
+      },
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4"
+    },
+    {
+      "case_id": "case-10",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not ready and mode != \"preview\"",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "ready means the supplied text has already had CRLF line endings normalized. mode=preview requests the original bytes represented as text; other modes require LF line endings. The function returns the representation requested by that mode. The readiness flag only avoids repeating normalization. No document is accepted or rejected by this function.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def render_text(ready: bool, mode: str, text: str) -> str:\n    if not ready and mode != \"preview\":\n        return text.replace(\"\\r\\n\", \"\\n\")\n    return text\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3"
+    },
+    {
+      "case_id": "case-11",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "record contains previously validated reviewed allocation facts; expected contains the requested workspace identity, source ref and commit. flag_a grants identity allocation and flag_b grants source-ref initialization. expected_digest is computed by the input adapter from the exact declaration bytes. Publication may proceed through this gate only if all three bindings match, both grants are exactly True and the declaration digest matches. The function supplies a publish/hold decision; it does not itself publish or verify a signature.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def publication_disposition(record: dict, expected: dict, expected_digest: str) -> str:\n    if record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest:\n        return \"publish\"\n    return \"hold\"\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43"
+    },
+    {
+      "case_id": "case-12",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "preferred or default",
+          "syntax_kind": "boolean_operator",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "scenario_contract": "preferred and default are already escaped string chunks supplied by a diagnostic log renderer. An empty preferred chunk is represented with the supplied default display token. The function projects one chunk for the log line. Neither token identifies a destination or an operation; no delivery choice is made here.",
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "def display_chunk(preferred: str, default: str) -> str:\n    return preferred or default\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Authored self-contained diagnostic scenario derived from a historical expression shape. The supplied contract defines this scenario, not canonical SpecGraph intent. Only the exact expression is a classification target."
+        }
+      },
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239"
+    }
+  ]
+}

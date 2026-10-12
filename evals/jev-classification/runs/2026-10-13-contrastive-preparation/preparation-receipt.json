@@ -1,0 +1,76 @@
+{
+  "status": "prepared_reference_pending_native_wires_pending",
+  "new_inference_requests": 0,
+  "production_metric_effect": "none",
+  "reference_status": "awaiting_fresh_independent_annotation",
+  "input_sha256": {
+    "scenarios.json": "8e34d2d65e09a1064b0c2fd3412904604ce23081934d44ce47cd415d7d0a6436",
+    "source-evidence.json": "2427e1ad79e7f55273a902d8db5d32087967dc76037c3755df3049cbedefaeeb",
+    "study-plan.json": "ec36eb3040e25021a0d0ae553fa5cc6a86cedd47531e9e7eac300d6063abc239"
+  },
+  "shared_input_sha256": {
+    "rubric": "8255a3f9ff8487c219b7299b5865c6f445d35b27221159810da96fec7cb5bae2",
+    "architecture_profile": "22319e38ff1d047cb1578f74a27f9bbfb0e049233493381981bb160b53bd81fd"
+  },
+  "implementation_sha256": {
+    "prepare_contrastive_pairs.py": "cc35929df04cd8eb3e84dfa9973ab4eaf0c1cb0d346cb65ffbff817fbb837281",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "artifact_sha256": {
+    "case-packet.json": "92fe2ffdb822fae345cf8c9a56d9c84466fa99e15a145421491e2a12c8c4168e",
+    "source-mapping.json": "508851e55d8ccf89015bb6266c0abaf1d66a6961bf824e2fa30a74a83747f41c",
+    "author-proposals.json": "124d43a88c774767effb341297ea2fa3ea3404b624de2e50012c4b5b26c9436f",
+    "annotation-template.json": "c1ba780b760910432e86c5dda48eb8128b5a8fa3744c0a1eadf5d476bd0e0a04",
+    "logical-schedule.json": "939c88960ea63de986da5d10aea235e97de147386a0841aba8fa186f44252178"
+  },
+  "inventory": [
+    {
+      "case_id": "case-01",
+      "state_bytes": 3185
+    },
+    {
+      "case_id": "case-02",
+      "state_bytes": 2527
+    },
+    {
+      "case_id": "case-03",
+      "state_bytes": 2335
+    },
+    {
+      "case_id": "case-04",
+      "state_bytes": 3530
+    },
+    {
+      "case_id": "case-05",
+      "state_bytes": 3014
+    },
+    {
+      "case_id": "case-06",
+      "state_bytes": 2309
+    },
+    {
+      "case_id": "case-07",
+      "state_bytes": 3038
+    },
+    {
+      "case_id": "case-08",
+      "state_bytes": 2959
+    },
+    {
+      "case_id": "case-09",
+      "state_bytes": 2322
+    },
+    {
+      "case_id": "case-10",
+      "state_bytes": 3004
+    },
+    {
+      "case_id": "case-11",
+      "state_bytes": 3615
+    },
+    {
+      "case_id": "case-12",
+      "state_bytes": 2877
+    }
+  ]
+}

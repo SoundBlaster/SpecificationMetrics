@@ -1,0 +1,91 @@
+{
+  "status": "nonblind_author_hypotheses_not_reference",
+  "independent": false,
+  "prior_labels_transferred": false,
+  "annotations": [
+    {
+      "case_id": "case-01",
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-02",
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-03",
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-04",
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-05",
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-06",
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-07",
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-08",
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-09",
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-10",
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-11",
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    },
+    {
+      "case_id": "case-12",
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "basis": "Scenario author hypothesis; not an independent reference or human gold."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "pair_id": "pair-01",
+      "repository": "0al-spec/SpecGraph",
+      "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+      "path": "tools/candidate_repair_loop.py",
+      "file_sha256": "183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+      "quote": "def _repair_acceptance_criteria(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        node_id = _text(node.get(\"id\"))\n        existing_ac = {\n            _text(ac.get(\"id\"))\n            for ac in _list(node.get(\"acceptance_criteria\"))\n            if isinstance(ac, dict)\n        }\n        for requirement in _list(node.get(\"requirements\")):\n            if not isinstance(requirement, dict):\n                continue\n            refs = _text_list(requirement.get(\"acceptance_criteria_refs\"))\n            if refs and all(ref in existing_ac for ref in refs):\n                continue\n            req_id = _text(requirement.get(\"id\"), \"requirement\")\n            ac_id = f\"ac.repair.{_slug(req_id, 'requirement')}\"\n            actions.append(\n                _action(\n                    action_id=f\"repair.add-ac.{_slug(req_id, 'requirement')}\",\n                    kind=\"add_acceptance_criterion\",\n                    status=\"applied_to_preview\",\n                    target_ref=req_id,\n                    source_findings=[\"pre_sib_acceptance_criteria_gap\"],\n                    rationale=(\n                        \"Add a reviewable placeholder acceptance criterion for \"\n                        \"uncovered requirement.\"\n                    ),\n                    operation={\n                        \"op\": \"add_acceptance_criterion\",\n                        \"node_id\": node_id,\n                        \"requirement_id\": req_id,\n                        \"value\": {\n                            \"id\": ac_id,\n                            \"statement\": (\n                                \"Review criterion needed for requirement: \"\n                                f\"{_text(requirement.get('statement'), req_id)}\"\n                            ),\n                            \"repair_generated\": True,\n                        },\n                    },\n                )\n            )\n    return actions",
+      "quote_sha256": "88616239a532d4eb58cb26a6490696df80a5eba4c2da3e9f21681e3d8150c711",
+      "span": {
+        "start_byte": 11738,
+        "end_byte": 13716,
+        "start_line": 335,
+        "end_line": 378
+      },
+      "symbol": "_repair_acceptance_criteria",
+      "selected_source_expression": "refs and all(ref in existing_ac for ref in refs)",
+      "origin": "historical_source_ancestor_only_not_a_label_or_current_application_contract"
+    },
+    {
+      "pair_id": "pair-02",
+      "repository": "0al-spec/SpecGraph",
+      "revision": "3ad8836b9e14c501bdfb5aeec11bdfdd65974eea",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "file_sha256": "218f37fb3f0dc01352f284dd8979f3c5191f1d781ae055e24dae2707327363f5",
+      "quote": "def _pre_sib_original_blocked(pre_sib: dict[str, Any], materialization: dict[str, Any]) -> bool:\n    if _readiness_ready(pre_sib):\n        return False\n    return _text(materialization.get(\"materialization_source\")) != \"repair_loop_preview\"",
+      "quote_sha256": "569f7ad851a652aced4f6fddb0e4adf2be42162cf24928d3b452145b824708cf",
+      "span": {
+        "start_byte": 5268,
+        "end_byte": 5508,
+        "start_line": 155,
+        "end_line": 158
+      },
+      "symbol": "_pre_sib_original_blocked",
+      "selected_source_expression": null,
+      "origin": "historical_source_ancestor_only_not_a_label_or_current_application_contract"
+    },
+    {
+      "pair_id": "pair-03",
+      "repository": "0al-spec/SpecGraph",
+      "revision": "9b285a2e018331460c1a6bee46a697b24a26d3fb",
+      "path": "tools/subject_publication.py",
+      "file_sha256": "2ee9076a36dc578106ec4fa7d90b8f4bbdfc151cae5b9df356d74f4675b2d52b",
+      "quote": "allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest()",
+      "quote_sha256": "d3e7a97f262a8e19a1d6e92a3fbf3c36f1cd9cd2a50bec4a42d443f00936a905",
+      "span": {
+        "start_byte": 19773,
+        "end_byte": 20260,
+        "start_line": 500,
+        "end_line": 506
+      },
+      "symbol": null,
+      "selected_source_expression": "allocation[\"workspace_identity\"] == request.topology.workspace_identity\n            and allocation[\"source_ref\"] == request.source_ref\n            and allocation[\"expected_commit\"] == request.expected_commit\n            and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True\n            and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest()",
+      "origin": "historical_source_ancestor_only_not_a_label_or_current_application_contract"
+    },
+    {
+      "pair_id": "pair-04",
+      "repository": "0al-spec/SpecGraph",
+      "revision": "a5ab64363d054bae759b81441da6b79dbd4a9e86",
+      "path": "tools/candidate_repair_loop.py",
+      "file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "quote": "def _slug(value: str, fallback: str) -> str:\n    slug = re.sub(r\"[^a-z0-9]+\", \"-\", value.lower()).strip(\"-\")\n    return slug or fallback",
+      "quote_sha256": "9550f5c8fd765454c54995fcde12f873fccf6e7f85cfc5be4152e6f33130491b",
+      "span": {
+        "start_byte": 4362,
+        "end_byte": 4498,
+        "start_line": 139,
+        "end_line": 141
+      },
+      "symbol": "_slug",
+      "selected_source_expression": "slug or fallback",
+      "origin": "historical_source_ancestor_only_not_a_label_or_current_application_contract"
+    }
+  ]
+}

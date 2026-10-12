@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "status": "independent_model_annotation_not_human_gold",
+  "isolation": {
+    "context_inheritance": "none",
+    "inputs_read": [
+      "/private/tmp/specmetrics-independent-annotation-20261013-q0yk6epn/case-packet.json",
+      "/private/tmp/specmetrics-independent-annotation-20261013-q0yk6epn/annotation-template.json"
+    ],
+    "other_sources_used": false,
+    "limitations": "instruction-scoped isolation, not filesystem sandbox"
+  },
+  "annotations": [
+    {
+      "case_id": "case-01",
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": {
+        "opportunity": "The expression decides whether this acceptance-criterion repair pass proposes a placeholder. Its requirement-reference rule benefits from a named, addressable Specification even with one use; no ownership of this same decision is supplied.",
+        "concern_kind": "The primary responsibility is a domain repair decision based on acceptance-criterion reference integrity, rather than merely performing membership lookups."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "items and all(item in known for item in items)",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "This repair pass produces no action when there is at least one reference and every reference resolves in that node. Otherwise it proposes a reviewable acceptance-criterion placeholder.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "context-01",
+          "quote": "return (\"add_acceptance_criterion_placeholder\",)",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "The supplied rule covers reference resolution for this repair pass only; it does not establish criterion quality or complete coverage."
+      ]
+    },
+    {
+      "case_id": "case-02",
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationale": {
+        "opportunity": "Column comparisons and exact boolean checks alone do not establish a durable product decision or purely technical mechanics. The expressly withheld meanings and effects prevent a reliable opportunity judgment.",
+        "concern_kind": "The expression combines equality and boolean conditions, but the supplied evidence does not reveal whether their responsibility is authority, integrity, representation, or another concern."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "limitations",
+          "quote": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "Input semantics, downstream effects, and whether this same decision is already owned by a Specification are not supplied."
+      ]
+    },
+    {
+      "case_id": "case-03",
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationale": {
+        "opportunity": "Nonemptiness and membership checks are insufficient to determine whether this expression carries a product rule or only selects a technical path. The missing context is material.",
+        "concern_kind": "The role of items and known and the effect of this predicate are expressly withheld, so its primary responsibility cannot be classified reliably."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "items and all(item in known for item in items)",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "limitations",
+          "quote": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "The collection meanings, predicate consumer, product significance, and Specification ownership are unknown."
+      ]
+    },
+    {
+      "case_id": "case-04",
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": {
+        "opportunity": "The expression selects a printable exact-match row marker. The supplied contract assigns no distinct product approval or eligibility decision to this formatting comparison.",
+        "concern_kind": "Its primary responsibility is diagnostic representation: compare literal table columns and select the marker printed beside the raw row."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "The function returns the printable marker = for a matching row and ! otherwise. The caller prints the marker beside the raw row; it does not use the marker to approve an operation.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "case-05",
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": {
+        "opportunity": "The expression encodes a promotion-review rule combining original report readiness with use of a repair-loop preview. This bounded gate is suitable for a named Specification independently of other promotion gates.",
+        "concern_kind": "Its primary responsibility is a lifecycle and readiness decision: whether promotion receives a review-required blocker."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "not ready and mode != \"preview\"",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "Promotion must require review when the original report is not ready and no repair-loop preview was used.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "context-01",
+          "quote": "return (\"review_required\",)",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "Passing this particular gate does not establish overall promotion readiness; other gates can still require review."
+      ]
+    },
+    {
+      "case_id": "case-06",
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationale": {
+        "opportunity": "A truthiness fallback alone does not establish whether the selected value represents a durable product choice or a technical display or adaptation detail. The missing context prevents either eligibility or exclusion.",
+        "concern_kind": "Neither the meanings of preferred and default nor the use of the selected value are supplied, so the primary responsibility is unknown."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "preferred or default",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "limitations",
+          "quote": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "The selected values, downstream effect, product significance, and Specification ownership are not established."
+      ]
+    },
+    {
+      "case_id": "case-07",
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": {
+        "opportunity": "The exact guard chooses between equivalent rendering paths. The preservation behavior is implemented by the supporting fallback branch; this selected expression adds no distinct product decision.",
+        "concern_kind": "Its primary responsibility is selecting a safe direct-lookup path while preserving the same rendered result, which is representation mechanics."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "items and all(item in known for item in items)",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "Both branches must produce the same rendering; the guard selects the direct-lookup path when every key is present.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "context-01",
+          "quote": "return tuple(known.get(item, item) for item in items)",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "case-08",
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": {
+        "opportunity": "The expression chooses the destination of new review tasks according to a requested-queue-or-configured-review-queue rule. This product routing decision can be named, addressed, and observed independently of the later enqueue effect.",
+        "concern_kind": "Its primary responsibility is deciding where review work is assigned, a durable product rule expressed through a simple fallback."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "preferred or default",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "New review tasks are assigned to the requested queue when one is supplied and to the configured review queue otherwise.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "This function selects that task destination; an application effect later enqueues the task.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "case-09",
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationale": {
+        "opportunity": "The names ready and preview do not establish a product readiness rule. Without their supplied meanings and the predicate's effects, the expression could carry policy or technical mechanics.",
+        "concern_kind": "A readiness-like flag and mode comparison alone cannot reliably distinguish lifecycle policy, representation mechanics, or variant behavior."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "not ready and mode != \"preview\"",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "limitations",
+          "quote": "Input meanings, containing implementation, scenario contract and effects intentionally withheld. Do not infer them.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "The meanings of ready and mode, resulting behavior, and Specification ownership are expressly unavailable."
+      ]
+    },
+    {
+      "case_id": "case-10",
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": {
+        "opportunity": "The expression controls CRLF normalization for a requested text representation and avoids repeating that transformation. The supplied scenario establishes no distinct product acceptance or lifecycle decision.",
+        "concern_kind": "Its primary responsibility is representation mechanics: deciding whether line-ending normalization is needed. The mode comparison serves that technical transformation."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "not ready and mode != \"preview\"",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "The readiness flag only avoids repeating normalization. No document is accepted or rejected by this function.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "context-01",
+          "quote": "return text.replace(\"\\r\\n\", \"\\n\")",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "case-11",
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationale": {
+        "opportunity": "The expression defines this publication gate's binding, grant, and declaration-digest requirements. This explicit authority and integrity decision is suitable for a named Specification; no same-decision Specification ownership is supplied.",
+        "concern_kind": "Its primary responsibility is publication authority and evidence integrity: all requested bindings, both grants, and the declaration digest must match before this gate permits publication."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "Publication may proceed through this gate only if all three bindings match, both grants are exactly True and the declaration digest matches.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "flag_a grants identity allocation and flag_b grants source-ref initialization.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": [
+        "This predicate supplies only the described publish/hold gate; it does not itself publish, verify a signature, or establish any omitted checks."
+      ]
+    },
+    {
+      "case_id": "case-12",
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationale": {
+        "opportunity": "The expression substitutes a supplied display token for an empty escaped chunk. This diagnostic rendering fallback has no distinct product destination or operation decision under the supplied contract.",
+        "concern_kind": "Its primary responsibility is choosing the displayed representation of a log chunk, which is representation mechanics."
+      },
+      "evidence_quotes": [
+        {
+          "location": "target",
+          "quote": "preferred or default",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "An empty preferred chunk is represented with the supplied default display token. The function projects one chunk for the log line.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        },
+        {
+          "location": "scenario_contract",
+          "quote": "Neither token identifies a destination or an operation; no delivery choice is made here.",
+          "supports_axes": ["opportunity", "concern_kind"]
+        }
+      ],
+      "uncertainties": []
+    }
+  ]
+}

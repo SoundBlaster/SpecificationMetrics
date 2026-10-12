@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "study_kind": "contrastive_mechanics_policy_development_diagnostic",
+  "status": "draft_protocol_reference_pending_native_wires_pending",
+  "objective": "Test whether each provider distinguishes the architectural role of the same exact computation when its input meanings and downstream effects differ; separately observe abstention with those meanings withheld.",
+  "corpus": {
+    "historical_repository": "0al-spec/SpecGraph",
+    "origin": "Four source-derived computation shapes with authored counterfactual implementations/contracts; not twelve historical production targets.",
+    "full_context_pairs": 4,
+    "full_context_cases": 8,
+    "unique_context_withheld_controls": 4,
+    "total_cases": 12,
+    "reference_status": "Fresh independent target-specific annotation required. Author proposals are hypotheses, not the reference.",
+    "confirmation_holdout": false,
+    "human_gold": false
+  },
+  "fixed_inputs": {
+    "architecture_profile_source": "../2026-10-12-expression-reference/reference-packet.json:architecture_profile",
+    "rubric_source": "../2026-10-12-expression-reference/rubric.json",
+    "target_unit": "exact authored expression",
+    "within_pair_constraint": "Exact target expression bytes and profile/rubric are identical for both members and their shared context-withheld control.",
+    "full_context": "Complete authored function plus scenario contract; no truncation; maximum canonical state 16 KiB.",
+    "withheld_context": "One unique state per computation, containing the expression/profile but no function, contract, input meanings or effects. Never duplicate it once per opposite proposed label.",
+    "provider_input": "Same canonical UTF-8 state text and question instructions/choices in both native APIs. No pair/role IDs, mappings, author proposals, reference labels or results enter the state."
+  },
+  "providers": [
+    {
+      "id": "jev-coreinfra",
+      "requested_model": "jev-1.13.0",
+      "endpoint": "https://hub.coreinfra.ai/typesafe/api/v1/systemone"
+    },
+    {
+      "id": "luna-decision-coreinfra",
+      "requested_model": "gpt-6-luna",
+      "endpoint": "https://hub.coreinfra.ai/openai/api/v1/decisions"
+    }
+  ],
+  "questions": ["opportunity", "concern_kind"],
+  "design": {
+    "repeats": 2,
+    "planned_logical_requests": 48,
+    "calculation": "(4 pairs * 2 full-context members + 4 unique withheld controls) * 2 providers * 2 repeats",
+    "retry_protocol": "specmetrics.coreinfra-tls-retry/v1",
+    "max_attempts_per_request": 3,
+    "max_network_attempts": 144,
+    "max_potentially_billable_posts": 144,
+    "dollar_cost_ceiling": null,
+    "budget_note": "Attempt count is bounded; actual pricing, failed-call billing and remaining credential balance are unknown. No live execution is authorized by this preparation file.",
+    "order": "Freeze deterministic shuffled case orders before inference, reverse each case's provider order on the second repeat, use independent stateless requests. Pair members are never sent together as a classification task.",
+    "native_wires": "Not yet created. Freeze exact native request bytes, reference/review hashes, schedule and strict decoder/producer hashes in a separate executable manifest after reference review.",
+    "existing_constructions": "Intentionally absent from these authored fixtures; do not use the construction gate to substitute semantic labels. Existing-composition error rates belong to the preceding study."
+  },
+  "hypotheses": {
+    "H1_primary": "With complete context, a provider correctly distinguishes all four opposed mechanics/policy pairs on both axes in each repeat against a reviewed fresh reference.",
+    "H2_withheld": "When input meanings and effects are withheld, the provider returns needs_review and unknown for all four unique controls in each repeat.",
+    "H3_directional_secondary": "For at least three of four pairs per repeat, P(policy) and P(eligible) are each strictly larger for the policy member than for the mechanical member. Use within-provider native option probabilities only; do not compare native confidence scales."
+  },
+  "criteria": {
+    "prerequisites": [
+      "Independently annotate the anonymized packet without author proposals, source-mapping strata, historical labels or provider results; retain quotes and uncertainty.",
+      "Review disagreements before any provider run. If a full pair does not support opposed labels, or a withheld control is judged answerable, revise the corpus/protocol version and repeat independent review rather than dropping cases or forcing labels.",
+      "Freeze the reviewed reference, applicable criteria and executable native wires before inference; validate identical shared state/rubric and native Choice contracts offline.",
+      "Explicitly request the bounded live run with an adequate credential/budget; any extra contract probe or rerun is a separately recorded experiment."
+    ],
+    "operational": "All 12 planned cases per provider/repeat must have native-valid answers to claim a completed semantic test. Missing, invalid and ambiguous results retain their planned denominator and are reported separately from abstention.",
+    "H1_pass": "4/4 full-context pairs correct on BOTH axes in EACH repeat, including 0/4 mechanical false positives and 4/4 eligible policy recovery. Anything less fails this strong development-set claim.",
+    "H2_pass": "4/4 withheld controls select needs_review/unknown in EACH repeat. Score this separately from H1; never score a shared withheld state against two opposite full-context labels.",
+    "H3_pass": "Both within-provider option-probability deltas are strictly positive for at least 3/4 pairs in EACH repeat. Ties, absent or invalid distributions do not count as positive evidence.",
+    "repeat_consistency": "Report categorical disagreement separately for every case/axis; zero disagreements required for a repeat-stability claim, independently of H1/H2/H3.",
+    "reference_change": "No post-results reference or criterion changes in the same study; any alternative adjudication gets a new version and separate scoring."
+  },
+  "reporting": [
+    "Per-provider/per-repeat pair table with both full-context labels, reference labels and whether each complete pair is correct on each axis and jointly.",
+    "Full-context confusion matrices, 4-case eligible recall and 4-case mechanical false positives; no pooled 12-case accuracy as the primary endpoint.",
+    "Four unique withheld-control abstentions per axis; show their recorded predictions alongside both full-context states, without transferring labels between contexts.",
+    "Within-provider paired option-probability deltas; native confidence and repeat numeric variation remain separate uncalibrated diagnostics.",
+    "Case-order, exact state/wire/reference/implementation hashes, requested/returned models, endpoint, timestamps, usage, attempts, missing/invalid responses, ambiguous POSTs and potential duplicate execution.",
+    "Raw predictions and failed criteria retained. No production classifier defaults, registry dispositions or S/U changes."
+  ],
+  "limits": [
+    "Authored diagnostic pairs share historical shapes; they are not an independent natural-code holdout or a population sample.",
+    "Full pair members differ in input meanings, code names, types, contracts and effects. Equal target bytes control syntax, but do not isolate which contextual component caused a prediction.",
+    "Adding complete context versus withholding it is a bounded input intervention, not proof of improved production generalization or the model's internal reasoning.",
+    "All full-context policy hypotheses are eligible and mechanics hypotheses excluded by design. This does not validate general equivalence of the orthogonal axes or already-owned policy classification.",
+    "Two repeats and four pairs cannot establish calibrated confidence, statistical superiority of a provider or longitudinal bug/blast-radius improvements."
+  ],
+  "new_inference_requests": 0,
+  "metric_effect": "none"
+}

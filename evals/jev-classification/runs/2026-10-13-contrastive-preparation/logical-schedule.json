@@ -1,0 +1,346 @@
+{
+  "status": "logical_order_only_not_executable_native_wires",
+  "planned_cases": 12,
+  "repeats": 2,
+  "planned_logical_requests": 48,
+  "max_attempts_per_request": 3,
+  "max_network_attempts": 144,
+  "requests": [
+    {
+      "request_id": "r1-case-01-luna-decision-coreinfra",
+      "case_id": "case-01",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6"
+    },
+    {
+      "request_id": "r1-case-01-jev-coreinfra",
+      "case_id": "case-01",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6"
+    },
+    {
+      "request_id": "r1-case-04-jev-coreinfra",
+      "case_id": "case-04",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba"
+    },
+    {
+      "request_id": "r1-case-04-luna-decision-coreinfra",
+      "case_id": "case-04",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba"
+    },
+    {
+      "request_id": "r1-case-02-jev-coreinfra",
+      "case_id": "case-02",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0"
+    },
+    {
+      "request_id": "r1-case-02-luna-decision-coreinfra",
+      "case_id": "case-02",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0"
+    },
+    {
+      "request_id": "r1-case-06-jev-coreinfra",
+      "case_id": "case-06",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d"
+    },
+    {
+      "request_id": "r1-case-06-luna-decision-coreinfra",
+      "case_id": "case-06",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d"
+    },
+    {
+      "request_id": "r1-case-11-luna-decision-coreinfra",
+      "case_id": "case-11",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43"
+    },
+    {
+      "request_id": "r1-case-11-jev-coreinfra",
+      "case_id": "case-11",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43"
+    },
+    {
+      "request_id": "r1-case-07-luna-decision-coreinfra",
+      "case_id": "case-07",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781"
+    },
+    {
+      "request_id": "r1-case-07-jev-coreinfra",
+      "case_id": "case-07",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781"
+    },
+    {
+      "request_id": "r1-case-05-luna-decision-coreinfra",
+      "case_id": "case-05",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104"
+    },
+    {
+      "request_id": "r1-case-05-jev-coreinfra",
+      "case_id": "case-05",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104"
+    },
+    {
+      "request_id": "r1-case-08-jev-coreinfra",
+      "case_id": "case-08",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4"
+    },
+    {
+      "request_id": "r1-case-08-luna-decision-coreinfra",
+      "case_id": "case-08",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4"
+    },
+    {
+      "request_id": "r1-case-10-jev-coreinfra",
+      "case_id": "case-10",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3"
+    },
+    {
+      "request_id": "r1-case-10-luna-decision-coreinfra",
+      "case_id": "case-10",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3"
+    },
+    {
+      "request_id": "r1-case-03-luna-decision-coreinfra",
+      "case_id": "case-03",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba"
+    },
+    {
+      "request_id": "r1-case-03-jev-coreinfra",
+      "case_id": "case-03",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba"
+    },
+    {
+      "request_id": "r1-case-09-luna-decision-coreinfra",
+      "case_id": "case-09",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4"
+    },
+    {
+      "request_id": "r1-case-09-jev-coreinfra",
+      "case_id": "case-09",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4"
+    },
+    {
+      "request_id": "r1-case-12-jev-coreinfra",
+      "case_id": "case-12",
+      "repeat": 1,
+      "provider": "jev-coreinfra",
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239"
+    },
+    {
+      "request_id": "r1-case-12-luna-decision-coreinfra",
+      "case_id": "case-12",
+      "repeat": 1,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239"
+    },
+    {
+      "request_id": "r2-case-05-jev-coreinfra",
+      "case_id": "case-05",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104"
+    },
+    {
+      "request_id": "r2-case-05-luna-decision-coreinfra",
+      "case_id": "case-05",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "644caa00e516ef37feea9baec4a07a220f62249a57521428ea08c1bb2df87104"
+    },
+    {
+      "request_id": "r2-case-11-jev-coreinfra",
+      "case_id": "case-11",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43"
+    },
+    {
+      "request_id": "r2-case-11-luna-decision-coreinfra",
+      "case_id": "case-11",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "fbf1867402b3d64094f4f28e0060a3758fd7cdad67a6b3da74f310898943fc43"
+    },
+    {
+      "request_id": "r2-case-03-jev-coreinfra",
+      "case_id": "case-03",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba"
+    },
+    {
+      "request_id": "r2-case-03-luna-decision-coreinfra",
+      "case_id": "case-03",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "32b77c718e0bc0e85c4be4907d62013c5a5fb3318aef63f8a9f9ade2ab9a61ba"
+    },
+    {
+      "request_id": "r2-case-02-luna-decision-coreinfra",
+      "case_id": "case-02",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0"
+    },
+    {
+      "request_id": "r2-case-02-jev-coreinfra",
+      "case_id": "case-02",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "ec59087f53c54d1667359ebfdf8b8507f1168bc56b563cc2166e0f0e8ab7d9a0"
+    },
+    {
+      "request_id": "r2-case-06-luna-decision-coreinfra",
+      "case_id": "case-06",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d"
+    },
+    {
+      "request_id": "r2-case-06-jev-coreinfra",
+      "case_id": "case-06",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "166e221148cc6948e6b269f7a7490254e8115cac463858e7b064a01ded772e3d"
+    },
+    {
+      "request_id": "r2-case-09-jev-coreinfra",
+      "case_id": "case-09",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4"
+    },
+    {
+      "request_id": "r2-case-09-luna-decision-coreinfra",
+      "case_id": "case-09",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "42c627753689ebabf85f685710a1f241bcca1e6c1288e8798cf4dfcd99cb0ce4"
+    },
+    {
+      "request_id": "r2-case-07-jev-coreinfra",
+      "case_id": "case-07",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781"
+    },
+    {
+      "request_id": "r2-case-07-luna-decision-coreinfra",
+      "case_id": "case-07",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "e771e719d34756136be608a11c7aa49cf99a09c7c26c3d64f894da2fa30a2781"
+    },
+    {
+      "request_id": "r2-case-01-jev-coreinfra",
+      "case_id": "case-01",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6"
+    },
+    {
+      "request_id": "r2-case-01-luna-decision-coreinfra",
+      "case_id": "case-01",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "70dff6e45077d0d538ee364e2bdbe521a2230439effb14db82c92918dfb437b6"
+    },
+    {
+      "request_id": "r2-case-10-luna-decision-coreinfra",
+      "case_id": "case-10",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3"
+    },
+    {
+      "request_id": "r2-case-10-jev-coreinfra",
+      "case_id": "case-10",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "a6dc5276e506c58135887289268efd64a82ae94626d1ade7977ed7c32233ebc3"
+    },
+    {
+      "request_id": "r2-case-08-luna-decision-coreinfra",
+      "case_id": "case-08",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4"
+    },
+    {
+      "request_id": "r2-case-08-jev-coreinfra",
+      "case_id": "case-08",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "d329143f21c2ef0b39e4e7830c165c8b4bf3b519cdd90a26e9f8a89fdfd1b4a4"
+    },
+    {
+      "request_id": "r2-case-12-luna-decision-coreinfra",
+      "case_id": "case-12",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239"
+    },
+    {
+      "request_id": "r2-case-12-jev-coreinfra",
+      "case_id": "case-12",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "09af8e0e3a27f8aff8ddadc81353ca8c6a336ed3852d86ad259e25bb7bc62239"
+    },
+    {
+      "request_id": "r2-case-04-luna-decision-coreinfra",
+      "case_id": "case-04",
+      "repeat": 2,
+      "provider": "luna-decision-coreinfra",
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba"
+    },
+    {
+      "request_id": "r2-case-04-jev-coreinfra",
+      "case_id": "case-04",
+      "repeat": 2,
+      "provider": "jev-coreinfra",
+      "state_sha256": "f794d19ad07d48da9944d55a0596f2c59fb0eeec1170b01dc11bdf99d4a3e9ba"
+    }
+  ]
+}
