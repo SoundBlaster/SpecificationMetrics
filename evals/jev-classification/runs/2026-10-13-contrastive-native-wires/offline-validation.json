@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "offline_validation_passed_live_not_started",
+  "recorded_at": "2026-10-12T22:19:35.613323+00:00",
+  "python_version": "3.12.14",
+  "manifest_sha256": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+  "test_modules": [
+    "test_contrastive_decision_study.py",
+    "test_score_contrastive_decisions.py",
+    "test_validate_contrastive_reference.py",
+    "test_prepare_contrastive_pairs.py",
+    "test_replay_expression_construction.py",
+    "test_score_matched_expressions.py",
+    "test_matched_expression_plan.py",
+    "test_prepare_decision_reference.py",
+    "test_validate_expression_reference.py",
+    "test_coreinfra_transport.py",
+    "test_coreinfra_retry_run.py",
+    "test_decision_target_alignment.py",
+    "test_rubric_alignment.py",
+    "test_ownership_gate.py"
+  ],
+  "test_module_sha256": {
+    "test_contrastive_decision_study.py": "10da9688a2d749ebf5cb900463fb3df405483747f0a52710fac0fecefdc1331d",
+    "test_score_contrastive_decisions.py": "9499c298e5c71c6eaf97d2bbbf234acbcfb907ea0ea637085a3e9dafaa597e80",
+    "test_validate_contrastive_reference.py": "912be86ab1e4b453a09876a9158d6abafb7298c34c5019abe31e3d36fad2e8a2",
+    "test_prepare_contrastive_pairs.py": "f689f6806ea1bc90646c617ed31a6755149669a80a20166623473f880ccc0dbd",
+    "test_replay_expression_construction.py": "e48abc54f63644f08683480b4ede3ad9234f79b07a2ccb1707c49006eb2ddcee",
+    "test_score_matched_expressions.py": "14f0d0a52bf909cfb6f8470591a782421ff20b8fcbaea3700b91750b491d4870",
+    "test_matched_expression_plan.py": "68f26f514eea9e306034dc8f6f631afe12cbf4a71417eb17bcb19a5f06774947",
+    "test_prepare_decision_reference.py": "0d044f3f8820398c7906595fcd080b48a3642b44699c4ef860c7418f6ba64acf",
+    "test_validate_expression_reference.py": "d4144b236755eb2d0bbd632c1149145f9ca4c86c15562e0aee86acac9ab90d09",
+    "test_coreinfra_transport.py": "e272918ffb3005c9dd4b7137b09238298e77660d6c9abb9b39bf273d6b6c7eef",
+    "test_coreinfra_retry_run.py": "8e7431fc654fcda4e0d122ea6da0f49ba40bf6df993a53b40a268f8845b917a2",
+    "test_decision_target_alignment.py": "cf5f6ff0180a19e550f21f13824f1a683a5818d86f4d0ef6e4e250e80c256200",
+    "test_rubric_alignment.py": "63fcfc79598a3c82523ec2cca84bda6f744e7a8369f2fc8badd915c969122ca4",
+    "test_ownership_gate.py": "f9dd297f69b873dcaedacfc1d1633de510fbe242d8a8e84bead2f39539063a39"
+  },
+  "tests_passed": 100,
+  "new_tests_passed": 22,
+  "tests_elapsed_seconds": 1.502,
+  "historical_source_replay": {
+    "repository": "0al-spec/SpecGraph",
+    "pinned_ancestors_verified": 4,
+    "preparation_artifacts_match": true
+  },
+  "prior_live_score_replay": "passed_by_test_saved_live_report_replays_exactly_without_inference",
+  "new_provider_inference_requests": 0,
+  "real_network_attempts": 0,
+  "credentials_read": false,
+  "metric_effect": "none",
+  "limits": "Local offline and injected transport tests; not GitHub CI, live API compatibility or semantic provider quality."
+}

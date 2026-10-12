@@ -46,6 +46,8 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I28 | A fresh no-history subagent [annotated the anonymous scenario packet](runs/2026-10-13-contrastive-preparation/reference-review.md) using only the packet and blank template. Both axes agree with author hypotheses on 12/12 cases; four eligible policies, four excluded mechanics and four needs_review/unknown controls. Exact state hashes/case-local quotes validate; seven uncertainty notes and raw labels are preserved. No Jev/Luna calls. | The supplied role distinction is coherent for this model reference under the explicit profile. Agreement is not classifier accuracy, human gold, proof of actual isolation or discovery from raw code. Authored contracts make effects explicit and withheld states announce missing evidence, so this may be easier than repository discovery. Native wires still need freezing; retain gate-level coverage/readiness/security limits. |
 
+| I29 | [Contrastive native wires](runs/2026-10-13-contrastive-native-wires/README.md) freeze 48 exact native requests against the reviewed independent annotation, schedule, criteria and scorer/decoder/transport hashes. Mock tests exercise the 144-attempt ceiling, stale/non-ready artifacts, interruptions, ambiguous POSTs and independent H1/H2/H3 scoring. No inference. | Reference readiness is a reviewed lifecycle state, not presence of a template or artifact. Separate complete-pair role distinction, withheld-context abstention, directional probabilities and repeat stability. Native acceptance or available-answer arithmetic cannot support a completed claim when results or execution evidence are missing/ambiguous. The old 32-request protocol remains unchanged and reproducible. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -71,8 +73,10 @@ canonical intent and the cause of model disagreement remain unproved. Review
 that interpretation. Four contrastive families and a bounded protocol are now
 [prepared offline](runs/2026-10-13-contrastive-preparation/README.md). Fresh model
 annotation and nonblind integrator review now retain all proposed labels without
-overrides. Freeze executable native wires against this reviewed reference before
-any separately requested inference. New-family,
+overrides. Executable native wires and offline scoring are now
+[frozen against this reviewed reference](runs/2026-10-13-contrastive-native-wires/README.md).
+The next bounded experiment is the separately requested 48-request execution;
+report all fixed hypotheses and preserve failures. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.
