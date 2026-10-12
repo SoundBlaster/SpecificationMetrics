@@ -83,12 +83,14 @@ class ReferencePreparationTests(unittest.TestCase):
             self.assertEqual(annotation["state_sha256"], states[annotation["case_id"]])
             self.assertEqual(annotation["status"], "proposed")
 
-    def test_comparison_is_blocked_until_new_reference_and_native_luna_schema(self):
+    def test_comparison_has_reference_but_still_requires_native_luna_schema(self):
         packet = json.loads((RUN / "reference-packet.json").read_text())
         plan = json.loads((RUN / "comparison-plan.json").read_text())
         self.assertEqual(plan["packet_sha256"], digest(canonical(packet)))
         self.assertEqual(plan["status"], "prepared_not_executable")
-        self.assertEqual(plan["reference_status"], "awaiting_independent_annotation")
+        self.assertEqual(plan["reference_status"], "independent_model_reference_reviewed_not_human_gold")
+        self.assertEqual(plan["reference_sha256"], digest((RUN / plan["reference_artifact"]).read_bytes()))
+        self.assertEqual(plan["reference_review_sha256"], digest((RUN / plan["reference_review_artifact"]).read_bytes()))
         self.assertIsNone(plan["providers"][1]["endpoint"])
         self.assertIsNone(plan["providers"][1]["requested_model"])
         self.assertEqual(plan["planned_logical_requests"], len(packet["cases"]) * len(plan["providers"]) * plan["repeats"])

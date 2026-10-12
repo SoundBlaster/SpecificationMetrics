@@ -220,7 +220,9 @@ No new hosted calls or Jev/Luna semantic comparison have run under this version.
 
 The [new eight-expression packet](runs/2026-10-12-expression-reference/README.md)
 adds explicit source-bound helper/data context and a rubric for exact expressions.
-It contains an unlabelled independent-annotation template, separate non-blind
-author proposals, and a draft Jev/Luna comparison protocol. No historical labels
-were transferred and no hosted calls were made. Independent reference and Luna's
-native CoreInfra operation/schema remain prerequisites for execution.
+It contains the unlabelled preparation template, separate non-blind author
+proposals, a fresh isolated model reference and a draft Jev/Luna comparison
+protocol. The reference agrees with author proposals on both axes for all eight
+cases; this is annotator agreement, not provider accuracy or human gold.
+No historical labels were transferred and no Jev/Luna calls were made. Luna's
+native CoreInfra operation/schema and typed decoders still require verification.

@@ -1,7 +1,32 @@
 # Exact-expression comparison preparation
 
-Status: source/context preparation complete; independent annotation and provider
-API preparation pending. **No hosted inference or semantic scoring.**
+Status: source/context preparation and fresh model-reference annotation complete;
+provider API preparation pending. **No Jev/Luna inference or quality score.**
+
+## Independent model reference
+
+A fresh subagent received no conversation history and was restricted to reading
+`reference-packet.json`. It reported reading only that file; previous labels,
+author proposals, source mapping and provider outputs were not supplied. This
+restriction was prompt-scoped, not a filesystem sandbox. No model override was
+requested; exact inherited model identity is not reported by the tool.
+
+| Cases | Opportunity | Primary responsibility | Basis |
+| --- | --- | --- | --- |
+| 01, 03, 07 | eligible | policy | Readiness exception, criterion coverage, bootstrap allocation authorization |
+| 02, 04 | excluded | policy | The selected same-decision assemblies already use named Specifications |
+| 05, 06, 08 | excluded | mechanics | Dictionary/string representation and slug normalization |
+
+All eight classifications include exact quotes from supplied target/context;
+state and packet digests match. Both axes agree with the preparation author's
+proposals on 8/8 cases. This is **agreement between annotations**, not Jev/Luna
+accuracy, a held-out validation set or human gold.
+
+The annotator retained two limitations (cases 02/04): runtime execution and trace
+emission are not demonstrated. Integration review retained these verbatim and
+made no label overrides. They do not prevent classification of the shown explicit
+assemblies; they do prevent liveness/tracing claims. No material label disagreement
+remains. One reference-agent task was used; zero Jev/Luna requests were made.
 
 ## What changed
 
@@ -44,7 +69,13 @@ type/coverage assembly particularly needs reference review of primary responsibi
   providers. No legacy case IDs, source mapping, previous labels, predictions or
   author proposals. Case IDs are presentation identifiers, not stable rule IDs.
 - `annotation-template.json`: pending labels, bound to packet and state digests.
-  Complete both axes with evidence citations and uncertainties.
+  Preserved as the original unlabelled preparation template, not current reference
+  status. Completed results live in a separate artifact.
+- `independent-annotations.json`: original fresh annotator labels, quotes and
+  uncertainties, plus explicit task/input provenance. Not human gold.
+- `reference-review.json`: evidence-validation receipt, comparison against author
+  proposals, uncertainty disposition and no label overrides. Integration reviewer
+  is the primary agent, not an additional independent annotator.
 - `annotation-proposals.json`: fresh expression-level reasoning by the context
   author, who has seen previous results. **Non-blind proposals, not gold or an
   independent reference.** Do not give these to the independent annotator or
@@ -53,6 +84,9 @@ type/coverage assembly particularly needs reference review of primary responsibi
   and existing formal construction evidence for a separate offline gate analysis.
   Do not give this mapping to the annotator/providers; it contains gate evidence
   not present in their shared semantic task.
+  Its `awaiting_independent_annotation` field records preparation-time state;
+  current status and reference digests are in `comparison-plan.json` and
+  `reference-review.json`. Packet and mapping were not rewritten after annotation.
 - `context-selectors.json`, `rubric.json`: reviewable preparation inputs.
 - `comparison-plan.json`: proposed matched-provider diagnostic and explicit
   success/failure criteria. It is **not an executable live manifest**.
@@ -67,8 +101,8 @@ state or rubric, regenerate bindings and obtain annotations for the changed task
 
 Eight cases × two providers × two same-input repeats = **32 logical requests**;
 the new retry protocol reserves **at most 96 network attempts**. This draft is
-not authorization to spend that budget. It remains blocked on independent
-reference, Luna's actual CoreInfra URL/model/native schema, typed decoders and a
+not authorization to spend that budget. The fresh model reference is now bound
+in the plan. Execution remains blocked on Luna's actual CoreInfra URL/model/native schema, typed decoders and a
 frozen executable wire plan. Jev endpoint/model are historical verified inputs;
 they were not live-probed here. Luna availability is user-reported; no endpoint
 or payload is guessed.
@@ -95,6 +129,7 @@ python3 prepare_decision_reference.py \
   --source-repo /path/to/SpecGraph \
   --run runs/2026-10-12-expression-reference --check
 python3 -m unittest -v test_prepare_decision_reference.py
+python3 -m unittest -v test_validate_expression_reference.py
 ```
 
 `--check` rebuilds packet/mapping in memory from pinned source and compares exact

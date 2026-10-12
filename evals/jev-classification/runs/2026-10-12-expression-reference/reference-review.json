@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "authority": "primary_integrator_review_of_model_reference_not_human_gold",
+  "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+  "reference_sha256": "09933534ec1c9f0dd3e9c03799ba7eb55d13f62510416d6dfc121d66d8af7e1b",
+  "proposals_sha256": "772486f7d4b909c4db71329c04509465872aa5ba1dccb55f0297768dd718f288",
+  "validator_sha256": "8d05bbb6b0efb301bc1ccb4afa605aad85633d255689dbf5b9a117a8c7103770",
+  "validation": {
+    "annotated_cases": 8,
+    "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+    "authority": "independent_model_reference_not_human_gold",
+    "evidence_validation": "passed"
+  },
+  "reference_status": "independent_model_reference_reviewed_not_human_gold",
+  "opportunity_counts": {
+    "eligible": 3,
+    "excluded": 5,
+    "needs_review": 0
+  },
+  "concern_kind_counts": {
+    "policy": 5,
+    "mechanics": 3,
+    "variant_behavior": 0,
+    "unknown": 0
+  },
+  "proposal_agreement": {
+    "opportunity": {
+      "matched": 8,
+      "total": 8
+    },
+    "concern_kind": {
+      "matched": 8,
+      "total": 8
+    }
+  },
+  "label_disagreements": [],
+  "uncertainty_review": [
+    {
+      "case_id": "expression-02",
+      "original_uncertainties": [
+        "The packet does not demonstrate runtime evaluation or trace emission; classification rests on the explicit Specification assembly."
+      ],
+      "integration_disposition": "Retained as a scope limit. This task classifies the supplied explicit assembly, not liveness, runtime identity or trace coverage. The stated absence of runtime evidence does not require an eligibility/concern label change under the packet rubric.",
+      "label_override": false
+    },
+    {
+      "case_id": "expression-04",
+      "original_uncertainties": [
+        "The packet does not demonstrate runtime evaluation or trace emission; classification rests on the explicit Specification assembly."
+      ],
+      "integration_disposition": "Retained as a scope limit. This task classifies the supplied explicit assembly, not liveness, runtime identity or trace coverage. The stated absence of runtime evidence does not require an eligibility/concern label change under the packet rubric.",
+      "label_override": false
+    }
+  ],
+  "material_unresolved_disagreements": [],
+  "label_overrides": [],
+  "reference_agent_tasks": 1,
+  "jev_luna_requests": 0,
+  "metric_effect": "none",
+  "limits": [
+    "Model reference on eight selected development cases, not human gold or a holdout.",
+    "Author-proposal agreement is not provider accuracy, independence of model families or proof of generalization.",
+    "Annotator had no inherited conversation and reported reading only the packet; file access was prompt-scoped, not technically sandboxed.",
+    "No provider comparison is executable until Luna native URL/model/schema and typed decoders are verified and native wire inputs frozen."
+  ]
+}

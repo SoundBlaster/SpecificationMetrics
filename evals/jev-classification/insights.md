@@ -30,6 +30,7 @@ registry exclusions or changes to Specification counts (S/U).
 | I18 | The same [audit](runs/2026-10-10-ownership-gate/README.md) runs the actual Rust scanner on all eight full historical files. Both already-constructed declarations and sg-033 have zero selected-range control-flow candidates. Rust already filters `inside_specification`, but names are syntactic and outer `FirstMatch.with_fallback` is not recognized. | Whole-declaration API examples and Rust branch candidates are different units. Zero discovery is not semantic exclusion; do not attribute this replay's improvement to the production filter. Define a shared target unit and import-identity contract before generalizing the classifier evaluation. |
 | I19 | [Explicit target alignment](runs/2026-10-10-decision-targets/README.md): the Rust exporter binds 8/8 proposed expression targets to exact historical bytes; 4/8 match legacy branch anchors. The sg-019 target becomes its internal coverage predicate; sg-033 is a `require` argument. No inference or old-label transfer. | Distinguish target expression from supporting declaration and assembly controls. A changed boundary requires fresh annotation; anchor equality does not prove semantic equivalence. Shared target artifacts are implemented experimentally, while production scanner/classifier units and S/U remain unchanged. |
 | I20 | [Expression reference preparation](runs/2026-10-12-expression-reference/README.md): all eight exact targets now have explicit source-bound helper/data/use fragments. Canonical states are 2,539–5,368 bytes, without truncation; source regeneration matches saved artifacts. | The shared task is ready for independent annotation, not scored evaluation. Context-author proposals are non-blind and kept separate. The draft comparison cannot isolate context causality, transfer old labels, guess Luna's native API or claim semantic improvement before new evidence. |
+| I21 | A fresh no-history subagent [annotated the expression packet](runs/2026-10-12-expression-reference/README.md): three eligible policies, two already-composed policy controls and three excluded mechanics. Exact quotes/digests validate; both axes agree with author proposals on 8/8 cases. Runtime/trace uncertainty for the controls is retained without label overrides. | A target-specific model reference is now available for this shared task. Annotation agreement is not provider accuracy, human gold or population evidence. Isolation is prompt-scoped and self-reported; typed provider validation and a frozen native wire plan are still required before Jev/Luna comparison. |
 
 ## Current decision
 
@@ -46,8 +47,8 @@ two existing constructions while preserving semantic recall. Define a shared
 target unit for Rust discovery and semantic evaluation, with resolved import
 identity and evidence provenance. The [explicit exporter](runs/2026-10-10-decision-targets/README.md)
 now binds expressions and legacy anchors. The [prepared expression packet](runs/2026-10-12-expression-reference/README.md)
-adds bounded helper/data dependencies; obtain independent target-specific
-annotation and verify Luna's native API before the matched-provider study. New-family,
+adds bounded helper/data dependencies and a fresh target-specific model reference;
+verify Luna's native API and typed validators before the matched-provider study. New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.

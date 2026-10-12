@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "authority": "independent_model_reference_not_human_gold",
+  "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
+  "provenance": {
+    "task_name": "/root/expression_reference_independent",
+    "conversation_history": "none",
+    "model_override": null,
+    "model_identity": "inherited_session_model_not_reported_by_tool",
+    "allowed_input": "reference-packet.json",
+    "reported_inputs_read": ["reference-packet.json"],
+    "isolation_limit": "Prompt-scoped input restriction and annotator report, not a filesystem sandbox or proof of training-data independence",
+    "prior_labels_supplied": false,
+    "author_proposals_supplied": false,
+    "reference_agent_tasks": 1,
+    "jev_luna_requests": 0
+  },
+  "annotations": [
+    {
+      "case_id": "expression-01",
+      "state_sha256": "aead8ffb8213107693819a2d626506913f7c31f2f54f1dc64e74e9f206e193e2",
+      "status": "annotated",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": [
+        {
+          "location": "context-02",
+          "quote": "return _text(materialization.get(\"materialization_source\")) != \"repair_loop_preview\"",
+          "reason": "Together with the preceding readiness check, the helper decides whether an unready original report blocks progress unless repair preview was used."
+        },
+        {
+          "location": "context-01",
+          "quote": "Original pre-SIB findings are allowed only because repair preview was used.",
+          "reason": "The caller identifies a durable readiness exception policy. An ordinary helper does not establish Specification ownership."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-02",
+      "state_sha256": "9f4dd21bc071f0df2170e8db47969385f2ec77c844d6b39f3dd7134340097b3b",
+      "status": "annotated",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence": [
+        {
+          "location": "target",
+          "quote": "and context.materialization_source != \"repair_loop_preview\"",
+          "reason": "The assembly decides readiness and whether repair-preview provenance permits an exception; these are lifecycle policy decisions."
+        },
+        {
+          "location": "target",
+          "quote": "name=\"pre_sib.blocked\"",
+          "reason": "The blocking predicate is explicitly represented by a named PredicateSpec within the selected decision assembly."
+        },
+        {
+          "location": "context-01",
+          "quote": "_PRE_SIB_STATE_DECISION = FirstMatch(",
+          "reason": "The same state decision already has an explicit Specification composition, supporting opportunity exclusion while retaining policy as its primary concern."
+        }
+      ],
+      "uncertainties": [
+        "The packet does not demonstrate runtime evaluation or trace emission; classification rests on the explicit Specification assembly."
+      ]
+    },
+    {
+      "case_id": "expression-03",
+      "state_sha256": "39611fa4b9e41c7aed7543f7e69a1a62e04f34c2b3ee38d30cbbca5d15f29289",
+      "status": "annotated",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": [
+        {
+          "location": "target",
+          "quote": "refs and all(ref in existing_ac for ref in refs)",
+          "reason": "The exact expression defines requirement coverage as having nonempty references that all resolve to existing acceptance criteria."
+        },
+        {
+          "location": "context-01",
+          "quote": "if refs and all(ref in existing_ac for ref in refs):\n                continue",
+          "reason": "Coverage determines exemption from acceptance-criterion repair, giving the expression a domain decision responsibility."
+        },
+        {
+          "location": "context-01",
+          "quote": "Add a reviewable placeholder acceptance criterion for ",
+          "reason": "The repair outcome confirms the domain meaning of the coverage decision. No same-decision Specification ownership is supplied."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-04",
+      "state_sha256": "7f463275051f747a4710aa3fe6ede9c709bc4b692d8f92efc35860a5a0b58723",
+      "status": "annotated",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence": [
+        {
+          "location": "target",
+          "quote": "name=\"acceptance_criterion.already_covered\"",
+          "reason": "A named PredicateSpec explicitly owns the acceptance-criterion coverage condition within the selected assembly."
+        },
+        {
+          "location": "target",
+          "quote": "_AcceptanceCriterionDisposition.ADD_PLACEHOLDER,\n    name=\"acceptance_criterion_repair\"",
+          "reason": "The whole assembly determines repair disposition with an explicit named Specification composition. Its primary concern is domain repair policy despite its mechanical invalid-input guard."
+        }
+      ],
+      "uncertainties": [
+        "The packet does not demonstrate runtime evaluation or trace emission; classification rests on the explicit Specification assembly."
+      ]
+    },
+    {
+      "case_id": "expression-05",
+      "state_sha256": "ddf82ad0fe301a40e5cd10f263588d16294686a9fb11c663408bc0e7c893bcde",
+      "status": "annotated",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": [
+        {
+          "location": "context-01",
+          "quote": "return value if isinstance(value, dict) else {}",
+          "reason": "The type check adapts arbitrary input to a dictionary representation with an empty fallback. The supplied helper expresses no distinct product decision."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-06",
+      "state_sha256": "21761cf940cb420064f12baa651dac3d243920e5e070d8d634a9c59b826e0009",
+      "status": "annotated",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": [
+        {
+          "location": "context-01",
+          "quote": "return value.strip() if isinstance(value, str) and value.strip() else default",
+          "reason": "The expression guards string normalization and fallback in a generic text helper. No distinct domain validity or eligibility decision is supplied."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-07",
+      "state_sha256": "edfc0d96005210ef213a608163952092ac7988fae8befca4641692f59bfb1c04",
+      "status": "annotated",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": [
+        {
+          "location": "target",
+          "quote": "and allocation[\"identity_allocation_authorized\"] is True\n            and allocation[\"source_ref_initialization_authorized\"] is True",
+          "reason": "The expression requires explicit authority for identity allocation and source initialization, establishing a governance policy."
+        },
+        {
+          "location": "target",
+          "quote": "and allocation[\"declaration_sha256\"]\n            == hashlib.sha256(request.workspace_declaration_yaml.encode()).hexdigest()",
+          "reason": "The authorization must cover the exact declaration as well as the requested workspace, source reference and commit."
+        },
+        {
+          "location": "context-01",
+          "quote": "workspace allocation covers a different bootstrap",
+          "reason": "The enforcement message identifies the durable decision: whether allocation evidence authorizes this bootstrap. The generic require helper and provenance lookup do not establish same-decision Specification ownership."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "expression-08",
+      "state_sha256": "a00a8c561c760501a5f2359c98227e880d8aad06a4ae92674610270c993acfc6",
+      "status": "annotated",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": [
+        {
+          "location": "context-01",
+          "quote": "slug = re.sub(r\"[^a-z0-9]+\", \"-\", value.lower()).strip(\"-\")\n    return slug or fallback",
+          "reason": "The selected expression supplies a fallback for an empty normalized representation. The provided context establishes slug formatting mechanics without a distinct product rule."
+        }
+      ],
+      "uncertainties": []
+    }
+  ]
+}

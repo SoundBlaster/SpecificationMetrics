@@ -3,7 +3,7 @@
   "study_kind": "matched_expression_provider_comparison",
   "status": "prepared_not_executable",
   "packet_sha256": "965d946a54b26c1ecd0dd71bb679d2d9a82269dce2efaf40a172d47338721acb",
-  "reference_status": "awaiting_independent_annotation",
+  "reference_status": "independent_model_reference_reviewed_not_human_gold",
   "providers": [
     {
       "id": "jev-coreinfra",
@@ -52,5 +52,9 @@
   ],
   "causal_limits": "No missing-context ablation is included, so this study cannot isolate a causal effect of helper context or compare against historical whole-function accuracy. Eight development cases and two repeats are not independent population samples.",
   "metric_effect": "none",
-  "new_inference_requests": 0
+  "new_inference_requests": 0,
+  "reference_artifact": "independent-annotations.json",
+  "reference_sha256": "09933534ec1c9f0dd3e9c03799ba7eb55d13f62510416d6dfc121d66d8af7e1b",
+  "reference_review_artifact": "reference-review.json",
+  "reference_review_sha256": "4a43034e5d1b1ae7ecac85489e39ede19edd50ef1a2d109a8ba6be28b7df1365"
 }
