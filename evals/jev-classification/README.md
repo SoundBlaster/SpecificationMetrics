@@ -215,3 +215,21 @@ explicit worst-case attempt budget. `coreinfra_retry_run.py` is offline by
 default and keeps all responses unscored until provider-specific validation.
 Existing experiments retain their original zero-inference-retry protocols.
 No new hosted calls or Jev/Luna semantic comparison have run under this version.
+
+## Expression reference preparation
+
+The [new eight-expression packet](runs/2026-10-12-expression-reference/README.md)
+adds explicit source-bound helper/data context and a rubric for exact expressions.
+It contains the unlabelled preparation template, separate non-blind author
+proposals, a fresh isolated model reference and a draft Jev/Luna comparison
+protocol. The reference agrees with author proposals on both axes for all eight
+cases; this is annotator agreement, not provider accuracy or human gold.
+No historical labels were transferred and no Jev/Luna calls were made. Luna's
+native CoreInfra operation/schema and typed decoders still require verification.
+
+### Matched expression provider comparison
+
+[The frozen wire plan](runs/2026-10-12-matched-expression-wires/README.md) now
+provides identical state/rubric inputs for Jev and Luna, with strict native Choice
+decoding. Preparation and validation are offline; explicit live execution is a
+separate bounded step. No classifier quality score or S/U change is implied.

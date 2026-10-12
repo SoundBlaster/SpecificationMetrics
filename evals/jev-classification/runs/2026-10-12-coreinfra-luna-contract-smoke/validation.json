@@ -1,0 +1,20 @@
+{
+  "native_contract": "passed_for_frozen_mixed_smoke",
+  "types": [
+    "predicate",
+    "choice",
+    "score"
+  ],
+  "semantic_status": "trivial_smoke_not_classifier_accuracy",
+  "general_decoder": false,
+  "responses_sha256": "e7b652d4dbdd57a389c6bc7cfe43813deed2e9205e884e3686e7c905a458b8a3",
+  "validator_sha256": "e200342e64c3adb7d0b7aec41b09368fdd75d5f42bb68033853215a9905be006",
+  "negative_controls_rejected": [
+    "missing_answer",
+    "wrong_type",
+    "duplicate_option",
+    "nonfinite_probability",
+    "wrong_score"
+  ],
+  "logical_requests": 1
+}
