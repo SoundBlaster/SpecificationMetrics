@@ -54,6 +54,8 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I32 | [Native contract diagnosis](runs/2026-10-13-contrastive-native-wires/native-contract-diagnosis.json): request 42 returns Jev concern-kind probabilities summing to 0.99; strict whole-response acceptance fails. The run stops at 42 POSTs, 41 native-valid answers and six proven unattempted requests, without TLS retries/ambiguity, in 76.01 seconds. A nearest-hundredth rounding hypothesis is numerically compatible but unverified. | Do not silently renormalize or widen tolerance after seeing results. Preserve strict partial scoring, raw failure and all denominators. Investigate the provider representation contract before a separately versioned policy/new run. Usage includes the invalid answer and does not establish billed dollars or remaining balance. |
 
+| I33 | [Precision follow-up](jev-probability-precision.md): official OpenAPI/SDK describe an approximate total, unlike the exact-one guide. Of 84 saved distributions, one totals 0.99; every selected label matches the returned maximum. Its winner margin is 0.89. Offline rescaling changes no labels or observed H3 directions; assumed hundredth-rounding bounds also preserve every available H3 sign. | The mass discrepancy has no observed classification consequence; stopping the whole semantic study was excessive. Use an explicit, bounded warning policy in the next version and preserve raw values/confidence. Separate numerical warnings, result rejection and run interruption. The old strict run remains partial; H2 failures and six missing requests are unchanged. Exact provider rounding is unverified but need not block a local compatibility allowance. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -84,8 +86,11 @@ overrides. Executable native wires and offline scoring are now
 The explicitly requested [live study](runs/2026-10-13-contrastive-native-wires/results.md)
 stopped at 42/48 requests on a native probability-contract failure. Its complete
 first repeat supports scoped H1/H2/H3 reporting, while whole-study reliability
-remains unconfirmed. Investigate probability representation before any new
-version or further inference; do not resume the spent run or change its labels.
+remains unconfirmed. The [precision investigation](jev-probability-precision.md)
+now supports a bounded numerical-warning policy for the next runner version;
+implement and freeze it before further inference. Provider confirmation of the
+exact rounding mechanism is not a prerequisite for that local allowance. Do
+not resume the spent run or change its historical labels or strict score.
 New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded

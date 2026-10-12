@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "status": "post_hoc_offline_sensitivity_not_native_acceptance",
+  "original_run_complete": false,
+  "planned_requests": 48,
+  "observed_requests": 42,
+  "strict_native_valid_responses": 41,
+  "structurally_consistent_observed_responses": 42,
+  "survey": {
+    "luna-decision-coreinfra": {
+      "responses": 21,
+      "distributions": 42,
+      "sum_counts": {
+        "1": 42
+      },
+      "off_hundredth_grid": 0,
+      "selected_option_not_maximum": 0,
+      "non_unit_sums": []
+    },
+    "jev-coreinfra": {
+      "responses": 21,
+      "distributions": 42,
+      "sum_counts": {
+        "1": 41,
+        "0.99": 1
+      },
+      "off_hundredth_grid": 0,
+      "selected_option_not_maximum": 0,
+      "non_unit_sums": [
+        {
+          "request_id": "r2-case-10-jev-coreinfra",
+          "axis": "concern_kind",
+          "sum": "0.99",
+          "residual": "-0.01",
+          "choice": "mechanics",
+          "probabilities": {
+            "mechanics": "0.93",
+            "policy": "0.02",
+            "unknown": "0.0",
+            "variant_behavior": "0.04"
+          },
+          "winner_margin": "0.89"
+        }
+      ]
+    }
+  },
+  "maximum_absolute_change_if_rescaled_to_one": "0.0093939393939393939393939394",
+  "label_changes_if_rescaled_to_one": 0,
+  "all_available_H3_directions_robust_under_assumed_hundredth_rounding": true,
+  "counterfactual_reports_including_sum_only_failure": [
+    {
+      "provider": "luna-decision-coreinfra",
+      "repeat": 1,
+      "observed_cases": 12,
+      "planned_cases": 12,
+      "complete_pairs": 4,
+      "planned_pairs": 4,
+      "jointly_correct_pairs": 3,
+      "jointly_correct_withheld_controls": 3,
+      "planned_withheld_controls": 4,
+      "pairs": [
+        {
+          "pair_id": "pair-01",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.36",
+            "concern_kind": "0.32"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.36",
+            "concern_kind": "0.32"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.350",
+              "0.370"
+            ],
+            "concern_kind": [
+              "0.310",
+              "0.330"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-02",
+          "both_labels_correct": false,
+          "raw_probability_deltas": {
+            "opportunity": "0.46",
+            "concern_kind": "0.50"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.46",
+            "concern_kind": "0.50"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.450",
+              "0.470"
+            ],
+            "concern_kind": [
+              "0.490",
+              "0.510"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-03",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.78",
+            "concern_kind": "0.65"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.78",
+            "concern_kind": "0.65"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.770",
+              "0.790"
+            ],
+            "concern_kind": [
+              "0.640",
+              "0.660"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-04",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.86",
+            "concern_kind": "0.82"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.86",
+            "concern_kind": "0.82"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.850",
+              "0.870"
+            ],
+            "concern_kind": [
+              "0.810",
+              "0.830"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        }
+      ]
+    },
+    {
+      "provider": "luna-decision-coreinfra",
+      "repeat": 2,
+      "observed_cases": 9,
+      "planned_cases": 12,
+      "complete_pairs": 2,
+      "planned_pairs": 4,
+      "jointly_correct_pairs": 1,
+      "jointly_correct_withheld_controls": 3,
+      "planned_withheld_controls": 4,
+      "pairs": [
+        {
+          "pair_id": "pair-01",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.36",
+            "concern_kind": "0.32"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.36",
+            "concern_kind": "0.32"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.350",
+              "0.370"
+            ],
+            "concern_kind": [
+              "0.310",
+              "0.330"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-02",
+          "both_labels_correct": false,
+          "raw_probability_deltas": {
+            "opportunity": "0.46",
+            "concern_kind": "0.50"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.46",
+            "concern_kind": "0.50"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.450",
+              "0.470"
+            ],
+            "concern_kind": [
+              "0.490",
+              "0.510"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        }
+      ]
+    },
+    {
+      "provider": "jev-coreinfra",
+      "repeat": 1,
+      "observed_cases": 12,
+      "planned_cases": 12,
+      "complete_pairs": 4,
+      "planned_pairs": 4,
+      "jointly_correct_pairs": 4,
+      "jointly_correct_withheld_controls": 1,
+      "planned_withheld_controls": 4,
+      "pairs": [
+        {
+          "pair_id": "pair-01",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.55",
+            "concern_kind": "0.59"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.55",
+            "concern_kind": "0.59"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.540",
+              "0.560"
+            ],
+            "concern_kind": [
+              "0.580",
+              "0.600"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-02",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.75",
+            "concern_kind": "0.97"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.75",
+            "concern_kind": "0.97"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.740",
+              "0.760"
+            ],
+            "concern_kind": [
+              "0.960",
+              "0.975"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-03",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.76",
+            "concern_kind": "0.91"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.76",
+            "concern_kind": "0.91"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.750",
+              "0.770"
+            ],
+            "concern_kind": [
+              "0.900",
+              "0.915"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-04",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.76",
+            "concern_kind": "0.90"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.76",
+            "concern_kind": "0.90"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.750",
+              "0.770"
+            ],
+            "concern_kind": [
+              "0.890",
+              "0.910"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        }
+      ]
+    },
+    {
+      "provider": "jev-coreinfra",
+      "repeat": 2,
+      "observed_cases": 9,
+      "planned_cases": 12,
+      "complete_pairs": 2,
+      "planned_pairs": 4,
+      "jointly_correct_pairs": 2,
+      "jointly_correct_withheld_controls": 2,
+      "planned_withheld_controls": 4,
+      "pairs": [
+        {
+          "pair_id": "pair-01",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.51",
+            "concern_kind": "0.52"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.51",
+            "concern_kind": "0.52"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.500",
+              "0.520"
+            ],
+            "concern_kind": [
+              "0.510",
+              "0.530"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        },
+        {
+          "pair_id": "pair-02",
+          "both_labels_correct": true,
+          "raw_probability_deltas": {
+            "opportunity": "0.79",
+            "concern_kind": "0.98"
+          },
+          "hypothetical_rescaled_deltas": {
+            "opportunity": "0.79",
+            "concern_kind": "0.9797979797979797979797979798"
+          },
+          "nearest_hundredth_delta_intervals": {
+            "opportunity": [
+              "0.780",
+              "0.800"
+            ],
+            "concern_kind": [
+              "0.970",
+              "0.985"
+            ]
+          },
+          "direction_positive_for_all_assumed_rounding_values": true
+        }
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "manifest.json": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+    "responses.jsonl": "33e276dcb1cf9e4acb59dc3825960bd6a3dd496e57692f735a437d7af1406025",
+    "attempts.jsonl": "db18ebea140db3a515579daf0020c26c70b8cf7f2594910f70db4bb3598fe36e",
+    "receipt.json": "c1e38038e18415e2ca1ba80cfe2900f3e9c6b4a51f8929c68636ceca3e08d575",
+    "native-validation.json": "43222ca259be710fb253bf668d525682c4fdef576753ec15b67d704cb3f44735",
+    "score.json": "e6c9c873cbfc73d8990bc72391d237078747deb42b37a6fd036d9c5146c7605c"
+  },
+  "assumptions": [
+    "Nearest-hundredth rounding is a sensitivity assumption, not a verified provider guarantee.",
+    "Rescaling is calculated only as a counterfactual; accepted raw answers, native confidence, frozen validators and scores are unchanged.",
+    "Observed-only reports include the structurally consistent 0.99 response but do not establish completed-study hypotheses."
+  ],
+  "new_inference_requests": 0,
+  "metric_effect": "none"
+}
