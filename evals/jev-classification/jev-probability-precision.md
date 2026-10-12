@@ -121,10 +121,11 @@ all hypothesis prerequisites were met.
 
 ## Follow-through
 
-Implement and test the warning policy in the next runner version, then freeze
-it before further inference. This diagnosis changes documentation and adds an
-offline artifact; it changes no frozen decoder/runner/manifest/reference/score,
-production classifier, library contract or S/U metric.
+The [v2 runner and scorer](contrastive-mass-warning-v2.md) now implement the
+warning policy, boundary checks, result-rejection/stop distinction and H3
+sensitivity reporting. Freeze a new v2 manifest before further inference.
+The diagnosis and v2 implementation change no frozen v1 decoder/runner/manifest/
+reference/score, production classifier, library contract or S/U metric.
 
 The locally inspected Jev4Mellea `results.py` also checks sums strictly (absolute
 tolerance `1e-3` for Choice and Score) and can reject this numerical shape.

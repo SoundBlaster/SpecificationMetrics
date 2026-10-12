@@ -56,6 +56,8 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I33 | [Precision follow-up](jev-probability-precision.md): official OpenAPI/SDK describe an approximate total, unlike the exact-one guide. Of 84 saved distributions, one totals 0.99; every selected label matches the returned maximum. Its winner margin is 0.89. Offline rescaling changes no labels or observed H3 directions; assumed hundredth-rounding bounds also preserve every available H3 sign. | The mass discrepancy has no observed classification consequence; stopping the whole semantic study was excessive. Use an explicit, bounded warning policy in the next version and preserve raw values/confidence. Separate numerical warnings, result rejection and run interruption. The old strict run remains partial; H2 failures and six missing requests are unchanged. Exact provider rounding is unverified but need not block a local compatibility allowance. |
 
+| I34 | [V2 implementation](contrastive-mass-warning-v2.md) accepts bounded Jev mass drift with warnings, preserves raw numbers/confidence and continues after a rejected answer. Mock execution separates all-48 completion from usable coverage; H3 requires positive Jev sensitivity lower bounds and retains raw direction counts. | Protocol warnings, result usability and run interruption are different dimensions. A completed request schedule can still lack the evidence needed for a semantic claim. These checks are offline/mock evidence, not a new provider result; freeze a new v2 manifest before further inference. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -87,8 +89,8 @@ The explicitly requested [live study](runs/2026-10-13-contrastive-native-wires/r
 stopped at 42/48 requests on a native probability-contract failure. Its complete
 first repeat supports scoped H1/H2/H3 reporting, while whole-study reliability
 remains unconfirmed. The [precision investigation](jev-probability-precision.md)
-now supports a bounded numerical-warning policy for the next runner version;
-implement and freeze it before further inference. Provider confirmation of the
+now supports a bounded numerical-warning policy. The [v2 implementation](contrastive-mass-warning-v2.md)
+is tested offline; freeze a new v2 run before further inference. Provider confirmation of the
 exact rounding mechanism is not a prerequisite for that local allowance. Do
 not resume the spent run or change its historical labels or strict score.
 New-family,
