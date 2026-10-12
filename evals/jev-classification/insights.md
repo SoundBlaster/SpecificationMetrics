@@ -48,6 +48,12 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I29 | [Contrastive native wires](runs/2026-10-13-contrastive-native-wires/README.md) freeze 48 exact native requests against the reviewed independent annotation, schedule, criteria and scorer/decoder/transport hashes. Mock tests exercise the 144-attempt ceiling, stale/non-ready artifacts, interruptions, ambiguous POSTs and independent H1/H2/H3 scoring. No inference. | Reference readiness is a reviewed lifecycle state, not presence of a template or artifact. Separate complete-pair role distinction, withheld-context abstention, directional probabilities and repeat stability. Native acceptance or available-answer arithmetic cannot support a completed claim when results or execution evidence are missing/ambiguous. The old 32-request protocol remains unchanged and reproducible. |
 
+| I30 | [The partial contrastive live run](runs/2026-10-13-contrastive-native-wires/results.md) completes repeat one for both providers: H1 correct full pairs Jev 4/4, Luna 3/4; both have 4/4 eligible policy recall and 4/4 positive paired deltas for H3. Luna proposes the normalization mechanics case in both observed repeats. | Complete role/effect context supports the intended distinction on these authored examples, but directional probabilities do not guarantee correct selected labels. One provider's H1 miss persists despite passing H3. This is not a matched accuracy improvement over historical targets or population superiority; the full two-repeat test is incomplete. |
+
+| I31 | [Withheld controls](runs/2026-10-13-contrastive-native-wires/results.md) produce needs_review for opportunity in all 16 observed control answers, but concern-kind often remains a guess. Joint H2 is Jev 1/4 then 2/4 and Luna 3/4 then 3/4. All four controls are available in each repeat. | Abstention is axis-specific: preserving uncertain eligibility does not establish reliable responsibility classification. Do not infer the second axis or collapse both into one confidence score. Field-name hints and rubric interpretation are hypotheses, not verified causes; no fallback threshold is selected from this small diagnostic. |
+
+| I32 | [Native contract diagnosis](runs/2026-10-13-contrastive-native-wires/native-contract-diagnosis.json): request 42 returns Jev concern-kind probabilities summing to 0.99; strict whole-response acceptance fails. The run stops at 42 POSTs, 41 native-valid answers and six proven unattempted requests, without TLS retries/ambiguity, in 76.01 seconds. A nearest-hundredth rounding hypothesis is numerically compatible but unverified. | Do not silently renormalize or widen tolerance after seeing results. Preserve strict partial scoring, raw failure and all denominators. Investigate the provider representation contract before a separately versioned policy/new run. Usage includes the invalid answer and does not establish billed dollars or remaining balance. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -75,8 +81,12 @@ that interpretation. Four contrastive families and a bounded protocol are now
 annotation and nonblind integrator review now retain all proposed labels without
 overrides. Executable native wires and offline scoring are now
 [frozen against this reviewed reference](runs/2026-10-13-contrastive-native-wires/README.md).
-The next bounded experiment is the separately requested 48-request execution;
-report all fixed hypotheses and preserve failures. New-family,
+The explicitly requested [live study](runs/2026-10-13-contrastive-native-wires/results.md)
+stopped at 42/48 requests on a native probability-contract failure. Its complete
+first repeat supports scoped H1/H2/H3 reporting, while whole-study reliability
+remains unconfirmed. Investigate probability representation before any new
+version or further inference; do not resume the spent run or change its labels.
+New-family,
 human-adjudicated confirmation is needed before production-quality claims.
 Further inference requires a frozen hypothesis, fixed inputs and a bounded
 budget; do not iterate until the diagnostic set happens to pass.

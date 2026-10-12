@@ -4,7 +4,9 @@
 
 **Independent model annotation and integrator review completed. Executable native
 wires are now [frozen separately](../2026-10-13-contrastive-native-wires/README.md).
-No Jev/Luna requests or provider semantic scores.**
+The [subsequent live run](../2026-10-13-contrastive-native-wires/results.md)
+stopped after 42/48 requests on a native-contract failure; its partial scores are
+separate from this preparation and annotation record.**
 
 The fresh subagent's labels agree with author hypotheses on 12/12 cases on each
 axis. [Reference review](reference-review.md) preserves all uncertainties and
@@ -132,11 +134,13 @@ hides opposite-role errors or rewards abstention as full-context success.
    state/question/decoder/producer/reference hashes. The existing
    [logical schedule](logical-schedule.json) is **not executable native wires**.
    This preparation script has no live mode and does not read credentials.
-4. Execute only after an explicit bounded live-run request and budget check.
-   Preserve attempt ledgers, partial/ambiguous results and usage. Any extra
-   probe or rerun is a separate recorded experiment.
-5. Score once against the frozen reference; retain failed hypotheses and raw
-   outputs. No production exclusions, registry dispositions or S/U updates.
+4. **Completed partial execution after explicit request:** sent 42/48 requests;
+   stopped on one invalid probability distribution, without TLS retries or
+   ambiguity. Six requests are proven unattempted. Ledgers/raw outputs/usage are
+   preserved; any probe or rerun requires a separate recorded experiment.
+5. **Completed offline partial scoring:** retained failed hypotheses and the
+   original denominators. No production exclusions, registry dispositions or
+   S/U updates. The whole two-repeat study is incomplete.
 
 [author-proposals.json](author-proposals.json) is nonblind and deliberately
 separate. [preparation-receipt.json](preparation-receipt.json) records the original
@@ -178,6 +182,7 @@ here; it does not collapse those orthogonal axes in the general classifier.
 Already-composed controls remain evidence from the previous study. Future
 confirmation needs new natural-code families and human adjudication.
 
-**Next step:** separately request execution of the frozen
-[48-request native study](../2026-10-13-contrastive-native-wires/README.md), then
-score its fixed hypotheses without revising reference labels after results.
+**Next step:** investigate the native probability contract as described in the
+[partial live results](../2026-10-13-contrastive-native-wires/results.md), before
+proposing a new version or further inference. Do not resume the original run or
+revise its reference labels after results.

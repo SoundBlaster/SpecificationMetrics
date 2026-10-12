@@ -1,0 +1,22 @@
+{
+  "study": "contrastive_mechanics_policy_native/v1",
+  "protocol": "specmetrics.coreinfra-tls-retry/v1",
+  "manifest_sha256": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+  "started_at": "2026-10-12T22:40:31.284845+00:00",
+  "planned_requests": 48,
+  "max_network_attempts": 144,
+  "attempted_requests": 42,
+  "network_attempts": 42,
+  "potentially_billable_posts": 42,
+  "received_json_responses": 42,
+  "native_valid_responses": 41,
+  "ambiguous_posts": 0,
+  "duplicate_execution_possible": false,
+  "attempt_ledger_complete": true,
+  "completed": false,
+  "stop_reason": "native_contract_invalid",
+  "semantic_status": "unscored",
+  "metric_effect": "none",
+  "finished_at": "2026-10-12T22:41:47.298963+00:00",
+  "elapsed_seconds": 76.014121
+}

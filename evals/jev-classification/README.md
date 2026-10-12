@@ -214,7 +214,11 @@ TLS-only retries, identical request bytes, a durable attempt ledger and an
 explicit worst-case attempt budget. `coreinfra_retry_run.py` is offline by
 default and keeps all responses unscored until provider-specific validation.
 Existing experiments retain their original zero-inference-retry protocols.
-No new hosted calls or Jev/Luna semantic comparison have run under this version.
+The [matched expression comparison](runs/2026-10-12-matched-expression-wires/README.md)
+has since completed under this transport; the
+[contrastive study](runs/2026-10-13-contrastive-native-wires/results.md) stopped
+partially on native response validation. Transport completion and semantic
+quality remain separate.
 
 ## Expression reference preparation
 
@@ -224,18 +228,32 @@ It contains the unlabelled preparation template, separate non-blind author
 proposals, a fresh isolated model reference and a draft Jev/Luna comparison
 protocol. The reference agrees with author proposals on both axes for all eight
 cases; this is annotator agreement, not provider accuracy or human gold.
-No historical labels were transferred and no Jev/Luna calls were made. Luna's
-native CoreInfra operation/schema and typed decoders still require verification.
+No historical labels were transferred and the preparation made no Jev/Luna
+calls. A subsequent [native smoke](runs/2026-10-12-coreinfra-luna-contract-smoke/README.md)
+verified the Luna operation/schema; strict Choice decoding and live comparisons
+are recorded separately below.
 
 ### Matched expression provider comparison
 
 [The frozen wire plan](runs/2026-10-12-matched-expression-wires/README.md) now
 provides identical state/rubric inputs for Jev and Luna, with strict native Choice
-decoding. Preparation and validation are offline; explicit live execution is a
-separate bounded step. No classifier quality score or S/U change is implied.
+decoding. Preparation and validation were offline; the subsequent explicit live
+execution is recorded separately. Wire validation alone implies no classifier
+quality score or S/U change.
 
 The [first live matched comparison](runs/2026-10-12-matched-expression-wires/README.md)
 completed 32/32 native-valid responses in 61.52 seconds. Both providers achieved
 5/8 opportunity agreement and 2/3 eligible recall per repeat, failing the frozen
 criterion. This is model-reference development evidence; raw results are preserved
 and no S/U writes or production changes were made.
+
+### Contrastive mechanics / policy diagnostic
+
+[Four authored pairs and four withheld controls](runs/2026-10-13-contrastive-native-wires/results.md)
+were frozen after fresh independent annotation. Live execution stopped at 42/48
+requests because Jev returned a probability sum of 0.99: 41 native-valid answers,
+one invalid, six unattempted, no retries or ambiguity. In the complete first
+repeat, H1 role distinction is 4/4 for Jev and 3/4 for Luna; H2 joint abstention is
+1/4 and 3/4; both meet directional H3 at 4/4. Whole two-repeat reliability is not
+demonstrated. Per-axis abstention, context sensitivity, native response validity
+and selected-label correctness are separate findings; no automatic S/U changes.

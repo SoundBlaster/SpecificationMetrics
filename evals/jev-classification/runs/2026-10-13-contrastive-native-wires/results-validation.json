@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "offline_replay_of_partial_live_run_passed",
+  "recorded_at": "2026-10-12T22:51:45.470477+00:00",
+  "manifest_sha256": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+  "artifact_sha256": {
+    "attempts.jsonl": "db18ebea140db3a515579daf0020c26c70b8cf7f2594910f70db4bb3598fe36e",
+    "responses.jsonl": "33e276dcb1cf9e4acb59dc3825960bd6a3dd496e57692f735a437d7af1406025",
+    "receipt.json": "c1e38038e18415e2ca1ba80cfe2900f3e9c6b4a51f8929c68636ceca3e08d575",
+    "native-validation.json": "43222ca259be710fb253bf668d525682c4fdef576753ec15b67d704cb3f44735",
+    "score.json": "e6c9c873cbfc73d8990bc72391d237078747deb42b37a6fd036d9c5146c7605c",
+    "native-contract-diagnosis.json": "ca0e83b399439553c24a58f590714f27312cdc3fa927d128fd5bd93b90e0ac60",
+    "usage-summary.json": "dff0ed78644948acfad79fdbd64431c97a6750982ed7a66d94df9032b5cfd52f",
+    "results.md": "5bbc06ac81b41658ff17a45f8d6ab5dd45e901e97423c58d209ec43e4da24339"
+  },
+  "tests_passed": 105,
+  "new_live_replay_tests": 5,
+  "tests_elapsed_seconds": 1.744,
+  "test_module_sha256": "7169110468ab2f90e7149b76afe72183b044972fbc1b4052b798945a470c7625",
+  "original_native_decoders_producers_reference_wires_unchanged": true,
+  "original_model_reference_labels_unchanged": true,
+  "new_provider_calls_by_replay": 0,
+  "credential_pattern_scan": "no_matches_in_published_live_artifacts",
+  "provider_run_status": "partial_42_of_48_stopped_native_contract_invalid",
+  "metric_effect": "none",
+  "limits": "Offline replay confirms artifact consistency and fixed endpoint arithmetic, not provider rounding behavior, human gold or completed two-repeat quality."
+}

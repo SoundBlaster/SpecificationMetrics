@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "partial_stopped_native_contract_invalid",
+  "manifest_sha256": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+  "score_sha256": "e6c9c873cbfc73d8990bc72391d237078747deb42b37a6fd036d9c5146c7605c",
+  "receipt_sha256": "c1e38038e18415e2ca1ba80cfe2900f3e9c6b4a51f8929c68636ceca3e08d575",
+  "native_validation_sha256": "43222ca259be710fb253bf668d525682c4fdef576753ec15b67d704cb3f44735",
+  "reported_usage": {
+    "luna-decision-coreinfra": {
+      "responses_with_usage": 21,
+      "input_tokens": 22364,
+      "output_tokens": 0
+    },
+    "jev-coreinfra": {
+      "responses_with_usage": 21,
+      "input_tokens": 26271,
+      "output_tokens": 1926
+    }
+  },
+  "usage_includes_native_invalid_response": true,
+  "actual_billed_cost": null,
+  "remaining_credential_balance": null,
+  "cost_inference_from_tokens": "not_performed",
+  "metric_effect": "none"
+}
