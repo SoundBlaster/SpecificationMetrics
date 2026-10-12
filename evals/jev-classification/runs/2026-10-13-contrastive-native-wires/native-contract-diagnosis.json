@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "offline_diagnosis_strict_native_failure_preserved",
+  "request_id": "r2-case-10-jev-coreinfra",
+  "provider": "jev-coreinfra",
+  "requested_model": "jev-1.13.0",
+  "returned_model": "jev-1.13.0",
+  "wire_sha256": "8cc6017f3e213d3e0cd813de7fd7e3b22bba5536ba873211ea1363878358ea3f",
+  "manifest_sha256": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+  "responses_sha256": "33e276dcb1cf9e4acb59dc3825960bd6a3dd496e57692f735a437d7af1406025",
+  "decoder_sha256": "5e3d2a46d2eaad7a82a2f49a71b2936178eae059992e15a0da2154780f8c850e",
+  "invalid_axis": "concern_kind",
+  "observed_probabilities": {
+    "mechanics": 0.93,
+    "policy": 0.02,
+    "unknown": 0.0,
+    "variant_behavior": 0.04
+  },
+  "decimal_sum": "0.99",
+  "expected_sum": "1",
+  "frozen_absolute_tolerance": 1e-06,
+  "strict_validation_error": "Distribution is not normalized",
+  "choice": "mechanics",
+  "selected_option_is_maximum": true,
+  "opportunity_axis_decimal_sum": "1.00",
+  "whole_native_response_accepted": false,
+  "rounding_hypothesis": {
+    "assumed_uniform_rounding_step": "0.01",
+    "possible_underlying_sum_interval": [
+      "0.975",
+      "1.010"
+    ],
+    "interval_contains_one": true,
+    "status": "numerically_compatible_not_provider_contract_or_root_cause_verified",
+    "limits": "Assumes every supplied number was rounded to nearest hundredth; this behavior is not established by one answer. Does not authorize normalizing, changing tolerance or accepting the result under the frozen protocol."
+  },
+  "action_taken": "Stopped once, preserved raw response and original denominator; no renormalization or further POSTs.",
+  "new_inference_requests_by_diagnosis": 0,
+  "metric_effect": "none"
+}

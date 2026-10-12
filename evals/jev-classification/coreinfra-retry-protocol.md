@@ -1,11 +1,14 @@
 # CoreInfra transport protocol v1
 
-Status: implemented, tested with injected connections; no new hosted experiment
-or semantic comparison has been run under this protocol.
+Status: implemented, tested with injected connections, and used by the
+[completed matched comparison](runs/2026-10-12-matched-expression-wires/README.md)
+and [partial contrastive run](runs/2026-10-13-contrastive-native-wires/results.md).
+Transport acceptance, native validation and semantic scoring remain separate.
 
 The user reports Jev and Luna Decision availability through CoreInfra, including
-intermittent TLS/SSL failures. Availability of Luna's operation URL and native
-request/response schema still needs a separate verification. The transport does
+intermittent TLS/SSL failures. Luna's native operation and schema were subsequently
+verified in a [separate smoke](runs/2026-10-12-coreinfra-luna-contract-smoke/README.md).
+The transport does
 not translate Jev requests into Luna requests or assume that their APIs match.
 
 ## Policy
@@ -112,7 +115,7 @@ Old runners, producer hashes, raw responses and receipts remain unchanged. Their
 zero-inference-retry declarations remain true; the new runner refuses their old
 manifest schema. Do not reinterpret historical scores under this policy.
 
-## Next semantic experiment
+## Original semantic preparation sequence (subsequently completed)
 
 1. Add bounded, source-digested helper/data context to the explicit decision
    targets: in particular `_pre_sib_original_blocked` for sg017, the origins of
@@ -127,3 +130,10 @@ manifest schema. Do not reinterpret historical scores under this policy.
 5. Report semantic agreement/recall/false positives alongside completion rate,
    attempts, transport failures and duplicate-execution ambiguity. Failed and
    unattempted cases must not disappear from the planned denominator.
+
+The later [contrastive result](runs/2026-10-13-contrastive-native-wires/results.md)
+adds a native-contract failure: Jev's probability sum of 0.99 stopped execution
+after 42/48 requests. This was not a TLS failure and did not trigger a retry.
+Investigate the probability representation contract before any separately
+versioned validation policy or new inference; the original strict result remains
+partial and must not be resumed or silently renormalized.

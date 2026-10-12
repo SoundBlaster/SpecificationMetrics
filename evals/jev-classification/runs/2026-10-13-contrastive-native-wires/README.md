@@ -2,8 +2,12 @@
 
 ## Current state
 
-**48 native requests are frozen and validated offline. Live inference has not
-started. No provider scores, actual token usage, dollar cost or S/U changes.**
+**Live execution stopped on a native-contract error: 42/48 requests sent,
+41 native-valid answers, one invalid answer and six proven unattempted requests.**
+No retries, ambiguous POSTs, reference changes or S/U writes. See the
+[results and H1/H2/H3 interpretation](results.md), [raw score](score.json) and
+[execution receipt](receipt.json). The complete first repeat supports scoped
+analysis; the full two-repeat study remains incomplete.
 
 The [manifest](manifest.json) binds the unchanged
 [reviewed reference](../2026-10-13-contrastive-preparation/reference-review.json),
@@ -58,15 +62,12 @@ evidence, not a provider result or CI status.
 the checked-in run is already prepared. Never regenerate a manifest after
 inference to make changed inputs or implementation appear to match.
 
-## Separate live execution
+## Completed partial execution
 
-Live execution remains the next **separately requested** experiment. This
-preparation does not authorize it. The explicit command, after the bounded run
-is requested and a credential is available, is:
-
-```sh
-python3 contrastive_decision_study.py --live
-```
+The user explicitly requested this bounded live run. Execution used
+`execute(live=True)` with the frozen manifest and process-local credential.
+It stopped once on Jev's concern-kind probability sum of 0.99. Do not execute
+this run again: its output evidence is final and the runner refuses reuse.
 
 The runner reserves the worst-case attempt budget, verifies frozen inputs before
 each request, creates an exclusive run lock/attempt ledger, and fsyncs events
@@ -83,16 +84,19 @@ possible; a crash without one leaves execution status unknown. Missing result
 rows alone never prove that inference was not sent. Do not resume or overwrite
 the directory: a further attempt needs a new recorded run and explicit budget.
 
-## Offline scoring after execution
+## Reproduce the saved partial score offline
 
 ```sh
 python3 contrastive_decision_study.py --inspect-results
-python3 score_contrastive_decisions.py --output runs/2026-10-13-contrastive-native-wires/score.json
+python3 -m unittest -v test_contrastive_live_replay.py
 ```
 
 The scorer binds the exact response/attempt/receipt/manifest and reference/review
 hashes, decodes raw responses again, and refuses stale or contradictory evidence.
 It never sends requests, repairs labels or applies the ownership gate.
+To save an additional replay, use `score_contrastive_decisions.py --output`
+with a new unused file path. The checked-in `score.json` is already scored and
+must not be overwritten.
 
 | Endpoint | Fixed criterion, per provider and repeat |
 |---|---|
@@ -124,6 +128,7 @@ contrast cannot identify which context component mattered. The reference is one
 fresh model annotation plus nonblind integrator review. Two repeats do not
 establish statistical superiority, calibrated confidence or generalization.
 
-**Next step:** run the frozen 48-request experiment when explicitly requested,
-then publish raw outcomes and score all preregistered endpoints once. Preserve
-failed hypotheses; no production defaults, registry dispositions or S/U writes.
+**Next step:** investigate the probability representation contract offline and
+with provider contract evidence before proposing any revised native validation
+version or separately budgeted new run. Preserve this partial strict run and all
+failed criteria; no production defaults, registry dispositions or S/U writes.
