@@ -85,7 +85,8 @@ def validate(run):
 def inspect_results(run):
     """Keep transport failures, native contract failures and labels separate."""
     validate(run)
-    manifest = decode((run / "manifest.json").read_bytes())
+    manifest_raw = (run / "manifest.json").read_bytes()
+    manifest = decode(manifest_raw)
     packet = decode((REFERENCE / "reference-packet.json").read_bytes())
     expected = {r["request_id"]: r for r in manifest["requests"]}
     rows = []
@@ -111,8 +112,36 @@ def inspect_results(run):
             except (ValueError, TypeError, KeyError):
                 result["native_status"] = "invalid"
         rows.append(result)
+    # Missing output is not evidence of a missing POST. An interrupted process
+    # may have sent inference before it could write its response row/receipt.
+    attempted = set(seen)
+    starts = 0
+    ledger_path = run / "attempts.jsonl"
+    if ledger_path.exists():
+        for raw in ledger_path.read_bytes().splitlines():
+            event = decode(raw)
+            rid = event["request_id"]
+            if rid not in expected or event["wire_sha256"] != expected[rid]["wire_sha256"]:
+                raise ValueError("Attempt is not bound to frozen request")
+            if event["event"] == "attempt_started":
+                attempted.add(rid)
+                starts += 1
+    complete = False
+    receipt_path = run / "receipt.json"
+    if receipt_path.exists():
+        receipt = decode(receipt_path.read_bytes())
+        if receipt["manifest_sha256"] != digest(manifest_raw):
+            raise ValueError("Receipt is not bound to frozen manifest")
+        complete = ledger_path.exists() and receipt.get("attempt_ledger_complete") is True
+        if complete and (receipt["network_attempts"] != starts or receipt["attempted_requests"] != len(attempted)):
+            raise ValueError("Receipt and attempt ledger disagree")
+    missing = [rid for rid in expected if rid not in seen]
     return {"planned_requests": len(expected), "received_rows": len(rows),
-            "unattempted_request_ids": [rid for rid in expected if rid not in seen],
+            "missing_result_request_ids": missing,
+            "attempted_without_result_request_ids": [rid for rid in missing if rid in attempted],
+            "unattempted_request_ids": [rid for rid in missing if rid not in attempted] if complete else [],
+            "attempt_status_unknown_request_ids": [rid for rid in missing if rid not in attempted] if not complete else [],
+            "attempt_ledger_complete": complete,
             "native_valid": sum(r["native_status"] == "valid" for r in rows),
             "native_invalid": sum(r["native_status"] == "invalid" for r in rows),
             "rows": rows, "semantic_status": "unscored", "metric_effect": "none"}

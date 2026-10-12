@@ -93,11 +93,40 @@ class FrozenPlan(unittest.TestCase):
             path.write_bytes(b"\n".join(canonical(row) for row in rows))
             report = inspect_results(run)
             self.assertEqual((report["planned_requests"], report["received_rows"], report["native_valid"], report["native_invalid"]), (32, 3, 1, 1))
-            self.assertEqual(len(report["unattempted_request_ids"]), 29)
+            self.assertEqual(len(report["missing_result_request_ids"]), 29)
+            self.assertEqual(len(report["attempt_status_unknown_request_ids"]), 29)
+            self.assertEqual(report["unattempted_request_ids"], [])
             self.assertEqual(report["rows"][2]["native_status"], "not_evaluated")
             self.assertIsNone(report["rows"][1]["prediction"])
             rows[0]["wire_sha256"] = "stale"
             path.write_bytes(b"\n".join(canonical(row) for row in rows))
+            with self.assertRaises(ValueError): inspect_results(run)
+
+    def test_interruption_after_post_does_not_become_unattempted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            run = Path(tmp); manifest = build(); manifest_raw = canonical(manifest)
+            (run / "manifest.json").write_bytes(manifest_raw)
+            (run / "responses.jsonl").write_bytes(b"")
+            request = manifest["requests"][0]
+            event = {"request_id": request["request_id"], "wire_sha256": request["wire_sha256"], "event": "attempt_started"}
+            (run / "attempts.jsonl").write_bytes(canonical(event) + b"\n" + canonical({**event, "event": "post_may_start"}))
+            report = inspect_results(run)
+            self.assertEqual(report["attempted_without_result_request_ids"], [request["request_id"]])
+            self.assertEqual(report["unattempted_request_ids"], [])
+            self.assertEqual(len(report["attempt_status_unknown_request_ids"]), 31)
+            receipt = {"manifest_sha256": digest(manifest_raw), "attempt_ledger_complete": False}
+            (run / "receipt.json").write_bytes(canonical(receipt))
+            self.assertEqual(inspect_results(run)["unattempted_request_ids"], [])
+            receipt.update(attempt_ledger_complete=True, network_attempts=1, attempted_requests=1)
+            (run / "receipt.json").write_bytes(canonical(receipt))
+            report = inspect_results(run)
+            self.assertEqual(len(report["unattempted_request_ids"]), 31)
+            self.assertEqual(report["attempt_status_unknown_request_ids"], [])
+            receipt["network_attempts"] = 2
+            (run / "receipt.json").write_bytes(canonical(receipt))
+            with self.assertRaises(ValueError): inspect_results(run)
+            receipt["manifest_sha256"] = "stale"
+            (run / "receipt.json").write_bytes(canonical(receipt))
             with self.assertRaises(ValueError): inspect_results(run)
 
     def test_same_state_and_rubric_both_providers_and_repeats(self):

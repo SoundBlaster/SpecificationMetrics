@@ -73,7 +73,7 @@ runs remain separate evidence, never silently replaced by another invocation.
 
 Focused tests cover both native encodings, shared data/rubric equivalence, reversed
 provider order, invalid probability/identity/type cases, stale manifests/results,
-and preservation of missing/failed response rows. 49 focused tests passed before
+and preservation of missing/failed response rows. 50 focused tests passed before
 publication. No Rust implementation or production defaults changed.
 
 Next: execute this exact bounded plan once, inspect native acceptance, then score
@@ -81,3 +81,16 @@ each provider/repeat against the same frozen model reference. Keep raw results a
 offline ownership-gate composition separate. The preregistered success criteria
 remain in the [comparison plan](../2026-10-12-expression-reference/comparison-plan.json).
 This small development set is not human gold or evidence of generalization.
+
+## PR review correction: missing result is not an unattempted request
+
+A process can stop after a POST and before saving its response. Inspection now
+reports missing result rows separately from requests known to have started but
+lacking results. A request is called unattempted only when the final receipt
+confirms a complete attempt ledger, matches this manifest hash, and agrees with
+ledger attempt/request counts. Otherwise an absent ledger event leaves attempt
+status unknown. No automatic rerun is inferred from any missing row.
+
+The manifest was re-frozen after this code correction while the study still had
+no attempts, responses or receipt. The preceding manifest remains in Git history;
+no hosted-run artifacts or historical experiment producer hashes were modified.

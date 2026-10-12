@@ -36,6 +36,8 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I23 | [Matched native wires](runs/2026-10-12-matched-expression-wires/README.md) now freeze 32 requests with identical canonical state text and rubric across APIs, counterbalanced order, native Choice decoding and a 96-attempt ceiling. Offline checks preserve missing and invalid results. | API compatibility and matched inputs are prerequisites, not semantic improvement. Native confidence scales remain separate; do not relabel protocol failures as abstentions or transfer historical accuracy into this new serialization regime. No new inference performed. |
 
+| I24 | PR review found that a missing result row was called an unattempted request even after a possible POST. [Result inspection](runs/2026-10-12-matched-expression-wires/README.md) now uses the manifest-bound complete receipt and attempt ledger to distinguish missing results, started-without-result, proven unattempted and unknown status. | Output absence is not execution absence. Preserve ambiguity after interruptions; never use missing output alone to authorize a retry or assert no inference/billing occurred. No live comparison had started when the manifest was re-frozen. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
