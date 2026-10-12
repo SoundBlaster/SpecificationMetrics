@@ -1,0 +1,72 @@
+{
+  "annotations": [
+    {
+      "case_id": "aligned-f85c573e831106ef",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": "Неготовый pre-SIB требует review_required, если materialization не использовала repair_loop_preview; при repair preview остаётся warning. Это явно выраженное правило допуска с исключением, а вспомогательная функция не показывает ownership со стороны Specification.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-856809440d85b65b",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": "Для requirement без непустого набора ссылок, полностью покрытого existing_ac, создаётся reviewable placeholder acceptance criterion в preview. Это самостоятельное правило покрытия требований и выбора repair action; импорт SpecificationCore не доказывает ownership этого решения.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-be744fe93987d71b",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence": "Правило готовности pre-SIB и исключение для repair_loop_preview непосредственно представлены именованными PredicateSpec внутри FirstMatch с именем pre_sib_state. Это policy, но то же решение уже явно принадлежит Specification.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-a5c791e59945e5ef",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence": "Workspace allocation должна совпадать с bootstrap по workspace identity, source_ref, expected_commit и declaration digest, а также содержать оба явных authorization flags. Проверка выражает правило authority и integrity; показанные импорты других Specifications не устанавливают ownership именно этого решения.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-84a2da42feab8ad4",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": "Функция возвращает значение, если оно dict, иначе пустой dict. Это техническая адаптация представления без отдельного product/domain decision.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-357a20c6e8281855",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": "Функция удаляет крайние пробелы у непустой строки и возвращает default для остальных значений. Видимый код выполняет нормализацию представления без отдельного product/domain decision.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-dc4a400c8ff6d02d",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence": "Именованные PredicateSpec определяют IGNORE для некорректного или уже покрытого requirement, а fallback выбирает ADD_PLACEHOLDER. Правило repair acceptance criterion явно принадлежит FirstMatch с именем acceptance_criterion_repair.",
+      "missing_context": null
+    },
+    {
+      "case_id": "aligned-ca8403166aca2ce3",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence": "Функция переводит текст в lowercase, заменяет последовательности символов вне a-z0-9 дефисом, обрезает крайние дефисы и использует fallback для пустого результата. Это преобразование строкового представления без отдельного product/domain decision.",
+      "missing_context": null
+    }
+  ],
+  "schema_version": 1,
+  "reference_kind": "independent_model_annotation",
+  "human_adjudicated": false,
+  "packet_sha256": "67d5915bbb34ca7d7c2642c87922ba00a1521de10b52c5e88c48956a359ec1e7",
+  "annotation_provenance": {
+    "agent_task": "/root/aligned_rubric_blind_reference",
+    "fork_turns": "none",
+    "model_override": null,
+    "actual_model_identity": "not exposed by spawn result",
+    "input": "isolated /tmp packet copy; no previous labels or Jev responses",
+    "frozen_before_jev_execution": true
+  }
+}

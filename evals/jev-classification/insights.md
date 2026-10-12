@@ -25,6 +25,7 @@ registry exclusions or changes to Specification counts (S/U).
 | I13 | [Same-byte repeat controls](runs/2026-10-09-repeat-controls/README.md): 32/32 responses, zero categorical differences in 16 same-byte and 16 cross-arm comparisons per axis. Identical-wire probability/confidence deltas reach 0.09/0.14 for opportunity. The earlier sg-018 flip does not reproduce, and semantic recall remains 0/3. | Numerical stability is separate from label stability and semantic quality. The previous pair cannot establish deterministic key-order causality. Two repeats do not prove invariance or justify thresholds; stop repetition and inspect eligibility criteria before prompt tuning. |
 | I14 | [Eligibility diagnosis](runs/2026-10-09-eligibility-diagnosis/README.md): reference explicitly allows single-use addressable/observable rules and qualifies mechanics; Jev's direct criterion uses reusable and unqualified technical enforcement. All three references acknowledge missing ownership context. | Low agreement remains measured relative to that model reference, but task mismatch and unresolved target boundaries prevent declaring each disagreement an objective Jev error. Align tasks before tuning or assigning causes. |
 | I15 | [Source-boundary diagnosis](runs/2026-10-09-eligibility-diagnosis/README.md): sg-019 is a 44-line mixed function, while its reference selects an internal coverage predicate. Historical sg-017 consumer confirms findings affect readiness, but that consumer was omitted from Jev input. | Define target decision versus supporting code and avoid duplicate caller/helper opportunities. Context facts discovered afterward cannot retroactively change the old input or score. |
+| I16 | [Matched-rubric diagnostic](runs/2026-10-10-rubric-alignment/README.md): both repeats move opportunity agreement 4/8 to 5/8, eligible recall 0/3 to 2/3 and concern-kind 7/8 to 8/8, but owned false positives 1/2 to 2/2. Fresh isolated model reference retains all prior labels. | Composite task alignment helps semantic discovery on these cases but fails the no-new-control-errors success criterion. Separate formal ownership from semantic suitability before rollout; do not claim a universal prompt win or individual-word causality. |
 
 ## Current decision
 
@@ -36,16 +37,14 @@ changed by the transport/grouping/order experiments.
 
 ## Next evaluation slice
 
-The [frozen repeat controls](runs/2026-10-09-repeat-controls/README.md) now provide
-a first baseline for numerical variability, without a reproduced label flip.
-The [three-agent diagnosis](runs/2026-10-09-eligibility-diagnosis/README.md) found
-a task-phrasing mismatch and mixed target granularity. First freeze matching
-instructions and decision targets for reference and Jev, preserving ownership
-and responsibility kind as separate concerns.
-Any further inference needs a frozen hypothesis, fixed inputs and a bounded budget.
-Adjudicate disputed sg-019 against the architecture goal before calling its
-reference authoritative. A separate direct-provider/proxy comparison needs
-provider-specific credentials, its own budget and an otherwise matched protocol.
+The [matched-task comparison](runs/2026-10-10-rubric-alignment/README.md) now
+shows improved discovery with a reproducible ownership regression. Evaluate a
+formal ownership filter followed by AI semantic suitability; keep proof and
+suggestion provenance distinct. The sg-019 mixed-function target still needs
+adjudication and a separate predicate-target context study. New-family,
+human-adjudicated confirmation is needed before production-quality claims.
+Further inference requires a frozen hypothesis, fixed inputs and a bounded
+budget; do not iterate until the diagnostic set happens to pass.
 
 New experiments should append an evidence link and explicit scope here;
 contradictory results should revise a conclusion rather than disappear from the

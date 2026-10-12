@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "study_kind": "paired_rubric_alignment",
+  "source_commit": "ee9eebfbeca38aa7a262d684c59ec5812d1b3007",
+  "cases": 8,
+  "repeats": 2,
+  "planned_requests": 32,
+  "endpoint": "https://hub.coreinfra.ai/typesafe/api/v1/systemone",
+  "requested_model": "jev-1.13.0",
+  "max_observed_tokens": 90000,
+  "inference_retries": 0,
+  "factor": "Composite task-alignment wording only; all state objects and wire ordering fixed. Does not identify an individual causal word.",
+  "holdout": false,
+  "human_adjudicated": false,
+  "digests": {
+    "runs/2026-10-10-rubric-alignment/rubric.json": "4c49ef5f8b4f467cc4f2428c56788e884a085f4a5d191018955a94cbe13124bb",
+    "runs/2026-10-10-rubric-alignment/plan.json": "7b21e37cc6f64091267728789f28b3873aef46f8ab25beaea107e9d586d49c3c",
+    "runs/2026-10-10-rubric-alignment/reference-packet.json": "67d5915bbb34ca7d7c2642c87922ba00a1521de10b52c5e88c48956a359ec1e7",
+    "runs/2026-10-10-rubric-alignment/reference-mapping.json": "181f094957445877d73190839967b91faac75853911339321f2c7785cf8175b6",
+    "runs/2026-10-09-repeat-controls/round-1/plan.json": "3e01e73745744c73d8a39bac8fc81a0a2af29e9d32ead4ddc8b786446b1dc805",
+    "runs/2026-10-10-rubric-alignment/annotations.json": "9c2b061cb80dcc862e6fccb1374fbd0f6e559d270ae8493a76895354bd08e34f"
+  },
+  "producer_implementation_digests": {
+    "rubric_alignment.py": "32d025f6ab0bdc05ddd21098cbca14032e08f64b887ee6e79e4429b5fbe45213",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035",
+    "state_key_order.py": "1d420346310d196eb0991ae8347e7ca08f6490065a739478cd6798b9eb31de39"
+  },
+  "success_criteria": "Both fresh repeats improve opportunity agreement and eligible recall without new mechanics or owned false positives. Otherwise not supported; diagnostic evidence only.",
+  "rubric_frozen_before_reference": true,
+  "reference_frozen_before_jev": true
+}
