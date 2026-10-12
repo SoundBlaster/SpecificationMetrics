@@ -2,8 +2,9 @@
 
 ## Status and question
 
-**Independent model annotation and integrator review completed; executable native
-wires remain pending. No Jev/Luna requests or provider semantic scores.**
+**Independent model annotation and integrator review completed. Executable native
+wires are now [frozen separately](../2026-10-13-contrastive-native-wires/README.md).
+No Jev/Luna requests or provider semantic scores.**
 
 The fresh subagent's labels agree with author hypotheses on 12/12 cases on each
 axis. [Reference review](reference-review.md) preserves all uncertainties and
@@ -126,8 +127,9 @@ hides opposite-role errors or rewards abstention as full-context success.
    revision was required. For future revisions, a full pair without opposed roles
    or an answerable withheld control requires a new preparation/version and
    independent review. Do not force labels or quietly drop inconvenient cases.
-3. Freeze the reviewed reference and executable native request manifest, with
-   exact state/question/decoder/producer/reference hashes. The existing
+3. **Completed in a separate run folder:** froze the reviewed reference and
+   executable native request manifest, with exact
+   state/question/decoder/producer/reference hashes. The existing
    [logical schedule](logical-schedule.json) is **not executable native wires**.
    This preparation script has no live mode and does not read credentials.
 4. Execute only after an explicit bounded live-run request and budget check.
@@ -176,5 +178,6 @@ here; it does not collapse those orthogonal axes in the general classifier.
 Already-composed controls remain evidence from the previous study. Future
 confirmation needs new natural-code families and human adjudication.
 
-**Next step:** freeze a separate native-wire manifest bound to the reviewed model
-reference before any separately requested provider execution.
+**Next step:** separately request execution of the frozen
+[48-request native study](../2026-10-13-contrastive-native-wires/README.md), then
+score its fixed hypotheses without revising reference labels after results.
