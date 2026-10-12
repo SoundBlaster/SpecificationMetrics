@@ -206,3 +206,12 @@ binds one explicitly selected expression per development case to exact source
 bytes. Four targets match legacy scanner anchors; four have no such candidate.
 No old semantic labels were copied and no inference ran. The next comparison
 needs fresh target-specific annotations and bounded helper/data context.
+
+## CoreInfra TLS retry protocol
+
+The [new transport protocol](coreinfra-retry-protocol.md) provides bounded
+TLS-only retries, identical request bytes, a durable attempt ledger and an
+explicit worst-case attempt budget. `coreinfra_retry_run.py` is offline by
+default and keeps all responses unscored until provider-specific validation.
+Existing experiments retain their original zero-inference-retry protocols.
+No new hosted calls or Jev/Luna semantic comparison have run under this version.
