@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "authored_contrastive_scenarios_derived_from_specgraph",
+  "pairs": [
+    {
+      "pair_id": "pair-01",
+      "title": "Nonempty collection with every element resolving",
+      "expression": "items and all(item in known for item in items)",
+      "derivation": "Rename refs to items, ref to item and existing_ac to known. Retain the nonempty/all-membership expression. The two surrounding functions and their contracts are authored counterfactuals, not historical source.",
+      "mechanics": {
+        "contract": "items is a list of string tokens. known maps string tokens to rendered string chunks. Unknown tokens must be preserved literally. The function returns a tuple of rendered chunks. Both branches must produce the same rendering; the guard selects the direct-lookup path when every key is present.",
+        "code": "def materialize(items: list[str], known: dict[str, str]) -> tuple[str, ...]:\n    if items and all(item in known for item in items):\n        return tuple(known[item] for item in items)\n    return tuple(known.get(item, item) for item in items)\n"
+      },
+      "policy": {
+        "contract": "items contains the current requirement's nonempty, stripped acceptance-criterion references; known contains criterion IDs in the current node. This repair pass produces no action when there is at least one reference and every reference resolves in that node. Otherwise it proposes a reviewable acceptance-criterion placeholder. Resolving references alone says nothing about criterion quality or complete coverage. The return value is a repair instruction consumed by the application.",
+        "code": "def plan_repair(items: list[str], known: set[str]) -> tuple[str, ...]:\n    if items and all(item in known for item in items):\n        return ()\n    return (\"add_acceptance_criterion_placeholder\",)\n"
+      }
+    },
+    {
+      "pair_id": "pair-02",
+      "title": "Readiness combined with a mode exception",
+      "expression": "not ready and mode != \"preview\"",
+      "derivation": "Inline the helper's early return into a Boolean conjunction over prepared readiness and source-mode facts; normalize repair_loop_preview to preview. This preserves the Boolean truth table over those facts, not all historical helper/input behavior. Surrounding functions/contracts are authored.",
+      "mechanics": {
+        "contract": "ready means the supplied text has already had CRLF line endings normalized. mode=preview requests the original bytes represented as text; other modes require LF line endings. The function returns the representation requested by that mode. The readiness flag only avoids repeating normalization. No document is accepted or rejected by this function.",
+        "code": "def render_text(ready: bool, mode: str, text: str) -> str:\n    if not ready and mode != \"preview\":\n        return text.replace(\"\\r\\n\", \"\\n\")\n    return text\n"
+      },
+      "policy": {
+        "contract": "ready is the original pre-SIB report's readiness. mode=preview means materialization used a repair-loop preview. Promotion must require review when the original report is not ready and no repair-loop preview was used. Otherwise this particular gate contributes no blocker; other gates can still require review. The return value contributes to promotion readiness.",
+        "code": "def promotion_blockers(ready: bool, mode: str) -> tuple[str, ...]:\n    if not ready and mode != \"preview\":\n        return (\"review_required\",)\n    return ()\n"
+      }
+    },
+    {
+      "pair_id": "pair-03",
+      "title": "Binding several fields and two Boolean flags",
+      "expression": "record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest",
+      "derivation": "Rename allocation to record and the prepared request facts to expected. Rename workspace_identity/source_ref/expected_commit to identity/ref/commit and the two authority fields to flag_a/flag_b. Replace the computed declaration SHA-256 with an explicitly prepared expected_digest fact. Retain all six conjuncts. Surrounding functions/contracts are authored; no historical publication authorization equivalence is asserted.",
+      "mechanics": {
+        "contract": "record and expected are rows in a diagnostic table. identity, ref, commit and digest are literal columns. flag_a and flag_b are two checkboxes that the table's exact-match row format requires to be checked. All columns are present; expected_digest is the comparison value for the digest column. The function returns the printable marker = for a matching row and ! otherwise. The caller prints the marker beside the raw row; it does not use the marker to approve an operation.",
+        "code": "def row_marker(record: dict, expected: dict, expected_digest: str) -> str:\n    if record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest:\n        return \"=\"\n    return \"!\"\n"
+      },
+      "policy": {
+        "contract": "record contains previously validated reviewed allocation facts; expected contains the requested workspace identity, source ref and commit. flag_a grants identity allocation and flag_b grants source-ref initialization. expected_digest is computed by the input adapter from the exact declaration bytes. Publication may proceed through this gate only if all three bindings match, both grants are exactly True and the declaration digest matches. The function supplies a publish/hold decision; it does not itself publish or verify a signature.",
+        "code": "def publication_disposition(record: dict, expected: dict, expected_digest: str) -> str:\n    if record[\"identity\"] == expected[\"identity\"] and record[\"ref\"] == expected[\"ref\"] and record[\"commit\"] == expected[\"commit\"] and record[\"flag_a\"] is True and record[\"flag_b\"] is True and record[\"digest\"] == expected_digest:\n        return \"publish\"\n    return \"hold\"\n"
+      }
+    },
+    {
+      "pair_id": "pair-04",
+      "title": "Choosing a value with a fallback",
+      "expression": "preferred or default",
+      "derivation": "Rename slug to preferred and fallback to default. Preserve the or expression only; preceding slug normalization is outside this target. The two surrounding functions and their contracts are authored.",
+      "mechanics": {
+        "contract": "preferred and default are already escaped string chunks supplied by a diagnostic log renderer. An empty preferred chunk is represented with the supplied default display token. The function projects one chunk for the log line. Neither token identifies a destination or an operation; no delivery choice is made here.",
+        "code": "def display_chunk(preferred: str, default: str) -> str:\n    return preferred or default\n"
+      },
+      "policy": {
+        "contract": "preferred is the requested delivery queue name, possibly empty. default is the configured nonempty review queue name. New review tasks are assigned to the requested queue when one is supplied and to the configured review queue otherwise. This function selects that task destination; an application effect later enqueues the task. Input validation has already checked any supplied queue name.",
+        "code": "def review_destination(preferred: str, default: str) -> str:\n    return preferred or default\n"
+      }
+    }
+  ]
+}
