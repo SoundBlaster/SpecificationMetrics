@@ -130,6 +130,34 @@ historical reference, production prompt or metric state was changed.
   abstention, and overwrite refusal. The reference remains unapproved for
   provider scoring; no provider calls or metric writes were made.
 
+## Source audit: BDD contract exists; the failed annotation context omitted it
+
+- **Evidence:** at pinned SpecGraph commit `51c8d93cc385569864b3cd7f5040d4b3e0820a1b`,
+  `SG-SPEC-0070` states that BDD `steps` is a nonempty ordered list of nonempty
+  strings and records human approval. Its characterization test rejects an
+  empty step list. The same commit links `BDDScenarioValuesSpec` through
+  `BDDPolicy(Specification[BDDContext])`, `spec_id = SG-SPEC-0070`, its
+  `_evaluate` implementation and composition evaluation. V2 `context-03`
+  supplied only the method body, not those contract or implementation-link
+  fragments.
+- **Cause status:** confirmed that the source contract exists and was absent
+  from the annotation input. This disproves a repository-wide missing-contract
+  explanation. It does not establish that the omission caused the abstentions.
+  The adopted contract specifies input validity but does not itself settle the
+  v2 policy-versus-mechanics boundary: domain completeness and representation
+  validity remain distinct interpretations.
+- **Lesson:** distinguish a missing rule in the product from missing evidence
+  in the prompt. A formal validity contract does not automatically establish
+  whether its concern kind is domain policy or input mechanics.
+- **Prevention:** the [prepared BDD factor diagnostic](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
+  holds the target, architecture profile and rubric fixed while separately
+  showing the adopted values contract and the same-decision Specification
+  evaluation link. It assigns one condition to each fresh context and does not
+  seed expected labels.
+- **Verification:** its offline producer binds all four source files to the
+  pinned revision and prepares three blank assignments per cell. No annotation
+  or provider run has started; v2 raw results and H2 remain unchanged.
+
 ## Record template
 
 1. Failure and exact command/criterion.

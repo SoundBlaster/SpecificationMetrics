@@ -302,3 +302,8 @@ matched on all 18 states in both fresh rounds, but decisive coverage fell to
 10/18 per axis. The frozen H2 control failed on a BDD steps predicate that both
 rounds marked `needs_review / unknown`. V2 is therefore not approved for
 provider scoring; the rubric proposal and prior labels remain separate.
+
+The [BDD steps source audit and follow-up preparation](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
+found the adopted nonempty-steps contract and the existing SpecificationCore
+evaluation path in the pinned SpecGraph commit. It prepares four evidence
+conditions for a focused diagnostic; no annotation has been dispatched.

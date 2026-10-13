@@ -1,0 +1,31 @@
+{
+  "status": "bdd_factorial_packet_prepared_not_dispatched",
+  "source_file_sha256": {
+    "../2026-10-13-rubric-v2-reference/annotation-packet-03.json": "57cfc9f34bfa2cbe55906b87c1681803e7bb3b89e7155c0896f9018b5e9b135a",
+    "../2026-10-13-rubric-v2-reference/rubric.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+    "../2026-10-13-rubric-v2-reference/annotation-prompt.txt": "8d8ca1b61769ac2c9011c72d8258d21da38ed7cf2cd6e193f21a89d4520ff888",
+    "../2026-10-13-rubric-v2-reference/upstream-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "producer_sha256": "fa0ecc6c75624e471505e2441222201a9784a968c204ba818f021142e920b1da",
+  "artifact_file_sha256": {
+    "rubric.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+    "annotation-prompt.txt": "b7416991729cabdda541d0288456bcd0e28d565fe39d2d227a755a71860f9bcb",
+    "upstream-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "annotation-packet-01.json": "63637e8355942a0d6726a871ccdc36429eb4a44c59f136b636c2d3a5fba34902",
+    "annotation-template-01.json": "e1967fbee5a89d00c1ab3d45255584fa3321e5031ea6292086065b0c7df8e4d9",
+    "annotation-packet-02.json": "2dc0a6f7692a17e9dbc21376d397915fe444097ca0158945d5795bf51fc834d5",
+    "annotation-template-02.json": "ed29144b2a210ddad350cf19555a0b2656f0c67c3685ef3757e385235d0e8a19",
+    "annotation-packet-03.json": "f891784b4be5649d46a0c2cecfeb9426f60a5fb326a56e5fd23698e7b4e4bfc6",
+    "annotation-template-03.json": "983f13f5d0361fe575e602e540c9e6a69b8502aa3b7899e092adff5cbbfa544d",
+    "annotation-packet-04.json": "f6d60fc0e456260933aa403652e1d56829f64445422fea4dbcc63f7c9dcd8c09",
+    "annotation-template-04.json": "2ae1a1a39257d500bce204c2eb4d623f8280c1849c0bb6d66b2d16172eaf992b",
+    "source-mapping.json": "00352d6733a502a14de00c59717fab5d3e58b8908d4e14da574260d441f27012",
+    "dispatch-plan.json": "9822ede357ff9d4e98513fb9df8ac102315e117869daa1f2dc774d49ed646c17",
+    "study-plan.json": "4b1510e783f0777e89d1abd027b5b5db3da250099a53bbb9b0bb51b2a1856db8"
+  },
+  "task_identity": "canonical_state_questions_instructions_rubric_file_digest_annotation_prompt_digest",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "fresh_contexts_planned": 12,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}
