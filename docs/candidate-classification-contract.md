@@ -324,3 +324,12 @@ source snapshot.
 
 Digests in this illustrative example are placeholders, not valid verification
 values.
+
+## Evaluation rubric proposals
+
+The [expression-fit v2 proposal](../evals/jev-classification/expression-fit-rubric-v2.md)
+clarifies domain policy, mechanics, variant behavior, material missing evidence
+and same-decision ownership for exact-expression diagnostics. It preserves the
+two label sets and is evaluation-only. It has not been activated in the Rust
+adapter or validated as a new production rubric. Historical references and the
+v1 request/result schema contract remain unchanged.
