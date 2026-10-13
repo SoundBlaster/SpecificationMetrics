@@ -104,6 +104,32 @@ Its plan also requires task identity to bind rubric/questions: matching state
 hashes alone cannot establish identical inputs across a rubric change. No
 historical reference, production prompt or metric state was changed.
 
+## Confirmed criterion failure: rubric-v2 decisive coverage on BDD steps
+
+- **Evidence:** the [v2 independent reference](runs/2026-10-13-rubric-v2-reference/README.md)
+  retains 36 fresh annotations over the same eighteen source states. Both
+  rounds match on 18/18 cases per axis, but each axis has only 10/18 decisive
+  labels. The frozen H2 requires decisive labels on ten v1 development controls;
+  `context-03` abstains on both axes in both rounds, so H2 fails at 9/10 controls.
+- **Cause status:** the criterion failure is confirmed. The semantic cause is
+  unresolved. Annotators cite the absent contract distinguishing a BDD
+  nonempty-steps domain requirement from input/schema validation. Excessive v2
+  abstention, missing source context and overconfident v1 labels remain
+  competing explanations. The rationale does not establish internal model
+  reasoning, and the v1 labels are not gold.
+- **Lesson:** report repeat agreement and decisive coverage together. A stable
+  abstention is not evidence of improved classification; do not remove a failed
+  control after seeing the result.
+- **Prevention:** keep H2 as a separate gate from H1, bind each annotation to
+  the exact rubric and task digest, and preserve raw output hashes. A new
+  diagnostic must source-ground the BDD contract and test semantic-contract and
+  ownership evidence separately where the source permits.
+- **Verification:** the new offline validator replays both rounds and reports
+  H1 pass / H2 fail. Seven regression tests cover task-identity binding, raw
+  result replay, the H2 guard against perfect agreement under blanket
+  abstention, and overwrite refusal. The reference remains unapproved for
+  provider scoring; no provider calls or metric writes were made.
+
 ## Record template
 
 1. Failure and exact command/criterion.

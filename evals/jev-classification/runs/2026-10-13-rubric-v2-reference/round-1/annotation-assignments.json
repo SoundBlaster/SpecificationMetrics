@@ -21,7 +21,9 @@
       "context_inheritance": "none",
       "model_override": null,
       "reasoning_effort_override": null,
-      "dispatched_prompt_sha256": "179a4b917f084c91c3bb1d3a89bbc4a24ef5fa19355f0b43a21b8793fa8913fd"
+      "dispatched_prompt_sha256": "179a4b917f084c91c3bb1d3a89bbc4a24ef5fa19355f0b43a21b8793fa8913fd",
+      "output_sha256": "1cce80dff69fd6a8e75fc32412d0c9890fdb08d184a25473badf6adf2fd32da7",
+      "input_copy_check": "byte-identical before dispatch and after completion"
     },
     {
       "slot": "02",
@@ -40,7 +42,9 @@
       "context_inheritance": "none",
       "model_override": null,
       "reasoning_effort_override": null,
-      "dispatched_prompt_sha256": "7381bcbb179db8d6a7e826e261b61a2908d8ce0497c4fb9cca8133dceade56ff"
+      "dispatched_prompt_sha256": "7381bcbb179db8d6a7e826e261b61a2908d8ce0497c4fb9cca8133dceade56ff",
+      "output_sha256": "7c5763f052a2a71921b3ccba0e9946b477abc78dd16529fadd4f0e823dda6864",
+      "input_copy_check": "byte-identical before dispatch and after completion"
     },
     {
       "slot": "03",
@@ -59,7 +63,9 @@
       "context_inheritance": "none",
       "model_override": null,
       "reasoning_effort_override": null,
-      "dispatched_prompt_sha256": "ccf74b26c7dc38357ec4976104fd3e28922d5d6f328368e3521e48ae7d4990f0"
+      "dispatched_prompt_sha256": "ccf74b26c7dc38357ec4976104fd3e28922d5d6f328368e3521e48ae7d4990f0",
+      "output_sha256": "0e782f63373caef57f7644abc30767a460ada64a75edc0c835291d8ae2806474",
+      "input_copy_check": "byte-identical before dispatch and after completion"
     }
   ]
 }

@@ -1,0 +1,189 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-01",
+      "state_sha256": "97a3792a7b1e0efe2f94c200c50c179b214d878e0e234f30427d8df35550f495",
+      "task_sha256": "b2d8616ee6f5947f5dc2610408177cb4494b2e3dea673ff2b6436cd25c1a749e",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate = node.gate_state\n    if gate != \"none\":"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"Review the manual escalation for {spec_id} before further refinement.\""
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The subject is a specification node with or without an active gate. This exact predicate selects gate-directed work before the status-based refinement alternative. The branches establish a durable lifecycle priority suitable for a named, addressable Specification; the later choice among particular gate actions does not change this predicate into implementation dispatch. No supplied evaluation path establishes existing Specification ownership of this same priority.",
+        "concern_kind": "The predicate decides which lifecycle obligation takes precedence: an active gate must receive its corresponding action, while status-based targeted refinement is considered only when there is no gate. Its primary responsibility is obligation priority, not the later selection of an individual gate handler. The supplied branch structure and action descriptions settle this role without needing unshown callers."
+      }
+    },
+    {
+      "case_id": "context-02",
+      "state_sha256": "4c48d4a276423510900d9fdbc88e30139c88c9352007b704e5a3082ff89e6f9f",
+      "task_sha256": "f5e577993e2856f67bbef504f5ae1286e85c13b0e084b0305806a0499df859b2",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        }
+      ],
+      "uncertainties": [
+        "The definitions and meanings of entry.steps_is_list and entry.steps are not supplied.",
+        "The contract and decision consequence for a non-list or empty steps value are missing, leaving domain obligation and representation validation materially plausible."
+      ],
+      "rationales": {
+        "opportunity": "The exact expression recognizes a non-list flag or a false-valued steps collection. The supplied evidence does not establish what an entry represents or whether this condition defines a required domain obligation versus validates an external representation. Those alternatives would support different architectural-fit labels, so neither eligibility nor affirmative technical exclusion is established.",
+        "concern_kind": "The expression exposes a shape-related flag and an emptiness test, but no supplied contract or consequence establishes their primary responsibility. It could enforce the domain requirement for at least one step or perform parsing/representation validation; identifier names alone do not settle that distinction."
+      }
+    },
+    {
+      "case_id": "context-08",
+      "state_sha256": "752e931fce1a3167b2459528a483cc5f37623406bcd0aaad5341c641ea20dc5d",
+      "task_sha256": "58bf2d4478c9fe4ba3523c57b365af8b3a234a0108c3416acc64660284ccfe4f",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "rendered = yaml.safe_dump("
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The subject is the rendered result of YAML serialization, and the alternatives are presence or absence of a final newline. The demonstrated consequence only normalizes that textual representation by appending a newline. This is affirmative serialization mechanics with no distinct domain decision in the selected expression.",
+        "concern_kind": "The exact predicate checks an output-format detail of serialized YAML and controls addition of the missing terminator. Its primary role is representation normalization, established by the supplied producer and immediate append; the context leaves no material ambiguity about this target."
+      }
+    },
+    {
+      "case_id": "context-11",
+      "state_sha256": "64b50a21fc6cd600b6ebec6dde39e4930d5b4d06b054ca97e0aca7e0a5a144af",
+      "task_sha256": "b364e1170db237c3a1f6d6de0883abf38f99d5193d7ca82ee4f824affe7a5388",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "def _has_reviewable_gap(gaps: list[Any], term: str | None = None) -> bool:"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue\n        if _text(gap.get(\"status\")) not in REVIEWABLE_GAP_STATUSES:\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if term is None or _text(gap.get(\"proposed_term\")).lower() == term.lower():\n            return True"
+        }
+      ],
+      "uncertainties": [
+        "The producer and authoritative semantics of canonical_mutations_allowed are not supplied; the classification is limited to its demonstrated use as a reviewability criterion, not mutation authorization."
+      ],
+      "rationales": {
+        "opportunity": "The subject is a gap being considered by the supplied reviewability predicate. The exact check excludes every gap whose canonical-mutation flag is not explicitly False; only gaps passing that condition can contribute to a True reviewability result. This establishes a domain eligibility criterion for reviewable gaps, suitable for a named Specification even as a pure predicate. The claim is about reviewability, not an inferred authorization gate for actually performing canonical mutations. No supplied code establishes same-decision Specification ownership.",
+        "concern_kind": "Within the supplied predicate, the exact expression supplies a necessary eligibility condition for a gap to count as reviewable. The continue branch and eventual True result demonstrate that role in combination with reviewable status and a proposed term. Its responsibility is domain eligibility; merely reading the permission-related field does not establish that this site grants or denies mutation authority."
+      }
+    },
+    {
+      "case_id": "context-15",
+      "state_sha256": "3dbbe09306a09f0ddf63324d9c32a220764717c38908a91d6c0a2e2a0629749f",
+      "task_sha256": "cdb9df3f622cb4153080638084c455382f59ff5d6081fccc0aee1236ded23c3d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not requested <= covered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not requested <= covered"
+        }
+      ],
+      "uncertainties": [
+        "The types and domain meanings of requested and covered are absent.",
+        "No supplied declaration or decision consequence establishes what failure of this relation means."
+      ],
+      "rationales": {
+        "opportunity": "The expression tests failure of a requested-to-covered relation, but the supplied evidence does not identify the operands, their types, or the meaning and consequence of coverage. It could express a durable evidence/eligibility rule or a technical collection/representation constraint. These materially different roles prevent a reliable architectural-fit judgment.",
+        "concern_kind": "The exact comparison supplies only a relation and its negation. Without a demonstrated subject or contract, it does not establish whether coverage means sufficient domain evidence, permission scope, or generic technical containment; the names alone cannot determine the primary responsibility."
+      }
+    },
+    {
+      "case_id": "context-16",
+      "state_sha256": "b3b1f8f99f7dfd47b8ce96e9ec25beb8f0c1cf89446aaa6c165555dabe9856de",
+      "task_sha256": "57495f56681de403d547a6334183ed38aec2f91b0f6347d54dd1cc700a4bf341",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "path = _safe_path(row.get(\"path\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row"
+        }
+      ],
+      "uncertainties": [
+        "No supplied contract explains whether allowed manifest references constitute a domain integrity rule or an external representation/adapter constraint.",
+        "The primary contract of the combined path-restriction and normalization expression is not settled by the supplied parser fragments."
+      ],
+      "rationales": {
+        "opportunity": "The selected assembly rejects absolute paths, parent components, or a spelling different from PurePosixPath normalization while reading manifest entries. That establishes the accepted path shapes, but the supplied fragments do not settle whether this is a domain contract restricting permissible artifact references or generic parser/adapter normalization. The unsafe error and parsing location alone cannot decide that material distinction, so neither domain fit nor purely technical exclusion is sufficiently established.",
+        "concern_kind": "The exact expression combines reference-shape restrictions with canonical representation checking. Its caller establishes manifest ingestion and indexing, but supplies no contract that settles whether the primary responsibility is artifact-reference integrity policy or generic technical path validation. Because the target is the entire disjunction, selecting only its normalization term or only its traversal terms would change its boundary; the primary responsibility remains unknown."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-g1woi0j6/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-g1woi0j6/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

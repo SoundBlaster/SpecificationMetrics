@@ -1,6 +1,6 @@
 # Expression-fit rubric v2: evidence of a decision's role
 
-**Status: reviewable proposal; not evaluated or activated in production.**
+**Status: evaluated in an independent reference; not approved or activated in production.**
 
 Machine-readable questions: [expression-fit-v2.json](rubrics/expression-fit-v2.json).
 The previous expression rubric is `v1-diagnostic`; this proposal is **v2**.
@@ -182,6 +182,17 @@ in a **task digest**. Never call v1/v2 a same-input repeat solely because their
 state hashes match. Include these identities in the new annotation template,
 reference review, cache identity and scoring manifest.
 
-This PR prepares definitions and a validation plan. It does not create new
-annotation packets, labels, provider requests or cache entries, activate a new
-classifier default, or rewrite any historical run.
+The original proposal prepared definitions and a validation plan without
+creating annotation packets, labels, provider requests or cache entries,
+activating a classifier default, or rewriting a historical run.
+
+### Evaluation outcome
+
+The [fresh v2 reference](runs/2026-10-13-rubric-v2-reference/README.md)
+completed two balanced rounds. H1 repeat agreement passed at 18/18 per axis and
+18/18 jointly. H2 decisive coverage failed because both rounds abstained on
+both axes for the BDD steps development control. Decisive coverage fell to
+10/18 per axis per round. The result is more repeatable in this sample but does
+not establish better semantic classification or qualify the rubric for
+provider scoring. The proposal remains inactive; the raw rubric file and
+historical annotations are unchanged.

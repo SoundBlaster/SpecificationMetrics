@@ -294,8 +294,11 @@ is retained as diagnostic evidence. Raw annotations, context/annotator effects,
 ownership evidence and semantic adjudication remain separate; this reference
 preparation does not authorize Jev/Luna requests or S/U changes.
 
-The [expression-fit v2 rubric proposal](expression-fit-rubric-v2.md) now makes
+The [expression-fit v2 rubric proposal](expression-fit-rubric-v2.md) makes
 decision-role evidence, policy/variant tie rules and missing-context treatment
-explicit. It preserves the label sets and supplies a plan for fresh validation.
-It is not activated, independently evaluated or an accepted replacement gold
-reference; historical annotations remain unchanged.
+explicit while preserving the label sets. A subsequent
+[independent v2 reference](runs/2026-10-13-rubric-v2-reference/README.md)
+matched on all 18 states in both fresh rounds, but decisive coverage fell to
+10/18 per axis. The frozen H2 control failed on a BDD steps predicate that both
+rounds marked `needs_review / unknown`. V2 is therefore not approved for
+provider scoring; the rubric proposal and prior labels remain separate.

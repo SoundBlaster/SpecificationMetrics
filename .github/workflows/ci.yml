@@ -50,6 +50,9 @@ jobs:
           python3 -m unittest -v test_balanced_context_reference.py
           python3 prepare_balanced_context_reference.py
           python3 validate_context_annotations.py --run runs/2026-10-13-balanced-context-reference
+          python3 -m unittest -v test_context_reference_v2.py
+          python3 prepare_context_reference_v2.py
+          python3 validate_context_reference_v2.py
           python3 -m unittest -v test_validate_expression_reference.py
           python3 -m unittest -v test_matched_expression_plan.py
           python3 -m unittest -v test_score_matched_expressions.py

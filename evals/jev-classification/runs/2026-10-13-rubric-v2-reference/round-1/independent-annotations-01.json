@@ -1,0 +1,183 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-04",
+      "state_sha256": "34bc04293ac909df2c1eb79ed6cc57692517377485a6fcf7df03490a12e8b614",
+      "task_sha256": "fc7035b8287ab638becf291bc8ac8a78a4620bbd476db06f38a734428ca22610",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "relevant = [b for b in bindings if requested & set(b[\"acceptance_criteria_ids\"])]\n    covered = {c for b in relevant for c in b[\"acceptance_criteria_ids\"]}\n    if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"state\": \"satisfied\" if reason is None else \"unknown\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"admitted\": all(item[\"state\"] == \"satisfied\" for item in results)"
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The subject is the set of passport criteria requested by a source claim. The predicate distinguishes complete binding coverage from at least one unbound requested criterion, and the latter produces missing_criterion_binding before the claim can become satisfied. This establishes a stable evidence-sufficiency rule suitable for an addressable Specification. The passport spec is a data mapping here; no supplied evaluation path shows a Specification already owning this same coverage decision.",
+        "concern_kind": "The exact subset predicate decides whether the requested claim criteria have sufficient implementation-binding evidence. Its failure becomes a reason for an unknown claim and contributes to admission through the shown evaluator. That is domain evidence sufficiency rather than parsing the sets or selecting a source implementation variant."
+      }
+    },
+    {
+      "case_id": "context-07",
+      "state_sha256": "8541152abb09dd22016f6087bf8563bbf4b89ddf7eecd0e5f5e49454214906a4",
+      "task_sha256": "a99904532a28d46dd24b1c236e6d84201983a3da09ac3458b6e10cacda6b1678",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The exact decision requires a scenario steps value to be a nonempty list. This same decision already runs inside BDDScenarioValuesSpec.findings, whose BDDPolicy base inherits Specification and whose _evaluate directly evaluates the findings. Thus the supplied code establishes existing Specification ownership of this exact decision, rather than merely showing a nearby Specification import.",
+        "concern_kind": "Within the named native scenario-values rule, the predicate decides whether a BDD scenario has an admissible steps collection and emits an invalid-value finding otherwise. Its type check and nonemptiness requirement form the selected validation rule as a whole. Existing ownership does not change this scenario-admissibility responsibility into mechanics."
+      }
+    },
+    {
+      "case_id": "context-09",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "task_sha256": "daa11309920d97d5ac0a74f5f9d0b068aed1c2310d81f51adeedc4f7f57dbb41",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "No supplied manifest contract or caller establishes whether the full predicate enforces permitted domain references or generic path representation and adaptation constraints."
+      ],
+      "rationales": {
+        "opportunity": "The selected expression rejects absolute paths, parent traversal and noncanonical POSIX representations together. The helper shows that a manifest string is checked and then returned, but supplies no contract establishing whether these restrictions define permitted domain references or implement generic path adaptation. A domain-integrity rule could be eligible, while generic representation constraints could be excluded; the unsafe error text does not resolve that material difference.",
+        "concern_kind": "The exact combined predicate contains both reference-shape restrictions and a canonical-representation comparison. Without a manifest integrity contract or a demonstrated adapter role, its primary responsibility could be domain path admissibility or generic technical validation. The entire expression therefore remains unknown; the canonicalization term alone cannot determine the classification of the whole target."
+      }
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "task_sha256": "b3ec7d09f13dc8693a679d065297d254a376595cce917d19ea13a34e7692968e",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        }
+      ],
+      "uncertainties": [
+        "The use of this result is absent, so it is unknown whether the expression defines authority, adapts a prior decision, or only reports it.",
+        "No supplied contract gives domain meaning to the distinction between an explicit False value and missing or other values."
+      ],
+      "rationales": {
+        "opportunity": "The expression distinguishes an explicitly False canonical_mutations_allowed value from every other retrieved value, including an absent key. The permission-sounding topic does not establish whether this site defines a mutation-authority decision, adapts an existing verdict, or reports stored state. Those roles imply materially different architectural-fit judgments, and no containing use or contract is supplied.",
+        "concern_kind": "The exact expression reads a permission-related field and tests identity with False, but no evidence shows what the result controls. It could implement an operative authority rule or merely a reporting/adaptation test. The field name and boolean comparison do not establish a reliable primary responsibility."
+      }
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "task_sha256": "52c02ed31469f8df55de3c2334a28806601004bc445628524e94d1bbee24e195",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not rendered.endswith(\"\\n\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not rendered.endswith(\"\\n\")"
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The exact target inspects whether rendered text lacks a terminal newline. The literal newline and endswith operation establish a text-representation check at the selected boundary, with no independently meaningful domain alternatives in this expression. That affirmative representation responsibility places it outside the profile's Specification opportunities; the unseen consumer is unnecessary to identify this narrow suffix check.",
+        "concern_kind": "The alternatives are solely whether a text value ends in the newline character. Inspecting this rendering terminator is representation mechanics. The supplied target provides no distinct authority, evidence, lifecycle or domain-variant decision that would change the primary role of the exact suffix inspection."
+      }
+    },
+    {
+      "case_id": "context-18",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "task_sha256": "0d459e862ca6d3bfb37197218a58d390e7d4a292d0ae41acbadc001a86d1c640",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rank = len(gate_order) + status_order.index(node.status)"
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The subject is a spec node's current gate state. The predicate distinguishes an active gate obligation from the none state and gives gate handling precedence over ordinary status-based targeted refinement. The branch structure and rank assignment establish a durable work-selection rule suitable for a named, addressable Specification, with no supplied evidence of existing Specification ownership of that same precedence decision.",
+        "concern_kind": "The exact condition determines which lifecycle obligation takes precedence: an active gate must be considered before status-based refinement. Selecting an individual handler from GATE_ACTIONS happens later within the chosen branch; that subsequent dispatch does not change the preceding obligation-priority predicate into variant behavior."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-3wyv8o8f/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-3wyv8o8f/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

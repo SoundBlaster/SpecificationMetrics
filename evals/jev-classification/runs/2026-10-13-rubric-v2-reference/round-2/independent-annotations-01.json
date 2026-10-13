@@ -1,0 +1,184 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-04",
+      "state_sha256": "34bc04293ac909df2c1eb79ed6cc57692517377485a6fcf7df03490a12e8b614",
+      "task_sha256": "fc7035b8287ab638becf291bc8ac8a78a4620bbd476db06f38a734428ca22610",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "relevant = [b for b in bindings if requested & set(b[\"acceptance_criteria_ids\"])]\n    covered = {c for b in relevant for c in b[\"acceptance_criteria_ids\"]}\n    if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"state\": \"satisfied\" if reason is None else \"unknown\","
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"admitted\": all(item[\"state\"] == \"satisfied\" for item in results),"
+        }
+      ],
+      "uncertainties": [
+        "Unlisted callers and runtime bindings are not supplied; the shown criterion-binding failure and admission path establish this exact decision without them."
+      ],
+      "rationales": {
+        "opportunity": "The subject is the set of passport criteria requested by a source-anchored claim. The expression distinguishes claims whose requested criteria all have relevant implementation bindings from claims missing at least one binding. Its failure supplies missing_criterion_binding to the claim evaluator, which makes that claim unknown and prevents admission. This establishes a stable evidence-sufficiency decision suitable for a named, addressable Specification; the supplied code does not establish existing Specification ownership of this decision.",
+        "concern_kind": "This exact subset predicate decides whether implementation-binding coverage is sufficient for a source claim. The supplied evaluator turns the failure reason into claim state and overall admission, so the responsibility is evidence policy rather than the representation mechanics of a set operation."
+      }
+    },
+    {
+      "case_id": "context-07",
+      "state_sha256": "8541152abb09dd22016f6087bf8563bbf4b89ddf7eecd0e5f5e49454214906a4",
+      "task_sha256": "a99904532a28d46dd24b1c236e6d84201983a3da09ac3458b6e10cacda6b1678",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        }
+      ],
+      "uncertainties": [
+        "The construction of normalized entry fields and runtime recorder wiring are not supplied; neither is needed to establish the shown rule or its existing Specification ownership."
+      ],
+      "rationales": {
+        "opportunity": "The exact decision rejects a scenario whose steps are not a list or are empty. The supplied class owns this decision in BDDScenarioValuesSpec.findings, inherits BDDPolicy, and BDDPolicy is a Specification whose _evaluate calls self.findings. This is explicit ownership of the same decision through the Specification evaluation path, which excludes a new opportunity even though the decision is policy.",
+        "concern_kind": "The expression defines a scenario-values acceptance requirement: BDD scenario steps must form a nonempty list. It creates an invalid_value finding for the scenario steps, and the supplied Specification evaluates acceptance by the absence of findings. That is domain admissibility policy, even though one component checks container shape."
+      }
+    },
+    {
+      "case_id": "context-09",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "task_sha256": "daa11309920d97d5ac0a74f5f9d0b068aed1c2310d81f51adeedc4f7f57dbb41",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "The contract for permitted manifest references is missing: it could impose domain integrity obligations or only generic path representation constraints.",
+        "No supplied use establishes how the accepted path participates in manifest identity or later technical adaptation."
+      ],
+      "rationales": {
+        "opportunity": "The expression rejects absolute paths, parent components, or a spelling that differs from its PurePosixPath form. The helper shows rejection and return behavior, but supplies no contract explaining whether these are permitted manifest domain references or generic representation and adapter constraints. A durable domain path-integrity rule would be eligible, while a generic parsing constraint would be excluded. That missing contract is material; the unsafe message alone cannot resolve it.",
+        "concern_kind": "The selected disjunction combines path-location restrictions with a canonical representation check. The supplied helper does not establish whether its primary responsibility is domain reference integrity or generic path parsing and enforcement. Calling the whole expression policy or mechanics would require the omitted permitted-reference contract."
+      }
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "task_sha256": "b3ec7d09f13dc8693a679d065297d254a376595cce917d19ea13a34e7692968e",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        }
+      ],
+      "uncertainties": [
+        "The producer and contract of canonical_mutations_allowed are not supplied.",
+        "The consumer of the boolean result is missing, so policy definition, verdict adaptation, and reporting remain plausible."
+      ],
+      "rationales": {
+        "opportunity": "The isolated expression distinguishes an explicit False value from every other value, including a missing key. The permission-sounding field suggests a possible mutation-authority topic, but no supplied contract or consumer shows whether this site defines that authority, adapts an existing verdict, or only reports it. Those possibilities leave eligible and excluded outcomes materially plausible.",
+        "concern_kind": "Only a field lookup and sentinel comparison are supplied. The expression could be an operative mutation-authority rule or a technical interpretation or display of an already established verdict. Its primary responsibility is therefore unknown; the field name does not prove an authority gate."
+      }
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "task_sha256": "52c02ed31469f8df55de3c2334a28806601004bc445628524e94d1bbee24e195",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not rendered.endswith(\"\\n\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not rendered.endswith(\"\\n\")"
+        }
+      ],
+      "uncertainties": [
+        "The rendered artifact and subsequent consumer are unshown; the selected expression itself supplies the terminal-newline representation test."
+      ],
+      "rationales": {
+        "opportunity": "The exact expression detects whether rendered text lacks a final newline. Its explicit subject and alternative are a text suffix representation condition, which affirmatively establishes formatting mechanics. No domain admissibility, authority, evidence, or behavior-selection decision is part of this target, so a Specification opportunity is excluded under the profile.",
+        "concern_kind": "Testing the presence of a terminal newline is a representation and formatting responsibility. The expression itself settles that responsibility despite the absence of surrounding code."
+      }
+    },
+    {
+      "case_id": "context-18",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "task_sha256": "0d459e862ca6d3bfb37197218a58d390e7d4a292d0ae41acbadc001a86d1c640",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate = node.gate_state\n    if gate != \"none\":"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rank = len(gate_order) + status_order.index(node.status)\n        kind = \"refine_spec\""
+        }
+      ],
+      "uncertainties": [
+        "Individual gate actions and ordering values are unshown; those details affect later dispatch and relative ordering within categories, while the supplied branches establish gate-before-refinement precedence."
+      ],
+      "rationales": {
+        "opportunity": "The subject is a specification node with or without an outstanding gate. This predicate gives gate-related work precedence over status-based targeted refinement, with gated candidates ranked before status-based candidates. That supplied lifecycle-obligation precedence is a stable domain decision suitable for a named, addressable Specification. No supplied code establishes existing Specification ownership of this same decision.",
+        "concern_kind": "The exact predicate decides whether outstanding gate work takes precedence over ordinary refinement. It does not itself choose an individual gate handler: that later lookup occurs after the lifecycle choice. Under the rubric tie rule, this obligation-priority responsibility is policy."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-s1jpxzts/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-s1jpxzts/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}
