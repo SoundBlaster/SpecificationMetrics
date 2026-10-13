@@ -9,6 +9,12 @@ No retries, ambiguous POSTs, reference changes or S/U writes. See the
 [execution receipt](receipt.json). The complete first repeat supports scoped
 analysis; the full two-repeat study remains incomplete.
 
+The subsequent [probability-precision investigation](../../jev-probability-precision.md)
+finds no observed classification consequence from the 0.99 total and recommends
+a bounded warning policy for the next runner version. Its
+[post-hoc sensitivity artifact](probability-precision-analysis.json) is separate
+from this run's frozen acceptance and strict score.
+
 The [manifest](manifest.json) binds the unchanged
 [reviewed reference](../2026-10-13-contrastive-preparation/reference-review.json),
 raw independent annotations, exact packet, logical schedule, criteria, and

@@ -257,3 +257,11 @@ repeat, H1 role distinction is 4/4 for Jev and 3/4 for Luna; H2 joint abstention
 1/4 and 3/4; both meet directional H3 at 4/4. Whole two-repeat reliability is not
 demonstrated. Per-axis abstention, context sensitivity, native response validity
 and selected-label correctness are separate findings; no automatic S/U changes.
+
+The [v2 runner](contrastive-mass-warning-v2.md) now accepts Jev 3/4-option Choice
+mass totals from 0.99 through 1.01 with an explicit warning, preserving raw
+probabilities and native confidence. Rejected answers remain unavailable without
+ending the schedule; identity/transport failures still stop it. H3 includes Jev
+precision sensitivity, while execution completion and usable coverage are
+separate. The historical v1 study is unchanged. V2 has offline/mock evidence
+only; no new live run was performed and no persistent v2 run manifest is checked in.
