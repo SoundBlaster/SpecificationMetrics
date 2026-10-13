@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "case_id": "context-01",
+      "target_id": "target-05",
+      "evidence_mode": "evidence_bundle",
+      "path": "tools/product_workspace_next_moves.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "candidate_move",
+      "span": {
+        "start_byte": 2097,
+        "end_byte": 2111,
+        "start_line": 71,
+        "end_line": 71
+      },
+      "expression_sha256": "81079e9c29dca449e2ce75596ca57a998d4e23560a334ff1796c8fd6dc4d4208",
+      "state_sha256": "97a3792a7b1e0efe2f94c200c50c179b214d878e0e234f30427d8df35550f495",
+      "context_code_bytes": 3075,
+      "state_bytes": 5845,
+      "annotation_packet": "annotation-packet-02.json",
+      "task_sha256": "b2d8616ee6f5947f5dc2610408177cb4494b2e3dea673ff2b6436cd25c1a749e",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-02",
+      "target_id": "target-06",
+      "evidence_mode": "expression_only",
+      "path": "tools/native_bdd/values_spec.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "BDDScenarioValuesSpec.findings",
+      "span": {
+        "start_byte": 743,
+        "end_byte": 785,
+        "start_line": 21,
+        "end_line": 21
+      },
+      "expression_sha256": "90879014bcfd5f65f60565a1e3d75cc04fb02ee61273557fd804167564f02f4a",
+      "state_sha256": "4c48d4a276423510900d9fdbc88e30139c88c9352007b704e5a3082ff89e6f9f",
+      "context_code_bytes": 0,
+      "state_bytes": 2435,
+      "annotation_packet": "annotation-packet-02.json",
+      "task_sha256": "f5e577993e2856f67bbef504f5ae1286e85c13b0e084b0305806a0499df859b2",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-03",
+      "target_id": "target-06",
+      "evidence_mode": "containing_declaration",
+      "path": "tools/native_bdd/values_spec.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "BDDScenarioValuesSpec.findings",
+      "span": {
+        "start_byte": 743,
+        "end_byte": 785,
+        "start_line": 21,
+        "end_line": 21
+      },
+      "expression_sha256": "90879014bcfd5f65f60565a1e3d75cc04fb02ee61273557fd804167564f02f4a",
+      "state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+      "context_code_bytes": 742,
+      "state_bytes": 3246,
+      "annotation_packet": "annotation-packet-03.json",
+      "task_sha256": "dddc4c7d31969f18532d16fc704356f6eab1fe1e1d481641778f1c51d6875708",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-04",
+      "target_id": "target-03",
+      "evidence_mode": "evidence_bundle",
+      "path": "tools/evidence_claim_gate.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "source_claim_reason",
+      "span": {
+        "start_byte": 4396,
+        "end_byte": 4420,
+        "start_line": 132,
+        "end_line": 132
+      },
+      "expression_sha256": "b128b548ed44c576247fbf8cbb3ee186fe79b13db3708fe4141a9e9ddf93f3a7",
+      "state_sha256": "34bc04293ac909df2c1eb79ed6cc57692517377485a6fcf7df03490a12e8b614",
+      "context_code_bytes": 4501,
+      "state_bytes": 7349,
+      "annotation_packet": "annotation-packet-01.json",
+      "task_sha256": "fc7035b8287ab638becf291bc8ac8a78a4620bbd476db06f38a734428ca22610",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-05",
+      "target_id": "target-03",
+      "evidence_mode": "containing_declaration",
+      "path": "tools/evidence_claim_gate.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "source_claim_reason",
+      "span": {
+        "start_byte": 4396,
+        "end_byte": 4420,
+        "start_line": 132,
+        "end_line": 132
+      },
+      "expression_sha256": "b128b548ed44c576247fbf8cbb3ee186fe79b13db3708fe4141a9e9ddf93f3a7",
+      "state_sha256": "b19324fa7c7d5a4508ab2ef77e0fc4aa82300d753653fbab3edf74a0c4e41a98",
+      "context_code_bytes": 2532,
+      "state_bytes": 5122,
+      "annotation_packet": "annotation-packet-03.json",
+      "task_sha256": "94b8a3934b629d57874635b2d47232e162898c395606a6ea5c8403bc9e7a8249",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-06",
+      "target_id": "target-01",
+      "evidence_mode": "evidence_bundle",
+      "path": "tools/spec_yaml.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "dump_canonical_yaml",
+      "span": {
+        "start_byte": 1925,
+        "end_byte": 1952,
+        "start_line": 73,
+        "end_line": 73
+      },
+      "expression_sha256": "89f7d386e693df991b2877f6048c5712a0074b8fc349944ac475f36feec62852",
+      "state_sha256": "856c30f413385254fd3111c3ba058d2dedd9db8f22cdb79f07ab26d30bb308ac",
+      "context_code_bytes": 304,
+      "state_bytes": 2823,
+      "annotation_packet": "annotation-packet-03.json",
+      "task_sha256": "76c6abc3dbe584123af68f8a9cd9d44a0cf5cbfcf2002c32df7859c7a80257d6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-07",
+      "target_id": "target-06",
+      "evidence_mode": "evidence_bundle",
+      "path": "tools/native_bdd/values_spec.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "BDDScenarioValuesSpec.findings",
+      "span": {
+        "start_byte": 743,
+        "end_byte": 785,
+        "start_line": 21,
+        "end_line": 21
+      },
+      "expression_sha256": "90879014bcfd5f65f60565a1e3d75cc04fb02ee61273557fd804167564f02f4a",
+      "state_sha256": "8541152abb09dd22016f6087bf8563bbf4b89ddf7eecd0e5f5e49454214906a4",
+      "context_code_bytes": 1925,
+      "state_bytes": 4589,
+      "annotation_packet": "annotation-packet-01.json",
+      "task_sha256": "a99904532a28d46dd24b1c236e6d84201983a3da09ac3458b6e10cacda6b1678",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-08",
+      "target_id": "target-01",
+      "evidence_mode": "containing_declaration",
+      "path": "tools/spec_yaml.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "dump_canonical_yaml",
+      "span": {
+        "start_byte": 1925,
+        "end_byte": 1952,
+        "start_line": 73,
+        "end_line": 73
+      },
+      "expression_sha256": "89f7d386e693df991b2877f6048c5712a0074b8fc349944ac475f36feec62852",
+      "state_sha256": "752e931fce1a3167b2459528a483cc5f37623406bcd0aaad5341c641ea20dc5d",
+      "context_code_bytes": 292,
+      "state_bytes": 2771,
+      "annotation_packet": "annotation-packet-02.json",
+      "task_sha256": "58bf2d4478c9fe4ba3523c57b365af8b3a234a0108c3416acc64660284ccfe4f",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-09",
+      "target_id": "target-02",
+      "evidence_mode": "containing_declaration",
+      "path": "tools/static_artifact_incremental_stage.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "_safe_path",
+      "span": {
+        "start_byte": 850,
+        "end_byte": 918,
+        "start_line": 37,
+        "end_line": 37
+      },
+      "expression_sha256": "198692139d8f5bcca7ed5d881f4cf1c277fa0d9e4faa619f04332d979a5dcf80",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "context_code_bytes": 374,
+      "state_bytes": 2888,
+      "annotation_packet": "annotation-packet-01.json",
+      "task_sha256": "daa11309920d97d5ac0a74f5f9d0b068aed1c2310d81f51adeedc4f7f57dbb41",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-10",
+      "target_id": "target-04",
+      "evidence_mode": "evidence_bundle",
+      "path": "tools/ontology_term_binding_gate.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "_has_reviewable_gap",
+      "span": {
+        "start_byte": 3041,
+        "end_byte": 3092,
+        "start_line": 107,
+        "end_line": 107
+      },
+      "expression_sha256": "91ee6eddbe6e0aba2b28dd15ea04c42f2b6f42035a629409d28ff5086932cd73",
+      "state_sha256": "553f171412445a688b4ebe89c22463fd257215f6110dfee910ac520042032474",
+      "context_code_bytes": 1329,
+      "state_bytes": 4029,
+      "annotation_packet": "annotation-packet-03.json",
+      "task_sha256": "76b870a6b8e97f1a790f3bdc2753579d872ff66e9ac908311a018e50ad1e2117",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-11",
+      "target_id": "target-04",
+      "evidence_mode": "containing_declaration",
+      "path": "tools/ontology_term_binding_gate.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "_has_reviewable_gap",
+      "span": {
+        "start_byte": 3041,
+        "end_byte": 3092,
+        "start_line": 107,
+        "end_line": 107
+      },
+      "expression_sha256": "91ee6eddbe6e0aba2b28dd15ea04c42f2b6f42035a629409d28ff5086932cd73",
+      "state_sha256": "64b50a21fc6cd600b6ebec6dde39e4930d5b4d06b054ca97e0aca7e0a5a144af",
+      "context_code_bytes": 497,
+      "state_bytes": 3002,
+      "annotation_packet": "annotation-packet-02.json",
+      "task_sha256": "b364e1170db237c3a1f6d6de0883abf38f99d5193d7ca82ee4f824affe7a5388",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-12",
+      "target_id": "target-02",
+      "evidence_mode": "expression_only",
+      "path": "tools/static_artifact_incremental_stage.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "_safe_path",
+      "span": {
+        "start_byte": 850,
+        "end_byte": 918,
+        "start_line": 37,
+        "end_line": 37
+      },
+      "expression_sha256": "198692139d8f5bcca7ed5d881f4cf1c277fa0d9e4faa619f04332d979a5dcf80",
+      "state_sha256": "54dd1b72bf478a2fcb735109083941b8f1bef2b57f485dac8215e888be1fc4ba",
+      "context_code_bytes": 0,
+      "state_bytes": 2463,
+      "annotation_packet": "annotation-packet-03.json",
+      "task_sha256": "b888be2d70e651df9da8f41607d699f9a504475b29f2da4d610bad7392040447",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-13",
+      "target_id": "target-04",
+      "evidence_mode": "expression_only",
+      "path": "tools/ontology_term_binding_gate.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "_has_reviewable_gap",
+      "span": {
+        "start_byte": 3041,
+        "end_byte": 3092,
+        "start_line": 107,
+        "end_line": 107
+      },
+      "expression_sha256": "91ee6eddbe6e0aba2b28dd15ea04c42f2b6f42035a629409d28ff5086932cd73",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "context_code_bytes": 0,
+      "state_bytes": 2447,
+      "annotation_packet": "annotation-packet-01.json",
+      "task_sha256": "b3ec7d09f13dc8693a679d065297d254a376595cce917d19ea13a34e7692968e",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-14",
+      "target_id": "target-05",
+      "evidence_mode": "expression_only",
+      "path": "tools/product_workspace_next_moves.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "candidate_move",
+      "span": {
+        "start_byte": 2097,
+        "end_byte": 2111,
+        "start_line": 71,
+        "end_line": 71
+      },
+      "expression_sha256": "81079e9c29dca449e2ce75596ca57a998d4e23560a334ff1796c8fd6dc4d4208",
+      "state_sha256": "0ff4d798cf5e815f48c4c10079d32b6184fd6d76ecb05acccf5aed934456623b",
+      "context_code_bytes": 0,
+      "state_bytes": 2410,
+      "annotation_packet": "annotation-packet-03.json",
+      "task_sha256": "54d5953f9a618332e5ad1b56262fc3b98bd1cb86e62e970adc26a858eff16abf",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-15",
+      "target_id": "target-03",
+      "evidence_mode": "expression_only",
+      "path": "tools/evidence_claim_gate.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "source_claim_reason",
+      "span": {
+        "start_byte": 4396,
+        "end_byte": 4420,
+        "start_line": 132,
+        "end_line": 132
+      },
+      "expression_sha256": "b128b548ed44c576247fbf8cbb3ee186fe79b13db3708fe4141a9e9ddf93f3a7",
+      "state_sha256": "3dbbe09306a09f0ddf63324d9c32a220764717c38908a91d6c0a2e2a0629749f",
+      "context_code_bytes": 0,
+      "state_bytes": 2418,
+      "annotation_packet": "annotation-packet-02.json",
+      "task_sha256": "cdb9df3f622cb4153080638084c455382f59ff5d6081fccc0aee1236ded23c3d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-16",
+      "target_id": "target-02",
+      "evidence_mode": "evidence_bundle",
+      "path": "tools/static_artifact_incremental_stage.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "_safe_path",
+      "span": {
+        "start_byte": 850,
+        "end_byte": 918,
+        "start_line": 37,
+        "end_line": 37
+      },
+      "expression_sha256": "198692139d8f5bcca7ed5d881f4cf1c277fa0d9e4faa619f04332d979a5dcf80",
+      "state_sha256": "b3b1f8f99f7dfd47b8ce96e9ec25beb8f0c1cf89446aaa6c165555dabe9856de",
+      "context_code_bytes": 1280,
+      "state_bytes": 3945,
+      "annotation_packet": "annotation-packet-02.json",
+      "task_sha256": "57495f56681de403d547a6334183ed38aec2f91b0f6347d54dd1cc700a4bf341",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-17",
+      "target_id": "target-01",
+      "evidence_mode": "expression_only",
+      "path": "tools/spec_yaml.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "dump_canonical_yaml",
+      "span": {
+        "start_byte": 1925,
+        "end_byte": 1952,
+        "start_line": 73,
+        "end_line": 73
+      },
+      "expression_sha256": "89f7d386e693df991b2877f6048c5712a0074b8fc349944ac475f36feec62852",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "context_code_bytes": 0,
+      "state_bytes": 2424,
+      "annotation_packet": "annotation-packet-01.json",
+      "task_sha256": "52c02ed31469f8df55de3c2334a28806601004bc445628524e94d1bbee24e195",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    },
+    {
+      "case_id": "context-18",
+      "target_id": "target-05",
+      "evidence_mode": "containing_declaration",
+      "path": "tools/product_workspace_next_moves.py",
+      "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "scope": "candidate_move",
+      "span": {
+        "start_byte": 2097,
+        "end_byte": 2111,
+        "start_line": 71,
+        "end_line": 71
+      },
+      "expression_sha256": "81079e9c29dca449e2ce75596ca57a998d4e23560a334ff1796c8fd6dc4d4208",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "context_code_bytes": 1258,
+      "state_bytes": 3771,
+      "annotation_packet": "annotation-packet-01.json",
+      "task_sha256": "0d459e862ca6d3bfb37197218a58d390e7d4a292d0ae41acbadc001a86d1c640",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    }
+  ]
+}

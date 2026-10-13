@@ -1,0 +1,27 @@
+{
+  "status": "v2_delivery_prepared_independent_annotation_pending",
+  "source_file_sha256": {
+    "2026-10-13-balanced-context-reference/source-mapping.json": "3cbddac1b478c2a87946fafea4fcb7fa5c25fe3ae8629fe82767ec34b86cd3a1",
+    "2026-10-13-balanced-context-reference/annotation-prompt.txt": "bfbb9c9f878bee2af7b16b415aa55d75b82d7a2ef8bdec00840580aeba6b1708",
+    "2026-10-13-balanced-context-reference/annotation-packet-01.json": "27fee1ad03fc742245697b08a741aa682cabb2347f7e8837c29eb93a111c0e1b",
+    "2026-10-13-balanced-context-reference/annotation-packet-02.json": "1b09a8fd871c9c4285eceadc01ef812252c9a1e9b3722b426fbec1fd1f8a23c7",
+    "2026-10-13-balanced-context-reference/annotation-packet-03.json": "44a4e5e40813cd75d63ebf898670985ce7af35b38627a3cf2414697d9e9487bc",
+    "rubrics/expression-fit-v2.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+  },
+  "producer_sha256": "c47c8a6a7e1e97575148d1401ca8fda22cce3c6f3efb44463e21bfcbdb614379",
+  "artifact_file_sha256": {
+    "rubric.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+    "annotation-prompt.txt": "8d8ca1b61769ac2c9011c72d8258d21da38ed7cf2cd6e193f21a89d4520ff888",
+    "annotation-packet-01.json": "fa3d6bda7d24bf9040455da7e618e03e330b8e1a3e6e3f0c7c2c25039f0205fc",
+    "annotation-template-01.json": "c26b271fff11c82fe8d4e9017f92f8c8480bf0b31a81101541170f5040498cb7",
+    "annotation-packet-02.json": "b70a951d6bebe0437282a220b85e018c17c83d86bd2fb1e9de0b73411d6c461b",
+    "annotation-template-02.json": "bf733366ba662bf841d0c30d16aeb93c5def5d138d8951590e3cb7b3ad15bb5e",
+    "annotation-packet-03.json": "57cfc9f34bfa2cbe55906b87c1681803e7bb3b89e7155c0896f9018b5e9b135a",
+    "annotation-template-03.json": "950e3ed89a237627df1d369a0672528f66af4ee02bbc3d42ebeb40c6c51f7ac8",
+    "source-mapping.json": "400b0ccb50b57b2c7e03c1bd1a7474507f616d67210f84ca64ef7f1d87f6975e",
+    "study-plan.json": "bddf2c45297aa07c3e3f70a67f5a149f0a7c035e98796e6a514a1dcec8c99e28"
+  },
+  "task_identity": "canonical_state_questions_packet_instructions_rubric_file_digest_prompt_template_digest",
+  "new_jev_luna_requests": 0,
+  "metric_effect": "none"
+}
