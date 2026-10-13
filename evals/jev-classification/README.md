@@ -201,6 +201,17 @@ diagnostic evidence, not a change to production ownership or S/U.
 
 ## Explicit target alignment
 
+The [failure-learning cycle](failure-learning.md) records failures, confirmed
+causes versus hypotheses, prevention patches and regression evidence. Local
+[agent instructions](AGENTS.md) require closing this loop without rewriting
+frozen failures or inferring a provider's internal reasoning.
+
+The [real SpecGraph context packet](runs/2026-10-13-context-evidence-preparation/README.md)
+contains six pinned production expressions in three evidence views each. All
+18 labels remain blank pending independent annotation. Context amount is an
+intervention, not an automatic gold label. Preparation and Git-source checking
+were offline; no new Jev/Luna calls or metric writes were made.
+
 The [eight-case Rust export](runs/2026-10-10-decision-targets/README.md)
 binds one explicitly selected expression per development case to exact source
 bytes. Four targets match legacy scanner anchors; four have no such candidate.
