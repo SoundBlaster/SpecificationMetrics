@@ -1,6 +1,12 @@
 # Real SpecGraph context-evidence preparation
 
-**Status: prepared; independent annotation pending; no executable provider run.**
+**Status: independently annotated; integrator review recorded; six disputed
+axis labels remain unapproved for scoring; no executable provider run.**
+
+See [annotation-review.md](annotation-review.md) for the 18-case result, evidence
+review, uncertainty and the next controlled comparison. The preparation receipt
+retains its original historical status; [annotation-receipt.json](annotation-receipt.json)
+records the subsequent annotation stage without rewriting that receipt.
 
 This packet follows the withheld-context failures recorded in
 [PR #40](https://github.com/SoundBlaster/SpecificationMetrics/pull/40). It changes
@@ -63,6 +69,14 @@ must decide each axis from the supplied evidence and preserve uncertainty.
   blank template; not an accepted reference or an annotation delivery file.
 - [preparation-receipt.json](preparation-receipt.json): producer/input/artifact
   digests; zero inference and zero metric effects.
+- `independent-annotations-01.json` through `independent-annotations-03.json`:
+  original model annotations, copied without changes from three fresh contexts.
+- [annotation-assignments.json](annotation-assignments.json) and
+  [annotation-prompt.txt](annotation-prompt.txt): exact input-copy hashes, scoped
+  handoffs, fresh-context declarations and the dispatched prompt template.
+- [annotation-receipt.json](annotation-receipt.json): replayable structural
+  validation, file/producer bindings and cross-view comparisons. This establishes
+  neither semantic correctness nor enforced filesystem isolation.
 
 Full files and fragments were verified against the pinned Git commit during
 preparation. Offline replay checks saved fragment/target integrity and exact
@@ -77,6 +91,8 @@ From `evals/jev-classification`:
 python3 prepare_context_evidence.py
 python3 prepare_context_evidence.py --source-repo /path/to/SpecGraph
 python3 -m unittest -v test_prepare_context_evidence.py
+python3 -m unittest -v test_validate_context_annotations.py
+python3 validate_context_annotations.py
 ```
 
 Default and verification modes are offline and do not write artifacts. New
@@ -86,14 +102,13 @@ completed preparation as a mutable scratch directory is not supported.
 
 ## Next experiment and failure learning
 
-1. Use three fresh isolated annotation contexts. Give each exactly one numbered
-   packet and its matching blank template, without the other packets, combined
-   catalog, sampling rationale, mapping, source selectors or prior results.
-   Record the actual isolation boundary. Do not reuse one annotator across views;
-   otherwise fuller context can contaminate the expression-only judgment.
-2. Review disagreements and distinguish evidence insufficiency from a genuinely
-   interpretable minimal expression. Do not force every smaller view to unknown.
-3. Freeze a new provider protocol after the reference is reviewed. Keep raw
+1. Completed: three fresh annotation contexts each received one numbered packet
+   and its blank template. Scoped copies and no inherited history provided the
+   isolation boundary; filesystem access was shared and not technically enforced.
+2. Completed: review distinguishes interpretable expressions, ownership evidence
+   and disputed responsibility labels. Same-input reannotation of the disputed
+   cases is next; fuller context is not automatically the correct answer.
+3. Freeze a new provider protocol after disputed reference axes are reviewed. Keep raw
    model judgments and any formal context-evidence gate as separate experiment
    arms. Do not claim a gate override improved raw Jev/Luna classification.
 

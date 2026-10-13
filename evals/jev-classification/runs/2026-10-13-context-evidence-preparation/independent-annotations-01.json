@@ -1,0 +1,163 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-02",
+      "state_sha256": "4c48d4a276423510900d9fdbc88e30139c88c9352007b704e5a3082ff89e6f9f",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        }
+      ],
+      "uncertainties": [
+        "The meaning of entry.steps and the consequence of this predicate are not supplied.",
+        "It is unknown whether empty steps violate product integrity or merely require a mechanical handling path."
+      ],
+      "rationales": {
+        "opportunity": "The exact expression combines a list-shape check with an emptiness check. The supplied evidence does not establish whether nonempty steps are a durable entry-validity rule or only a technical precondition for processing a representation, so Specification suitability is materially ambiguous.",
+        "concern_kind": "The list-shape part is mechanical, while the emptiness part could enforce a domain completeness requirement. With no supplied meaning for entry or steps, the primary responsibility of the combined expression cannot be reliably classified."
+      }
+    },
+    {
+      "case_id": "context-12",
+      "state_sha256": "54dd1b72bf478a2fcb735109083941b8f1bef2b57f485dac8215e888be1fc4ba",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "The permitted root, resource, caller, and effect of the predicate are not supplied.",
+        "The evidence does not distinguish a product trust restriction from technical normalization or format requirements."
+      ],
+      "rationales": {
+        "opportunity": "The expression identifies absolute paths, parent components, and a noncanonical POSIX representation. Those conditions could implement a durable admissible-path or confinement rule, or could be technical path-format validation. No supplied boundary or use establishes which interpretation gives this exact decision a product identity.",
+        "concern_kind": "Canonical representation checking is mechanical, while the absolute-path and parent-component restrictions could express a trust boundary. The supplied expression does not establish whether it governs authority or only accepted path syntax, leaving the primary concern materially ambiguous."
+      }
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"canonical_mutations_allowed\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "is not False"
+        }
+      ],
+      "uncertainties": [
+        "The effect and polarity of the surrounding branch are not supplied, so this annotation does not assert that mutations are executed when the comparison is true.",
+        "The intended treatment of missing or nonboolean values is not supplied; mechanically the comparison is true for every retrieved value other than the singleton False."
+      ],
+      "rationales": {
+        "opportunity": "The exact comparison evaluates whether canonical mutations carry an explicit denial. Its permission subject is explicit in the supplied key, making the decision suitable for a named, addressable rule about canonical-mutation allowance. No supplied evidence establishes that a Specification already owns this same decision.",
+        "concern_kind": "The expression evaluates an allowance for mutating canonical material. That is an authority decision even though it is implemented as a dictionary lookup and identity comparison; the exact test also makes explicit False distinct from other values."
+      }
+    },
+    {
+      "case_id": "context-14",
+      "state_sha256": "0ff4d798cf5e815f48c4c10079d32b6184fd6d76ecb05acccf5aed934456623b",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate != \"none\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gate != \"none\""
+        }
+      ],
+      "uncertainties": [
+        "The meaning, possible values, and consumer of gate are absent.",
+        "It is unknown whether the sentinel comparison participates in product lifecycle policy or technical coordination."
+      ],
+      "rationales": {
+        "opportunity": "The expression only distinguishes a value named gate from a none sentinel. It does not identify what is gated or the decision that follows. A durable lifecycle policy and a technical presence check are both compatible with the supplied evidence, preventing reliable opportunity judgment.",
+        "concern_kind": "The comparison establishes sentinel inequality but supplies no gate semantics. The name alone does not establish a lifecycle or authority rule, and the expression does not show dispatch among domain variants, so no primary concern label is reliable."
+      }
+    },
+    {
+      "case_id": "context-15",
+      "state_sha256": "3dbbe09306a09f0ddf63324d9c32a220764717c38908a91d6c0a2e2a0629749f",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not requested <= covered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "requested <= covered"
+        }
+      ],
+      "uncertainties": [
+        "Operand types are not supplied; subset containment cannot be assumed from the operator alone.",
+        "The meaning of requested and covered, and the effect of a failed relation, are not supplied."
+      ],
+      "rationales": {
+        "opportunity": "The expression rejects the relation requested <= covered, but neither operand type nor the subject of coverage is supplied. This could express a durable requirement that requested items be covered, or a technical ordering or completeness check. The evidence is insufficient to establish a named product decision.",
+        "concern_kind": "The operand names suggest coverage, but Python <= does not establish set-subset semantics without operand types. Even if this is subset coverage, its domain and consequence are unproved, so the primary responsibility cannot be reliably distinguished between policy and mechanics."
+      }
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not rendered.endswith(\"\\n\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered.endswith(\"\\n\")"
+        }
+      ],
+      "uncertainties": [
+        "The consumer of rendered and the action taken after this check are not supplied; they do not alter the visible suffix-format responsibility of the exact expression."
+      ],
+      "rationales": {
+        "opportunity": "The exact expression checks whether rendered text lacks a trailing newline. The supplied responsibility is representation formatting, with no distinct product or authority decision shown, so it remains procedural under the profile.",
+        "concern_kind": "The suffix test examines a newline in rendered output. This is a direct representation-format check, and the supplied expression gives no evidence of domain eligibility, lifecycle, trust, or variant dispatch."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotator-w578z8xq/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotator-w578z8xq/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

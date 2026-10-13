@@ -1,0 +1,206 @@
+{
+  "status": "independent_model_annotations_validated_integrator_review_separate",
+  "input_file_sha256": {
+    "annotation-assignments.json": "6154b2a0a3133f812e085454d8d81938941b8142d9822a45b011af200f9cf977",
+    "source-mapping.json": "cf22b5330900c45da1c7b6dfbb49a37bc780bd856e40d65332558a7f8f1c1dd7",
+    "annotation-prompt.txt": "bfbb9c9f878bee2af7b16b415aa55d75b82d7a2ef8bdec00840580aeba6b1708",
+    "annotation-packet-01.json": "815cc15a850b1eb19427ed5b65eb9d62c0aac88f13c8bb9a7f14aeb436a67c35",
+    "annotation-template-01.json": "57fd4179054c06dea9036cebbc725fffaae3947a3037b46efe8e745c1bdafa35",
+    "independent-annotations-01.json": "174d9a3aa49f8f2211075c68e5dab2c61999fb135ecc0cde06cf3d12a1b38928",
+    "annotation-packet-02.json": "1acbb999aa60aa48b8a1de9fa58f79a1da04ce54aa97d44f8f45dd31f9432980",
+    "annotation-template-02.json": "6fac61109fcf304a5166dc2f7c403671c73c4fcf4e68c3932c8445707e415e2e",
+    "independent-annotations-02.json": "0cc9f4fd9e924280b5a8805652bc3d66faf02fb96d4b0e8e8032b882c63673ec",
+    "annotation-packet-03.json": "2a7b25c8fd74fa44adfbd85005407de07a30bf85250ee6ba42e8f6bc004e55b8",
+    "annotation-template-03.json": "fa1b263a131f0009d90bff6b7691f945f4957a42a6f53a008dbd0d08595ca5cf",
+    "independent-annotations-03.json": "e8ebc14caf83600881aa63c5a0be7790cd359344253b26c005c68fd1d373e1de"
+  },
+  "producer_sha256": "f33c5f66ec2e65382f3ca9a01eda401504f65db6256bac72952eee542af1adbb",
+  "validations": [
+    {
+      "annotated_cases": 6,
+      "structural_evidence_validation": "passed",
+      "semantic_correctness_verified": false,
+      "authority": "independent_model_annotation_not_human_gold",
+      "isolation_boundary": "fresh_context_and_scoped_assignment_self_report_not_filesystem_enforcement"
+    },
+    {
+      "annotated_cases": 6,
+      "structural_evidence_validation": "passed",
+      "semantic_correctness_verified": false,
+      "authority": "independent_model_annotation_not_human_gold",
+      "isolation_boundary": "fresh_context_and_scoped_assignment_self_report_not_filesystem_enforcement"
+    },
+    {
+      "annotated_cases": 6,
+      "structural_evidence_validation": "passed",
+      "semantic_correctness_verified": false,
+      "authority": "independent_model_annotation_not_human_gold",
+      "isolation_boundary": "fresh_context_and_scoped_assignment_self_report_not_filesystem_enforcement"
+    }
+  ],
+  "comparison": {
+    "target_families": [
+      {
+        "target_id": "target-01",
+        "views": [
+          {
+            "case_id": "context-17",
+            "evidence_mode": "expression_only",
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "case_id": "context-08",
+            "evidence_mode": "containing_declaration",
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          },
+          {
+            "case_id": "context-06",
+            "evidence_mode": "evidence_bundle",
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "varying_axes": []
+      },
+      {
+        "target_id": "target-02",
+        "views": [
+          {
+            "case_id": "context-12",
+            "evidence_mode": "expression_only",
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          },
+          {
+            "case_id": "context-09",
+            "evidence_mode": "containing_declaration",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "case_id": "context-16",
+            "evidence_mode": "evidence_bundle",
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        ],
+        "varying_axes": [
+          "opportunity",
+          "concern_kind"
+        ]
+      },
+      {
+        "target_id": "target-03",
+        "views": [
+          {
+            "case_id": "context-15",
+            "evidence_mode": "expression_only",
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          },
+          {
+            "case_id": "context-05",
+            "evidence_mode": "containing_declaration",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "case_id": "context-04",
+            "evidence_mode": "evidence_bundle",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "varying_axes": [
+          "opportunity",
+          "concern_kind"
+        ]
+      },
+      {
+        "target_id": "target-04",
+        "views": [
+          {
+            "case_id": "context-13",
+            "evidence_mode": "expression_only",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "case_id": "context-11",
+            "evidence_mode": "containing_declaration",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "case_id": "context-10",
+            "evidence_mode": "evidence_bundle",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "varying_axes": []
+      },
+      {
+        "target_id": "target-05",
+        "views": [
+          {
+            "case_id": "context-14",
+            "evidence_mode": "expression_only",
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          },
+          {
+            "case_id": "context-18",
+            "evidence_mode": "containing_declaration",
+            "opportunity": "eligible",
+            "concern_kind": "variant_behavior"
+          },
+          {
+            "case_id": "context-01",
+            "evidence_mode": "evidence_bundle",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        ],
+        "varying_axes": [
+          "opportunity",
+          "concern_kind"
+        ]
+      },
+      {
+        "target_id": "target-06",
+        "views": [
+          {
+            "case_id": "context-02",
+            "evidence_mode": "expression_only",
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          },
+          {
+            "case_id": "context-03",
+            "evidence_mode": "containing_declaration",
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          },
+          {
+            "case_id": "context-07",
+            "evidence_mode": "evidence_bundle",
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        ],
+        "varying_axes": [
+          "opportunity",
+          "concern_kind"
+        ]
+      }
+    ],
+    "label_overrides": [],
+    "jev_luna_requests": 0,
+    "interpretation": "View differences confound evidence and annotator. They are neither same-input disagreement nor a causal context effect."
+  },
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false
+}

@@ -45,6 +45,8 @@ jobs:
           python3 -m unittest -v test_prepare_decision_reference.py
           python3 -m unittest -v test_prepare_context_evidence.py
           python3 prepare_context_evidence.py
+          python3 -m unittest -v test_validate_context_annotations.py
+          python3 validate_context_annotations.py
           python3 -m unittest -v test_validate_expression_reference.py
           python3 -m unittest -v test_matched_expression_plan.py
           python3 -m unittest -v test_score_matched_expressions.py

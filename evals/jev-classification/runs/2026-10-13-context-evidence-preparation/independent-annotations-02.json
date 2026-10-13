@@ -1,0 +1,206 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-03",
+      "state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path = f\"specification.bdd_scenarios[{index}]\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        }
+      ],
+      "uncertainties": [
+        "The enclosing class and definitions of BDDContext, entries, and steps_is_list are not supplied. Existing Specification ownership and upstream normalization are therefore unproved; the judgment is limited to the visible required-steps rule."
+      ],
+      "rationales": {
+        "opportunity": "The selected expression requires each mapped BDD scenario to have a nonempty list of steps and reports a scenario-steps finding otherwise. That is an identifiable scenario-completeness rule that can benefit from a named, observable Specification even at one use. The supplied findings method does not explicitly establish that a Specification already owns this same rule.",
+        "concern_kind": "Its primary responsibility is deciding whether the steps of a BDD scenario satisfy a required completeness and integrity condition. The list-shape check participates in that same required-steps decision; the invalid-value reporting mechanism does not by itself make the decision technical mechanics."
+      }
+    },
+    {
+      "case_id": "context-05",
+      "state_sha256": "b19324fa7c7d5a4508ab2ef77e0fc4aa82300d753653fbab3edf74a0c4e41a98",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "\"\"\"Interpret only the upstream pinned Swift source-resolution contract.\"\"\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "covered = {c for b in relevant for c in b[\"acceptance_criteria_ids\"]}"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not requested <= covered:\n        return \"missing_criterion_binding\""
+        }
+      ],
+      "uncertainties": [
+        "The upstream contract document, callers, and passport_criterion_ids implementation are not supplied. This annotation covers only requested-criterion binding completeness, not the other claim checks or the complete claim-acceptance contract."
+      ],
+      "rationales": {
+        "opportunity": "The exact subset test rejects a source claim when its requested passport criteria lack implementation binding coverage. The visible upstream source-resolution contract gives this decision a durable evidence-completeness identity suitable for a named, observable Specification. No supplied declaration establishes existing Specification ownership of this same decision.",
+        "concern_kind": "This is an evidence and integrity rule for source claims: every requested criterion must be covered by the relevant acceptance-criteria bindings. Although implemented by set comparison, its responsibility is deciding whether the claim has the required criterion bindings."
+      }
+    },
+    {
+      "case_id": "context-08",
+      "state_sha256": "752e931fce1a3167b2459528a483cc5f37623406bcd0aaad5341c641ea20dc5d",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not rendered.endswith(\"\\n\")"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "rendered += \"\\n\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered = yaml.safe_dump("
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered += \"\\n\""
+        }
+      ],
+      "uncertainties": [
+        "Consumers of the canonical YAML output are not supplied. No separate acceptance, signing, or authority rule is inferred from the function name; the visible responsibility is terminal-newline formatting."
+      ],
+      "rationales": {
+        "opportunity": "The exact condition detects a missing terminal newline in YAML serializer output so the function can append it. The supplied effect is output formatting, with no distinct product or domain eligibility decision that would benefit from a Specification.",
+        "concern_kind": "The expression and its immediate effect normalize the textual representation produced by yaml.safe_dump. This is serialization mechanics."
+      }
+    },
+    {
+      "case_id": "context-09",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        }
+      ],
+      "uncertainties": [
+        "Callers, filesystem resolution, trusted roots, and symlink handling are absent. The supplied rule establishes only syntactic manifest-path admissibility; it does not prove containment, a complete security boundary, or existing Specification ownership."
+      ],
+      "rationales": {
+        "opportunity": "The selected disjunction defines which manifest file paths are admissible: they must be relative, contain no parent traversal component, and use the canonical POSIX spelling. Rejection as an unsafe manifest path makes this a coherent path-admissibility and integrity rule that can be named and observed as a Specification. The helper name alone does not prove existing ownership.",
+        "concern_kind": "The primary decision is a manifest safety invariant governing accepted resource addresses. Absolute and parent-traversal paths are rejected together with noncanonical spellings. PurePosixPath supplies the representation used to enforce this rule; no actual filesystem confinement or caller authority is claimed."
+      }
+    },
+    {
+      "case_id": "context-11",
+      "state_sha256": "64b50a21fc6cd600b6ebec6dde39e4930d5b4d06b054ca97e0aca7e0a5a144af",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "def _has_reviewable_gap(gaps: list[Any], term: str | None = None) -> bool:"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue"
+        }
+      ],
+      "uncertainties": [
+        "The gap schema, _dict implementation, and REVIEWABLE_GAP_STATUSES values are not supplied. Their details and the full reviewability decision are not inferred; the annotation concerns only the explicit-false mutation flag prerequisite."
+      ],
+      "rationales": {
+        "opportunity": "The selected comparison makes an explicit false canonical_mutations_allowed value a prerequisite for considering a gap reviewable. This is a distinct review-eligibility and authority rule suitable for a named, observable Specification, independent of the later status and proposed-term checks. Existing ownership is not established by the supplied helper.",
+        "concern_kind": "The expression excludes gaps whose canonical-mutation prohibition is not explicitly recorded. Its primary responsibility is an authority-related condition on review eligibility, including rejecting a missing value rather than treating it as false."
+      }
+    },
+    {
+      "case_id": "context-18",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "opportunity": "eligible",
+      "concern_kind": "variant_behavior",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if gate != \"none\":"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "rank = gate_order.index(gate)"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "rank = len(gate_order) + status_order.index(node.status)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gate != \"none\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "kind, next_gap, hint_template = GATE_ACTIONS[gate]"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "elif node.status in status_order:"
+        }
+      ],
+      "uncertainties": [
+        "SpecNode.gate_state, GATE_ACTIONS, and the configured gate and status orders are not supplied. The meanings and correctness of individual gate actions are unproved; the visible distinction and precedence between active-gate and no-gate routing are sufficient for these labels."
+      ],
+      "rationales": {
+        "opportunity": "The exact predicate gives a non-none gate precedence over status-based refinement when selecting the candidate move. The supplied branches and ranks expose a stable lifecycle-routing decision that could benefit from a named, addressable Specification. This suitability judgment does not require classifying the expression primarily as policy or knowing every gate action.",
+        "concern_kind": "The selected comparison dispatches between the domain gate-state variants none and an active gate. The active-gate branch selects GATE_ACTIONS, while the none path may select the status-based refinement branch. Variant routing is the primary responsibility of this exact predicate; the returned review_required flag is outside the target."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotator-t5v699xh/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotator-t5v699xh/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

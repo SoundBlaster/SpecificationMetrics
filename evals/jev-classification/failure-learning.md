@@ -49,8 +49,13 @@ is an explicit result; it does not justify inventing a provider explanation.
   with six new production targets and three evidence views each. Preserve exact
   target bytes, source spans, imports/declarations and source attribution.
   Obtain fresh independent labels before provider inference or a gate comparison.
-- **Current boundary:** no semantic correction is claimed; no reference labels,
-  prompts, thresholds, production classifier or S/U metrics were changed.
+- **Current boundary:** no semantic correction is claimed. A subsequent
+  [independent annotation review](runs/2026-10-13-context-evidence-preparation/annotation-review.md)
+  adds a new provisional reference without changing historical labels, provider
+  prompts, thresholds, production classifier or S/U metrics. Six axis labels
+  remain disputed: manifest-path policy/mechanics and gate policy/variant routing.
+  One annotator per view confounds context and annotator effects; same-input
+  reannotation is the next discriminating comparison, before a rubric change.
 
 ## Confirmed exposure path: combined context-ablation packet
 
