@@ -1,0 +1,205 @@
+{
+  "status": "complete_independent_subagent_annotations_not_adjudicated",
+  "run_id": "2026-10-13-bdd-steps-balanced-factorial-results",
+  "started_at_utc": "2026-10-13T17:52:50Z",
+  "validated_at_utc": "2026-10-13T18:06:56Z",
+  "preparation_run": "../2026-10-13-bdd-steps-balanced-factorial-preparation",
+  "preparation_receipt_sha256": "4de2e067ef8e708a159abdb388c5868de43da3bc76c1c265d9276dd18f915acc",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "planned_contexts": 12,
+  "dispatched_contexts_including_replacements": 17,
+  "retained_contexts": 12,
+  "excluded_attempts": [
+    {
+      "attempt": "annotator-01-initial",
+      "raw_output": "excluded-attempts/annotator-01-initial.json",
+      "raw_output_sha256": "a14f5f4fb20f03eb5cd9b541de3477447676d76c4504bdd4f019a9be699b8fcc",
+      "reason_excluded": "One evidence quote was not an exact substring of the assigned target/context code."
+    },
+    {
+      "attempt": "annotator-04-initial",
+      "raw_output": "excluded-attempts/annotator-04-initial.json",
+      "raw_output_sha256": "35a9c5ea7fe3e2250453fe97f05fc8bcd658fcea541d8604c53af084fc7b3796",
+      "reason_excluded": "Annotator reported default login-shell startup may have loaded shell configuration; isolation could not be confirmed."
+    },
+    {
+      "attempt": "annotator-06-initial",
+      "raw_output": "excluded-attempts/annotator-06-initial.json",
+      "raw_output_sha256": "a028315bfd2fb0a942191876a1333d5f964d3b4827e43e9360652227de85380f",
+      "reason_excluded": "Multiple evidence quotes were not exact substrings of the assigned target/context code."
+    },
+    {
+      "attempt": "annotator-12-initial",
+      "raw_output": "excluded-attempts/annotator-12-initial.json",
+      "raw_output_sha256": "14186fcbdcc1ecf64084dfb8ddf96512991ed8682fabe249bf8f838e7774aaa6",
+      "reason_excluded": "One evidence quote was not an exact substring of the assigned target/context code."
+    },
+    {
+      "attempt": "annotator-12-replacement",
+      "raw_output": "excluded-attempts/annotator-12-replacement.json",
+      "raw_output_sha256": "8922a32f26018678a68f29acc28a8718c36cbbb5b522ba92590eed1769ca8cd1",
+      "reason_excluded": "One evidence quote included punctuation absent from the exact source fragment."
+    }
+  ],
+  "retained_case_annotations": 48,
+  "provider_requests": 0,
+  "human_gold": false,
+  "metric_effect": "none",
+  "model_identity": {
+    "status": "unverified",
+    "selection": "no model override was supplied to subagent dispatch"
+  },
+  "isolation_validation": {
+    "retained_contexts_with_two_exact_assigned_input_paths": 12,
+    "retained_contexts_reporting_other_inputs_read_false": 12,
+    "path_field_variants": {
+      "inputs_read": 2,
+      "input_files": 10
+    },
+    "note": "Two retained outputs use inputs_read instead of the requested input_files key; the listed paths are exactly the assigned packet/template and other_inputs_read is false. Raw output files are preserved unchanged."
+  },
+  "annotation_validation": {
+    "json_parsed": true,
+    "case_sets_match_templates": true,
+    "case_state_task_rubric_hashes_match": true,
+    "labels_in_registered_enums": true,
+    "both_rationales_nonempty": true,
+    "exact_source_code_quote_per_axis": true,
+    "uncertainties_are_string_lists": true,
+    "target_cell_assignments": "3 retained contexts per target x evidence cell"
+  },
+  "accepted_outputs": [
+    {
+      "slot": 1,
+      "agent_task": "bdd_balanced_20261013_01_replacement",
+      "source_directory": "annotator-01-replacement",
+      "annotation_file": "annotations/annotator-01.json",
+      "annotation_sha256": "ba19762e83e2fb5d71e7d9fc273e560dce458626d3ab6f354cc016f3bfca0c3a",
+      "packet_sha256": "d394e144a3033c5c994f2eff8fff53ef4b1cf9984cf88fd034aa71aa674d9d5f",
+      "template_sha256": "7987fbd69f3b81c0d53f55350fb815f48fb98f76224cc3a61f11040220053195",
+      "isolation_path_field": "inputs_read",
+      "replacement": true
+    },
+    {
+      "slot": 2,
+      "agent_task": "bdd_balanced_20261013_02",
+      "source_directory": "annotator-02",
+      "annotation_file": "annotations/annotator-02.json",
+      "annotation_sha256": "279730f4b4aab0a32cc8bff4e205de9712502a4ede9ee5f277f11e945ce46205",
+      "packet_sha256": "9e5c972d07b56e3ede06775383e1ee7efebb263cbc27866f8da4bf6b828deed8",
+      "template_sha256": "8ac1dc7b801c003c57141a474daa04648df92057923bca90d249f2d032fd417f",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 3,
+      "agent_task": "bdd_balanced_20261013_03",
+      "source_directory": "annotator-03",
+      "annotation_file": "annotations/annotator-03.json",
+      "annotation_sha256": "da52cca29244e5a795c623dd7239dfcc8927fdc022ae5f57f2a3d8ba6b5a2cf8",
+      "packet_sha256": "cd58363cd76cffeaeffb85c9947a75549d79d0ea4b80195dcc91a4df2c2527b7",
+      "template_sha256": "0c7840f038d3f667cf965616322637ffeed8b5dbc1381d7fc19e195f45775029",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 4,
+      "agent_task": "bdd_balanced_20261013_04_replacement",
+      "source_directory": "annotator-04-replacement",
+      "annotation_file": "annotations/annotator-04.json",
+      "annotation_sha256": "1a29936f37d09ea1e149cefacccb2c59aec2a7ab8bd65b3a5ae13115418b5049",
+      "packet_sha256": "48232fa140ffcadd961be477d756720523443591e5ac0c7cbb5fc482d0d0ef1f",
+      "template_sha256": "1e9b1e7eaf16793129f119b1751f0d171e7fc9209e35c909e970a8a22991ce18",
+      "isolation_path_field": "input_files",
+      "replacement": true
+    },
+    {
+      "slot": 5,
+      "agent_task": "bdd_balanced_20261013_05",
+      "source_directory": "annotator-05",
+      "annotation_file": "annotations/annotator-05.json",
+      "annotation_sha256": "347730900e3b462b03914e44f0a3f35d415e7aa5f6e25b28f59c0d8d1e28c0c3",
+      "packet_sha256": "225b5e93ee20cdbea3c047bf141735ddac1274d8b9f820eeb5824989d61000f1",
+      "template_sha256": "94454646746f8d29c064e349ad0aed66f810493eb8774b370d887caa16ac6a29",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 6,
+      "agent_task": "bdd_balanced_20261013_06_replacement",
+      "source_directory": "annotator-06-replacement",
+      "annotation_file": "annotations/annotator-06.json",
+      "annotation_sha256": "4b12a3a5423d88c8cc85175ad4364c34eec5b0de16515a5a49077e94ef42999e",
+      "packet_sha256": "d3d28e4d027e38b5894a23bca8d86ec0bf0e57f4037982374b4f2c989185165a",
+      "template_sha256": "af833d672059f910d28851960355ab77a44d4bb6c424aa65233cdc456b79c8c6",
+      "isolation_path_field": "inputs_read",
+      "replacement": true
+    },
+    {
+      "slot": 7,
+      "agent_task": "bdd_balanced_20261013_07",
+      "source_directory": "annotator-07",
+      "annotation_file": "annotations/annotator-07.json",
+      "annotation_sha256": "6dcf797ff6a44ff523aabd78d0e6590939c294a5804929d3bf2467bb327582d7",
+      "packet_sha256": "17a0552dbdd43582d51ef515089b8a0c79efd7ccd53368c85ca447343e0b8014",
+      "template_sha256": "cbcd8ed1233cc7b9e4e655e130187853e25e7bda1376a0f38ea65741bcc0ea5a",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 8,
+      "agent_task": "bdd_balanced_20261013_08",
+      "source_directory": "annotator-08",
+      "annotation_file": "annotations/annotator-08.json",
+      "annotation_sha256": "bafeec3598c9b8bd7caff77c6befde935d8ee32fdb03e086cbfff0d734805c4c",
+      "packet_sha256": "b7c5b078ab010a9c93fd127521e194f2e9587890accca528e43c5202b1c03d0b",
+      "template_sha256": "cdeb1058297ab410ac5b17c563cea66705f66bdca9839081408f968ce2e4d101",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 9,
+      "agent_task": "bdd_balanced_20261013_09",
+      "source_directory": "annotator-09",
+      "annotation_file": "annotations/annotator-09.json",
+      "annotation_sha256": "8d1f54fad5130a6e92ec1d3ae48fb5bb2efb6f4028ab928280be2e2ed54b8ec9",
+      "packet_sha256": "f635b51a7c0306d927c8a64eee54f27d69118bb44d6511d9fc9354c5d9846a89",
+      "template_sha256": "19d8835e79a68c0006ff99431215bb81d2e5a53242849f910bc6e3c326db3730",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 10,
+      "agent_task": "bdd_balanced_20261013_10",
+      "source_directory": "annotator-10",
+      "annotation_file": "annotations/annotator-10.json",
+      "annotation_sha256": "581329d42ee714deea6ac649c9d50352de0f6c57b8fa534d8216b1a7f40fdaa9",
+      "packet_sha256": "cdf5602b389556cc21834c9e8fa7e61804fc05372369b57a025ccc446eaa2d80",
+      "template_sha256": "2d0c672aefe79381ea99c5201f758bee20262e7b19a7dfc63c3e0f9fff8e4d23",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 11,
+      "agent_task": "bdd_balanced_20261013_11",
+      "source_directory": "annotator-11",
+      "annotation_file": "annotations/annotator-11.json",
+      "annotation_sha256": "3860d9cc01677d225af682afdd99bc6a0fd282b141bf93bf2fcf8022f9322507",
+      "packet_sha256": "ff661a05aa56f5bb51ecb4f325794aa726c634ca629a218fc1f95ef71f712353",
+      "template_sha256": "3f2267aba00df4cb19e6477d2ea78664788908d7cbafc7ab025d0c49f6646446",
+      "isolation_path_field": "input_files",
+      "replacement": false
+    },
+    {
+      "slot": 12,
+      "agent_task": "bdd_balanced_20261013_12_final",
+      "source_directory": "annotator-12-final",
+      "annotation_file": "annotations/annotator-12.json",
+      "annotation_sha256": "5e1f04c2ce86238b673335c617914742f8323e23921cfa24acee0cde74def3a3",
+      "packet_sha256": "668718ae3867c068154ea35570f3a8a7d8cfff6d0a56f318c1ac9c432732d382",
+      "template_sha256": "f8b8a2530db032347678b0506ff7387ec3294f2d7eafb789ecb31e6839e22ce4",
+      "isolation_path_field": "input_files",
+      "replacement": true
+    }
+  ]
+}

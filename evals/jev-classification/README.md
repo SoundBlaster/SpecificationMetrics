@@ -294,8 +294,20 @@ is retained as diagnostic evidence. Raw annotations, context/annotator effects,
 ownership evidence and semantic adjudication remain separate; this reference
 preparation does not authorize Jev/Luna requests or S/U changes.
 
-The [expression-fit v2 rubric proposal](expression-fit-rubric-v2.md) now makes
+The [expression-fit v2 rubric proposal](expression-fit-rubric-v2.md) makes
 decision-role evidence, policy/variant tie rules and missing-context treatment
-explicit. It preserves the label sets and supplies a plan for fresh validation.
-It is not activated, independently evaluated or an accepted replacement gold
-reference; historical annotations remain unchanged.
+explicit while preserving the label sets. A subsequent
+[independent v2 reference](runs/2026-10-13-rubric-v2-reference/README.md)
+matched on all 18 states in both fresh rounds, but decisive coverage fell to
+10/18 per axis. The frozen H2 control failed on a BDD steps predicate that both
+rounds marked `needs_review / unknown`. V2 is therefore not approved for
+provider scoring; the rubric proposal and prior labels remain separate.
+
+The [BDD steps source audit and balanced follow-up preparation](runs/2026-10-13-bdd-steps-balanced-factorial-preparation/README.md)
+found the adopted values contract and existing SpecificationCore evaluation
+paths in the pinned SpecGraph commit. Its four evidence conditions cover four
+related decision sites; twelve fresh contexts each see all four conditions on
+different sites, with three contexts per target-condition. No annotation has
+been dispatched. The earlier [single-target draft](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
+is preserved as superseded after review identified an annotator-condition
+confound.

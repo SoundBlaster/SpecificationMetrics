@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "study_kind": "natural_source_context_reference_preparation",
+  "instructions": "Judge only the exact expression independently under the supplied profile/rubric. Cite supplied evidence for each axis and retain uncertainty. No author labels or provider predictions are supplied. Do not transfer a label from another evidence view.",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Judge ONLY the exact target expression under the supplied architecture profile. Supporting declarations and contracts explain this target; they are not additional candidates. Identify the subject, the alternatives distinguished by the predicate, and its demonstrated decision role. Use a supplied implementation for a helper call; judge a selected assembly as a whole without cherry-picking a lambda or guard. A pure declared predicate contract can establish a domain decision: executed side effects, multiple uses, high complexity and immediate code reduction are NOT required. Choose eligible when supplied evidence establishes a stable domain decision or domain behavior-selection contract whose definition benefits from a named, addressable, observable Specification. Choose excluded only with affirmative evidence of representation/parsing/I-O/adaptation mechanics without a distinct domain decision, or explicit evidence that a Specification already owns this SAME decision through its evaluation path. An unsafe error, a helper name, a permission-sounding field, branch count, imports, or a Specification elsewhere do not alone establish fit or same-decision ownership. A parser may enforce domain policy; a rejection or security-sounding check may also implement mechanics. For path checks, seek evidence of the contract for permitted domain references versus representation or generic adapter constraints; a declared integrity contract can suffice without actual filesystem access, but do not infer such a contract from the word unsafe. An isolated permission field can identify a topic without proving whether this site defines policy, adapts a verdict or merely reports it. Choose needs_review when a specific missing fact leaves materially different opportunity labels plausible. Do not require every caller or runtime binding when the supplied contract already settles this exact decision. Unknown ownership is not proof of ownership and does not automatically force abstention for an otherwise clear architectural-fit suggestion. Classify this axis independently: concern-kind uncertainty need not prevent eligible when both plausible responsibilities establish fit. Do not invent omitted facts or transfer labels from other evidence views.",
+      "criteria": {
+        "eligible": "Supplied evidence establishes a stable domain decision or domain behavior-selection contract suitable for a named, addressable, observable Specification; one use is sufficient. No supplied evidence establishes existing Specification ownership of this same decision.",
+        "excluded": "Affirmative evidence establishes technical mechanics without a distinct domain decision, or explicit same-decision Specification ownership. Mere lack of policy evidence is not exclusion.",
+        "needs_review": "A specific material ambiguity or missing fact prevents a reliable opportunity judgment. Abstention is unknown, not exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Independently classify the PRIMARY RESPONSIBILITY of ONLY the exact target expression, using its supplied subject, alternatives and decision role. Supporting code establishes meanings and effects; do not classify an entire containing function or unrelated later decisions. A pure declared domain predicate can be policy without executing effects. Policy decides domain admissibility, authority, evidence sufficiency, eligibility, lifecycle obligations or which domain work has precedence. Mechanics parses, represents, transports, adapts or performs generic technical enforcement without a demonstrated distinct domain decision. A validation branch can enforce either role: rejection, an unsafe message, names and file location alone do not settle it. A supplied contract restricting permitted domain references can establish path-integrity policy even inside a parser and without actual filesystem access; generic path checks without a settled role must not automatically become either policy or mechanics. Variant_behavior selects a variant-specific implementation or behavior for an already established domain activity. Tie rule: a predicate deciding WHETHER work is allowed/required or WHICH obligation takes precedence is policy; selection of HOW an already established activity is implemented for a domain variant is variant_behavior. Testing an enum, boolean or none sentinel does not by itself establish variant_behavior. If the target only recognizes an external syntactic tag to construct typed facts, that dispatch is mechanics. Apply the tie rule to the selected expression: subsequent dispatch among individual handlers does not turn a preceding lifecycle-priority predicate into variant_behavior. If independently meaningful policy and adaptation are mixed in the selected expression and its primary contract cannot be established, choose unknown rather than silently changing target boundaries. Identifiers are evidence of a possible subject, not proof of enforcement or of the primary role; do not infer an operative permission gate from a permission-sounding field alone. A responsibility can be clear while Specification suitability or ownership remains unknown. Existing Specification ownership does not turn policy into mechanics. Choose unknown only for material ambiguity; ordinary unshown consumers are not a reason to abstain when the supplied expression or declared contract already settles responsibility. Do not infer omitted dependencies or copy labels from another evidence view.",
+      "criteria": {
+        "policy": "A demonstrated durable domain admissibility, authority, trust, evidence, eligibility, lifecycle or obligation-priority decision; validation and pure predicates can implement it.",
+        "mechanics": "A demonstrated parsing, representation, I/O, adaptation or generic technical-enforcement responsibility without a distinct domain decision.",
+        "variant_behavior": "Selection of variant-specific domain implementation or behavior for an already established activity, rather than eligibility or obligation precedence.",
+        "unknown": "The supplied evidence does not establish a reliable primary responsibility; do not guess from names or silently split a mixed target."
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "bdd-steps-d63b",
+      "state_sha256": "02bc3378bb8a8478fe8ac1824dbf75ceffccead1e46e1ee7a8ab10116e84ef2c",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not entry.steps_is_list or not entry.steps",
+          "syntax_kind": "BoolOp",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "context-01",
+              "code": "    def findings(self, context: BDDContext):\n        findings = []\n        for index, entry in enumerate(context.entries):\n            if not entry.is_mapping:\n                continue\n            path = f\"specification.bdd_scenarios[{index}]\"\n            if not entry.id.valid:\n                findings.append(issue(\"invalid_value\", path + \".id\"))\n            if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))\n            else:\n                findings.extend(\n                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid\n                )\n        return tuple(findings)\n"
+            },
+            {
+              "fragment_id": "evidence-contract-criterion",
+              "code": "- criterion: Defines one shared native BDD declaration model with exact nonempty string IDs, an optional\n    descriptive title, and a nonempty ordered list of nonempty string steps; it preserves step repetition\n    and source text without inferring executable grammar.\n  evidence: specification.native_profile.values and specification.bdd_scenarios define exact IDs, optional\n    descriptive titles, nonempty ordered steps, and the BDD-NATIVE-EXACT-STEPS Given/When/Then case preserves\n    repeated exact step strings."
+            },
+            {
+              "fragment_id": "evidence-contract-values",
+              "code": "    values: id is exact nonempty string; scenario title is optional, but supplied values must be nonempty\n      strings; steps is a nonempty ordered list of nonempty strings. Whitespace-only values are invalid,\n      meaningful strings are not trimmed."
+            },
+            {
+              "fragment_id": "evidence-contract-approval",
+              "code": "      review_status: Human approved for bdd_scenarios_v1; no consumer default activation."
+            },
+            {
+              "fragment_id": "evidence-implementation-class",
+              "code": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+            },
+            {
+              "fragment_id": "evidence-implementation-base",
+              "code": "class BDDPolicy(Specification[BDDContext]):\n    spec_id = \"SG-SPEC-0070\"\n    rule_ref: str\n\n    def __init__(self) -> None:\n        super().__init__(name=self.rule_ref)\n        self._seal()\n\n    def findings(self, context: BDDContext) -> tuple[BDDScenarioFinding, ...]:\n        raise NotImplementedError"
+            },
+            {
+              "fragment_id": "evidence-implementation-evaluator",
+              "code": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+            },
+            {
+              "fragment_id": "evidence-composition-membership",
+              "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)"
+            },
+            {
+              "fragment_id": "evidence-composition-evaluation",
+              "code": "    for policy in POLICIES:\n        skip = policy.skip_reason(context)\n        if skip:\n            if recorder is not None:\n                recorder.skipped(policy.rule_ref)\n            outcomes.append(PolicyOutcome(policy.rule_ref, \"skipped\", skip))\n            continue\n        passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)\n        findings.extend(current_findings)\n        outcomes.append(PolicyOutcome(policy.rule_ref, \"satisfied\" if passed else \"unsatisfied\"))\n        context = policy.transition(context, current_findings)"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact source fragments are evidence. Unlisted dependencies, callers and runtime bindings are not proved. Less context does not automatically imply unknown; classify each axis from the evidence actually supplied."
+        }
+      },
+      "task_sha256": "878f2d3b616f25b64f2e55c25ea272d7cee607524e825301d922dafa7a39e43b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e"
+    }
+  ],
+  "rubric_id": "specification_metrics.expression-fit.v2-diagnostic",
+  "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+  "questions_sha256": "519e072c37c6337e49711bf03188da7381e3f079b699776e3f32241c637add54",
+  "annotation_prompt_sha256": "b7416991729cabdda541d0288456bcd0e28d565fe39d2d227a755a71860f9bcb"
+}

@@ -1,0 +1,138 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "isolation_report": {
+    "input_paths": [
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-12-replacement/packet.json",
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-12-replacement/template.json"
+    ],
+    "other_inputs_read": false
+  },
+  "annotations": [
+    {
+      "case_id": "bdd-values-step-item",
+      "state_sha256": "08bea540c5d656871c6f3293a21c497db6d644165709a9d535e11e45b0ed06a8",
+      "task_sha256": "c975f689664fe418d0095c22a63134dee4662be4da723769e0bf65a0d1aa3101",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The supplied declaration criterion defines the allowed content of each step, and the target checks an individual step before emitting an invalid-value finding. That is a stable domain declaration rule suitable for an addressable Specification; no same-decision Specification evaluation path is supplied.",
+        "concern_kind": "The predicate determines whether a declared BDD step satisfies the stated content requirement, which is domain admissibility rather than parsing or generic technical enforcement."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-contract-values",
+          "quote": "steps is a nonempty ordered list of nonempty strings"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "if not step.valid:"
+        }
+      ],
+      "uncertainties": [
+        "The supplied fragments do not identify an existing Specification evaluation path for this exact decision."
+      ]
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "state_sha256": "ed0883d5b85c50ec4ccefe98b03ce4a3195741d6191595e956e1161190c4efc0",
+      "task_sha256": "8378b6c624a1dfe5b78c035c919a921b1c6b5d950dbfcc5ca20769f94784e1c8",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The target is part of BDDScenarioFieldsSpec.findings, that policy is present in the evaluation set, and policies are evaluated through is_satisfied_by; the same title-validity decision therefore already has a Specification evaluation path.",
+        "concern_kind": "The expression gates a finding on whether an optional title is supplied and valid, but the supplied fragments do not define what title.valid means. The finding could enforce a domain content rule or reflect technical validation, so its primary responsibility is not established."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-membership",
+          "quote": "    BDDScenarioFieldsSpec(),"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-evaluation",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "if entry.title_supplied and not entry.title.valid:"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".scenario\"))"
+        }
+      ],
+      "uncertainties": [
+        "The supplied fragments do not define the semantics of entry.title.valid, so they do not settle domain policy versus technical validation for this expression."
+      ]
+    },
+    {
+      "case_id": "bdd-values-steps-list",
+      "state_sha256": "a223cfd1315d1c21d253afd0e154633c052adb3a73e292d5a1f2fcbe87c605fa",
+      "task_sha256": "ee43899f0872023ff089d63c8dc1424ce6c88f594b314cf4266657e92c635ec6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The supplied criterion requires steps to be a nonempty ordered list, and this exact check implements that requirement inside BDDScenarioValuesSpec, which is included in and evaluated by the Specification policy path. The same decision is already owned.",
+        "concern_kind": "The target decides whether the declared steps value meets the explicit nonempty-list requirement, a domain admissibility rule."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-contract-values",
+          "quote": "steps is a nonempty ordered list of nonempty strings"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-membership",
+          "quote": "    BDDScenarioValuesSpec(),"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-evaluation",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "if not entry.steps_is_list or not entry.steps:"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-values-id",
+      "state_sha256": "e98c6b9c5f605f3bbd3ff38c032cbc554a0b5d60704f3a12f56d2392f58e25e6",
+      "task_sha256": "28487aabcbef31cb92db1a4472bf2ab58983a26676414055185ef0b216d310d6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The expression leads to an invalid-value finding for an ID, but the supplied fragments do not define the ID validity contract. That missing fact leaves a domain declaration rule and representation or parsing mechanics materially plausible.",
+        "concern_kind": "The method reports an invalid-value finding when entry.id.valid is false, but the supplied fragments do not establish what validity means or whether this is a domain admissibility decision or technical validation."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "if not entry.id.valid:"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".id\"))"
+        }
+      ],
+      "uncertainties": [
+        "The supplied fragments do not define entry.id.valid or the native BDD ID contract."
+      ]
+    }
+  ]
+}

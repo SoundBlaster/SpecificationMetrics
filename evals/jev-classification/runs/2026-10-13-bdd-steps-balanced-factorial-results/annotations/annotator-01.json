@@ -1,0 +1,168 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "bdd-values-steps-list",
+      "state_sha256": "a410595b30650aa415e70525fc0464c81a457fc4e680b8ef849f6edc631bd9aa",
+      "task_sha256": "afdbe6bf63d53511cb1e754ba2cbe7d8d41f06a85d6d2f0ef4204c1987a3df79",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The expression rejects both a non-list representation and an empty step collection, then reports the BDD declaration field as invalid. The supplied evidence does not establish whether non-emptiness is a stable domain requirement or whether this combined check is only enforcing a representation constraint, so both fit outcomes remain plausible.",
+        "concern_kind": "The selected expression mixes a list-shape check with an emptiness check, and the context gives no declaration contract that settles the primary responsibility. The finding shows rejection at the BDD steps field but does not distinguish domain admissibility from representation validation."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "source": "target.code",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "target.code",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        }
+      ],
+      "uncertainties": [
+        "The supplied context omits the authoritative contract for whether steps must be nonempty and whether this type check is domain policy or representation validation."
+      ]
+    },
+    {
+      "case_id": "bdd-values-id",
+      "state_sha256": "394f5ad8e35b6993934608abc579ba7fddb2838c600741f2a651d39559056564",
+      "task_sha256": "46bf1413b8fdf9e0b99a531a77709a38c7632f9c88004d6fa7b63be4fd59eca7",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The declaration contract requires an exact nonempty string ID, and the target rejects an invalid ID for a BDD scenario. This is a stable rule for admissible domain declarations and suits a named Specification; no supplied evidence shows an existing Specification owns this same decision.",
+        "concern_kind": "The target decides whether a BDD scenario ID satisfies the declared nonempty-string contract and causes an invalid-value finding when it does not. That is domain declaration admissibility, not a generic parsing or transport operation."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-contract-values",
+          "quote": "id is exact nonempty string"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "if not entry.id.valid:"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "target.code",
+          "quote": "not entry.id.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "evidence-contract-values",
+          "quote": "id is exact nonempty string"
+        }
+      ],
+      "uncertainties": [
+        "The supplied context does not show whether an existing Specification owns this same rule."
+      ]
+    },
+    {
+      "case_id": "bdd-values-step-item",
+      "state_sha256": "eebbf3fd785c2d843cfdd98aa8440d7d03bbe0eb7dc7459f74affa44435fd8ee",
+      "task_sha256": "26387b28f8655360ef487b7cb9ef3c740c14bf88fb6bda2f40fd34e615d8db85",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact invalid-step check is implemented in BDDScenarioValuesSpec.findings, that policy is included in POLICIES, and the evaluation loop calls each policy’s findings. The same decision is therefore already owned through a Specification evaluation path.",
+        "concern_kind": "The expression decides whether each step in a BDD declaration produces an invalid-value finding. The supplied implementation places that admissibility decision in the BDD scenario values policy and evaluates it as part of the policy pipeline."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "source": "target.code",
+          "quote": "not step.valid"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-membership",
+          "quote": "BDDScenarioValuesSpec()"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-evaluation",
+          "quote": "current_findings = policy.findings(context)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "issue(\"invalid_value\", f\"{path}.steps[{i}]\")"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "evidence-implementation-base",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        }
+      ],
+      "uncertainties": [
+        "The supplied context does not define the precise criterion behind step.valid; the responsibility classification follows its use to report invalid BDD step values through the policy evaluation path."
+      ]
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "state_sha256": "622144528979e721d31c7ac08ec5294dbcbb34e16c0e189fdc674f61e1f5287a",
+      "task_sha256": "e9f4d2857f4251b0302f32725239e2ceeda6742db78178cb5988ff55d67384ca",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The contract permits an omitted title but requires a supplied title to be a nonempty string. BDDScenarioFieldsSpec implements this exact check and is included in the policy evaluation path, so the same decision already has a Specification owner.",
+        "concern_kind": "The expression enforces the BDD declaration rule for an optional title: omission is allowed, while a supplied invalid value produces an invalid-value finding. This is domain admissibility for the declaration model."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-contract-values",
+          "quote": "scenario title is optional, but supplied values must be nonempty"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-membership",
+          "quote": "BDDScenarioFieldsSpec()"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-evaluation",
+          "quote": "current_findings = policy.findings(context)"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "target.code",
+          "quote": "entry.title_supplied and not entry.title.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "issue(\"invalid_value\", path + \".scenario\")"
+        }
+      ],
+      "uncertainties": []
+    }
+  ],
+  "isolation_report": {
+    "inputs_read": [
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-01-replacement/packet.json",
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-01-replacement/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

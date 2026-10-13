@@ -1,0 +1,64 @@
+{
+  "status": "pre-registered_diagnostic_plan_not_annotation_reference",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "prior_annotation_receipt_sha256": "a2e639475b9517b618545414079ae5a19d0cd9cde40c4054c748760955ecb066",
+  "rubric_id": "specification_metrics.expression-fit.v2-diagnostic",
+  "base_target": "not entry.steps_is_list or not entry.steps",
+  "design": "2x2 evidence-presence diagnostic; four context cells, three independent fresh contexts per cell",
+  "factors": {
+    "contract": "The approved source contract explicitly requires a nonempty ordered list of nonempty strings.",
+    "implementation_link": "The exact method is linked through BDDScenarioValuesSpec and BDDPolicy to Specification evaluation and composition."
+  },
+  "cells": [
+    {
+      "cell": "01",
+      "contract_evidence_present": false,
+      "implementation_link_evidence_present": false
+    },
+    {
+      "cell": "02",
+      "contract_evidence_present": true,
+      "implementation_link_evidence_present": false
+    },
+    {
+      "cell": "03",
+      "contract_evidence_present": false,
+      "implementation_link_evidence_present": true
+    },
+    {
+      "cell": "04",
+      "contract_evidence_present": true,
+      "implementation_link_evidence_present": true
+    }
+  ],
+  "controlled_inputs": [
+    "same exact target expression and original method-body context",
+    "same architecture profile, rubric bytes, questions, and annotation instructions",
+    "only contract and implementation-link evidence fragments vary"
+  ],
+  "delivery": "one cell per fresh annotator; no annotator sees another view of this target; three replicates per cell",
+  "primary_observations": [
+    "opportunity and concern_kind label distributions per cell",
+    "decisive coverage per axis per cell",
+    "whether exact added fragments appear in rationales and evidence quotes",
+    "within-cell repeat agreement; descriptive only"
+  ],
+  "directional_hypotheses_not_gold_labels": {
+    "contract": "At fixed implementation-link presence, the adopted values contract may reduce uncertainty about whether empty steps are admissible. It does not predetermine policy versus mechanics: the source defines input shape and validity, not why the rule is a domain obligation or representation check.",
+    "implementation_link": "At fixed contract presence, a demonstrated same-decision Specification evaluation link may move opportunity toward excluded while leaving responsibility classification independently assessable.",
+    "combined": "The combined cell should provide enough evidence to assess whether the exact decision is already represented. The concern-kind axis may remain uncertain without evidence of domain purpose; this is a rubric-derived expectation, not an assigned answer."
+  },
+  "interpretation_limits": [
+    "One expression family; results are a context-sensitivity diagnostic, not classifier accuracy or population reliability.",
+    "Three fresh judgments per cell are descriptive and cannot establish statistical significance.",
+    "The source contract and code mapping live in the same canonical spec lineage; excerpt separation tests which evidence is useful to annotators, not independent real-world causes.",
+    "The approved values contract states that steps must be nonempty but does not itself resolve the rubric boundary between domain completeness and input representation mechanics.",
+    "Agent model identity is inherited and must be recorded as unverified unless the runtime exposes it.",
+    "Do not change v2 labels, failed H2, production prompts, S/U state, or metric storage from this diagnostic."
+  ],
+  "expected_labels_assigned": false,
+  "human_gold": false,
+  "annotation_started": false,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}

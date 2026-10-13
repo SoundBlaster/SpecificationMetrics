@@ -1,0 +1,61 @@
+{
+  "status": "blank_not_reference",
+  "annotations": [
+    {
+      "case_id": "bdd-values-id",
+      "state_sha256": "e98c6b9c5f605f3bbd3ff38c032cbc554a0b5d60704f3a12f56d2392f58e25e6",
+      "task_sha256": "28487aabcbef31cb92db1a4472bf2ab58983a26676414055185ef0b216d310d6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-values-step-item",
+      "state_sha256": "08bea540c5d656871c6f3293a21c497db6d644165709a9d535e11e45b0ed06a8",
+      "task_sha256": "c975f689664fe418d0095c22a63134dee4662be4da723769e0bf65a0d1aa3101",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "state_sha256": "ed0883d5b85c50ec4ccefe98b03ce4a3195741d6191595e956e1161190c4efc0",
+      "task_sha256": "8378b6c624a1dfe5b78c035c919a921b1c6b5d950dbfcc5ca20769f94784e1c8",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-values-steps-list",
+      "state_sha256": "a223cfd1315d1c21d253afd0e154633c052adb3a73e292d5a1f2fcbe87c605fa",
+      "task_sha256": "ee43899f0872023ff089d63c8dc1424ce6c88f594b314cf4266657e92c635ec6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    }
+  ]
+}

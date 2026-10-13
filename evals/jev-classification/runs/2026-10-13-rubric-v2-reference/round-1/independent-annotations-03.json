@@ -1,0 +1,181 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-03",
+      "state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+      "task_sha256": "dddc4c7d31969f18532d16fc704356f6eab1fe1e1d481641778f1c51d6875708",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path = f\"specification.bdd_scenarios[{index}]\""
+        }
+      ],
+      "uncertainties": [
+        "No supplied declaration establishes whether a nonempty steps list is a BDD domain completeness rule or an input representation requirement.",
+        "The supplied validation finding does not establish the primary contract of the combined type-and-emptiness expression."
+      ],
+      "rationales": {
+        "opportunity": "The subject is the steps of a BDD scenario. The combined predicate distinguishes a non-list or empty steps representation from a nonempty list and produces a validation finding. The supplied fragment does not settle whether nonemptiness expresses a durable BDD completeness requirement or whether the whole expression only validates the accepted representation. Those interpretations yield different architectural-fit judgments; lack of a shown owner is not the reason for abstention.",
+        "concern_kind": "The listness test is representation-oriented, while the empty-list test could express a domain requirement that every BDD scenario contain steps. The finding labels both alternatives invalid_value without a supplied contract distinguishing structural parsing from scenario admissibility. Because the exact selected expression combines both tests, its primary responsibility cannot reliably be assigned to policy or mechanics from this fragment alone."
+      }
+    },
+    {
+      "case_id": "context-05",
+      "state_sha256": "b19324fa7c7d5a4508ab2ef77e0fc4aa82300d753653fbab3edf74a0c4e41a98",
+      "task_sha256": "94b8a3934b629d57874635b2d47232e162898c395606a6ea5c8403bc9e7a8249",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "relevant = [b for b in bindings if requested & set(b[\"acceptance_criteria_ids\"])]\n    covered = {c for b in relevant for c in b[\"acceptance_criteria_ids\"]}\n    if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"\"\"Interpret only the upstream pinned Swift source-resolution contract.\"\"\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not requested <= covered:\n        return \"missing_criterion_binding\""
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The subject is the set of passport criteria requested by a source claim. The predicate distinguishes complete coverage by relevant implementation bindings from at least one requested criterion without a binding. Its result establishes a source-claim evidence requirement and returns a specific failure reason, making it suitable for a named, observable Specification. No supplied evaluation path demonstrates existing Specification ownership of this same decision.",
+        "concern_kind": "The exact predicate decides whether the claim has sufficient criterion-to-implementation binding coverage under the pinned source-resolution contract. It is an evidence sufficiency and admissibility decision. Set inclusion is the mechanism used to express that policy; this target does not select an implementation variant or merely parse a set."
+      }
+    },
+    {
+      "case_id": "context-06",
+      "state_sha256": "856c30f413385254fd3111c3ba058d2dedd9db8f22cdb79f07ab26d30bb308ac",
+      "task_sha256": "76c6abc3dbe584123af68f8a9cd9d44a0cf5cbfcf2002c32df7859c7a80257d6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered = yaml.safe_dump("
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The subject is already-rendered YAML text. The predicate distinguishes text with a final newline from text lacking one solely so the serializer can append that delimiter. The supplied producer and consequent establish a representation-formatting responsibility without a distinct domain decision, so it should remain procedural under the profile.",
+        "concern_kind": "The exact expression checks a textual suffix after yaml.safe_dump and controls appending a newline before returning the serialization. Its primary responsibility is output representation normalization; it establishes no domain admissibility, authority, obligation, or variant-specific behavior contract."
+      }
+    },
+    {
+      "case_id": "context-10",
+      "state_sha256": "553f171412445a688b4ebe89c22463fd257215f6110dfee910ac520042032474",
+      "task_sha256": "76b870a6b8e97f1a790f3bdc2753579d872ff66e9ac908311a018e50ad1e2117",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "def _has_reviewable_gap(gaps: list[Any], term: str | None = None) -> bool:\n    for raw_gap in gaps:\n        gap = _dict(raw_gap)\n        if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if not _has_reviewable_gap([gap], generated_term):\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue\n        if _text(gap.get(\"status\")) not in REVIEWABLE_GAP_STATUSES:\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if term is None or _text(gap.get(\"proposed_term\")).lower() == term.lower():\n            return True"
+        }
+      ],
+      "uncertainties": [
+        "The producer and provenance of canonical_mutations_allowed are not supplied; the demonstrated decision is reviewability eligibility, not mutation authorization."
+      ],
+      "rationales": {
+        "opportunity": "The subject is a candidate gap being tested for reviewability. The predicate distinguishes an explicitly false canonical_mutations_allowed value from every other value and excludes the latter from the set of gaps that can satisfy the reviewability predicate. This defines a stable eligibility condition for domain review alongside the supplied status and proposed-term conditions. The later candidate-binding predicate consumes that decision, and no supplied Specification evaluation path owns this exact rule.",
+        "concern_kind": "The exact check decides which gaps may count as reviewable: only gaps explicitly marked as disallowing canonical mutations continue toward a successful reviewability result. That is a domain eligibility decision in the demonstrated predicate. This classification does not infer that the target grants or denies mutation authority itself; it uses the field to define eligibility for review."
+      }
+    },
+    {
+      "case_id": "context-12",
+      "state_sha256": "54dd1b72bf478a2fcb735109083941b8f1bef2b57f485dac8215e888be1fc4ba",
+      "task_sha256": "b888be2d70e651df9da8f41607d699f9a504475b29f2da4d610bad7392040447",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "No permitted-domain-reference or generic adapter contract is supplied.",
+        "The subject represented by path and value, and the consequence of the predicate, are not supplied."
+      ],
+      "rationales": {
+        "opportunity": "The expression distinguishes absolute, parent-traversing, or noncanonical textual paths from relative paths without parent components in their canonical POSIX spelling. It could implement a permitted-domain-reference integrity rule suitable for a Specification, or generic path representation and adapter constraints suitable for procedural code. No supplied contract or consequence settles which role this exact combined expression has.",
+        "concern_kind": "The individual operations reveal path checks but do not establish their primary responsibility. A domain reference-integrity contract would make this policy, while generic path acceptance and normalization would make it mechanics. The mixed selected expression and absent role contract leave that distinction materially unresolved."
+      }
+    },
+    {
+      "case_id": "context-14",
+      "state_sha256": "0ff4d798cf5e815f48c4c10079d32b6184fd6d76ecb05acccf5aed934456623b",
+      "task_sha256": "54d5953f9a618332e5ad1b56262fc3b98bd1cb86e62e970adc26a858eff16abf",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate != \"none\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gate != \"none\""
+        }
+      ],
+      "uncertainties": [
+        "The semantic contract for gate and the none sentinel is absent.",
+        "No controlled action, declared predicate contract, or consumer is supplied to establish the decision role."
+      ],
+      "rationales": {
+        "opportunity": "The exact expression distinguishes the string sentinel none from every other gate value. Without the meaning of gate or the decision controlled by the comparison, it could be a lifecycle or eligibility rule, a domain behavior selector, or technical sentinel handling. Those alternatives produce materially different Specification-fit judgments, so the supplied expression alone does not establish either eligibility or exclusion.",
+        "concern_kind": "The comparison supplies no evidence of whether a non-none gate changes a domain obligation, selects how an established activity runs, or merely identifies a represented state. The identifier and sentinel do not establish the primary responsibility, so policy, variant behavior, and mechanics cannot be reliably distinguished."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-s7arxagx/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-s7arxagx/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

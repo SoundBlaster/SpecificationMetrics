@@ -104,6 +104,81 @@ Its plan also requires task identity to bind rubric/questions: matching state
 hashes alone cannot establish identical inputs across a rubric change. No
 historical reference, production prompt or metric state was changed.
 
+## Confirmed criterion failure: rubric-v2 decisive coverage on BDD steps
+
+- **Evidence:** the [v2 independent reference](runs/2026-10-13-rubric-v2-reference/README.md)
+  retains 36 fresh annotations over the same eighteen source states. Both
+  rounds match on 18/18 cases per axis, but each axis has only 10/18 decisive
+  labels. The frozen H2 requires decisive labels on ten v1 development controls;
+  `context-03` abstains on both axes in both rounds, so H2 fails at 9/10 controls.
+- **Cause status:** the criterion failure is confirmed. The semantic cause is
+  unresolved. Annotators cite the absent contract distinguishing a BDD
+  nonempty-steps domain requirement from input/schema validation. Excessive v2
+  abstention, missing source context and overconfident v1 labels remain
+  competing explanations. The rationale does not establish internal model
+  reasoning, and the v1 labels are not gold.
+- **Lesson:** report repeat agreement and decisive coverage together. A stable
+  abstention is not evidence of improved classification; do not remove a failed
+  control after seeing the result.
+- **Prevention:** keep H2 as a separate gate from H1, bind each annotation to
+  the exact rubric and task digest, and preserve raw output hashes. A new
+  diagnostic must source-ground the BDD contract and test semantic-contract and
+  ownership evidence separately where the source permits.
+- **Verification:** the new offline validator replays both rounds and reports
+  H1 pass / H2 fail. Seven regression tests cover task-identity binding, raw
+  result replay, the H2 guard against perfect agreement under blanket
+  abstention, and overwrite refusal. The reference remains unapproved for
+  provider scoring; no provider calls or metric writes were made.
+
+## Source audit: BDD contract exists; the failed annotation context omitted it
+
+- **Evidence:** at pinned SpecGraph commit `51c8d93cc385569864b3cd7f5040d4b3e0820a1b`,
+  `SG-SPEC-0070` states that BDD `steps` is a nonempty ordered list of nonempty
+  strings and records human approval. Its characterization test rejects an
+  empty step list. The same commit links `BDDScenarioValuesSpec` through
+  `BDDPolicy(Specification[BDDContext])`, `spec_id = SG-SPEC-0070`, its
+  `_evaluate` implementation and composition evaluation. V2 `context-03`
+  supplied only the method body, not those contract or implementation-link
+  fragments.
+- **Cause status:** confirmed that the source contract exists and was absent
+  from the annotation input. This disproves a repository-wide missing-contract
+  explanation. It does not establish that the omission caused the abstentions.
+  The adopted contract specifies input validity but does not itself settle the
+  v2 policy-versus-mechanics boundary: domain completeness and representation
+  validity remain distinct interpretations.
+- **Lesson:** distinguish a missing rule in the product from missing evidence
+  in the prompt. A formal validity contract does not automatically establish
+  whether its concern kind is domain policy or input mechanics.
+- **Prevention:** the [balanced BDD factor diagnostic](runs/2026-10-13-bdd-steps-balanced-factorial-preparation/README.md)
+  holds each target, architecture profile and rubric fixed while separately
+  showing the adopted values contract and the same-decision Specification
+  evaluation link. Its assignments cross evidence condition with annotator
+  across distinct targets and do not seed expected labels.
+- **Verification:** its offline producer binds all four source files to the
+  pinned revision and prepares three blank assignments per cell. No annotation
+  or provider run has started; v2 raw results and H2 remain unchanged.
+- **Follow-up CI failure:** both general CI runs caught a stale
+  `producer_sha256` in the saved receipt. The producer had received a final
+  whitespace-only edit after the packet was frozen, but its self-hash receipt
+  was not regenerated. Regenerating in a scratch directory showed that only
+  `preparation-receipt.json` needed refresh; all packet hashes remained stable.
+  The existing replay test caught this drift locally and will guard future
+  producer edits.
+- **Follow-up review finding:** the first preparation assigned one evidence
+  condition to each annotator. Condition and annotator were therefore nested,
+  so differences could not be attributed to evidence. Its target context also
+  showed only an anonymous method body, not the containing Specification class.
+- **Correction:** preserve that unstarted draft as superseded. The replacement
+  uses four related predicates from two classes under `SG-SPEC-0070`; each of
+  twelve contexts sees all four evidence conditions, one per distinct target.
+  Each target-condition receives three contexts, packet position is balanced
+  across conditions, and linked cells include the contiguous containing class
+  and method plus the Specification base/evaluation path. No label is seeded.
+- **Verification:** regression tests assert the target-condition and
+  condition-position balance, prohibit repeated targets per context, and check
+  that each linked target occurs inside its named class method. No annotation
+  or provider request has started.
+
 ## Record template
 
 1. Failure and exact command/criterion.

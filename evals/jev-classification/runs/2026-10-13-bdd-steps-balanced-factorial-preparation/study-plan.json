@@ -1,0 +1,91 @@
+{
+  "status": "pre-registered_balanced_diagnostic_plan_not_annotation_reference",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "prior_annotation_receipt_sha256": "a2e639475b9517b618545414079ae5a19d0cd9cde40c4054c748760955ecb066",
+  "rubric_id": "specification_metrics.expression-fit.v2-diagnostic",
+  "design": "2x2 evidence-presence diagnostic; four related decision sites, twelve fresh contexts; each context sees every condition once and one view of each site",
+  "target_family": "Four exact predicates from BDDScenarioValuesSpec.findings and BDDScenarioFieldsSpec.findings, both linked to SG-SPEC-0070.",
+  "factors": {
+    "contract": "The approved source contract defines exact nonempty IDs, optional supplied titles, and nonempty ordered steps of nonempty strings.",
+    "implementation_link": "The target-containing contiguous class/method excerpt, Specification base, evaluator and composition registration are supplied."
+  },
+  "conditions": [
+    {
+      "cell": "01",
+      "contract_evidence_present": false,
+      "implementation_link_evidence_present": false
+    },
+    {
+      "cell": "02",
+      "contract_evidence_present": true,
+      "implementation_link_evidence_present": false
+    },
+    {
+      "cell": "03",
+      "contract_evidence_present": false,
+      "implementation_link_evidence_present": true
+    },
+    {
+      "cell": "04",
+      "contract_evidence_present": true,
+      "implementation_link_evidence_present": true
+    }
+  ],
+  "target_cases": [
+    {
+      "case_id": "bdd-values-steps-list",
+      "expression": "not entry.steps_is_list or not entry.steps",
+      "syntax_kind": "BoolOp"
+    },
+    {
+      "case_id": "bdd-values-id",
+      "expression": "not entry.id.valid",
+      "syntax_kind": "UnaryOp"
+    },
+    {
+      "case_id": "bdd-values-step-item",
+      "expression": "not step.valid",
+      "syntax_kind": "UnaryOp"
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "expression": "entry.title_supplied and not entry.title.valid",
+      "syntax_kind": "BoolOp"
+    }
+  ],
+  "controlled_inputs": [
+    "same target expression and target-specific method body across the four evidence cells",
+    "same architecture profile, rubric bytes, questions, and annotation instructions",
+    "only adopted contract and explicit Specification linkage evidence vary within each target"
+  ],
+  "assignment_balance": {
+    "per_context": "four distinct targets and exactly one case from each evidence cell",
+    "per_target_cell": "three fresh contexts",
+    "presentation_order": "each cell appears three times at each packet position",
+    "same_target_views": "no annotator receives multiple evidence cells for the same target"
+  },
+  "primary_observations": [
+    "opportunity and concern-kind label distributions by target and evidence cell",
+    "decisive coverage per axis by target and cell",
+    "whether exact added fragments appear in rationales and evidence quotes",
+    "within-cell repeat agreement, descriptive only"
+  ],
+  "directional_hypotheses_not_gold_labels": {
+    "contract": "At fixed implementation-link presence, the adopted contract may reduce uncertainty about validity for the corresponding target. It does not predetermine policy versus mechanics.",
+    "implementation_link": "At fixed contract presence, explicit class, Specification and composition evidence may move opportunity toward excluded while leaving concern kind independently assessable.",
+    "combined": "The combined cell may clarify existing representation; concern kind can remain uncertain where domain purpose is not specified."
+  },
+  "interpretation_limits": [
+    "Four related decision sites from two classes under one Specification lineage are not an independent sample of the codebase.",
+    "Three fresh contexts per target-cell support descriptive comparison, not significance or classifier accuracy claims.",
+    "Each context sees four related cases; case-local instructions and balanced order reduce but cannot eliminate cross-case carryover.",
+    "The approved contract defines validity but does not itself settle the policy-versus-mechanics boundary.",
+    "Agent model identity is inherited and must be recorded as unverified unless exposed by the runtime.",
+    "Do not change v2 labels, failed H2, production prompts, S/U state, or metric storage from this diagnostic."
+  ],
+  "expected_labels_assigned": false,
+  "human_gold": false,
+  "annotation_started": false,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}

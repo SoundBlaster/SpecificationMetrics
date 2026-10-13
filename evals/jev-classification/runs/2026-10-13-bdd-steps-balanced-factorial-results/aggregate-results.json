@@ -1,0 +1,221 @@
+{
+  "status": "descriptive_unadjudicated",
+  "retained_annotation_count": 48,
+  "by_cell": {
+    "01": {
+      "n": 12,
+      "opportunity": {
+        "needs_review": 12
+      },
+      "concern_kind": {
+        "unknown": 12
+      },
+      "decisive_opportunity": 0,
+      "decisive_concern_kind": 0
+    },
+    "02": {
+      "n": 12,
+      "opportunity": {
+        "eligible": 12
+      },
+      "concern_kind": {
+        "policy": 12
+      },
+      "decisive_opportunity": 12,
+      "decisive_concern_kind": 12
+    },
+    "03": {
+      "n": 12,
+      "opportunity": {
+        "excluded": 12
+      },
+      "concern_kind": {
+        "policy": 1,
+        "unknown": 11
+      },
+      "decisive_opportunity": 12,
+      "decisive_concern_kind": 1
+    },
+    "04": {
+      "n": 12,
+      "opportunity": {
+        "excluded": 12
+      },
+      "concern_kind": {
+        "policy": 12
+      },
+      "decisive_opportunity": 12,
+      "decisive_concern_kind": 12
+    }
+  },
+  "by_target_and_cell": {
+    "bdd-fields-optional-title": {
+      "01": {
+        "n": 3,
+        "opportunity": {
+          "needs_review": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "02": {
+        "n": 3,
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "03": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "04": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      }
+    },
+    "bdd-values-id": {
+      "01": {
+        "n": 3,
+        "opportunity": {
+          "needs_review": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "02": {
+        "n": 3,
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "03": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "04": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      }
+    },
+    "bdd-values-step-item": {
+      "01": {
+        "n": 3,
+        "opportunity": {
+          "needs_review": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "02": {
+        "n": 3,
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "03": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 1,
+          "unknown": 2
+        }
+      },
+      "04": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      }
+    },
+    "bdd-values-steps-list": {
+      "01": {
+        "n": 3,
+        "opportunity": {
+          "needs_review": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "02": {
+        "n": 3,
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "03": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "unknown": 3
+        }
+      },
+      "04": {
+        "n": 3,
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      }
+    }
+  },
+  "agreement": {
+    "opportunity_target_cell_groups_unanimous": 16,
+    "target_cell_groups_total": 16,
+    "concern_kind_target_cell_groups_unanimous": 15,
+    "concern_kind_target_cell_groups_with_disagreement": [
+      {
+        "target": "bdd-values-step-item",
+        "cell": "03",
+        "labels": {
+          "policy": 1,
+          "unknown": 2
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "status": "blank_not_reference",
+  "annotations": [
+    {
+      "case_id": "context-04",
+      "state_sha256": "34bc04293ac909df2c1eb79ed6cc57692517377485a6fcf7df03490a12e8b614",
+      "task_sha256": "fc7035b8287ab638becf291bc8ac8a78a4620bbd476db06f38a734428ca22610",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-07",
+      "state_sha256": "8541152abb09dd22016f6087bf8563bbf4b89ddf7eecd0e5f5e49454214906a4",
+      "task_sha256": "a99904532a28d46dd24b1c236e6d84201983a3da09ac3458b6e10cacda6b1678",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-09",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "task_sha256": "daa11309920d97d5ac0a74f5f9d0b068aed1c2310d81f51adeedc4f7f57dbb41",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "task_sha256": "b3ec7d09f13dc8693a679d065297d254a376595cce917d19ea13a34e7692968e",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "task_sha256": "52c02ed31469f8df55de3c2334a28806601004bc445628524e94d1bbee24e195",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-18",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "task_sha256": "0d459e862ca6d3bfb37197218a58d390e7d4a292d0ae41acbadc001a86d1c640",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    }
+  ]
+}

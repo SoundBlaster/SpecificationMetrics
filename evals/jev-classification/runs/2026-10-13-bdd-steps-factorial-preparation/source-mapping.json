@@ -1,0 +1,166 @@
+{
+  "status": "integrator_only_source_map_not_for_annotation",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "source_case_id": "context-03",
+  "source_target_id": "target-06",
+  "source_state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+  "expression_sha256": "90879014bcfd5f65f60565a1e3d75cc04fb02ee61273557fd804167564f02f4a",
+  "source_facts": {
+    "contract_criterion": {
+      "path": "specs/nodes/SG-SPEC-0070.yaml",
+      "lines": [
+        64,
+        69
+      ],
+      "file_sha256": "5e5d0baa5ca3237dc408525ba39bf73ac2fed7187776bb2a2f463d6caa0c0ce7",
+      "code": "- criterion: Defines one shared native BDD declaration model with exact nonempty string IDs, an optional\n    descriptive title, and a nonempty ordered list of nonempty string steps; it preserves step repetition\n    and source text without inferring executable grammar.\n  evidence: specification.native_profile.values and specification.bdd_scenarios define exact IDs, optional\n    descriptive titles, nonempty ordered steps, and the BDD-NATIVE-EXACT-STEPS Given/When/Then case preserves\n    repeated exact step strings.",
+      "excerpt_sha256": "5a104f4f2bac9f51338b578fe8791f85513ec21096c71c2b7c22c7b7260234ee"
+    },
+    "contract_values": {
+      "path": "specs/nodes/SG-SPEC-0070.yaml",
+      "lines": [
+        397,
+        399
+      ],
+      "file_sha256": "5e5d0baa5ca3237dc408525ba39bf73ac2fed7187776bb2a2f463d6caa0c0ce7",
+      "code": "    values: id is exact nonempty string; scenario title is optional, but supplied values must be nonempty\n      strings; steps is a nonempty ordered list of nonempty strings. Whitespace-only values are invalid,\n      meaningful strings are not trimmed.",
+      "excerpt_sha256": "2592fd6549583b86a5fbdd5b412a0630c886f1e50b90723dded23378158723e6"
+    },
+    "contract_approval": {
+      "path": "specs/nodes/SG-SPEC-0070.yaml",
+      "lines": [
+        427,
+        427
+      ],
+      "file_sha256": "5e5d0baa5ca3237dc408525ba39bf73ac2fed7187776bb2a2f463d6caa0c0ce7",
+      "code": "      review_status: Human approved for bdd_scenarios_v1; no consumer default activation.",
+      "excerpt_sha256": "0d88f3ecd23879d0820b72fc21e8426d50eb368dcf50049ae6b26d5751218432"
+    },
+    "implementation_class": {
+      "path": "tools/native_bdd/values_spec.py",
+      "lines": [
+        7,
+        8
+      ],
+      "file_sha256": "1c7509f9beef4d79511d5e6ad1fcf94a1d217ef74f7c55d3e31594ae166b49e8",
+      "code": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\"",
+      "excerpt_sha256": "cdd1fb856ec6d5ebca5a2f23f590b376d6a1e6f04f541cb222624d29f5015c30"
+    },
+    "implementation_base": {
+      "path": "tools/native_bdd/policy.py",
+      "lines": [
+        8,
+        17
+      ],
+      "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+      "code": "class BDDPolicy(Specification[BDDContext]):\n    spec_id = \"SG-SPEC-0070\"\n    rule_ref: str\n\n    def __init__(self) -> None:\n        super().__init__(name=self.rule_ref)\n        self._seal()\n\n    def findings(self, context: BDDContext) -> tuple[BDDScenarioFinding, ...]:\n        raise NotImplementedError",
+      "excerpt_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882"
+    },
+    "implementation_evaluator": {
+      "path": "tools/native_bdd/policy.py",
+      "lines": [
+        31,
+        32
+      ],
+      "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+      "code": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)",
+      "excerpt_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+    },
+    "composition_membership": {
+      "path": "tools/native_bdd/composition.py",
+      "lines": [
+        13,
+        20
+      ],
+      "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+      "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)",
+      "excerpt_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270"
+    },
+    "composition_evaluation": {
+      "path": "tools/native_bdd/composition.py",
+      "lines": [
+        28,
+        39
+      ],
+      "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+      "code": "    for policy in POLICIES:\n        skip = policy.skip_reason(context)\n        if skip:\n            if recorder is not None:\n                recorder.skipped(policy.rule_ref)\n            outcomes.append(PolicyOutcome(policy.rule_ref, \"skipped\", skip))\n            continue\n        passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)\n        findings.extend(current_findings)\n        outcomes.append(PolicyOutcome(policy.rule_ref, \"satisfied\" if passed else \"unsatisfied\"))\n        context = policy.transition(context, current_findings)",
+      "excerpt_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2"
+    }
+  },
+  "cells": [
+    {
+      "cell": "01",
+      "case_id": "bdd-steps-a17c",
+      "packet": "annotation-packet-01.json",
+      "contract_evidence_present": false,
+      "implementation_link_evidence_present": false,
+      "state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+      "task_sha256": "90aa3b721825ad71f99fe985a4c36e977d9ee03a1c4cb1da71357a12831c9f29",
+      "visible_fragment_ids": [
+        "context-01"
+      ]
+    },
+    {
+      "cell": "02",
+      "case_id": "bdd-steps-b42e",
+      "packet": "annotation-packet-02.json",
+      "contract_evidence_present": true,
+      "implementation_link_evidence_present": false,
+      "state_sha256": "2c0ddbcf9d294ee7a35b7480c978fe0f15bf572653282f3b1e9d700feef242e9",
+      "task_sha256": "37fe5470e021f132425da9b724c2904ce4dceb31563e74724fd0445b2751dc49",
+      "visible_fragment_ids": [
+        "context-01",
+        "evidence-contract-criterion",
+        "evidence-contract-values",
+        "evidence-contract-approval"
+      ]
+    },
+    {
+      "cell": "03",
+      "case_id": "bdd-steps-c90d",
+      "packet": "annotation-packet-03.json",
+      "contract_evidence_present": false,
+      "implementation_link_evidence_present": true,
+      "state_sha256": "87fcfe32a344c9a17ca3cccacb80e175484faeb7b990a5095c647db07a01ec39",
+      "task_sha256": "794dcb3bd6692e609261d8e76f75ad0c730f2e2b9984b7a4797e6c6489470701",
+      "visible_fragment_ids": [
+        "context-01",
+        "evidence-implementation-class",
+        "evidence-implementation-base",
+        "evidence-implementation-evaluator",
+        "evidence-composition-membership",
+        "evidence-composition-evaluation"
+      ]
+    },
+    {
+      "cell": "04",
+      "case_id": "bdd-steps-d63b",
+      "packet": "annotation-packet-04.json",
+      "contract_evidence_present": true,
+      "implementation_link_evidence_present": true,
+      "state_sha256": "02bc3378bb8a8478fe8ac1824dbf75ceffccead1e46e1ee7a8ab10116e84ef2c",
+      "task_sha256": "878f2d3b616f25b64f2e55c25ea272d7cee607524e825301d922dafa7a39e43b",
+      "visible_fragment_ids": [
+        "context-01",
+        "evidence-contract-criterion",
+        "evidence-contract-values",
+        "evidence-contract-approval",
+        "evidence-implementation-class",
+        "evidence-implementation-base",
+        "evidence-implementation-evaluator",
+        "evidence-composition-membership",
+        "evidence-composition-evaluation"
+      ]
+    }
+  ],
+  "source_fact_sha256": {
+    "contract_criterion": "b85fd5fcfccc1205e45050841c43d8f22b9920f71637fbd5f77f980a9832a12c",
+    "contract_values": "5f319828863f078248b52d5dad4cce8c1d5884c935992ec47f103cf9c00c1250",
+    "contract_approval": "64dceac3ac730b29b4806af948537e664bcd6cb7ee14a0b87b84450a2fb02d2c",
+    "implementation_class": "fd1829bab50dee28feae05ff5867a6495117d59c5d4ee4283c5d3d8581838359",
+    "implementation_base": "c616997699873ff213958ca0f29e525ae0e5080cc4a7f98e0a0c78c8cef74344",
+    "implementation_evaluator": "41808b86e70810691dd547759350ce064a255ef121c9206ec0b1072df57fa001",
+    "composition_membership": "db366d5a5c18e856f02e735ce560daac47ec72f217f5c9c97db5cd9f17034adb",
+    "composition_evaluation": "85ad37ec7ca78e5ed31e8d8f5536c3c486e4cb468440c1dccb62c44ee5e6023c"
+  }
+}

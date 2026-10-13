@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "round": 1,
+  "model_selection": "inherited; actual runtime model not independently verified",
+  "isolation": "fresh context and scoped copies on shared filesystem; self-reported read boundaries",
+  "assignments": [
+    {
+      "slot": "01",
+      "directory": "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-3wyv8o8f",
+      "files": {
+        "packet.json": {
+          "source": "annotation-packet-01.json",
+          "sha256": "fa3d6bda7d24bf9040455da7e618e03e330b8e1a3e6e3f0c7c2c25039f0205fc"
+        },
+        "template.json": {
+          "source": "annotation-template-01.json",
+          "sha256": "c26b271fff11c82fe8d4e9017f92f8c8480bf0b31a81101541170f5040498cb7"
+        }
+      },
+      "agent_task": "/root/v2_r1_p01",
+      "context_inheritance": "none",
+      "model_override": null,
+      "reasoning_effort_override": null,
+      "dispatched_prompt_sha256": "179a4b917f084c91c3bb1d3a89bbc4a24ef5fa19355f0b43a21b8793fa8913fd",
+      "output_sha256": "1cce80dff69fd6a8e75fc32412d0c9890fdb08d184a25473badf6adf2fd32da7",
+      "input_copy_check": "byte-identical before dispatch and after completion"
+    },
+    {
+      "slot": "02",
+      "directory": "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-r2f4i0mc",
+      "files": {
+        "packet.json": {
+          "source": "annotation-packet-02.json",
+          "sha256": "b70a951d6bebe0437282a220b85e018c17c83d86bd2fb1e9de0b73411d6c461b"
+        },
+        "template.json": {
+          "source": "annotation-template-02.json",
+          "sha256": "bf733366ba662bf841d0c30d16aeb93c5def5d138d8951590e3cb7b3ad15bb5e"
+        }
+      },
+      "agent_task": "/root/v2_r1_p02",
+      "context_inheritance": "none",
+      "model_override": null,
+      "reasoning_effort_override": null,
+      "dispatched_prompt_sha256": "7381bcbb179db8d6a7e826e261b61a2908d8ce0497c4fb9cca8133dceade56ff",
+      "output_sha256": "7c5763f052a2a71921b3ccba0e9946b477abc78dd16529fadd4f0e823dda6864",
+      "input_copy_check": "byte-identical before dispatch and after completion"
+    },
+    {
+      "slot": "03",
+      "directory": "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-annotation-s7arxagx",
+      "files": {
+        "packet.json": {
+          "source": "annotation-packet-03.json",
+          "sha256": "57cfc9f34bfa2cbe55906b87c1681803e7bb3b89e7155c0896f9018b5e9b135a"
+        },
+        "template.json": {
+          "source": "annotation-template-03.json",
+          "sha256": "950e3ed89a237627df1d369a0672528f66af4ee02bbc3d42ebeb40c6c51f7ac8"
+        }
+      },
+      "agent_task": "/root/v2_r1_p03",
+      "context_inheritance": "none",
+      "model_override": null,
+      "reasoning_effort_override": null,
+      "dispatched_prompt_sha256": "ccf74b26c7dc38357ec4976104fd3e28922d5d6f328368e3521e48ae7d4990f0",
+      "output_sha256": "0e782f63373caef57f7644abc30767a460ada64a75edc0c835291d8ae2806474",
+      "input_copy_check": "byte-identical before dispatch and after completion"
+    }
+  ]
+}

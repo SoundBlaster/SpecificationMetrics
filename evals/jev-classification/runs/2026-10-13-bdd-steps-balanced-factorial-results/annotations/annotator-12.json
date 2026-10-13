@@ -1,0 +1,151 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "bdd-values-step-item",
+      "state_sha256": "08bea540c5d656871c6f3293a21c497db6d644165709a9d535e11e45b0ed06a8",
+      "task_sha256": "c975f689664fe418d0095c22a63134dee4662be4da723769e0bf65a0d1aa3101",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The supplied contract makes each BDD step part of an ordered, nonempty declaration and the target rejects a step whose validity predicate fails. This is a stable declaration-admissibility rule suitable for an addressable Specification; the supplied context does not show a Specification already owning this exact check.",
+        "concern_kind": "policy"
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[2].code",
+          "quote": "steps is a nonempty ordered list of nonempty strings."
+        },
+        {
+          "axis": "concern_kind",
+          "source": "bounded_context.fragments[2].code",
+          "quote": "steps is a nonempty ordered list of nonempty strings."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "state_sha256": "ed0883d5b85c50ec4ccefe98b03ce4a3195741d6191595e956e1161190c4efc0",
+      "task_sha256": "8378b6c624a1dfe5b78c035c919a921b1c6b5d950dbfcc5ca20769f94784e1c8",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The exact check is implemented in BDDScenarioFieldsSpec, which derives through BDDPolicy from Specification, is listed in POLICIES, and participates in the supplied policy evaluation path. That is explicit same-decision Specification ownership.",
+        "concern_kind": "The target reports an invalid supplied title, but the fragments do not define entry.title.valid. Without that contract, its primary responsibility could be domain admissibility or generic representation validation."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[0].code",
+          "quote": "class BDDScenarioFieldsSpec(BDDPolicy):"
+        },
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[1].code",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[3].code",
+          "quote": "BDDScenarioFieldsSpec(),"
+        },
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[4].code",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "target.code",
+          "quote": "entry.title_supplied and not entry.title.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "bounded_context.fragments[0].code",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".scenario\"))"
+        }
+      ],
+      "uncertainties": [
+        "The supplied fragments do not define entry.title.valid, so domain admissibility and generic representation-validation readings remain plausible."
+      ]
+    },
+    {
+      "case_id": "bdd-values-steps-list",
+      "state_sha256": "a223cfd1315d1c21d253afd0e154633c052adb3a73e292d5a1f2fcbe87c605fa",
+      "task_sha256": "ee43899f0872023ff089d63c8dc1424ce6c88f594b314cf4266657e92c635ec6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The target check appears in BDDScenarioValuesSpec, which derives through the Specification base, is included in POLICIES, and is evaluated through that policy path. The same decision is already owned by a Specification.",
+        "concern_kind": "The native BDD declaration contract requires a nonempty ordered list of steps. The target enforces that domain admissibility condition, including the permitted container shape."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[0].code",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):"
+        },
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[4].code",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[6].code",
+          "quote": "BDDScenarioValuesSpec(),"
+        },
+        {
+          "axis": "opportunity",
+          "source": "bounded_context.fragments[7].code",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "bounded_context.fragments[2].code",
+          "quote": "steps is a nonempty ordered list of nonempty strings."
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-values-id",
+      "state_sha256": "e98c6b9c5f605f3bbd3ff38c032cbc554a0b5d60704f3a12f56d2392f58e25e6",
+      "task_sha256": "28487aabcbef31cb92db1a4472bf2ab58983a26676414055185ef0b216d310d6",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The expression rejects an invalid ID, but the supplied fragments do not define the ID contract or the meaning of entry.id.valid. A domain declaration rule and a representation-validation check remain materially plausible.",
+        "concern_kind": "The target is an invalidity predicate with no supplied semantics for the ID or its valid member. The evidence does not establish whether it decides domain admissibility or only validates a representation."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "source": "target.code",
+          "quote": "not entry.id.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "source": "target.code",
+          "quote": "not entry.id.valid"
+        }
+      ],
+      "uncertainties": [
+        "The supplied fragments do not define entry.id.valid or the BDD ID contract, so domain admissibility and representation-validation readings remain plausible."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-12-final/packet.json",
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-12-final/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

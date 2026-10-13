@@ -1,0 +1,95 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "bdd-values-steps-list",
+      "state_sha256": "269c7e3978dbb00f727c30b15b8d63670f24db40430bfa438ff727c83de30e1b",
+      "task_sha256": "caebcc2e88a5ed02ceab5c0e85af6ecc7b0ef0dd510ab0b563806a9541917b89",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The target distinguishes a missing/non-list or empty steps collection, while the supplied BDD declaration contract requires nonempty ordered steps. That is a stable domain admissibility rule suitable for a named, observable Specification. No supplied evidence explicitly establishes existing Specification ownership of this same decision.",
+        "concern_kind": "The branch determines whether a scenario receives an invalid_value finding for its steps, applying the declared BDD value constraint. It decides domain admissibility even though it appears in validation code."
+      },
+      "evidence_quotes": [
+        {"axis": "opportunity", "quote": "nonempty ordered list of nonempty string steps"},
+        {"axis": "opportunity", "quote": "findings.append(issue(\"invalid_value\", path + \".steps\"))"},
+        {"axis": "concern_kind", "quote": "if not entry.steps_is_list or not entry.steps:"},
+        {"axis": "concern_kind", "quote": "findings.append(issue(\"invalid_value\", path + \".steps\"))"}
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-values-id",
+      "state_sha256": "dc0804279ac145f2379f26a4b5693c6432967052ef3da66468b33e04ce5b835a",
+      "task_sha256": "690102f11eb3ff41d57d301666f000f59a62c1ccc5cd92d4c158eff6eecfa3dd",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The supplied contract says scenario IDs must be exact nonempty strings, and the target applies that constraint to each entry. This is a durable domain rule that fits a named Specification. Although BDDScenarioIDsSpec appears in the composition, its responsibility is not shown, so the evidence does not establish same-decision ownership.",
+        "concern_kind": "The expression tests whether the scenario's ID satisfies the declared value contract; failure produces an invalid_value finding. It determines admissibility of a domain declaration, so its primary responsibility is policy."
+      },
+      "evidence_quotes": [
+        {"axis": "opportunity", "quote": "id is exact nonempty string"},
+        {"axis": "opportunity", "quote": "if not entry.id.valid:"},
+        {"axis": "concern_kind", "quote": "if not entry.id.valid:"},
+        {"axis": "concern_kind", "quote": "findings.append(issue(\"invalid_value\", path + \".id\"))"}
+      ],
+      "uncertainties": [
+        "BDDScenarioIDsSpec is present in the supplied policy tuple, but its decision and evaluation path are not shown; same-decision ownership therefore remains unknown."
+      ]
+    },
+    {
+      "case_id": "bdd-values-step-item",
+      "state_sha256": "f1a2dfa183fe8bb6114245f3e483453c45b17cb5f53290550a7486a697f08318",
+      "task_sha256": "b2f73ed8453a5012295feb7e6c03dc592ee4bf7ceac0b7338a6634bfcc0c6ca1",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The supplied BDD contract requires steps to be nonempty strings and explicitly preserves their source text without inferring executable grammar. The target checks each step's validity against that declaration rule, which is a stable domain constraint suitable for a named Specification.",
+        "concern_kind": "The selected predicate decides whether an individual declared BDD step violates the supplied value constraint and causes an invalid_value finding. This is domain admissibility policy, not selection of a variant-specific implementation."
+      },
+      "evidence_quotes": [
+        {"axis": "opportunity", "quote": "a nonempty ordered list of nonempty string steps; it preserves step repetition"},
+        {"axis": "opportunity", "quote": "if not step.valid:"},
+        {"axis": "concern_kind", "quote": "if not step.valid:"},
+        {"axis": "concern_kind", "quote": "for i, step in enumerate(entry.steps)"}
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "state_sha256": "088919e4e3f41d0c79bf4f8c24acf186a9278427c64f5ccec8e515e479c10711",
+      "task_sha256": "c708dca001ed2bdc0fb1ca1cf939bce07e563e6bb42d7142f661682a41a37935",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The method records an invalid_value finding when a supplied title is invalid, but the packet gives no definition of title validity or contract for permitted title values. That missing fact leaves a domain declaration rule and representation/parsing validation both plausible, so opportunity needs review rather than exclusion.",
+        "concern_kind": "The target is a validation predicate and its result is reported as invalid_value, but the accepted title contract and the meaning of title.valid are absent. The evidence cannot distinguish domain admissibility policy from generic representation or parsing mechanics, so the primary responsibility is unknown."
+      },
+      "evidence_quotes": [
+        {"axis": "opportunity", "quote": "if entry.title_supplied and not entry.title.valid:"},
+        {"axis": "opportunity", "quote": "findings.append(issue(\"invalid_value\", path + \".scenario\"))"},
+        {"axis": "concern_kind", "quote": "if entry.title_supplied and not entry.title.valid:"},
+        {"axis": "concern_kind", "quote": "findings.append(issue(\"invalid_value\", path + \".scenario\"))"}
+      ],
+      "uncertainties": [
+        "The definition of title.valid and the contract for a supplied title are not included in this case's bounded context."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-04/packet.json",
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-04/template.json"
+    ],
+    "other_inputs_read": false,
+    "deviations": [
+      "The initial required file read used exec_command's default login-shell behavior, so shell startup configuration may have been sourced implicitly; no such files were intentionally inspected."
+    ]
+  }
+}

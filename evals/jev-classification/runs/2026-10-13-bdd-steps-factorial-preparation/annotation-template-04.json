@@ -1,0 +1,19 @@
+{
+  "status": "blank_not_reference",
+  "annotations": [
+    {
+      "case_id": "bdd-steps-d63b",
+      "state_sha256": "02bc3378bb8a8478fe8ac1824dbf75ceffccead1e46e1ee7a8ab10116e84ef2c",
+      "task_sha256": "878f2d3b616f25b64f2e55c25ea272d7cee607524e825301d922dafa7a39e43b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    }
+  ]
+}

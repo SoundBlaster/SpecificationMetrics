@@ -1,0 +1,176 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "bdd-values-step-item",
+      "state_sha256": "f1a2dfa183fe8bb6114245f3e483453c45b17cb5f53290550a7486a697f08318",
+      "task_sha256": "b2f73ed8453a5012295feb7e6c03dc592ee4bf7ceac0b7338a6634bfcc0c6ca1",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact step-validity check is part of BDDScenarioValuesSpec.findings, whose inherited Specification evaluation path is shown. Although the declaration contract establishes a domain admissibility rule for ordered nonempty string steps, this same decision is already owned by a Specification, so the candidate is excluded under the rubric.",
+        "concern_kind": "The predicate rejects an invalid step and emits an invalid_value finding. The supplied declaration criterion requires a nonempty ordered list of nonempty string steps, establishing a domain admissibility decision rather than only parsing or representation mechanics."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-implementation-base",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-implementation-evaluator",
+          "quote": "return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-contract-criterion",
+          "quote": "nonempty ordered list of nonempty string steps"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "evidence-contract-criterion",
+          "quote": "nonempty ordered list of nonempty string steps"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-fields-optional-title",
+      "state_sha256": "088919e4e3f41d0c79bf4f8c24acf186a9278427c64f5ccec8e515e479c10711",
+      "task_sha256": "c708dca001ed2bdc0fb1ca1cf939bce07e563e6bb42d7142f661682a41a37935",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The branch rejects a supplied title when its validity flag is false, but this case supplies no title-validity contract. A specific missing fact—what validity means here—leaves a domain declaration rule and input or representation validation both plausible.",
+        "concern_kind": "The target gates an invalid_value finding on title_supplied and title.valid. Without a supplied definition of title validity, the primary responsibility could be domain admissibility or input-shape validation, so the evidence does not settle policy versus mechanics."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "entry.title_supplied and not entry.title.valid"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".scenario\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "entry.title_supplied and not entry.title.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".scenario\"))"
+        }
+      ],
+      "uncertainties": [
+        "The supplied context does not define title.valid or state the title admissibility contract."
+      ]
+    },
+    {
+      "case_id": "bdd-values-steps-list",
+      "state_sha256": "269c7e3978dbb00f727c30b15b8d63670f24db40430bfa438ff727c83de30e1b",
+      "task_sha256": "caebcc2e88a5ed02ceab5c0e85af6ecc7b0ef0dd510ab0b563806a9541917b89",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The supplied criterion expressly defines the native BDD declaration contract as requiring a nonempty ordered list of nonempty string steps. The target checks the list-presence and nonempty parts of that stable admissibility rule, which is suitable for a named Specification.",
+        "concern_kind": "The selected guard reports an invalid_value finding when steps is not a list or is empty, matching the explicit declaration criterion that steps form a nonempty ordered list. This decides whether a BDD scenario declaration is admissible."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "if not entry.steps_is_list or not entry.steps:"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-contract-criterion",
+          "quote": "nonempty ordered list of nonempty string steps"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "issue(\"invalid_value\", path + \".steps\")"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "evidence-contract-criterion",
+          "quote": "nonempty ordered list of nonempty string steps"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "bdd-values-id",
+      "state_sha256": "dc0804279ac145f2379f26a4b5693c6432967052ef3da66468b33e04ce5b835a",
+      "task_sha256": "690102f11eb3ff41d57d301666f000f59a62c1ccc5cd92d4c158eff6eecfa3dd",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The exact id-validity predicate is in BDDScenarioValuesSpec.findings, and the supplied base class, evaluator, and composition show this policy is a Specification whose evaluation delegates to findings. That is explicit same-decision Specification ownership, so the candidate opportunity is excluded.",
+        "concern_kind": "The fragments show that a false id.valid value produces an invalid_value finding in a Specification evaluation path, but do not define the validity contract. The flag could represent domain identity admissibility or parsing and representation validity, leaving primary responsibility materially ambiguous."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target-method-context",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-implementation-base",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-implementation-evaluator",
+          "quote": "return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "evidence-composition-membership",
+          "quote": "BDDScenarioValuesSpec(),"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "if not entry.id.valid:"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "target-method-context",
+          "quote": "findings.append(issue(\"invalid_value\", path + \".id\"))"
+        }
+      ],
+      "uncertainties": [
+        "The supplied context does not define the validity contract represented by entry.id.valid."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "inputs_read": [
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-06-replacement/packet.json",
+      "/tmp/specmetrics-bdd-balanced-launch-20261013-1752/annotator-06-replacement/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

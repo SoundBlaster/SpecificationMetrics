@@ -1,0 +1,37 @@
+{
+  "status": "criteria_frozen_before_annotation_not_provider_protocol",
+  "rounds": 2,
+  "fresh_contexts": 6,
+  "cases_per_round": 18,
+  "total_case_annotations": 36,
+  "delivery": "same_packet_bytes_and_order_in_both_rounds_two_cases_per_mode_one_view_per_target",
+  "H1": {
+    "purpose": "descriptive_within_v2_annotation_reliability",
+    "min_matched_per_axis": 16,
+    "min_joint_matches": 15,
+    "denominator": 18
+  },
+  "H2": {
+    "purpose": "guard_against_blanket_abstention_on_previously_decisive_development_controls",
+    "case_ids": [
+      "context-01",
+      "context-03",
+      "context-04",
+      "context-05",
+      "context-06",
+      "context-07",
+      "context-08",
+      "context-10",
+      "context-11",
+      "context-17"
+    ],
+    "require_both_axes_decisive_in_both_rounds": true,
+    "selection": "ten_v1_jointly_stable_and_decisive_states_selected_before_v2_answers",
+    "expected_v2_labels_assigned": false,
+    "human_gold": false
+  },
+  "semantic_review": "Agreement and decisive coverage do not prove correctness; inspect evidence and ownership separately.",
+  "comparison_to_v1": "descriptive_only_rubric_and_bookkeeping_prompt_change_no_concurrent_randomized_v1_arm",
+  "provider_requests": 0,
+  "metric_effect": "none"
+}
