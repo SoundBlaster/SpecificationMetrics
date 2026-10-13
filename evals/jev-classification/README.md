@@ -324,9 +324,19 @@ The review is advisory and not blind or human gold. Raw labels and agreement
 counts remain unchanged; v2 is still not approved for provider scoring.
 
 The [definition and owner-name follow-up](runs/2026-10-13-definition-owner-names-preparation/README.md)
-is prepared with sixteen fresh contexts planned and 64 blank annotations. The
+froze sixteen fresh contexts and 64 blank annotations before dispatch. The
 source audit resolves `TextInput.valid` to a nonblank-string check with original
 text preserved. Its domain purpose remains a separate question. Four independent
 helper families cross additional context with partial owner-name rewriting;
-the explicit newline append is a local-role control. No annotation is dispatched
-and no provider request is made by preparation.
+the explicit newline append is a local-role control. Preparation itself performs
+no annotation or provider request.
+
+The [completed definition/owner-name diagnostic](runs/2026-10-13-definition-owner-names-results/analysis.md)
+preserves all 64 raw annotations from sixteen fresh contexts, with no rejected
+attempts. Each target has identical labels across four conditions and four
+repetitions per condition. The focal result is `excluded / policy`; gate priority
+is `eligible / policy`, manifest paths remain `needs_review / unknown`, and
+newline formatting is `excluded / mechanics`. All four prospective criteria are
+met, with the definition criterion reviewed separately by the integrator.
+Agreement is not semantic correctness, a scoring reference, or a production
+metric update. Replay with `python3 validate_definition_owner_annotations.py`.

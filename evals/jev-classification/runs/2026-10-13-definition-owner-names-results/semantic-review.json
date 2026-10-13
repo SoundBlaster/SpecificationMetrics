@@ -1,0 +1,130 @@
+{
+  "status": "integrator_semantic_review_separate_from_raw_annotations",
+  "H_definition": {
+    "met": true,
+    "reviewed": 8,
+    "conflicts": 0,
+    "criterion_source": "../2026-10-13-definition-owner-names-preparation/study-plan.json",
+    "entries": [
+      {
+        "slot": "annotator-05",
+        "cell": "02",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-05.json",
+        "raw_output_sha256": "6922e1bbd34a17652458cc67c4f5eb119cdb59543bf81e71e218e64b2cb4e6ff",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-06",
+        "cell": "02",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-06.json",
+        "raw_output_sha256": "9363a06d1ceba665db2773288e370e7b86ba07e3dbd2b369f1aa7ee83ace595e",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-07",
+        "cell": "02",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-07.json",
+        "raw_output_sha256": "fc389c2439ae5c14b6b4dac06706730ebe0229068b4f4c60aa7350c528bed1dd",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-08",
+        "cell": "02",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-08.json",
+        "raw_output_sha256": "b19ff7be5fc23518caa14054b790ae2b791665f6fafdc1bd6baf6a528d945fcc",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-13",
+        "cell": "04",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-13.json",
+        "raw_output_sha256": "99cd9962b96b25c250ea81bf41761fca5b2f23ec344a9bb29f5c954506324f42",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-14",
+        "cell": "04",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-14.json",
+        "raw_output_sha256": "898f334980310bee682f62008cd37f410b1d016f36ca6f9cbc6598aca2e6c590",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-15",
+        "cell": "04",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-15.json",
+        "raw_output_sha256": "4e86e8d17ee4be4bcb966369c214103204d6ae6bb1ae87188c9ed06b6edf1fb1",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      },
+      {
+        "slot": "annotator-16",
+        "cell": "04",
+        "case_id": "probe-a",
+        "raw_output": "independent-annotations-16.json",
+        "raw_output_sha256": "2c63363fdbd1abcc24e88a946e9ec26be9b66d0b0a6428acb9f7d4dc6fdbb935",
+        "reviewer": "integrator_not_blind_not_human_gold",
+        "scope": "Both rationales, uncertainties and cited source evidence; operational interpretation only.",
+        "claims_operational_validity_unavailable": false,
+        "claims_strip_rewrites_stored_value": false,
+        "criterion_met": true,
+        "note": "The response does not assert either prohibited claim. Some do not restate the definition or preservation of the original value; the prospective criterion does not require those assertions. This result does not establish policy versus mechanics correctness."
+      }
+    ]
+  },
+  "focal_policy_support": {
+    "observation": "All sixteen annotations choose policy. Eight with definitions name present/nonblank text; eight without definitions explicitly record missing validity internals.",
+    "established": "Same-decision Specification ownership and invalid_value finding role are visible; supplied definitions establish operational nonblank semantics.",
+    "unsettled": "No adopted normative Requirement establishes whether the nonblank criterion is product admission policy versus generic input validation. A rule evaluation path and a nonblank predicate alone do not resolve that semantic distinction. Policy is a plausible interpretation of the visible scenario-validation role, not independently verified gold.",
+    "label_overrides": []
+  },
+  "control_review": {
+    "probe-b": "Gate work precedence over ordinary refinement is explicit in the branch and rank calculation; individual gate dispatch occurs later.",
+    "probe-c": "All sixteen rationales identify the missing permitted-reference contract; no consensus claim that the contract is absent from the whole repository.",
+    "probe-d": "The local branch appends a newline to serialized output; direct representation mechanics support the development-control expectation."
+  },
+  "new_prompt_or_threshold_change": false,
+  "provider_requests": 0,
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false
+}

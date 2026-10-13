@@ -1,0 +1,461 @@
+{
+  "status": "raw_annotations_validated_semantic_review_separate",
+  "contexts": 16,
+  "case_annotations": 64,
+  "provider_requests": 0,
+  "validation": [
+    {
+      "slot": "annotator-01",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-02",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-03",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-04",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-05",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-06",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-07",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-08",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-09",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-10",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-11",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-12",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-13",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-14",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-15",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    },
+    {
+      "slot": "annotator-16",
+      "annotated_cases": 4,
+      "quote_provenance": "passed",
+      "semantic_correctness_verified": false
+    }
+  ],
+  "summary": {
+    "target_cell_distributions": [
+      {
+        "case_id": "probe-a",
+        "cell": "01",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-a",
+        "cell": "02",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-a",
+        "cell": "03",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-a",
+        "cell": "04",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-b",
+        "cell": "01",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "eligible": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "eligible/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-b",
+        "cell": "02",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "eligible": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "eligible/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-b",
+        "cell": "03",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "eligible": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "eligible/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-b",
+        "cell": "04",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "eligible": 4
+          },
+          "concern_kind": {
+            "policy": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "eligible/policy": 4
+        }
+      },
+      {
+        "case_id": "probe-c",
+        "cell": "01",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "needs_review": 4
+          },
+          "concern_kind": {
+            "unknown": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 0,
+          "concern_kind": 0
+        },
+        "joint_counts": {
+          "needs_review/unknown": 4
+        }
+      },
+      {
+        "case_id": "probe-c",
+        "cell": "02",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "needs_review": 4
+          },
+          "concern_kind": {
+            "unknown": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 0,
+          "concern_kind": 0
+        },
+        "joint_counts": {
+          "needs_review/unknown": 4
+        }
+      },
+      {
+        "case_id": "probe-c",
+        "cell": "03",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "needs_review": 4
+          },
+          "concern_kind": {
+            "unknown": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 0,
+          "concern_kind": 0
+        },
+        "joint_counts": {
+          "needs_review/unknown": 4
+        }
+      },
+      {
+        "case_id": "probe-c",
+        "cell": "04",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "needs_review": 4
+          },
+          "concern_kind": {
+            "unknown": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 0,
+          "concern_kind": 0
+        },
+        "joint_counts": {
+          "needs_review/unknown": 4
+        }
+      },
+      {
+        "case_id": "probe-d",
+        "cell": "01",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "mechanics": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/mechanics": 4
+        }
+      },
+      {
+        "case_id": "probe-d",
+        "cell": "02",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "mechanics": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/mechanics": 4
+        }
+      },
+      {
+        "case_id": "probe-d",
+        "cell": "03",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "mechanics": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/mechanics": 4
+        }
+      },
+      {
+        "case_id": "probe-d",
+        "cell": "04",
+        "n": 4,
+        "labels": {
+          "opportunity": {
+            "excluded": 4
+          },
+          "concern_kind": {
+            "mechanics": 4
+          }
+        },
+        "decisive_counts": {
+          "opportunity": 4,
+          "concern_kind": 4
+        },
+        "joint_counts": {
+          "excluded/mechanics": 4
+        }
+      }
+    ],
+    "prospective_label_criteria": {
+      "H_ownership": {
+        "met": true,
+        "n": 16
+      },
+      "H_names": {
+        "met": true,
+        "comparisons": [
+          {
+            "original_cell": "01",
+            "neutral_cell": "03",
+            "histograms_match": true
+          },
+          {
+            "original_cell": "02",
+            "neutral_cell": "04",
+            "histograms_match": true
+          }
+        ]
+      },
+      "H_local_control": {
+        "met": true,
+        "n": 16
+      }
+    },
+    "H_definition": "Requires separate integrator rationale review; not inferred from Choice labels.",
+    "semantic_correctness_verified": false,
+    "human_gold": false,
+    "reference_frozen_for_provider_scoring": false,
+    "metric_effect": "none"
+  },
+  "isolation_boundary": "fresh_context_scoped_inputs_self_report_not_filesystem_enforcement",
+  "producer_sha256": "3fcf58437401586e8700a9dfbac5836f5c8df4b2d0844fbd4ddaad34135e1e3b",
+  "execution_receipt_sha256": "1d2bf0281114afb521b8fc35b9f43411edb78351861e4c28345fbd6ae55c2b56"
+}

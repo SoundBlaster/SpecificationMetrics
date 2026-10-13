@@ -1,0 +1,137 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "probe-a",
+      "state_sha256": "f20693043e6dc941226cbb0c7c469a39802df8ccc0c55fdff3ac234467137f66",
+      "task_sha256": "6302703f69be3355288162f6cb1a8c94d067e17e444e3462a2a673cb83485dbc",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact step-validity decision is already owned by RuleA, a RuleBase Specification: findings contains this predicate and the Specification evaluation calls those same findings. This supplies explicit same-decision ownership, so it is excluded as a new Specification opportunity.",
+        "concern_kind": "The expression selects scenario steps that violate the scenario-values rule and produce invalid_value findings. It decides the admissibility of BDD scenario step values; its existing Specification ownership does not change that policy responsibility."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class RuleA(RuleBase):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class RuleBase(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    def valid(self) -> bool:\n        return self.value is not None and bool(self.value.strip())"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+      "task_sha256": "930296eddb0efe231ac21251808ff248eb85033cc4f296d87a0171f4cae07360",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The target distinguishes a node with an outstanding gate from a node considered for status-based refinement. Its enclosing alternatives establish a stable lifecycle priority rule: gate work is considered first and status refinement only when no gate is present. Naming and observing that precedence fits the profile; no supplied evidence establishes same-decision Specification ownership.",
+        "concern_kind": "The predicate decides which lifecycle obligation takes precedence, gate action or ordinary refinement. Later selection among GATE_ACTIONS implements the chosen gate activity and does not turn this preceding priority predicate into variant_behavior."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)\n        kind = \"refine_spec\""
+        }
+      ],
+      "uncertainties": [
+        "The contents of GATE_ACTIONS and configured order lists are not supplied; the visible gate-before-status precedence is sufficient for this exact expression."
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "6aed8534c50c32b8dd4925cfc98c14224fe77f9983cb2f33c798d39027ac1c7b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The expression rejects absolute, parent-traversing, or noncanonical POSIX strings in manifest rows. The supplied parser does not establish whether these restrictions define permitted artifact references under a domain integrity contract or only a generic representation/adapter constraint. That missing contract leaves eligible domain policy and excluded technical mechanics materially plausible.",
+        "concern_kind": "The selected expression combines path containment-style checks and spelling normalization. Its caller shows manifest parsing but no declared reference-integrity contract or downstream use that settles the primary role. The unsafe error text alone cannot distinguish domain admissibility from generic path enforcement, so responsibility remains unknown."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "        path = _safe_path(row.get(\"path\"))\n        digest = row.get(\"sha256\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "        if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row\n    return files"
+        }
+      ],
+      "uncertainties": [
+        "No contract states whether manifest paths are domain references confined to an artifact root or merely normalized parser inputs.",
+        "No supplied consumer establishes the role or precedence of the containment and canonical-spelling requirements."
+      ]
+    },
+    {
+      "case_id": "probe-d",
+      "state_sha256": "65151232eadb646f20ab51d11ea895ef97f894627374347e6e250eeffcfb991d",
+      "task_sha256": "4fcede835cd290dca5c493edc94d1089e823adcf4e3c1bac212e2b58b64cad1c",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The target checks the textual output of yaml.safe_dump so the serializer can append a final newline. The demonstrated role is output representation formatting with no distinct domain decision, affirmatively placing it outside a Specification opportunity.",
+        "concern_kind": "The predicate distinguishes serialized strings that already end in a newline from those requiring that formatting character. Its direct effect is appending a newline to YAML output, establishing serialization mechanics."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        }
+      ],
+      "uncertainties": []
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-13/packet.json",
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-13/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

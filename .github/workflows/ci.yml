@@ -59,6 +59,8 @@ jobs:
           python3 prepare_bdd_steps_balanced_factorial.py
           python3 -m unittest -v test_prepare_definition_owner_names.py
           python3 prepare_definition_owner_names.py
+          python3 -m unittest -v test_validate_definition_owner_annotations.py
+          python3 validate_definition_owner_annotations.py
           python3 -m unittest -v test_validate_expression_reference.py
           python3 -m unittest -v test_matched_expression_plan.py
           python3 -m unittest -v test_score_matched_expressions.py

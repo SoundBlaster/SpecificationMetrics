@@ -1,0 +1,121 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "probe-d",
+      "state_sha256": "464796a16b0b7963867f442d679d094df574b0b0a833beb903834fec5902063e",
+      "task_sha256": "8bf67e12a540a1ca372c8c54f82032511e8acc5852d34d3dd4b7c6abcdfbe63c",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The predicate distinguishes serialized YAML text with and without a terminal newline solely to normalize the returned representation. The supplied body demonstrates serialization mechanics with no distinct domain decision, which the architecture profile leaves procedural.",
+        "concern_kind": "Its primary responsibility is checking a string formatting property and appending the missing newline to serialized output. This is representation normalization."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )\n    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-a",
+      "state_sha256": "fd72de113788026877e337fe7a7674aad744a5a66f1e842ee4a67357fa1a4c29",
+      "task_sha256": "2f9e42fd6688581e576a239c90342c01bb2720d983fe6e64623020d75f3a903b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact invalid-step predicate contributes findings in RuleA, which inherits Specification through RuleBase. RuleBase._evaluate invokes those findings, and the shown runner evaluates RuleA through is_satisfied_by. This explicitly places the same validity decision on an existing Specification evaluation path, so it is excluded as a new opportunity.",
+        "concern_kind": "The predicate distinguishes acceptable from invalid BDD scenario step values and creates invalid_value findings under the named scenario-values rule. That is domain admissibility policy even though it is already owned by a Specification."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class RuleA(RuleBase):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class RuleBase(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        }
+      ],
+      "uncertainties": [
+        "The implementation of step.valid is not supplied, so the precise admissibility criteria cannot be reconstructed; the supplied rule and evaluation path establish its role and ownership."
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "ffab14693fa13cbb96cfbd93b292efc8ec8c962ebec76863dc5e790ff34e0bbb",
+      "task_sha256": "2bfd4daba6299024bb69a2b1bcfddcf00e0f97d36560776d41c693d6987e8632",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "For a specification node, this predicate distinguishes an outstanding gate from the absence of a gate. Its branch assigns gate work priority before status-based refinement, establishing a stable lifecycle obligation decision suitable for a named, observable Specification. No supplied evidence establishes existing Specification ownership of this decision.",
+        "concern_kind": "The exact predicate decides whether gate resolution takes precedence over ordinary targeted refinement. It is lifecycle and obligation-priority policy. The subsequent selection of individual gate actions does not change the primary role of this preceding predicate."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "        \"Review the structural split requirement for {spec_id} before rerunning refinement.\","
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-c",
+      "state_sha256": "b0414757e12dd1efa561cce7062f2c00e84845334552657855784544904946f1",
+      "task_sha256": "aa732e9f95af43768b2295a2af6476aa0999549e37f8808080d96e9cd8b19532",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The whole predicate rejects absolute paths, parent traversal and noncanonical POSIX representations. The supplied helper does not establish whether this is a permitted-domain-reference integrity contract or a generic representation/adapter constraint. Those alternatives imply materially different Specification suitability, so the unsafe error alone cannot settle the opportunity.",
+        "concern_kind": "The target combines path shape restrictions with representation normalization. Its local rejection behavior is clear, but the primary contract is missing: it could enforce a domain reference-integrity policy or generic technical path validation. The whole expression must therefore remain unknown rather than being split or classified from the unsafe wording."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "No supplied contract or consumer establishes what manifest paths are permitted to reference or whether these restrictions express domain integrity rather than generic technical constraints.",
+        "No supplied evidence establishes the primary responsibility of the combined traversal and canonical-representation checks."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-12/packet.json",
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-12/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

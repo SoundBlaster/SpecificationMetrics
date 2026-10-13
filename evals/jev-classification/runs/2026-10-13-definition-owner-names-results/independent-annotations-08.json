@@ -1,0 +1,129 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "probe-d",
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "6eb87c6c639814e676e7cd02a1d150dc32ec9505f849a2e43637e1637faea585",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The subject is serialized YAML text, and the predicate distinguishes a missing final newline from an existing one solely to complete the output representation. The supplied branch affirmatively demonstrates serialization mechanics without a distinct domain decision.",
+        "concern_kind": "The exact predicate detects whether serialized text needs a trailing newline; its demonstrated effect is formatting the returned YAML string."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )\n    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-a",
+      "state_sha256": "5e19e7edb00a9cd623ce84a2b95f75da242030b5a32933b7fd832883ed4d2c5f",
+      "task_sha256": "28c9b84cd3262314388d177dcab2a11b6f8e01b5fe0f56d5148ebdf9b5ff622b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The target identifies invalid BDD scenario steps within the findings of BDDScenarioValuesSpec. That class inherits Specification through BDDPolicy, and the supplied evaluation path evaluates these same findings. This is explicit existing Specification ownership of the exact decision, so another extraction opportunity is excluded.",
+        "concern_kind": "The predicate decides whether an individual BDD scenario step violates the scenario-values rule and must yield an invalid_value finding. TextInput.valid establishes the acceptable nonblank text condition. In this supplied domain validation path the primary responsibility is scenario admissibility policy, even though a Specification already owns it."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "                findings.extend(\n                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid\n                )"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    @property\n    def valid(self) -> bool:\n        return self.value is not None and bool(self.value.strip())"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "22f31d739c41d0fde66605466d197eb05a09ac246230c69621cc2e36722a3c2f",
+      "task_sha256": "4d430281ef4f5bae1176185efc1a009d7e5e823b67127d7a2b7603f93b2afef4",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "For a specification node, the target distinguishes an active gate from no gate. Its if/elif structure gives gate work precedence over status-based refinement and ranks the latter after gate work. This establishes a durable lifecycle obligation-priority decision suitable for a named, addressable Specification; the supplied evidence does not establish existing Specification ownership.",
+        "concern_kind": "The selected predicate decides whether gate obligations take precedence over ordinary status-based refinement. Subsequent indexing of GATE_ACTIONS implements the selected gate work, but does not change the preceding priority predicate into variant_behavior."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)\n        kind = \"refine_spec\""
+        }
+      ],
+      "uncertainties": [
+        "The individual gate actions and actual execution consumers are not supplied; the demonstrated decision is the precedence of gate work over refinement."
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "state_sha256": "40b841d9ed44333d6a8099bf2e9641b2d06b199836154832820aead70c25ef47",
+      "task_sha256": "77e672bfc6584d463dbd6872b9f0897e58cc8b1c5be4bc72215010ee4aa3e173",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The whole target rejects absolute paths, parent traversal components, and noncanonical POSIX spellings for manifest entries. The supplied parser use does not settle whether this defines permitted domain artifact references or applies generic representation and adapter constraints. A declared manifest reference-integrity contract or the relevant consumer boundary is missing, leaving eligible policy and excluded mechanics materially plausible.",
+        "concern_kind": "The selected expression combines path-form restrictions and canonical spelling, and the parser reports an unsafe path. Those observations establish validation but do not establish its primary responsibility as domain integrity policy versus generic technical validation. The unsafe message alone cannot settle that distinction, so the whole target remains unknown."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "        path = OperationPath(row.get(\"path\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    for row in payload[\"files\"]:\n        if not isinstance(row, dict):\n            raise IncrementalStageError(\"artifact manifest files[] entries must be objects\")\n        path = OperationPath(row.get(\"path\"))"
+        }
+      ],
+      "uncertainties": [
+        "No supplied contract states which artifact references the domain permits or why these specific forms must be rejected.",
+        "No supplied downstream consumer establishes the reference boundary or whether canonical spelling is only a representation requirement."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-08/packet.json",
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-08/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

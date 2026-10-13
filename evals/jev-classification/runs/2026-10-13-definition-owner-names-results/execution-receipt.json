@@ -1,0 +1,654 @@
+{
+  "schema_version": 1,
+  "status": "completed_independent_model_annotation_not_adjudicated",
+  "preparation": "../2026-10-13-definition-owner-names-preparation",
+  "started_at_utc": "2026-10-13T20:37:47Z",
+  "collected_at_utc": "2026-10-13T20:44:36.527038+00:00",
+  "fresh_contexts": 16,
+  "case_annotations": 64,
+  "model_selection": "inherited; no explicit model or reasoning override; runtime identity unverified",
+  "concurrency_limit": 8,
+  "input_isolation": "fresh_context_and_scoped_assignment_self_report_not_filesystem_enforcement",
+  "excluded_attempts": [],
+  "assignments": [
+    {
+      "slot": "annotator-01",
+      "packet": "packet-annotator-01.json",
+      "template": "template-annotator-01.json",
+      "agent_task": "/root/definition_names_01",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-01",
+      "annotation_output": "independent-annotations-01.json",
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "9846c1ad163f331348f3fca863bc937c4c4af38a5082cf22f0567845bb4f1923",
+      "input_sha256": {
+        "packet.json": "2c4802c66140b9ae16fb58be7a90dadb66e78a65948b087ba3178b201e665e1d",
+        "template.json": "05cd4c971f1e674338cb63c55aac790d703b2f3d78cf4f2949d9079909f21e69"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "089ff84ebba5d46aa21bf6018f3cd2934b1bb512c298a6d188ed30cd24c2c18d"
+    },
+    {
+      "slot": "annotator-02",
+      "packet": "packet-annotator-02.json",
+      "template": "template-annotator-02.json",
+      "agent_task": "/root/definition_names_02",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-02",
+      "annotation_output": "independent-annotations-02.json",
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "ed8c7ffd15437fb5def6f048b76db8c090c9264dd1388bb9ee2f01a5ce11ca95",
+      "input_sha256": {
+        "packet.json": "adcb1931dce58df984ef62c3592db72d9bf1404edb1bfd43ccd22d9a43af3011",
+        "template.json": "485f802577e3f95631ec23b93c8d028cbdadc978bf3e17c9d85e9cc9db31e9a7"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "24cd6e9fd24e0b973f2ca55ca1f88bcabad504aef77e944f3a23cddc4bb914f7"
+    },
+    {
+      "slot": "annotator-03",
+      "packet": "packet-annotator-03.json",
+      "template": "template-annotator-03.json",
+      "agent_task": "/root/definition_names_03",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-03",
+      "annotation_output": "independent-annotations-03.json",
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "252671b6c782749a82f6ae5ed26d5aae0c4ecffd794d77db80eff335755bbe8a",
+      "input_sha256": {
+        "packet.json": "e5cda5ee5105f67f03266fec55abfebfc3b546619ac12c2988a0e0690751fcee",
+        "template.json": "8f6ba7dbb4260c644cf09632607ded70e30fcc4c982120b674fe38d33c940d06"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "92e29b219cbbecbc057340b56892b039cc92c78b12587dfa0100e3cc3cb592f4"
+    },
+    {
+      "slot": "annotator-04",
+      "packet": "packet-annotator-04.json",
+      "template": "template-annotator-04.json",
+      "agent_task": "/root/definition_names_04",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-04",
+      "annotation_output": "independent-annotations-04.json",
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "5958a03373750eceec16244df57b63a095bb63fe2c7eed2966c2f8a497e11add",
+      "input_sha256": {
+        "packet.json": "f11ab87b24d00abd84e8d9dab57a819138ce4d164fc019b24fdebb45a61949aa",
+        "template.json": "33eb824d8b8356b5e50801aa5dc1d29f5b31306381f91b65760bd5e43b9a16fe"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "ba4cadbd27ffa562a06882fc6b822ddde9903c8bc95d17a416747add12012c60"
+    },
+    {
+      "slot": "annotator-05",
+      "packet": "packet-annotator-05.json",
+      "template": "template-annotator-05.json",
+      "agent_task": "/root/definition_names_05",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-05",
+      "annotation_output": "independent-annotations-05.json",
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "7bffcb19353f0079fb6ca9ab89d188aa3066eb8d1c460c63c4013006a5952fbe",
+      "input_sha256": {
+        "packet.json": "75e7fae5016fb50b2c15c9b13deaa4da9815f5df63b8018ae18bdf01f00abfc2",
+        "template.json": "512a9e29b07b5917396c51ec9574406a45bfabfb5ef464f25b7c8bd6bb9ef5be"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "6922e1bbd34a17652458cc67c4f5eb119cdb59543bf81e71e218e64b2cb4e6ff"
+    },
+    {
+      "slot": "annotator-06",
+      "packet": "packet-annotator-06.json",
+      "template": "template-annotator-06.json",
+      "agent_task": "/root/definition_names_06",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-06",
+      "annotation_output": "independent-annotations-06.json",
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "17dc2e7092101e96d31ec50d455b94b8650fdf396eb51ac684eb4c4ac36134e5",
+      "input_sha256": {
+        "packet.json": "0b1cd873abc5caff6787eb8583284d52cb5c0f88b9642a453839699edb88ef50",
+        "template.json": "61908b5571ab352d264da7d39f9c6a52e225e15650034dbbc6ee4820c5459b83"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "9363a06d1ceba665db2773288e370e7b86ba07e3dbd2b369f1aa7ee83ace595e"
+    },
+    {
+      "slot": "annotator-07",
+      "packet": "packet-annotator-07.json",
+      "template": "template-annotator-07.json",
+      "agent_task": "/root/definition_names_07",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-07",
+      "annotation_output": "independent-annotations-07.json",
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "34535b43d3733315ea03e377f4d9bdcb8e88cc8236dcea833eb46a3cc5994f4f",
+      "input_sha256": {
+        "packet.json": "55cbf801354f099d45154351a667e4da193accecc7067bfb4029729c650baceb",
+        "template.json": "9d26f6f425e2edd2aa630ac542ba17738f0cc79846a02e396ce396c12b3f63a3"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "fc389c2439ae5c14b6b4dac06706730ebe0229068b4f4c60aa7350c528bed1dd"
+    },
+    {
+      "slot": "annotator-08",
+      "packet": "packet-annotator-08.json",
+      "template": "template-annotator-08.json",
+      "agent_task": "/root/definition_names_08",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-08",
+      "annotation_output": "independent-annotations-08.json",
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "a49dbbc3a2925e45e27887eb8855907d684443230dfeedff0b971dd9bacfedb1",
+      "input_sha256": {
+        "packet.json": "99dd72dbbd89aace3267558aaa3a1ea3f83af0067676e14cfdacd488ae195cc1",
+        "template.json": "65267a3306402ae55e9e32570742e2ccdc8cf4b074ec2006713f18681a36916c"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "b19ff7be5fc23518caa14054b790ae2b791665f6fafdc1bd6baf6a528d945fcc"
+    },
+    {
+      "slot": "annotator-09",
+      "packet": "packet-annotator-09.json",
+      "template": "template-annotator-09.json",
+      "agent_task": "/root/definition_names_09",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-09",
+      "annotation_output": "independent-annotations-09.json",
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "4793b1bcd2a66987552c4f23a1e8ad28cf539b55da7b8108635157cf279dec16",
+      "input_sha256": {
+        "packet.json": "85030e6a4b2fe3d6f942b1a89b41331930ff76b5fe8328f30a72da10a7a3f6dd",
+        "template.json": "dce0b2c61ef2b2e0f970f4bd6dede294711a10d981ca28cda2dbde07a4dbcff2"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "396d5b8ee0a16432a9865ec445eaf3d22a00c7afe000c22139454b714b1dc346"
+    },
+    {
+      "slot": "annotator-10",
+      "packet": "packet-annotator-10.json",
+      "template": "template-annotator-10.json",
+      "agent_task": "/root/definition_names_10",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-10",
+      "annotation_output": "independent-annotations-10.json",
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "8eb2bc7ef29121545cb78fb02caf48b07b68f60fb2476f03b9a41235ec9eec48",
+      "input_sha256": {
+        "packet.json": "7bd66280d1eea68a923f7e59da1fda0def56804c63ed42342dc960eb70b749d4",
+        "template.json": "621bce45de5a6f9c9da2d2993668d7390694ec389afba26b109b83fa23f57067"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "e631ef4cfc9f8b2cb0c1af862120df231b3e65b47c7ae04d74aa59483d715282"
+    },
+    {
+      "slot": "annotator-11",
+      "packet": "packet-annotator-11.json",
+      "template": "template-annotator-11.json",
+      "agent_task": "/root/definition_names_11",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-11",
+      "annotation_output": "independent-annotations-11.json",
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "bc5829f2a90cff99b64959381d1b3730c21c2935d0031b2006ebf33e41a9ce7c",
+      "input_sha256": {
+        "packet.json": "fd0e15f66cc4a609192c8688792eaef52a8b5078dae1045f2d09d9ef16b61f85",
+        "template.json": "7a1412d924317c013eb7a75149cc7d0d852ec04549cda6872a0a2991ffd4fa57"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "c81b408936a9c220897cdf02076f34482ec5ed4279e10795b9cb5768c0239201"
+    },
+    {
+      "slot": "annotator-12",
+      "packet": "packet-annotator-12.json",
+      "template": "template-annotator-12.json",
+      "agent_task": "/root/definition_names_12",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-12",
+      "annotation_output": "independent-annotations-12.json",
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "cdb2a26e40eaf7810fb3c82ffbedcb9862e71e46d4b938fac06eb373ffec3286",
+      "input_sha256": {
+        "packet.json": "b345dd9800663ec71dda0e8ca9e181258f52c01f6ca3b3cabef5b5b04b09f983",
+        "template.json": "dc924bced89234c7fa4917497121aa9c5dc51dbc20df30fc630c12ef4b3ff2ed"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "5c4c50e757f95daddf3b081da18a896b9e34c0cc36dd4da6b33e4a027631ac83"
+    },
+    {
+      "slot": "annotator-13",
+      "packet": "packet-annotator-13.json",
+      "template": "template-annotator-13.json",
+      "agent_task": "/root/definition_names_13",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-13",
+      "annotation_output": "independent-annotations-13.json",
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "600d0b47e7f012281fc9af762208f32b25197916f3a9b804e7eb5fe5be3e8318",
+      "input_sha256": {
+        "packet.json": "48ab17e109b4e2e39a988c619129b14ed86a5957c35a70a5f8c55bfac38784c4",
+        "template.json": "eb4ef8eae5743dd46512a327edc98bb1c8909eb5c62b6c4803f82be76ebf7e3a"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "99cd9962b96b25c250ea81bf41761fca5b2f23ec344a9bb29f5c954506324f42"
+    },
+    {
+      "slot": "annotator-14",
+      "packet": "packet-annotator-14.json",
+      "template": "template-annotator-14.json",
+      "agent_task": "/root/definition_names_14",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-14",
+      "annotation_output": "independent-annotations-14.json",
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "4910733cf0afedc94565f700f81cff42e13969d642630d28e3749d7e397bd0e9",
+      "input_sha256": {
+        "packet.json": "6b7a157db4a17d4f89214b292d8f0a6db7a96a0b6f93558bd6ded858bb3641a0",
+        "template.json": "f35ea71fdd1d2e3be0492b6f6f14a27068643a4383b4d4620ae9439054ad234a"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "898f334980310bee682f62008cd37f410b1d016f36ca6f9cbc6598aca2e6c590"
+    },
+    {
+      "slot": "annotator-15",
+      "packet": "packet-annotator-15.json",
+      "template": "template-annotator-15.json",
+      "agent_task": "/root/definition_names_15",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-15",
+      "annotation_output": "independent-annotations-15.json",
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "1314ab845890a49b32e7785a0868c788da50319bccf171b747053f08a4109677",
+      "input_sha256": {
+        "packet.json": "c716d3af1d2c0ac84742289e864c4ae64e893b90d692500d24b50462b9a3859f",
+        "template.json": "a8b85c56d12936423328abb2923111c5e9766691a7e71e88d5d190504a4a96b7"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "4e86e8d17ee4be4bcb966369c214103204d6ae6bb1ae87188c9ed06b6edf1fb1"
+    },
+    {
+      "slot": "annotator-16",
+      "packet": "packet-annotator-16.json",
+      "template": "template-annotator-16.json",
+      "agent_task": "/root/definition_names_16",
+      "directory": "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-16",
+      "annotation_output": "independent-annotations-16.json",
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "prompt_sha256": "8981e2ca6e98f49f200871544be12ec61ba6938dc346677e40762a1569246223",
+      "input_sha256": {
+        "packet.json": "00f019168ac13f7b763a801b59a0a898fed1e0036089a1e1c7bf529bba085aca",
+        "template.json": "511c2fa227a7c8f5b3292f4ecc447ef8ea494fd3c30708c13022e3615c7bb982"
+      },
+      "context_inheritance": "none",
+      "output_sha256": "2c63363fdbd1abcc24e88a946e9ec26be9b66d0b0a6428acb9f7d4dc6fdbb935"
+    }
+  ],
+  "preparation_file_sha256": {
+    "README.md": "959fb7b792fa25d10bef416df7b11106b32752d58a813e9594e70c6f0109e2ee",
+    "annotation-prompt.txt": "86beeb8f9a346e615299549ee112626136c493eb095fc2387d0e1bbdbfcc0015",
+    "dispatch-plan.json": "44537307e8de00ce5cee14aab513401ba21e759610bb21ec0ef7763cf0e294ab",
+    "packet-annotator-01.json": "2c4802c66140b9ae16fb58be7a90dadb66e78a65948b087ba3178b201e665e1d",
+    "packet-annotator-02.json": "adcb1931dce58df984ef62c3592db72d9bf1404edb1bfd43ccd22d9a43af3011",
+    "packet-annotator-03.json": "e5cda5ee5105f67f03266fec55abfebfc3b546619ac12c2988a0e0690751fcee",
+    "packet-annotator-04.json": "f11ab87b24d00abd84e8d9dab57a819138ce4d164fc019b24fdebb45a61949aa",
+    "packet-annotator-05.json": "75e7fae5016fb50b2c15c9b13deaa4da9815f5df63b8018ae18bdf01f00abfc2",
+    "packet-annotator-06.json": "0b1cd873abc5caff6787eb8583284d52cb5c0f88b9642a453839699edb88ef50",
+    "packet-annotator-07.json": "55cbf801354f099d45154351a667e4da193accecc7067bfb4029729c650baceb",
+    "packet-annotator-08.json": "99dd72dbbd89aace3267558aaa3a1ea3f83af0067676e14cfdacd488ae195cc1",
+    "packet-annotator-09.json": "85030e6a4b2fe3d6f942b1a89b41331930ff76b5fe8328f30a72da10a7a3f6dd",
+    "packet-annotator-10.json": "7bd66280d1eea68a923f7e59da1fda0def56804c63ed42342dc960eb70b749d4",
+    "packet-annotator-11.json": "fd0e15f66cc4a609192c8688792eaef52a8b5078dae1045f2d09d9ef16b61f85",
+    "packet-annotator-12.json": "b345dd9800663ec71dda0e8ca9e181258f52c01f6ca3b3cabef5b5b04b09f983",
+    "packet-annotator-13.json": "48ab17e109b4e2e39a988c619129b14ed86a5957c35a70a5f8c55bfac38784c4",
+    "packet-annotator-14.json": "6b7a157db4a17d4f89214b292d8f0a6db7a96a0b6f93558bd6ded858bb3641a0",
+    "packet-annotator-15.json": "c716d3af1d2c0ac84742289e864c4ae64e893b90d692500d24b50462b9a3859f",
+    "packet-annotator-16.json": "00f019168ac13f7b763a801b59a0a898fed1e0036089a1e1c7bf529bba085aca",
+    "preparation-receipt.json": "20aaacbd6cf332c0bd1d31f96e48dafc247fa2fefbdcbf3a394e6410217bd3f3",
+    "rubric.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+    "source-audit.json": "16d6db3a6d07382d192950ca7417c301b30ddff81da02f8222233d05fb07c8ea",
+    "source-mapping.json": "aefa48cf1c7a17f2884797cba017c0a4851b148e53545ac3f6da8fd30def71cc",
+    "study-plan.json": "7d7a4097a5ab9335a3d949134d6a573e169fb189162ceca0600dca2d3aeb536d",
+    "template-annotator-01.json": "05cd4c971f1e674338cb63c55aac790d703b2f3d78cf4f2949d9079909f21e69",
+    "template-annotator-02.json": "485f802577e3f95631ec23b93c8d028cbdadc978bf3e17c9d85e9cc9db31e9a7",
+    "template-annotator-03.json": "8f6ba7dbb4260c644cf09632607ded70e30fcc4c982120b674fe38d33c940d06",
+    "template-annotator-04.json": "33eb824d8b8356b5e50801aa5dc1d29f5b31306381f91b65760bd5e43b9a16fe",
+    "template-annotator-05.json": "512a9e29b07b5917396c51ec9574406a45bfabfb5ef464f25b7c8bd6bb9ef5be",
+    "template-annotator-06.json": "61908b5571ab352d264da7d39f9c6a52e225e15650034dbbc6ee4820c5459b83",
+    "template-annotator-07.json": "9d26f6f425e2edd2aa630ac542ba17738f0cc79846a02e396ce396c12b3f63a3",
+    "template-annotator-08.json": "65267a3306402ae55e9e32570742e2ccdc8cf4b074ec2006713f18681a36916c",
+    "template-annotator-09.json": "dce0b2c61ef2b2e0f970f4bd6dede294711a10d981ca28cda2dbde07a4dbcff2",
+    "template-annotator-10.json": "621bce45de5a6f9c9da2d2993668d7390694ec389afba26b109b83fa23f57067",
+    "template-annotator-11.json": "7a1412d924317c013eb7a75149cc7d0d852ec04549cda6872a0a2991ffd4fa57",
+    "template-annotator-12.json": "dc924bced89234c7fa4917497121aa9c5dc51dbc20df30fc630c12ef4b3ff2ed",
+    "template-annotator-13.json": "eb4ef8eae5743dd46512a327edc98bb1c8909eb5c62b6c4803f82be76ebf7e3a",
+    "template-annotator-14.json": "f35ea71fdd1d2e3be0492b6f6f14a27068643a4383b4d4620ae9439054ad234a",
+    "template-annotator-15.json": "a8b85c56d12936423328abb2923111c5e9766691a7e71e88d5d190504a4a96b7",
+    "template-annotator-16.json": "511c2fa227a7c8f5b3292f4ecc447ef8ea494fd3c30708c13022e3615c7bb982",
+    "upstream-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "provider_requests": 0,
+  "human_gold": false,
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false
+}

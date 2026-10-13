@@ -1,0 +1,131 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "probe-d",
+      "state_sha256": "498e1a28f93a78f46390b24c0aa8fcd589d06a45be369e9db73fbcffbcd2b511",
+      "task_sha256": "ee9ecb8190b8279b40c2af8242f2883bd366558fac44c779a6e589d42eee6064",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The subject is the rendered YAML text; the predicate distinguishes whether its final newline is present. Its demonstrated consequence is appending that serialization delimiter, which is representation mechanics without a distinct domain decision.",
+        "concern_kind": "The exact predicate checks a string formatting property after YAML serialization and controls newline normalization. The supplied body establishes a representation responsibility."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )\n    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-a",
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "e6b1dd23cbdb905d26784d3e8166419ee7561e410230ebc8ebfd10667e1ae391",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The subject is each scenario step; invalid versus valid steps determine scenario-value findings. This same predicate is inside BDDScenarioValuesSpec.findings, whose BDDPolicy base is a Specification and whose evaluation delegates directly to findings. The supplied registry and is_satisfied_by call establish existing same-decision Specification ownership.",
+        "concern_kind": "The predicate identifies scenario steps that violate the declared scenario-values rule and emits invalid_value findings used to decide Specification satisfaction. This is a domain value-admissibility responsibility; existing Specification ownership does not change that responsibility."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        }
+      ],
+      "uncertainties": [
+        "The implementation that computes step.valid is not supplied, so the precise admissible step values cannot be reconstructed. The shown rule and evaluation path establish the role and ownership of this exact use."
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "425662e6242d8cde95f2caf26809686c2da8c484f38814bb7611783a13137d47",
+      "task_sha256": "6a8681c34fd09866ac2552719639d0845f63e95a4f268de2082d8add099b9803",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The subject is a specification node and whether it has an active gate. The selected predicate gives gate-resolution work precedence over ordinary status-based refinement, with gate ranks preceding status ranks. This is a stable lifecycle-obligation decision suitable for a named observable Specification, and no supplied code establishes existing Specification ownership of it.",
+        "concern_kind": "The exact comparison decides whether a gate obligation must be handled before status-based refinement. The later GATE_ACTIONS lookup chooses a particular gate action, but the selected predicate itself establishes obligation precedence rather than selecting how an already established activity is implemented."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    \"split_required\": (\n        \"split_spec\",\n        \"structural_split\",\n        \"Review the structural split requirement for {spec_id} before rerunning refinement.\",\n    ),"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        }
+      ],
+      "uncertainties": [
+        "The supplied code constructs a proposed move and marks review_required true; actual execution or runtime enforcement of the proposed move is not shown. That does not prevent classification of the demonstrated selection rule."
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "state_sha256": "16cb9e7ea1d9f5dbc01028c41f076f260756ac21bf02b024cee2caba9f8e14ea",
+      "task_sha256": "549da6b5bf6fe3a1f324d371329f081a794dbc6ce26a890b2a630945e19b7793",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The subject is a manifest path string; the expression rejects absolute paths, parent traversal, or noncanonical POSIX spelling. The supplied code does not establish whether these restrictions define permitted domain references or only a generic adapter/representation constraint. A declared manifest reference-integrity contract could establish eligibility; a purely technical normalization contract could establish exclusion, so the missing contract is material.",
+        "concern_kind": "The selected expression combines path-location restrictions with a representation comparison and reports an unsafe path. No supplied contract establishes whether its primary responsibility is domain path-integrity policy or generic parsing/enforcement mechanics. The error wording and function name alone do not settle that distinction."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        }
+      ],
+      "uncertainties": [
+        "The manifest contract defining permitted references, their reference root, and the purpose of these restrictions is omitted.",
+        "No supplied consumer establishes whether accepted values authorize domain file references or only satisfy a technical representation requirement."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-04/packet.json",
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-04/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}
