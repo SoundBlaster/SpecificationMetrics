@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "prompt_template": "annotation-prompt.txt",
+  "model_selection": "inherited; no model or effort override requested",
+  "isolation": "fresh conversation and scoped input copies; shared filesystem is not enforced isolation",
+  "assignments": [
+    {
+      "slot": "01",
+      "directory": "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-0go59ues",
+      "files": {
+        "packet.json": {
+          "source": "annotation-packet-01.json",
+          "sha256": "27fee1ad03fc742245697b08a741aa682cabb2347f7e8837c29eb93a111c0e1b"
+        },
+        "template.json": {
+          "source": "annotation-template-01.json",
+          "sha256": "d024967603c91fcba0c1a819c7891d17a62613f5f0ec28c26621cd5bc7ec7cf2"
+        }
+      },
+      "agent_task": "/root/balanced_context_01",
+      "context_inheritance": "none",
+      "model_override": null,
+      "reasoning_effort_override": null,
+      "dispatched_prompt_sha256": "d19913a0b52b5a6fdc357f6b02ffd02a0ea7f7129832aaa7a5e5db1dcb835780",
+      "output_sha256": "5d5b9bb376a59a7f3670988df3e8e53776cc0939daa20e8deb4dec052a4c22a0",
+      "input_copy_check": "byte-identical before dispatch and after completion"
+    },
+    {
+      "slot": "02",
+      "directory": "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-mtwoe86b",
+      "files": {
+        "packet.json": {
+          "source": "annotation-packet-02.json",
+          "sha256": "1b09a8fd871c9c4285eceadc01ef812252c9a1e9b3722b426fbec1fd1f8a23c7"
+        },
+        "template.json": {
+          "source": "annotation-template-02.json",
+          "sha256": "409909ffb66864edb84522c5987be579d6d7310a994e64dce0acb3bb4218f43c"
+        }
+      },
+      "agent_task": "/root/balanced_context_02",
+      "context_inheritance": "none",
+      "model_override": null,
+      "reasoning_effort_override": null,
+      "dispatched_prompt_sha256": "6abff16446797abb6a51dbb9ac2aec9f1292e4de37cb3b7e5384b32945efd2a5",
+      "output_sha256": "664e2d27d65d337cfc16b17d42ed198c4475ad229ae858793cf4c5090094c2e6",
+      "input_copy_check": "byte-identical before dispatch and after completion"
+    },
+    {
+      "slot": "03",
+      "directory": "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-to1s2qfy",
+      "files": {
+        "packet.json": {
+          "source": "annotation-packet-03.json",
+          "sha256": "44a4e5e40813cd75d63ebf898670985ce7af35b38627a3cf2414697d9e9487bc"
+        },
+        "template.json": {
+          "source": "annotation-template-03.json",
+          "sha256": "43d63ddcb7fdf01e0a8c08d70b95d0810726595db8a3a0f6f727147a5f5377a5"
+        }
+      },
+      "agent_task": "/root/balanced_context_03",
+      "context_inheritance": "none",
+      "model_override": null,
+      "reasoning_effort_override": null,
+      "dispatched_prompt_sha256": "86ef3cf9a3694fb5628c182c2f123dcecc5a32e68db434d9eb6e231f8ae1a80a",
+      "output_sha256": "09dbd0fd90089d84d6f8a629842a985c432ae15ed73d7a6c0183831d6b9e4ceb",
+      "input_copy_check": "byte-identical before dispatch and after completion"
+    }
+  ]
+}

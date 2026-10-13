@@ -1,0 +1,53 @@
+{
+  "status": "blank_not_reference",
+  "annotations": [
+    {
+      "case_id": "context-02",
+      "state_sha256": "4c48d4a276423510900d9fdbc88e30139c88c9352007b704e5a3082ff89e6f9f",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-12",
+      "state_sha256": "54dd1b72bf478a2fcb735109083941b8f1bef2b57f485dac8215e888be1fc4ba",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-14",
+      "state_sha256": "0ff4d798cf5e815f48c4c10079d32b6184fd6d76ecb05acccf5aed934456623b",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-15",
+      "state_sha256": "3dbbe09306a09f0ddf63324d9c32a220764717c38908a91d6c0a2e2a0629749f",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "opportunity": null,
+      "concern_kind": null,
+      "evidence_quotes": [],
+      "uncertainties": []
+    }
+  ]
+}

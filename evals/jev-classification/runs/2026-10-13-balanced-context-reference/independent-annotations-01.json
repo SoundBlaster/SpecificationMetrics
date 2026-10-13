@@ -1,0 +1,173 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-04",
+      "state_sha256": "34bc04293ac909df2c1eb79ed6cc57692517377485a6fcf7df03490a12e8b614",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "\"state\": \"satisfied\" if reason is None else \"unknown\","
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "requested = set(claim[\"passport_criterion_ids\"])"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "relevant = [b for b in bindings if requested & set(b[\"acceptance_criteria_ids\"])]\n    covered = {c for b in relevant for c in b[\"acceptance_criteria_ids\"]}"
+        }
+      ],
+      "uncertainties": [
+        "Only the supplied pinned source-evidence interpretation is established; runtime claim evaluation and ownership elsewhere are not supplied."
+      ],
+      "rationales": {
+        "opportunity": "The exact subset test requires every criterion claimed by a source-evidence claim to have an implementation binding. Its failure supplies a distinct claim-rejection reason and affects whether the claim is satisfied. This evidence-integrity decision benefits from a named, addressable Specification; no supplied declaration establishes Specification ownership of this same decision.",
+        "concern_kind": "The predicate checks adequacy of evidence bindings for the requested passport criteria. Rejecting a claim for missing criterion coverage is a domain evidence-integrity rule, rather than the mechanics of constructing the sets."
+      }
+    },
+    {
+      "case_id": "context-07",
+      "state_sha256": "8541152abb09dd22016f6087bf8563bbf4b89ddf7eecd0e5f5e49454214906a4",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "return not self.findings(candidate)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "This same nonempty-list decision is already implemented in BDDScenarioValuesSpec.findings. The supplied inheritance chain reaches Specification, the rule has an explicit rule_ref, and the base evaluation uses these findings. That is direct ownership evidence for the selected expression, so another extraction opportunity is excluded.",
+        "concern_kind": "The exact predicate enforces that a BDD scenario has a nonempty list of steps and emits a scenario-values finding otherwise. This is the integrity policy for an authored domain scenario, even though list shape is one part of its validation. Existing Specification ownership does not change this concern classification."
+      }
+    },
+    {
+      "case_id": "context-09",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "No manifest consumer, filesystem boundary, or domain authority contract is supplied; broader trust consequences cannot be established from this helper alone."
+      ],
+      "rationales": {
+        "opportunity": "The supplied helper rejects absolute paths, parent traversal, and noncanonical POSIX spelling. The selected predicate implements technical path safety and representation constraints. The supplied evidence gives no separate product decision beyond these conventional path checks, so it does not establish a Specification opportunity under this profile.",
+        "concern_kind": "The exact expression inspects path structure and its normalized string representation. Its demonstrated responsibility is technical validation of a manifest path. The error calls the path unsafe, but no supplied trust model or domain authority decision makes this a distinct product policy."
+      }
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "opportunity": "needs_review",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"canonical_mutations_allowed\""
+        }
+      ],
+      "uncertainties": [
+        "No enclosing branch, caller, or effect is supplied, so the predicate cannot be identified as an operative permission gate or a validation diagnostic.",
+        "The meaning of a missing, null, or nonboolean value is not supplied; the comparison treats each of these as not being the singleton False."
+      ],
+      "rationales": {
+        "opportunity": "The field names canonical mutation permission, but the isolated comparison does not show how the result is used. It could enforce an authority rule, diagnose an unexpected permission value, or interpret metadata. Without that relationship, the evidence does not reliably establish that this exact decision benefits from a named Specification, and it does not justify excluding it as mechanics.",
+        "concern_kind": "The explicit subject of the comparison is whether canonical mutations are allowed, which is an authority concern. This supports policy as the primary responsibility even though the direction of the surrounding decision, its effects, and its architectural fit remain unknown."
+      }
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not rendered.endswith(\"\\n\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered.endswith(\"\\n\")"
+        }
+      ],
+      "uncertainties": [
+        "The output format and consumer are not supplied; no broader domain significance of the final newline can be inferred."
+      ],
+      "rationales": {
+        "opportunity": "The exact expression checks a rendered string for a final newline. This establishes a representation-format check without a distinct product, authority, evidence, or lifecycle decision. The absence of surrounding context does not prevent identifying the demonstrated technical responsibility.",
+        "concern_kind": "Testing the final character sequence of rendered output is formatting mechanics. Nothing in the supplied expression establishes domain policy or dispatch over domain variants."
+      }
+    },
+    {
+      "case_id": "context-18",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "kind, next_gap, hint_template = GATE_ACTIONS[gate]"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rank = len(gate_order) + status_order.index(node.status)"
+        }
+      ],
+      "uncertainties": [
+        "The definitions of gate states, GATE_ACTIONS, and configured orders are not supplied; the labels rely only on the demonstrated precedence of a non-none gate over status-based refinement."
+      ],
+      "rationales": {
+        "opportunity": "In the supplied candidate selector, the exact non-none gate test gives gate-directed work precedence over ordinary status-directed refinement. This is a durable lifecycle selection rule that can be named and observed independently of the table lookup and ranking mechanics. No supplied Specification declaration owns this same precedence decision.",
+        "concern_kind": "The predicate decides whether an active lifecycle gate governs the recommended move before status-based refinement is considered. Its primary responsibility is this lifecycle priority rule; the subsequent lookup dispatches individual gate variants."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-0go59ues/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-0go59ues/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

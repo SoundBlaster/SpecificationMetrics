@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "repository": "0al-spec/SpecGraph",
+  "revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "selection_method": "Purposive development diagnostic: six production targets spanning representation, paths, evidence, ontology, next moves and existing Specification. Not a random or blinded holdout sample. No expected labels assigned.",
+  "targets": [
+    {
+      "target_id": "target-01",
+      "path": "tools/spec_yaml.py",
+      "scope": "dump_canonical_yaml",
+      "expression": "not rendered.endswith(\"\\n\")",
+      "support": [
+        {
+          "path": "tools/spec_yaml.py",
+          "symbol": "import:yaml"
+        }
+      ]
+    },
+    {
+      "target_id": "target-02",
+      "path": "tools/static_artifact_incremental_stage.py",
+      "scope": "_safe_path",
+      "expression": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+      "support": [
+        {
+          "path": "tools/static_artifact_incremental_stage.py",
+          "symbol": "import:pathlib"
+        },
+        {
+          "path": "tools/static_artifact_incremental_stage.py",
+          "symbol": "IncrementalStageError"
+        },
+        {
+          "path": "tools/static_artifact_incremental_stage.py",
+          "symbol": "_manifest_files"
+        }
+      ]
+    },
+    {
+      "target_id": "target-03",
+      "path": "tools/evidence_claim_gate.py",
+      "scope": "source_claim_reason",
+      "expression": "not requested <= covered",
+      "support": [
+        {
+          "path": "tools/evidence_claim_gate.py",
+          "symbol": "passport_criterion_ids"
+        },
+        {
+          "path": "tools/evidence_claim_gate.py",
+          "symbol": "evaluate_claims"
+        },
+        {
+          "path": "tools/evidence_claim_gate.py",
+          "symbol": "import:re"
+        }
+      ]
+    },
+    {
+      "target_id": "target-04",
+      "path": "tools/ontology_term_binding_gate.py",
+      "scope": "_has_reviewable_gap",
+      "expression": "gap.get(\"canonical_mutations_allowed\") is not False",
+      "support": [
+        {
+          "path": "tools/ontology_term_binding_gate.py",
+          "symbol": "_dict"
+        },
+        {
+          "path": "tools/ontology_term_binding_gate.py",
+          "symbol": "_text"
+        },
+        {
+          "path": "tools/ontology_term_binding_gate.py",
+          "symbol": "REVIEWABLE_GAP_STATUSES"
+        },
+        {
+          "path": "tools/ontology_term_binding_gate.py",
+          "symbol": "_has_reviewable_gap_with_candidate_binding"
+        }
+      ]
+    },
+    {
+      "target_id": "target-05",
+      "path": "tools/product_workspace_next_moves.py",
+      "scope": "candidate_move",
+      "expression": "gate != \"none\"",
+      "support": [
+        {
+          "path": "tools/product_workspace_next_moves.py",
+          "symbol": "VALID_STATUSES"
+        },
+        {
+          "path": "tools/product_workspace_next_moves.py",
+          "symbol": "GATE_ACTIONS"
+        },
+        {
+          "path": "tools/product_workspace_next_moves_support.py",
+          "symbol": "SpecNode"
+        }
+      ]
+    },
+    {
+      "target_id": "target-06",
+      "path": "tools/native_bdd/values_spec.py",
+      "scope": "BDDScenarioValuesSpec.findings",
+      "expression": "not entry.steps_is_list or not entry.steps",
+      "support": [
+        {
+          "path": "tools/native_bdd/values_spec.py",
+          "symbol": "BDDScenarioValuesSpec"
+        },
+        {
+          "path": "tools/native_bdd/values_spec.py",
+          "symbol": "import:policy"
+        },
+        {
+          "path": "tools/native_bdd/policy.py",
+          "symbol": "BDDPolicy"
+        },
+        {
+          "path": "tools/native_bdd/policy.py",
+          "symbol": "import:specification_core"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-03",
+      "state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact expression requires BDD scenario steps to be a nonempty list. Its invalid-value finding is tied to specification.bdd_scenarios, making scenario structure and completeness an addressable domain integrity rule that can benefit from a named, observable Specification. The supplied method does not explicitly establish that a Specification already owns this same decision.",
+        "concern_kind": "The expression determines whether a BDD scenario has acceptable steps, including the substantive requirement that at least one step exists. The surrounding domain path and validation outcome support a scenario-integrity policy as the primary responsibility of this combined expression."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path = f\"specification.bdd_scenarios[{index}]\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        }
+      ],
+      "uncertainties": [
+        "The enclosing class is not supplied, so existing Specification ownership and runtime observability cannot be established from this evidence."
+      ]
+    },
+    {
+      "case_id": "context-05",
+      "state_sha256": "b19324fa7c7d5a4508ab2ef77e0fc4aa82300d753653fbab3edf74a0c4e41a98",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The expression requires every criterion requested by a source claim to be covered by relevant implementation bindings. Returning missing_criterion_binding makes that completeness requirement a distinct decision in the pinned source-resolution contract. It is suitable for a named Specification that exposes the criterion-to-implementation evidence requirement; no supplied code explicitly identifies an existing Specification owner.",
+        "concern_kind": "The subset check enforces completeness of implementation evidence for a claim's passport criteria. That responsibility is a durable evidence-integrity rule, independently of its simple set-comparison implementation."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "covered = {c for b in relevant for c in b[\"acceptance_criteria_ids\"]}\n    if not requested <= covered:\n        return \"missing_criterion_binding\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "requested = set(claim[\"passport_criterion_ids\"])"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not requested <= covered:\n        return \"missing_criterion_binding\""
+        }
+      ],
+      "uncertainties": [
+        "The passport schema and downstream use of accepted source claims are not supplied; the judgment is limited to the binding-completeness decision shown here."
+      ]
+    },
+    {
+      "case_id": "context-06",
+      "state_sha256": "856c30f413385254fd3111c3ba058d2dedd9db8f22cdb79f07ab26d30bb308ac",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The complete supplied helper shows that this exact expression checks whether serialized YAML needs a trailing newline, then appends that newline. This is representation normalization with no distinct product decision shown, so the profile keeps it procedural.",
+        "concern_kind": "The expression's primary responsibility is formatting the string returned by yaml.safe_dump. The immediately following string append and return fully explain this local serialization mechanic, supporting the classification without an unresolved material ambiguity."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered = yaml.safe_dump("
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "context-10",
+      "state_sha256": "553f171412445a688b4ebe89c22463fd257215f6110dfee910ac520042032474",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact comparison requires canonical_mutations_allowed to be explicitly False before a gap can qualify as reviewable. Within the supplied reviewability predicate and owner-review statuses, this is a distinct eligibility rule tied to canonical mutation authority. Naming and observing that requirement would fit the profile, and no explicit Specification ownership of it is shown.",
+        "concern_kind": "The expression contributes an authority-related condition to gap reviewability: absent, true, and other values fail the explicit prohibition requirement. Its primary responsibility is the product's review eligibility policy. The evidence supports this filter's decision, without establishing global mutation enforcement."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "def _has_reviewable_gap(gaps: list[Any], term: str | None = None) -> bool:"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"requires_owner_review\",\n    \"needs_more_evidence\","
+        }
+      ],
+      "uncertainties": [
+        "The field producer and downstream mutation enforcement are not supplied; the code proves the explicit-False requirement only for this reviewability filter."
+      ]
+    },
+    {
+      "case_id": "context-12",
+      "state_sha256": "54dd1b72bf478a2fcb735109083941b8f1bef2b57f485dac8215e888be1fc4ba",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The exact expression combines absolute-path rejection, parent-component rejection, and POSIX-representation equality. It could embody a durable confinement or artifact-identity rule, or perform procedural path validation. The supplied expression does not identify what the path represents or what decision follows, so the architectural opportunity is materially ambiguous.",
+        "concern_kind": "The expression provides visible path-shape constraints, but no evidence establishes whether their primary responsibility is product authority/integrity or technical representation handling. The path operations alone do not resolve that distinction, so concern_kind remains unknown."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "value != path.as_posix()"
+        }
+      ],
+      "uncertainties": [
+        "No supplied context identifies the path's domain meaning, protected resource, or effect of satisfying the condition.",
+        "A product confinement rule and a procedural representation check are both compatible with the supplied expression.",
+        "Existing Specification ownership is not evidenced."
+      ]
+    },
+    {
+      "case_id": "context-14",
+      "state_sha256": "0ff4d798cf5e815f48c4c10079d32b6184fd6d76ecb05acccf5aed934456623b",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The exact comparison only distinguishes the string none from other gate values. Without a definition, producer, or consequence, it does not establish a durable product decision, technical mechanic, or existing Specification ownership. The opportunity therefore requires review.",
+        "concern_kind": "The variable name suggests a gate but supplies no reliable semantics. This could represent a product lifecycle or authority state, a technical sentinel, or a variant discriminator; the single comparison does not establish any one primary responsibility."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate != \"none\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gate != \"none\""
+        }
+      ],
+      "uncertainties": [
+        "The meaning and possible values of gate are not supplied.",
+        "The effect of the condition and its relationship to a domain lifecycle or technical coordination are not supplied.",
+        "Existing Specification ownership is not evidenced."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-to1s2qfy/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-to1s2qfy/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

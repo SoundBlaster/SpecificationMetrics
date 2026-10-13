@@ -1,0 +1,35 @@
+{
+  "status": "prepared_independent_annotation_pending_not_executable",
+  "new_inference_requests": 0,
+  "metric_effect": "none",
+  "prior_labels_transferred": false,
+  "expected_labels_assigned": false,
+  "targets": 6,
+  "evidence_views_per_target": 3,
+  "annotation_cases": 18,
+  "annotation_delivery": "three_fresh_isolated_contexts_one_packet_per_annotator_no_cross_view_access",
+  "input_sha256": {
+    "selectors.json": "859b869976e91c0f2548da4e86fc3896ceb8e988287b54b8c0f2994401c64470",
+    "source-evidence.json": "8a33ba73075574a3f9c27ded725d704dd898fa910e53e36a0d330040ae46b42b"
+  },
+  "shared_input_sha256": {
+    "reference-packet.json": "81d1e5308dc885a12319ec76fa76e18606223cd66bf3f46cb186546d4dc702a2",
+    "rubric.json": "8255a3f9ff8487c219b7299b5865c6f445d35b27221159810da96fec7cb5bae2"
+  },
+  "producer_digests": {
+    "prepare_context_evidence.py": "71f9e04a49714287aaae6a6cc04a7296643007683e2d832edb4c601915eb8755",
+    "prepare_decision_reference.py": "8ed36d088aa970e77be8f5f7439f00681ce201b7cf884ed33b90d936aef02d2a",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "artifact_sha256": {
+    "case-packet.json": "4a145249903082fbab15c509c1cc7a2b7ea3a98d883b9c7b8aeef977f41eb5a5",
+    "source-mapping.json": "e346a6100d90efa363cea28caadc6abcbb4939ddf3148c255526ce436ad5c330",
+    "annotation-template.json": "1823123159e841823946231f9fc031290d78eb3e842cc1874664aab12bb4e8d0",
+    "annotation-packet-01.json": "c6af1a9eb4984c962afc7fb8bec6451b709990264665aac9f8b8a02b4a17f3ba",
+    "annotation-template-01.json": "68f6dc54fe091404564215897c5e575bd7f8d3f6c99a8687df6102e7b68fdfde",
+    "annotation-packet-02.json": "032546410bc07de37eeac9df9bedd27c5d61d54473c16b5055508c964d82cf77",
+    "annotation-template-02.json": "302182855e25e73653bed9af1cc2c5b1741075675d534c5a5de50ce2e84d622a",
+    "annotation-packet-03.json": "b8bfbb9a61505196e4ce8fad64d00a7b51d7c0a36fb2e230c5130901cd94e753",
+    "annotation-template-03.json": "04279ec00b9253bac7d6d3f3b98bdf76f90f7bdd9df8f231515fc58d2bca041b"
+  }
+}

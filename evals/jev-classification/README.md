@@ -201,6 +201,17 @@ diagnostic evidence, not a change to production ownership or S/U.
 
 ## Explicit target alignment
 
+The [failure-learning cycle](failure-learning.md) records failures, confirmed
+causes versus hypotheses, prevention patches and regression evidence. Local
+[agent instructions](AGENTS.md) require closing this loop without rewriting
+frozen failures or inferring a provider's internal reasoning.
+
+The [real SpecGraph context packet](runs/2026-10-13-context-evidence-preparation/README.md)
+contains six pinned production expressions in three evidence views each. All
+18 labels remain blank pending independent annotation. Context amount is an
+intervention, not an automatic gold label. Preparation and Git-source checking
+were offline; no new Jev/Luna calls or metric writes were made.
+
 The [eight-case Rust export](runs/2026-10-10-decision-targets/README.md)
 binds one explicitly selected expression per development case to exact source
 bytes. Four targets match legacy scanner anchors; four have no such candidate.
@@ -272,3 +283,13 @@ withheld-context H2 and meet H3. All 16 withheld opportunity answers are
 `needs_review`; the remaining gap is concern-kind abstention. Jev has one
 withheld repeat label change; Luna's repeated answers match exactly. These are
 development-set/model-reference findings, not production accuracy or S/U changes.
+
+### Real-source context reference diagnostics
+
+The [balanced context-reference round](runs/2026-10-13-balanced-context-reference/README.md)
+uses six exact SpecGraph expressions and three evidence views. Each fresh
+annotator receives two cases per mode and one view of each target. The earlier
+[mode-correlated round](runs/2026-10-13-context-evidence-preparation/annotation-review.md)
+is retained as diagnostic evidence. Raw annotations, context/annotator effects,
+ownership evidence and semantic adjudication remain separate; this reference
+preparation does not authorize Jev/Luna requests or S/U changes.
