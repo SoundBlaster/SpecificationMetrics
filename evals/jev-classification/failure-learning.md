@@ -176,8 +176,38 @@ historical reference, production prompt or metric state was changed.
   and method plus the Specification base/evaluation path. No label is seeded.
 - **Verification:** regression tests assert the target-condition and
   condition-position balance, prohibit repeated targets per context, and check
-  that each linked target occurs inside its named class method. No annotation
-  or provider request has started.
+  that each linked target occurs inside its named class method. At preparation
+  time no annotation or provider request had started. The subsequent
+  [completed diagnostic](runs/2026-10-13-bdd-steps-balanced-factorial-results/analysis.md)
+  retained 48 annotations in twelve contexts; no Jev/Luna request was made.
+
+## Adjudication: ownership evidence does not settle primary responsibility
+
+- **Evidence:** the balanced BDD diagnostic has one concern-kind split:
+  `bdd-values-step-item`, cell 03, is `policy` once and `unknown` twice. All three
+  opportunity labels are `excluded`. Annotator-01 cites the values-policy
+  finding and Specification evaluation pipeline while acknowledging that the
+  precise criterion behind `step.valid` is absent.
+- **Cause status:** the packet omits the validity definition/contract and the
+  retained rationale cites the finding and Specification evaluation path.
+  The integrator judges this insufficient for `policy` under the frozen v2
+  rubric. The model's internal cause remains unknown; naming bias, cross-case
+  carryover and sampling variation have not been distinguished. This is not evidence
+  that the full-source decision is mechanics or that its domain role cannot be
+  established by additional evidence.
+- **Lesson:** exact quote validation checks provenance, not semantic support.
+  Match a witness to its axis: an evaluation path can settle existing
+  representation while a material missing validity contract leaves primary
+  responsibility unknown. A bare rule address is not its resolved contract.
+- **Prevention:** the [separate integrator adjudication](runs/2026-10-13-bdd-step-item-adjudication/README.md)
+  recommends `excluded / unknown` by applying the existing E2/E5/E6 rules.
+  Preserve the original split, all raw labels and prior H2; the advisory review
+  is not blind, human gold or a provider-scoring reference. No rubric revision
+  is necessary for this decision.
+- **Verification:** a separate receipt binds the three packets and raw outputs,
+  identical state/task/rubric identities, original labels, and exact quoted
+  rubric/packet witnesses. The next diagnostic should vary the semantic witness
+  and source-derived naming cues before attributing the outcome to a model bias.
 
 ## Record template
 
