@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "completed_live_run_offline_accounting",
+  "evidence_sha256": {
+    "manifest.json": "38725a1507a6f443dcd7169e39d742ce9e958b699e67dad4a3eca4df8e20b678",
+    "receipt.json": "ada620dce46531475be0ce7d108c1ce4e05c5368d663c4a18fab5253b6e42e93",
+    "responses.jsonl": "86268736eaf80d106061f404ed31b19e978a62197f80f2b376b6b2447b015411",
+    "attempts.jsonl": "1e358c74ff34783bfea2c38c24358819bf4378967998f1da4213ccc10aba13c2",
+    "native-validation.json": "0419c27b91851e52933e3ea275b46f9bfe592168a5bff8b54f6556ed3d7c8e69",
+    "score.json": "750352c5ec19c26755e212f1c0e76eefcaf8b93c86f2fe12bca9cf1532beb21e"
+  },
+  "reported_usage": {
+    "luna-decision-coreinfra": {
+      "responses_with_usage": 24,
+      "input_tokens": 25716,
+      "output_tokens": 0
+    },
+    "jev-coreinfra": {
+      "responses_with_usage": 24,
+      "input_tokens": 30184,
+      "output_tokens": 2204
+    }
+  },
+  "distribution_mass": {
+    "luna-decision-coreinfra": {
+      "distributions": 48,
+      "max_absolute_mass_error": "0",
+      "outside_strict_tolerance": 0
+    },
+    "jev-coreinfra": {
+      "distributions": 48,
+      "max_absolute_mass_error": "1E-16",
+      "outside_strict_tolerance": 0
+    }
+  },
+  "comparison_with_v1": {
+    "old_manifest_sha256": "f972782f137f1e99ab910a7db378e0a9a0720d0a99d3d5cc4a6d96c8192959ce",
+    "old_responses_sha256": "33e276dcb1cf9e4acb59dc3825960bd6a3dd496e57692f735a437d7af1406025",
+    "identical_request_catalog": true,
+    "identical_reviewed_inputs": true,
+    "comparison_scope": "Shared raw outputs including the v1 sum-only invalid answer; not merged studies or a before/after semantic-policy efficacy claim.",
+    "providers": {
+      "luna-decision-coreinfra": {
+        "common_responses": 21,
+        "common_axis_answers": 42,
+        "label_changes": [],
+        "max_absolute_option_probability_delta": "0",
+        "max_absolute_native_confidence_delta": "0"
+      },
+      "jev-coreinfra": {
+        "common_responses": 21,
+        "common_axis_answers": 42,
+        "label_changes": [
+          {
+            "request_id": "r1-case-03-jev-coreinfra",
+            "case_id": "case-03",
+            "repeat": 1,
+            "axis": "concern_kind",
+            "v1_raw_choice": "policy",
+            "v2_raw_choice": "unknown"
+          },
+          {
+            "request_id": "r2-case-03-jev-coreinfra",
+            "case_id": "case-03",
+            "repeat": 2,
+            "axis": "concern_kind",
+            "v1_raw_choice": "unknown",
+            "v2_raw_choice": "policy"
+          }
+        ],
+        "max_absolute_option_probability_delta": "0.08",
+        "max_absolute_native_confidence_delta": "0.1"
+      }
+    }
+  },
+  "actual_billed_cost": null,
+  "remaining_credential_balance": null,
+  "new_inference_requests_by_analysis": 0,
+  "metric_effect": "none"
+}
