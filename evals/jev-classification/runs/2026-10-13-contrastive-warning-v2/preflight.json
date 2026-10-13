@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source_git_commit": "d5019263590e8ef4311b98bda952f749bf863c97",
+  "manifest_sha256": "38725a1507a6f443dcd7169e39d742ce9e958b699e67dad4a3eca4df8e20b678",
+  "status": "frozen_before_authorized_live_run",
+  "user_authorized_logical_requests": 48,
+  "max_network_attempts": 144,
+  "new_inference_requests_by_preparation": 0,
+  "metric_effect": "none"
+}

@@ -58,6 +58,12 @@ registry exclusions or changes to Specification counts (S/U).
 
 | I34 | [V2 implementation](contrastive-mass-warning-v2.md) accepts bounded Jev mass drift with warnings, preserves raw numbers/confidence and continues after a rejected answer. Mock execution separates all-48 completion from usable coverage; H3 requires positive Jev sensitivity lower bounds and retains raw direction counts. | Protocol warnings, result usability and run interruption are different dimensions. A completed request schedule can still lack the evidence needed for a semantic claim. These checks are offline/mock evidence, not a new provider result; freeze a new v2 manifest before further inference. |
 
+| I35 | [V2 live study](runs/2026-10-13-contrastive-warning-v2/results.md) completes 48/48 accepted responses in 83.80 seconds, with zero warnings/rejections/retries/ambiguity. Every distribution is also strict-valid. | Completion and accounting are now established for both repeats. The warning path was not activated: do not attribute completion to tolerance or claim a provider fix. Its handling is supported by saved-failure and boundary tests. |
+
+| I36 | [V2 semantic score](runs/2026-10-13-contrastive-warning-v2/score.json): Jev H1 is 4/4 in both repeats; Luna is 3/4 with the same mechanical false positive. Both meet H3; Jev lower sensitivity bounds are at least +0.540. All 16 withheld opportunity answers are needs_review, but joint H2 is Jev 2/4 then 1/4, Luna 3/4 then 3/4. | On these authored model-reference cases, explicit architectural roles are distinguishable; responsibility abstention remains the central gap. Keep axes separate, and evaluate any context-evidence gate separately from raw model quality on new naturally occurring examples. No generalization or unattended S/U changes follow. |
+
+| I37 | [Matched-input comparison](runs/2026-10-13-contrastive-warning-v2/analysis-summary.json): v1/v2 request catalogs and reviewed inputs are identical. Jev changes two shared labels, both withheld case-03 concern kind; within v2 that same case flips once. Luna matches labels, option probabilities and confidence across all 42 shared axis answers and all 24 within-v2 paired axes. | Jev instability is localized to a close withheld boundary, while its full-context labels remain stable. Luna's observed consistency is not proof of caching, determinism or independent stochastic repeats. Acceptance-policy changes did not change provider-visible prompts and cannot be credited for semantic improvement. |
+
 ## Current decision
 
 Continue using Jev as an optional recommendation source. The current evidence
@@ -90,7 +96,9 @@ stopped at 42/48 requests on a native probability-contract failure. Its complete
 first repeat supports scoped H1/H2/H3 reporting, while whole-study reliability
 remains unconfirmed. The [precision investigation](jev-probability-precision.md)
 now supports a bounded numerical-warning policy. The [v2 implementation](contrastive-mass-warning-v2.md)
-is tested offline; freeze a new v2 run before further inference. Provider confirmation of the
+has now completed an [authorized 48-request live run](runs/2026-10-13-contrastive-warning-v2/results.md).
+The warning path was not needed, and concern-kind abstention remains the next
+semantic problem to evaluate on new naturally occurring examples. Provider confirmation of the
 exact rounding mechanism is not a prerequisite for that local allowance. Do
 not resume the spent run or change its historical labels or strict score.
 New-family,
