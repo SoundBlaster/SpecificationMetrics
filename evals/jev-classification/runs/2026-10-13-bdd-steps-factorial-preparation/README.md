@@ -1,7 +1,12 @@
 # BDD steps evidence-factor diagnostic preparation
 
-**Status: source audit complete; four annotation inputs and twelve blank
-assignments prepared. Nothing has been dispatched.**
+> Superseded before dispatch by the [balanced multi-target preparation](../2026-10-13-bdd-steps-balanced-factorial-preparation/README.md).
+> Review found that this draft assigned one evidence condition per annotator,
+> confounding condition with annotator. Preserve this directory as the original
+> reviewable draft; do not dispatch its assignments.
+
+**Status: superseded before dispatch; four annotation inputs and twelve blank
+assignments are retained as a reviewable draft.**
 
 The [rubric-v2 reference](../2026-10-13-rubric-v2-reference/README.md) failed
 its decisive-coverage control on `not entry.steps_is_list or not entry.steps`.
@@ -79,9 +84,9 @@ link factor tests whether a visible same-decision evaluation path changes the
 opportunity axis. The combined cell checks whether annotators distinguish
 existing representation from responsibility classification.
 
-No results are present. Do not edit the failed H2 outcome, v2 annotation files,
-provider prompts, production behavior or metric storage based on this study.
-Review the source-grounded packet before dispatching the twelve contexts.
+No results are present. Do not dispatch this draft or edit the failed H2
+outcome, v2 annotation files, provider prompts, production behavior or metric
+storage based on it. Use the balanced replacement linked above.
 
 ## Reproduction
 

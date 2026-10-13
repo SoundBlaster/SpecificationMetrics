@@ -149,11 +149,11 @@ historical reference, production prompt or metric state was changed.
 - **Lesson:** distinguish a missing rule in the product from missing evidence
   in the prompt. A formal validity contract does not automatically establish
   whether its concern kind is domain policy or input mechanics.
-- **Prevention:** the [prepared BDD factor diagnostic](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
-  holds the target, architecture profile and rubric fixed while separately
+- **Prevention:** the [balanced BDD factor diagnostic](runs/2026-10-13-bdd-steps-balanced-factorial-preparation/README.md)
+  holds each target, architecture profile and rubric fixed while separately
   showing the adopted values contract and the same-decision Specification
-  evaluation link. It assigns one condition to each fresh context and does not
-  seed expected labels.
+  evaluation link. Its assignments cross evidence condition with annotator
+  across distinct targets and do not seed expected labels.
 - **Verification:** its offline producer binds all four source files to the
   pinned revision and prepares three blank assignments per cell. No annotation
   or provider run has started; v2 raw results and H2 remain unchanged.
@@ -164,6 +164,20 @@ historical reference, production prompt or metric state was changed.
   `preparation-receipt.json` needed refresh; all packet hashes remained stable.
   The existing replay test caught this drift locally and will guard future
   producer edits.
+- **Follow-up review finding:** the first preparation assigned one evidence
+  condition to each annotator. Condition and annotator were therefore nested,
+  so differences could not be attributed to evidence. Its target context also
+  showed only an anonymous method body, not the containing Specification class.
+- **Correction:** preserve that unstarted draft as superseded. The replacement
+  uses four related predicates from two classes under `SG-SPEC-0070`; each of
+  twelve contexts sees all four evidence conditions, one per distinct target.
+  Each target-condition receives three contexts, packet position is balanced
+  across conditions, and linked cells include the contiguous containing class
+  and method plus the Specification base/evaluation path. No label is seeded.
+- **Verification:** regression tests assert the target-condition and
+  condition-position balance, prohibit repeated targets per context, and check
+  that each linked target occurs inside its named class method. No annotation
+  or provider request has started.
 
 ## Record template
 

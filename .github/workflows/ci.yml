@@ -55,6 +55,8 @@ jobs:
           python3 validate_context_reference_v2.py
           python3 -m unittest -v test_prepare_bdd_steps_factorial.py
           python3 prepare_bdd_steps_factorial.py
+          python3 -m unittest -v test_prepare_bdd_steps_balanced_factorial.py
+          python3 prepare_bdd_steps_balanced_factorial.py
           python3 -m unittest -v test_validate_expression_reference.py
           python3 -m unittest -v test_matched_expression_plan.py
           python3 -m unittest -v test_score_matched_expressions.py

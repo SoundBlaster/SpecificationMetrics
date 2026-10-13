@@ -303,7 +303,11 @@ matched on all 18 states in both fresh rounds, but decisive coverage fell to
 rounds marked `needs_review / unknown`. V2 is therefore not approved for
 provider scoring; the rubric proposal and prior labels remain separate.
 
-The [BDD steps source audit and follow-up preparation](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
-found the adopted nonempty-steps contract and the existing SpecificationCore
-evaluation path in the pinned SpecGraph commit. It prepares four evidence
-conditions for a focused diagnostic; no annotation has been dispatched.
+The [BDD steps source audit and balanced follow-up preparation](runs/2026-10-13-bdd-steps-balanced-factorial-preparation/README.md)
+found the adopted values contract and existing SpecificationCore evaluation
+paths in the pinned SpecGraph commit. Its four evidence conditions cover four
+related decision sites; twelve fresh contexts each see all four conditions on
+different sites, with three contexts per target-condition. No annotation has
+been dispatched. The earlier [single-target draft](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
+is preserved as superseded after review identified an annotator-condition
+confound.
