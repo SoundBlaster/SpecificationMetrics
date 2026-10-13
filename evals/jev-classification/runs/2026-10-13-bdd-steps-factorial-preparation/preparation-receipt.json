@@ -6,7 +6,7 @@
     "../2026-10-13-rubric-v2-reference/annotation-prompt.txt": "8d8ca1b61769ac2c9011c72d8258d21da38ed7cf2cd6e193f21a89d4520ff888",
     "../2026-10-13-rubric-v2-reference/upstream-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
   },
-  "producer_sha256": "fa0ecc6c75624e471505e2441222201a9784a968c204ba818f021142e920b1da",
+  "producer_sha256": "81f01f0725dee7792d440e93c907cc6869d0699be3d25b592ae8f180501b8fae",
   "artifact_file_sha256": {
     "rubric.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
     "annotation-prompt.txt": "b7416991729cabdda541d0288456bcd0e28d565fe39d2d227a755a71860f9bcb",

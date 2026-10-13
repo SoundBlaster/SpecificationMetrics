@@ -157,6 +157,13 @@ historical reference, production prompt or metric state was changed.
 - **Verification:** its offline producer binds all four source files to the
   pinned revision and prepares three blank assignments per cell. No annotation
   or provider run has started; v2 raw results and H2 remain unchanged.
+- **Follow-up CI failure:** both general CI runs caught a stale
+  `producer_sha256` in the saved receipt. The producer had received a final
+  whitespace-only edit after the packet was frozen, but its self-hash receipt
+  was not regenerated. Regenerating in a scratch directory showed that only
+  `preparation-receipt.json` needed refresh; all packet hashes remained stable.
+  The existing replay test caught this drift locally and will guard future
+  producer edits.
 
 ## Record template
 
