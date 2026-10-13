@@ -293,3 +293,9 @@ annotator receives two cases per mode and one view of each target. The earlier
 is retained as diagnostic evidence. Raw annotations, context/annotator effects,
 ownership evidence and semantic adjudication remain separate; this reference
 preparation does not authorize Jev/Luna requests or S/U changes.
+
+The [expression-fit v2 rubric proposal](expression-fit-rubric-v2.md) now makes
+decision-role evidence, policy/variant tie rules and missing-context treatment
+explicit. It preserves the label sets and supplies a plan for fresh validation.
+It is not activated, independently evaluated or an accepted replacement gold
+reference; historical annotations remain unchanged.

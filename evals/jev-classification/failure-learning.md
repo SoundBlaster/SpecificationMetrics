@@ -95,6 +95,15 @@ for provenance and later provider preparation.
   not a provider's internal cause. Four states/six axis labels remain unapproved;
   a versioned rubric proposal is next. No Jev/Luna requests or metric writes.
 
+## Proposed prevention: explicit decision-role criteria
+
+The [expression-fit v2 proposal](expression-fit-rubric-v2.md) now records explicit
+decision-role witnesses and tie rules for the disputed boundaries. It is a
+proposed prevention pending fresh annotation, not a validated provider fix.
+Its plan also requires task identity to bind rubric/questions: matching state
+hashes alone cannot establish identical inputs across a rubric change. No
+historical reference, production prompt or metric state was changed.
+
 ## Record template
 
 1. Failure and exact command/criterion.
