@@ -307,7 +307,26 @@ The [BDD steps source audit and balanced follow-up preparation](runs/2026-10-13-
 found the adopted values contract and existing SpecificationCore evaluation
 paths in the pinned SpecGraph commit. Its four evidence conditions cover four
 related decision sites; twelve fresh contexts each see all four conditions on
-different sites, with three contexts per target-condition. No annotation has
-been dispatched. The earlier [single-target draft](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
+different sites, with three contexts per target-condition. The
+[completed diagnostic](runs/2026-10-13-bdd-steps-balanced-factorial-results/analysis.md)
+retains 48 annotations in twelve fresh contexts. Opportunity labels are
+unanimous in all sixteen target-condition groups; responsibility labels have
+one 2–1 split. The earlier [single-target draft](runs/2026-10-13-bdd-steps-factorial-preparation/README.md)
 is preserved as superseded after review identified an annotator-condition
 confound.
+
+An [integrator adjudication](runs/2026-10-13-bdd-step-item-adjudication/README.md)
+recommends `excluded / unknown` for the disputed step-item predicate with
+Specification linkage and no validity contract. The existing rubric already
+separates ownership from responsibility: the evaluation path establishes
+existing representation, while the meaning of `step.valid` remains absent.
+The review is advisory and not blind or human gold. Raw labels and agreement
+counts remain unchanged; v2 is still not approved for provider scoring.
+
+The [definition and owner-name follow-up](runs/2026-10-13-definition-owner-names-preparation/README.md)
+is prepared with sixteen fresh contexts planned and 64 blank annotations. The
+source audit resolves `TextInput.valid` to a nonblank-string check with original
+text preserved. Its domain purpose remains a separate question. Four independent
+helper families cross additional context with partial owner-name rewriting;
+the explicit newline append is a local-role control. No annotation is dispatched
+and no provider request is made by preparation.

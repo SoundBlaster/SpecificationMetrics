@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "study_kind": "source_expression_annotation",
+  "instructions": "Judge only the exact expression independently under the supplied profile/rubric. Cite supplied evidence for each axis and retain uncertainty. No author labels or provider predictions are supplied. Do not transfer a label from another evidence view.",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Judge ONLY the exact target expression under the supplied architecture profile. Supporting declarations and contracts explain this target; they are not additional candidates. Identify the subject, the alternatives distinguished by the predicate, and its demonstrated decision role. Use a supplied implementation for a helper call; judge a selected assembly as a whole without cherry-picking a lambda or guard. A pure declared predicate contract can establish a domain decision: executed side effects, multiple uses, high complexity and immediate code reduction are NOT required. Choose eligible when supplied evidence establishes a stable domain decision or domain behavior-selection contract whose definition benefits from a named, addressable, observable Specification. Choose excluded only with affirmative evidence of representation/parsing/I-O/adaptation mechanics without a distinct domain decision, or explicit evidence that a Specification already owns this SAME decision through its evaluation path. An unsafe error, a helper name, a permission-sounding field, branch count, imports, or a Specification elsewhere do not alone establish fit or same-decision ownership. A parser may enforce domain policy; a rejection or security-sounding check may also implement mechanics. For path checks, seek evidence of the contract for permitted domain references versus representation or generic adapter constraints; a declared integrity contract can suffice without actual filesystem access, but do not infer such a contract from the word unsafe. An isolated permission field can identify a topic without proving whether this site defines policy, adapts a verdict or merely reports it. Choose needs_review when a specific missing fact leaves materially different opportunity labels plausible. Do not require every caller or runtime binding when the supplied contract already settles this exact decision. Unknown ownership is not proof of ownership and does not automatically force abstention for an otherwise clear architectural-fit suggestion. Classify this axis independently: concern-kind uncertainty need not prevent eligible when both plausible responsibilities establish fit. Do not invent omitted facts or transfer labels from other evidence views.",
+      "criteria": {
+        "eligible": "Supplied evidence establishes a stable domain decision or domain behavior-selection contract suitable for a named, addressable, observable Specification; one use is sufficient. No supplied evidence establishes existing Specification ownership of this same decision.",
+        "excluded": "Affirmative evidence establishes technical mechanics without a distinct domain decision, or explicit same-decision Specification ownership. Mere lack of policy evidence is not exclusion.",
+        "needs_review": "A specific material ambiguity or missing fact prevents a reliable opportunity judgment. Abstention is unknown, not exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Independently classify the PRIMARY RESPONSIBILITY of ONLY the exact target expression, using its supplied subject, alternatives and decision role. Supporting code establishes meanings and effects; do not classify an entire containing function or unrelated later decisions. A pure declared domain predicate can be policy without executing effects. Policy decides domain admissibility, authority, evidence sufficiency, eligibility, lifecycle obligations or which domain work has precedence. Mechanics parses, represents, transports, adapts or performs generic technical enforcement without a demonstrated distinct domain decision. A validation branch can enforce either role: rejection, an unsafe message, names and file location alone do not settle it. A supplied contract restricting permitted domain references can establish path-integrity policy even inside a parser and without actual filesystem access; generic path checks without a settled role must not automatically become either policy or mechanics. Variant_behavior selects a variant-specific implementation or behavior for an already established domain activity. Tie rule: a predicate deciding WHETHER work is allowed/required or WHICH obligation takes precedence is policy; selection of HOW an already established activity is implemented for a domain variant is variant_behavior. Testing an enum, boolean or none sentinel does not by itself establish variant_behavior. If the target only recognizes an external syntactic tag to construct typed facts, that dispatch is mechanics. Apply the tie rule to the selected expression: subsequent dispatch among individual handlers does not turn a preceding lifecycle-priority predicate into variant_behavior. If independently meaningful policy and adaptation are mixed in the selected expression and its primary contract cannot be established, choose unknown rather than silently changing target boundaries. Identifiers are evidence of a possible subject, not proof of enforcement or of the primary role; do not infer an operative permission gate from a permission-sounding field alone. A responsibility can be clear while Specification suitability or ownership remains unknown. Existing Specification ownership does not turn policy into mechanics. Choose unknown only for material ambiguity; ordinary unshown consumers are not a reason to abstain when the supplied expression or declared contract already settles responsibility. Do not infer omitted dependencies or copy labels from another evidence view.",
+      "criteria": {
+        "policy": "A demonstrated durable domain admissibility, authority, trust, evidence, eligibility, lifecycle or obligation-priority decision; validation and pure predicates can implement it.",
+        "mechanics": "A demonstrated parsing, representation, I/O, adaptation or generic technical-enforcement responsibility without a distinct domain decision.",
+        "variant_behavior": "Selection of variant-specific domain implementation or behavior for an already established activity, rather than eligibility or obligation precedence.",
+        "unknown": "The supplied evidence does not establish a reliable primary responsibility; do not guess from names or silently split a mixed target."
+      }
+    }
+  },
+  "rubric_id": "specification_metrics.expression-fit.v2-diagnostic",
+  "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+  "questions_sha256": "519e072c37c6337e49711bf03188da7381e3f079b699776e3f32241c637add54",
+  "annotation_prompt_sha256": "86beeb8f9a346e615299549ee112626136c493eb095fc2387d0e1bbdbfcc0015",
+  "cases": [
+    {
+      "case_id": "probe-d",
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not rendered.endswith(\"\\n\")",
+          "syntax_kind": "UnaryOp",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "code": "def dump_canonical_yaml(data: dict[str, Any]) -> str:\n    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )\n    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "task_sha256": "6eb87c6c639814e676e7cd02a1d150dc32ec9505f849a2e43637e1637faea585"
+    },
+    {
+      "case_id": "probe-a",
+      "state_sha256": "5e19e7edb00a9cd623ce84a2b95f75da242030b5a32933b7fd832883ed4d2c5f",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not step.valid",
+          "syntax_kind": "UnaryOp",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "code": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\"\n\n    def skip_reason(self, context: BDDContext) -> str | None:\n        return super().skip_reason(context) or entry_skip(context)\n\n    def findings(self, context: BDDContext):\n        findings = []\n        for index, entry in enumerate(context.entries):\n            if not entry.is_mapping:\n                continue\n            path = f\"specification.bdd_scenarios[{index}]\"\n            if not entry.id.valid:\n                findings.append(issue(\"invalid_value\", path + \".id\"))\n            if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))\n            else:\n                findings.extend(\n                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid\n                )\n        return tuple(findings)"
+            },
+            {
+              "fragment_id": "fragment-02",
+              "code": "class BDDPolicy(Specification[BDDContext]):\n    spec_id = \"SG-SPEC-0070\"\n    rule_ref: str\n\n    def __init__(self) -> None:\n        super().__init__(name=self.rule_ref)\n        self._seal()\n\n    def findings(self, context: BDDContext) -> tuple[BDDScenarioFinding, ...]:\n        raise NotImplementedError"
+            },
+            {
+              "fragment_id": "fragment-03",
+              "code": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+            },
+            {
+              "fragment_id": "fragment-04",
+              "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)"
+            },
+            {
+              "fragment_id": "fragment-05",
+              "code": "    for policy in POLICIES:\n        skip = policy.skip_reason(context)\n        if skip:\n            if recorder is not None:\n                recorder.skipped(policy.rule_ref)\n            outcomes.append(PolicyOutcome(policy.rule_ref, \"skipped\", skip))\n            continue\n        passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)\n        findings.extend(current_findings)\n        outcomes.append(PolicyOutcome(policy.rule_ref, \"satisfied\" if passed else \"unsatisfied\"))\n        context = policy.transition(context, current_findings)"
+            },
+            {
+              "fragment_id": "fragment-06",
+              "code": "from dataclasses import dataclass\nfrom enum import Enum\n\n\nclass BDDScenarioPresence(str, Enum):\n    ABSENT = \"absent\"\n    EMPTY = \"explicit_empty\"\n    PRESENT = \"present\"\n    INVALID = \"invalid\"\n\n\n@dataclass(frozen=True)\nclass TextInput:\n    value: str | None\n\n    @property\n    def valid(self) -> bool:\n        return self.value is not None and bool(self.value.strip())\n\n\n@dataclass(frozen=True)\nclass ScenarioInput:\n    is_mapping: bool\n    id: TextInput\n    title_supplied: bool\n    title: TextInput\n    steps_is_list: bool\n    steps: tuple[TextInput, ...]\n    unknown_fields: tuple[str, ...]\n\n\n@dataclass(frozen=True)\nclass ReferenceInput:\n    value: TextInput\n    path: str\n\n\n@dataclass(frozen=True)\nclass BDDContext:\n    profile: str\n    native_supplied: bool\n    alternate_supplied: bool\n    native_is_list: bool\n    entries: tuple[ScenarioInput, ...]\n    references: tuple[ReferenceInput, ...]\n    malformed_reference_paths: tuple[str, ...] = ()\n    presence: BDDScenarioPresence = BDDScenarioPresence.INVALID\n    duplicate_ids: bool = False\n    trace_profile: str = \"unsupported\"\n\n    @property\n    def valid_ids(self) -> bool:\n        return all(e.is_mapping and e.id.valid for e in self.entries)"
+            },
+            {
+              "fragment_id": "fragment-07",
+              "code": "def text(value: object) -> TextInput:\n    return TextInput(value if isinstance(value, str) else None)\n\n\ndef entry(value: object) -> ScenarioInput:\n    if not isinstance(value, dict):\n        return ScenarioInput(False, text(None), False, text(None), False, (), ())\n    steps = value.get(\"steps\")\n    return ScenarioInput(\n        True,\n        text(value.get(\"id\")),\n        \"scenario\" in value,\n        text(value.get(\"scenario\")),\n        isinstance(steps, list),\n        tuple(text(s) for s in steps) if isinstance(steps, list) else (),\n        tuple(sorted(str(k) for k in value if k not in {\"id\", \"scenario\", \"steps\"})),\n    )"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "task_sha256": "28c9b84cd3262314388d177dcab2a11b6f8e01b5fe0f56d5148ebdf9b5ff622b"
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "22f31d739c41d0fde66605466d197eb05a09ac246230c69621cc2e36722a3c2f",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "gate != \"none\"",
+          "syntax_kind": "Compare",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "code": "def OperationGate(\n    node: workspace.SpecNode,\n    *,\n    source_path: str,\n    gate_order: list[str],\n    status_order: list[str],\n) -> tuple[int, dict[str, Any]] | None:\n    if node.status not in VALID_STATUSES:\n        raise ValueError(f\"unsupported canonical status for {node.id}: {node.status}\")\n    gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)\n        kind = \"refine_spec\"\n    else:\n        return None\n\n    return rank, {\n        \"kind\": kind,\n        \"spec_id\": node.id,\n        \"title\": node.title,\n        \"status\": node.status,\n        \"gate_state\": gate,\n        \"next_gap\": next_gap,\n        \"source_artifact\": source_path,\n        \"command_hint\": command_hint,\n        \"review_required\": True,\n    }\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "task_sha256": "4d430281ef4f5bae1176185efc1a009d7e5e823b67127d7a2b7603f93b2afef4"
+    },
+    {
+      "case_id": "probe-c",
+      "state_sha256": "40b841d9ed44333d6a8099bf2e9641b2d06b199836154832820aead70c25ef47",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+          "syntax_kind": "BoolOp",
+          "scope": "exact expression only"
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "code": "def OperationPath(value: Any) -> str:\n    if not isinstance(value, str) or not value:\n        raise IncrementalStageError(\"manifest file path must be a non-empty string\")\n    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value\n"
+            },
+            {
+              "fragment_id": "fragment-02",
+              "code": "from pathlib import Path, PurePosixPath\n"
+            },
+            {
+              "fragment_id": "fragment-03",
+              "code": "class IncrementalStageError(ValueError):\n    pass\n"
+            },
+            {
+              "fragment_id": "fragment-04",
+              "code": "def _manifest_files(payload: Any) -> dict[str, dict[str, Any]]:\n    if not isinstance(payload, dict) or not isinstance(payload.get(\"files\"), list):\n        raise IncrementalStageError(\"artifact manifest must contain files[]\")\n    files: dict[str, dict[str, Any]] = {}\n    for row in payload[\"files\"]:\n        if not isinstance(row, dict):\n            raise IncrementalStageError(\"artifact manifest files[] entries must be objects\")\n        path = OperationPath(row.get(\"path\"))\n        digest = row.get(\"sha256\")\n        if not isinstance(digest, str) or len(digest) != 64:\n            raise IncrementalStageError(f\"manifest sha256 is invalid for {path}\")\n        if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row\n    return files\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "task_sha256": "77e672bfc6584d463dbd6872b9f0897e58cc8b1c5be4bc72215010ee4aa3e173"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "status": "blank_not_reference",
+  "annotations": [
+    {
+      "case_id": "probe-a",
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "e6b1dd23cbdb905d26784d3e8166419ee7561e410230ebc8ebfd10667e1ae391",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "425662e6242d8cde95f2caf26809686c2da8c484f38814bb7611783a13137d47",
+      "task_sha256": "6a8681c34fd09866ac2552719639d0845f63e95a4f268de2082d8add099b9803",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-c",
+      "state_sha256": "16cb9e7ea1d9f5dbc01028c41f076f260756ac21bf02b024cee2caba9f8e14ea",
+      "task_sha256": "549da6b5bf6fe3a1f324d371329f081a794dbc6ce26a890b2a630945e19b7793",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-d",
+      "state_sha256": "498e1a28f93a78f46390b24c0aa8fcd589d06a45be369e9db73fbcffbcd2b511",
+      "task_sha256": "ee9ecb8190b8279b40c2af8242f2883bd366558fac44c779a6e589d42eee6064",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    }
+  ]
+}

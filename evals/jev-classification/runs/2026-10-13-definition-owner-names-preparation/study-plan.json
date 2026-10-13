@@ -1,0 +1,73 @@
+{
+  "status": "pre_registered_diagnostic_not_gold",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "conditions": [
+    {
+      "cell": "01",
+      "additional_context": false,
+      "neutral_owner_names": false
+    },
+    {
+      "cell": "02",
+      "additional_context": true,
+      "neutral_owner_names": false
+    },
+    {
+      "cell": "03",
+      "additional_context": false,
+      "neutral_owner_names": true
+    },
+    {
+      "cell": "04",
+      "additional_context": true,
+      "neutral_owner_names": true
+    }
+  ],
+  "focal_target": "probe-a",
+  "formatting_control": "probe-d",
+  "factor_definitions": {
+    "additional_context": "BDD: TextInput/ScenarioInput/BDDContext and text/entry conversion definitions. Other targets: their previously frozen dependency bundles. No adopted requirement is added.",
+    "neutral_owner_names": "Only selected owner class/function and registry NAME tokens change. Exact target expressions, domain fields, string rule addresses and the Specification marker remain unchanged."
+  },
+  "assignment": "Sixteen fresh contexts; each sees all four targets and conditions once. Four contexts per target-cell. Target-position and condition-position counts are each four. One view per target per context.",
+  "hypotheses": {
+    "H_ownership": {
+      "criterion": "All sixteen focal opportunity labels are excluded, including neutral-name cells.",
+      "failure": "Any other focal opportunity label triggers ownership-evidence review; this does not prove an internal model cause."
+    },
+    "H_names": {
+      "criterion": "For the focal target, the concern-kind label histograms match between original and neutral owner names at each fixed context level (four judgments per cell).",
+      "failure": "Any histogram difference records a name-associated difference requiring follow-up; sampling variation remains possible and small samples do not establish causal bias or significance."
+    },
+    "H_definition": {
+      "criterion": "None of the eight extended-context focal rationales asserts that the operational nonblank validity criterion is unavailable or that strip rewrites the stored source value. Unresolved domain purpose is allowed. Inspect cited evidence, not just labels.",
+      "failure": "A conflicting claim is an operational interpretation failure. policy, mechanics and unknown are not assigned gold labels for this hypothesis."
+    },
+    "H_local_control": {
+      "criterion": "All sixteen newline-control annotations are excluded/mechanics, with both context levels and naming modes.",
+      "source": "Authored development expectation from the locally visible newline append; not independent annotation or human gold.",
+      "failure": "Any deviation triggers review for local-role recognition or blanket abstention."
+    }
+  },
+  "reporting": [
+    "Report per-target and per-cell raw distributions and decisive coverage independently on each axis.",
+    "Review rationale support separately from exact quote provenance.",
+    "Report target-cell repetition, operational interpretation conflicts and all failed prospective criteria.",
+    "Do not pool heterogeneous context additions as a universal treatment effect."
+  ],
+  "limits": [
+    "Owner renaming is partial; domain field names, rule addresses, type names and string literals remain.",
+    "Four related study targets are not a representative codebase sample; labels are descriptive.",
+    "Distinct helper families avoid direct TextInput-definition leakage; cross-case priming remains possible.",
+    "Reversible NAME-token renaming checks syntax and spelling preservation, not a proof of arbitrary Python runtime equivalence.",
+    "The prompt and task identities differ from previous runs; this is not an unchanged-input repeat.",
+    "A nonblank-text definition does not by itself establish domain purpose."
+  ],
+  "annotation_started": false,
+  "human_gold": false,
+  "participants": "Fresh independent annotation contexts, not a Jev/Luna provider protocol. Fixed Choice answers alone cannot satisfy rationale checks.",
+  "author_expectations_visible_in_packets": false,
+  "reference_frozen_for_provider_scoring": false,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}
