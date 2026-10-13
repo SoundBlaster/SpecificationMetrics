@@ -274,8 +274,15 @@ mass totals from 0.99 through 1.01 with an explicit warning, preserving raw
 probabilities and native confidence. Rejected answers remain unavailable without
 ending the schedule; identity/transport failures still stop it. H3 includes Jev
 precision sensitivity, while execution completion and usable coverage are
-separate. The historical v1 study is unchanged. V2 has offline/mock evidence
-only; no new live run was performed and no persistent v2 run manifest is checked in.
+separate. The historical v1 study is unchanged.
+
+The subsequently authorized [v2 live run](runs/2026-10-13-contrastive-warning-v2/results.md)
+completed 48/48 accepted responses in 83.80 seconds, without warnings, retries or
+ambiguity. Jev meets H1 at 4/4 pairs in both repeats, Luna at 3/4; both fail joint
+withheld-context H2 and meet H3. All 16 withheld opportunity answers are
+`needs_review`; the remaining gap is concern-kind abstention. Jev has one
+withheld repeat label change; Luna's repeated answers match exactly. These are
+development-set/model-reference findings, not production accuracy or S/U changes.
 
 ### Real-source context reference diagnostics
 

@@ -1,0 +1,3145 @@
+{
+  "schema_version": 1,
+  "study_kind": "contrastive_mass_warning_score/v2",
+  "reference_authority": "independent_model_annotation_not_human_gold",
+  "planned_requests": 48,
+  "received_rows": 48,
+  "native_valid": 48,
+  "native_invalid": 0,
+  "operationally_complete": true,
+  "missing_result_request_ids": [],
+  "unattempted_request_ids": [],
+  "attempt_status_unknown_request_ids": [],
+  "attempted_without_result_request_ids": [],
+  "providers": [
+    {
+      "provider": "jev-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "planned_cases": 12,
+          "usable_cases": 12,
+          "unavailable_or_ambiguous_case_ids": [],
+          "operationally_complete": true,
+          "full_context_axes": {
+            "opportunity": {
+              "matched": 8,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 4
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 4
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 8,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 4
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_policy_recall": {
+            "recovered": 4,
+            "planned": 4
+          },
+          "mechanical_false_positives": {
+            "case_ids": [],
+            "planned": 4,
+            "usable": 4
+          },
+          "pairs": [
+            {
+              "pair_id": "pair-01",
+              "mechanics": {
+                "case_id": "case-07",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.01,
+                        "excluded": 0.98,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.97
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.96,
+                        "policy": 0.01,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.02
+                      },
+                      "confidence": 0.95
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1295,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-01",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.56,
+                        "excluded": 0.36,
+                        "needs_review": 0.08
+                      },
+                      "confidence": 0.34
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.38,
+                        "policy": 0.6,
+                        "unknown": 0.02,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.47
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1314,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.55,
+                "concern_kind": 0.59
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.55",
+                    "lower": "0.540",
+                    "upper": "0.560",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.59",
+                    "lower": "0.580",
+                    "upper": "0.600",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            },
+            {
+              "pair_id": "pair-02",
+              "mechanics": {
+                "case_id": "case-10",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.2,
+                        "excluded": 0.79,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.69
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.94,
+                        "policy": 0.02,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.04
+                      },
+                      "confidence": 0.92
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1281,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-05",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.97,
+                        "excluded": 0.01,
+                        "needs_review": 0.02
+                      },
+                      "confidence": 0.95
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.0,
+                        "policy": 1.0,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 1.0
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1284,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.77,
+                "concern_kind": 0.98
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.77",
+                    "lower": "0.760",
+                    "upper": "0.780",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.98",
+                    "lower": "0.970",
+                    "upper": "0.985",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            },
+            {
+              "pair_id": "pair-03",
+              "mechanics": {
+                "case_id": "case-04",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.23,
+                        "excluded": 0.76,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.64
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.87,
+                        "policy": 0.13,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.83
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1417,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-11",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.96,
+                        "excluded": 0.02,
+                        "needs_review": 0.02
+                      },
+                      "confidence": 0.94
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.0,
+                        "policy": 1.0,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 1.0
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1413,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.73,
+                "concern_kind": 0.87
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.73",
+                    "lower": "0.720",
+                    "upper": "0.740",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.87",
+                    "lower": "0.860",
+                    "upper": "0.875",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            },
+            {
+              "pair_id": "pair-04",
+              "mechanics": {
+                "case_id": "case-12",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.03,
+                        "excluded": 0.96,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.94
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.99,
+                        "policy": 0.01,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.99
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1240,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-08",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.78,
+                        "excluded": 0.19,
+                        "needs_review": 0.03
+                      },
+                      "confidence": 0.67
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.1,
+                        "policy": 0.87,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.03
+                      },
+                      "confidence": 0.83
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1256,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.75,
+                "concern_kind": 0.86
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.75",
+                    "lower": "0.740",
+                    "upper": "0.760",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.86",
+                    "lower": "0.850",
+                    "upper": "0.870",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            }
+          ],
+          "withheld_controls": [
+            {
+              "pair_id": "pair-01",
+              "case_id": "case-03",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.08,
+                      "excluded": 0.45,
+                      "needs_review": 0.47
+                    },
+                    "confidence": 0.2
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.16,
+                      "policy": 0.41,
+                      "unknown": 0.43,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.24
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1138,
+                "output_tokens": 91
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            },
+            {
+              "pair_id": "pair-02",
+              "case_id": "case-09",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.17,
+                      "excluded": 0.24,
+                      "needs_review": 0.59
+                    },
+                    "confidence": 0.38
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "mechanics",
+                    "probabilities": {
+                      "mechanics": 0.36,
+                      "policy": 0.28,
+                      "unknown": 0.26,
+                      "variant_behavior": 0.1
+                    },
+                    "confidence": 0.15
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1135,
+                "output_tokens": 93
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-03",
+              "case_id": "case-02",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.22,
+                      "excluded": 0.22,
+                      "needs_review": 0.5599999999999999
+                    },
+                    "confidence": 0.34
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "policy",
+                    "probabilities": {
+                      "mechanics": 0.09,
+                      "policy": 0.69,
+                      "unknown": 0.22,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.59
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1189,
+                "output_tokens": 91
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-04",
+              "case_id": "case-06",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.01,
+                      "excluded": 0.03,
+                      "needs_review": 0.96
+                    },
+                    "confidence": 0.94
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.07,
+                      "policy": 0.09,
+                      "unknown": 0.84,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.79
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1130,
+                "output_tokens": 91
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            }
+          ],
+          "H1": {
+            "correct_pairs": 4,
+            "planned": 4,
+            "criterion_met": true,
+            "supported": true
+          },
+          "H2": {
+            "correct_controls": 2,
+            "planned": 4,
+            "criterion_met": false,
+            "supported": false
+          },
+          "H3_secondary": {
+            "directional_pairs": 4,
+            "planned": 4,
+            "required": 3,
+            "criterion_met": true,
+            "supported": true,
+            "raw_directional_pairs": 4,
+            "unresolved_raw_positive_pair_ids": []
+          }
+        },
+        {
+          "repeat": 2,
+          "planned_cases": 12,
+          "usable_cases": 12,
+          "unavailable_or_ambiguous_case_ids": [],
+          "operationally_complete": true,
+          "full_context_axes": {
+            "opportunity": {
+              "matched": 8,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 4
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 4
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 8,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 4
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_policy_recall": {
+            "recovered": 4,
+            "planned": 4
+          },
+          "mechanical_false_positives": {
+            "case_ids": [],
+            "planned": 4,
+            "usable": 4
+          },
+          "pairs": [
+            {
+              "pair_id": "pair-01",
+              "mechanics": {
+                "case_id": "case-07",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.02,
+                        "excluded": 0.97,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.95
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.95,
+                        "policy": 0.01,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.03
+                      },
+                      "confidence": 0.93
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1295,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-01",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.59,
+                        "excluded": 0.33,
+                        "needs_review": 0.08
+                      },
+                      "confidence": 0.38
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.38,
+                        "policy": 0.6,
+                        "unknown": 0.02,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.47
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1314,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.57,
+                "concern_kind": 0.59
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.57",
+                    "lower": "0.560",
+                    "upper": "0.580",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.59",
+                    "lower": "0.580",
+                    "upper": "0.600",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            },
+            {
+              "pair_id": "pair-02",
+              "mechanics": {
+                "case_id": "case-10",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.16,
+                        "excluded": 0.83,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.74
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.95,
+                        "policy": 0.02,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.03
+                      },
+                      "confidence": 0.93
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1281,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-05",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.97,
+                        "excluded": 0.01,
+                        "needs_review": 0.02
+                      },
+                      "confidence": 0.95
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.0,
+                        "policy": 1.0,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 1.0
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1284,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.8099999999999999,
+                "concern_kind": 0.98
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.81",
+                    "lower": "0.800",
+                    "upper": "0.820",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.98",
+                    "lower": "0.970",
+                    "upper": "0.985",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            },
+            {
+              "pair_id": "pair-03",
+              "mechanics": {
+                "case_id": "case-04",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.31,
+                        "excluded": 0.67,
+                        "needs_review": 0.02
+                      },
+                      "confidence": 0.51
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.82,
+                        "policy": 0.18,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.76
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1417,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-11",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.97,
+                        "excluded": 0.02,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.95
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.0,
+                        "policy": 1.0,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 1.0
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1413,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.6599999999999999,
+                "concern_kind": 0.8200000000000001
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.66",
+                    "lower": "0.650",
+                    "upper": "0.670",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.82",
+                    "lower": "0.810",
+                    "upper": "0.825",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            },
+            {
+              "pair_id": "pair-04",
+              "mechanics": {
+                "case_id": "case-12",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.04,
+                        "excluded": 0.95,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.92
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.99,
+                        "policy": 0.01,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.99
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1240,
+                  "output_tokens": 94
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-08",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "jev-1.13.0",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.8,
+                        "excluded": 0.18,
+                        "needs_review": 0.02
+                      },
+                      "confidence": 0.7
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.11,
+                        "policy": 0.86,
+                        "unknown": 0.0,
+                        "variant_behavior": 0.03
+                      },
+                      "confidence": 0.81
+                    }
+                  },
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1",
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+                },
+                "usage": {
+                  "input_tokens": 1256,
+                  "output_tokens": 90
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.76,
+                "concern_kind": 0.85
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "assumption": "each_Jev_probability_rounded_to_nearest_0.01_not_verified_provider_behavior",
+                "axes": {
+                  "opportunity": {
+                    "raw_delta": "0.76",
+                    "lower": "0.750",
+                    "upper": "0.770",
+                    "direction": "positive"
+                  },
+                  "concern_kind": {
+                    "raw_delta": "0.85",
+                    "lower": "0.840",
+                    "upper": "0.860",
+                    "direction": "positive"
+                  }
+                },
+                "both_lower_bounds_positive": true
+              }
+            }
+          ],
+          "withheld_controls": [
+            {
+              "pair_id": "pair-01",
+              "case_id": "case-03",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.1,
+                      "excluded": 0.37,
+                      "needs_review": 0.53
+                    },
+                    "confidence": 0.3
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "policy",
+                    "probabilities": {
+                      "mechanics": 0.2,
+                      "policy": 0.42,
+                      "unknown": 0.38,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.23
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1138,
+                "output_tokens": 91
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-02",
+              "case_id": "case-09",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.18,
+                      "excluded": 0.2,
+                      "needs_review": 0.62
+                    },
+                    "confidence": 0.43
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "mechanics",
+                    "probabilities": {
+                      "mechanics": 0.32,
+                      "policy": 0.28,
+                      "unknown": 0.26,
+                      "variant_behavior": 0.14
+                    },
+                    "confidence": 0.09
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1135,
+                "output_tokens": 93
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-03",
+              "case_id": "case-02",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.21,
+                      "excluded": 0.26,
+                      "needs_review": 0.53
+                    },
+                    "confidence": 0.3
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "policy",
+                    "probabilities": {
+                      "mechanics": 0.08,
+                      "policy": 0.71,
+                      "unknown": 0.21,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.61
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1189,
+                "output_tokens": 91
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-04",
+              "case_id": "case-06",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "jev-1.13.0",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.01,
+                      "excluded": 0.03,
+                      "needs_review": 0.96
+                    },
+                    "confidence": 0.94
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.09,
+                      "policy": 0.09,
+                      "unknown": 0.82,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.76
+                  }
+                },
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1",
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+              },
+              "usage": {
+                "input_tokens": 1130,
+                "output_tokens": 91
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            }
+          ],
+          "H1": {
+            "correct_pairs": 4,
+            "planned": 4,
+            "criterion_met": true,
+            "supported": true
+          },
+          "H2": {
+            "correct_controls": 1,
+            "planned": 4,
+            "criterion_met": false,
+            "supported": false
+          },
+          "H3_secondary": {
+            "directional_pairs": 4,
+            "planned": 4,
+            "required": 3,
+            "criterion_met": true,
+            "supported": true,
+            "raw_directional_pairs": 4,
+            "unresolved_raw_positive_pair_ids": []
+          }
+        }
+      ],
+      "repeat_consistency": {
+        "paired_axis_answers": 24,
+        "planned_axis_pairs": 24,
+        "unavailable_case_ids": [],
+        "label_disagreements": [
+          {
+            "case_id": "case-03",
+            "axis": "concern_kind",
+            "repeat_1": "unknown",
+            "repeat_2": "policy"
+          }
+        ],
+        "max_native_confidence_delta": 0.13,
+        "max_option_probability_delta": 0.08999999999999997,
+        "supported": false
+      }
+    },
+    {
+      "provider": "luna-decision-coreinfra",
+      "repeats": [
+        {
+          "repeat": 1,
+          "planned_cases": 12,
+          "usable_cases": 12,
+          "unavailable_or_ambiguous_case_ids": [],
+          "operationally_complete": true,
+          "full_context_axes": {
+            "opportunity": {
+              "matched": 7,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 4
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 8,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 4
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_policy_recall": {
+            "recovered": 4,
+            "planned": 4
+          },
+          "mechanical_false_positives": {
+            "case_ids": [
+              "case-10"
+            ],
+            "planned": 4,
+            "usable": 4
+          },
+          "pairs": [
+            {
+              "pair_id": "pair-01",
+              "mechanics": {
+                "case_id": "case-07",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.34,
+                        "excluded": 0.53,
+                        "needs_review": 0.13
+                      },
+                      "confidence": 0.3
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.54,
+                        "policy": 0.39,
+                        "unknown": 0.06,
+                        "variant_behavior": 0.01
+                      },
+                      "confidence": 0.39
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1108,
+                  "output_tokens": 0,
+                  "total_tokens": 1108,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-01",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.7,
+                        "excluded": 0.15,
+                        "needs_review": 0.15
+                      },
+                      "confidence": 0.55
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.21,
+                        "policy": 0.71,
+                        "unknown": 0.07,
+                        "variant_behavior": 0.01
+                      },
+                      "confidence": 0.61
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1122,
+                  "output_tokens": 0,
+                  "total_tokens": 1122,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.35999999999999993,
+                "concern_kind": 0.31999999999999995
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            },
+            {
+              "pair_id": "pair-02",
+              "mechanics": {
+                "case_id": "case-10",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.51,
+                        "excluded": 0.46,
+                        "needs_review": 0.03
+                      },
+                      "confidence": 0.27
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.49,
+                        "policy": 0.48,
+                        "unknown": 0.02,
+                        "variant_behavior": 0.01
+                      },
+                      "confidence": 0.32
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1095,
+                  "output_tokens": 0,
+                  "total_tokens": 1095,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-05",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.97,
+                        "excluded": 0.02,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.96
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.01,
+                        "policy": 0.98,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.97
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1095,
+                  "output_tokens": 0,
+                  "total_tokens": 1095,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": false,
+                "concern_kind": true
+              },
+              "jointly_correct": false,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.45999999999999996,
+                "concern_kind": 0.5
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            },
+            {
+              "pair_id": "pair-03",
+              "mechanics": {
+                "case_id": "case-04",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.21,
+                        "excluded": 0.79,
+                        "needs_review": 0.0
+                      },
+                      "confidence": 0.69
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.64,
+                        "policy": 0.33,
+                        "unknown": 0.03,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.52
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1230,
+                  "output_tokens": 0,
+                  "total_tokens": 1230,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-11",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.99,
+                        "excluded": 0.0,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.99
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.01,
+                        "policy": 0.98,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.97
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1226,
+                  "output_tokens": 0,
+                  "total_tokens": 1226,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.78,
+                "concern_kind": 0.6499999999999999
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            },
+            {
+              "pair_id": "pair-04",
+              "mechanics": {
+                "case_id": "case-12",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.13,
+                        "excluded": 0.86,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.79
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.83,
+                        "policy": 0.15,
+                        "unknown": 0.02,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.77
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1054,
+                  "output_tokens": 0,
+                  "total_tokens": 1054,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-08",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.99,
+                        "excluded": 0.01,
+                        "needs_review": 0.0
+                      },
+                      "confidence": 0.99
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.02,
+                        "policy": 0.97,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.96
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1068,
+                  "output_tokens": 0,
+                  "total_tokens": 1068,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.86,
+                "concern_kind": 0.82
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            }
+          ],
+          "withheld_controls": [
+            {
+              "pair_id": "pair-01",
+              "case_id": "case-03",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.09,
+                      "excluded": 0.05,
+                      "needs_review": 0.86
+                    },
+                    "confidence": 0.79
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.29,
+                      "policy": 0.22,
+                      "unknown": 0.49,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.32
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 955,
+                "output_tokens": 0,
+                "total_tokens": 955,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            },
+            {
+              "pair_id": "pair-02",
+              "case_id": "case-09",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.05,
+                      "excluded": 0.04,
+                      "needs_review": 0.91
+                    },
+                    "confidence": 0.86
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.19,
+                      "policy": 0.12,
+                      "unknown": 0.69,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.59
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 952,
+                "output_tokens": 0,
+                "total_tokens": 952,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            },
+            {
+              "pair_id": "pair-03",
+              "case_id": "case-02",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.13,
+                      "excluded": 0.03,
+                      "needs_review": 0.84
+                    },
+                    "confidence": 0.76
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "policy",
+                    "probabilities": {
+                      "mechanics": 0.25,
+                      "policy": 0.39,
+                      "unknown": 0.36,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.19
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 1006,
+                "output_tokens": 0,
+                "total_tokens": 1006,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-04",
+              "case_id": "case-06",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.04,
+                      "excluded": 0.04,
+                      "needs_review": 0.92
+                    },
+                    "confidence": 0.88
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.15,
+                      "policy": 0.05,
+                      "unknown": 0.79,
+                      "variant_behavior": 0.01
+                    },
+                    "confidence": 0.72
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 947,
+                "output_tokens": 0,
+                "total_tokens": 947,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            }
+          ],
+          "H1": {
+            "correct_pairs": 3,
+            "planned": 4,
+            "criterion_met": false,
+            "supported": false
+          },
+          "H2": {
+            "correct_controls": 3,
+            "planned": 4,
+            "criterion_met": false,
+            "supported": false
+          },
+          "H3_secondary": {
+            "directional_pairs": 4,
+            "planned": 4,
+            "required": 3,
+            "criterion_met": true,
+            "supported": true
+          }
+        },
+        {
+          "repeat": 2,
+          "planned_cases": 12,
+          "usable_cases": 12,
+          "unavailable_or_ambiguous_case_ids": [],
+          "operationally_complete": true,
+          "full_context_axes": {
+            "opportunity": {
+              "matched": 7,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "eligible",
+                  "prediction": "eligible",
+                  "count": 4
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "eligible",
+                  "count": 1
+                },
+                {
+                  "reference": "excluded",
+                  "prediction": "excluded",
+                  "count": 3
+                }
+              ]
+            },
+            "concern_kind": {
+              "matched": 8,
+              "planned": 8,
+              "usable": 8,
+              "confusion": [
+                {
+                  "reference": "mechanics",
+                  "prediction": "mechanics",
+                  "count": 4
+                },
+                {
+                  "reference": "policy",
+                  "prediction": "policy",
+                  "count": 4
+                }
+              ]
+            }
+          },
+          "eligible_policy_recall": {
+            "recovered": 4,
+            "planned": 4
+          },
+          "mechanical_false_positives": {
+            "case_ids": [
+              "case-10"
+            ],
+            "planned": 4,
+            "usable": 4
+          },
+          "pairs": [
+            {
+              "pair_id": "pair-01",
+              "mechanics": {
+                "case_id": "case-07",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.34,
+                        "excluded": 0.53,
+                        "needs_review": 0.13
+                      },
+                      "confidence": 0.3
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.54,
+                        "policy": 0.39,
+                        "unknown": 0.06,
+                        "variant_behavior": 0.01
+                      },
+                      "confidence": 0.39
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1108,
+                  "output_tokens": 0,
+                  "total_tokens": 1108,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-01",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.7,
+                        "excluded": 0.15,
+                        "needs_review": 0.15
+                      },
+                      "confidence": 0.55
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.21,
+                        "policy": 0.71,
+                        "unknown": 0.07,
+                        "variant_behavior": 0.01
+                      },
+                      "confidence": 0.61
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1122,
+                  "output_tokens": 0,
+                  "total_tokens": 1122,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.35999999999999993,
+                "concern_kind": 0.31999999999999995
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            },
+            {
+              "pair_id": "pair-02",
+              "mechanics": {
+                "case_id": "case-10",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.51,
+                        "excluded": 0.46,
+                        "needs_review": 0.03
+                      },
+                      "confidence": 0.27
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.49,
+                        "policy": 0.48,
+                        "unknown": 0.02,
+                        "variant_behavior": 0.01
+                      },
+                      "confidence": 0.32
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1095,
+                  "output_tokens": 0,
+                  "total_tokens": 1095,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-05",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.97,
+                        "excluded": 0.02,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.96
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.01,
+                        "policy": 0.98,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.97
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1095,
+                  "output_tokens": 0,
+                  "total_tokens": 1095,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": false,
+                "concern_kind": true
+              },
+              "jointly_correct": false,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.45999999999999996,
+                "concern_kind": 0.5
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            },
+            {
+              "pair_id": "pair-03",
+              "mechanics": {
+                "case_id": "case-04",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.21,
+                        "excluded": 0.79,
+                        "needs_review": 0.0
+                      },
+                      "confidence": 0.69
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.64,
+                        "policy": 0.33,
+                        "unknown": 0.03,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.52
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1230,
+                  "output_tokens": 0,
+                  "total_tokens": 1230,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-11",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.99,
+                        "excluded": 0.0,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.99
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.01,
+                        "policy": 0.98,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.97
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1226,
+                  "output_tokens": 0,
+                  "total_tokens": 1226,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.78,
+                "concern_kind": 0.6499999999999999
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            },
+            {
+              "pair_id": "pair-04",
+              "mechanics": {
+                "case_id": "case-12",
+                "reference": {
+                  "opportunity": "excluded",
+                  "concern_kind": "mechanics"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "excluded",
+                      "probabilities": {
+                        "eligible": 0.13,
+                        "excluded": 0.86,
+                        "needs_review": 0.01
+                      },
+                      "confidence": 0.79
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "mechanics",
+                      "probabilities": {
+                        "mechanics": 0.83,
+                        "policy": 0.15,
+                        "unknown": 0.02,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.77
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1054,
+                  "output_tokens": 0,
+                  "total_tokens": 1054,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "policy": {
+                "case_id": "case-08",
+                "reference": {
+                  "opportunity": "eligible",
+                  "concern_kind": "policy"
+                },
+                "native_status": "valid",
+                "ambiguous_posts": 0,
+                "usable_for_criteria": true,
+                "prediction": {
+                  "model": "gpt-6-luna",
+                  "answers": {
+                    "opportunity": {
+                      "type": "choice",
+                      "choice": "eligible",
+                      "probabilities": {
+                        "eligible": 0.99,
+                        "excluded": 0.01,
+                        "needs_review": 0.0
+                      },
+                      "confidence": 0.99
+                    },
+                    "concern_kind": {
+                      "type": "choice",
+                      "choice": "policy",
+                      "probabilities": {
+                        "mechanics": 0.02,
+                        "policy": 0.97,
+                        "unknown": 0.01,
+                        "variant_behavior": 0.0
+                      },
+                      "confidence": 0.96
+                    }
+                  },
+                  "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                  "warnings": [],
+                  "validation_policy": "jev-choice-mass-warning/v1"
+                },
+                "usage": {
+                  "input_tokens": 1068,
+                  "output_tokens": 0,
+                  "total_tokens": 1068,
+                  "input_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0
+                  },
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  }
+                },
+                "warnings": []
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true,
+              "policy_minus_mechanics_probability": {
+                "opportunity": 0.86,
+                "concern_kind": 0.82
+              },
+              "both_probability_deltas_positive": true,
+              "probability_sensitivity": {
+                "policy": "unchanged_strict_raw_probability_direction"
+              }
+            }
+          ],
+          "withheld_controls": [
+            {
+              "pair_id": "pair-01",
+              "case_id": "case-03",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.09,
+                      "excluded": 0.05,
+                      "needs_review": 0.86
+                    },
+                    "confidence": 0.79
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.29,
+                      "policy": 0.22,
+                      "unknown": 0.49,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.32
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 955,
+                "output_tokens": 0,
+                "total_tokens": 955,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            },
+            {
+              "pair_id": "pair-02",
+              "case_id": "case-09",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.05,
+                      "excluded": 0.04,
+                      "needs_review": 0.91
+                    },
+                    "confidence": 0.86
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.19,
+                      "policy": 0.12,
+                      "unknown": 0.69,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.59
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 952,
+                "output_tokens": 0,
+                "total_tokens": 952,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            },
+            {
+              "pair_id": "pair-03",
+              "case_id": "case-02",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.13,
+                      "excluded": 0.03,
+                      "needs_review": 0.84
+                    },
+                    "confidence": 0.76
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "policy",
+                    "probabilities": {
+                      "mechanics": 0.25,
+                      "policy": 0.39,
+                      "unknown": 0.36,
+                      "variant_behavior": 0.0
+                    },
+                    "confidence": 0.19
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 1006,
+                "output_tokens": 0,
+                "total_tokens": 1006,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": false
+              },
+              "jointly_correct": false
+            },
+            {
+              "pair_id": "pair-04",
+              "case_id": "case-06",
+              "reference": {
+                "opportunity": "needs_review",
+                "concern_kind": "unknown"
+              },
+              "native_status": "valid",
+              "ambiguous_posts": 0,
+              "usable_for_criteria": true,
+              "prediction": {
+                "model": "gpt-6-luna",
+                "answers": {
+                  "opportunity": {
+                    "type": "choice",
+                    "choice": "needs_review",
+                    "probabilities": {
+                      "eligible": 0.04,
+                      "excluded": 0.04,
+                      "needs_review": 0.92
+                    },
+                    "confidence": 0.88
+                  },
+                  "concern_kind": {
+                    "type": "choice",
+                    "choice": "unknown",
+                    "probabilities": {
+                      "mechanics": 0.15,
+                      "policy": 0.05,
+                      "unknown": 0.79,
+                      "variant_behavior": 0.01
+                    },
+                    "confidence": 0.72
+                  }
+                },
+                "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+                "warnings": [],
+                "validation_policy": "jev-choice-mass-warning/v1"
+              },
+              "usage": {
+                "input_tokens": 947,
+                "output_tokens": 0,
+                "total_tokens": 947,
+                "input_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0
+                },
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "axis_correct": {
+                "opportunity": true,
+                "concern_kind": true
+              },
+              "jointly_correct": true
+            }
+          ],
+          "H1": {
+            "correct_pairs": 3,
+            "planned": 4,
+            "criterion_met": false,
+            "supported": false
+          },
+          "H2": {
+            "correct_controls": 3,
+            "planned": 4,
+            "criterion_met": false,
+            "supported": false
+          },
+          "H3_secondary": {
+            "directional_pairs": 4,
+            "planned": 4,
+            "required": 3,
+            "criterion_met": true,
+            "supported": true
+          }
+        }
+      ],
+      "repeat_consistency": {
+        "paired_axis_answers": 24,
+        "planned_axis_pairs": 24,
+        "unavailable_case_ids": [],
+        "label_disagreements": [],
+        "max_native_confidence_delta": 0.0,
+        "max_option_probability_delta": 0.0,
+        "supported": true
+      }
+    }
+  ],
+  "inference_performed_by_scorer": false,
+  "metric_effect": "none",
+  "formal_ownership_gate": "not_applied_no_existing_composition_controls",
+  "limits": "Four authored development pairs, explicit contracts and four explicit withheld controls; model reference, not human gold. Hypotheses/stability are separate, missing/invalid/ambiguous results retain denominators. No cross-provider probability calibration, natural-code generalization, causal component isolation or production-readiness claim. V2 accepts bounded Jev mass warnings without normalization. Jev H3 support additionally requires positive nearest-hundredth lower bounds; this precision assumption is a sensitivity model, not provider calibration.",
+  "acceptance_policy": "jev-choice-mass-warning/v1",
+  "warned_responses": 0,
+  "execution_complete": true,
+  "evidence_sha256": {
+    "manifest.json": "38725a1507a6f443dcd7169e39d742ce9e958b699e67dad4a3eca4df8e20b678",
+    "responses.jsonl": "86268736eaf80d106061f404ed31b19e978a62197f80f2b376b6b2447b015411",
+    "attempts.jsonl": "1e358c74ff34783bfea2c38c24358819bf4378967998f1da4213ccc10aba13c2",
+    "receipt.json": "ada620dce46531475be0ce7d108c1ce4e05c5368d663c4a18fab5253b6e42e93"
+  },
+  "reference_sha256": "ce000ea0f79a88d299cadb34fa40c7ace0e9752845c358899130c77b8fdbecf1",
+  "reference_review_sha256": "01dafa5800acbff260a4a0a660805f1bb2ceeebf954594e3b526afa4217602fe",
+  "scorer_sha256": "cdbd3232650c9fd032f16afe59870578e56c0a846922e34a4fe73c3c4f3009cd"
+}

@@ -7,6 +7,12 @@ The [precision investigation](jev-probability-precision.md) showed that one
 observed 0.99 total had no classification consequence. V2 makes this a visible
 warning instead of interrupting the semantic experiment.
 
+The subsequent [authorized live study](runs/2026-10-13-contrastive-warning-v2/results.md)
+completed 48/48 accepted responses. No warning was triggered in that sample;
+the saved v1 failure and mock/boundary tests remain the evidence for that path.
+Results, limits and hypothesis outcomes are recorded separately from the
+implementation contract below.
+
 ## Acceptance
 
 Only Jev `jev-1.13.0` Choice distributions with **three or four options** receive

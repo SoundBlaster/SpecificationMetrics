@@ -1,0 +1,2444 @@
+{
+  "planned_requests": 48,
+  "received_rows": 48,
+  "native_valid": 48,
+  "native_invalid": 0,
+  "rows": [
+    {
+      "request_id": "r1-case-01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-01",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.7,
+              "excluded": 0.15,
+              "needs_review": 0.15
+            },
+            "confidence": 0.55
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.21,
+              "policy": 0.71,
+              "unknown": 0.07,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.61
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1122,
+        "output_tokens": 0,
+        "total_tokens": 1122,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-01",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.56,
+              "excluded": 0.36,
+              "needs_review": 0.08
+            },
+            "confidence": 0.34
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.38,
+              "policy": 0.6,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.47
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-04-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-04",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.23,
+              "excluded": 0.76,
+              "needs_review": 0.01
+            },
+            "confidence": 0.64
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.87,
+              "policy": 0.13,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.83
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1417,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-04-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-04",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.21,
+              "excluded": 0.79,
+              "needs_review": 0.0
+            },
+            "confidence": 0.69
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.64,
+              "policy": 0.33,
+              "unknown": 0.03,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.52
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1230,
+        "output_tokens": 0,
+        "total_tokens": 1230,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-02-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-02",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.22,
+              "excluded": 0.22,
+              "needs_review": 0.5599999999999999
+            },
+            "confidence": 0.34
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.09,
+              "policy": 0.69,
+              "unknown": 0.22,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.59
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1189,
+        "output_tokens": 91
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-02-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-02",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.13,
+              "excluded": 0.03,
+              "needs_review": 0.84
+            },
+            "confidence": 0.76
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.25,
+              "policy": 0.39,
+              "unknown": 0.36,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.19
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1006,
+        "output_tokens": 0,
+        "total_tokens": 1006,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-06-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-06",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.03,
+              "needs_review": 0.96
+            },
+            "confidence": 0.94
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.07,
+              "policy": 0.09,
+              "unknown": 0.84,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.79
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1130,
+        "output_tokens": 91
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-06-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-06",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.04,
+              "excluded": 0.04,
+              "needs_review": 0.92
+            },
+            "confidence": 0.88
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.15,
+              "policy": 0.05,
+              "unknown": 0.79,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.72
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 947,
+        "output_tokens": 0,
+        "total_tokens": 947,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-11-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-11",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.99,
+              "excluded": 0.0,
+              "needs_review": 0.01
+            },
+            "confidence": 0.99
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.98,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1226,
+        "output_tokens": 0,
+        "total_tokens": 1226,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-11-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-11",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.96,
+              "excluded": 0.02,
+              "needs_review": 0.02
+            },
+            "confidence": 0.94
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.0,
+              "policy": 1.0,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 1.0
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1413,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-07-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-07",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.34,
+              "excluded": 0.53,
+              "needs_review": 0.13
+            },
+            "confidence": 0.3
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.54,
+              "policy": 0.39,
+              "unknown": 0.06,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.39
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1108,
+        "output_tokens": 0,
+        "total_tokens": 1108,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-07-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-07",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.98,
+              "needs_review": 0.01
+            },
+            "confidence": 0.97
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.96,
+              "policy": 0.01,
+              "unknown": 0.01,
+              "variant_behavior": 0.02
+            },
+            "confidence": 0.95
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1295,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-05-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-05",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.97,
+              "excluded": 0.02,
+              "needs_review": 0.01
+            },
+            "confidence": 0.96
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.98,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1095,
+        "output_tokens": 0,
+        "total_tokens": 1095,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-05-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-05",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.97,
+              "excluded": 0.01,
+              "needs_review": 0.02
+            },
+            "confidence": 0.95
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.0,
+              "policy": 1.0,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 1.0
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1284,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-08-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-08",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.78,
+              "excluded": 0.19,
+              "needs_review": 0.03
+            },
+            "confidence": 0.67
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.1,
+              "policy": 0.87,
+              "unknown": 0.0,
+              "variant_behavior": 0.03
+            },
+            "confidence": 0.83
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1256,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-08-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-08",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.99,
+              "excluded": 0.01,
+              "needs_review": 0.0
+            },
+            "confidence": 0.99
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.02,
+              "policy": 0.97,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.96
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1068,
+        "output_tokens": 0,
+        "total_tokens": 1068,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-10-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-10",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.2,
+              "excluded": 0.79,
+              "needs_review": 0.01
+            },
+            "confidence": 0.69
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.94,
+              "policy": 0.02,
+              "unknown": 0.0,
+              "variant_behavior": 0.04
+            },
+            "confidence": 0.92
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1281,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-10-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-10",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.51,
+              "excluded": 0.46,
+              "needs_review": 0.03
+            },
+            "confidence": 0.27
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.49,
+              "policy": 0.48,
+              "unknown": 0.02,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.32
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1095,
+        "output_tokens": 0,
+        "total_tokens": 1095,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-03",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.09,
+              "excluded": 0.05,
+              "needs_review": 0.86
+            },
+            "confidence": 0.79
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.29,
+              "policy": 0.22,
+              "unknown": 0.49,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.32
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 955,
+        "output_tokens": 0,
+        "total_tokens": 955,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-03",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.08,
+              "excluded": 0.45,
+              "needs_review": 0.47
+            },
+            "confidence": 0.2
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.16,
+              "policy": 0.41,
+              "unknown": 0.43,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.24
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1138,
+        "output_tokens": 91
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-09-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-09",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.05,
+              "excluded": 0.04,
+              "needs_review": 0.91
+            },
+            "confidence": 0.86
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.19,
+              "policy": 0.12,
+              "unknown": 0.69,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.59
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 952,
+        "output_tokens": 0,
+        "total_tokens": 952,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-09-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-09",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.17,
+              "excluded": 0.24,
+              "needs_review": 0.59
+            },
+            "confidence": 0.38
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.36,
+              "policy": 0.28,
+              "unknown": 0.26,
+              "variant_behavior": 0.1
+            },
+            "confidence": 0.15
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1135,
+        "output_tokens": 93
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-12-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-12",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.03,
+              "excluded": 0.96,
+              "needs_review": 0.01
+            },
+            "confidence": 0.94
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.99,
+              "policy": 0.01,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.99
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1240,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r1-case-12-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-12",
+      "repeat": 1,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.13,
+              "excluded": 0.86,
+              "needs_review": 0.01
+            },
+            "confidence": 0.79
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.83,
+              "policy": 0.15,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.77
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1054,
+        "output_tokens": 0,
+        "total_tokens": 1054,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-05-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-05",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.97,
+              "excluded": 0.01,
+              "needs_review": 0.02
+            },
+            "confidence": 0.95
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.0,
+              "policy": 1.0,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 1.0
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1284,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-05-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-05",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.97,
+              "excluded": 0.02,
+              "needs_review": 0.01
+            },
+            "confidence": 0.96
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.98,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1095,
+        "output_tokens": 0,
+        "total_tokens": 1095,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-11-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-11",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.97,
+              "excluded": 0.02,
+              "needs_review": 0.01
+            },
+            "confidence": 0.95
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.0,
+              "policy": 1.0,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 1.0
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1413,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-11-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-11",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.99,
+              "excluded": 0.0,
+              "needs_review": 0.01
+            },
+            "confidence": 0.99
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.01,
+              "policy": 0.98,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1226,
+        "output_tokens": 0,
+        "total_tokens": 1226,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-03",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.1,
+              "excluded": 0.37,
+              "needs_review": 0.53
+            },
+            "confidence": 0.3
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.2,
+              "policy": 0.42,
+              "unknown": 0.38,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.23
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1138,
+        "output_tokens": 91
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-03",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.09,
+              "excluded": 0.05,
+              "needs_review": 0.86
+            },
+            "confidence": 0.79
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.29,
+              "policy": 0.22,
+              "unknown": 0.49,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.32
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 955,
+        "output_tokens": 0,
+        "total_tokens": 955,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-02-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-02",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.13,
+              "excluded": 0.03,
+              "needs_review": 0.84
+            },
+            "confidence": 0.76
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.25,
+              "policy": 0.39,
+              "unknown": 0.36,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.19
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1006,
+        "output_tokens": 0,
+        "total_tokens": 1006,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-02-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-02",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.21,
+              "excluded": 0.26,
+              "needs_review": 0.53
+            },
+            "confidence": 0.3
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.08,
+              "policy": 0.71,
+              "unknown": 0.21,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.61
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1189,
+        "output_tokens": 91
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-06-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-06",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.04,
+              "excluded": 0.04,
+              "needs_review": 0.92
+            },
+            "confidence": 0.88
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.15,
+              "policy": 0.05,
+              "unknown": 0.79,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.72
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 947,
+        "output_tokens": 0,
+        "total_tokens": 947,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-06-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-06",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.01,
+              "excluded": 0.03,
+              "needs_review": 0.96
+            },
+            "confidence": 0.94
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.09,
+              "policy": 0.09,
+              "unknown": 0.82,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.76
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1130,
+        "output_tokens": 91
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-09-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-09",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.18,
+              "excluded": 0.2,
+              "needs_review": 0.62
+            },
+            "confidence": 0.43
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.32,
+              "policy": 0.28,
+              "unknown": 0.26,
+              "variant_behavior": 0.14
+            },
+            "confidence": 0.09
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1135,
+        "output_tokens": 93
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-09-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-09",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "needs_review",
+            "probabilities": {
+              "eligible": 0.05,
+              "excluded": 0.04,
+              "needs_review": 0.91
+            },
+            "confidence": 0.86
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "mechanics": 0.19,
+              "policy": 0.12,
+              "unknown": 0.69,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.59
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 952,
+        "output_tokens": 0,
+        "total_tokens": 952,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-07-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-07",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.02,
+              "excluded": 0.97,
+              "needs_review": 0.01
+            },
+            "confidence": 0.95
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.95,
+              "policy": 0.01,
+              "unknown": 0.01,
+              "variant_behavior": 0.03
+            },
+            "confidence": 0.93
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1295,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-07-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-07",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.34,
+              "excluded": 0.53,
+              "needs_review": 0.13
+            },
+            "confidence": 0.3
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.54,
+              "policy": 0.39,
+              "unknown": 0.06,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.39
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1108,
+        "output_tokens": 0,
+        "total_tokens": 1108,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-01",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.59,
+              "excluded": 0.33,
+              "needs_review": 0.08
+            },
+            "confidence": 0.38
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.38,
+              "policy": 0.6,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.47
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-01",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.7,
+              "excluded": 0.15,
+              "needs_review": 0.15
+            },
+            "confidence": 0.55
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.21,
+              "policy": 0.71,
+              "unknown": 0.07,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.61
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1122,
+        "output_tokens": 0,
+        "total_tokens": 1122,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-10-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-10",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.51,
+              "excluded": 0.46,
+              "needs_review": 0.03
+            },
+            "confidence": 0.27
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.49,
+              "policy": 0.48,
+              "unknown": 0.02,
+              "variant_behavior": 0.01
+            },
+            "confidence": 0.32
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1095,
+        "output_tokens": 0,
+        "total_tokens": 1095,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-10-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-10",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.16,
+              "excluded": 0.83,
+              "needs_review": 0.01
+            },
+            "confidence": 0.74
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.95,
+              "policy": 0.02,
+              "unknown": 0.0,
+              "variant_behavior": 0.03
+            },
+            "confidence": 0.93
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1281,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-08-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-08",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.99,
+              "excluded": 0.01,
+              "needs_review": 0.0
+            },
+            "confidence": 0.99
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.02,
+              "policy": 0.97,
+              "unknown": 0.01,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.96
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1068,
+        "output_tokens": 0,
+        "total_tokens": 1068,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-08-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-08",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "eligible",
+            "probabilities": {
+              "eligible": 0.8,
+              "excluded": 0.18,
+              "needs_review": 0.02
+            },
+            "confidence": 0.7
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.11,
+              "policy": 0.86,
+              "unknown": 0.0,
+              "variant_behavior": 0.03
+            },
+            "confidence": 0.81
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1256,
+        "output_tokens": 90
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-12-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-12",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.13,
+              "excluded": 0.86,
+              "needs_review": 0.01
+            },
+            "confidence": 0.79
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.83,
+              "policy": 0.15,
+              "unknown": 0.02,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.77
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1054,
+        "output_tokens": 0,
+        "total_tokens": 1054,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-12-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-12",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.04,
+              "excluded": 0.95,
+              "needs_review": 0.01
+            },
+            "confidence": 0.92
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.99,
+              "policy": 0.01,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.99
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1240,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-04-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "case-04",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "gpt-6-luna",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.21,
+              "excluded": 0.79,
+              "needs_review": 0.0
+            },
+            "confidence": 0.69
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.64,
+              "policy": 0.33,
+              "unknown": 0.03,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.52
+          }
+        },
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated",
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1230,
+        "output_tokens": 0,
+        "total_tokens": 1230,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    },
+    {
+      "request_id": "r2-case-04-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "case-04",
+      "repeat": 2,
+      "transport_status": "json_received",
+      "native_status": "valid",
+      "prediction": {
+        "model": "jev-1.13.0",
+        "answers": {
+          "opportunity": {
+            "type": "choice",
+            "choice": "excluded",
+            "probabilities": {
+              "eligible": 0.31,
+              "excluded": 0.67,
+              "needs_review": 0.02
+            },
+            "confidence": 0.51
+          },
+          "concern_kind": {
+            "type": "choice",
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.82,
+              "policy": 0.18,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "confidence": 0.76
+          }
+        },
+        "warnings": [],
+        "validation_policy": "jev-choice-mass-warning/v1",
+        "confidence_semantics": "native_provider_value_not_cross_provider_calibrated"
+      },
+      "ambiguous_posts": 0,
+      "duplicate_execution_possible": false,
+      "usage": {
+        "input_tokens": 1417,
+        "output_tokens": 94
+      },
+      "warnings": [],
+      "rejection_code": null,
+      "identity_error": false
+    }
+  ],
+  "warned_responses": 0,
+  "acceptance_policy": "jev-choice-mass-warning/v1",
+  "execution_complete": true,
+  "missing_result_request_ids": [],
+  "attempted_without_result_request_ids": [],
+  "unattempted_request_ids": [],
+  "attempt_status_unknown_request_ids": [],
+  "attempt_ledger_complete": true,
+  "receipt": {
+    "study": "contrastive_mechanics_policy_native/v2",
+    "protocol": "specmetrics.coreinfra-tls-retry/v1",
+    "manifest_sha256": "38725a1507a6f443dcd7169e39d742ce9e958b699e67dad4a3eca4df8e20b678",
+    "started_at": "2026-10-13T05:24:50.481254+00:00",
+    "planned_requests": 48,
+    "max_network_attempts": 144,
+    "attempted_requests": 48,
+    "network_attempts": 48,
+    "potentially_billable_posts": 48,
+    "received_json_responses": 48,
+    "native_valid_responses": 48,
+    "native_invalid_responses": 0,
+    "warned_responses": 0,
+    "acceptance_policy": "jev-choice-mass-warning/v1",
+    "ambiguous_posts": 0,
+    "duplicate_execution_possible": false,
+    "attempt_ledger_complete": true,
+    "completed": true,
+    "stop_reason": null,
+    "semantic_status": "unscored",
+    "metric_effect": "none",
+    "finished_at": "2026-10-13T05:26:14.284858+00:00",
+    "elapsed_seconds": 83.803806
+  },
+  "operationally_complete": true,
+  "metric_effect": "none",
+  "semantic_status": "unscored"
+}
