@@ -93,9 +93,80 @@ def summarize(observations):
             'reference_frozen_for_provider_scoring': False, 'metric_effect': 'none'}
 
 
+def validate_receipt(receipt):
+    """This frozen run permits no provider calls, excluded attempts or authority."""
+    if not isinstance(receipt, dict):
+        raise ValueError('Expected receipt object')
+    expected = {'schema_version': 1, 'fresh_contexts': 16, 'case_annotations': 64,
+                'provider_requests': 0, 'excluded_attempts': [], 'human_gold': False,
+                'metric_effect': 'none', 'reference_frozen_for_provider_scoring': False,
+                'status': 'completed_independent_model_annotation_not_adjudicated'}
+    for field, value in expected.items():
+        actual = receipt.get(field)
+        if type(actual) is not type(value) or actual != value:
+            raise ValueError('Unexpected receipt invariant: ' + field)
+
+
+def validate_semantic_review(run, receipt):
+    """Bind manual judgments to current raw evidence without regrading prose."""
+    binding = receipt.get('semantic_review', {})
+    if not isinstance(binding, dict) or binding.get('file') != 'semantic-review.json':
+        raise ValueError('Semantic review file binding missing')
+    raw = (run / binding['file']).read_bytes()
+    if digest(raw) != binding.get('sha256'):
+        raise ValueError('Semantic review digest binding differs')
+    review = json.loads(raw)
+    if not isinstance(review, dict) or review.get('status') != 'integrator_semantic_review_separate_from_raw_annotations':
+        raise ValueError('Unexpected semantic review authority')
+    for field, value in {'provider_requests': 0, 'metric_effect': 'none',
+                         'reference_frozen_for_provider_scoring': False,
+                         'new_prompt_or_threshold_change': False}.items():
+        if type(review.get(field)) is not type(value) or review[field] != value:
+            raise ValueError('Unexpected semantic review authority: ' + field)
+    criterion = review.get('H_definition', {})
+    if not isinstance(criterion, dict):
+        raise ValueError('Semantic review criterion missing')
+    expected = {}
+    for assignment in receipt['assignments']:
+        for case in assignment['cases']:
+            if case['case_id'] == 'probe-a' and case['cell'] in ('02', '04'):
+                expected[assignment['slot']] = (assignment, case)
+    entries = criterion.get('entries')
+    if (len(expected) != 8 or not isinstance(entries, list) or len(entries) != 8
+            or any(not isinstance(e, dict) for e in entries)
+            or {e.get('slot') for e in entries} != set(expected)):
+        raise ValueError('Expected eight distinct focal review entries')
+    for entry in entries:
+        assignment, case = expected[entry['slot']]
+        if (entry.get('cell') != case['cell'] or entry.get('case_id') != case['case_id']
+                or entry.get('raw_output') != assignment['annotation_output']
+                or entry.get('raw_output_sha256') != assignment['output_sha256']):
+            raise ValueError('Semantic review assignment binding differs')
+        if entry.get('reviewer') != 'integrator_not_blind_not_human_gold':
+            raise ValueError('Unexpected semantic review reviewer authority')
+        flags = ('claims_operational_validity_unavailable', 'claims_strip_rewrites_stored_value', 'criterion_met')
+        if any(type(entry.get(f)) is not bool for f in flags):
+            raise ValueError('Semantic review judgments must be explicit booleans')
+        if entry['criterion_met'] != (not entry[flags[0]] and not entry[flags[1]]):
+            raise ValueError('Inconsistent semantic review entry criterion')
+        for field in ('scope', 'note'):
+            if not isinstance(entry.get(field), str) or not entry[field].strip():
+                raise ValueError('Semantic review scope and note required')
+    conflicts = sum(not e['criterion_met'] for e in entries)
+    if (type(criterion.get('reviewed')) is not int or criterion['reviewed'] != 8
+            or type(criterion.get('conflicts')) is not int or criterion['conflicts'] != conflicts
+            or type(criterion.get('met')) is not bool or criterion['met'] != (conflicts == 0)
+            or criterion.get('criterion_source') != '../' + PREPARATION.name + '/study-plan.json'):
+        raise ValueError('Inconsistent semantic review counts or criterion source')
+    return {'met': criterion['met'], 'reviewed': 8, 'conflicts': conflicts,
+            'authority': 'manual_integrator_judgment_not_automatic_semantic_grading',
+            'semantic_review_sha256': digest(raw)}
+
+
 def build(run=RUN):
     verify()  # Replays the immutable preparation, including source and task bindings.
     receipt = json.loads((run / 'execution-receipt.json').read_text())
+    validate_receipt(receipt)
     assignments = receipt['assignments']
     expected_slots = {f'annotator-{i:02d}' for i in range(1, 17)}
     if len(assignments) != 16 or {a['slot'] for a in assignments} != expected_slots:
@@ -129,9 +200,12 @@ def build(run=RUN):
         observations.extend({'slot': a['slot'], **selected[row['case_id']],
                              **{k: row[k] for k in ('opportunity', 'concern_kind', 'task_sha256')}}
                             for row in annotation['annotations'])
+    summary = summarize(observations)
+    summary['H_definition'] = validate_semantic_review(run, receipt)
     return {'status': 'raw_annotations_validated_semantic_review_separate',
-            'contexts': 16, 'case_annotations': 64, 'provider_requests': 0,
-            'validation': validations, 'summary': summarize(observations),
+            'contexts': receipt['fresh_contexts'], 'case_annotations': receipt['case_annotations'],
+            'provider_requests': receipt['provider_requests'], 'excluded_attempts': receipt['excluded_attempts'],
+            'validation': validations, 'summary': summary,
             'isolation_boundary': 'fresh_context_scoped_inputs_self_report_not_filesystem_enforcement',
             'producer_sha256': digest(Path(__file__).read_bytes()),
             'execution_receipt_sha256': digest((run / 'execution-receipt.json').read_bytes())}

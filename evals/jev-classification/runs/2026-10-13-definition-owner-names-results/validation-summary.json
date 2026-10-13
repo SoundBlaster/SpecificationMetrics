@@ -3,6 +3,7 @@
   "contexts": 16,
   "case_annotations": 64,
   "provider_requests": 0,
+  "excluded_attempts": [],
   "validation": [
     {
       "slot": "annotator-01",
@@ -449,13 +450,19 @@
         "n": 16
       }
     },
-    "H_definition": "Requires separate integrator rationale review; not inferred from Choice labels.",
+    "H_definition": {
+      "met": true,
+      "reviewed": 8,
+      "conflicts": 0,
+      "authority": "manual_integrator_judgment_not_automatic_semantic_grading",
+      "semantic_review_sha256": "c2890fc3d1167eecb8ca05f1d97d0f385bed343cdebcd7c8eb36103b558cabae"
+    },
     "semantic_correctness_verified": false,
     "human_gold": false,
     "reference_frozen_for_provider_scoring": false,
     "metric_effect": "none"
   },
   "isolation_boundary": "fresh_context_scoped_inputs_self_report_not_filesystem_enforcement",
-  "producer_sha256": "3fcf58437401586e8700a9dfbac5836f5c8df4b2d0844fbd4ddaad34135e1e3b",
-  "execution_receipt_sha256": "1d2bf0281114afb521b8fc35b9f43411edb78351861e4c28345fbd6ae55c2b56"
+  "producer_sha256": "0fab00ff19f6973c889fd5c1e1998b11dde03697c788786b8f5b0056d94cea47",
+  "execution_receipt_sha256": "4248ee97f3e5c9620d3739af42acb577f03cf5b1fb74ae7cefe2503f9b2f96db"
 }

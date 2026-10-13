@@ -113,9 +113,27 @@ python3 -m unittest -v test_validate_definition_owner_annotations.py test_prepar
 python3 validate_definition_owner_annotations.py
 ```
 
-Local verification used the repository Python 3.10 virtual environment:
-16 tests passed. CI now replays this result offline; no runtime credentials or
+Initial local verification used the repository Python 3.10 virtual environment:
+16 tests passed. After the review fixes below, 24 tests pass. CI replays this result offline; no runtime credentials or
 temporary annotation directories are required to replay saved evidence.
+
+### Replay repair after PR review
+
+PR #49 identified two replay omissions: `semantic-review.json` was not read,
+and receipt metadata could disagree with the reported zero provider calls and
+absence of excluded attempts. Eight new regression tests reproduced the defects
+on the original producer (20 failed subcases and one error).
+
+The receipt now binds the unchanged manual review bytes. Replay requires eight
+distinct extended-context focal entries matching current assignment cells,
+output names and hashes; validates explicit manual judgments and their counts;
+and reports H_definition with its manual authority. It does not regrade prose.
+Consistent failed manual judgments remain failed rather than being forced green.
+The frozen run rejects nonzero/missing/mistyped provider counts, nonempty/missing
+excluded attempts and inconsistent declared counts or authority. The replay
+summary was regenerated with the new producer and receipt bindings. Raw
+annotations, manual judgments, prospective criteria and historical results
+remain unchanged.
 
 ## Next bounded experiment
 

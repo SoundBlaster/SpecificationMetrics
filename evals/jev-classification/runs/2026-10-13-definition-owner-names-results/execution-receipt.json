@@ -650,5 +650,9 @@
   "provider_requests": 0,
   "human_gold": false,
   "metric_effect": "none",
-  "reference_frozen_for_provider_scoring": false
+  "reference_frozen_for_provider_scoring": false,
+  "semantic_review": {
+    "file": "semantic-review.json",
+    "sha256": "c2890fc3d1167eecb8ca05f1d97d0f385bed343cdebcd7c8eb36103b558cabae"
+  }
 }

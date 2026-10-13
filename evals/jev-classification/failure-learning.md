@@ -266,6 +266,26 @@ historical reference, production prompt or metric state was changed.
   claim it is absent from SpecGraph. Recover that contract before deciding
   whether this site defines domain integrity or generic representation rules.
 
+## Replay review repair: manual evidence and receipt invariants
+
+- **Evidence:** PR #49 found that deleting/replacing the manual review or
+  declaring seven provider calls/nonempty excluded attempts still allowed the
+  original replay to succeed and report zero calls. Running
+  `python -m unittest -v test_validate_definition_owner_annotations.ReplayArtifactTests`
+  before the correction reproduced 20 failed subcases and one error.
+- **Confirmed cause:** the replay validated raw annotations but did not consume
+  the fourth criterion's manual artifact or the receipt's execution/authority
+  invariants. Successful raw evidence validation was being reported with
+  unverified execution metadata.
+- **Correction:** bind the unchanged review bytes into the receipt, validate
+  all eight review-to-output bindings and manual aggregate consistency, and
+  reject unsupported receipt declarations before reporting results. Manual
+  rationale judgments remain manual, including failed judgments.
+- **Verification:** eight new regression tests cover missing/empty/changed
+  reviews, stale/duplicate/missing bindings, inconsistent counts, preserved
+  manual failure and false receipt metadata. The complete focused preparation
+  and replay suite passes 24 tests. No raw labels, judgments or criteria change.
+
 ## Record template
 
 1. Failure and exact command/criterion.
