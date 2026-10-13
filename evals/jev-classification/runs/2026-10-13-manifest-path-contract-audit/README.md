@@ -153,6 +153,28 @@ search scope, verification observations and advisory status. Every saved excerpt
 was checked against its pinned Git object; the copied Apache 2.0 license is
 included in [upstream-LICENSE.txt](upstream-LICENSE.txt).
 
+### Workflow witness correction after PR review
+
+PR #50 found that the original `workflow-independent-bases` excerpt at pinned
+lines 205–227 covered environment/setup and bundle download, not the three
+staging invocations cited by this audit. Its bytes and hash were valid, but its
+semantic relevance was not checked. The coordinates had been taken from another
+local checkout before extraction from the pinned revision.
+
+The corrected excerpt uses the **Stage changed artifact payloads** step marker
+in the pinned Git bytes and preserves lines 233–255, including root and both
+workspace staging calls. The full-file source hash/revision is unchanged; the
+excerpt hash, coordinates and permalink are updated. The original invalid
+witness and corrected binding are preserved in
+[review-repair-receipt.json](review-repair-receipt.json).
+
+Four offline regression tests check the saved invocation contract, byte/source
+identity, rejection of the original setup-only witness, and rejection of a lost
+prefix or misrouted HTTPS base. Before correction, the suite reproduced one
+failure and one error; all four pass after correction. CI runs the tests via
+`python3 -m unittest -v test_manifest_path_contract_audit.py`. Hash validation
+must be accompanied by a check that a saved fact actually witnesses its claim.
+
 ## Lesson and next diagnostic
 
 The confirmed context-construction omission was stopping at parser neighbors:
