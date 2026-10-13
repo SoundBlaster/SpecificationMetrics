@@ -322,3 +322,11 @@ separates ownership from responsibility: the evaluation path establishes
 existing representation, while the meaning of `step.valid` remains absent.
 The review is advisory and not blind or human gold. Raw labels and agreement
 counts remain unchanged; v2 is still not approved for provider scoring.
+
+The [definition and owner-name follow-up](runs/2026-10-13-definition-owner-names-preparation/README.md)
+is prepared with sixteen fresh contexts planned and 64 blank annotations. The
+source audit resolves `TextInput.valid` to a nonblank-string check with original
+text preserved. Its domain purpose remains a separate question. Four independent
+helper families cross additional context with partial owner-name rewriting;
+the explicit newline append is a local-role control. No annotation is dispatched
+and no provider request is made by preparation.

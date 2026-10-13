@@ -1,0 +1,619 @@
+{
+  "status": "integrator_only_not_for_annotation",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "source_audit_sha256": "16d6db3a6d07382d192950ca7417c301b30ddff81da02f8222233d05fb07c8ea",
+  "targets": [
+    {
+      "target_id": "probe-a",
+      "source_family": "bdd-step-item",
+      "target": {
+        "language": "Python",
+        "code": "not step.valid",
+        "syntax_kind": "UnaryOp",
+        "scope": "exact expression only"
+      },
+      "base_facts": [
+        "implementation_values_class",
+        "implementation_base",
+        "implementation_evaluator",
+        "composition_membership",
+        "composition_evaluation"
+      ],
+      "additional_facts": [
+        "focal-type-definition",
+        "focal-adapter"
+      ],
+      "owner_renames": {
+        "BDDPolicy": "RuleBase",
+        "BDDScenarioValuesSpec": "RuleA",
+        "BDDScenarioFieldsSpec": "RuleB",
+        "BDDProfileSelectionSpec": "RuleC",
+        "BDDContainerPresenceSpec": "RuleD",
+        "BDDScenarioIDsSpec": "RuleE",
+        "BDDScenarioReferencesSpec": "RuleF",
+        "POLICIES": "RULES",
+        "PolicyOutcome": "RuleOutcome",
+        "policy": "rule"
+      }
+    },
+    {
+      "target_id": "probe-b",
+      "source_family": "gate",
+      "target": {
+        "language": "Python",
+        "code": "gate != \"none\"",
+        "syntax_kind": "Compare",
+        "scope": "exact expression only"
+      },
+      "base_facts": [
+        "gate-00"
+      ],
+      "additional_facts": [
+        "gate-01",
+        "gate-02",
+        "gate-03"
+      ],
+      "owner_renames": {
+        "candidate_move": "OperationGate"
+      },
+      "prior_small_case_id": "context-18",
+      "prior_extended_case_id": "context-01"
+    },
+    {
+      "target_id": "probe-c",
+      "source_family": "path",
+      "target": {
+        "language": "Python",
+        "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+        "syntax_kind": "BoolOp",
+        "scope": "exact expression only"
+      },
+      "base_facts": [
+        "path-00"
+      ],
+      "additional_facts": [
+        "path-01",
+        "path-02",
+        "path-03"
+      ],
+      "owner_renames": {
+        "_safe_path": "OperationPath"
+      },
+      "prior_small_case_id": "context-09",
+      "prior_extended_case_id": "context-16"
+    },
+    {
+      "target_id": "probe-d",
+      "source_family": "newline",
+      "target": {
+        "language": "Python",
+        "code": "not rendered.endswith(\"\\n\")",
+        "syntax_kind": "UnaryOp",
+        "scope": "exact expression only"
+      },
+      "base_facts": [
+        "newline-00"
+      ],
+      "additional_facts": [
+        "newline-01"
+      ],
+      "owner_renames": {
+        "dump_canonical_yaml": "OperationNewline"
+      },
+      "prior_small_case_id": "context-08",
+      "prior_extended_case_id": "context-06"
+    }
+  ],
+  "bindings": [
+    {
+      "case_id": "probe-a",
+      "cell": "01",
+      "additional_context": false,
+      "neutral_owner_names": false,
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "e6b1dd23cbdb905d26784d3e8166419ee7561e410230ebc8ebfd10667e1ae391",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "implementation_values_class",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "implementation_base",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "implementation_evaluator",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "composition_membership",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "source_fact": "composition_evaluation",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-a",
+      "cell": "02",
+      "additional_context": true,
+      "neutral_owner_names": false,
+      "state_sha256": "5e19e7edb00a9cd623ce84a2b95f75da242030b5a32933b7fd832883ed4d2c5f",
+      "task_sha256": "28c9b84cd3262314388d177dcab2a11b6f8e01b5fe0f56d5148ebdf9b5ff622b",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "implementation_values_class",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "implementation_base",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "implementation_evaluator",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "composition_membership",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "source_fact": "composition_evaluation",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "source_fact": "focal-type-definition",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "5bed54bac0b3e1d7b7a52c7e347a163a6a889df51975ce326a9a00da4685237a"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "source_fact": "focal-adapter",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "9085336c247476ec92899e516c811accf3bd89b500e654aff9eacb28116ec9ec"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-a",
+      "cell": "03",
+      "additional_context": false,
+      "neutral_owner_names": true,
+      "state_sha256": "fd72de113788026877e337fe7a7674aad744a5a66f1e842ee4a67357fa1a4c29",
+      "task_sha256": "2f9e42fd6688581e576a239c90342c01bb2720d983fe6e64623020d75f3a903b",
+      "owner_renames": {
+        "BDDPolicy": "RuleBase",
+        "BDDScenarioValuesSpec": "RuleA",
+        "BDDScenarioFieldsSpec": "RuleB",
+        "BDDProfileSelectionSpec": "RuleC",
+        "BDDContainerPresenceSpec": "RuleD",
+        "BDDScenarioIDsSpec": "RuleE",
+        "BDDScenarioReferencesSpec": "RuleF",
+        "POLICIES": "RULES",
+        "PolicyOutcome": "RuleOutcome",
+        "policy": "rule"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "implementation_values_class",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "e0f37c5ac44a9b7083dfe51c5346e6204c6c26448ac194a1c21c3a4b47b0d814"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "implementation_base",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "1f29955ef6ad63fcdab98ebed76148c652a3e6303f47e6645dc14022275edf6a"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "implementation_evaluator",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "composition_membership",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "ea4df8d04057b9d443b8bf7e5b38d49f44d15787e5e25cbe1f31e17592ff4dad"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "source_fact": "composition_evaluation",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "ec7fcba51dac87f043b240db141dca616b662be1718f653a5f874e6900e9bcce"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-a",
+      "cell": "04",
+      "additional_context": true,
+      "neutral_owner_names": true,
+      "state_sha256": "f20693043e6dc941226cbb0c7c469a39802df8ccc0c55fdff3ac234467137f66",
+      "task_sha256": "6302703f69be3355288162f6cb1a8c94d067e17e444e3462a2a673cb83485dbc",
+      "owner_renames": {
+        "BDDPolicy": "RuleBase",
+        "BDDScenarioValuesSpec": "RuleA",
+        "BDDScenarioFieldsSpec": "RuleB",
+        "BDDProfileSelectionSpec": "RuleC",
+        "BDDContainerPresenceSpec": "RuleD",
+        "BDDScenarioIDsSpec": "RuleE",
+        "BDDScenarioReferencesSpec": "RuleF",
+        "POLICIES": "RULES",
+        "PolicyOutcome": "RuleOutcome",
+        "policy": "rule"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "implementation_values_class",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "e0f37c5ac44a9b7083dfe51c5346e6204c6c26448ac194a1c21c3a4b47b0d814"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "implementation_base",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "1f29955ef6ad63fcdab98ebed76148c652a3e6303f47e6645dc14022275edf6a"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "implementation_evaluator",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "composition_membership",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "ea4df8d04057b9d443b8bf7e5b38d49f44d15787e5e25cbe1f31e17592ff4dad"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "source_fact": "composition_evaluation",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "ec7fcba51dac87f043b240db141dca616b662be1718f653a5f874e6900e9bcce"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "source_fact": "focal-type-definition",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "5bed54bac0b3e1d7b7a52c7e347a163a6a889df51975ce326a9a00da4685237a"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "source_fact": "focal-adapter",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "9085336c247476ec92899e516c811accf3bd89b500e654aff9eacb28116ec9ec"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "cell": "01",
+      "additional_context": false,
+      "neutral_owner_names": false,
+      "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+      "task_sha256": "930296eddb0efe231ac21251808ff248eb85033cc4f296d87a0171f4cae07360",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "gate-00",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "a0345f2717986d4f53b8cbd96939961fd7046fa16941af7639a5481336c9e7c7"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "cell": "02",
+      "additional_context": true,
+      "neutral_owner_names": false,
+      "state_sha256": "425662e6242d8cde95f2caf26809686c2da8c484f38814bb7611783a13137d47",
+      "task_sha256": "6a8681c34fd09866ac2552719639d0845f63e95a4f268de2082d8add099b9803",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "gate-00",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "a0345f2717986d4f53b8cbd96939961fd7046fa16941af7639a5481336c9e7c7"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "gate-01",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "ba9f88914db60b8046911b38edd8a3850b6ec9a0a5feed54124ba8c1fb995cfc"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "gate-02",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "af9eaf0c4fc9f760ac0f84ae28c5138b8a8295c001e33a9b5626b63bdf54812f"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "gate-03",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "95453bb5de77b6336faf50a6ae08f04b4fc34ab9556dc38a2613ca945c8e0dc9"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "cell": "03",
+      "additional_context": false,
+      "neutral_owner_names": true,
+      "state_sha256": "22f31d739c41d0fde66605466d197eb05a09ac246230c69621cc2e36722a3c2f",
+      "task_sha256": "4d430281ef4f5bae1176185efc1a009d7e5e823b67127d7a2b7603f93b2afef4",
+      "owner_renames": {
+        "candidate_move": "OperationGate"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "gate-00",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "d7cfc2da821675e38ecc2615ffeb4b73e80993ba05b2c2933123d2cfdb5e7379"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "cell": "04",
+      "additional_context": true,
+      "neutral_owner_names": true,
+      "state_sha256": "ffab14693fa13cbb96cfbd93b292efc8ec8c962ebec76863dc5e790ff34e0bbb",
+      "task_sha256": "2bfd4daba6299024bb69a2b1bcfddcf00e0f97d36560776d41c693d6987e8632",
+      "owner_renames": {
+        "candidate_move": "OperationGate"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "gate-00",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "d7cfc2da821675e38ecc2615ffeb4b73e80993ba05b2c2933123d2cfdb5e7379"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "gate-01",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "ba9f88914db60b8046911b38edd8a3850b6ec9a0a5feed54124ba8c1fb995cfc"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "gate-02",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "af9eaf0c4fc9f760ac0f84ae28c5138b8a8295c001e33a9b5626b63bdf54812f"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "gate-03",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "95453bb5de77b6336faf50a6ae08f04b4fc34ab9556dc38a2613ca945c8e0dc9"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "cell": "01",
+      "additional_context": false,
+      "neutral_owner_names": false,
+      "state_sha256": "b0414757e12dd1efa561cce7062f2c00e84845334552657855784544904946f1",
+      "task_sha256": "aa732e9f95af43768b2295a2af6476aa0999549e37f8808080d96e9cd8b19532",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "path-00",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "cell": "02",
+      "additional_context": true,
+      "neutral_owner_names": false,
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "6aed8534c50c32b8dd4925cfc98c14224fe77f9983cb2f33c798d39027ac1c7b",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "path-00",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "path-01",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "path-02",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "path-03",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "cell": "03",
+      "additional_context": false,
+      "neutral_owner_names": true,
+      "state_sha256": "16cb9e7ea1d9f5dbc01028c41f076f260756ac21bf02b024cee2caba9f8e14ea",
+      "task_sha256": "549da6b5bf6fe3a1f324d371329f081a794dbc6ce26a890b2a630945e19b7793",
+      "owner_renames": {
+        "_safe_path": "OperationPath"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "path-00",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "33d9518e6f9869cd64938644a4335daade747d20d3a37cdec6a2011346a28fc8"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-c",
+      "cell": "04",
+      "additional_context": true,
+      "neutral_owner_names": true,
+      "state_sha256": "40b841d9ed44333d6a8099bf2e9641b2d06b199836154832820aead70c25ef47",
+      "task_sha256": "77e672bfc6584d463dbd6872b9f0897e58cc8b1c5be4bc72215010ee4aa3e173",
+      "owner_renames": {
+        "_safe_path": "OperationPath"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "path-00",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "33d9518e6f9869cd64938644a4335daade747d20d3a37cdec6a2011346a28fc8"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "path-01",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "source_fact": "path-02",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "source_fact": "path-03",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "026b8d075d7335ba35511601e757f9af01bbbc5c898fbab4cde1d7a5dab89d9b"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-d",
+      "cell": "01",
+      "additional_context": false,
+      "neutral_owner_names": false,
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "6eb87c6c639814e676e7cd02a1d150dc32ec9505f849a2e43637e1637faea585",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "newline-00",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "d7be668bd7fd373ce5b8c57944e8d95f35bbb51ad68cffc182ef828ca7e3801f"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-d",
+      "cell": "02",
+      "additional_context": true,
+      "neutral_owner_names": false,
+      "state_sha256": "464796a16b0b7963867f442d679d094df574b0b0a833beb903834fec5902063e",
+      "task_sha256": "8bf67e12a540a1ca372c8c54f82032511e8acc5852d34d3dd4b7c6abcdfbe63c",
+      "owner_renames": {},
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "newline-00",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "d7be668bd7fd373ce5b8c57944e8d95f35bbb51ad68cffc182ef828ca7e3801f"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "newline-01",
+          "kind": "verbatim_source",
+          "supplied_code_sha256": "d22d7204efefc07781701766eb556bda918c85f7e033c3fb0f71e64e266fd8cb"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-d",
+      "cell": "03",
+      "additional_context": false,
+      "neutral_owner_names": true,
+      "state_sha256": "65151232eadb646f20ab51d11ea895ef97f894627374347e6e250eeffcfb991d",
+      "task_sha256": "4fcede835cd290dca5c493edc94d1089e823adcf4e3c1bac212e2b58b64cad1c",
+      "owner_renames": {
+        "dump_canonical_yaml": "OperationNewline"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "newline-00",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "461c1f5efc95f9923374cdbed4170875d68c1c064825c8cfc197f27fe371e13a"
+        }
+      ]
+    },
+    {
+      "case_id": "probe-d",
+      "cell": "04",
+      "additional_context": true,
+      "neutral_owner_names": true,
+      "state_sha256": "498e1a28f93a78f46390b24c0aa8fcd589d06a45be369e9db73fbcffbcd2b511",
+      "task_sha256": "ee9ecb8190b8279b40c2af8242f2883bd366558fac44c779a6e589d42eee6064",
+      "owner_renames": {
+        "dump_canonical_yaml": "OperationNewline"
+      },
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "source_fact": "newline-00",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "461c1f5efc95f9923374cdbed4170875d68c1c064825c8cfc197f27fe371e13a"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "source_fact": "newline-01",
+          "kind": "source_derived_NAME_token_rewrite",
+          "supplied_code_sha256": "d22d7204efefc07781701766eb556bda918c85f7e033c3fb0f71e64e266fd8cb"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,491 @@
+{
+  "status": "prepared_not_dispatched",
+  "fresh_contexts_planned": 16,
+  "targets_per_context": 4,
+  "case_annotations_planned": 64,
+  "contexts_per_target_cell": 4,
+  "assignments": [
+    {
+      "slot": "annotator-01",
+      "packet": "packet-annotator-01.json",
+      "template": "template-annotator-01.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-02",
+      "packet": "packet-annotator-02.json",
+      "template": "template-annotator-02.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "packet": "packet-annotator-03.json",
+      "template": "template-annotator-03.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-04",
+      "packet": "packet-annotator-04.json",
+      "template": "template-annotator-04.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "03",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-05",
+      "packet": "packet-annotator-05.json",
+      "template": "template-annotator-05.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-06",
+      "packet": "packet-annotator-06.json",
+      "template": "template-annotator-06.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-07",
+      "packet": "packet-annotator-07.json",
+      "template": "template-annotator-07.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-08",
+      "packet": "packet-annotator-08.json",
+      "template": "template-annotator-08.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "04",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-09",
+      "packet": "packet-annotator-09.json",
+      "template": "template-annotator-09.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-10",
+      "packet": "packet-annotator-10.json",
+      "template": "template-annotator-10.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-11",
+      "packet": "packet-annotator-11.json",
+      "template": "template-annotator-11.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-12",
+      "packet": "packet-annotator-12.json",
+      "template": "template-annotator-12.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "01",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-13",
+      "packet": "packet-annotator-13.json",
+      "template": "template-annotator-13.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-14",
+      "packet": "packet-annotator-14.json",
+      "template": "template-annotator-14.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-15",
+      "packet": "packet-annotator-15.json",
+      "template": "template-annotator-15.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 4
+        }
+      ]
+    },
+    {
+      "slot": "annotator-16",
+      "packet": "packet-annotator-16.json",
+      "template": "template-annotator-16.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null,
+      "cases": [
+        {
+          "case_id": "probe-d",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "probe-a",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "probe-b",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "probe-c",
+          "cell": "02",
+          "position": 4
+        }
+      ]
+    }
+  ],
+  "provider_requests": 0,
+  "metric_effect": "none"
+}

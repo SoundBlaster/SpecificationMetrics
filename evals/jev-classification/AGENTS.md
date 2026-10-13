@@ -23,3 +23,7 @@
   annotation context, with a balanced mixture of evidence modes across targets;
   do not correlate one annotator with one evidence mode. Keep the combined
   catalog and mapping with the integrator. Document the actual isolation boundary.
+- When varying helper/type-definition visibility, do not group targets sharing
+  that hidden dependency if another case reveals it. Balance evidence modes
+  across distinct dependency families and check for direct definition leakage;
+  case-local instructions alone do not prevent it.

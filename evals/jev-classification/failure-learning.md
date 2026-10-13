@@ -209,6 +209,35 @@ historical reference, production prompt or metric state was changed.
   rubric/packet witnesses. The next diagnostic should vary the semantic witness
   and source-derived naming cues before attributing the outcome to a model bias.
 
+## Preparation findings: validity definition, cross-case leakage and runtime
+
+- **Evidence:** the pinned source defines `TextInput.valid` as
+  `value is not None and bool(value.strip())`; boundary conversion maps
+  non-strings to `None`. `ScenarioInput.id`, `.title` and each `.steps` item
+  share this type. The [new preparation](runs/2026-10-13-definition-owner-names-preparation/README.md)
+  records seventeen verified excerpts from nine files.
+- **Cause status:** the operational criterion and nonmutating use of `strip`
+  are confirmed by source and a focused execution check. The primary domain
+  purpose remains a separate semantic question. Supplying this same definition
+  in one case of a multi-BDD packet would directly expose a withheld dependency
+  of another case; this is a prospective design defect, not a demonstrated
+  internal cause of any historical label.
+- **Prevention:** select four distinct helper families, keep one target view
+  per context, balance both target and condition positions, and prohibit direct
+  `TextInput`-definition leakage into unrelated cases. The evaluation instructions
+  now require this dependency-level check. Preserve rule strings and the
+  Specification marker while reversibly renaming only selected owner tokens.
+- **Verification:** seven new tests cover assignment/provenance, transformation,
+  leakage, blank templates, source behavior and exclusive artifact creation.
+  The initial source-execution test exposed the host's Python 3.9.6, which
+  cannot evaluate the pinned Python 3.10 union annotations. Re-running in a
+  repository virtual environment with Python 3.10 passed; the test now reports
+  an explicit minimum-version failure. CI runs it on Python 3.10.
+- **Limits:** a source definition does not dictate a concern-kind label; an
+  exact quote does not establish semantic support; partial owner renaming does
+  not remove all domain vocabulary. Prospective criteria are frozen separately
+  from blank annotation inputs. No run, gold labels or metric effect is claimed.
+
 ## Record template
 
 1. Failure and exact command/criterion.
