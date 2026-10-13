@@ -15,7 +15,8 @@ ROOT = Path(__file__).parent
 RUN = ROOT / 'runs/2026-10-13-context-evidence-preparation'
 PROFILE = ROOT / 'runs/2026-10-12-expression-reference'
 MODES = ('expression_only', 'containing_declaration', 'evidence_bundle')
-OUTPUTS = ('case-packet.json', 'source-mapping.json', 'annotation-template.json', 'preparation-receipt.json')
+OUTPUTS = ('case-packet.json', 'source-mapping.json', 'annotation-template.json', 'preparation-receipt.json') + tuple(
+    f'annotation-{kind}-{n:02d}.json' for n in (1, 2, 3) for kind in ('packet', 'template'))
 
 
 def pinned_path(path):
@@ -174,10 +175,21 @@ def build(run=RUN, read_source=None):
                     'questions': rubric, 'cases': cases},
                'source-mapping.json': {'schema_version': 1, 'cases': mapping},
                'annotation-template.json': {'status': 'blank_not_reference', 'annotations': template}}
+    for n, mode in enumerate(MODES, 1):
+        packet_name = f'annotation-packet-{n:02d}.json'
+        ids = {m['case_id'] for m in mapping if m['evidence_mode'] == mode}
+        for row in mapping:
+            if row['case_id'] in ids:
+                row['annotation_packet'] = packet_name
+        outputs[packet_name] = {**outputs['case-packet.json'],
+                               'cases': [c for c in cases if c['case_id'] in ids]}
+        outputs[f'annotation-template-{n:02d}.json'] = {
+            'status': 'blank_not_reference', 'annotations': [t for t in template if t['case_id'] in ids]}
     outputs['preparation-receipt.json'] = {
         'status': 'prepared_independent_annotation_pending_not_executable', 'new_inference_requests': 0,
         'metric_effect': 'none', 'prior_labels_transferred': False, 'expected_labels_assigned': False,
         'targets': 6, 'evidence_views_per_target': 3, 'annotation_cases': 18,
+        'annotation_delivery': 'three_fresh_isolated_contexts_one_packet_per_annotator_no_cross_view_access',
         'input_sha256': {name: digest((run / name).read_bytes()) for name in ('selectors.json', 'source-evidence.json')},
         'shared_input_sha256': {name: digest((PROFILE / name).read_bytes()) for name in ('reference-packet.json', 'rubric.json')},
         'producer_digests': {name: digest((ROOT / name).read_bytes()) for name in

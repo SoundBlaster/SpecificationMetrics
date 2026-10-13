@@ -52,6 +52,21 @@ is an explicit result; it does not justify inventing a provider explanation.
 - **Current boundary:** no semantic correction is claimed; no reference labels,
   prompts, thresholds, production classifier or S/U metrics were changed.
 
+## Confirmed exposure path: combined context-ablation packet
+
+During this preparation review, the combined catalog exposed all three evidence
+views of each expression to a prospective annotator. A prose instruction not to
+transfer labels could not remove access to fuller evidence. No annotation had
+run, so actual label contamination is not claimed.
+
+The regression `test_annotation_delivery_never_combines_views_of_one_target`
+failed before the patch because isolated delivery artifacts were absent. The
+prevention patch generates three disjoint six-case packet/template pairs and
+requires a fresh isolated annotation context for each. The same regression now
+checks one view and one occurrence of each target per delivery packet, plus
+complete eighteen-case coverage. The integrator-only catalog remains available
+for provenance and later provider preparation.
+
 ## Record template
 
 1. Failure and exact command/criterion.

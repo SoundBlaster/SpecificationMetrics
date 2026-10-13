@@ -53,10 +53,14 @@ must decide each axis from the supplied evidence and preserve uncertainty.
   supporting declarations; no semantic labels.
 - [source-evidence.json](source-evidence.json): unmodified source quotes with
   file/fragment/expression hashes and UTF-8 byte/line spans.
-- [case-packet.json](case-packet.json): the isolated annotation packet, with no
-  author proposals, source-mode mapping or provider predictions.
-- [annotation-template.json](annotation-template.json): blank labels, evidence
-  quotes and uncertainty fields. This file is not an accepted reference.
+- [case-packet.json](case-packet.json): integrator-only combined catalog. **Do not
+  give it to an independent annotator:** it exposes several views of each target.
+- `annotation-packet-01.json` through `annotation-packet-03.json` and matching
+  `annotation-template-01.json` through `annotation-template-03.json`: isolated
+  six-case delivery sets, one evidence view per target per packet. Labels are
+  blank. No author proposals or provider predictions are supplied.
+- [annotation-template.json](annotation-template.json): integrator-only combined
+  blank template; not an accepted reference or an annotation delivery file.
 - [preparation-receipt.json](preparation-receipt.json): producer/input/artifact
   digests; zero inference and zero metric effects.
 
@@ -82,8 +86,11 @@ completed preparation as a mutable scratch directory is not supported.
 
 ## Next experiment and failure learning
 
-1. Independently annotate only the packet and blank template, without this
-   sampling rationale, mapping, source selectors or previous provider results.
+1. Use three fresh isolated annotation contexts. Give each exactly one numbered
+   packet and its matching blank template, without the other packets, combined
+   catalog, sampling rationale, mapping, source selectors or prior results.
+   Record the actual isolation boundary. Do not reuse one annotator across views;
+   otherwise fuller context can contaminate the expression-only judgment.
 2. Review disagreements and distinguish evidence insufficiency from a genuinely
    interpretable minimal expression. Do not force every smaller view to unknown.
 3. Freeze a new provider protocol after the reference is reviewed. Keep raw

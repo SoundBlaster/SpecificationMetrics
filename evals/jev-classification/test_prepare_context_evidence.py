@@ -65,6 +65,22 @@ class SourceContextPreparation(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'exactly one complete expression'):
             collect(selectors, lambda *_: raw)
 
+    def test_annotation_delivery_never_combines_views_of_one_target(self):
+        artifacts = build()
+        mapping = {r['case_id']: r for r in artifacts['source-mapping.json']['cases']}
+        delivered = []
+        for n in (1, 2, 3):
+            packet = artifacts[f'annotation-packet-{n:02d}.json']
+            rows = [mapping[c['case_id']] for c in packet['cases']]
+            self.assertEqual(len(rows), 6)
+            self.assertEqual(len({r['target_id'] for r in rows}), 6)
+            self.assertEqual(len({r['evidence_mode'] for r in rows}), 1)
+            delivered.extend(r['case_id'] for r in rows)
+            template = artifacts[f'annotation-template-{n:02d}.json']
+            self.assertEqual({r['case_id'] for r in template['annotations']}, {r['case_id'] for r in rows})
+        self.assertEqual(len(delivered), 18)
+        self.assertEqual(set(delivered), set(mapping))
+
     def test_missing_context_and_stale_pinned_source_rejected(self):
         selectors, raw = synthetic(); sources = collect(selectors, lambda *_: raw)
         bad = copy.deepcopy(sources); bad['targets'][0]['bundle'] = []

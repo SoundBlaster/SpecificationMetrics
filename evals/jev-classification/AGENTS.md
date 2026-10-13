@@ -18,3 +18,7 @@
   requires a new version; it must not rewrite historical failures as successes.
 - Offline preparation does not authorize inference. Use explicit user approval
   and a frozen bounded run for paid provider calls.
+- For context-ablation references, do not expose several evidence views of the
+  same target to one annotator. Deliver one view-specific packet/template to
+  each fresh isolated annotation context; keep the combined catalog and mapping
+  with the integrator. Document the actual isolation boundary.
