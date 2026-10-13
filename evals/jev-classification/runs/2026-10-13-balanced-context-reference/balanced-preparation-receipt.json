@@ -1,0 +1,24 @@
+{
+  "status": "balanced_delivery_prepared_annotation_pending",
+  "design": "cyclic_three_by_three_all_modes_twice_per_annotator_one_view_per_target",
+  "causal_inference_claimed": false,
+  "new_jev_luna_requests": 0,
+  "metric_effect": "none",
+  "source_directory": "2026-10-13-context-evidence-preparation",
+  "source_file_sha256": {
+    "case-packet.json": "4523284e2076c2b8fa70e1804cc12c7895165d444950b2d81dda998b0eff584f",
+    "source-mapping.json": "cf22b5330900c45da1c7b6dfbb49a37bc780bd856e40d65332558a7f8f1c1dd7",
+    "annotation-template.json": "f02d7ab9428a68a2eba492acb0d8012f1760139e8f6be383d0b40e0144334027",
+    "preparation-receipt.json": "d10ac7f089acbbd5646d7941b745185c833c6d2228b10da368306d5a6e6be4d5"
+  },
+  "producer_sha256": "fc5ae46bdaa62a45eea78cda761c345be32eb4253b90386a8fa82f5240eb708c",
+  "artifact_sha256": {
+    "source-mapping.json": "4376dcd1cb907a02b1da77da6614c29362cd303616ed90da5984983013eebe8d",
+    "annotation-packet-01.json": "7ea6ba7b58bbc83d5ebda669a888ad26a2fabdeefea371fddf23bc20332fb269",
+    "annotation-template-01.json": "00eec798a2592caf022da2c0194a8318bf9218c7667b0a1a086a329926d4bd1b",
+    "annotation-packet-02.json": "d2aef644f7e4c556e0da23c6f719eb92c2a521626059e9c26df21b048f4c0bc4",
+    "annotation-template-02.json": "4413a09489369ffba997f62bdcfe8b36c13b3646af12fb5eed9ad85bfbcca34c",
+    "annotation-packet-03.json": "4884a96f52a4c7c24545f9fdec5557d3d5250c251b2dd1f978c1a5c833b34621",
+    "annotation-template-03.json": "6af0b66c83ff5327a1592126df04312781ed76077360a790ac6f7c16dbccc9b4"
+  }
+}

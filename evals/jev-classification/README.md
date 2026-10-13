@@ -276,3 +276,13 @@ ending the schedule; identity/transport failures still stop it. H3 includes Jev
 precision sensitivity, while execution completion and usable coverage are
 separate. The historical v1 study is unchanged. V2 has offline/mock evidence
 only; no new live run was performed and no persistent v2 run manifest is checked in.
+
+### Real-source context reference diagnostics
+
+The [balanced context-reference round](runs/2026-10-13-balanced-context-reference/README.md)
+uses six exact SpecGraph expressions and three evidence views. Each fresh
+annotator receives two cases per mode and one view of each target. The earlier
+[mode-correlated round](runs/2026-10-13-context-evidence-preparation/annotation-review.md)
+is retained as diagnostic evidence. Raw annotations, context/annotator effects,
+ownership evidence and semantic adjudication remain separate; this reference
+preparation does not authorize Jev/Luna requests or S/U changes.

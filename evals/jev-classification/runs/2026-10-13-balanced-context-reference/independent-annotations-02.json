@@ -1,0 +1,179 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "context-01",
+      "state_sha256": "97a3792a7b1e0efe2f94c200c50c179b214d878e0e234f30427d8df35550f495",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gate = node.gate_state\n    if gate != \"none\":"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "kind, next_gap, hint_template = GATE_ACTIONS[gate]"
+        }
+      ],
+      "uncertainties": [
+        "The supplied fragments do not establish callers or a formal owner for this decision; the judgment concerns the gate prerequisite and precedence visible in candidate_move."
+      ],
+      "rationales": {
+        "opportunity": "The exact comparison decides whether a canonical specification node must take its recorded gate action before ordinary status-based refinement is considered. That gate-precedence decision is a durable lifecycle rule that can benefit from a named, addressable and observable Specification. The supplied fragments do not show a Specification already owning this same decision.",
+        "concern_kind": "The comparison tests whether a lifecycle gate is active. Its supplied effect is to select gate handling ahead of the ordinary refinement branch, making its primary responsibility lifecycle policy. The subsequent mapping among individual gate actions is a different expression and is not the classification target."
+      }
+    },
+    {
+      "case_id": "context-02",
+      "state_sha256": "4c48d4a276423510900d9fdbc88e30139c88c9352007b704e5a3082ff89e6f9f",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not entry.steps_is_list or not entry.steps"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps_is_list"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "not entry.steps"
+        }
+      ],
+      "uncertainties": [
+        "The entry type, meaning of steps, and source of steps_is_list are not supplied.",
+        "The consequence of this condition and whether nonempty steps are a domain validity requirement or a technical precondition are not supplied."
+      ],
+      "rationales": {
+        "opportunity": "The expression rejects a steps value that is not a list or is empty, but the supplied expression does not establish what an entry represents or what rejection controls. It could express a durable requirement for a valid domain entry or a technical shape and empty-input guard. That distinction is material to Specification suitability, so an exclusion or eligibility judgment would require omitted context.",
+        "concern_kind": "The list-shape clause suggests representation checking, while the empty-steps clause could enforce either a product requirement or an implementation precondition. With no supplied declarations or effects, their combined primary responsibility cannot reliably be labeled policy or mechanics."
+      }
+    },
+    {
+      "case_id": "context-08",
+      "state_sha256": "752e931fce1a3167b2459528a483cc5f37623406bcd0aaad5341c641ea20dc5d",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rendered = yaml.safe_dump("
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        }
+      ],
+      "uncertainties": [],
+      "rationales": {
+        "opportunity": "The exact predicate detects a missing trailing newline on freshly serialized YAML so the helper can append it. This is local serialization formatting with no distinct product decision shown, and therefore falls within the profile boundary for procedural mechanics.",
+        "concern_kind": "The supplied producer and immediate effect establish representation normalization: yaml.safe_dump creates text, and this check ensures that text ends in a newline. No authority, eligibility or lifecycle decision is expressed by this target."
+      }
+    },
+    {
+      "case_id": "context-11",
+      "state_sha256": "64b50a21fc6cd600b6ebec6dde39e4930d5b4d06b054ca97e0aca7e0a5a144af",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "if gap.get(\"canonical_mutations_allowed\") is not False:\n            continue"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "def _has_reviewable_gap(gaps: list[Any], term: str | None = None) -> bool:"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "gap.get(\"canonical_mutations_allowed\") is not False"
+        }
+      ],
+      "uncertainties": [
+        "The gap schema and the source of its mutation-authority flag are not supplied; the judgment is limited to the visible explicit-False prerequisite.",
+        "The predicate alone does not establish complete reviewability, which also depends on other checks in the supplied function."
+      ],
+      "rationales": {
+        "opportunity": "The exact predicate excludes a gap from contributing to reviewability unless canonical_mutations_allowed is explicitly False. This is a distinct mutation-authority prerequisite, suitable for a named, addressable and observable Specification even though other reviewability checks remain in the caller. No supplied implementation shows this same prerequisite already owned by a Specification.",
+        "concern_kind": "The selected comparison makes explicit denial of canonical mutation authority a prerequisite for considering a gap reviewable. Its identity comparison also rejects a missing flag and values other than the False singleton. That is an authority and review-eligibility rule, regardless of the procedural loop that enforces it."
+      }
+    },
+    {
+      "case_id": "context-15",
+      "state_sha256": "3dbbe09306a09f0ddf63324d9c32a220764717c38908a91d6c0a2e2a0629749f",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "not requested <= covered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "requested <= covered"
+        }
+      ],
+      "uncertainties": [
+        "Operand types are not supplied; <= could denote set inclusion, numeric ordering or an overloaded relation.",
+        "The domain meaning of requested and covered and the consequence of the comparison are not supplied."
+      ],
+      "rationales": {
+        "opportunity": "The target negates a relation between requested and covered. It might represent a durable coverage or entitlement requirement, but neither operand types nor their domain meaning or the effect of failure are supplied. A named Specification opportunity cannot reliably be established or excluded from the variable names and operator alone.",
+        "concern_kind": "Without operand declarations or an effect, the expression could be a domain coverage decision or a technical comparison. Even the subset interpretation of <= is not established by the supplied Python expression. The evidence does not reliably identify its primary responsibility."
+      }
+    },
+    {
+      "case_id": "context-16",
+      "state_sha256": "b3b1f8f99f7dfd47b8ce96e9ec25beb8f0c1cf89446aaa6c165555dabe9856de",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path = _safe_path(row.get(\"path\"))"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        }
+      ],
+      "uncertainties": [
+        "Only lexical manifest-path acceptance is shown; downstream filesystem resolution, root containment and symlink handling are not supplied and are not asserted by this judgment."
+      ],
+      "rationales": {
+        "opportunity": "The selected disjunction defines which file paths an artifact manifest is allowed to contain: paths must be relative, contain no parent-traversal component and already use the accepted canonical POSIX representation. The supplied manifest consumer applies this rejection rule before accepting a file record. This artifact-integrity constraint benefits from a named, addressable and observable Specification, and no supplied evidence shows existing Specification ownership of the same rule.",
+        "concern_kind": "The combined target enforces an artifact manifest integrity boundary by rejecting absolute, parent-traversing and noncanonical paths. PurePosixPath supplies technical representation operations, but their composition determines permitted manifest file references, giving the whole selected expression a policy responsibility."
+      }
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-mtwoe86b/packet.json",
+      "/var/folders/n1/5qrr5k4142l48nzsh8x44t9r0000gn/T/specmetrics-blind-mtwoe86b/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

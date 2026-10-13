@@ -1,5 +1,10 @@
 # Independent annotation and integrator review
 
+**Historical diagnostic round.** A review subsequently required balancing modes
+within annotator packets. See the [new balanced round](../2026-10-13-balanced-context-reference/README.md)
+for the corrected delivery and a same-input comparison. No result below is
+retrospectively rewritten as confirmation evidence.
+
 ## Result and authority
 
 Three fresh subagent contexts annotated all **18 cases / 36 axis labels**. Each

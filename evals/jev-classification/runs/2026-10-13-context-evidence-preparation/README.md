@@ -1,5 +1,10 @@
 # Real SpecGraph context-evidence preparation
 
+**Historical delivery design:** each annotator below received one evidence mode.
+The subsequent [balanced delivery](../2026-10-13-balanced-context-reference/README.md)
+corrects that mode/annotator confound with fresh contexts. Original inputs,
+outputs, preparation producer and receipts below are retained unchanged.
+
 **Status: independently annotated; integrator review recorded; six disputed
 axis labels remain unapproved for scoring; no executable provider run.**
 

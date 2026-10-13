@@ -19,6 +19,7 @@
 - Offline preparation does not authorize inference. Use explicit user approval
   and a frozen bounded run for paid provider calls.
 - For context-ablation references, do not expose several evidence views of the
-  same target to one annotator. Deliver one view-specific packet/template to
-  each fresh isolated annotation context; keep the combined catalog and mapping
-  with the integrator. Document the actual isolation boundary.
+  same target to one annotator. Deliver one packet/template to each fresh
+  annotation context, with a balanced mixture of evidence modes across targets;
+  do not correlate one annotator with one evidence mode. Keep the combined
+  catalog and mapping with the integrator. Document the actual isolation boundary.

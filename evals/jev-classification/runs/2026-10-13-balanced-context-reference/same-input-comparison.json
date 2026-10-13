@@ -1,0 +1,293 @@
+{
+  "status": "same_input_annotation_comparison_not_provider_accuracy",
+  "input_file_sha256": [
+    {
+      "file": "2026-10-13-context-evidence-preparation/independent-annotations-01.json",
+      "sha256": "174d9a3aa49f8f2211075c68e5dab2c61999fb135ecc0cde06cf3d12a1b38928"
+    },
+    {
+      "file": "2026-10-13-context-evidence-preparation/independent-annotations-02.json",
+      "sha256": "0cc9f4fd9e924280b5a8805652bc3d66faf02fb96d4b0e8e8032b882c63673ec"
+    },
+    {
+      "file": "2026-10-13-context-evidence-preparation/independent-annotations-03.json",
+      "sha256": "e8ebc14caf83600881aa63c5a0be7790cd359344253b26c005c68fd1d373e1de"
+    },
+    {
+      "file": "2026-10-13-balanced-context-reference/independent-annotations-01.json",
+      "sha256": "5d5b9bb376a59a7f3670988df3e8e53776cc0939daa20e8deb4dec052a4c22a0"
+    },
+    {
+      "file": "2026-10-13-balanced-context-reference/independent-annotations-02.json",
+      "sha256": "664e2d27d65d337cfc16b17d42ed198c4475ad229ae858793cf4c5090094c2e6"
+    },
+    {
+      "file": "2026-10-13-balanced-context-reference/independent-annotations-03.json",
+      "sha256": "09dbd0fd90089d84d6f8a629842a985c432ae15ed73d7a6c0183831d6b9e4ceb"
+    }
+  ],
+  "producer_sha256": "ec71cf7239db306b1dcdb016758998e3d9af6f875a45fc877fefb5e0c7f10bf2",
+  "validated_round_receipt_sha256": [
+    "27ddc29d8985306737f3090203dd88dbc57c4a0d89fdd6b038203caef61d5696",
+    "ff3c0f02eca48275f44d812d7c5cfd69f95f02d64f9c5ac14ae7cb0db27b4bc8"
+  ],
+  "cases": [
+    {
+      "case_id": "context-01",
+      "state_sha256": "97a3792a7b1e0efe2f94c200c50c179b214d878e0e234f30427d8df35550f495",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-02",
+      "state_sha256": "4c48d4a276423510900d9fdbc88e30139c88c9352007b704e5a3082ff89e6f9f",
+      "prior": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "balanced": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-03",
+      "state_sha256": "5ed038babed6f844ec488b3a906853143a68bd9535f76d9fd3121f225f0a5b7a",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-04",
+      "state_sha256": "34bc04293ac909df2c1eb79ed6cc57692517377485a6fcf7df03490a12e8b614",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-05",
+      "state_sha256": "b19324fa7c7d5a4508ab2ef77e0fc4aa82300d753653fbab3edf74a0c4e41a98",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-06",
+      "state_sha256": "856c30f413385254fd3111c3ba058d2dedd9db8f22cdb79f07ab26d30bb308ac",
+      "prior": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "balanced": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-07",
+      "state_sha256": "8541152abb09dd22016f6087bf8563bbf4b89ddf7eecd0e5f5e49454214906a4",
+      "prior": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-08",
+      "state_sha256": "752e931fce1a3167b2459528a483cc5f37623406bcd0aaad5341c641ea20dc5d",
+      "prior": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "balanced": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-09",
+      "state_sha256": "6d670fb6c32c7f43d9c47b00368cc97285a5dbf5d23a60a3b813ffdb4556c1c6",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "changed_axes": [
+        "opportunity",
+        "concern_kind"
+      ]
+    },
+    {
+      "case_id": "context-10",
+      "state_sha256": "553f171412445a688b4ebe89c22463fd257215f6110dfee910ac520042032474",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-11",
+      "state_sha256": "64b50a21fc6cd600b6ebec6dde39e4930d5b4d06b054ca97e0aca7e0a5a144af",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-12",
+      "state_sha256": "54dd1b72bf478a2fcb735109083941b8f1bef2b57f485dac8215e888be1fc4ba",
+      "prior": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "balanced": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-13",
+      "state_sha256": "a01bd5180ab0f7b93e061a5d85dc45c3de41b4246677fb06c82a0d473f025dc3",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "balanced": {
+        "opportunity": "needs_review",
+        "concern_kind": "policy"
+      },
+      "changed_axes": [
+        "opportunity"
+      ]
+    },
+    {
+      "case_id": "context-14",
+      "state_sha256": "0ff4d798cf5e815f48c4c10079d32b6184fd6d76ecb05acccf5aed934456623b",
+      "prior": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "balanced": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-15",
+      "state_sha256": "3dbbe09306a09f0ddf63324d9c32a220764717c38908a91d6c0a2e2a0629749f",
+      "prior": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "balanced": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-16",
+      "state_sha256": "b3b1f8f99f7dfd47b8ce96e9ec25beb8f0c1cf89446aaa6c165555dabe9856de",
+      "prior": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": [
+        "opportunity",
+        "concern_kind"
+      ]
+    },
+    {
+      "case_id": "context-17",
+      "state_sha256": "fb8d8b9abad92d64e066a6fbda205f08f25783df9caf6ed0d280b1791cbc237f",
+      "prior": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "balanced": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "changed_axes": []
+    },
+    {
+      "case_id": "context-18",
+      "state_sha256": "eda1fd23b3d8ab7e427d367a7f9533ea0c82f99e649544d86cb129c444dc6ec1",
+      "prior": {
+        "opportunity": "eligible",
+        "concern_kind": "variant_behavior"
+      },
+      "balanced": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "changed_axes": [
+        "concern_kind"
+      ]
+    }
+  ],
+  "agreement": {
+    "opportunity": {
+      "matched": 15,
+      "total": 18
+    },
+    "concern_kind": {
+      "matched": 15,
+      "total": 18
+    }
+  },
+  "label_overrides": [],
+  "jev_luna_requests": 0,
+  "interpretation": "Same case state, profile and rubric; fresh annotators and packet composition differ. Agreement is descriptive reliability, not human gold, causal context effect or provider accuracy."
+}

@@ -72,6 +72,29 @@ checks one view and one occurrence of each target per delivery packet, plus
 complete eighteen-case coverage. The integrator-only catalog remains available
 for provenance and later provider preparation.
 
+## Confirmed design defect: evidence mode correlated with annotator
+
+- **Evidence:** [PR #41 review](https://github.com/SoundBlaster/SpecificationMetrics/pull/41#discussion_r4256695179)
+  and the original source mapping show all six expression-only states went to
+  one annotator, all declarations to another and all bundles to a third.
+- **Confirmed cause:** delivery partitioning by mode made mode perfectly
+  correlated with annotator. Cross-view differences could not distinguish these
+  effects. Describing that limitation did not correct the experimental design.
+- **Prevention:** a [new balanced producer](prepare_balanced_context_reference.py)
+  rotates modes across targets: two states per mode per fresh annotator, still
+  one view of each target. Preserve the original producer, inputs and annotations;
+  enforce balance in the scoped workflow instructions and regression tests.
+- **Verification:** `test_original_delivery_reproduces_the_mode_annotator_confound`
+  reproduces `6/0/0`; `test_modes_are_balanced_without_showing_two_views_of_one_target`
+  requires `2/2/2`, six distinct targets per annotator and blank delivery labels.
+  Saved state replay proves no source, rubric or target expression was changed.
+- **New diagnostic evidence:** [the completed balanced annotation round](runs/2026-10-13-balanced-context-reference/README.md)
+  agrees with the earlier round on 15/18 labels for each axis and both axes on
+  14/18 states. The path answers reverse on the same inputs; context size alone
+  cannot explain the observed disagreement. This confirms annotation instability,
+  not a provider's internal cause. Four states/six axis labels remain unapproved;
+  a versioned rubric proposal is next. No Jev/Luna requests or metric writes.
+
 ## Record template
 
 1. Failure and exact command/criterion.
