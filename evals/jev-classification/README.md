@@ -401,8 +401,10 @@ No direct Jev/Luna API calls or production S/U changes were made.
 The [scope-binding adjudication table](scope-binding-adjudication-v1.md) proposes
 two explicit decisions for human review: retain uncertainty for the shared path
 contract, and distinguish an already-owned domain predicate from its findings
-collection caller. Approval fields remain pending and frozen annotations are
-unchanged. The table also records the PR #60 context-identity provenance finding;
+collection caller. The human confirmed D1/D2 on 2026-10-14; the
+[bounded adjudication record](runs/2026-10-14-scope-binding-adjudication-v1/README.md)
+binds those decisions to exact cases/tasks. Provider-scoring reference application
+remains pending and frozen annotations are unchanged. The table also records the PR #60 context-identity provenance finding;
 unique receipt strings do not by themselves establish isolated contexts.
 
 The [dispatch provenance repair](runs/2026-10-14-scope-dispatch-provenance-repair-v1/README.md)

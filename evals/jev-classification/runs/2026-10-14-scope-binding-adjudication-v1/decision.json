@@ -1,0 +1,139 @@
+{
+  "schema": "scope-binding-human-adjudication-v1",
+  "status": "human_confirmed_bounded_decisions",
+  "approval": {
+    "source": "current_conversation",
+    "reply": "Ок",
+    "context": "Confirmation after explanation of D1 shared-helper versus documented application role, and D2 already-owned invalid-step policy versus findings collection mechanics.",
+    "recorded_at_utc": "2026-10-14T19:46:27.616067+00:00",
+    "timestamp_kind": "recording_time_not_user_message_timestamp",
+    "message_id": null,
+    "human_confirmation": true,
+    "blind": false,
+    "after_model_outputs": true
+  },
+  "proposal": {
+    "git_commit": "cb5b48567eef30c4df3fc4024eab2f745a495345",
+    "path": "evals/jev-classification/scope-binding-adjudication-v1.md",
+    "sha256": "a05fc4fa794aef56e1d2eb70208b13e88173b7fa4a90e210ba5d08ca1a1dc63d"
+  },
+  "source_file_sha256": {
+    "runs/2026-10-14-scope-binding-preparation-v3-1/preparation-receipt.json": "ba828c9023eeb496b3e8b3d8c4c28bf3798bf6818006d7411cb09efc7a04a2fb",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/execution-receipt.json": "2f4532f69755fbaa3c491831bb16b3941eea73a7d06eaecd4a1fd61ba7bdb8fe",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/review/semantic-review.json": "8a05466e84e3c5ddbc54655c8c3a21889521c2c509ace44bad8cb87afb53ec30",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/review/diagnosis.json": "2470f6238e0222560c54d20a08ad3ee8851269652b59ad888422e3e597d75423",
+    "runs/2026-10-14-scope-dispatch-provenance-repair-v1/provenance-repair.json": "56ff428fecb26ebb33ff76861568b9986910d6f088ab4acea83a59bf5125b15a"
+  },
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "decisions": [
+    {
+      "decision_id": "D1",
+      "application": "shared_definition_current_evidence",
+      "labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "tasks": [
+        {
+          "case_id": "target-01",
+          "cell": "01",
+          "scope_unit": "shared_definition",
+          "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+          "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+        },
+        {
+          "case_id": "target-01",
+          "cell": "02",
+          "scope_unit": "shared_definition",
+          "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+        }
+      ]
+    },
+    {
+      "decision_id": "D1",
+      "application": "selected_manifest_application_with_documents",
+      "labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "tasks": [
+        {
+          "case_id": "target-01",
+          "cell": "04",
+          "scope_unit": "bound_application",
+          "state_sha256": "6090f93d4252b65f8c23be63fb837f11274f788350cd2d949cc39fcaddcfa97f",
+          "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d"
+        }
+      ]
+    },
+    {
+      "decision_id": "D2",
+      "application": "invalid_step_policy_already_owned_including_direct_findings_binding",
+      "labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "tasks": [
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "scope_unit": "shared_definition",
+          "state_sha256": "bd5098b19f0a0f1adea4b382600d6399985e08d40f567f9a05cb2edb8fc2830c",
+          "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a"
+        },
+        {
+          "case_id": "target-03",
+          "cell": "02",
+          "scope_unit": "shared_definition",
+          "state_sha256": "4b4ba23dfccff5fd6a0171b2a488cb3d8b6043942f7f5809c6e5b33b162a992e",
+          "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a"
+        },
+        {
+          "case_id": "target-03",
+          "cell": "03",
+          "scope_unit": "bound_application",
+          "state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+          "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+        },
+        {
+          "case_id": "target-03",
+          "cell": "04",
+          "scope_unit": "bound_application",
+          "state_sha256": "9f3f5d7da53b750d11d4c6492e31365f4d59beee73bc46daf9ec2d20aa2645d1",
+          "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+        }
+      ]
+    }
+  ],
+  "not_adjudicated": [
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "status": "review_required",
+      "confirmed_labels": null
+    }
+  ],
+  "frozen_raw_annotations_edited": false,
+  "frozen_model_review_edited": false,
+  "provider_scoring_reference_frozen": false,
+  "rubric_changed": false,
+  "production_classifier_changed": false,
+  "metric_effect": "none",
+  "new_model_contexts": 0,
+  "direct_provider_requests": 0
+}

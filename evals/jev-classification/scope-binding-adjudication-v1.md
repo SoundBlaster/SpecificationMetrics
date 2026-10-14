@@ -1,7 +1,9 @@
 # Scope binding: два решения для adjudication
 
-**Статус: проект рекомендации, ожидает решения человека.** Автор — nonblind
-model-integrator. Этот документ не меняет raw labels, frozen review, rubric,
+**Статус: D1/D2 подтверждены человеком 2026-10-14 после пояснения обеих рекомендаций.**
+Исходный автор предложения — nonblind model-integrator. Подтверждение и точные
+case/task bindings сохранены в [отдельном adjudication record](runs/2026-10-14-scope-binding-adjudication-v1/README.md).
+Этот документ не меняет raw labels, frozen review, rubric,
 scoring reference или production S/U. Новых model/provider requests нет.
 
 ## Короткая таблица
@@ -115,8 +117,14 @@ predicate в mechanics; оценка callers и оценка predicate оста�
 
 | Решение | Предложено | Подтверждение человека | Применение к reference |
 | --- | --- | --- | --- |
-| D1 | Shared role review-required; documented manifest application может быть policy | pending | pending |
-| D2 | Exact invalid-step predicate: `excluded / policy`, включая выбранный findings binding | pending | pending |
+| D1 | Shared role `needs_review / unknown`; documented manifest application `eligible / policy` | approved 2026-10-14 | pending |
+| D2 | Exact invalid-step predicate: `excluded / policy`, включая выбранный findings binding | approved 2026-10-14 | pending |
 
-Следующий шаг: после review repair зафиксировать решения D1/D2 и подготовить
-versioned adjudication, если человек их подтвердит.
+Подтверждение относится к описанным pinned примерам и их evidence. Для manifest
+bound application **без документов** отдельная метка этим подтверждением не
+установлена: target-01/cell03 остаётся review-required. Исходные шесть model-review
+notes сохранены, не переименованы в закрытые или корректные задним числом.
+
+Следующий шаг: проверить согласованность этих adjudication decisions с rubric и
+разобрать оставшееся manifest-применение без documentary contract перед отдельным
+решением о freezing provider-scoring reference.
