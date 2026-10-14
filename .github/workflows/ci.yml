@@ -64,6 +64,8 @@ jobs:
           python3 validate_definition_owner_annotations.py
           python3 -m unittest -v test_manifest_contract_factorial.py
           python3 prepare_manifest_contract_factorial.py
+          python3 prepare_manifest_contract_balanced.py
+          python3 -m unittest -v test_manifest_contract_balanced.py
           python3 validate_manifest_contract_factorial.py
           python3 -m unittest -v test_validate_expression_reference.py
           python3 -m unittest -v test_matched_expression_plan.py
