@@ -397,3 +397,10 @@ judgments pending; agreement does not establish correctness or a scoring referen
 The [parent audit](runs/2026-10-14-scope-binding-parent-audit/README.md) separately
 checks raw/review bindings and records why comparison with v2 is descriptive only.
 No direct Jev/Luna API calls or production S/U changes were made.
+
+The [scope-binding adjudication table](scope-binding-adjudication-v1.md) proposes
+two explicit decisions for human review: retain uncertainty for the shared path
+contract, and distinguish an already-owned domain predicate from its findings
+collection caller. Approval fields remain pending and frozen annotations are
+unchanged. The table also records the open PR #60 context-identity provenance
+finding; unique receipt strings do not by themselves establish isolated contexts.

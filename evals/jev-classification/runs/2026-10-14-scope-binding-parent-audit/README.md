@@ -1,9 +1,21 @@
 # Parent audit: scope-binding v3.1
 
+## Уточнение после review PR #60
+
+Открытый [P1 о context identities](https://github.com/SoundBlaster/SpecificationMetrics/pull/60#discussion_r4270834339)
+ограничивает описанный ниже audit: он проверяет уникальность **заявленных строк**
+agent task в receipts, а retention выводит их из slot. Это ещё не подтверждение
+уникальности реально возвращённых инструментом contexts или их isolation.
+Сохранённый `parent-verification.txt` с формулировкой «12 unique contexts» следует
+читать с этим ограничением. Нужны сверка dispatch evidence и отдельный provenance
+repair; frozen run здесь не переписывался. Новая
+[таблица adjudication](../../scope-binding-adjudication-v1.md) не использует частоты
+ответов как основание для semantic recommendations.
+
 ## Результат
 
 Родитель отдельно проверил [завершённый пакет](../2026-10-14-scope-binding-v3-1-results-astra-high/analysis/report.md):
-141 checksum, 12 уникальных annotation task identities, 48 raw rows,
+141 checksum, 12 уникальных заявленных annotation task строк, 48 raw rows,
 144 уникальных review bindings и точные rationale quotes обеих осей. Повторный
 `replay_package.py` прошёл на исходных declared paths. Все retained raw bytes
 совпадают с первоначальными `annotations.json`.
