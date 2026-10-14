@@ -238,6 +238,54 @@ historical reference, production prompt or metric state was changed.
   not remove all domain vocabulary. Prospective criteria are frozen separately
   from blank annotation inputs. No run, gold labels or metric effect is claimed.
 
+## Definition/owner-name diagnostic: agreement without a gold reference
+
+- **Evidence:** the [completed run](runs/2026-10-13-definition-owner-names-results/analysis.md)
+  contains 64 annotations from sixteen fresh contexts. Focal opportunity is
+  `excluded` in 16/16, including neutral-owner cells; focal concern is `policy`
+  in all cells. The eight extended-context rationales contain neither a claim
+  that the nonblank criterion is unavailable nor that `strip` changes stored
+  text. The newline control is `excluded / mechanics` in 16/16.
+- **Cause status:** the naming histograms match in this partial ablation; this
+  does not establish universal name invariance or a causal explanation for
+  earlier disagreement. Definitions are reflected in extended-context reasons,
+  but they do not change these Choice labels. No internal model cause is proved.
+- **Lesson:** a useful context addition can improve the specificity of a reason
+  without changing its label. Stable same-decision ownership, operational
+  predicate semantics and normative domain purpose need separate evidence.
+  Unanimous `policy` answers remain proposals; no adopted Requirement or human
+  gold was supplied for the focal semantic distinction.
+- **Prevention/verification:** preserve frozen preparation and raw outputs;
+  replay hashes, four-case assignments, independent axes and case-local quotes
+  with `validate_definition_owner_annotations.py`. Nine regression checks reject
+  stale identities, changed tasks, foreign-case quotes, duplicate cases, missing
+  evidence and undeclared isolation. Rationale review is recorded separately
+  and is explicitly an integrator judgment, not an automated semantic grader.
+- **Unresolved:** the manifest-path target remains unknown in 16/16. The
+  permitted-reference contract is absent from supplied packets; this does not
+  claim it is absent from SpecGraph. Recover that contract before deciding
+  whether this site defines domain integrity or generic representation rules.
+
+## Replay review repair: manual evidence and receipt invariants
+
+- **Evidence:** PR #49 found that deleting/replacing the manual review or
+  declaring seven provider calls/nonempty excluded attempts still allowed the
+  original replay to succeed and report zero calls. Running
+  `python -m unittest -v test_validate_definition_owner_annotations.ReplayArtifactTests`
+  before the correction reproduced 20 failed subcases and one error.
+- **Confirmed cause:** the replay validated raw annotations but did not consume
+  the fourth criterion's manual artifact or the receipt's execution/authority
+  invariants. Successful raw evidence validation was being reported with
+  unverified execution metadata.
+- **Correction:** bind the unchanged review bytes into the receipt, validate
+  all eight review-to-output bindings and manual aggregate consistency, and
+  reject unsupported receipt declarations before reporting results. Manual
+  rationale judgments remain manual, including failed judgments.
+- **Verification:** eight new regression tests cover missing/empty/changed
+  reviews, stale/duplicate/missing bindings, inconsistent counts, preserved
+  manual failure and false receipt metadata. The complete focused preparation
+  and replay suite passes 24 tests. No raw labels, judgments or criteria change.
+
 ## Record template
 
 1. Failure and exact command/criterion.

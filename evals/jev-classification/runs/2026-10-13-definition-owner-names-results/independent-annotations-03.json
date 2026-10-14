@@ -1,0 +1,146 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "probe-c",
+      "state_sha256": "16cb9e7ea1d9f5dbc01028c41f076f260756ac21bf02b024cee2caba9f8e14ea",
+      "task_sha256": "549da6b5bf6fe3a1f324d371329f081a794dbc6ce26a890b2a630945e19b7793",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "The subject is a manifest path string, and the expression distinguishes absolute, parent-traversing, or noncanonical strings from other strings. The supplied function rejects these forms, but does not establish whether they violate a domain reference-integrity contract or only a generic path-format/adaptation constraint. That specific missing contract leaves eligible and excluded materially plausible.",
+        "concern_kind": "The expression enforces path constraints, including canonical representation, but its primary responsibility is unsettled. There is no supplied permitted-domain-reference contract establishing policy, and the unsafe rejection message alone cannot establish one. Generic mechanics and domain integrity policy both remain plausible for this exact combined check."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        }
+      ],
+      "uncertainties": [
+        "The supplied context does not state whether manifest paths are permitted domain references governed by an integrity rule or strings constrained for a generic technical consumer."
+      ]
+    },
+    {
+      "case_id": "probe-d",
+      "state_sha256": "498e1a28f93a78f46390b24c0aa8fcd589d06a45be369e9db73fbcffbcd2b511",
+      "task_sha256": "ee9ecb8190b8279b40c2af8242f2883bd366558fac44c779a6e589d42eee6064",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The subject is the YAML serialization result. The predicate detects a missing trailing newline solely to append that newline before returning the rendered string. This is affirmative evidence of representation formatting without a distinct domain decision, so it falls within the profile boundary for procedural serialization mechanics.",
+        "concern_kind": "The exact expression tests the suffix of a serialized string and controls a formatting correction. Its demonstrated responsibility is representation normalization, with no domain admissibility, lifecycle, authority, or variant-specific behavior decision."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "rendered = yaml.safe_dump("
+        },
+        {
+          "axis": "opportunity",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "probe-a",
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "e6b1dd23cbdb905d26784d3e8166419ee7561e410230ebc8ebfd10667e1ae391",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The predicate distinguishes invalid scenario steps to produce scenario-value findings. This exact finding decision is already owned by BDDScenarioValuesSpec: it implements findings, inherits Specification through BDDPolicy, and its findings determine the evaluation verdict through _evaluate. The supplied policy assembly invokes is_satisfied_by on that policy, establishing same-decision Specification ownership rather than merely showing a Specification elsewhere.",
+        "concern_kind": "The target decides whether a BDD scenario step violates the scenario-values rule and therefore warrants an invalid_value finding. That is domain admissibility validation within an explicit named rule. Existing Specification ownership affects the opportunity label but does not change this policy responsibility."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        }
+      ],
+      "uncertainties": [
+        "The internal definition of step.valid is not supplied; its precise admissibility criteria cannot be reconstructed, while the supplied finding and evaluation path establish the target role and ownership."
+      ]
+    },
+    {
+      "case_id": "probe-b",
+      "state_sha256": "425662e6242d8cde95f2caf26809686c2da8c484f38814bb7611783a13137d47",
+      "task_sha256": "6a8681c34fd09866ac2552719639d0845f63e95a4f268de2082d8add099b9803",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The subject is a specification node gate state. The predicate gives a non-none gate obligation precedence over status-based targeted refinement, choosing which domain work the candidate should pursue. This stable lifecycle-priority rule benefits from a named, addressable, observable Specification under the supplied profile, and no supplied evidence establishes existing Specification ownership of this same decision.",
+        "concern_kind": "The exact comparison decides whether gate handling takes precedence over ordinary refinement. The subsequent gate action lookup implements the chosen obligation, while the preceding comparison itself decides obligation priority. The supplied gate instructions require review, repair, split consideration, or blocker resolution before further refinement, establishing policy under the tie rule."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "quote": "gate = node.gate_state\n    if gate != \"none\":"
+        },
+        {
+          "axis": "opportunity",
+          "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]"
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"Identify and resolve the recorded blocker for {spec_id} before retrying.\""
+        },
+        {
+          "axis": "concern_kind",
+          "quote": "\"Review the manual escalation for {spec_id} before further refinement.\""
+        }
+      ],
+      "uncertainties": [
+        "The supplied context does not provide the actual gate_order and status_order values; this limits inference about individual rankings but does not obscure the selected gate-before-status decision."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-03/packet.json",
+      "/private/tmp/specmetrics-definition-names-20261013T2037/annotator-03/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}
