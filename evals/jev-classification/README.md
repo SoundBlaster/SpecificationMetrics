@@ -363,3 +363,9 @@ The active scope-input contract is now v3.1 (`prepare_scope_binding_v3_1.py`):
 the permitted-input list explicitly includes `evaluation_scope`, and blank rows
 carry structured scope acknowledgments. Frozen v3.0 is preserved as superseded
 before annotation; no historical output is relabelled.
+
+The [scope-v3.1 handoff and retained-attempt runbook](scope-binding-handoff-runbook.md)
+provides actual-file preflight, implementation/preparation bindings and explicit
+returned scope acknowledgments. Formal validation leaves semantic scope fidelity
+unverified; three 48-row manual-review groups remain blank. Historical preparation
+flags are unchanged, and materialization does not dispatch annotation contexts.

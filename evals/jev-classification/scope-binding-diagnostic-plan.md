@@ -111,8 +111,9 @@ source-backed role witness, отдельная same-decision ownership и proven
 provider requests = 0, gold/reference/metric effects отсутствуют.
 `dispatch_ready` намеренно false: существующий handoff и attempt-validator
 зафиксированы на v2, их нельзя применять к этим новым packets как будто задача
-не изменилась. Следующий coding slice — scope-aware actual-file handoff и
-retained-attempt validation; до него эти файлы не являются готовым запуском.
+не изменилась. Scope-aware actual-file handoff и retained-attempt validation теперь описаны в
+[runbook](scope-binding-handoff-runbook.md). Frozen stage flags сохраняют
+историческое значение; текущую доступность сообщает отдельный handoff preview.
 
 ```sh
 # Из evals/jev-classification, в repository virtualenv:
