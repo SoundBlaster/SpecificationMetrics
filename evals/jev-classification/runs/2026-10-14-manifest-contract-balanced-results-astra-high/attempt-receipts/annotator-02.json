@@ -1,0 +1,28 @@
+{
+  "slot": "annotator-02",
+  "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-02",
+  "context_inheritance": "none",
+  "context_inheritance_planned": "none",
+  "agent_task": "/root/astra_balanced_v2_run/annotator_02",
+  "model_identity": "unverified_runtime_identity",
+  "delivered_files": {
+    "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-02/packet.json",
+    "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-02/template.json",
+    "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/prompts/annotator-02.txt"
+  },
+  "input_file_sha256": {
+    "packet.json": "652154c4645dfe0907e7627cd63d73a826ca45ea0e4cf8c84430c21576b10302",
+    "template.json": "7d165b18adbadf24a3b11b09ebb4a0f6c313f60c37462beaca8b87f7fc4fe295"
+  },
+  "dispatched_prompt_sha256": "15f24d1ca3c7f384dda6612e76cae89f658a24bfaba597cb4605896dce25e0d5",
+  "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+  "provider_requests": 0,
+  "human_gold": false,
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false,
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "high",
+  "runtime_model_identity": null,
+  "attempt_number": 1,
+  "raw_output_path": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-02-attempt-01.json"
+}

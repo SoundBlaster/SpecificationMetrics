@@ -1,0 +1,23 @@
+{
+  "slot": "annotator-04",
+  "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-04",
+  "context_inheritance": null,
+  "context_inheritance_planned": "none",
+  "agent_task": null,
+  "model_identity": "not_dispatched_inherit_default_if_authorized",
+  "delivered_files": {
+    "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-04/packet.json",
+    "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-04/template.json",
+    "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/prompts/annotator-04.txt"
+  },
+  "input_file_sha256": {
+    "packet.json": "de16f76e54b944e1faa0e2b3960210de9f18c361a6a28e0c29aa5a828360e414",
+    "template.json": "a1bff90cf57e57ea498b5895542e74c3bcc0b233d44408a8aeccf45117f56222"
+  },
+  "dispatched_prompt_sha256": "b89be76361463f284f15e5c4af2a36eb7f08e360185f8c19e7e0c06ad827b200",
+  "raw_output_sha256": null,
+  "provider_requests": 0,
+  "human_gold": false,
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false
+}

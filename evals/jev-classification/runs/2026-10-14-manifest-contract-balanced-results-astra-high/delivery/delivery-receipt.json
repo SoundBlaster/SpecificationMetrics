@@ -1,0 +1,363 @@
+{
+  "status": "delivery_prepared_not_dispatched",
+  "annotation_started": false,
+  "preparation_receipt_sha256": "2b9fc27fa0e222b3127c46bc1fe15d367cac305912ae0daba43cda4fa6e31818",
+  "producer_sha256": "f332ed5e080b0d8ca66817b4b6e2b10c3c290fc90fcaf356d92d7732291abe59",
+  "assignments": [
+    {
+      "slot": "annotator-01",
+      "cases": [
+        {
+          "case_id": "target-02",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "target-01",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "target-04",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "target-03",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "repetition": 1,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-01",
+      "prompt": "prompts/annotator-01.txt",
+      "attempt_receipt": "receipts/annotator-01.json"
+    },
+    {
+      "slot": "annotator-02",
+      "cases": [
+        {
+          "case_id": "target-01",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "target-02",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "target-03",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "target-04",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "repetition": 1,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-02",
+      "prompt": "prompts/annotator-02.txt",
+      "attempt_receipt": "receipts/annotator-02.json"
+    },
+    {
+      "slot": "annotator-03",
+      "cases": [
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "repetition": 1,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-03",
+      "prompt": "prompts/annotator-03.txt",
+      "attempt_receipt": "receipts/annotator-03.json"
+    },
+    {
+      "slot": "annotator-04",
+      "cases": [
+        {
+          "case_id": "target-01",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "target-02",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "target-03",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "target-04",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "repetition": 1,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-04",
+      "prompt": "prompts/annotator-04.txt",
+      "attempt_receipt": "receipts/annotator-04.json"
+    },
+    {
+      "slot": "annotator-05",
+      "cases": [
+        {
+          "case_id": "target-03",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "target-04",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "target-01",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "target-02",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "repetition": 2,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-05",
+      "prompt": "prompts/annotator-05.txt",
+      "attempt_receipt": "receipts/annotator-05.json"
+    },
+    {
+      "slot": "annotator-06",
+      "cases": [
+        {
+          "case_id": "target-02",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "target-01",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "target-04",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "target-03",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "repetition": 2,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-06",
+      "prompt": "prompts/annotator-06.txt",
+      "attempt_receipt": "receipts/annotator-06.json"
+    },
+    {
+      "slot": "annotator-07",
+      "cases": [
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "repetition": 2,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-07",
+      "prompt": "prompts/annotator-07.txt",
+      "attempt_receipt": "receipts/annotator-07.json"
+    },
+    {
+      "slot": "annotator-08",
+      "cases": [
+        {
+          "case_id": "target-03",
+          "cell": "02",
+          "position": 1
+        },
+        {
+          "case_id": "target-04",
+          "cell": "01",
+          "position": 2
+        },
+        {
+          "case_id": "target-01",
+          "cell": "04",
+          "position": 3
+        },
+        {
+          "case_id": "target-02",
+          "cell": "03",
+          "position": 4
+        }
+      ],
+      "repetition": 2,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-08",
+      "prompt": "prompts/annotator-08.txt",
+      "attempt_receipt": "receipts/annotator-08.json"
+    },
+    {
+      "slot": "annotator-09",
+      "cases": [
+        {
+          "case_id": "target-04",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "target-03",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "target-02",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "target-01",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "repetition": 3,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-09",
+      "prompt": "prompts/annotator-09.txt",
+      "attempt_receipt": "receipts/annotator-09.json"
+    },
+    {
+      "slot": "annotator-10",
+      "cases": [
+        {
+          "case_id": "target-04",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "target-03",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "target-02",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "target-01",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "repetition": 3,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-10",
+      "prompt": "prompts/annotator-10.txt",
+      "attempt_receipt": "receipts/annotator-10.json"
+    },
+    {
+      "slot": "annotator-11",
+      "cases": [
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "repetition": 3,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-11",
+      "prompt": "prompts/annotator-11.txt",
+      "attempt_receipt": "receipts/annotator-11.json"
+    },
+    {
+      "slot": "annotator-12",
+      "cases": [
+        {
+          "case_id": "target-04",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "target-03",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "target-02",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "target-01",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "repetition": 3,
+      "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-12",
+      "prompt": "prompts/annotator-12.txt",
+      "attempt_receipt": "receipts/annotator-12.json"
+    }
+  ],
+  "retained_attempts": [],
+  "excluded_attempts": [],
+  "provider_requests": 0,
+  "metric_effect": "none",
+  "human_gold": false,
+  "reference_frozen_for_provider_scoring": false,
+  "isolation_boundary": "planned_fresh_context_and_scoped_files_not_filesystem_enforcement"
+}

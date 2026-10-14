@@ -1,0 +1,34 @@
+{
+  "status": "annotation_provenance_validated_not_adjudicated",
+  "annotated_cases": 4,
+  "semantic_correctness_verified": false,
+  "manual_rationale_checks": "pending",
+  "human_gold": false,
+  "metric_effect": "none",
+  "isolation_boundary": "fresh_context_assignment_and_self_report_not_filesystem_enforcement",
+  "slot": "annotator-06",
+  "cases": [
+    {
+      "case_id": "target-02",
+      "cell": "01",
+      "position": 1
+    },
+    {
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 2
+    },
+    {
+      "case_id": "target-04",
+      "cell": "03",
+      "position": 3
+    },
+    {
+      "case_id": "target-03",
+      "cell": "04",
+      "position": 4
+    }
+  ],
+  "provider_requests": 0,
+  "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e"
+}

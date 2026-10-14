@@ -1,0 +1,615 @@
+{
+  "status": "descriptive_within_target_only",
+  "per_target_cells": [
+    {
+      "case_id": "target-01",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "needs_review": 3
+          },
+          "decisive_coverage": {
+            "numerator": 0,
+            "denominator": 3
+          },
+          "abstention_count": 3
+        },
+        "concern_kind": {
+          "histogram": {
+            "unknown": 3
+          },
+          "decisive_coverage": {
+            "numerator": 0,
+            "denominator": 3
+          },
+          "abstention_count": 3
+        }
+      }
+    },
+    {
+      "case_id": "target-01",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 2,
+            "needs_review": 1
+          },
+          "decisive_coverage": {
+            "numerator": 2,
+            "denominator": 3
+          },
+          "abstention_count": 1
+        },
+        "concern_kind": {
+          "histogram": {
+            "mechanics": 2,
+            "unknown": 1
+          },
+          "decisive_coverage": {
+            "numerator": 2,
+            "denominator": 3
+          },
+          "abstention_count": 1
+        }
+      }
+    },
+    {
+      "case_id": "target-01",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "mechanics": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "mechanics": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "mechanics": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "annotations": 3,
+      "expected_denominator": 3,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "excluded": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        },
+        "concern_kind": {
+          "histogram": {
+            "mechanics": 3
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "abstention_count": 0
+        }
+      }
+    }
+  ],
+  "disagreements": [
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "axis": "opportunity",
+      "observations": [
+        {
+          "slot": "annotator-03",
+          "repetition": 1,
+          "label": "needs_review",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9"
+        },
+        {
+          "slot": "annotator-07",
+          "repetition": 2,
+          "label": "excluded",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be"
+        },
+        {
+          "slot": "annotator-11",
+          "repetition": 3,
+          "label": "excluded",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "axis": "concern_kind",
+      "observations": [
+        {
+          "slot": "annotator-03",
+          "repetition": 1,
+          "label": "unknown",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9"
+        },
+        {
+          "slot": "annotator-07",
+          "repetition": 2,
+          "label": "mechanics",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be"
+        },
+        {
+          "slot": "annotator-11",
+          "repetition": 3,
+          "label": "mechanics",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c"
+        }
+      ]
+    }
+  ],
+  "abstentions": [
+    {
+      "slot": "annotator-01",
+      "case_id": "target-01",
+      "cell": "01",
+      "repetition": 1,
+      "position": 2,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-01-attempt-01.json",
+      "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "A contract identifying whether manifest references are constrained by domain artifact-integrity policy or only generic parsing/adaptation requirements is absent.",
+        "No downstream use or base-directory interpretation is supplied, so filesystem containment, enforcement effects, and ownership cannot be inferred."
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-01",
+      "cell": "03",
+      "repetition": 1,
+      "position": 1,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-03-attempt-01.json",
+      "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+      "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+      "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "No supplied contract settles whether canonical relative artifact references are themselves a domain integrity requirement or merely a generic adapter constraint.",
+        "The relative importance of containment and representation normalization in the combined predicate is not established; filesystem containment through symlinks is also not proved by this lexical expression."
+      ]
+    },
+    {
+      "slot": "annotator-05",
+      "case_id": "target-01",
+      "cell": "01",
+      "repetition": 2,
+      "position": 3,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-05-attempt-01.json",
+      "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied fragments do not state whether artifact manifest references are constrained by a domain integrity contract or by generic parsing/adapter requirements.",
+        "The intended common contract of the absolute-path, parent-component, and canonical-representation clauses is not supplied, so the primary responsibility of the complete predicate remains unresolved."
+      ]
+    },
+    {
+      "slot": "annotator-09",
+      "case_id": "target-01",
+      "cell": "01",
+      "repetition": 3,
+      "position": 4,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-09-attempt-01.json",
+      "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied evidence does not define a permitted-reference or path-integrity domain contract for manifest entries.",
+        "The evidence does not establish whether all three clauses serve one domain integrity rule or whether their primary purpose is representation and generic technical constraints.",
+        "No downstream reference-resolution or artifact-use contract is supplied; no filesystem effects or ownership are inferred."
+      ]
+    }
+  ],
+  "pooled_treatment_effect": null
+}

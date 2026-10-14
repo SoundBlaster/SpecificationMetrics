@@ -369,3 +369,20 @@ provides actual-file preflight, implementation/preparation bindings and explicit
 returned scope acknowledgments. Formal validation leaves semantic scope fidelity
 unverified; three 48-row manual-review groups remain blank. Historical preparation
 flags are unchanged, and materialization does not dispatch annotation contexts.
+
+The [completed balanced-v2 Astra High annotation package](runs/2026-10-14-manifest-contract-balanced-results-astra-high/README.md)
+retains 48 annotations from twelve fresh contexts with no formal failures or
+replacements. For the focal manifest predicate, document-present cells agree on
+`eligible / policy`; the consumer-only cell has two `excluded / mechanics` and
+one `needs_review / unknown`. The three controls have stable labels across all
+four cells. Exact raw answers, delivery bytes, 60 proposed nonblind review entries
+and receipt hashes are retained; agreement and formal replay do not establish
+semantic correctness or human gold. See its replay guide for the original-path
+actual-file validation boundary.
+
+A [post-run consumer-only disagreement analysis](runs/2026-10-14-manifest-consumer-disagreement-analysis/README.md)
+separates observed I/O uses from inferred primary responsibility, records the
+shared-definition/application ambiguity and proposes a separately versioned
+scope-binding diagnostic. The conservative integrator preference remains
+review-pending, not a replacement for raw labels or human adjudication; no new
+inference, scoring rule or metric change is introduced.

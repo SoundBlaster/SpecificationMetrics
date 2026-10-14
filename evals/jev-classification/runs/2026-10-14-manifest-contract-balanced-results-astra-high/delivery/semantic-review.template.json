@@ -1,0 +1,567 @@
+{
+  "status": "blank_manual_review_not_result",
+  "criteria": {
+    "H_contract": {
+      "status": "pending_manual_review",
+      "met": null,
+      "entries": [
+        {
+          "slot": "annotator-02",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        }
+      ]
+    },
+    "H_consumers": {
+      "status": "pending_manual_review",
+      "met": null,
+      "entries": [
+        {
+          "slot": "annotator-03",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        }
+      ]
+    },
+    "H_target_fidelity": {
+      "status": "pending_manual_review",
+      "met": null,
+      "entries": [
+        {
+          "slot": "annotator-01",
+          "cell": "02",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-01",
+          "cell": "01",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-01",
+          "cell": "04",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-01",
+          "cell": "03",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "01",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "04",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "03",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "04",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "01",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "02",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "03",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "02",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "01",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "03",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "04",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "01",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "02",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "01",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "03",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "04",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "04",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "02",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "01",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "02",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "01",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "03",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "04",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "03",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "02",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "01",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "03",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "04",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "01",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "01",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "02",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "04",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "01",
+          "case_id": "target-04",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "02",
+          "case_id": "target-03",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "03",
+          "case_id": "target-02",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": null,
+          "criterion_met": null,
+          "supporting_quote": null,
+          "review_note": null
+        }
+      ]
+    }
+  },
+  "reviewer": null,
+  "human_gold": false,
+  "reference_frozen_for_provider_scoring": false,
+  "metric_effect": "none"
+}

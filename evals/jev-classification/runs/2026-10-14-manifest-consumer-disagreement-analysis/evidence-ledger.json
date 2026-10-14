@@ -1,0 +1,275 @@
+{
+  "status": "post_run_integrator_analysis_proposal_not_adjudicated",
+  "metric_effect": "none",
+  "human_gold": false,
+  "inputs": {
+    "runs/2026-10-14-manifest-contract-balanced-results-astra-high/execution-receipt.json": "df061775b144f2559f883b3a5e7454745455eda61cc64048933d2ca26419f71b",
+    "runs/2026-10-14-manifest-contract-balanced-preparation-v2/rubric.json": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+    "runs/2026-10-14-manifest-contract-balanced-preparation-v2/dispatch-plan.json": "4502e03ed643dcbd47be87d7ec443132cb4bad924c34e6937f9bd1a1d1d601c0"
+  },
+  "case_id": "target-01",
+  "target": {
+    "language": "Python",
+    "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+    "syntax_kind": "BoolOp",
+    "scope": "exact expression only"
+  },
+  "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+  "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+  "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+  "raw_answers": [
+    {
+      "slot": "annotator-03",
+      "raw_path": "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-03-attempt-01.json",
+      "raw_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+      "assignment": [
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "position": 1
+        },
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "position": 2
+        },
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "position": 3
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "position": 4
+        }
+      ],
+      "annotation": {
+        "case_id": "target-01",
+        "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+        "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+        "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+        "opportunity": "needs_review",
+        "concern_kind": "unknown",
+        "rationales": {
+          "opportunity": "The entire predicate rejects absolute paths, parent traversal and noncanonical POSIX spellings. Its consumers join accepted paths to bundle/staging directories and a remote URL, so this is a real operational validation, not an isolated suggestive name. However, the supplied code does not settle whether the combined restriction defines permitted artifact references as a durable domain integrity rule or supplies generic safe-path and representation constraints for these adapters. Those interpretations materially distinguish an eligible Specification from excluded mechanics; the error wording alone cannot settle them.",
+          "concern_kind": "The selected disjunction combines path containment constraints with spelling normalization. The shown I/O consumers establish why the checks matter operationally, but not the primary contract of this entire combined predicate. Domain reference admissibility and generic path/representation enforcement remain plausible; choosing one would require an unstated contract or selectively treating only part of the target."
+        },
+        "evidence_quotes": [
+          {
+            "axis": "opportunity",
+            "fragment_id": "target",
+            "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+          },
+          {
+            "axis": "opportunity",
+            "fragment_id": "fragment-07",
+            "quote": "        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "fragment-01",
+            "quote": "    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "fragment-09",
+            "quote": "            body = fetcher(f\"{base_url}/{path}\")"
+          }
+        ],
+        "uncertainties": [
+          "No supplied contract settles whether canonical relative artifact references are themselves a domain integrity requirement or merely a generic adapter constraint.",
+          "The relative importance of containment and representation normalization in the combined predicate is not established; filesystem containment through symlinks is also not proved by this lexical expression."
+        ]
+      }
+    },
+    {
+      "slot": "annotator-07",
+      "raw_path": "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-07-attempt-01.json",
+      "raw_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+      "assignment": [
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "position": 1
+        },
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "position": 2
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "position": 3
+        },
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "position": 4
+        }
+      ],
+      "annotation": {
+        "case_id": "target-01",
+        "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+        "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+        "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+        "opportunity": "excluded",
+        "concern_kind": "mechanics",
+        "rationales": {
+          "opportunity": "The whole disjunction enforces a relative, traversal-free, canonical POSIX path representation. Its supplied uses validate both manifest file names and a staging prefix before path joins, copying, and remote URL construction. These establish generic artifact staging and transport constraints rather than a distinct domain admissibility decision. The affirmative adapter role supports exclusion without deriving policy merely from the unsafe error text.",
+          "concern_kind": "The selected expression combines rejection of absolute paths and parent segments with representation equality. Across the supplied consumers its primary responsibility is making path strings usable as relative components for bundle reads, staging writes, and remote fetches. This is generic technical enforcement and representation validation. The later digest checks and broader artifact workflow do not become responsibilities of this predicate."
+        },
+        "evidence_quotes": [
+          {
+            "axis": "opportunity",
+            "fragment_id": "fragment-06",
+            "quote": "    prefix = _safe_path(staging_prefix) if staging_prefix else \"\""
+          },
+          {
+            "axis": "opportunity",
+            "fragment_id": "fragment-07",
+            "quote": "        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "target",
+            "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "fragment-09",
+            "quote": "            body = fetcher(f\"{base_url}/{path}\")"
+          }
+        ],
+        "uncertainties": [
+          "No separate domain reference-integrity contract is supplied. The lexical checks do not establish filesystem containment through symlinks or a complete URL safety contract; those guarantees are not inferred."
+        ]
+      }
+    },
+    {
+      "slot": "annotator-11",
+      "raw_path": "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-11-attempt-01.json",
+      "raw_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+      "assignment": [
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "position": 1
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "position": 2
+        },
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "position": 3
+        },
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "position": 4
+        }
+      ],
+      "annotation": {
+        "case_id": "target-01",
+        "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+        "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+        "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+        "opportunity": "excluded",
+        "concern_kind": "mechanics",
+        "rationales": {
+          "opportunity": "As a whole, the predicate rejects absolute, parent-traversing, or noncanonical POSIX path representations. Its demonstrated role is generic path enforcement for manifest file operations and for the staging prefix: those values are joined to local bundle/staging roots and used in remote fetch URLs. These supplied consumers establish a technical path-adapter boundary rather than a distinct domain reference-admissibility rule suitable for extraction. No documentary domain-integrity contract is supplied.",
+          "concern_kind": "The subject is a path value used by artifact I/O. The alternatives are relative canonical paths without parent components versus representations unsuitable for those operations. All clauses together enforce representation and generic path handling before filesystem and URL operations; neither the unsafe error text nor manifest terminology alone establishes product policy."
+        },
+        "evidence_quotes": [
+          {
+            "axis": "opportunity",
+            "fragment_id": "target",
+            "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+          },
+          {
+            "axis": "opportunity",
+            "fragment_id": "fragment-06",
+            "quote": "prefix = _safe_path(staging_prefix) if staging_prefix else \"\""
+          },
+          {
+            "axis": "opportunity",
+            "fragment_id": "fragment-07",
+            "quote": "source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "fragment-01",
+            "quote": "path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "fragment-09",
+            "quote": "body = fetcher(f\"{base_url}/{path}\")"
+          },
+          {
+            "axis": "concern_kind",
+            "fragment_id": "fragment-07",
+            "quote": "shutil.copyfile(source, destination)"
+          }
+        ],
+        "uncertainties": [
+          "The supplied fragments establish lexical path checks and generic I/O use, not full filesystem confinement or symlink handling.",
+          "A separately declared domain reference-integrity contract could change the architectural interpretation, but none is supplied in this case."
+        ]
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "status": "observed_source_fact",
+      "statement": "The exact BoolOp rejects absolute paths, parent components and noncanonical POSIX spellings.",
+      "fragment_id": "fragment-01",
+      "quote": "if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():"
+    },
+    {
+      "id": "C2",
+      "status": "observed_source_fact",
+      "statement": "The same helper validates the staging prefix in addition to manifest entry paths.",
+      "fragment_id": "fragment-06",
+      "quote": "prefix = _safe_path(staging_prefix) if staging_prefix else \"\""
+    },
+    {
+      "id": "C3",
+      "status": "observed_source_fact",
+      "statement": "Accepted manifest paths are used for local reads and staged copies.",
+      "fragment_id": "fragment-07",
+      "quote": "source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path"
+    },
+    {
+      "id": "C4",
+      "status": "observed_source_fact",
+      "statement": "A consumer interpolates an accepted path into a fetch URL.",
+      "fragment_id": "fragment-09",
+      "quote": "body = fetcher(f\"{base_url}/{path}\")"
+    },
+    {
+      "id": "I1",
+      "status": "proposed_inference_not_established_by_dataflow_alone",
+      "statement": "The demonstrated technical uses exhaust the primary responsibility of the shared helper; therefore no distinct domain reference rule is present.",
+      "supported_alternative": "The same helper can implement a manifest-reference contract at one application site and a generic staging constraint at another."
+    },
+    {
+      "id": "I2",
+      "status": "proposed_inference_not_established_by_consensus",
+      "statement": "Documentary reference integrity assigns policy responsibility to every clause and every application of the shared definition.",
+      "supported_alternative": "A contract at manifest ingestion can establish the application role without establishing the shared definition primary role or an independent requirement for canonical spelling."
+    }
+  ],
+  "assessment": {
+    "preferred_label_for_current_consumer_only_packet": "needs_review / unknown",
+    "authority": "conservative_nonblind_integrator_proposal_not_human_adjudication",
+    "majority_proven_wrong": false,
+    "internal_model_root_cause_verified": false,
+    "production_or_frozen_labels_changed": false
+  }
+}

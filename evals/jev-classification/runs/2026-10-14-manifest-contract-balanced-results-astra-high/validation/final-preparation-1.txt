@@ -1,0 +1,10 @@
+{
+  "status": "preparation_validated_not_dispatched",
+  "distinct_tasks": 16,
+  "fresh_contexts_planned": 12,
+  "case_annotations_planned": 48,
+  "annotation_started": false,
+  "provider_requests": 0,
+  "metric_effect": "none",
+  "semantic_correctness_verified": false
+}
