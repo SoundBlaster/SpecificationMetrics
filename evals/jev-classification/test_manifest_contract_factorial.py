@@ -173,6 +173,16 @@ class ManifestContractFactorialTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Delivered bytes differ: ' + name):
                     subject.validate_attempt(preparation.RUN, self.assignment, raw)
 
+    def test_cannot_redirect_receipt_to_pristine_copy_of_changed_assigned_input(self):
+        self.bind_attempt()
+        original = Path(self.assignment['delivered_files']['packet.json'])
+        copy_path = original.with_name('pristine-copy.json')
+        copy_path.write_bytes(original.read_bytes())
+        original.write_bytes(b'{}')
+        self.assignment['delivered_files']['packet.json'] = str(copy_path)
+        with self.assertRaisesRegex(ValueError, 'declared annotator file'):
+            subject.validate_delivery(preparation.RUN, self.assignment)
+
     def test_delivery_preflight_rejects_missing_file(self):
         self.bind_attempt()
         Path(self.assignment['delivered_files']['prompt.txt']).unlink()

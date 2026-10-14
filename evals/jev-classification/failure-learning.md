@@ -304,15 +304,16 @@ historical reference, production prompt or metric state was changed.
   attempt validation, comparing both content and recorded hashes. Case-local
   evidence remains isolated across the four annotations.
 - **Verification:** `python -m unittest -v test_manifest_contract_factorial.py
-  test_manifest_contract_balanced.py` passes 21 tests, including the three
+  test_manifest_contract_balanced.py` passes 22 tests, including the three
   confirmed file substitutions, missing files, foreign-case quotes and
   duplicate cases. Frozen preparation replay passes without annotation or
   provider calls. Review records and blank labels remain non-gold.
 - **Limits:** balancing removes the assignment confound but does not prove
   independence from model bias, cross-case priming or rater-target interaction.
   Pre/post byte checks and a self-reported input scope do not establish actual
-  model consumption or filesystem isolation. Archived paths must point to
-  retained delivered bytes, never regenerated substitutes.
+  model consumption or filesystem isolation. Packet/template paths must remain the declared annotator paths; a pristine
+  copy elsewhere cannot hide changes to those files. Retain the delivery
+  directory through replay rather than regenerating substitutes.
 
 ## Record template
 

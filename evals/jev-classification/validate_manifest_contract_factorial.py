@@ -107,6 +107,8 @@ def validate_delivery(run, assignment):
         path = delivered[name]
         if not isinstance(path, str) or not Path(path).is_absolute():
             raise ValueError('Delivered file path must be absolute: ' + name)
+        if name != 'prompt.txt' and Path(path) != Path(directory) / name:
+            raise ValueError('Delivered input must be the declared annotator file: ' + name)
         try:
             actual = Path(path).read_bytes()
         except OSError as error:
