@@ -286,6 +286,35 @@ historical reference, production prompt or metric state was changed.
   manual failure and false receipt metadata. The complete focused preparation
   and replay suite passes 24 tests. No raw labels, judgments or criteria change.
 
+## Manifest-contract preparation review repair (2026-10-14)
+
+- **Evidence:** PR #52 identified that the twelve v1 contexts each received only
+  one target in one evidence mode, contrary to the balanced-mixture rule in
+  AGENTS.md. No annotator had been launched. PR #54 identified a separate
+  delivery binding gap: a synthetic attempt retained correct frozen hashes
+  while replacing each actual packet, template or prompt with `{}`. The old
+  `validate_attempt` accepted all three altered-file scenarios.
+- **Confirmed causes:** one-mode-per-context assignment confounded context/run
+  identity with evidence mode. Receipt comparisons consumed regenerated frozen
+  bytes but never opened the files dispatched to the annotator.
+- **Correction:** preserve v1 artifacts and producer unchanged; introduce v2
+  with four distinct source families and all four modes per context. Each
+  target-cell and each target/mode position has three repetitions. Read actual
+  delivered packet/template/prompt bytes in a delivery preflight and again in
+  attempt validation, comparing both content and recorded hashes. Case-local
+  evidence remains isolated across the four annotations.
+- **Verification:** `python -m unittest -v test_manifest_contract_factorial.py
+  test_manifest_contract_balanced.py` passes 22 tests, including the three
+  confirmed file substitutions, missing files, foreign-case quotes and
+  duplicate cases. Frozen preparation replay passes without annotation or
+  provider calls. Review records and blank labels remain non-gold.
+- **Limits:** balancing removes the assignment confound but does not prove
+  independence from model bias, cross-case priming or rater-target interaction.
+  Pre/post byte checks and a self-reported input scope do not establish actual
+  model consumption or filesystem isolation. Packet/template paths must remain the declared annotator paths; a pristine
+  copy elsewhere cannot hide changes to those files. Retain the delivery
+  directory through replay rather than regenerating substitutes.
+
 ## Record template
 
 1. Failure and exact command/criterion.

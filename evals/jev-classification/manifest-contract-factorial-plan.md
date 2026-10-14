@@ -100,3 +100,31 @@ write is not resumable: use a fresh directory and retain the failed attempt.
 Layer 3 supplies regression checks and output validation. Layer 4 supplies a
 scoped handoff and manual-review instructions. Preparation does not authorize
 launching agents or provider calls; those phases need a separate user request.
+
+## Layer 3 — offline gates
+
+```sh
+python3 -m unittest -v test_manifest_contract_factorial.py
+python3 validate_manifest_contract_factorial.py
+```
+
+Eleven regression tests cover additive factor separation, identical repetitions,
+fixed baseline/profile/rubric, blank templates, exact document/code quotes,
+source/identity drift, unexplained abstention, input-scope deviations, attempt
+receipt authority and exclusive writes. Synthetic test answers are structural
+fixtures only; they are not reference labels or retained real annotations.
+
+After a separately authorized annotation, validate a retained attempt with:
+
+```sh
+python3 validate_manifest_contract_factorial.py \
+  --assignment /path/to/attempt-receipt.json \
+  --annotation /path/to/retained-raw-output.json
+```
+
+The attempt receipt must bind the frozen slot/input bytes, formatted prompt,
+raw output bytes, actual context declaration and non-authoritative zero-provider
+scope. The validator checks case-local quotes by `fragment_id`; documentary
+quotes are allowed only when the assigned packet contains that exact text.
+Successful validation leaves manual rationale checks pending. It neither proves
+model semantics nor technically enforces filesystem/context isolation.
