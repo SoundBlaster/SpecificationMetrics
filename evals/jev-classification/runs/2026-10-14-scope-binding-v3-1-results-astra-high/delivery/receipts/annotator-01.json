@@ -1,0 +1,74 @@
+{
+  "protocol": "scope-binding-v3.1",
+  "preparation_receipt_sha256": "ba828c9023eeb496b3e8b3d8c4c28bf3798bf6818006d7411cb09efc7a04a2fb",
+  "implementation_file_sha256": {
+    "prepare_scope_binding_handoff.py": "158a6e0d2c1c6060a4149d9583b93a009b87893826abef6bd26bce0425dc2a2f",
+    "validate_scope_binding_annotations.py": "cebb28e9ed1eaf37228b61ab4eb0e8569b10665b8e9cc1960fed8c5336e57151",
+    "validate_manifest_contract_factorial.py": "9de214a1dc8c0748d59855ef7b6cf1d9048c4ee629533feed2dc2a961ce709a9"
+  },
+  "slot": "annotator-01",
+  "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01",
+  "cases": [
+    {
+      "case_id": "target-02",
+      "cell": "02",
+      "position": 1,
+      "scope_unit": "shared_definition",
+      "state_sha256": "785f38b1f538f15f3446c11ddffcf9097efc10a1c8a5fdf49a32560a561290c4",
+      "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f"
+    },
+    {
+      "case_id": "target-01",
+      "cell": "01",
+      "position": 2,
+      "scope_unit": "shared_definition",
+      "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+      "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+    },
+    {
+      "case_id": "target-04",
+      "cell": "04",
+      "position": 3,
+      "scope_unit": "bound_application",
+      "state_sha256": "49aa11c6bf1948d6e348c69bf98430471e09b027df3bcb9b9fa6edd177902c4a",
+      "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130"
+    },
+    {
+      "case_id": "target-03",
+      "cell": "03",
+      "position": 4,
+      "scope_unit": "bound_application",
+      "state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+      "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+    }
+  ],
+  "delivered_files": {
+    "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01/packet.json",
+    "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01/template.json",
+    "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-01.txt"
+  },
+  "input_file_sha256": {
+    "packet.json": "3d0ded0bd2daa5fc2afc518c34768cc6c85059723a97179e0690c4c7bb47085e",
+    "template.json": "caec5194656e03489e03c5267783dd9bc98ab112c94ac097b78d54da3d0c85cd"
+  },
+  "dispatched_prompt_sha256": "a454367d89fca36116b2aaa5bcbef16d466662bd5745013432e6cb26b19f8d83",
+  "raw_output_sha256": null,
+  "context_inheritance": null,
+  "context_inheritance_planned": "none",
+  "agent_task": null,
+  "requested_model": null,
+  "requested_reasoning_effort": null,
+  "runtime_model_identity": null,
+  "provider_requests": 0,
+  "human_gold": false,
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false
+}

@@ -386,3 +386,14 @@ shared-definition/application ambiguity and proposes a separately versioned
 scope-binding diagnostic. The conservative integrator preference remains
 review-pending, not a replacement for raw labels or human adjudication; no new
 inference, scoring rule or metric change is introduced.
+
+The [completed scope-binding v3.1 diagnostic](runs/2026-10-14-scope-binding-v3-1-results-astra-high/analysis/report.md)
+retains 48 raw annotations in twelve fresh Astra/high contexts, with no formal
+failures or replacements. The manifest application with documents received three
+`eligible / policy` answers; the shared definition with the same documents retained
+a 1–2 split against `needs_review / unknown`. All sixteen per-target/cell histograms
+and both axes are retained. Proposed nonblind review leaves six role-witness
+judgments pending; agreement does not establish correctness or a scoring reference.
+The [parent audit](runs/2026-10-14-scope-binding-parent-audit/README.md) separately
+checks raw/review bindings and records why comparison with v2 is descriptive only.
+No direct Jev/Luna API calls or production S/U changes were made.

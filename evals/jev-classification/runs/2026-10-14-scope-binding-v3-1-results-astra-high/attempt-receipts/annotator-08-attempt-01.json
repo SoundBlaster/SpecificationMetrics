@@ -1,0 +1,79 @@
+{
+  "protocol": "scope-binding-v3.1",
+  "preparation_receipt_sha256": "ba828c9023eeb496b3e8b3d8c4c28bf3798bf6818006d7411cb09efc7a04a2fb",
+  "implementation_file_sha256": {
+    "prepare_scope_binding_handoff.py": "158a6e0d2c1c6060a4149d9583b93a009b87893826abef6bd26bce0425dc2a2f",
+    "validate_scope_binding_annotations.py": "cebb28e9ed1eaf37228b61ab4eb0e8569b10665b8e9cc1960fed8c5336e57151",
+    "validate_manifest_contract_factorial.py": "9de214a1dc8c0748d59855ef7b6cf1d9048c4ee629533feed2dc2a961ce709a9"
+  },
+  "slot": "annotator-08",
+  "directory": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-08",
+  "cases": [
+    {
+      "case_id": "target-03",
+      "cell": "02",
+      "position": 1,
+      "scope_unit": "shared_definition",
+      "state_sha256": "4b4ba23dfccff5fd6a0171b2a488cb3d8b6043942f7f5809c6e5b33b162a992e",
+      "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a"
+    },
+    {
+      "case_id": "target-04",
+      "cell": "01",
+      "position": 2,
+      "scope_unit": "shared_definition",
+      "state_sha256": "b884ad56bcc19698ddc73f9cc6482ae97d38b610ef8c1ee5deb089a9e941699f",
+      "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15"
+    },
+    {
+      "case_id": "target-01",
+      "cell": "04",
+      "position": 3,
+      "scope_unit": "bound_application",
+      "state_sha256": "6090f93d4252b65f8c23be63fb837f11274f788350cd2d949cc39fcaddcfa97f",
+      "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d"
+    },
+    {
+      "case_id": "target-02",
+      "cell": "03",
+      "position": 4,
+      "scope_unit": "bound_application",
+      "state_sha256": "a69b647aad24d93dc04c8ea9bcf7993467d5fe13ef9828f806790daa4869a29e",
+      "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7"
+    }
+  ],
+  "delivered_files": {
+    "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-08/packet.json",
+    "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-08/template.json",
+    "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-08.txt"
+  },
+  "input_file_sha256": {
+    "packet.json": "5a15f14cc32bbce9024f208a58f2547f196dee7e2c95ce8d4a3193c64f1cb71a",
+    "template.json": "3b7eedbd86390fda073b8e5981ca91fb42a2db634176da4ec2acdcf57a94b05a"
+  },
+  "dispatched_prompt_sha256": "29f5a5bd75ed603cd9135b1741c07ae690b479735e92145478c6b6e3ef861a45",
+  "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+  "context_inheritance": "none",
+  "context_inheritance_planned": "none",
+  "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning_effort": "high",
+  "runtime_model_identity": null,
+  "provider_requests": 0,
+  "human_gold": false,
+  "metric_effect": "none",
+  "reference_frozen_for_provider_scoring": false,
+  "runtime_model_identity_verified": false,
+  "attempt_id": "annotator-08-attempt-01",
+  "raw_output_path": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-08-attempt-01/annotations.json",
+  "original_output_path": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-08/annotations.json",
+  "retained_at": "2026-10-14T12:21:44.853739+00:00"
+}

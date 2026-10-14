@@ -1,0 +1,34 @@
+{
+  "status": "formal_package_audit_passed_not_semantic_gate",
+  "attempts": 12,
+  "rows": 48,
+  "fresh_annotation_contexts": 12,
+  "replacement_contexts": 0,
+  "unique_families_per_slot": 4,
+  "target_cells": 16,
+  "members_per_cell": 3,
+  "review_judgments": 144,
+  "rationale_quotes": 288,
+  "review_binding_checks": true,
+  "delivery_original_paths_rechecked": true,
+  "delivered_and_retained_raw_bytes_equal": true,
+  "runtime_identity_verified": false,
+  "model_input_consumption_verified": false,
+  "semantic_correctness_verified": false,
+  "review_counts": {
+    "scope_fidelity": {
+      "met": 48,
+      "needs_review": 0
+    },
+    "role_witness": {
+      "met": 42,
+      "needs_review": 6
+    },
+    "ownership": {
+      "met": 48,
+      "needs_review": 0
+    }
+  },
+  "axis_cell_disagreements": 5,
+  "axis_abstentions": 9
+}

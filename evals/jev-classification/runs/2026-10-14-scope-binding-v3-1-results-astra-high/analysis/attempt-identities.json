@@ -1,0 +1,338 @@
+[
+  {
+    "attempt_id": "annotator-01-attempt-01",
+    "slot": "annotator-01",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+    "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+    "raw_path": "raw-attempts/annotator-01-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-01-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-01.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "3d0ded0bd2daa5fc2afc518c34768cc6c85059723a97179e0690c4c7bb47085e",
+      "template.json": "caec5194656e03489e03c5267783dd9bc98ab112c94ac097b78d54da3d0c85cd"
+    },
+    "dispatched_prompt_sha256": "a454367d89fca36116b2aaa5bcbef16d466662bd5745013432e6cb26b19f8d83",
+    "preflight_path": "validation/annotator-01-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-02-attempt-01",
+    "slot": "annotator-02",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+    "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+    "raw_path": "raw-attempts/annotator-02-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-02-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-02/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-02/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-02.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "1a39a6909319418ce7b1f563d8c40728a34a03339cad66d0306512e32b97b321",
+      "template.json": "866a67ea99a7212b63ab10eb7ebfb84c81cf8b918f6f0ba71021af83c3833134"
+    },
+    "dispatched_prompt_sha256": "e98bf22717a88152a987e53e4b1d6bb180c9ceee4f381a7ac3c9505d6362625c",
+    "preflight_path": "validation/annotator-02-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-03-attempt-01",
+    "slot": "annotator-03",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+    "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+    "raw_path": "raw-attempts/annotator-03-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-03-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-03/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-03/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-03.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "d4dc3558253fe5d99cfdeee8a2700f1cdd1e827baa9929f7620bc5fb991511d4",
+      "template.json": "27cd0ad865367bd17ccfa23fa156ec48bfd6f08662797974d8d4d0894280489e"
+    },
+    "dispatched_prompt_sha256": "2b261027257908a9aec70aeb8d29fb9fe496b9b0ac1389e584cdc6e6779cd4b1",
+    "preflight_path": "validation/annotator-03-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-04-attempt-01",
+    "slot": "annotator-04",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+    "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+    "raw_path": "raw-attempts/annotator-04-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-04-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-04/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-04/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-04.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "c4386499245f192276d1b5fd6aaab0be7cccbe7d0e7a3cca0896c3664df7b146",
+      "template.json": "4a984abad77d96ee7350e8bb8cb75a2bf0b9dc1de63eeb10f6c52fca9e25eff2"
+    },
+    "dispatched_prompt_sha256": "5f358a7f1abbb8e68db6e0746f3402ec37c7e09fea885be4cee27a5a3f55faab",
+    "preflight_path": "validation/annotator-04-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-05-attempt-01",
+    "slot": "annotator-05",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+    "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+    "raw_path": "raw-attempts/annotator-05-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-05-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-05/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-05/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-05.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "3e7917d09855f3daa95635b0ca3007edea41c5143817481bc167bf339da9025c",
+      "template.json": "1a7970b0c6939f09ed38a0dfd520a211e9df784436784a84f1f71259d65a267f"
+    },
+    "dispatched_prompt_sha256": "38978f468545b038d1b953f82fa70a4eba56648f72b06be2c2f84bfb91ec68ba",
+    "preflight_path": "validation/annotator-05-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-06-attempt-01",
+    "slot": "annotator-06",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+    "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+    "raw_path": "raw-attempts/annotator-06-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-06-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-06/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-06/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-06.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "1a7286024a0b20bd88a1d212bdbce26f7f63be3ab2740c24c8dc5be42f920f5a",
+      "template.json": "7dd4830cfd12366ccfe9bc17415611307a6c39c5063d72ea183a25bb2caea9cc"
+    },
+    "dispatched_prompt_sha256": "84961d29d1e04c94c381fdbac7ce9f0363dfcb4a597b57d3e121ed6d19c5e4f7",
+    "preflight_path": "validation/annotator-06-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-07-attempt-01",
+    "slot": "annotator-07",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+    "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+    "raw_path": "raw-attempts/annotator-07-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-07-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-07/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-07/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-07.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "c8aa089a17bd8faf189115a9df8d9fcf9832f9111ad65e147a7554f67c09c912",
+      "template.json": "991b2640a212266fcaee9498dbaa6c415a6e97103c11e5050c82230d75efdca2"
+    },
+    "dispatched_prompt_sha256": "3b0185e71af561944db0681f5f83db953bd1fd147654bb2fb9acc41ab19c134c",
+    "preflight_path": "validation/annotator-07-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-08-attempt-01",
+    "slot": "annotator-08",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+    "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+    "raw_path": "raw-attempts/annotator-08-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-08-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-08/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-08/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-08.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "5a15f14cc32bbce9024f208a58f2547f196dee7e2c95ce8d4a3193c64f1cb71a",
+      "template.json": "3b7eedbd86390fda073b8e5981ca91fb42a2db634176da4ec2acdcf57a94b05a"
+    },
+    "dispatched_prompt_sha256": "29f5a5bd75ed603cd9135b1741c07ae690b479735e92145478c6b6e3ef861a45",
+    "preflight_path": "validation/annotator-08-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-09-attempt-01",
+    "slot": "annotator-09",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+    "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+    "raw_path": "raw-attempts/annotator-09-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-09-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-09/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-09/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-09.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "ba91160296a98a9bcc71a0cf263843636ebed2630e2620034f5328fb100e2a33",
+      "template.json": "125fb4cc3a2d89e170080c18bff1487b79787ca61cc8eb8a2250a30374db48f2"
+    },
+    "dispatched_prompt_sha256": "bc08dce54dd7728a75d97240516398466f720fe973932520152adb90b1ec70d6",
+    "preflight_path": "validation/annotator-09-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-10-attempt-01",
+    "slot": "annotator-10",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+    "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+    "raw_path": "raw-attempts/annotator-10-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-10-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-10/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-10/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-10.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "8872b1ddaeb6fb590cb458ded2c7586519f0040497254822035e48cad746d794",
+      "template.json": "4a88792ba5238ecffe1e5293bbdba53d08ed935fabc476abebd17bd3f922c87c"
+    },
+    "dispatched_prompt_sha256": "01ed6fc935d7329c2986f471d5c4587c669d86c84bb59d460f9d752d86d3daa5",
+    "preflight_path": "validation/annotator-10-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-11-attempt-01",
+    "slot": "annotator-11",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+    "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+    "raw_path": "raw-attempts/annotator-11-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-11-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-11/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-11/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-11.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "020d8d6a47e9b32a3cb14c94de97c3b667a612b6e22deb5173806d07e2fb819e",
+      "template.json": "554f1f457109f030135094247a0e041d620f7bfc697bb5849600ed2305c3caed"
+    },
+    "dispatched_prompt_sha256": "269403d5f3cee1fecce3e82588952f9487f652a57c6268f0fca73d5aa413d9ba",
+    "preflight_path": "validation/annotator-11-attempt-01-preflight.json"
+  },
+  {
+    "attempt_id": "annotator-12-attempt-01",
+    "slot": "annotator-12",
+    "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+    "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+    "raw_path": "raw-attempts/annotator-12-attempt-01/annotations.json",
+    "receipt_path": "attempt-receipts/annotator-12-attempt-01.json",
+    "validation_exit_code": 0,
+    "disposition": "retained_valid",
+    "error": "",
+    "replacements": 0,
+    "context_inheritance": "none",
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "runtime_model_identity": null,
+    "runtime_model_identity_verified": false,
+    "delivered_files": {
+      "packet.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-12/packet.json",
+      "template.json": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-12/template.json",
+      "prompt.txt": "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/prompts/annotator-12.txt"
+    },
+    "input_file_sha256": {
+      "packet.json": "19ce53ea6d92163a712ff4b67557ca41fcfd505cf42917db124bac419e48b807",
+      "template.json": "e4789ddd0cc9f4a3e4a9debd23473cb27d3b2446d9034c0dc01454336ad60d1e"
+    },
+    "dispatched_prompt_sha256": "5af5bdfa18ff7affc0c6335d485d85aecf92dd081fef6a5f69dfdbb5c7f8d17f",
+    "preflight_path": "validation/annotator-12-attempt-01-preflight.json"
+  }
+]

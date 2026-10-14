@@ -1,0 +1,161 @@
+{
+  "status": "proposed_nonblind_diagnosis_not_gold",
+  "formal_failures": [],
+  "failed_attempts": [],
+  "excluded_attempts": [],
+  "replacements": 0,
+  "semantic_issues_requiring_review": [
+    {
+      "criterion": "role_witness",
+      "slot": "annotator-01",
+      "case_id": "target-01",
+      "cell": "01",
+      "position": 2,
+      "scope_unit": "shared_definition",
+      "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+      "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+      "criterion_met": false,
+      "review_note": "Needs review: path joins and prefix reuse witness a technical use, but do not by themselves establish that the shared predicate has no distinct artifact-reference integrity decision. The rationale turns these uses plus an absent contract into decisive exclusion/mechanics. The competing integrity interpretation needs substantive resolution.",
+      "rationale_quotes": {
+        "opportunity": "Selected unit: shared_definition. The whole disjunction in _safe_path rejects absolute paths, parent segments, and noncanonical POSIX spelling. Across the supplied uses, the same helper checks manifest path strings and a staging prefix before generic path composition, copying, and URL construction. These uses affirmatively establish technical path constraints for filesystem and transport adapters; they do not supply a distinct domain-reference admissibility contract. The whole expression therefore fits the profile boundary for procedural mechanics. The unsafe error wording is not the basis of exclusion, and the manifest binding is not treated as the sole use or as proof of execution.",
+        "concern_kind": "Selected unit: shared_definition. The subject is a path representation; the alternatives are a normalized relative path without parent components versus an absolute, traversing, or noncanonical string. PurePosixPath construction, reuse for staging_prefix, and subsequent source/destination composition establish generic technical enforcement as the primary responsibility of the entire disjunction. The supplied code does not distinguish domain entitlements or domain-specific permitted references. This judgment covers all supplied uses of the definition without asserting that any call actually ran."
+      },
+      "raw_path": "raw-attempts/annotator-01-attempt-01/annotations.json",
+      "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+      "judgment": "needs_review"
+    },
+    {
+      "criterion": "role_witness",
+      "slot": "annotator-01",
+      "case_id": "target-03",
+      "cell": "03",
+      "position": 4,
+      "scope_unit": "bound_application",
+      "state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+      "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+      "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+      "criterion_met": false,
+      "review_note": "Needs review: the rationale treats omitted step.valid and transition definitions as material to the reporting application, but the supplied findings-to-_evaluate path already witnesses scenario-value admissibility. Whether collection changes primary responsibility is unresolved by this rationale; unknown is retained, not replaced.",
+      "rationale_quotes": {
+        "opportunity": "Selected unit: bound_application. This judges not step.valid in BDDScenarioValuesSpec.findings for the selected policy = BDDScenarioValuesSpec() receiver and context argument at evaluate's policy.findings(context) call. The supplied implementation places this exact filter in the findings method of a named Specification subclass, and _evaluate directly returns not self.findings(candidate). Together these establish explicit ownership of the same decision through a Specification evaluation path, rather than merely a Specification elsewhere. The selected call collects those same findings after is_satisfied_by. Exclusion follows from same-decision ownership even though the primary responsibility of this particular reporting application remains uncertain; actual execution is not inferred.",
+        "concern_kind": "Selected unit: bound_application. At evaluate's selected direct findings(context) call, the exact not step.valid expression filters which scenario steps produce invalid_value findings. The caller has already obtained passed through is_satisfied_by and then collects findings and passes them to transition. The supplied evidence does not define step.valid or transition, so it does not settle whether this application primarily applies a durable scenario-admissibility rule or adapts an already established validity fact into diagnostic output. Specification ownership and the evaluation use alone cannot transfer a policy responsibility to this selected application. With that material ambiguity, unknown is more reliable than classifying the whole Specification or caller."
+      },
+      "raw_path": "raw-attempts/annotator-01-attempt-01/annotations.json",
+      "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+      "judgment": "needs_review"
+    },
+    {
+      "criterion": "role_witness",
+      "slot": "annotator-02",
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 1,
+      "scope_unit": "shared_definition",
+      "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+      "criterion_met": false,
+      "review_note": "Needs review: the proposal supports fail-closed traversal and durable paths, but the step from those application contracts to a coherent domain policy of the entire shared helper, including staging_prefix, needs an explicit definition-level bridge. The rationale asserts that bridge; its source support remains contestable.",
+      "rationale_quotes": {
+        "opportunity": "The selected unit is shared_definition: the entire disjunction in _safe_path across the supplied manifest-path and staging-prefix uses. It distinguishes absolute, parent-traversing or noncanonical paths from canonical relative paths. The implemented proposal explicitly requires path traversal to fail closed and changed payloads to retain relative durable URL paths; the callers use these values to locate manifest-authorized payloads and construct staged destinations. Together these establish a coherent artifact-publication path-integrity decision, including the representation constraint as part of the accepted reference form, suitable for a named Specification. The shared prefix use participates in that same scoped destination construction. No supplied evaluation path establishes existing Specification ownership of this decision. The proposal is implemented-proposal evidence, not a canonical requirement.",
+        "concern_kind": "The selected unit is shared_definition, covering the whole _safe_path disjunction and both supplied uses. Its primary demonstrated role is policy: restricting the path forms admitted for artifact references and their staging destinations under the stated fail-closed traversal and relative-path preservation contract. The manifest entries subsequently identify checked payloads, and prefix plus relative_path forms the staging destination. The canonical spelling test is part of the combined admissibility condition; the target neither performs transfer nor selects a variant implementation. This interpretation rests on the supplied implemented proposal and operator documentation, not merely the unsafe error wording or the static binding metadata."
+      },
+      "raw_path": "raw-attempts/annotator-02-attempt-01/annotations.json",
+      "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+      "judgment": "needs_review"
+    },
+    {
+      "criterion": "role_witness",
+      "slot": "annotator-05",
+      "case_id": "target-01",
+      "cell": "01",
+      "position": 3,
+      "scope_unit": "shared_definition",
+      "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+      "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+      "criterion_met": false,
+      "review_note": "Needs review: the common technical path-input use is demonstrated, but it does not conclusively exclude a distinct reference-integrity decision. Treating prefix reuse and absence of an additional domain contract as decisive mechanics may overstate evidence sufficiency.",
+      "rationale_quotes": {
+        "opportunity": "The selected unit is shared_definition: the entire three-part _safe_path predicate across the supplied manifest-path and staging-prefix uses. It rejects absolute paths, parent components and noncanonical POSIX spellings before returning the unchanged string. The supplied uses establish a common technical constraint for joining paths under bundle/staging directories and representing manifest keys, including use on a staging prefix independent of any particular manifest row. Across this shared definition the whole predicate implements generic path enforcement and normalization validation; no separate artifact eligibility or domain-reference contract is demonstrated. That affirmative technical role supports excluded rather than deriving policy from the unsafe error or from downstream digest checks.",
+        "concern_kind": "The selected unit is shared_definition: path.is_absolute() or \"..\" in path.parts or value != path.as_posix() as one predicate in _safe_path across all supplied uses. Its common responsibility is to admit a relative, parent-free, canonically spelled path string for later technical path composition. Both manifest row paths and the staging prefix feed joins such as staging_dir / prefix / relative_path. Classify the complete predicate as mechanics: confinement-oriented checks and spelling checks serve the same technical path-input contract here. Digest integrity checks and workflow actions are downstream context, not decisions made by this expression."
+      },
+      "raw_path": "raw-attempts/annotator-05-attempt-01/annotations.json",
+      "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+      "judgment": "needs_review"
+    },
+    {
+      "criterion": "role_witness",
+      "slot": "annotator-09",
+      "case_id": "target-01",
+      "cell": "01",
+      "position": 4,
+      "scope_unit": "shared_definition",
+      "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+      "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+      "criterion_met": false,
+      "review_note": "Needs review: the shown filesystem/URL adapters demonstrate a technical use but do not independently exclude a stable reference-integrity role. The rationale combines those uses with absent domain documentation to make a decisive mechanics/excluded judgment; that sufficiency claim remains unresolved.",
+      "rationale_quotes": {
+        "opportunity": "The selected unit is shared_definition: the entire three-part path predicate in _safe_path across the supplied manifest-path and staging-prefix uses. It distinguishes absolute, parent-traversing or noncanonical POSIX strings from relative canonical strings. Supplied consumers join these values beneath bundle and staging directories and append manifest paths to a remote base URL. The same helper constrains a staging prefix used by the copy adapter. Together these are affirmative generic path representation and I/O-adapter constraints, without a demonstrated distinct domain reference-admissibility contract. The whole expression therefore remains procedural mechanics under the architecture profile; the unsafe error wording is not the basis for exclusion.",
+        "concern_kind": "For the selected shared_definition, all three disjuncts jointly validate a relative canonical path form for generic artifact-loading, staging and remote-fetch operations. The demonstrated primary responsibility is technical path enforcement and representation mechanics, including the shared staging-prefix use. Digest checks and collision checks in consumers are separate decisions and are not imported into this exact predicate. No supplied documentation establishes a distinct domain integrity policy for this expression, and no actual filesystem or network execution is assumed."
+      },
+      "raw_path": "raw-attempts/annotator-09-attempt-01/annotations.json",
+      "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+      "judgment": "needs_review"
+    },
+    {
+      "criterion": "role_witness",
+      "slot": "annotator-11",
+      "case_id": "target-01",
+      "cell": "03",
+      "position": 3,
+      "scope_unit": "bound_application",
+      "state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+      "criterion_met": false,
+      "review_note": "Needs review: bundle-relative access witnesses a filesystem-adapter use but does not alone settle that reference admissibility has no domain integrity role. The rationale says path-to-filesystem adaptation settles mechanics, while its acknowledged missing domain contract leaves a plausible competing interpretation.",
+      "rationale_quotes": {
+        "opportunity": "Selected unit: bound_application, with value bound to row.get(\"path\") at _manifest_files. For this application the whole disjunction rejects absolute paths, parent traversal components, and noncanonical POSIX spellings in artifact-manifest entries. The supplied local-manifest reader joins those entries to bundle_dir and reads files; the staging fragment joins relative paths into source and destination paths. These uses affirm generic path representation and filesystem-adapter constraints. No distinct domain-reference permission or artifact eligibility rule is established for this expression, so the mechanical responsibility is excluded under the profile. The separate staging_prefix use does not determine this bound application, and no runtime invocation is asserted.",
+        "concern_kind": "Selected unit: bound_application, judging the exact disjunction for manifest row path values passed by _manifest_files. Its subject is the representation of a relative file path, and its alternatives are an absolute, traversing or noncanonical spelling versus an accepted relative canonical spelling. The downstream bundle-relative file access supports a primary role of generic technical path enforcement and normalization validation. The unsafe error alone would not settle this, but the demonstrated path-to-filesystem adaptation does. The fragments do not supply a distinct domain admissibility contract that would make this policy; later digest comparisons and copying are not classified as part of the target."
+      },
+      "raw_path": "raw-attempts/annotator-11-attempt-01/annotations.json",
+      "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+      "judgment": "needs_review"
+    }
+  ],
+  "definitive_incorrect_raw_labels_established": false,
+  "lessons": [
+    "Formal scope acknowledgments and valid quotes do not prove role sufficiency.",
+    "Shared utility versus application reference-integrity contract remains a substantive evidence question.",
+    "Direct findings collection versus Specification evaluation role must be assessed from its argument, not majority vote.",
+    "Agreement on all three mechanical exclusions in one cell does not settle correctness."
+  ],
+  "operational_notes": [
+    {
+      "event": "AGENTS.md lookup in worktree root failed",
+      "resolution": "Read supplied canonical /Users/egor/Development/GitHub/0AL/Platform/AGENTS.md; no experiment attempt affected."
+    },
+    {
+      "event": "First preflight result was not shell-redirected",
+      "resolution": "Successful pre-spawn result retained as parsed transcription with explicit capture_note; tool transcript remains authoritative."
+    }
+  ],
+  "outcomes_edited": false,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}

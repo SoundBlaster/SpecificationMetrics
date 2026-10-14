@@ -1,0 +1,59 @@
+{
+  "status": "scope_annotation_provenance_validated_not_adjudicated",
+  "annotated_cases": 4,
+  "semantic_correctness_verified": false,
+  "manual_rationale_checks": "pending",
+  "human_gold": false,
+  "metric_effect": "none",
+  "isolation_boundary": "fresh_context_assignment_and_self_report_not_filesystem_enforcement",
+  "scope_acknowledgments_verified": true,
+  "scope_semantic_fidelity_verified": false,
+  "manual_scope_review": "pending",
+  "protocol": "scope-binding-v3.1",
+  "slot": "annotator-06",
+  "cases": [
+    {
+      "case_id": "target-02",
+      "cell": "01",
+      "position": 1,
+      "scope_unit": "shared_definition",
+      "state_sha256": "c0ac7925ab68845d000026cbcc86bdb240c4ec76c3e7556df3f37cee8cd42efc",
+      "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f"
+    },
+    {
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 2,
+      "scope_unit": "shared_definition",
+      "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+    },
+    {
+      "case_id": "target-04",
+      "cell": "03",
+      "position": 3,
+      "scope_unit": "bound_application",
+      "state_sha256": "b1a951f6390085f94deb7d51959347b2eef94e43222cd2d7f310e6c84c8c2cdd",
+      "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130"
+    },
+    {
+      "case_id": "target-03",
+      "cell": "04",
+      "position": 4,
+      "scope_unit": "bound_application",
+      "state_sha256": "9f3f5d7da53b750d11d4c6492e31365f4d59beee73bc46daf9ec2d20aa2645d1",
+      "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+    }
+  ],
+  "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+  "provider_requests": 0,
+  "model_runtime_identity_verified": false
+}

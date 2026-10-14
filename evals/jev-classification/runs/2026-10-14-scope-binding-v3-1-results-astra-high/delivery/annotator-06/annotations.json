@@ -1,0 +1,193 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "target-02",
+      "state_sha256": "c0ac7925ab68845d000026cbcc86bdb240c4ec76c3e7556df3f37cee8cd42efc",
+      "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+      "scope_unit": "shared_definition",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "Selected unit: shared_definition. The exact gate != \"none\" expression in candidate_move distinguishes a SpecNode with a pending gate obligation from one eligible for status-based refinement. Fragment-01 places gate actions before the elif refinement path and ranks them ahead of status actions; fragment-03 describes review, repair, blocker resolution and escalation before further refinement. This is a stable, addressable lifecycle-priority rule suitable for a named Specification under the supplied architecture profile. The supplied definition and use show no same-decision Specification ownership; the recorded static callsite does not establish actual execution.",
+        "concern_kind": "Selected unit: shared_definition. For the exact expression in candidate_move, the alternatives are an outstanding gate and no gate. The branch structure in fragment-01 makes outstanding gate work take precedence over ordinary targeted refinement, and fragment-03 explains those domain obligations. Its primary responsibility is policy governing which obligation precedes refinement. The subsequent GATE_ACTIONS lookup selects individual actions, but that later dispatch does not change this preceding predicate into variant_behavior. No runtime execution is inferred from the supplied use."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "    gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "\"Review the structural split requirement for {spec_id} before rerunning refinement.\""
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)"
+        }
+      ],
+      "uncertainties": [
+        "The supplied callsite establishes a possible static use, not runtime execution or action completion.",
+        "The full policy configuration and unlisted ownership are not supplied; neither is needed to establish the visible gate-before-refinement decision."
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "scope_unit": "shared_definition",
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "rationales": {
+        "opportunity": "Selected unit: shared_definition. The whole exact disjunction in _safe_path rejects absolute paths, parent traversal and noncanonical POSIX spelling. Its supplied uses include both manifest-entry paths in fragment-04 and a staging prefix in fragment-06. Fragment-11 explicitly requires traversal to fail closed, while fragment-12 makes manifests the authoritative artifact index; these support a possible artifact-reference integrity rule. However, fragment-11 also limits the proposal to static artifact transport, and the same predicate serves generic path joining and staging constraints. The supplied material does not settle whether the shared definition owns a distinct domain reference-admissibility contract or is a reusable transport/representation guard. That specific missing definition-level contract leaves eligible and excluded plausible for the whole expression. The implemented-proposal and operator-documentation authorities are retained; canonical requirement adoption and runtime execution are not inferred.",
+        "concern_kind": "Selected unit: shared_definition. The exact expression combines lexical path representation checks with traversal and absolute-path rejection across manifest paths and staging prefixes. Fragments-04, -06 and -07 demonstrate both input validation and transport destination construction. The fail-closed traversal acceptance criterion and authoritative manifest-index documentation support an integrity-policy interpretation, but do not establish it as the primary contract of this shared helper, whose canonical-spelling arm and prefix use also support generic technical enforcement. Because the supplied evidence does not resolve that shared primary responsibility, unknown retains the material ambiguity without splitting the target or transferring the manifest role to every use. The proposal is implemented but not a canonical requirement, and the recorded binding proves no runtime execution."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-11",
+          "quote": "- Path traversal and local digest mismatches fail closed."
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-12",
+          "quote": "Consumers should use `artifact_manifest.json` and `checksums.sha256` as\nthe authoritative artifact index instead of inferring validity from every file\nthat happens to remain under `specs/` or `runs/`."
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-04",
+          "quote": "        path = _safe_path(row.get(\"path\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-06",
+          "quote": "    prefix = _safe_path(staging_prefix) if staging_prefix else \"\""
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-07",
+          "quote": "        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-11",
+          "quote": "This proposal changes static artifact transport only."
+        }
+      ],
+      "uncertainties": [
+        "A definition-level contract establishing whether all arms and supplied uses of _safe_path express domain artifact-reference integrity or generic transport constraints is absent.",
+        "The integrity-related proposal is explicitly implemented_proposal_not_canonical_requirement; the operator documentation does not prove canonical adoption or Specification ownership.",
+        "The static code and binding do not prove execution, filesystem containment under symlinks, or any unshown runtime enforcement."
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "b1a951f6390085f94deb7d51959347b2eef94e43222cd2d7f310e6c84c8c2cdd",
+      "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+      "scope_unit": "bound_application",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "Selected unit: bound_application. I judge the exact not rendered.endswith(\"\\n\") expression inside dump_canonical_yaml for data statically passed by lint_file at dump_canonical_yaml(data). Fragment-01 shows yaml.safe_dump followed by appending a missing newline; fragment-03 uses this result in a canonical-format comparison. This affirmatively establishes serialization and formatting mechanics, with no distinct domain decision at this expression. The formatting use elsewhere is contextual only and is not needed to transfer a role to this selected application. The binding does not prove the call ran.",
+        "concern_kind": "Selected unit: bound_application. At the lint_file data binding, the exact predicate distinguishes serialized YAML text that lacks a final newline from text already ending with one. Fragment-01 uses it solely to append that delimiter, and fragment-03 identifies the selected consumer as a canonical-format check. The primary responsibility is representation mechanics. This judgment concerns that newline predicate, not the separate shape-validation or whole linting function, and makes no runtime execution claim."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-03",
+          "quote": "    canonical = dump_canonical_yaml(data)\n    if source != canonical:"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\""
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "\"file is not canonically formatted; run \""
+        }
+      ],
+      "uncertainties": [
+        "The actual data and runtime reachability are not supplied; the visible newline-formatting responsibility is nevertheless established."
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "state_sha256": "9f3f5d7da53b750d11d4c6492e31365f4d59beee73bc46daf9ec2d20aa2645d1",
+      "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+      "scope_unit": "bound_application",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "Selected unit: bound_application. I judge not step.valid inside BDDScenarioValuesSpec.findings for the selected BDDScenarioValuesSpec receiver and context argument at policy.findings(context) in evaluate. Fragment-01 associates each failed step verdict with an invalid_value scenario finding. Crucially, fragment-02 explicitly makes BDDPolicy a Specification and fragment-03 evaluates satisfaction through the same findings method; fragment-05 shows both satisfaction evaluation and findings collection for the selected policies. This establishes existing ownership of the same decision, so the opportunity is excluded even though this recorded call separately collects findings. The membership and binding are static evidence only. The draft values contract is not treated as canonical adoption.",
+        "concern_kind": "Selected unit: bound_application. For the selected BDDScenarioValuesSpec receiver and context binding, the exact not step.valid predicate determines which scenario steps receive invalid_value findings. Fragments-01 and -03 connect those findings to Specification satisfaction, establishing a scenario-admissibility responsibility. This is policy even where the recorded call collects findings and even though the validity computation itself is unshown. The review-only draft in fragment-07 describes intended step-value constraints but does not prove canonical adoption or the precise implementation of step.valid. Existing Specification ownership does not convert the predicate into mechanics, and static binding does not establish execution."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-02",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-03",
+          "quote": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-05",
+          "quote": "        passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "                findings.extend(\n                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid\n                )"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "        return not self.findings(candidate)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-07",
+          "quote": "steps is a nonempty ordered list of nonempty strings. Whitespace-only values are invalid,\n      meaningful strings are not trimmed."
+        }
+      ],
+      "uncertainties": [
+        "The implementation of step.valid is not supplied, so its exact value semantics are not proved.",
+        "The native-profile values text has review_only_draft_not_canonical_adoption authority.",
+        "The receiver membership and callsite are static evidence and do not prove a runtime evaluation occurred."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-06/packet.json",
+      "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-06/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}
