@@ -361,3 +361,10 @@ four cells. Exact raw answers, delivery bytes, 60 proposed nonblind review entri
 and receipt hashes are retained; agreement and formal replay do not establish
 semantic correctness or human gold. See its replay guide for the original-path
 actual-file validation boundary.
+
+A [post-run consumer-only disagreement analysis](runs/2026-10-14-manifest-consumer-disagreement-analysis/README.md)
+separates observed I/O uses from inferred primary responsibility, records the
+shared-definition/application ambiguity and proposes a separately versioned
+scope-binding diagnostic. The conservative integrator preference remains
+review-pending, not a replacement for raw labels or human adjudication; no new
+inference, scoring rule or metric change is introduced.
