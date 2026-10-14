@@ -352,6 +352,24 @@ provides scoped delivery folders, actual-file preflight checks and genuinely
 blank manual-review records.
 Preparation is not dispatch, an evaluated reference or a production metric update.
 
+The [scope-binding diagnostic v3 preparation](scope-binding-diagnostic-plan.md)
+separates shared-definition and selected-application judgments while keeping
+source code, consumers and binding facts fixed. Its 12 four-case packets plan
+48 annotations, with source-pinned AST anchors and offline CI replay. Templates
+remain blank; dispatch readiness is explicitly false until scope-aware actual-file
+handoff and retained-attempt validation are implemented. No metric or gold changes.
+
+The active scope-input contract is now v3.1 (`prepare_scope_binding_v3_1.py`):
+the permitted-input list explicitly includes `evaluation_scope`, and blank rows
+carry structured scope acknowledgments. Frozen v3.0 is preserved as superseded
+before annotation; no historical output is relabelled.
+
+The [scope-v3.1 handoff and retained-attempt runbook](scope-binding-handoff-runbook.md)
+provides actual-file preflight, implementation/preparation bindings and explicit
+returned scope acknowledgments. Formal validation leaves semantic scope fidelity
+unverified; three 48-row manual-review groups remain blank. Historical preparation
+flags are unchanged, and materialization does not dispatch annotation contexts.
+
 The [completed balanced-v2 Astra High annotation package](runs/2026-10-14-manifest-contract-balanced-results-astra-high/README.md)
 retains 48 annotations from twelve fresh contexts with no formal failures or
 replacements. For the focal manifest predicate, document-present cells agree on

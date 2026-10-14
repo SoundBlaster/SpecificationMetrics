@@ -1,0 +1,61 @@
+{
+  "status": "prospective_protocol_prepared_not_dispatched",
+  "version": 3,
+  "factors": [
+    "shared_definition_vs_bound_application",
+    "documents_absent_vs_present"
+  ],
+  "held_fixed": [
+    "exact_expression",
+    "code_fragments",
+    "all_consumers",
+    "all_static_binding_facts",
+    "architecture_profile",
+    "label_sets_and_eligibility_tie_rules"
+  ],
+  "focal_target": "target-01",
+  "control_targets": [
+    "target-02",
+    "target-03",
+    "target-04"
+  ],
+  "units": {
+    "shared_definition": "Exact expression as part of its shared definition across supplied uses.",
+    "bound_application": "Same exact expression at the selected static binding; not the call or whole caller."
+  },
+  "counts": {
+    "contexts": 12,
+    "annotations": 48,
+    "source_targets": 4,
+    "target_cells": 16,
+    "repetitions": 3
+  },
+  "comparisons": [
+    "01_vs_03_and_02_vs_04_scope_within_each_target",
+    "01_vs_02_and_03_vs_04_documents_within_each_target"
+  ],
+  "reporting": [
+    "Per-axis histograms, decisive coverage denominator 3 per target-cell, every disagreement.",
+    "Do not pool distinct targets into a common treatment effect.",
+    "V2 comparison is descriptive: consumers are fixed here and rubric version changes.",
+    "Bindings are evidence contexts, not extra production opportunities or Specifications."
+  ],
+  "prospective_manual_checks": {
+    "scope_fidelity": "Every rationale identifies its assigned unit and keeps exact-expression boundaries.",
+    "role_witness": "Record source-backed role evidence; metadata and missing documents alone settle no label.",
+    "ownership": "Same-decision ownership is checked separately from concern_kind.",
+    "traceability": "Actual-file checks, exact identities, both axes, own-case quotes and all raw attempts."
+  },
+  "hypothesis_limits": [
+    "If application scope retains disagreement, scope alone does not resolve evidence sufficiency.",
+    "If scope changes no judgments or reasons, this is evidence against its practical value here.",
+    "Agreement is not semantic truth or a human reference.",
+    "Target/cell and target/position and cell/position marginals are balanced; target-cell/position is NOT fully crossed.",
+    "No isolated order-effect estimate or causal model-mechanism claim is supported.",
+    "One view per dependency family per fresh context; common model bias and priming remain possible."
+  ],
+  "reference_frozen_for_provider_scoring": false,
+  "human_gold": false,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}
