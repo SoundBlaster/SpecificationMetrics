@@ -1,5 +1,38 @@
 # Layer 2 — contract × consumers diagnostic
 
+## Current protocol: balanced v2 after PR #52 review
+
+The original one-target-per-context design below is superseded **before
+dispatch** because it contradicted the repository's balanced-mixture rule.
+Its producer, prompt and frozen artifacts remain unchanged and replayable as v1.
+`prepare_manifest_contract_balanced.py` prepares the new v2 directory, with
+twelve fresh contexts and **48 annotations** across four distinct source families.
+
+Each context receives all four document/consumer modes exactly once and one view
+of each target: manifest paths (focal), lifecycle gates, BDD values and YAML
+formatting. Each target-cell has three judgments. Target-position and
+condition-position marginals each have count three. Identical case-task bytes
+repeat three times, but neighboring-case ordering differs: do not describe those
+as unchanged complete-packet inputs. Interleaving is deterministic, not random.
+
+Only the focal target's twelve answers measure the original contract/consumer
+hypotheses. Control additions are target-specific; report them separately and do
+not pool a shared effect. BDD documentary evidence is explicitly a review-only
+draft, not canonical adoption. No control contains the focal path-helper or its
+manifest contract. Indirect priming, annotator/target interactions and small
+samples remain limitations even after balanced assignment.
+
+```sh
+python3 prepare_manifest_contract_balanced.py
+python3 -m unittest -v test_manifest_contract_balanced.py
+```
+
+The v2 source catalog, source byte/line coordinates, new prompt, 12 four-case
+packets/templates, mapping and supersession receipt are preserved separately.
+No annotations or provider requests were made under either version.
+
+## Historical v1 design (not dispatched)
+
 Preparation only: four tasks, twelve fresh contexts, one whole expression per
 context. No annotation, Jev/Luna request, scoring gold or metric update occurs.
 

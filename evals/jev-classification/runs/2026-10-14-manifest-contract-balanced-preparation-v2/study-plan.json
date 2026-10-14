@@ -1,0 +1,80 @@
+{
+  "status": "prospective_diagnostic_not_gold",
+  "conditions": [
+    {
+      "cell": "01",
+      "documents": false,
+      "consumers": false
+    },
+    {
+      "cell": "02",
+      "documents": true,
+      "consumers": false
+    },
+    {
+      "cell": "03",
+      "documents": false,
+      "consumers": true
+    },
+    {
+      "cell": "04",
+      "documents": true,
+      "consumers": true
+    }
+  ],
+  "target": {
+    "language": "Python",
+    "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+    "syntax_kind": "BoolOp",
+    "scope": "exact expression only"
+  },
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "fixed": [
+    "exact whole expression",
+    "original parser baseline",
+    "architecture profile",
+    "rubric questions and label criteria",
+    "owner names"
+  ],
+  "prospective_checks": {
+    "H_contract": "In the six document-present responses, no rationale asserts that a documented fail-closed traversal requirement is unavailable. Missing canonical adoption or canonical-spelling justification remains allowed. Manual review, not a fixed-label expectation. This manual interpretation check applies only to target-01.",
+    "H_consumers": "In the six consumer-present responses, no rationale denies the supplied local-read/scoped-copy/HTTPS path uses or the shared staging_prefix use. Responses need not enumerate every use; unresolved primary responsibility remains allowed. Manual review. This manual interpretation check applies only to target-01.",
+    "H_target_fidelity": "All twelve explanations preserve the entire BoolOp and do not attribute symlink resolution, physical containment proof, digest verification, public-safe content, manifest membership, URL encoding or publication approval to this predicate itself. Distinguish consumer effects. Manual review. Operational capability prohibitions apply to target-01; all other cases must preserve their own exact target boundaries.",
+    "H_traceability": "All 48 rows retain assigned identities, case-local quotes for both axes and declared isolation. Formal validation does not grade semantic support."
+  },
+  "reporting": [
+    "Per-cell opportunity/concern histograms and decisive coverage with denominator three.",
+    "Within-cell repetitions and disagreements; abstentions are unknown, not errors.",
+    "Compare 01\u219402 and 03\u219404 for documents; 01\u219403 and 02\u219404 for consumers.",
+    "Record all failed manual criteria and evidence for any proposed adjudication without editing raw outputs.",
+    "Report controls separately; their documentary/consumer additions are target-specific and must not be pooled into a common treatment effect."
+  ],
+  "limits": [
+    "One hand-selected source target; twelve judgments are not twelve source targets.",
+    "Common model bias and small samples; no statistical/causal significance claim.",
+    "Evidence additions differ in length; no equal-length placebo, so semantics and context length are not isolated.",
+    "Deterministic interleaving is not random allocation and does not eliminate temporal/model drift.",
+    "Context and bookkeeping prompt differ from the previous run; no unchanged-input replication claim.",
+    "Implemented proposal/operator documentation is not a canonical Requirement or human gold.",
+    "The selected whole expression may retain mixed policy/mechanics responsibility.",
+    "Balanced mixtures remove one-mode-per-context assignment, not every annotator/target confound or common model bias.",
+    "Control cases can prime interpretation indirectly; no direct focal path-helper or documented manifest contract appears in control bundles.",
+    "The BDD document is a review-only draft and must not be treated as canonical adoption."
+  ],
+  "annotation_started": false,
+  "human_gold": false,
+  "provider_requests": 0,
+  "author_labels_in_packets": false,
+  "reference_frozen_for_provider_scoring": false,
+  "metric_effect": "none",
+  "version": 2,
+  "focal_target": "target-01",
+  "control_targets": [
+    "target-02",
+    "target-03",
+    "target-04"
+  ],
+  "fresh_contexts_planned": 12,
+  "case_annotations_planned": 48,
+  "assignment": "Each fresh context receives all four conditions across four distinct targets, one view per target. Every target-cell and target/condition position has three repetitions."
+}
