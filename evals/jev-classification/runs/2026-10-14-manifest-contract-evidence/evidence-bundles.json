@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "status": "source_selection_frozen_not_dispatched_not_gold",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "target": {
+    "language": "Python",
+    "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+    "syntax_kind": "BoolOp",
+    "scope": "exact expression only"
+  },
+  "baseline_state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+  "base_fragments": [
+    {
+      "kind": "code",
+      "code": "def _safe_path(value: Any) -> str:\n    if not isinstance(value, str) or not value:\n        raise IncrementalStageError(\"manifest file path must be a non-empty string\")\n    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          33,
+          39
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "from pathlib import Path, PurePosixPath\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          17,
+          17
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "class IncrementalStageError(ValueError):\n    pass\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          21,
+          22
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "def _manifest_files(payload: Any) -> dict[str, dict[str, Any]]:\n    if not isinstance(payload, dict) or not isinstance(payload.get(\"files\"), list):\n        raise IncrementalStageError(\"artifact manifest must contain files[]\")\n    files: dict[str, dict[str, Any]] = {}\n    for row in payload[\"files\"]:\n        if not isinstance(row, dict):\n            raise IncrementalStageError(\"artifact manifest files[] entries must be objects\")\n        path = _safe_path(row.get(\"path\"))\n        digest = row.get(\"sha256\")\n        if not isinstance(digest, str) or len(digest) != 64:\n            raise IncrementalStageError(f\"manifest sha256 is invalid for {path}\")\n        if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row\n    return files\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          42,
+          56
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    }
+  ],
+  "document_fragments": [
+    {
+      "kind": "documented_contract",
+      "text": "The deploy job now computes a checksum-aware payload stage for each independently\nmanifested surface:\n\n- the root SpecGraph artifact bundle;\n- Team Decision Log;\n- Hosted Operation Canary.\n\nThe staging tool compares each local `artifact_manifest.json` with the manifest\nat the durable HTTPS base and copies only added or content-changed payload files\ninto one remote-root-shaped staging directory. Manifest-matched files are also\nchecked at the HTTPS origin, so a missing or stale payload is staged again and\nthe next deploy self-heals partial publication. Removed files remain physically\npresent because the shared webroot is non-destructive, but the new manifest no\nlonger authorizes them.\n\nDeployment uploads the changed payload first, then each `checksums.sha256`, and\nfinally each `artifact_manifest.json`. A post-upload verifier downloads each\npublished manifest, checksum file, and manifest-authorized payload from all\nthree HTTPS bases and checks its SHA-256. A missing, malformed, partial, or\ndigest-mismatched public surface fails the job.\n\nThe changed payload mirror uses four parallel transfers. This is a bounded\ntransport optimization for high-latency SFTP hosts; checksums and manifests\nremain sequential finalization writes after every payload transfer completes.\n\nThe Hosted Operation Canary bundle also publishes its scoped initialization\nexecution report at the top-level `runs/` bootstrap path. That single\npublic-safe alias lets SpecSpace discover and validate the durable workspace\nbinding before it follows the binding's scoped `runs/hosted-operation-canary`\nrefs. The remaining artifacts stay scoped and are not flattened by route slug.\n\n## Authority Boundary\n\nThis proposal changes static artifact transport only. It does not:\n\n- delete remote webroot files;\n- publish files absent from a public-safe manifest;\n- start Platform or hosted workers;\n- execute managed operations;\n- mutate canonical specs or Ontology packages;\n- approve candidates, create Git reviews, or publish read models.\n\nRemote manifests are planning hints, not final authority. Successful\npost-publication HTTP digest verification is required.\n\n## Acceptance Criteria\n\n- Unchanged files are absent from the staged payload.\n- Changed root and workspace payloads retain their relative durable URL paths.\n- Path traversal and local digest mismatches fail closed.\n- Payload upload precedes checksums and manifest finalization.\n- Payload transfer parallelism is explicitly bounded.\n- All three published surfaces receive post-upload HTTP digest verification.\n- Hosted Operation Canary exposes a public-safe initialization bootstrap alias\n  without flattening the remaining scoped run artifacts.\n- Root-level `mirror --delete` remains forbidden.\n- Static bundle safety validation and existing publication tests pass.\n",
+      "origin": {
+        "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+        "lines": [
+          17,
+          73
+        ],
+        "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+        "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      },
+      "authority": "implemented_proposal_not_canonical_requirement"
+    },
+    {
+      "kind": "documented_contract",
+      "text": "\nDeployment mirrors the contents of `dist/specgraph-public/` into\n`SFTP_REMOTE_ROOT`. It must not create a nested `specgraph-public/` directory on\nthe static host.\n\nArtifact deployment is intentionally non-destructive for the webroot. The\nworkflow must not run a root-level `mirror --delete` because the same\n`SFTP_REMOTE_ROOT` can also contain the public landing page and hosting-managed\nfiles. Consumers should use `artifact_manifest.json` and `checksums.sha256` as\nthe authoritative artifact index instead of inferring validity from every file\nthat happens to remain under `specs/` or `runs/`.\n\nProposal `0215` makes the payload transfer checksum-aware. The deploy job\ncompares each local manifest with its durable HTTPS manifest and stages only\nadded or content-changed files for the root, Team Decision Log, and Hosted\nOperation Canary surfaces. Manifest-matched payload bytes are checked at the\nHTTPS origin so a rerun stages and repairs missing or stale files after partial\npublication. It uploads payload files first, then checksums, and manifests last.\nA post-upload pass verifies the published manifest, checksum file, and every\nmanifest-authorized payload, so an incomplete or stale public surface fails\nclosed.\nRemote files omitted by a new manifest are not deleted from the shared webroot;\nthey simply stop being authoritative.\n\nProposal `0217` adds one optional manual-dispatch input for a bounded hosted\n",
+      "origin": {
+        "path": "docs/static_artifact_publish.md",
+        "lines": [
+          38,
+          62
+        ],
+        "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+        "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      },
+      "authority": "operator_documentation"
+    }
+  ],
+  "consumer_fragments": [
+    {
+      "kind": "code",
+      "code": "def _load_local_manifest(bundle_dir: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:\n    manifest_path = bundle_dir / \"artifact_manifest.json\"\n    try:\n        payload = json.loads(manifest_path.read_text(encoding=\"utf-8\"))\n    except (OSError, json.JSONDecodeError) as exc:\n        raise IncrementalStageError(f\"cannot read local artifact manifest: {exc}\") from exc\n    files = _manifest_files(payload)\n    for relative_path, row in files.items():\n        source = bundle_dir / relative_path\n        if not source.is_file():\n            raise IncrementalStageError(f\"local manifest path is missing: {relative_path}\")\n        actual = hashlib.sha256(source.read_bytes()).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"local manifest digest mismatch: {relative_path}\")\n    if not (bundle_dir / \"checksums.sha256\").is_file():\n        raise IncrementalStageError(\"local bundle is missing checksums.sha256\")\n    return payload, files\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          59,
+          75
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "c060c00c4750a0c66b5d5535788cded33e439c47804c9500ae5882c890e9cb89",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "    prefix = _safe_path(staging_prefix) if staging_prefix else \"\"\n    _, local_files = _load_local_manifest(bundle_dir)\n    remote_files, remote_manifest_available = _remote_files(remote_manifest_url, fetcher)\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          102,
+          104
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "fdedab33bddbf7b06c1aa0999d2806f96792d95514b80f13f5a53731c6ce0275",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "    for relative_path in changed:\n        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path\n        destination.parent.mkdir(parents=True, exist_ok=True)\n        if destination.exists() and destination.read_bytes() != source.read_bytes():\n            raise IncrementalStageError(f\"staging path collision: {destination}\")\n        shutil.copyfile(source, destination)\n        payload_bytes += source.stat().st_size\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          131,
+          138
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "25f368d192ed5fa3636736d7a5bbc3a561ae7fad81d4a3ae9470df94b8c79005",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "    _, local_files = _load_local_manifest(bundle_dir)\n    base_url = remote_base_url.rstrip(\"/\")\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          172,
+          173
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "2251cd9df17005035199e2b3a57162a3746d3f805617b55892eee84d16ca9ace",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "    def verify(item: tuple[str, dict[str, Any]]) -> str:\n        path, row = item\n        try:\n            body = fetcher(f\"{base_url}/{path}\")\n        except Exception as exc:\n            raise IncrementalStageError(\n                f\"remote artifact request failed for {path}: {exc}\"\n            ) from exc\n        actual = hashlib.sha256(body).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"remote artifact digest mismatch: {path}\")\n        return path\n",
+      "origin": {
+        "path": "tools/static_artifact_incremental_stage.py",
+        "lines": [
+          189,
+          200
+        ],
+        "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+        "excerpt_sha256": "1d80bb98c1298d279a661a50930e1c4410ac9f250732f3dbf3497c3dabf30a58",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      }
+    },
+    {
+      "kind": "code",
+      "code": "      - name: Stage changed artifact payloads\n        if: env.SFTP_HOST != ''\n        run: |\n          rm -rf \"$INCREMENTAL_STAGE_DIR\"\n          mkdir -p \"$INCREMENTAL_STAGE_DIR\" \"$RUNNER_TEMP/specgraph-incremental-reports\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/root.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/team-decision-log \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/team-decision-log/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/team-decision-log \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/team-decision-log.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/hosted-operation-canary \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/hosted-operation-canary/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/hosted-operation-canary \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/hosted-operation-canary.json\"\n\n",
+      "origin": {
+        "path": ".github/workflows/publish-static-artifacts.yml",
+        "lines": [
+          233,
+          255
+        ],
+        "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+        "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+        "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+      },
+      "language": "YAML"
+    }
+  ],
+  "provider_requests": 0,
+  "metric_effect": "none",
+  "human_gold": false,
+  "notes": [
+    "The document bundle is an implemented proposal plus operator documentation; it is not a canonical Requirement ID.",
+    "Consumer excerpts intentionally show local reads, scoped staging, HTTPS verification and the shared staging_prefix use.",
+    "The entire original BoolOp is the target; canonical spelling remains included.",
+    "The catalog and origin mapping are integrator-only; do not expose authored audit labels."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "source_selection_frozen_not_dispatched",
+  "input_file_sha256": {
+    "runs/2026-10-13-manifest-path-contract-audit/source-contract-audit.json": "f6edac636c053fd90544871ba9ddf9a17593da390e39c8d362720d69038cee63",
+    "runs/2026-10-13-definition-owner-names-preparation/source-audit.json": "16d6db3a6d07382d192950ca7417c301b30ddff81da02f8222233d05fb07c8ea",
+    "runs/2026-10-13-definition-owner-names-preparation/packet-annotator-13.json": "48ab17e109b4e2e39a988c619129b14ed86a5957c35a70a5f8c55bfac38784c4",
+    "runs/2026-10-13-manifest-path-contract-audit/review-repair-receipt.json": "e90733d8e67e038b96d0b880ae2fa35b3f514de4fea20b7fdab72ab17c746621"
+  },
+  "artifact_file_sha256": {
+    "upstream-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "evidence-bundles.json": "c07d73baf845e6b564732033fe8b8650ec4404b1d368156f4d470046dd7ecf02"
+  },
+  "selection": "Base exact parser view; document facts verbatim; consumers selected from pinned-function AST statement spans and the already repaired pinned workflow fact.",
+  "provider_requests": 0,
+  "metric_effect": "none"
+}
