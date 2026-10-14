@@ -1,0 +1,6 @@
+{
+  "status": "delivery_bytes_verified_not_dispatched",
+  "slot": "annotator-06",
+  "semantic_correctness_verified": false,
+  "metric_effect": "none"
+}

@@ -351,3 +351,13 @@ quotes and attempt receipts. The [handoff runbook](manifest-contract-factorial-r
 provides scoped delivery folders, actual-file preflight checks and genuinely
 blank manual-review records.
 Preparation is not dispatch, an evaluated reference or a production metric update.
+
+The [completed balanced-v2 Astra High annotation package](runs/2026-10-14-manifest-contract-balanced-results-astra-high/README.md)
+retains 48 annotations from twelve fresh contexts with no formal failures or
+replacements. For the focal manifest predicate, document-present cells agree on
+`eligible / policy`; the consumer-only cell has two `excluded / mechanics` and
+one `needs_review / unknown`. The three controls have stable labels across all
+four cells. Exact raw answers, delivery bytes, 60 proposed nonblind review entries
+and receipt hashes are retained; agreement and formal replay do not establish
+semantic correctness or human gold. See its replay guide for the original-path
+actual-file validation boundary.

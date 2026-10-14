@@ -1,0 +1,158 @@
+{
+  "status": "existing_per_attempt_validator_replayed",
+  "batch_semantic_result_gate": false,
+  "commands": [
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/final-preparation-1.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-01.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-01-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-01-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-02.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-02-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-02-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-03.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-03-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-03-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-04.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-04-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-04-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-05.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-05-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-05-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-06.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-06-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-06-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-07.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-07-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-07-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-08.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-08-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-08-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-09.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-09-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-09-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-10.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-10-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-10-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-11.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-11-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-11-final-replay.txt"
+    },
+    {
+      "command": [
+        "../../.venv/bin/python",
+        "validate_manifest_contract_factorial.py",
+        "--assignment",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/attempt-receipts/annotator-12.json",
+        "--annotation",
+        "runs/2026-10-14-manifest-contract-balanced-results-astra-high/raw-attempts/annotator-12-attempt-01.json"
+      ],
+      "exit_code": 0,
+      "stdout_file": "validation/annotator-12-final-replay.txt"
+    }
+  ]
+}

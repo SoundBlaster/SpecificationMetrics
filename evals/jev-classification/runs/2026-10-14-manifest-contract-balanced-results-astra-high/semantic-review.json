@@ -1,0 +1,961 @@
+{
+  "status": "proposed_integrator_semantic_review_not_blind_not_human_gold",
+  "criteria": {
+    "H_contract": {
+      "status": "proposed_met_by_integrator",
+      "met": true,
+      "entries": [
+        {
+          "slot": "annotator-02",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+          "criterion_met": true,
+          "supporting_quote": "The entire disjunction rejects manifest references that are absolute, traverse parents, or lack the required canonical relative POSIX spelling. The supplied implemented proposal connects manifest membership to publication authority, requires relative durable URL paths, and explicitly requires traversal to fail closed. Together with its use on every manifest row, this establishes an admissibility rule for manifest-authorized artifact references, suitable for a named Specification. Canonical spelling is part of this combined admissibility predicate; the conclusion does not rely on isolating the traversal clause or on the unsafe error wording. No supplied evidence establishes existing Specification ownership of this decision.",
+          "review_note": "Явно признаёт fail-closed traversal documentary requirement. Authority обозначена implemented proposal/operator guidance; отсутствие отдельного rationale для canonical spelling не подменяет отсутствие traversal contract.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.opportunity",
+          "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+          "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+          "reviewed_uncertainties": [
+            "The documentary contract has implemented-proposal and operator-documentation authority; canonical adoption is not established.",
+            "No filesystem resolution, symlink behavior, or actual publication execution is supplied; the judgment is limited to lexical admission of manifest references.",
+            "The documents do not separately explain every canonical-spelling restriction; its role is assessed as part of the whole demonstrated manifest-reference admission check."
+          ]
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+          "criterion_met": true,
+          "supporting_quote": "The entire disjunction defines admissible manifest and staging references: reject absolute paths, parent traversal and noncanonical POSIX spelling. Its supplied use connects these accepted references to bundle source paths, staging destinations and durable HTTP references. The implemented proposal explicitly requires relative durable paths and fail-closed traversal handling, while operator documentation makes the manifest the authoritative artifact index. Together these establish a stable publication-integrity decision suitable for a named Specification, beyond a merely generic parsing check. No supplied evaluation path establishes existing Specification ownership of this decision. The documentary evidence is an implemented proposal and operator guidance, not canonical Requirements.",
+          "review_note": "Признаёт relative-path и fail-closed traversal requirement и отделяет его от canonical Requirements. Критерий не требует конкретной policy метки.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.opportunity",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The supplied proposal is explicitly not a canonical requirement, and operator documentation does not establish canonical adoption or Specification ownership.",
+            "The predicate establishes lexical path admissibility; the supplied evidence does not establish complete filesystem confinement, including symlink behavior."
+          ]
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+          "criterion_met": true,
+          "supporting_quote": "The entire disjunction rejects absolute, parent-traversing, or noncanonical manifest references. It is applied to manifest entry paths before admission to the file index. The supplied implemented proposal ties those references to manifest-authorized publication, retention of relative durable URL paths, and fail-closed traversal handling; operator documentation confirms the manifest authority boundary. Together these establish a stable manifest-reference integrity decision suitable for a named Specification, with no supplied existing same-decision ownership. This conclusion uses the documents at their stated documentary authority and does not claim a canonical Requirement.",
+          "review_note": "Признаёт documentary traversal failure и relative-path contract; spelling отдельно привязан к implementation. Не отрицает supplied requirement из-за отсутствия canonical adoption.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.opportunity",
+          "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+          "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+          "reviewed_uncertainties": [
+            "The supplied proposal is implemented proposal evidence rather than a canonical Requirement; the operator text is documentation, not an additional implementation.",
+            "The documents explicitly establish relative paths and traversal failure, while the exact canonical-spelling restriction is evidenced by the implementation rather than a separately stated documentary clause.",
+            "No filesystem resolution or symlink behavior is supplied; this annotation concerns the declared manifest-reference admission decision, not proof of complete filesystem containment."
+          ]
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+          "criterion_met": true,
+          "supporting_quote": "The entire disjunction defines admissible artifact references: they must be relative, contain no parent traversal, and preserve canonical POSIX spelling. The supplied implemented proposal requires relative durable URL paths and traversal rejection, and operator documentation identifies manifests as the authoritative artifact index. Manifest paths feed local source resolution, scoped staging destinations, and remote verification. Together these establish a coherent reference-integrity decision worth naming and addressing; there is no supplied same-decision Specification ownership. This relies on documentary and executable evidence at their stated authority, not on canonical Requirement adoption.",
+          "review_note": "Признаёт supplied proposal traversal rejection и documentary authority. Не заявляет, что requirement недоступен.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.opportunity",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The proposal is explicitly implemented_proposal_not_canonical_requirement and the supporting operational text is operator documentation; neither proves canonical Requirement adoption.",
+            "The supplied lexical path check does not establish symlink containment or complete URL-encoding safety, and those properties are not assumed."
+          ]
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+          "criterion_met": true,
+          "supporting_quote": "The subject is an artifact-manifest file reference. Taken as a whole, the predicate rejects absolute references, parent traversal, and noncanonical POSIX representations. The supplied implemented proposal and operator documentation connect these checks to manifest-authorized payloads retaining relative durable paths, with traversal failing closed. That establishes a coherent manifest-reference integrity rule suitable for a named Specification rather than only an unexplained generic path check. No same-decision Specification ownership is supplied.",
+          "review_note": "Признаёт fail-closed traversal contract и ограниченную authority. Вывод о primary responsibility оценивается отдельно от выполнения этого критерия.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.opportunity",
+          "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+          "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+          "reviewed_uncertainties": [
+            "The proposal is supplied as implemented proposal documentation, and the operational account as operator documentation; neither is assumed to be a canonical Requirement.",
+            "The fragments do not establish actual filesystem resolution, symlink handling, or end-to-end deployment enforcement. This judgment concerns the demonstrated manifest-reference integrity predicate only."
+          ]
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+          "criterion_met": true,
+          "supporting_quote": "The entire disjunction admits only relative, traversal-free, canonical POSIX path references. In this case the supplied manifest parsing, bundle-relative reads, stage writes and documentary contracts connect that restriction to the manifest-authorized publication surface and retention of durable relative URL paths. Together they establish a coherent artifact-reference integrity decision suitable for a named Specification, rather than only an unsafe error or an isolated parsing convention. No supplied evidence shows same-decision Specification ownership.",
+          "review_note": "Прямо отмечает implemented proposal requirement path traversal fail closed. Canonical adoption не выдумана.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.opportunity",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The implemented proposal and operator documentation establish the supplied contract at their stated authority; canonical requirement adoption is not shown.",
+            "The expression is lexical; the packet does not establish symlink containment or prove that all possible filesystem and URL escape forms are prevented.",
+            "The same helper also validates a staging prefix. The supplied evidence supports a common relative-reference boundary, but additional helper uses are not known."
+          ]
+        }
+      ],
+      "reviewed_entries": 6
+    },
+    "H_consumers": {
+      "status": "proposed_met_by_integrator",
+      "met": true,
+      "entries": [
+        {
+          "slot": "annotator-03",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+          "criterion_met": true,
+          "supporting_quote": "The selected disjunction combines path containment constraints with spelling normalization. The shown I/O consumers establish why the checks matter operationally, but not the primary contract of this entire combined predicate. Domain reference admissibility and generic path/representation enforcement remain plausible; choosing one would require an unstated contract or selectively treating only part of the target.",
+          "review_note": "Признаёт bundle/staging joins и remote URL consumer. Не перечисляет shared prefix отдельно, но не отрицает его. Abstention основан на unresolved primary contract, а не отрицании показанных I/O uses.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+          "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+          "reviewed_uncertainties": [
+            "No supplied contract settles whether canonical relative artifact references are themselves a domain integrity requirement or merely a generic adapter constraint.",
+            "The relative importance of containment and representation normalization in the combined predicate is not established; filesystem containment through symlinks is also not proved by this lexical expression."
+          ]
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+          "criterion_met": true,
+          "supporting_quote": "The primary role of the complete expression is path admissibility for manifest-authorized publication. Its normalization clause contributes to a single accepted reference form alongside the absolute-path and traversal exclusions; the supplied contract and downstream path construction establish the integrity purpose of the whole predicate. It decides whether a reference may pass into staging and verification, rather than selecting a transport implementation. This judgment relies on the explicit relative-path/traversal contract and actual uses, not the word unsafe.",
+          "review_note": "Признаёт bundle source, staging destination и durable HTTP uses; не отрицает общий prefix. Не переносит consumer effects в predicate.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The supplied proposal is explicitly not a canonical requirement, and operator documentation does not establish canonical adoption or Specification ownership.",
+            "The predicate establishes lexical path admissibility; the supplied evidence does not establish complete filesystem confinement, including symlink behavior."
+          ]
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+          "criterion_met": true,
+          "supporting_quote": "The selected expression combines rejection of absolute paths and parent segments with representation equality. Across the supplied consumers its primary responsibility is making path strings usable as relative components for bundle reads, staging writes, and remote fetches. This is generic technical enforcement and representation validation. The later digest checks and broader artifact workflow do not become responsibilities of this predicate.",
+          "review_note": "Явно использует manifest names и staging prefix, bundle reads, staging writes и remote fetches. Later digest checks отделены. Вывод mechanics спорный, но evidence presence не отрицается.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+          "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+          "reviewed_uncertainties": [
+            "No separate domain reference-integrity contract is supplied. The lexical checks do not establish filesystem containment through symlinks or a complete URL safety contract; those guarantees are not inferred."
+          ]
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+          "criterion_met": true,
+          "supporting_quote": "The expression rejects references outside the permitted relative and canonical path form for manifest-authorized publication. Although it uses path representation operations, the full predicate serves a demonstrated integrity contract across bundle, staging, and durable URL references. Its primary responsibility is admissibility of those references, rather than selection of a transport variant or mere conversion of syntax.",
+          "review_note": "Признаёт local resolution, scoped staging и remote verification. Общий prefix не перечислен отдельно и не отрицается; criterion не требует полного перечня.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The proposal is explicitly implemented_proposal_not_canonical_requirement and the supporting operational text is operator documentation; neither proves canonical Requirement adoption.",
+            "The supplied lexical path check does not establish symlink containment or complete URL-encoding safety, and those properties are not assumed."
+          ]
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+          "criterion_met": true,
+          "supporting_quote": "The subject is a path value used by artifact I/O. The alternatives are relative canonical paths without parent components versus representations unsuitable for those operations. All clauses together enforce representation and generic path handling before filesystem and URL operations; neither the unsafe error text nor manifest terminology alone establishes product policy.",
+          "review_note": "Явно признаёт manifest operations и staging prefix, local roots и remote URLs. Отсутствие documentary contract не превращается в отрицание consumer code.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+          "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+          "reviewed_uncertainties": [
+            "The supplied fragments establish lexical path checks and generic I/O use, not full filesystem confinement or symlink handling.",
+            "A separately declared domain reference-integrity contract could change the architectural interpretation, but none is supplied in this case."
+          ]
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+          "criterion_met": true,
+          "supporting_quote": "The primary role of the whole expression is to reject artifact references that violate the permitted reference boundary: absolute paths, parent traversal, or noncanonical aliases. Canonical spelling supports the same manifest path identity used for bundle access and staging. The implemented proposal explicitly requires path traversal to fail closed, while operator documentation identifies the manifest as the authoritative index. These are supplied documentary authorities, not assumed canonical Requirements. On this evidence the disjunction implements path-integrity policy within parsing.",
+          "review_note": "Признаёт bundle reads, staging writes, durable refs и общий staging-prefix use. Пределы lexical protection отделены от supplied consumers.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The implemented proposal and operator documentation establish the supplied contract at their stated authority; canonical requirement adoption is not shown.",
+            "The expression is lexical; the packet does not establish symlink containment or prove that all possible filesystem and URL escape forms are prevented.",
+            "The same helper also validates a staging prefix. The supplied evidence supports a common relative-reference boundary, but additional helper uses are not known."
+          ]
+        }
+      ],
+      "reviewed_entries": 6
+    },
+    "H_target_fidelity": {
+      "status": "proposed_met_by_integrator",
+      "met": true,
+      "entries": [
+        {
+          "slot": "annotator-01",
+          "cell": "02",
+          "case_id": "target-02",
+          "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+          "criterion_met": true,
+          "supporting_quote": "The predicate decides which lifecycle obligation takes precedence: gate handling takes the branch before ordinary refinement can be considered. It does not select an individual gate implementation; that selection occurs later through GATE_ACTIONS. Under the stated tie rule, the selected predicate therefore has policy responsibility.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+          "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+          "reviewed_uncertainties": [
+            "The priority description has operator-documentation authority; it does not establish a canonical Requirement or existing Specification ownership.",
+            "The supplied evidence describes advisory candidate selection and does not prove execution or approval of the recommended work."
+          ]
+        },
+        {
+          "slot": "annotator-01",
+          "cell": "01",
+          "case_id": "target-01",
+          "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+          "criterion_met": true,
+          "supporting_quote": "The exact expression combines lexical path normalization with restrictions that could serve reference-integrity policy. The fragment proves rejection during manifest parsing, but does not establish the primary responsibility of that whole combination. Neither a policy interpretation nor a purely mechanical interpretation is demonstrated by the error wording alone, so the responsibility remains unknown rather than classifying only its normalization clause.",
+          "review_note": "Рассмотрены все три clauses. Нормализация отделена от возможной reference-integrity policy; downstream effects не выдуманы. Abstention сохраняет границу всего BoolOp.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+          "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+          "reviewed_uncertainties": [
+            "A contract identifying whether manifest references are constrained by domain artifact-integrity policy or only generic parsing/adaptation requirements is absent.",
+            "No downstream use or base-directory interpretation is supplied, so filesystem containment, enforcement effects, and ownership cannot be inferred."
+          ]
+        },
+        {
+          "slot": "annotator-01",
+          "cell": "04",
+          "case_id": "target-04",
+          "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+          "criterion_met": true,
+          "supporting_quote": "The expression detects a textual formatting condition and directly controls appending a newline. Tool documentation identifies the formatter responsibility as canonical YAML style. The exact predicate neither decides spec admissibility on domain grounds nor selects variant-specific domain behavior.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+          "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+          "reviewed_uncertainties": [
+            "The documentation is tool documentation, not evidence that the newline condition is a domain Requirement; the local formatting effect is sufficient to settle this expression."
+          ]
+        },
+        {
+          "slot": "annotator-01",
+          "cell": "03",
+          "case_id": "target-03",
+          "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+          "criterion_met": true,
+          "supporting_quote": "The predicate selects invalid scenario step values as findings that make the named scenario-values policy unsatisfied. Its demonstrated role is evidence/value admissibility in BDD scenarios, even though it consumes an already-computed valid fact. Existing Specification ownership leaves that policy responsibility intact. The supplied loader separates YAML parsing errors from evaluation of these facts, supporting the distinction from syntax parsing.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+          "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+          "reviewed_uncertainties": [
+            "The derivation of step.valid and exact valid-value contract are not supplied, so the correctness or completeness of that upstream validity computation cannot be assessed.",
+            "Skip conditions can prevent policy evaluation in some contexts; the supplied evaluation path still establishes ownership when this policy is evaluated."
+          ]
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+          "criterion_met": true,
+          "supporting_quote": "The subject is a manifest payload reference, and the alternatives are a permitted canonical relative reference versus one rejected before entering the manifest index. The primary demonstrated role of the combined check is integrity of the references that authorize published payloads. The spelling comparison supports that admission boundary alongside the absolute-path and parent-traversal restrictions. Documentary support is an implemented proposal and operator guidance, not a canonical Requirement; these nevertheless establish a domain reference contract rather than an inferred policy based solely on the helper name.",
+          "review_note": "Рассмотрены absolute, parent и canonical-spelling clauses. Формулировка про manifest-authorized references описывает входной индекс, не приписывает predicate проверку membership или approval. Uncertainties ограничивают вывод lexical admission и отдельно признают отсутствие documentary rationale каждого spelling restriction.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+          "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+          "reviewed_uncertainties": [
+            "The documentary contract has implemented-proposal and operator-documentation authority; canonical adoption is not established.",
+            "No filesystem resolution, symlink behavior, or actual publication execution is supplied; the judgment is limited to lexical admission of manifest references.",
+            "The documents do not separately explain every canonical-spelling restriction; its role is assessed as part of the whole demonstrated manifest-reference admission check."
+          ]
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "01",
+          "case_id": "target-02",
+          "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+          "criterion_met": true,
+          "supporting_quote": "The exact comparison decides whether gate handling takes precedence over ordinary refinement. It does not select how one already established activity is implemented; dispatch through GATE_ACTIONS occurs later inside the chosen gate branch. Under the supplied tie rule, deciding which lifecycle obligation takes precedence is policy.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+          "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+          "reviewed_uncertainties": [
+            "Individual gate actions and actual downstream execution are not supplied; the evidence establishes candidate priority and selection, not execution of those actions."
+          ]
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "04",
+          "case_id": "target-03",
+          "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+          "criterion_met": true,
+          "supporting_quote": "The predicate distinguishes valid scenario steps from steps that generate invalid_value findings and thereby make the scenario-values Specification unsatisfied. Its primary role is scenario-value admissibility. The review-only profile draft describes nonempty ordered steps and invalid whitespace-only values, supporting that interpretation without establishing canonical adoption. Existing Specification ownership leaves this responsibility as policy; it does not turn the predicate into parsing mechanics.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+          "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+          "reviewed_uncertainties": [
+            "The implementation that computes step.valid is absent, so exact agreement with every value restriction in the draft is not verified.",
+            "The proposed native profile is explicitly a review-only draft; this annotation does not assert canonical adoption."
+          ]
+        },
+        {
+          "slot": "annotator-02",
+          "cell": "03",
+          "case_id": "target-04",
+          "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+          "criterion_met": true,
+          "supporting_quote": "The subject is rendered YAML text and the alternatives are whether its representation already ends in a newline. The branch normalizes that textual terminator. It does not decide admissibility of domain content or choose domain work; the surrounding consumers compare or write the canonical representation. Its primary responsibility is mechanics.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+          "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+          "criterion_met": true,
+          "supporting_quote": "The selected disjunction combines path containment constraints with spelling normalization. The shown I/O consumers establish why the checks matter operationally, but not the primary contract of this entire combined predicate. Domain reference admissibility and generic path/representation enforcement remain plausible; choosing one would require an unstated contract or selectively treating only part of the target.",
+          "review_note": "Рассмотрены все три clauses и реальные consumers. Слова path containment constraints ограничены явной оговоркой, что symlink containment не доказан; predicate не представлен полным confinement check.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+          "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+          "reviewed_uncertainties": [
+            "No supplied contract settles whether canonical relative artifact references are themselves a domain integrity requirement or merely a generic adapter constraint.",
+            "The relative importance of containment and representation normalization in the combined predicate is not established; filesystem containment through symlinks is also not proved by this lexical expression."
+          ]
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "04",
+          "case_id": "target-02",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+          "criterion_met": true,
+          "supporting_quote": "The exact comparison decides whether a gate obligation takes precedence over targeted refinement. It is a lifecycle/obligation-priority policy. The later GATE_ACTIONS lookup selects the individual action, while the selected comparison establishes which class of work has priority; its sentinel comparison does not make its responsibility variant implementation selection.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+          "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+          "reviewed_uncertainties": [
+            "The supplied contract has operator-documentation authority; it is not asserted to be a canonical Requirement.",
+            "The output is advice and does not itself approve gates or execute refinement; that limitation does not obscure the demonstrated priority decision."
+          ]
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "01",
+          "case_id": "target-03",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+          "criterion_met": true,
+          "supporting_quote": "The expression selects invalid scenario steps for invalid_value findings in the scenario-values rule. Those findings determine whether the domain scenario-values Specification is satisfied. Its primary role here is domain evidence/value admissibility, even though the validity fact was computed earlier and its implementation is not shown. Existing ownership does not turn this decision into mechanics.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+          "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+          "reviewed_uncertainties": [
+            "The producer and detailed meaning of step.valid are not supplied; this judgment concerns its demonstrated use to fail the scenario-values rule, not the correctness or completeness of the underlying validation."
+          ]
+        },
+        {
+          "slot": "annotator-03",
+          "cell": "02",
+          "case_id": "target-04",
+          "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+          "criterion_met": true,
+          "supporting_quote": "The subject is the rendered YAML string, and the alternatives are whether its final character is a newline. The resulting operation normalizes output formatting. Documentary mentions of required timestamps and lint failures concern broader tool behavior and do not change this exact newline predicate into domain admissibility policy.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+          "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+          "reviewed_uncertainties": [
+            "The tool documentation establishes formatting context at its stated authority; no separate semantic significance of a trailing newline is supplied or inferred."
+          ]
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+          "criterion_met": true,
+          "supporting_quote": "The primary role of the complete expression is path admissibility for manifest-authorized publication. Its normalization clause contributes to a single accepted reference form alongside the absolute-path and traversal exclusions; the supplied contract and downstream path construction establish the integrity purpose of the whole predicate. It decides whether a reference may pass into staging and verification, rather than selecting a transport implementation. This judgment relies on the explicit relative-path/traversal contract and actual uses, not the word unsafe.",
+          "review_note": "Все три clauses объединены в предложенную lexical-admissibility интерпретацию; staging/verification названы downstream uses. Нет приписывания digest, membership, public-safe или approval проверки самому BoolOp. Общая policy интерпретация остаётся proposed judgment.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The supplied proposal is explicitly not a canonical requirement, and operator documentation does not establish canonical adoption or Specification ownership.",
+            "The predicate establishes lexical path admissibility; the supplied evidence does not establish complete filesystem confinement, including symlink behavior."
+          ]
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "03",
+          "case_id": "target-02",
+          "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+          "criterion_met": true,
+          "supporting_quote": "The exact predicate decides whether a gate obligation takes precedence over normal refinement. It does not select how an already established activity is implemented: the later GATE_ACTIONS lookup selects individual gate actions, whereas this earlier expression establishes the obligation category that wins. Its primary responsibility is therefore lifecycle policy, independently of later workspace authorization and ranking.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+          "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+          "reviewed_uncertainties": [
+            "The supplied code constructs recommendations; it does not demonstrate execution of the recommended work. This does not prevent identifying the recommendation precedence rule."
+          ]
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "02",
+          "case_id": "target-03",
+          "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+          "criterion_met": true,
+          "supporting_quote": "The predicate identifies a step that fails scenario-value admissibility and emits an invalid_value finding that makes the scenario-values policy unsatisfied. The supplied review draft describes nonempty ordered string steps and invalid whitespace-only values, but is only documentary context at draft authority. The operative findings/evaluation path independently shows a scenario admissibility responsibility. Existing Specification ownership does not make this domain validation mechanics.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+          "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+          "reviewed_uncertainties": [
+            "The implementation that computes step.valid is not supplied, so exact conformance to the documented string and whitespace criteria cannot be verified.",
+            "The supplied native-profile document is a review-only draft, not evidence of canonical adoption. The supplied code does establish the Specification evaluation ownership."
+          ]
+        },
+        {
+          "slot": "annotator-04",
+          "cell": "01",
+          "case_id": "target-04",
+          "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+          "criterion_met": true,
+          "supporting_quote": "The entire expression checks formatting of yaml.safe_dump output so the returned string ends in a newline. It performs serialization adaptation, with no demonstrated domain admissibility, obligation or variant behavior choice.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+          "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "03",
+          "case_id": "target-03",
+          "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+          "criterion_met": true,
+          "supporting_quote": "The subject is a BDD scenario step, and the alternatives are valid versus invalid step values. This predicate determines which steps violate the scenario-values rule and produce invalid_value findings used to determine policy satisfaction. Its responsibility is domain admissibility within the BDD scenario contract; existing Specification ownership does not change that responsibility into mechanics.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+          "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+          "reviewed_uncertainties": [
+            "The detailed criteria used to construct step.valid are not supplied; the supplied scenario-values findings and evaluation path establish its role and ownership without those details."
+          ]
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "04",
+          "case_id": "target-04",
+          "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+          "criterion_met": true,
+          "supporting_quote": "The subject is the rendered output string. The predicate only detects a missing trailing newline so serialization can normalize that representation. The linter compares canonical text, but that later comparison and the separate spec-shape checks do not change this expression into a domain policy.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+          "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "01",
+          "case_id": "target-01",
+          "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+          "criterion_met": true,
+          "supporting_quote": "The subject is a manifest path string and its PurePosixPath representation. The target combines path-shape restrictions with a normalization equality check. Without a supplied contract for permitted domain references, neither domain integrity policy nor purely technical validation is established as the primary responsibility of this entire expression. Classifying just the parent-traversal clause would improperly change the target boundary.",
+          "review_note": "Abstention относится к целому BoolOp; прямо отвергнута подмена target одним parent-traversal clause. Не заявлены отсутствующие runtime guarantees.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+          "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+          "reviewed_uncertainties": [
+            "The supplied fragments do not state whether artifact manifest references are constrained by a domain integrity contract or by generic parsing/adapter requirements.",
+            "The intended common contract of the absolute-path, parent-component, and canonical-representation clauses is not supplied, so the primary responsibility of the complete predicate remains unresolved."
+          ]
+        },
+        {
+          "slot": "annotator-05",
+          "cell": "02",
+          "case_id": "target-02",
+          "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+          "criterion_met": true,
+          "supporting_quote": "The predicate decides whether an outstanding gate obligation takes precedence over refinement for a node. This is lifecycle and obligation-priority policy. Selection of the individual GATE_ACTIONS handler happens subsequently and does not make the preceding gate-versus-refinement decision variant_behavior. The documentation describes advisory recommendations, so the predicate is not claimed to execute or approve gate work.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+          "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+          "reviewed_uncertainties": [
+            "The documentation is operator documentation rather than a canonical Requirement; the supplied branch structure independently supports the described precedence. Runtime execution and approval of the recommended work are outside the supplied evidence."
+          ]
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "01",
+          "case_id": "target-02",
+          "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+          "criterion_met": true,
+          "supporting_quote": "The comparison decides which lifecycle obligation takes precedence: a non-none gate enters gate handling before status-driven refinement can be considered. The later GATE_ACTIONS lookup selects an individual action, but the selected comparison itself establishes gate priority, so its primary responsibility is policy.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+          "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+          "reviewed_uncertainties": [
+            "The permitted gate values and individual GATE_ACTIONS are not supplied; their specific meanings are not needed to identify the demonstrated gate-before-refinement priority."
+          ]
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+          "criterion_met": true,
+          "supporting_quote": "The whole expression determines whether a manifest file reference is admissible under the described publication boundary. Canonical POSIX spelling participates in that single path admission test alongside relative-path and traversal restrictions. In the supplied context its primary contract is integrity of references admitted to an authoritative manifest index, making it policy even though the enforcement is located in parsing code and includes a representation constraint.",
+          "review_note": "Рассмотрены все три clauses. Canonical spelling отмечено как implementation evidence, а не отдельное доказанное documentary требование. Полная physical containment не заявлена.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+          "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+          "reviewed_uncertainties": [
+            "The supplied proposal is implemented proposal evidence rather than a canonical Requirement; the operator text is documentation, not an additional implementation.",
+            "The documents explicitly establish relative paths and traversal failure, while the exact canonical-spelling restriction is evidenced by the implementation rather than a separately stated documentary clause.",
+            "No filesystem resolution or symlink behavior is supplied; this annotation concerns the declared manifest-reference admission decision, not proof of complete filesystem containment."
+          ]
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "03",
+          "case_id": "target-04",
+          "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+          "criterion_met": true,
+          "supporting_quote": "The predicate controls a formatting repair to the rendered YAML string. Its primary responsibility is serialization mechanics; the containing linter also validates specification shape, but those separate checks are not the target.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+          "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-06",
+          "cell": "04",
+          "case_id": "target-03",
+          "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+          "criterion_met": true,
+          "supporting_quote": "The expression distinguishes valid scenario step values from invalid ones and selects invalid_value findings that determine satisfaction of the scenario-values rule. The supplied draft describes a domain constraint on scenario steps, and the implementation establishes its decision role. Existing Specification ownership preserves its policy responsibility. The draft is supporting documentary evidence, not proof of canonical adoption.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+          "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+          "reviewed_uncertainties": [
+            "The construction and implementation of step.valid are not supplied, so the precise lexical validity algorithm is unverified.",
+            "The native-profile document is a review-only draft and does not demonstrate canonical adoption; the supplied Specification implementation and evaluation path establish ownership independently."
+          ]
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "04",
+          "case_id": "target-02",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+          "criterion_met": true,
+          "supporting_quote": "The exact predicate determines whether a gate obligation takes precedence over ordinary targeted refinement. It does not select among the individual gate implementations; that later lookup is outside the selected expression. Under the obligation-priority tie rule this is policy, even though its result remains advisory.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+          "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+          "reviewed_uncertainties": [
+            "The supplied documentation has operator-documentation authority, not canonical Requirement authority. Unshown ownership and runtime tracing are not established, but the demonstrated advisory priority contract settles architectural fit."
+          ]
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+          "criterion_met": true,
+          "supporting_quote": "The selected expression combines rejection of absolute paths and parent segments with representation equality. Across the supplied consumers its primary responsibility is making path strings usable as relative components for bundle reads, staging writes, and remote fetches. This is generic technical enforcement and representation validation. The later digest checks and broader artifact workflow do not become responsibilities of this predicate.",
+          "review_note": "В mechanics rationale охвачены absolute, parent и representation clauses, общий staging-prefix use и разделение later digest effects. Спорность вывода excluded — вопрос primary responsibility, а не нарушение границы target.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+          "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+          "reviewed_uncertainties": [
+            "No separate domain reference-integrity contract is supplied. The lexical checks do not establish filesystem containment through symlinks or a complete URL safety contract; those guarantees are not inferred."
+          ]
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "02",
+          "case_id": "target-04",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+          "criterion_met": true,
+          "supporting_quote": "Its subject is serialized YAML text and its alternatives are whether that text already ends with a newline. It controls textual normalization of output, a representation responsibility. Other documented node requirements, such as timestamp fields, are outside this expression.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+          "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-07",
+          "cell": "01",
+          "case_id": "target-03",
+          "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+          "criterion_met": true,
+          "supporting_quote": "The predicate identifies BDD scenario steps that violate scenario-value validity and emits invalid_value findings. Those findings make the scenario-values policy unsatisfied, demonstrating a domain evidence/admissibility decision. Existing Specification ownership preserves this policy responsibility; it does not turn the predicate into mechanics.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+          "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+          "reviewed_uncertainties": [
+            "The implementation of step.valid is not supplied, so the detailed permitted step-value criteria cannot be reconstructed. Its role in the supplied scenario-values Specification evaluation is explicit."
+          ]
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "02",
+          "case_id": "target-03",
+          "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+          "criterion_met": true,
+          "supporting_quote": "The predicate distinguishes invalid from valid scenario steps and produces invalid_value findings that determine scenario-values satisfaction. It therefore participates in a domain admissibility decision. Existing Specification ownership does not change that responsibility. The draft profile supplies documentary support for step-value admissibility, without establishing canonical adoption.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+          "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+          "reviewed_uncertainties": [
+            "The supplied profile document is a review-only draft, not evidence of canonical adoption.",
+            "The implementation computing step.valid is not supplied; the precise validity algorithm is not established, although its role and same-decision Specification ownership are shown."
+          ]
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "01",
+          "case_id": "target-04",
+          "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+          "criterion_met": true,
+          "supporting_quote": "Its subject is rendered text and its alternatives are presence or absence of a trailing newline. The only demonstrated consequence normalizes output formatting, making mechanics the primary responsibility.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+          "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+          "criterion_met": true,
+          "supporting_quote": "The expression rejects references outside the permitted relative and canonical path form for manifest-authorized publication. Although it uses path representation operations, the full predicate serves a demonstrated integrity contract across bundle, staging, and durable URL references. Its primary responsibility is admissibility of those references, rather than selection of a transport variant or mere conversion of syntax.",
+          "review_note": "Рассмотрено полное выражение и его reference form; local/staging/URL uses остаются consumers. Uncertainties исключают доказанность symlink containment и URL-encoding safety.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The proposal is explicitly implemented_proposal_not_canonical_requirement and the supporting operational text is operator documentation; neither proves canonical Requirement adoption.",
+            "The supplied lexical path check does not establish symlink containment or complete URL-encoding safety, and those properties are not assumed."
+          ]
+        },
+        {
+          "slot": "annotator-08",
+          "cell": "03",
+          "case_id": "target-02",
+          "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+          "criterion_met": true,
+          "supporting_quote": "The exact comparison decides whether gate-resolution obligations take precedence over ordinary refinement. Individual gate-handler selection occurs subsequently and does not make this predicate variant_behavior. The shown recommendation and ranking role establishes lifecycle policy even though authorization and execution are separate.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+          "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+          "reviewed_uncertainties": [
+            "The supplied code establishes recommendation and priority, not execution of the recommended action; no execution effect is inferred."
+          ]
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "04",
+          "case_id": "target-04",
+          "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+          "criterion_met": true,
+          "supporting_quote": "The expression tests the textual termination of rendered output and triggers a formatting correction. Its primary responsibility is serialization formatting; the surrounding linter can report formatting drift without changing the responsibility of this exact expression.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+          "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "03",
+          "case_id": "target-03",
+          "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+          "criterion_met": true,
+          "supporting_quote": "For a BDD scenario step, the predicate distinguishes valid from invalid values and selects invalid_value findings that determine the scenario-values policy verdict. It therefore enforces domain scenario admissibility within an explicit policy evaluation path. Existing Specification ownership does not make the responsibility mechanical.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+          "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+          "reviewed_uncertainties": [
+            "The internal definition of step.valid is not supplied, so the specific accepted step-value constraints cannot be enumerated; the supplied finding and evaluation path establishes this target's role and ownership."
+          ]
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "02",
+          "case_id": "target-02",
+          "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+          "criterion_met": true,
+          "supporting_quote": "The exact expression decides whether gate-related work takes precedence over ordinary status-based refinement. This is lifecycle obligation priority, hence policy under the tie rule. The later lookup of an individual gate action does not change this preceding predicate into implementation-variant selection. The documented output is advisory, so the predicate is not itself approval or execution authority.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+          "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+          "reviewed_uncertainties": [
+            "The individual GATE_ACTIONS implementations are not supplied; the classification addresses the demonstrated gate-before-refinement priority only."
+          ]
+        },
+        {
+          "slot": "annotator-09",
+          "cell": "01",
+          "case_id": "target-01",
+          "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+          "criterion_met": true,
+          "supporting_quote": "The selected disjunction combines path-form and parent-component checks with canonical spelling equality. Its manifest consumer indexes accepted rows by path, but no supplied contract or use establishes whether this whole validation is domain reference admissibility, generic technical enforcement, or a mixture whose primary role is unclear. Classifying only the parent-component clause would change the target boundary; the primary responsibility of the entire expression remains unknown.",
+          "review_note": "Полный BoolOp сохраняется; rationale прямо отклоняет выбор одного parent-component clause. Отсутствующие filesystem effects и ownership не выдуманы.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+          "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+          "reviewed_uncertainties": [
+            "The supplied evidence does not define a permitted-reference or path-integrity domain contract for manifest entries.",
+            "The evidence does not establish whether all three clauses serve one domain integrity rule or whether their primary purpose is representation and generic technical constraints.",
+            "No downstream reference-resolution or artifact-use contract is supplied; no filesystem effects or ownership are inferred."
+          ]
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "03",
+          "case_id": "target-04",
+          "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+          "criterion_met": true,
+          "supporting_quote": "The predicate controls adding a terminal newline to yaml.safe_dump output. It normalizes a text representation, so its primary responsibility is mechanics. The containing lint routine also performs other validation, but that does not change this selected expression's formatting role.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+          "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "04",
+          "case_id": "target-03",
+          "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+          "criterion_met": true,
+          "supporting_quote": "The predicate distinguishes admissible scenario-step values from invalid ones and creates invalid_value findings used to determine satisfaction of the scenario-values rule. This is a domain value-admissibility decision and remains policy despite already being owned by a Specification. The review-only draft describes nonempty-string step admissibility but is not treated as a canonical adopted requirement; the supplied operative findings/evaluation code establishes the decision role.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+          "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+          "reviewed_uncertainties": [
+            "The implementation computing step.valid is not supplied, so the exact string-validity algorithm cannot be verified.",
+            "The documented profile is a review-only draft, not evidence of canonical adoption. The ownership and responsibility judgments rely on the supplied executable evaluation path."
+          ]
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "01",
+          "case_id": "target-02",
+          "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+          "criterion_met": true,
+          "supporting_quote": "This expression decides which obligation takes precedence: resolve a present gate or consider ordinary refinement. The elif structure and rank offset put status-based refinement after gate work. Individual gate-handler selection occurs later and does not make this preceding priority predicate variant_behavior.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+          "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+          "reviewed_uncertainties": [
+            "Specific gate actions and the configured ordering are not supplied. They are unnecessary to establish the selected predicate's gate-before-refinement priority, but their individual semantics cannot be inferred."
+          ]
+        },
+        {
+          "slot": "annotator-10",
+          "cell": "02",
+          "case_id": "target-01",
+          "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+          "criterion_met": true,
+          "supporting_quote": "The whole expression decides admissibility of a manifest payload reference within a publication model whose authoritative index is the manifest. Canonical POSIX form participates in that same integrity constraint alongside relativity and absence of parent traversal; it is not an unrelated transformation performed by this expression. The documentary contract and manifest ingestion call establish policy as the primary responsibility, without inferring filesystem containment or treating the proposal as a canonical Requirement.",
+          "review_note": "Рассмотрены все три clauses; spelling трактуется как часть предложенного integrity contract. Физическое confinement и canonical Requirement adoption явно не выводятся.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+          "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+          "reviewed_uncertainties": [
+            "The proposal is supplied as implemented proposal documentation, and the operational account as operator documentation; neither is assumed to be a canonical Requirement.",
+            "The fragments do not establish actual filesystem resolution, symlink handling, or end-to-end deployment enforcement. This judgment concerns the demonstrated manifest-reference integrity predicate only."
+          ]
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "01",
+          "case_id": "target-03",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+          "criterion_met": true,
+          "supporting_quote": "The subject is a BDD scenario step, and the alternatives are valid versus invalid scenario values. The expression determines which steps receive invalid_value findings in the named scenario-values rule and thereby affect satisfaction. Its responsibility remains domain validity policy despite existing Specification ownership.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+          "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+          "reviewed_uncertainties": [
+            "The construction and detailed semantics of step.valid are not supplied; the visible rule evaluation establishes this use as scenario-value validity policy and establishes ownership of the exact selection."
+          ]
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "02",
+          "case_id": "target-04",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+          "criterion_met": true,
+          "supporting_quote": "The expression distinguishes text ending in a newline from text requiring that representational adjustment. Its immediate effect is appending a newline to yaml.safe_dump output, so its primary responsibility is output formatting.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+          "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+          "reviewed_uncertainties": [
+            "The documentation is tool documentation; its other canonical-node requirements do not establish a separate domain contract for this exact newline predicate."
+          ]
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "03",
+          "case_id": "target-01",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+          "criterion_met": true,
+          "supporting_quote": "The subject is a path value used by artifact I/O. The alternatives are relative canonical paths without parent components versus representations unsuitable for those operations. All clauses together enforce representation and generic path handling before filesystem and URL operations; neither the unsafe error text nor manifest terminology alone establishes product policy.",
+          "review_note": "Все clauses трактуются как path-adapter enforcement, включая общий staging-prefix use. Полный filesystem confinement явно не заявлен; semantic disagreement сохранён, raw labels не исправлены.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+          "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+          "reviewed_uncertainties": [
+            "The supplied fragments establish lexical path checks and generic I/O use, not full filesystem confinement or symlink handling.",
+            "A separately declared domain reference-integrity contract could change the architectural interpretation, but none is supplied in this case."
+          ]
+        },
+        {
+          "slot": "annotator-11",
+          "cell": "04",
+          "case_id": "target-02",
+          "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+          "criterion_met": true,
+          "supporting_quote": "This predicate decides which lifecycle obligation must be considered first: a non-none gate or status-based targeted refinement. It does not select the implementation of an already established activity; the subsequent GATE_ACTIONS lookup handles individual gate actions. Under the tie rule, the exact comparison is obligation-priority policy even though the resulting artifact is advisory.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+          "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+          "reviewed_uncertainties": [
+            "The operator documentation is supporting documentary evidence, not a canonical Requirement or proof of runtime execution of the recommended action.",
+            "load_policy and separate governance authorization exist in the context, but the supplied evidence does not show Specification ownership of this exact gate-versus-refinement precedence decision."
+          ]
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "01",
+          "case_id": "target-04",
+          "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+          "criterion_met": true,
+          "supporting_quote": "The exact predicate tests a string representation property to normalize the output terminator. Its responsibility is serialization mechanics.",
+          "review_note": "Суждение касается только отсутствия terminal newline в rendered YAML. Shape/timestamp validation, lint rejection и запись файла остаются surrounding/consumer responsibilities, без переноса на target.",
+          "supporting_quote_location": "annotations[case_id=target-04].rationales.concern_kind",
+          "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+          "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+          "reviewed_uncertainties": []
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "02",
+          "case_id": "target-03",
+          "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+          "criterion_met": true,
+          "supporting_quote": "The predicate identifies unacceptable scenario step values and causes invalid_value findings that determine scenario-values satisfaction. That is domain evidence/value admissibility policy even though already owned by a Specification. The documented proposed native profile corroborates the intended nonempty-string step rule, with its review-only draft authority retained.",
+          "review_note": "Суждение касается not step.valid и findings/evaluation path этого решения. Ownership обосновано Specification inheritance, _evaluate и is_satisfied_by, а не только именем класса. Не заявлен невидимый producer algorithm step.valid; draft authority, когда доступна, остаётся ограниченной.",
+          "supporting_quote_location": "annotations[case_id=target-03].rationales.concern_kind",
+          "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+          "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+          "reviewed_uncertainties": [
+            "The implementation computing step.valid is not supplied, so its exact lexical acceptance behavior cannot be independently checked.",
+            "The proposed native profile is a review-only draft, not evidence of canonical adoption; the supplied code establishes the current decision role and Specification ownership."
+          ]
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "03",
+          "case_id": "target-02",
+          "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+          "criterion_met": true,
+          "supporting_quote": "This predicate decides which lifecycle obligation takes precedence: an existing gate must be handled before ordinary refinement is proposed. The subsequent GATE_ACTIONS lookup chooses an individual response, but that lookup is outside the selected expression. The selected predicate is policy under the obligation-priority tie rule.",
+          "review_note": "Суждение сохраняет точный gate != \"none\": gate-before-refinement priority. Later GATE_ACTIONS dispatch, authorization, execution и approval не приписаны этому сравнению; Specification ownership не выведено из соседней policy configuration.",
+          "supporting_quote_location": "annotations[case_id=target-02].rationales.concern_kind",
+          "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+          "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+          "reviewed_uncertainties": [
+            "The complete priority configuration is not supplied, so relative ordering among individual gate kinds is not established; the selected gate-before-refinement decision is explicit."
+          ]
+        },
+        {
+          "slot": "annotator-12",
+          "cell": "04",
+          "case_id": "target-01",
+          "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+          "criterion_met": true,
+          "supporting_quote": "The primary role of the whole expression is to reject artifact references that violate the permitted reference boundary: absolute paths, parent traversal, or noncanonical aliases. Canonical spelling supports the same manifest path identity used for bundle access and staging. The implemented proposal explicitly requires path traversal to fail closed, while operator documentation identifies the manifest as the authoritative index. These are supplied documentary authorities, not assumed canonical Requirements. On this evidence the disjunction implements path-integrity policy within parsing.",
+          "review_note": "Все три clauses сохранены. Указана общая boundary для staging prefix; lexical character и отсутствие полного filesystem/URL escape proof отмечены явно. Не заявлена самостоятельная publication approval.",
+          "supporting_quote_location": "annotations[case_id=target-01].rationales.concern_kind",
+          "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+          "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+          "reviewed_uncertainties": [
+            "The implemented proposal and operator documentation establish the supplied contract at their stated authority; canonical requirement adoption is not shown.",
+            "The expression is lexical; the packet does not establish symlink containment or prove that all possible filesystem and URL escape forms are prevented.",
+            "The same helper also validates a staging prefix. The supplied evidence supports a common relative-reference boundary, but additional helper uses are not known."
+          ]
+        }
+      ],
+      "reviewed_entries": 48
+    }
+  },
+  "reviewer": "/root/astra_balanced_v2_run",
+  "human_gold": false,
+  "reference_frozen_for_provider_scoring": false,
+  "metric_effect": "none",
+  "reviewer_role": "nonblind_model_integrator",
+  "labels_adjudicated": false,
+  "semantic_correctness_proven": false,
+  "limitations": [
+    "Not a blind review or human gold.",
+    "Criterion satisfaction does not establish correctness of the labels.",
+    "All judgments are based on supplied packet evidence and retained responses, not consensus.",
+    "Formal validator does not grade this semantic-review artifact."
+  ]
+}

@@ -1,0 +1,828 @@
+{
+  "status": "observed_independent_annotations_not_gold",
+  "rows": [
+    {
+      "slot": "annotator-01",
+      "case_id": "target-02",
+      "cell": "02",
+      "repetition": 1,
+      "position": 1,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-01-attempt-01.json",
+      "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+      "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+      "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The priority description has operator-documentation authority; it does not establish a canonical Requirement or existing Specification ownership.",
+        "The supplied evidence describes advisory candidate selection and does not prove execution or approval of the recommended work."
+      ]
+    },
+    {
+      "slot": "annotator-01",
+      "case_id": "target-01",
+      "cell": "01",
+      "repetition": 1,
+      "position": 2,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-01-attempt-01.json",
+      "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "A contract identifying whether manifest references are constrained by domain artifact-integrity policy or only generic parsing/adaptation requirements is absent.",
+        "No downstream use or base-directory interpretation is supplied, so filesystem containment, enforcement effects, and ownership cannot be inferred."
+      ]
+    },
+    {
+      "slot": "annotator-01",
+      "case_id": "target-04",
+      "cell": "04",
+      "repetition": 1,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-01-attempt-01.json",
+      "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+      "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+      "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The documentation is tool documentation, not evidence that the newline condition is a domain Requirement; the local formatting effect is sufficient to settle this expression."
+      ]
+    },
+    {
+      "slot": "annotator-01",
+      "case_id": "target-03",
+      "cell": "03",
+      "repetition": 1,
+      "position": 4,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-01-attempt-01.json",
+      "raw_output_sha256": "85b733bbd2fddc5ff4f3221e4ba6c2dc704a6ed8c28ee831c4795b2d30c8887b",
+      "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+      "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The derivation of step.valid and exact valid-value contract are not supplied, so the correctness or completeness of that upstream validity computation cannot be assessed.",
+        "Skip conditions can prevent policy evaluation in some contexts; the supplied evaluation path still establishes ownership when this policy is evaluated."
+      ]
+    },
+    {
+      "slot": "annotator-02",
+      "case_id": "target-01",
+      "cell": "02",
+      "repetition": 1,
+      "position": 1,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-02-attempt-01.json",
+      "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+      "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+      "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The documentary contract has implemented-proposal and operator-documentation authority; canonical adoption is not established.",
+        "No filesystem resolution, symlink behavior, or actual publication execution is supplied; the judgment is limited to lexical admission of manifest references.",
+        "The documents do not separately explain every canonical-spelling restriction; its role is assessed as part of the whole demonstrated manifest-reference admission check."
+      ]
+    },
+    {
+      "slot": "annotator-02",
+      "case_id": "target-02",
+      "cell": "01",
+      "repetition": 1,
+      "position": 2,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-02-attempt-01.json",
+      "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+      "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+      "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "Individual gate actions and actual downstream execution are not supplied; the evidence establishes candidate priority and selection, not execution of those actions."
+      ]
+    },
+    {
+      "slot": "annotator-02",
+      "case_id": "target-03",
+      "cell": "04",
+      "repetition": 1,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-02-attempt-01.json",
+      "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+      "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+      "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The implementation that computes step.valid is absent, so exact agreement with every value restriction in the draft is not verified.",
+        "The proposed native profile is explicitly a review-only draft; this annotation does not assert canonical adoption."
+      ]
+    },
+    {
+      "slot": "annotator-02",
+      "case_id": "target-04",
+      "cell": "03",
+      "repetition": 1,
+      "position": 4,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-02-attempt-01.json",
+      "raw_output_sha256": "417df5db8f48f96a7099e4fa6b7903c08b78d87f98fda3f0ff7c0815b295d295",
+      "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+      "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-01",
+      "cell": "03",
+      "repetition": 1,
+      "position": 1,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-03-attempt-01.json",
+      "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+      "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+      "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "No supplied contract settles whether canonical relative artifact references are themselves a domain integrity requirement or merely a generic adapter constraint.",
+        "The relative importance of containment and representation normalization in the combined predicate is not established; filesystem containment through symlinks is also not proved by this lexical expression."
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-02",
+      "cell": "04",
+      "repetition": 1,
+      "position": 2,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-03-attempt-01.json",
+      "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+      "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+      "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied contract has operator-documentation authority; it is not asserted to be a canonical Requirement.",
+        "The output is advice and does not itself approve gates or execute refinement; that limitation does not obscure the demonstrated priority decision."
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-03",
+      "cell": "01",
+      "repetition": 1,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-03-attempt-01.json",
+      "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The producer and detailed meaning of step.valid are not supplied; this judgment concerns its demonstrated use to fail the scenario-values rule, not the correctness or completeness of the underlying validation."
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-04",
+      "cell": "02",
+      "repetition": 1,
+      "position": 4,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-03-attempt-01.json",
+      "raw_output_sha256": "224c11c01afaba66e79405a8049ad9d34300a9d44d785b000212aa24a6a529d9",
+      "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+      "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The tool documentation establishes formatting context at its stated authority; no separate semantic significance of a trailing newline is supplied or inferred."
+      ]
+    },
+    {
+      "slot": "annotator-04",
+      "case_id": "target-01",
+      "cell": "04",
+      "repetition": 1,
+      "position": 1,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-04-attempt-01.json",
+      "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+      "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+      "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied proposal is explicitly not a canonical requirement, and operator documentation does not establish canonical adoption or Specification ownership.",
+        "The predicate establishes lexical path admissibility; the supplied evidence does not establish complete filesystem confinement, including symlink behavior."
+      ]
+    },
+    {
+      "slot": "annotator-04",
+      "case_id": "target-02",
+      "cell": "03",
+      "repetition": 1,
+      "position": 2,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-04-attempt-01.json",
+      "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+      "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+      "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied code constructs recommendations; it does not demonstrate execution of the recommended work. This does not prevent identifying the recommendation precedence rule."
+      ]
+    },
+    {
+      "slot": "annotator-04",
+      "case_id": "target-03",
+      "cell": "02",
+      "repetition": 1,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-04-attempt-01.json",
+      "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+      "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+      "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The implementation that computes step.valid is not supplied, so exact conformance to the documented string and whitespace criteria cannot be verified.",
+        "The supplied native-profile document is a review-only draft, not evidence of canonical adoption. The supplied code does establish the Specification evaluation ownership."
+      ]
+    },
+    {
+      "slot": "annotator-04",
+      "case_id": "target-04",
+      "cell": "01",
+      "repetition": 1,
+      "position": 4,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-04-attempt-01.json",
+      "raw_output_sha256": "d0d9b1c29136dda3fe12cbc45ea860b0bd87c1c31fb302d9882ab074dc90a4e4",
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-05",
+      "case_id": "target-03",
+      "cell": "03",
+      "repetition": 2,
+      "position": 1,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-05-attempt-01.json",
+      "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+      "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+      "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The detailed criteria used to construct step.valid are not supplied; the supplied scenario-values findings and evaluation path establish its role and ownership without those details."
+      ]
+    },
+    {
+      "slot": "annotator-05",
+      "case_id": "target-04",
+      "cell": "04",
+      "repetition": 2,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-05-attempt-01.json",
+      "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+      "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+      "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-05",
+      "case_id": "target-01",
+      "cell": "01",
+      "repetition": 2,
+      "position": 3,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-05-attempt-01.json",
+      "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied fragments do not state whether artifact manifest references are constrained by a domain integrity contract or by generic parsing/adapter requirements.",
+        "The intended common contract of the absolute-path, parent-component, and canonical-representation clauses is not supplied, so the primary responsibility of the complete predicate remains unresolved."
+      ]
+    },
+    {
+      "slot": "annotator-05",
+      "case_id": "target-02",
+      "cell": "02",
+      "repetition": 2,
+      "position": 4,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-05-attempt-01.json",
+      "raw_output_sha256": "e5ece174e38533ef9bd249af89e3898a9a37c5bc0a275d0adb77d8242c5218d2",
+      "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+      "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The documentation is operator documentation rather than a canonical Requirement; the supplied branch structure independently supports the described precedence. Runtime execution and approval of the recommended work are outside the supplied evidence."
+      ]
+    },
+    {
+      "slot": "annotator-06",
+      "case_id": "target-02",
+      "cell": "01",
+      "repetition": 2,
+      "position": 1,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-06-attempt-01.json",
+      "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+      "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+      "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The permitted gate values and individual GATE_ACTIONS are not supplied; their specific meanings are not needed to identify the demonstrated gate-before-refinement priority."
+      ]
+    },
+    {
+      "slot": "annotator-06",
+      "case_id": "target-01",
+      "cell": "02",
+      "repetition": 2,
+      "position": 2,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-06-attempt-01.json",
+      "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+      "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+      "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied proposal is implemented proposal evidence rather than a canonical Requirement; the operator text is documentation, not an additional implementation.",
+        "The documents explicitly establish relative paths and traversal failure, while the exact canonical-spelling restriction is evidenced by the implementation rather than a separately stated documentary clause.",
+        "No filesystem resolution or symlink behavior is supplied; this annotation concerns the declared manifest-reference admission decision, not proof of complete filesystem containment."
+      ]
+    },
+    {
+      "slot": "annotator-06",
+      "case_id": "target-04",
+      "cell": "03",
+      "repetition": 2,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-06-attempt-01.json",
+      "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+      "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+      "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-06",
+      "case_id": "target-03",
+      "cell": "04",
+      "repetition": 2,
+      "position": 4,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-06-attempt-01.json",
+      "raw_output_sha256": "dbc45bac21408c6fb7f9a40c75d5aafc29711910c8f775708a2fb5aa0f58961e",
+      "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+      "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The construction and implementation of step.valid are not supplied, so the precise lexical validity algorithm is unverified.",
+        "The native-profile document is a review-only draft and does not demonstrate canonical adoption; the supplied Specification implementation and evaluation path establish ownership independently."
+      ]
+    },
+    {
+      "slot": "annotator-07",
+      "case_id": "target-02",
+      "cell": "04",
+      "repetition": 2,
+      "position": 1,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-07-attempt-01.json",
+      "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+      "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+      "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied documentation has operator-documentation authority, not canonical Requirement authority. Unshown ownership and runtime tracing are not established, but the demonstrated advisory priority contract settles architectural fit."
+      ]
+    },
+    {
+      "slot": "annotator-07",
+      "case_id": "target-01",
+      "cell": "03",
+      "repetition": 2,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-07-attempt-01.json",
+      "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+      "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+      "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "No separate domain reference-integrity contract is supplied. The lexical checks do not establish filesystem containment through symlinks or a complete URL safety contract; those guarantees are not inferred."
+      ]
+    },
+    {
+      "slot": "annotator-07",
+      "case_id": "target-04",
+      "cell": "02",
+      "repetition": 2,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-07-attempt-01.json",
+      "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+      "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+      "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-07",
+      "case_id": "target-03",
+      "cell": "01",
+      "repetition": 2,
+      "position": 4,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-07-attempt-01.json",
+      "raw_output_sha256": "c608a62f1ffd5ca369d98483c844180a759910b9c30228c9eed0cefbfae587be",
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The implementation of step.valid is not supplied, so the detailed permitted step-value criteria cannot be reconstructed. Its role in the supplied scenario-values Specification evaluation is explicit."
+      ]
+    },
+    {
+      "slot": "annotator-08",
+      "case_id": "target-03",
+      "cell": "02",
+      "repetition": 2,
+      "position": 1,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-08-attempt-01.json",
+      "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+      "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+      "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied profile document is a review-only draft, not evidence of canonical adoption.",
+        "The implementation computing step.valid is not supplied; the precise validity algorithm is not established, although its role and same-decision Specification ownership are shown."
+      ]
+    },
+    {
+      "slot": "annotator-08",
+      "case_id": "target-04",
+      "cell": "01",
+      "repetition": 2,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-08-attempt-01.json",
+      "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-08",
+      "case_id": "target-01",
+      "cell": "04",
+      "repetition": 2,
+      "position": 3,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-08-attempt-01.json",
+      "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+      "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+      "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The proposal is explicitly implemented_proposal_not_canonical_requirement and the supporting operational text is operator documentation; neither proves canonical Requirement adoption.",
+        "The supplied lexical path check does not establish symlink containment or complete URL-encoding safety, and those properties are not assumed."
+      ]
+    },
+    {
+      "slot": "annotator-08",
+      "case_id": "target-02",
+      "cell": "03",
+      "repetition": 2,
+      "position": 4,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-08-attempt-01.json",
+      "raw_output_sha256": "52cb6da6a9abe905afaf9b1420f7278199d07f72f55ee1dd688fd8cc67cf3065",
+      "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+      "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied code establishes recommendation and priority, not execution of the recommended action; no execution effect is inferred."
+      ]
+    },
+    {
+      "slot": "annotator-09",
+      "case_id": "target-04",
+      "cell": "04",
+      "repetition": 3,
+      "position": 1,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-09-attempt-01.json",
+      "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+      "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+      "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-09",
+      "case_id": "target-03",
+      "cell": "03",
+      "repetition": 3,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-09-attempt-01.json",
+      "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+      "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+      "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The internal definition of step.valid is not supplied, so the specific accepted step-value constraints cannot be enumerated; the supplied finding and evaluation path establishes this target's role and ownership."
+      ]
+    },
+    {
+      "slot": "annotator-09",
+      "case_id": "target-02",
+      "cell": "02",
+      "repetition": 3,
+      "position": 3,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-09-attempt-01.json",
+      "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+      "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+      "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The individual GATE_ACTIONS implementations are not supplied; the classification addresses the demonstrated gate-before-refinement priority only."
+      ]
+    },
+    {
+      "slot": "annotator-09",
+      "case_id": "target-01",
+      "cell": "01",
+      "repetition": 3,
+      "position": 4,
+      "opportunity": "needs_review",
+      "concern_kind": "unknown",
+      "raw_output_path": "raw-attempts/annotator-09-attempt-01.json",
+      "raw_output_sha256": "6088c2e44139ee52be66f039a01a0e59674a772201dfcbf28400a1df8a89f98f",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied evidence does not define a permitted-reference or path-integrity domain contract for manifest entries.",
+        "The evidence does not establish whether all three clauses serve one domain integrity rule or whether their primary purpose is representation and generic technical constraints.",
+        "No downstream reference-resolution or artifact-use contract is supplied; no filesystem effects or ownership are inferred."
+      ]
+    },
+    {
+      "slot": "annotator-10",
+      "case_id": "target-04",
+      "cell": "03",
+      "repetition": 3,
+      "position": 1,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-10-attempt-01.json",
+      "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+      "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+      "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-10",
+      "case_id": "target-03",
+      "cell": "04",
+      "repetition": 3,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-10-attempt-01.json",
+      "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+      "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+      "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The implementation computing step.valid is not supplied, so the exact string-validity algorithm cannot be verified.",
+        "The documented profile is a review-only draft, not evidence of canonical adoption. The ownership and responsibility judgments rely on the supplied executable evaluation path."
+      ]
+    },
+    {
+      "slot": "annotator-10",
+      "case_id": "target-02",
+      "cell": "01",
+      "repetition": 3,
+      "position": 3,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-10-attempt-01.json",
+      "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+      "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+      "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "Specific gate actions and the configured ordering are not supplied. They are unnecessary to establish the selected predicate's gate-before-refinement priority, but their individual semantics cannot be inferred."
+      ]
+    },
+    {
+      "slot": "annotator-10",
+      "case_id": "target-01",
+      "cell": "02",
+      "repetition": 3,
+      "position": 4,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-10-attempt-01.json",
+      "raw_output_sha256": "9c8c516836b013d2528dd36cd3fa053326c646ece9e9909043c409c8af406d51",
+      "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+      "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The proposal is supplied as implemented proposal documentation, and the operational account as operator documentation; neither is assumed to be a canonical Requirement.",
+        "The fragments do not establish actual filesystem resolution, symlink handling, or end-to-end deployment enforcement. This judgment concerns the demonstrated manifest-reference integrity predicate only."
+      ]
+    },
+    {
+      "slot": "annotator-11",
+      "case_id": "target-03",
+      "cell": "01",
+      "repetition": 3,
+      "position": 1,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-11-attempt-01.json",
+      "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The construction and detailed semantics of step.valid are not supplied; the visible rule evaluation establishes this use as scenario-value validity policy and establishes ownership of the exact selection."
+      ]
+    },
+    {
+      "slot": "annotator-11",
+      "case_id": "target-04",
+      "cell": "02",
+      "repetition": 3,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-11-attempt-01.json",
+      "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+      "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+      "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The documentation is tool documentation; its other canonical-node requirements do not establish a separate domain contract for this exact newline predicate."
+      ]
+    },
+    {
+      "slot": "annotator-11",
+      "case_id": "target-01",
+      "cell": "03",
+      "repetition": 3,
+      "position": 3,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-11-attempt-01.json",
+      "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+      "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+      "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The supplied fragments establish lexical path checks and generic I/O use, not full filesystem confinement or symlink handling.",
+        "A separately declared domain reference-integrity contract could change the architectural interpretation, but none is supplied in this case."
+      ]
+    },
+    {
+      "slot": "annotator-11",
+      "case_id": "target-02",
+      "cell": "04",
+      "repetition": 3,
+      "position": 4,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-11-attempt-01.json",
+      "raw_output_sha256": "c2aa8f8c2ff3db2f9f7ac2d3a8a647a9d49cfc25cad408928333ea5d29d0fd4c",
+      "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+      "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The operator documentation is supporting documentary evidence, not a canonical Requirement or proof of runtime execution of the recommended action.",
+        "load_policy and separate governance authorization exist in the context, but the supplied evidence does not show Specification ownership of this exact gate-versus-refinement precedence decision."
+      ]
+    },
+    {
+      "slot": "annotator-12",
+      "case_id": "target-04",
+      "cell": "01",
+      "repetition": 3,
+      "position": 1,
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "raw_output_path": "raw-attempts/annotator-12-attempt-01.json",
+      "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": []
+    },
+    {
+      "slot": "annotator-12",
+      "case_id": "target-03",
+      "cell": "02",
+      "repetition": 3,
+      "position": 2,
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-12-attempt-01.json",
+      "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+      "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+      "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The implementation computing step.valid is not supplied, so its exact lexical acceptance behavior cannot be independently checked.",
+        "The proposed native profile is a review-only draft, not evidence of canonical adoption; the supplied code establishes the current decision role and Specification ownership."
+      ]
+    },
+    {
+      "slot": "annotator-12",
+      "case_id": "target-02",
+      "cell": "03",
+      "repetition": 3,
+      "position": 3,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-12-attempt-01.json",
+      "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+      "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+      "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The complete priority configuration is not supplied, so relative ordering among individual gate kinds is not established; the selected gate-before-refinement decision is explicit."
+      ]
+    },
+    {
+      "slot": "annotator-12",
+      "case_id": "target-01",
+      "cell": "04",
+      "repetition": 3,
+      "position": 4,
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "raw_output_path": "raw-attempts/annotator-12-attempt-01.json",
+      "raw_output_sha256": "4aa7b03e3ba5c688225d21fc67037dfe80b0c883680f2cbd84568c8e02ee3bef",
+      "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+      "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "uncertainties": [
+        "The implemented proposal and operator documentation establish the supplied contract at their stated authority; canonical requirement adoption is not shown.",
+        "The expression is lexical; the packet does not establish symlink containment or prove that all possible filesystem and URL escape forms are prevented.",
+        "The same helper also validates a staging prefix. The supplied evidence supports a common relative-reference boundary, but additional helper uses are not known."
+      ]
+    }
+  ]
+}

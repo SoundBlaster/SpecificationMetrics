@@ -1,0 +1,185 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "target-03",
+      "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+      "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The exact invalid-step predicate contributes findings inside BDDScenarioValuesSpec. BDDPolicy inherits Specification and its evaluation returns whether findings are absent; the registered policy is evaluated through is_satisfied_by. This explicitly binds the same decision to an existing Specification evaluation path, so there is no additional extraction opportunity under this rubric.",
+        "concern_kind": "The predicate distinguishes invalid from valid scenario steps and produces invalid_value findings that determine scenario-values satisfaction. It therefore participates in a domain admissibility decision. Existing Specification ownership does not change that responsibility. The draft profile supplies documentary support for step-value admissibility, without establishing canonical adoption."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\""
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-02",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-03",
+          "quote": "return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-04",
+          "quote": "    BDDScenarioValuesSpec(),"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-05",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-06",
+          "quote": "steps is a nonempty ordered list of nonempty strings. Whitespace-only values are invalid,"
+        }
+      ],
+      "uncertainties": [
+        "The supplied profile document is a review-only draft, not evidence of canonical adoption.",
+        "The implementation computing step.valid is not supplied; the precise validity algorithm is not established, although its role and same-decision Specification ownership are shown."
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The predicate checks whether a serialized YAML string lacks its final newline, solely to append that character before returning the text. This is affirmative representation/serialization mechanics with no distinct domain decision in the supplied implementation.",
+        "concern_kind": "Its subject is rendered text and its alternatives are presence or absence of a trailing newline. The only demonstrated consequence normalizes output formatting, making mechanics the primary responsibility."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "case_id": "target-01",
+      "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+      "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The entire disjunction defines admissible artifact references: they must be relative, contain no parent traversal, and preserve canonical POSIX spelling. The supplied implemented proposal requires relative durable URL paths and traversal rejection, and operator documentation identifies manifests as the authoritative artifact index. Manifest paths feed local source resolution, scoped staging destinations, and remote verification. Together these establish a coherent reference-integrity decision worth naming and addressing; there is no supplied same-decision Specification ownership. This relies on documentary and executable evidence at their stated authority, not on canonical Requirement adoption.",
+        "concern_kind": "The expression rejects references outside the permitted relative and canonical path form for manifest-authorized publication. Although it uses path representation operations, the full predicate serves a demonstrated integrity contract across bundle, staging, and durable URL references. Its primary responsibility is admissibility of those references, rather than selection of a transport variant or mere conversion of syntax."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-05",
+          "quote": "- Changed root and workspace payloads retain their relative durable URL paths.\n- Path traversal and local digest mismatches fail closed."
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-06",
+          "quote": "Consumers should use `artifact_manifest.json` and `checksums.sha256` as\nthe authoritative artifact index instead of inferring validity from every file\nthat happens to remain under `specs/` or `runs/`."
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-05",
+          "quote": "- Changed root and workspace payloads retain their relative durable URL paths.\n- Path traversal and local digest mismatches fail closed."
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-09",
+          "quote": "        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path"
+        }
+      ],
+      "uncertainties": [
+        "The proposal is explicitly implemented_proposal_not_canonical_requirement and the supporting operational text is operator documentation; neither proves canonical Requirement adoption.",
+        "The supplied lexical path check does not establish symlink containment or complete URL-encoding safety, and those properties are not assumed."
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+      "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "For a spec node, this predicate gives a present lifecycle gate precedence over ordinary status-based refinement. The branches assign gate ranks before all refinable-status ranks, and the caller sorts candidates by rank to recommend work. This is a stable obligation-priority decision suitable for an addressable Specification; no existing Specification evaluation owning this decision is supplied.",
+        "concern_kind": "The exact comparison decides whether gate-resolution obligations take precedence over ordinary refinement. Individual gate-handler selection occurs subsequently and does not make this predicate variant_behavior. The shown recommendation and ranking role establishes lifecycle policy even though authorization and execution are separate."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "rank = len(gate_order) + status_order.index(node.status)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "Review the structural split requirement for {spec_id} before rerunning refinement."
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-05",
+          "quote": "    eligible.sort(key=lambda entry: (entry[0], entry[1][\"spec_id\"]))\n    blocked.sort(key=lambda move: move[\"spec_id\"])\n    recommended = eligible[0][1] if eligible else None"
+        }
+      ],
+      "uncertainties": [
+        "The supplied code establishes recommendation and priority, not execution of the recommended action; no execution effect is inferred."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-08/packet.json",
+      "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-manifest-contract-balanced-results-astra-high/delivery/annotator-08/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}
