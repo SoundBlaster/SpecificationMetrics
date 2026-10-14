@@ -102,10 +102,12 @@ predicate в mechanics; оценка callers и оценка predicate оста�
 - Два role bindings одного выражения не создают два syntactic candidates. Этот
   документ не определяет агрегацию applications в S/U и не меняет счётчики.
 - В [review PR #60](https://github.com/SoundBlaster/SpecificationMetrics/pull/60#discussion_r4270834339)
-  открыт P1: retention синтезирует task names по slot. Проверенные уникальные
+  выявлен P1: исторический retention синтезирует task names по slot. Проверенные уникальные
   строки в receipts ещё не доказывают 12 различных фактически возвращённых
-  context identities. Нужна отдельная сверка с dispatch tool evidence и исправление
-  дальнейшего retention. Таблица опирается на сохранённый код и rationale;
+  context identities. Отдельный [repair](runs/2026-10-14-scope-dispatch-provenance-repair-v1/README.md)
+  связал actual returned identities с 12 различными UUID и writer/raw evidence;
+  новый retention не строит identity по slot. Plaintext equality encrypted tasks
+  не подтверждена, filesystem isolation не аттестована. Таблица опирается на сохранённый код и rationale;
   частоты ответов не используются для выбора рекомендаций. Исторические заявления
   о formal replay не следует читать как подтверждение isolation.
 
@@ -116,6 +118,5 @@ predicate в mechanics; оценка callers и оценка predicate оста�
 | D1 | Shared role review-required; documented manifest application может быть policy | pending | pending |
 | D2 | Exact invalid-step predicate: `excluded / policy`, включая выбранный findings binding | pending | pending |
 
-Следующий технический шаг: устранить P1 о фактических context identities и
-сохранить evidence проверки отдельно от frozen run. Затем зафиксировать решения
-D1/D2 и подготовить versioned adjudication, если человек их подтвердит.
+Следующий шаг: после review repair зафиксировать решения D1/D2 и подготовить
+versioned adjudication, если человек их подтвердит.

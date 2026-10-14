@@ -1,0 +1,31 @@
+{
+  "schema": "scope-dispatch-provenance-repair-v1",
+  "status": "captured_dispatch_associations_verified_with_limits",
+  "dispatch_capture_sha256": "61f294227147927bda9f0782a11407fa49f151e5db929954a2b231c7cc7c1965",
+  "verified_contexts": 12,
+  "historical_file_sha256": {
+    "execution-receipt.json": "2f4532f69755fbaa3c491831bb16b3941eea73a7d06eaecd4a1fd61ba7bdb8fe",
+    "SHA256SUMS": "4aa019df35b9531058a504d2296e70278a7fe2b21d40c9975798c18bb01b5092"
+  },
+  "implementation_file_sha256": {
+    "scope_dispatch_provenance.py": "074c98fddb10bf2c61fec6d527842c6f79d202b269f324a2b0de741c63453ddc",
+    "export_scope_dispatch_capture.py": "db590aaf41fa37e473cdcd9ac71a7ca96709b4703fbf02b3f779752889ca4495"
+  },
+  "first_retention_smoke": {
+    "passed": true,
+    "original_blank_delivery_receipt_used": true,
+    "original_path_preflight_passed": true,
+    "retained_answer_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+    "new_inference": false
+  },
+  "source_records_rechecked": 73,
+  "prompt_plaintext_verified": false,
+  "runtime_identity_verified": false,
+  "filesystem_isolation_verified": false,
+  "capture_authority": "unsigned_operator_extract_rechecked_against_original_local_source_lines",
+  "historical_outputs_edited": false,
+  "human_gold": false,
+  "metric_effect": "none",
+  "provider_requests": 0,
+  "review_thread": "https://github.com/SoundBlaster/SpecificationMetrics/pull/60#discussion_r4270834339"
+}

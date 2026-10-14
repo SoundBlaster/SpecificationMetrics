@@ -1,0 +1,9 @@
+{
+  "projection": "incoming_task_allowlist_v1",
+  "fields": {
+    "author": "/root/astra_scope_v3_1_run",
+    "recipient": "/root/astra_scope_v3_1_run/annotator_01",
+    "message_representation": "opaque_encrypted",
+    "message_payload_sha256": "7aa0485fce343aecbb5e257c3aa7b193724a02c7b06381c9fb41c5c209f76372"
+  }
+}

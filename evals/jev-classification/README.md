@@ -402,5 +402,12 @@ The [scope-binding adjudication table](scope-binding-adjudication-v1.md) propose
 two explicit decisions for human review: retain uncertainty for the shared path
 contract, and distinguish an already-owned domain predicate from its findings
 collection caller. Approval fields remain pending and frozen annotations are
-unchanged. The table also records the open PR #60 context-identity provenance
-finding; unique receipt strings do not by themselves establish isolated contexts.
+unchanged. The table also records the PR #60 context-identity provenance finding;
+unique receipt strings do not by themselves establish isolated contexts.
+
+The [dispatch provenance repair](runs/2026-10-14-scope-dispatch-provenance-repair-v1/README.md)
+binds twelve actual returned task names to distinct child-session UUIDs and exact
+writer/output associations. The [replacement retention runbook](scope-dispatch-provenance-runbook.md)
+uses captured tool results instead of slot-derived identities. Encrypted task
+delivery can be correlated, but plaintext prompt equality, runtime model identity
+and filesystem isolation remain unverified. Frozen historical artifacts are unchanged.

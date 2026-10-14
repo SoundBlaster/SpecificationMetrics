@@ -2,13 +2,16 @@
 
 ## Уточнение после review PR #60
 
-Открытый [P1 о context identities](https://github.com/SoundBlaster/SpecificationMetrics/pull/60#discussion_r4270834339)
+[P1 о context identities](https://github.com/SoundBlaster/SpecificationMetrics/pull/60#discussion_r4270834339)
 ограничивает описанный ниже audit: он проверяет уникальность **заявленных строк**
 agent task в receipts, а retention выводит их из slot. Это ещё не подтверждение
 уникальности реально возвращённых инструментом contexts или их isolation.
 Сохранённый `parent-verification.txt` с формулировкой «12 unique contexts» следует
-читать с этим ограничением. Нужны сверка dispatch evidence и отдельный provenance
-repair; frozen run здесь не переписывался. Новая
+читать с этим ограничением. Сверка выполнена в отдельном
+[provenance repair](../2026-10-14-scope-dispatch-provenance-repair-v1/README.md):
+12 actual child UUID и writer/raw associations подтверждены. Plaintext prompt
+equality из encrypted task records не подтверждена; runtime model identity и
+filesystem isolation по-прежнему не аттестованы. Frozen run здесь не переписывался. Новая
 [таблица adjudication](../../scope-binding-adjudication-v1.md) не использует частоты
 ответов как основание для semantic recommendations.
 
