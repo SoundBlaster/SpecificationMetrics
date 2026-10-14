@@ -340,3 +340,11 @@ newline formatting is `excluded / mechanics`. All four prospective criteria are
 met, with the definition criterion reviewed separately by the integrator.
 Agreement is not semantic correctness, a scoring reference, or a production
 metric update. Replay with `python3 validate_definition_owner_annotations.py`.
+
+The [four-layer contract/consumer preparation](manifest-contract-factorial-plan.md)
+freezes a source-selection catalog and twelve single-target packets crossing
+documentary requirements with path consumers. Offline gates preserve the exact
+whole expression, additive factors, repeated task identities, document/code
+quotes and attempt receipts. The [handoff runbook](manifest-contract-factorial-runbook.md)
+provides scoped delivery folders and genuinely blank manual-review records.
+Preparation is not dispatch, an evaluated reference or a production metric update.
