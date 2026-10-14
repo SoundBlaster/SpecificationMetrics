@@ -342,9 +342,12 @@ Agreement is not semantic correctness, a scoring reference, or a production
 metric update. Replay with `python3 validate_definition_owner_annotations.py`.
 
 The [four-layer contract/consumer preparation](manifest-contract-factorial-plan.md)
-freezes a source-selection catalog and twelve single-target packets crossing
-documentary requirements with path consumers. Offline gates preserve the exact
+freezes source-selection catalogs and balanced v2 packets: twelve fresh contexts
+with four distinct targets each (48 case annotations), crossing documentary
+requirements with consumers. Each context sees all four modes on different
+targets; the unexecuted single-target v1 is preserved as superseded. Offline gates preserve the exact
 whole expression, additive factors, repeated task identities, document/code
 quotes and attempt receipts. The [handoff runbook](manifest-contract-factorial-runbook.md)
-provides scoped delivery folders and genuinely blank manual-review records.
+provides scoped delivery folders, actual-file preflight checks and genuinely
+blank manual-review records.
 Preparation is not dispatch, an evaluated reference or a production metric update.

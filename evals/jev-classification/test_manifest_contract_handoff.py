@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-import prepare_manifest_contract_factorial as preparation
+import prepare_manifest_contract_balanced as preparation
 import prepare_manifest_contract_handoff as subject
 import validate_manifest_contract_factorial as validator
 
@@ -28,6 +28,10 @@ class ManifestContractHandoffTests(unittest.TestCase):
             self.assertEqual((folder / 'template.json').read_bytes(), preparation.encoded(outputs[assigned['template']]))
             prompt = (self.destination / a['prompt']).read_text()
             self.assertEqual(prompt, preparation.PROMPT.format(directory=folder))
+            attempt = json.loads((self.destination / a['attempt_receipt']).read_text())
+            self.assertEqual(validator.validate_delivery(preparation.RUN, attempt)['status'],
+                             'delivery_bytes_verified_not_dispatched')
+            self.assertEqual(a['cases'], assigned['cases'])
         self.assertFalse(receipt['annotation_started'])
         self.assertEqual(receipt['provider_requests'], 0)
 
@@ -46,12 +50,24 @@ class ManifestContractHandoffTests(unittest.TestCase):
         review = subject.review_template(plan)
         self.assertEqual(review['status'], 'blank_manual_review_not_result')
         self.assertEqual({k: len(v['entries']) for k, v in review['criteria'].items()},
-                         {'H_contract': 6, 'H_consumers': 6, 'H_target_fidelity': 12})
+                         {'H_contract': 6, 'H_consumers': 6, 'H_target_fidelity': 48})
         for criterion in review['criteria'].values():
             self.assertIsNone(criterion['met'])
             for entry in criterion['entries']:
                 self.assertIsNone(entry['criterion_met'])
                 self.assertIsNone(entry['raw_output_sha256'])
+
+    def test_preflight_rejects_each_post_materialization_substitution(self):
+        delivery = subject.materialize(self.destination)
+        attempt = json.loads((self.destination / delivery['assignments'][0]['attempt_receipt']).read_text())
+        for name in ('packet.json', 'template.json', 'prompt.txt'):
+            with self.subTest(name=name):
+                path = Path(attempt['delivered_files'][name])
+                original = path.read_bytes()
+                path.write_bytes(b'{}')
+                with self.assertRaisesRegex(ValueError, 'Delivered bytes differ: ' + name):
+                    validator.validate_delivery(preparation.RUN, attempt)
+                path.write_bytes(original)
 
     def test_refuses_reuse_of_an_existing_delivery_directory(self):
         subject.materialize(self.destination)

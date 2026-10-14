@@ -3,7 +3,8 @@ import argparse
 import json
 from pathlib import Path
 
-import prepare_manifest_contract_factorial as preparation
+import prepare_manifest_contract_balanced as preparation
+from validate_manifest_contract_factorial import validate_delivery
 from question_grouping import digest
 
 
@@ -12,10 +13,11 @@ def review_template(plan):
     for name, cells in (('H_contract', ('02', '04')), ('H_consumers', ('03', '04')),
                         ('H_target_fidelity', ('01', '02', '03', '04'))):
         criteria[name] = {'status': 'pending_manual_review', 'met': None,
-                          'entries': [{'slot': a['slot'], 'cell': a['cell'], 'case_id': 'target-01',
+                          'entries': [{'slot': a['slot'], 'cell': c['cell'], 'case_id': c['case_id'],
                                        'raw_output_sha256': None, 'criterion_met': None,
                                        'supporting_quote': None, 'review_note': None}
-                                      for a in plan['assignments'] if a['cell'] in cells]}
+                                      for a in plan['assignments'] for c in a['cases']
+                                      if c['cell'] in cells and (name == 'H_target_fidelity' or c['case_id'] == 'target-01')]}
     return {'status': 'blank_manual_review_not_result', 'criteria': criteria,
             'reviewer': None, 'human_gold': False, 'reference_frozen_for_provider_scoring': False,
             'metric_effect': 'none'}
@@ -31,23 +33,28 @@ def materialize(destination, run=preparation.RUN):
     for a in outputs['dispatch-plan.json']['assignments']:
         directory = destination / a['slot']
         directory.mkdir()
-        hashes = {}
+        hashes, delivered = {}, {}
         for alias, source in (('packet.json', a['packet']), ('template.json', a['template'])):
             raw = preparation.encoded(outputs[source])
             with (directory / alias).open('xb') as stream:
                 stream.write(raw)
-            hashes[alias] = digest(raw)
+            delivered[alias] = str(directory / alias)
+            hashes[alias] = digest((directory / alias).read_bytes())
         prompt = preparation.PROMPT.format(directory=directory)
-        (prompts / (a['slot'] + '.txt')).write_text(prompt)
+        prompt_path = prompts / (a['slot'] + '.txt')
+        prompt_path.write_bytes(prompt.encode())
+        delivered['prompt.txt'] = str(prompt_path)
         receipt = {'slot': a['slot'], 'directory': str(directory), 'context_inheritance': None,
                    'context_inheritance_planned': 'none', 'agent_task': None,
                    'model_identity': 'not_dispatched_inherit_default_if_authorized',
-                   'input_file_sha256': hashes, 'dispatched_prompt_sha256': digest(prompt.encode()),
+                   'delivered_files': delivered, 'input_file_sha256': hashes,
+                   'dispatched_prompt_sha256': digest(prompt_path.read_bytes()),
                    'raw_output_sha256': None, 'provider_requests': 0,
                    'human_gold': False, 'metric_effect': 'none',
                    'reference_frozen_for_provider_scoring': False}
+        validate_delivery(run, receipt)
         (receipts / (a['slot'] + '.json')).write_bytes(preparation.encoded(receipt))
-        assignments.append({'slot': a['slot'], 'cell': a['cell'], 'repetition': a['repetition'],
+        assignments.append({'slot': a['slot'], 'cases': a['cases'], 'repetition': a['repetition'],
                             'directory': str(directory), 'prompt': 'prompts/' + a['slot'] + '.txt',
                             'attempt_receipt': 'receipts/' + a['slot'] + '.json'})
     review = review_template(outputs['dispatch-plan.json'])
@@ -71,7 +78,7 @@ def main():
     preparation.verify(args.run)
     receipt = materialize(args.destination, args.run) if args.destination else None
     print(json.dumps({'status': 'delivery_prepared_not_dispatched' if receipt else 'handoff_preview_only',
-                      'fresh_contexts_planned': 12, 'annotation_started': False,
+                      'fresh_contexts_planned': 12, 'case_annotations_planned': 48, 'annotation_started': False,
                       'provider_requests': 0, 'metric_effect': 'none'}, indent=2))
 
 
