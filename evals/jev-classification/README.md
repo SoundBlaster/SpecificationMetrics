@@ -351,3 +351,10 @@ quotes and attempt receipts. The [handoff runbook](manifest-contract-factorial-r
 provides scoped delivery folders, actual-file preflight checks and genuinely
 blank manual-review records.
 Preparation is not dispatch, an evaluated reference or a production metric update.
+
+The [scope-binding diagnostic v3 preparation](scope-binding-diagnostic-plan.md)
+separates shared-definition and selected-application judgments while keeping
+source code, consumers and binding facts fixed. Its 12 four-case packets plan
+48 annotations, with source-pinned AST anchors and offline CI replay. Templates
+remain blank; dispatch readiness is explicitly false until scope-aware actual-file
+handoff and retained-attempt validation are implemented. No metric or gold changes.
