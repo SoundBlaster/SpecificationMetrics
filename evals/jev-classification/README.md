@@ -413,3 +413,10 @@ writer/output associations. The [replacement retention runbook](scope-dispatch-p
 uses captured tool results instead of slot-derived identities. Encrypted task
 delivery can be correlated, but plaintext prompt equality, runtime model identity
 and filesystem isolation remain unverified. Frozen historical artifacts are unchanged.
+
+The [remaining manifest-application analysis](runs/2026-10-15-manifest-application-without-documents-analysis/README.md)
+proposes `needs_review / unknown` for target-01/cell03. Its code establishes path
+validation and adapter uses but leaves the primary artifact-reference contract
+ambiguous. This is not a rule that documentation is mandatory: code-only gate
+precedence provides a contrasting role witness. The proposed D3 decision remains
+unconfirmed; existing raw annotations, approved D1/D2 and scoring status are unchanged.

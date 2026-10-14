@@ -1,0 +1,193 @@
+{
+  "schema": "manifest-bound-no-docs-analysis-v1",
+  "status": "proposed_nonblind_D3_not_human_confirmed",
+  "recorded_at_utc": "2026-10-14T21:51:03.317609+00:00",
+  "directory_date_basis": "Europe/Moscow",
+  "reviewer": {
+    "role": "nonblind_model_integrator",
+    "prior_model_outputs_seen": true,
+    "documented_contrast_seen": true,
+    "human_confirmed_D1_D2_seen": true,
+    "independent_blind_reference": false
+  },
+  "analysis_authorized": true,
+  "label_human_confirmation": false,
+  "target": {
+    "case_id": "target-01",
+    "state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+    "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+    "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+    "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+    "cell": "03",
+    "evaluation_scope": {
+      "unit": "bound_application",
+      "definition": {
+        "symbol": "_safe_path",
+        "path": "tools/static_artifact_incremental_stage.py",
+        "span": [
+          37,
+          7,
+          37,
+          75
+        ],
+        "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+        "ast_sha256": "af91fd46fa5cb5c1272b75a6561d4ed5ca3827849f2ab30fec3dec28ce148808"
+      },
+      "application_binding": {
+        "enclosing_symbol": "_manifest_files",
+        "path": "tools/static_artifact_incremental_stage.py",
+        "span": [
+          49,
+          15,
+          49,
+          42
+        ],
+        "code": "_safe_path(row.get(\"path\"))",
+        "ast_sha256": "f9f28c82edc0d05accdf4dfe7d892419dadbee14f04d165296a4c96b8f7911a6",
+        "argument_binding": {
+          "parameter": "value",
+          "expression": "row.get(\"path\")"
+        },
+        "execution_claim": "static_possible_application_not_runtime_execution"
+      }
+    }
+  },
+  "proposal": {
+    "id": "D3",
+    "labels": {
+      "opportunity": "needs_review",
+      "concern_kind": "unknown"
+    },
+    "scope": "Only this exact target/cell/task under the supplied architecture profile and rubric",
+    "reason": "Code supports both generic adapter preconditions and a reference-integrity policy interpretation; primary contract of the whole predicate remains materially ambiguous. Missing documents alone is not the abstention rule.",
+    "ownership_uncertainty_is_not_the_abstention_reason": true
+  },
+  "source_file_sha256": {
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-03/packet.json": "d4dc3558253fe5d99cfdeee8a2700f1cdd1e827baa9929f7620bc5fb991511d4",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-04/packet.json": "c4386499245f192276d1b5fd6aaab0be7cccbe7d0e7a3cca0896c3664df7b146",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/review/semantic-review.json": "8a05466e84e3c5ddbc54655c8c3a21889521c2c509ace44bad8cb87afb53ec30",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/review/diagnosis.json": "2470f6238e0222560c54d20a08ad3ee8851269652b59ad888422e3e597d75423",
+    "runs/2026-10-14-scope-binding-adjudication-v1/decision.json": "b440a2bcd070358af3caedd1296491d4b4b6ec7bd33b80ab7206620468e2a4f3"
+  },
+  "semantic_evidence_basis": {
+    "case": {
+      "case_id": "target-01",
+      "state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d"
+    },
+    "fragment_ids": [
+      "fragment-01",
+      "fragment-02",
+      "fragment-03",
+      "fragment-04",
+      "fragment-05",
+      "fragment-06",
+      "fragment-07",
+      "fragment-08",
+      "fragment-09",
+      "fragment-10"
+    ],
+    "unshown_documentary_contract_imported": false,
+    "whole_expression_retained": true
+  },
+  "input_comparison": {
+    "from": {
+      "case_id": "target-01",
+      "state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "cell": "03"
+    },
+    "to": {
+      "case_id": "target-01",
+      "state_sha256": "6090f93d4252b65f8c23be63fb837f11274f788350cd2d949cc39fcaddcfa97f",
+      "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "cell": "04"
+    },
+    "same_target_profile_scope_binding": true,
+    "identical_fragment_prefix_count": 10,
+    "added_fragments": [
+      {
+        "fragment_id": "fragment-11",
+        "kind": "documented_contract",
+        "authority": "implemented_proposal_not_canonical_requirement"
+      },
+      {
+        "fragment_id": "fragment-12",
+        "kind": "documented_contract",
+        "authority": "operator_documentation"
+      }
+    ],
+    "comparison_is_not_causal_model_mechanism_proof": true
+  },
+  "calibration_only_not_path_semantic_input": {
+    "task": {
+      "case_id": "target-02",
+      "state_sha256": "a69b647aad24d93dc04c8ea9bcf7993467d5fe13ef9828f806790daa4869a29e",
+      "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7"
+    },
+    "cell": "03",
+    "role_witness": "Gate and refinement branches plus rank ordering show domain obligation precedence in code alone.",
+    "new_control_label_adjudicated": false
+  },
+  "original_annotations": [
+    {
+      "slot": "annotator-03",
+      "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-03-attempt-01/annotations.json",
+      "sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+      "labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "rationale_quotes": {
+        "opportunity": "Selected unit: bound_application, evaluating the whole path predicate with value statically bound to row.get(\"path\") inside _manifest_files. It distinguishes absolute, parent-traversing or noncanonical manifest paths from canonical relative paths. The supplied uses join those accepted manifest paths to a bundle directory and a staging destination, and use them in remote fetch URLs. This establishes consequential path validation, but does not settle whether this exact combined restriction defines permitted artifact references as a durable domain integrity rule or implements generic path representation and adapter constraints. The unsafe error is not a domain contract. The distinct domain decision needed for eligible, and an exclusively mechanical contract needed for excluded, remain materially uncertain. The separate staging_prefix application cannot establish the role of this selected manifest application.",
+        "concern_kind": "Selected unit: bound_application of the exact Boolean expression to the manifest row path in _manifest_files. Absolute paths, parent traversal and noncanonical spelling all cause rejection; downstream supplied code uses accepted references for bundle reads, staging copies and remote requests. Those facts support both an artifact-reference integrity interpretation and a generic path-adaptation interpretation, without establishing which is the primary contract of this whole predicate. Therefore unknown is preferable to guessing policy from the unsafe message or mechanics from its parser location. The static binding does not prove runtime execution; the staging-prefix use is context only."
+      },
+      "definitive_label_error_established": false
+    },
+    {
+      "slot": "annotator-07",
+      "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-07-attempt-01/annotations.json",
+      "sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+      "labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "rationale_quotes": {
+        "opportunity": "Selected unit: bound_application, the entire disjunction in _safe_path for value bound to row.get(\"path\") in _manifest_files. Fragment-01 rejects absolute paths, parent components and noncanonical POSIX spelling; fragment-04 makes the accepted value a manifest key, and fragment-05 joins that key to the local bundle before digest verification. These facts support a possible artifact-reference integrity rule, but also a generic representation and safe-I/O precondition. No supplied contract settles whether these combined constraints define permitted domain artifact references or only normalize and constrain an adapter path. That specific ambiguity leaves eligible and excluded plausible under the profile, so needs_review preserves it. The separate staging_prefix application is not authority for this selected binding, and the binding itself proves no runtime execution.",
+        "concern_kind": "Selected unit: bound_application of the whole exact path disjunction to the manifest row path. Its alternatives are relative, parent-free, canonical spellings versus paths rejected by one of the three clauses. Fragment-05 supplies a concrete bundle-read and hash-verification use; fragment-04 supplies manifest indexing. However, these uses do not settle the primary contract of the combined containment-like and representation checks: artifact-reference admissibility policy versus generic safe path adaptation. The unsafe error text cannot settle that distinction, and classifying only the traversal clauses would change the target boundaries. Therefore primary responsibility is unknown. The staging-prefix use and any runtime execution are not attributed to this application."
+      },
+      "definitive_label_error_established": false
+    },
+    {
+      "slot": "annotator-11",
+      "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-11-attempt-01/annotations.json",
+      "sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+      "labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "rationale_quotes": {
+        "opportunity": "Selected unit: bound_application, with value bound to row.get(\"path\") at _manifest_files. For this application the whole disjunction rejects absolute paths, parent traversal components, and noncanonical POSIX spellings in artifact-manifest entries. The supplied local-manifest reader joins those entries to bundle_dir and reads files; the staging fragment joins relative paths into source and destination paths. These uses affirm generic path representation and filesystem-adapter constraints. No distinct domain-reference permission or artifact eligibility rule is established for this expression, so the mechanical responsibility is excluded under the profile. The separate staging_prefix use does not determine this bound application, and no runtime invocation is asserted.",
+        "concern_kind": "Selected unit: bound_application, judging the exact disjunction for manifest row path values passed by _manifest_files. Its subject is the representation of a relative file path, and its alternatives are an absolute, traversing or noncanonical spelling versus an accepted relative canonical spelling. The downstream bundle-relative file access supports a primary role of generic technical path enforcement and normalization validation. The unsafe error alone would not settle this, but the demonstrated path-to-filesystem adaptation does. The fragments do not supply a distinct domain admissibility contract that would make this policy; later digest comparisons and copying are not classified as part of the target."
+      },
+      "definitive_label_error_established": false
+    }
+  ],
+  "historical_raw_edited": false,
+  "historical_model_review_edited": false,
+  "human_D1_D2_edited": false,
+  "rubric_changed": false,
+  "provider_scoring_reference_frozen": false,
+  "production_classifier_changed": false,
+  "metric_effect": "none",
+  "new_model_contexts": 0,
+  "direct_provider_requests": 0
+}

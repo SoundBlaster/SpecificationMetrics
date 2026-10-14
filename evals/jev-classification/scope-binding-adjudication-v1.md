@@ -128,3 +128,8 @@ notes сохранены, не переименованы в закрытые и
 Следующий шаг: проверить согласованность этих adjudication decisions с rubric и
 разобрать оставшееся manifest-применение без documentary contract перед отдельным
 решением о freezing provider-scoring reference.
+
+Отдельный [разбор cell03](runs/2026-10-15-manifest-application-without-documents-analysis/README.md)
+предлагает D3 `needs_review / unknown`: код подтверждает технические path uses,
+но не определяет первичный contract всей проверки в этом применении.
+Предложение ещё не подтверждено человеком и не дописывает ранее утверждённый record.
