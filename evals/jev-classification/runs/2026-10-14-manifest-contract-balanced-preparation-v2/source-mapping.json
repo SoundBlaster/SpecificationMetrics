@@ -1,0 +1,1228 @@
+{
+  "status": "integrator_only_not_for_annotation",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "conditions": [
+    {
+      "case_id": "target-01",
+      "family": "manifest-path",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "dbde930cc013846755f53322fe05d6879ab6681e72a278402ccef162acf575ee",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "family": "manifest-path",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+      "task_sha256": "0332edc12e07607bb7b52e546e72459b8ac07e75bd70f927659accb0fe5fc5f0",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+          "lines": [
+            17,
+            73
+          ],
+          "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+          "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "docs/static_artifact_publish.md",
+          "lines": [
+            38,
+            62
+          ],
+          "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+          "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "family": "manifest-path",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+      "task_sha256": "cd0ff2c3cbd7191255cf18204855ecefa84e1adaa233001c1cb48657e2fce6c1",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            59,
+            75
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "c060c00c4750a0c66b5d5535788cded33e439c47804c9500ae5882c890e9cb89",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            102,
+            104
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "fdedab33bddbf7b06c1aa0999d2806f96792d95514b80f13f5a53731c6ce0275",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            131,
+            138
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "25f368d192ed5fa3636736d7a5bbc3a561ae7fad81d4a3ae9470df94b8c79005",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-08",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            172,
+            173
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "2251cd9df17005035199e2b3a57162a3746d3f805617b55892eee84d16ca9ace",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-09",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            189,
+            200
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "1d80bb98c1298d279a661a50930e1c4410ac9f250732f3dbf3497c3dabf30a58",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-10",
+          "path": ".github/workflows/publish-static-artifacts.yml",
+          "lines": [
+            233,
+            255
+          ],
+          "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+          "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "family": "manifest-path",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+      "task_sha256": "450178657648047824397df468fcf97fa189db89c89d750e65c94e9d33a50ff7",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+          "lines": [
+            17,
+            73
+          ],
+          "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+          "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "docs/static_artifact_publish.md",
+          "lines": [
+            38,
+            62
+          ],
+          "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+          "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            59,
+            75
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "c060c00c4750a0c66b5d5535788cded33e439c47804c9500ae5882c890e9cb89",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-08",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            102,
+            104
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "fdedab33bddbf7b06c1aa0999d2806f96792d95514b80f13f5a53731c6ce0275",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-09",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            131,
+            138
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "25f368d192ed5fa3636736d7a5bbc3a561ae7fad81d4a3ae9470df94b8c79005",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-10",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            172,
+            173
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "2251cd9df17005035199e2b3a57162a3746d3f805617b55892eee84d16ca9ace",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-11",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            189,
+            200
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "1d80bb98c1298d279a661a50930e1c4410ac9f250732f3dbf3497c3dabf30a58",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-12",
+          "path": ".github/workflows/publish-static-artifacts.yml",
+          "lines": [
+            233,
+            255
+          ],
+          "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+          "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "family": "lifecycle-gate",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "state_sha256": "11c4b20739b31c73e9e0bf21cdd89a734d4add938dcba6eb259de3f44d20aafb",
+      "task_sha256": "c2f4faf5847b062c0e7c8643d67b77aad822adf6e3972472c9821f5044423bed",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            61,
+            95
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "a0345f2717986d4f53b8cbd96939961fd7046fa16941af7639a5481336c9e7c7",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1759,
+            3017
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "family": "lifecycle-gate",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "state_sha256": "08d4fb678b76a4130a54f4590082bcc392bfcb59b10ab8db404f824d7116806a",
+      "task_sha256": "f98023ca39a047c26b9fb3d0a0fc564101ae319740cb9246f23b4112fcd9e959",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            61,
+            95
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "a0345f2717986d4f53b8cbd96939961fd7046fa16941af7639a5481336c9e7c7",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1759,
+            3017
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "docs/product_workspace_stable_mode_guide.md",
+          "lines": [
+            168,
+            175
+          ],
+          "file_sha256": "e17acc38a3f68afcb47adf526d346fa31b03dc1a3ffef3d5f15e7489b05b24fa",
+          "excerpt_sha256": "0488eb764ee5a5554ff3a277c69a499ea39300502e899cd9559f603fbe7eaa8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "family": "lifecycle-gate",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "state_sha256": "fe9c07e08e22a9802fbaf5b57a5a8dfe8d5ba15ac8369695dda848f16acbe94c",
+      "task_sha256": "292b3658f936810385f16245fa884a04ac590768fcc19f76e32ae97bf28e48aa",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            61,
+            95
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "a0345f2717986d4f53b8cbd96939961fd7046fa16941af7639a5481336c9e7c7",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1759,
+            3017
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            18,
+            18
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "ba9f88914db60b8046911b38edd8a3850b6ec9a0a5feed54124ba8c1fb995cfc",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            409,
+            500
+          ]
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            19,
+            50
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "af9eaf0c4fc9f760ac0f84ae28c5138b8a8295c001e33a9b5626b63bdf54812f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            500,
+            1560
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/product_workspace_next_moves_support.py",
+          "lines": [
+            21,
+            45
+          ],
+          "file_sha256": "44b0e7aad5fb8d958932b3982e5f909f2b418403b8cf197d634122dddd88cf2a",
+          "excerpt_sha256": "95453bb5de77b6336faf50a6ae08f04b4fc34ab9556dc38a2613ca945c8e0dc9",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            527,
+            1193
+          ]
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            98,
+            233
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "520e7a21d5330fbafc36db2a2984f05e7ff3aefb994906fcf2a2876f1b71dc98",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "family": "lifecycle-gate",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "state_sha256": "7f07f5b23cfed35cabfb570d622f86cfc47acf7650932b4ab9cb439ca952e83f",
+      "task_sha256": "350c70f6799f9a9cdb97c8a1ad131cf11dade48dc5402f9409624ecb7034222d",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            61,
+            95
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "a0345f2717986d4f53b8cbd96939961fd7046fa16941af7639a5481336c9e7c7",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1759,
+            3017
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "docs/product_workspace_stable_mode_guide.md",
+          "lines": [
+            168,
+            175
+          ],
+          "file_sha256": "e17acc38a3f68afcb47adf526d346fa31b03dc1a3ffef3d5f15e7489b05b24fa",
+          "excerpt_sha256": "0488eb764ee5a5554ff3a277c69a499ea39300502e899cd9559f603fbe7eaa8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            18,
+            18
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "ba9f88914db60b8046911b38edd8a3850b6ec9a0a5feed54124ba8c1fb995cfc",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            409,
+            500
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            19,
+            50
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "af9eaf0c4fc9f760ac0f84ae28c5138b8a8295c001e33a9b5626b63bdf54812f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            500,
+            1560
+          ]
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/product_workspace_next_moves_support.py",
+          "lines": [
+            21,
+            45
+          ],
+          "file_sha256": "44b0e7aad5fb8d958932b3982e5f909f2b418403b8cf197d634122dddd88cf2a",
+          "excerpt_sha256": "95453bb5de77b6336faf50a6ae08f04b4fc34ab9556dc38a2613ca945c8e0dc9",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            527,
+            1193
+          ]
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "tools/product_workspace_next_moves.py",
+          "lines": [
+            98,
+            233
+          ],
+          "file_sha256": "195b633afb56e88a9ddfc47e453853bdfb389e445738a3ef347d89391aacd991",
+          "excerpt_sha256": "520e7a21d5330fbafc36db2a2984f05e7ff3aefb994906fcf2a2876f1b71dc98",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "family": "bdd-values",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "state_sha256": "b868fba98e7e5cf9696650386198869ddb4e5b693f0d2d8499a9503ad496c721",
+      "task_sha256": "3a11763d4468df8ef285187a73d3ef1ca37e1f22659a2494cd7419d2b9ffbd76",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/native_bdd/values_spec.py",
+          "lines": [
+            7,
+            29
+          ],
+          "file_sha256": "1c7509f9beef4d79511d5e6ad1fcf94a1d217ef74f7c55d3e31594ae166b49e8",
+          "excerpt_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            156,
+            1120
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            8,
+            17
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            219,
+            522
+          ]
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            31,
+            32
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            938,
+            1069
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            13,
+            20
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            508,
+            702
+          ]
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            28,
+            39
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            857,
+            1452
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "family": "bdd-values",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "state_sha256": "eb12579f48034a3638d646509eab9cbfe6578d79bd81977c10d6bab21ce2ef60",
+      "task_sha256": "a84fed78c8ff23fdcaf908cc1ec441eab6951393af5701ddf4ca79bd3f438619",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/native_bdd/values_spec.py",
+          "lines": [
+            7,
+            29
+          ],
+          "file_sha256": "1c7509f9beef4d79511d5e6ad1fcf94a1d217ef74f7c55d3e31594ae166b49e8",
+          "excerpt_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            156,
+            1120
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            8,
+            17
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            219,
+            522
+          ]
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            31,
+            32
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            938,
+            1069
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            13,
+            20
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            508,
+            702
+          ]
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            28,
+            39
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            857,
+            1452
+          ]
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "docs/reviews/0223_native_bdd_contract_input.yaml",
+          "lines": [
+            72,
+            76
+          ],
+          "file_sha256": "c03adc4df232ab093efb7c354587f895ad24d9e62e858d6217604bd5cfe482cf",
+          "excerpt_sha256": "71f3408fd1b7511b4587b9b6b9adc187ce90f5483cc052d2e97f2ee7d63437ca",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "family": "bdd-values",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "state_sha256": "4b7b8453b63d0c04f39262510b80835575bfda743799588212bf1488e67389ae",
+      "task_sha256": "d12b9a69e904b288743fca51f7650f8d27bcbe2f01869ef80dc4ccad8ac71371",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/native_bdd/values_spec.py",
+          "lines": [
+            7,
+            29
+          ],
+          "file_sha256": "1c7509f9beef4d79511d5e6ad1fcf94a1d217ef74f7c55d3e31594ae166b49e8",
+          "excerpt_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            156,
+            1120
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            8,
+            17
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            219,
+            522
+          ]
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            31,
+            32
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            938,
+            1069
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            13,
+            20
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            508,
+            702
+          ]
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            28,
+            39
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            857,
+            1452
+          ]
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "tools/native_bdd/boundary.py",
+          "lines": [
+            78,
+            96
+          ],
+          "file_sha256": "b9b6a82d55b8288e54248e2742540619a246e3466493aedd0a8389a1abc60ae8",
+          "excerpt_sha256": "a72dfb1e71fcddd68f181bec1b43d6d9b91c26fc5e7a52cb22b5a2052eb1c4d5",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "family": "bdd-values",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "state_sha256": "90bf87ac98f81ac63ce725e0e64e956d8abd7386e47e53ee3400d3504ea57b2f",
+      "task_sha256": "244f0f0e74216693c54d499a99a733ba7a973545ebfe379c85479b415f8ddfc3",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/native_bdd/values_spec.py",
+          "lines": [
+            7,
+            29
+          ],
+          "file_sha256": "1c7509f9beef4d79511d5e6ad1fcf94a1d217ef74f7c55d3e31594ae166b49e8",
+          "excerpt_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            156,
+            1120
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            8,
+            17
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            219,
+            522
+          ]
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/native_bdd/policy.py",
+          "lines": [
+            31,
+            32
+          ],
+          "file_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+          "excerpt_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            938,
+            1069
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            13,
+            20
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            508,
+            702
+          ]
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/native_bdd/composition.py",
+          "lines": [
+            28,
+            39
+          ],
+          "file_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+          "excerpt_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            857,
+            1452
+          ]
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "docs/reviews/0223_native_bdd_contract_input.yaml",
+          "lines": [
+            72,
+            76
+          ],
+          "file_sha256": "c03adc4df232ab093efb7c354587f895ad24d9e62e858d6217604bd5cfe482cf",
+          "excerpt_sha256": "71f3408fd1b7511b4587b9b6b9adc187ce90f5483cc052d2e97f2ee7d63437ca",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "path": "tools/native_bdd/boundary.py",
+          "lines": [
+            78,
+            96
+          ],
+          "file_sha256": "b9b6a82d55b8288e54248e2742540619a246e3466493aedd0a8389a1abc60ae8",
+          "excerpt_sha256": "a72dfb1e71fcddd68f181bec1b43d6d9b91c26fc5e7a52cb22b5a2052eb1c4d5",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "family": "yaml-rendering",
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "state_sha256": "6f706ec6298f67c71ac040a6351026fb42817e54a48b7503ddb122ce507505af",
+      "task_sha256": "1e09d27844782a5758c6e5c37fca7b9c5943598d8e401959bcb05447ebb152d2",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            65,
+            75
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "d7be668bd7fd373ce5b8c57944e8d95f35bbb51ad68cffc182ef828ca7e3801f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1707,
+            1999
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "family": "yaml-rendering",
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "state_sha256": "d0817f73cc03bbb74355481e4f10552f87d8677b076462ec21650c9fd48876a2",
+      "task_sha256": "3af3df824c08d8d73d0ff70eee78ee9da781b1fc5044618fa7af5d767f078e6d",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            65,
+            75
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "d7be668bd7fd373ce5b8c57944e8d95f35bbb51ad68cffc182ef828ca7e3801f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1707,
+            1999
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/README.md",
+          "lines": [
+            1987,
+            1992
+          ],
+          "file_sha256": "88037785f9777d26f9842de2e1f3382f8e1e771058ee81547cc190e218df0890",
+          "excerpt_sha256": "bc711787e5553f4ed973a761170e0cf443dd40b8d4f1fc31bd9ca9f74457b8bc",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "family": "yaml-rendering",
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "state_sha256": "13309b12c6887f809cc6f5eba8424e29129bfdf8135d4cb35cb51a294b0f81b0",
+      "task_sha256": "9b7542abaaa04e71527801c2d32220275f2c9c108140a382dae7b5424c509461",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            65,
+            75
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "d7be668bd7fd373ce5b8c57944e8d95f35bbb51ad68cffc182ef828ca7e3801f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1707,
+            1999
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            13,
+            13
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "d22d7204efefc07781701766eb556bda918c85f7e033c3fb0f71e64e266fd8cb",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            272,
+            284
+          ]
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            220,
+            246
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "52380b95f115f99593ce5968921b290928cd2171486cd584928be50d2afcf3e2",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            249,
+            255
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "e3bf50fb4ecea2b1205fbad5648d5811bd72819346a44c3856b697eea3c9cb4b",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "family": "yaml-rendering",
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "state_sha256": "de4a0bb2b3fa0a93d7029d0f71885c8ba1dc485aa9459aeff7b77880d536d365",
+      "task_sha256": "0ad218350edd221ed361ba2c7804ccea49f2fe4c4c22274551a8e7ec4d2c778b",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            65,
+            75
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "d7be668bd7fd373ce5b8c57944e8d95f35bbb51ad68cffc182ef828ca7e3801f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            1707,
+            1999
+          ]
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/README.md",
+          "lines": [
+            1987,
+            1992
+          ],
+          "file_sha256": "88037785f9777d26f9842de2e1f3382f8e1e771058ee81547cc190e218df0890",
+          "excerpt_sha256": "bc711787e5553f4ed973a761170e0cf443dd40b8d4f1fc31bd9ca9f74457b8bc",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            13,
+            13
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "d22d7204efefc07781701766eb556bda918c85f7e033c3fb0f71e64e266fd8cb",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+          "utf8_byte_span": [
+            272,
+            284
+          ]
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            220,
+            246
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "52380b95f115f99593ce5968921b290928cd2171486cd584928be50d2afcf3e2",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/spec_yaml.py",
+          "lines": [
+            249,
+            255
+          ],
+          "file_sha256": "cc1fbbb2a634ef7145101e5c92ce42ff5dbb9f1a885788d828c5e305b69f16a9",
+          "excerpt_sha256": "e3bf50fb4ecea2b1205fbad5648d5811bd72819346a44c3856b697eea3c9cb4b",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "status": "prepared_not_dispatched",
+  "fresh_contexts_planned": 12,
+  "targets_per_context": 1,
+  "case_annotations_planned": 12,
+  "contexts_per_cell": 3,
+  "assignments": [
+    {
+      "slot": "annotator-01",
+      "cell": "01",
+      "repetition": 1,
+      "packet": "packet-annotator-01.json",
+      "template": "template-annotator-01.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-02",
+      "cell": "02",
+      "repetition": 1,
+      "packet": "packet-annotator-02.json",
+      "template": "template-annotator-02.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-03",
+      "cell": "03",
+      "repetition": 1,
+      "packet": "packet-annotator-03.json",
+      "template": "template-annotator-03.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-04",
+      "cell": "04",
+      "repetition": 1,
+      "packet": "packet-annotator-04.json",
+      "template": "template-annotator-04.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-05",
+      "cell": "02",
+      "repetition": 2,
+      "packet": "packet-annotator-05.json",
+      "template": "template-annotator-05.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-06",
+      "cell": "03",
+      "repetition": 2,
+      "packet": "packet-annotator-06.json",
+      "template": "template-annotator-06.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-07",
+      "cell": "04",
+      "repetition": 2,
+      "packet": "packet-annotator-07.json",
+      "template": "template-annotator-07.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-08",
+      "cell": "01",
+      "repetition": 2,
+      "packet": "packet-annotator-08.json",
+      "template": "template-annotator-08.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-09",
+      "cell": "03",
+      "repetition": 3,
+      "packet": "packet-annotator-09.json",
+      "template": "template-annotator-09.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-10",
+      "cell": "04",
+      "repetition": 3,
+      "packet": "packet-annotator-10.json",
+      "template": "template-annotator-10.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-11",
+      "cell": "01",
+      "repetition": 3,
+      "packet": "packet-annotator-11.json",
+      "template": "template-annotator-11.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    },
+    {
+      "slot": "annotator-12",
+      "cell": "02",
+      "repetition": 3,
+      "packet": "packet-annotator-12.json",
+      "template": "template-annotator-12.json",
+      "agent_task": null,
+      "directory": null,
+      "annotation_output": null
+    }
+  ],
+  "provider_requests": 0,
+  "metric_effect": "none"
+}
