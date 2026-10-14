@@ -1,0 +1,398 @@
+{
+  "status": "integrator_only_not_for_annotation",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "conditions": [
+    {
+      "cell": "01",
+      "documents": false,
+      "consumers": false,
+      "case_id": "target-01",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "3427b63e6d8781dcc4647208623c243c0cfd50abde0368fb2bcf1a906ae77bbd",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "cell": "02",
+      "documents": true,
+      "consumers": false,
+      "case_id": "target-01",
+      "state_sha256": "e3cc4587280ecf2fd54240c021b289fbe4c681f2c684d2f027fb02317ffbd2be",
+      "task_sha256": "c5e2877ed446d99a354fd7253e81f63fe53f26c50ac3f42f7dab8786ad9f551c",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+          "lines": [
+            17,
+            73
+          ],
+          "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+          "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "docs/static_artifact_publish.md",
+          "lines": [
+            38,
+            62
+          ],
+          "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+          "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "cell": "03",
+      "documents": false,
+      "consumers": true,
+      "case_id": "target-01",
+      "state_sha256": "49da1d0295ae57770284b3440324c1f05bde32028d9fa753251f461d645d266e",
+      "task_sha256": "0b9c5a65b7c1ffcb27fc02ac90f6c61bab8cdbf1cf08c72afdd6d63ec949d5eb",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            59,
+            75
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "c060c00c4750a0c66b5d5535788cded33e439c47804c9500ae5882c890e9cb89",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            102,
+            104
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "fdedab33bddbf7b06c1aa0999d2806f96792d95514b80f13f5a53731c6ce0275",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            131,
+            138
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "25f368d192ed5fa3636736d7a5bbc3a561ae7fad81d4a3ae9470df94b8c79005",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-08",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            172,
+            173
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "2251cd9df17005035199e2b3a57162a3746d3f805617b55892eee84d16ca9ace",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-09",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            189,
+            200
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "1d80bb98c1298d279a661a50930e1c4410ac9f250732f3dbf3497c3dabf30a58",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-10",
+          "path": ".github/workflows/publish-static-artifacts.yml",
+          "lines": [
+            233,
+            255
+          ],
+          "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+          "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    },
+    {
+      "cell": "04",
+      "documents": true,
+      "consumers": true,
+      "case_id": "target-01",
+      "state_sha256": "34fd3c9f2dbf8ae1000f8f0da17f094383a2e029e07c0f9447b7c9538a713bca",
+      "task_sha256": "d9786b13bd385152c135b444b1568f07a186e065d797d050b7d7f67112fba3f0",
+      "fragments": [
+        {
+          "fragment_id": "fragment-01",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            33,
+            39
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-02",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            17,
+            17
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "08066edf143b296e22c8807be565d4803e718167c288716bf8f2dad1a28abaee",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-03",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            21,
+            22
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "6e69742f9ef98519433f8a9cf776dadef208c796a8823544cb97fb0b27769a76",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-04",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            42,
+            56
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-05",
+          "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+          "lines": [
+            17,
+            73
+          ],
+          "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+          "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-06",
+          "path": "docs/static_artifact_publish.md",
+          "lines": [
+            38,
+            62
+          ],
+          "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+          "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-07",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            59,
+            75
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "c060c00c4750a0c66b5d5535788cded33e439c47804c9500ae5882c890e9cb89",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-08",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            102,
+            104
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "fdedab33bddbf7b06c1aa0999d2806f96792d95514b80f13f5a53731c6ce0275",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-09",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            131,
+            138
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "25f368d192ed5fa3636736d7a5bbc3a561ae7fad81d4a3ae9470df94b8c79005",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-10",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            172,
+            173
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "2251cd9df17005035199e2b3a57162a3746d3f805617b55892eee84d16ca9ace",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-11",
+          "path": "tools/static_artifact_incremental_stage.py",
+          "lines": [
+            189,
+            200
+          ],
+          "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+          "excerpt_sha256": "1d80bb98c1298d279a661a50930e1c4410ac9f250732f3dbf3497c3dabf30a58",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        },
+        {
+          "fragment_id": "fragment-12",
+          "path": ".github/workflows/publish-static-artifacts.yml",
+          "lines": [
+            233,
+            255
+          ],
+          "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+          "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+          "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b"
+        }
+      ]
+    }
+  ]
+}

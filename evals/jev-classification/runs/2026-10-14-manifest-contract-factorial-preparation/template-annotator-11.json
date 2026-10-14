@@ -1,0 +1,19 @@
+{
+  "status": "blank_not_reference",
+  "annotations": [
+    {
+      "case_id": "target-01",
+      "state_sha256": "449b36c87e142dd85c9da5dff585f7bc1b6eb2a931ff7178fc3eb3e640bd6134",
+      "task_sha256": "3427b63e6d8781dcc4647208623c243c0cfd50abde0368fb2bcf1a906ae77bbd",
+      "rubric_sha256": "4e4ccb6d2f25c31ed682f05c426e6cef909ffc84f1025e83c08a60d548eee65e",
+      "opportunity": null,
+      "concern_kind": null,
+      "rationales": {
+        "opportunity": "",
+        "concern_kind": ""
+      },
+      "evidence_quotes": [],
+      "uncertainties": []
+    }
+  ]
+}
