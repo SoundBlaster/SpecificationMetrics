@@ -1,0 +1,8 @@
+{
+  "status": "v3_0_superseded_before_annotation_not_failed_model_run",
+  "prior_receipt_sha256": "b440ba912efdfe35995164f84bdd0b9021088e54ef2e1f03180ac75c6dfe0a29",
+  "reason": "PR #57 review: prefixed scope instruction conflicted with inherited exhaustive allowed-input list.",
+  "prior_annotation_started": false,
+  "provider_requests": 0,
+  "metric_effect": "none"
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "study_kind": "scope_binding_diagnostic",
+  "instructions": "Judge only the exact expression independently under the supplied profile/rubric. Cite supplied evidence for each axis and retain uncertainty. No author labels or provider predictions are supplied. Do not transfer a label from another evidence view.",
+  "questions": {
+    "opportunity": {
+      "type": "choice",
+      "instructions": "Respect state.evaluation_scope.unit. For shared_definition, judge the exact expression as part of its shared definition across the supplied uses. For bound_application, judge that SAME exact expression for the selected static argument/receiver binding at the recorded callsite, not the call expression or the whole caller. Other uses are context, not authority to transfer their role to this application. Both units receive identical code and binding facts. Binding metadata establishes a possible static association, not runtime execution, domain purpose, Specification ownership or a desired label. State the selected unit and evidence for each judgment in both rationales. Judge ONLY the exact target expression under the supplied architecture profile. Supporting declarations and contracts explain this target; they are not additional candidates. Identify the subject, the alternatives distinguished by the predicate, and its demonstrated decision role. Use a supplied implementation for a helper call; judge a selected assembly as a whole without cherry-picking a lambda or guard. A pure declared predicate contract can establish a domain decision: executed side effects, multiple uses, high complexity and immediate code reduction are NOT required. Choose eligible when supplied evidence establishes a stable domain decision or domain behavior-selection contract whose definition benefits from a named, addressable, observable Specification. Choose excluded only with affirmative evidence of representation/parsing/I-O/adaptation mechanics without a distinct domain decision, or explicit evidence that a Specification already owns this SAME decision through its evaluation path. An unsafe error, a helper name, a permission-sounding field, branch count, imports, or a Specification elsewhere do not alone establish fit or same-decision ownership. A parser may enforce domain policy; a rejection or security-sounding check may also implement mechanics. For path checks, seek evidence of the contract for permitted domain references versus representation or generic adapter constraints; a declared integrity contract can suffice without actual filesystem access, but do not infer such a contract from the word unsafe. An isolated permission field can identify a topic without proving whether this site defines policy, adapts a verdict or merely reports it. Choose needs_review when a specific missing fact leaves materially different opportunity labels plausible. Do not require every caller or runtime binding when the supplied contract already settles this exact decision. Unknown ownership is not proof of ownership and does not automatically force abstention for an otherwise clear architectural-fit suggestion. Classify this axis independently: concern-kind uncertainty need not prevent eligible when both plausible responsibilities establish fit. Do not invent omitted facts or transfer labels from other evidence views.",
+      "criteria": {
+        "eligible": "Supplied evidence establishes a stable domain decision or domain behavior-selection contract suitable for a named, addressable, observable Specification; one use is sufficient. No supplied evidence establishes existing Specification ownership of this same decision.",
+        "excluded": "Affirmative evidence establishes technical mechanics without a distinct domain decision, or explicit same-decision Specification ownership. Mere lack of policy evidence is not exclusion.",
+        "needs_review": "A specific material ambiguity or missing fact prevents a reliable opportunity judgment. Abstention is unknown, not exclusion."
+      }
+    },
+    "concern_kind": {
+      "type": "choice",
+      "instructions": "Respect state.evaluation_scope.unit. For shared_definition, judge the exact expression as part of its shared definition across the supplied uses. For bound_application, judge that SAME exact expression for the selected static argument/receiver binding at the recorded callsite, not the call expression or the whole caller. Other uses are context, not authority to transfer their role to this application. Both units receive identical code and binding facts. Binding metadata establishes a possible static association, not runtime execution, domain purpose, Specification ownership or a desired label. State the selected unit and evidence for each judgment in both rationales. Independently classify the PRIMARY RESPONSIBILITY of ONLY the exact target expression, using its supplied subject, alternatives and decision role. Supporting code establishes meanings and effects; do not classify an entire containing function or unrelated later decisions. A pure declared domain predicate can be policy without executing effects. Policy decides domain admissibility, authority, evidence sufficiency, eligibility, lifecycle obligations or which domain work has precedence. Mechanics parses, represents, transports, adapts or performs generic technical enforcement without a demonstrated distinct domain decision. A validation branch can enforce either role: rejection, an unsafe message, names and file location alone do not settle it. A supplied contract restricting permitted domain references can establish path-integrity policy even inside a parser and without actual filesystem access; generic path checks without a settled role must not automatically become either policy or mechanics. Variant_behavior selects a variant-specific implementation or behavior for an already established domain activity. Tie rule: a predicate deciding WHETHER work is allowed/required or WHICH obligation takes precedence is policy; selection of HOW an already established activity is implemented for a domain variant is variant_behavior. Testing an enum, boolean or none sentinel does not by itself establish variant_behavior. If the target only recognizes an external syntactic tag to construct typed facts, that dispatch is mechanics. Apply the tie rule to the selected expression: subsequent dispatch among individual handlers does not turn a preceding lifecycle-priority predicate into variant_behavior. If independently meaningful policy and adaptation are mixed in the selected expression and its primary contract cannot be established, choose unknown rather than silently changing target boundaries. Identifiers are evidence of a possible subject, not proof of enforcement or of the primary role; do not infer an operative permission gate from a permission-sounding field alone. A responsibility can be clear while Specification suitability or ownership remains unknown. Existing Specification ownership does not turn policy into mechanics. Choose unknown only for material ambiguity; ordinary unshown consumers are not a reason to abstain when the supplied expression or declared contract already settles responsibility. Do not infer omitted dependencies or copy labels from another evidence view.",
+      "criteria": {
+        "policy": "A demonstrated durable domain admissibility, authority, trust, evidence, eligibility, lifecycle or obligation-priority decision; validation and pure predicates can implement it.",
+        "mechanics": "A demonstrated parsing, representation, I/O, adaptation or generic technical-enforcement responsibility without a distinct domain decision.",
+        "variant_behavior": "Selection of variant-specific domain implementation or behavior for an already established activity, rather than eligibility or obligation precedence.",
+        "unknown": "The supplied evidence does not establish a reliable primary responsibility; do not guess from names or silently split a mixed target."
+      }
+    }
+  },
+  "rubric_id": "specification_metrics.expression-fit.v3.1-scope-diagnostic",
+  "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+  "questions_sha256": "97c26a65012da5f00c4d65768722ddb5a39fbd0a147edb9d473efba8a3038366",
+  "annotation_prompt_sha256": "cc80b6f9c6a8cce7292afd1b56ff96dfa343e1c7da0b7ad8fbdaac6eba1759fd",
+  "cases": [
+    {
+      "case_id": "target-04",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not rendered.endswith(\"\\n\")",
+          "syntax_kind": "UnaryOp",
+          "scope": "exact expression only"
+        },
+        "evaluation_scope": {
+          "unit": "bound_application",
+          "definition": {
+            "symbol": "dump_canonical_yaml",
+            "path": "tools/spec_yaml.py",
+            "span": [
+              73,
+              7,
+              73,
+              34
+            ],
+            "code": "not rendered.endswith(\"\\n\")",
+            "ast_sha256": "49bf7a97e37843d0320ba3d1bdc9c8c5786bcb780b7c2ad5e1c96b09e5e3bcb4"
+          },
+          "application_binding": {
+            "enclosing_symbol": "lint_file",
+            "path": "tools/spec_yaml.py",
+            "span": [
+              235,
+              16,
+              235,
+              41
+            ],
+            "code": "dump_canonical_yaml(data)",
+            "ast_sha256": "487cc5818ea1470caeae621083d2a0126928cd3696f268cf2708059a899f1b5e",
+            "argument_binding": {
+              "parameter": "data",
+              "expression": "data"
+            },
+            "execution_claim": "static_possible_application_not_runtime_execution"
+          }
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "kind": "code",
+              "code": "def dump_canonical_yaml(data: dict[str, Any]) -> str:\n    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )\n    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered\n"
+            },
+            {
+              "fragment_id": "fragment-02",
+              "kind": "code",
+              "code": "import yaml\n"
+            },
+            {
+              "fragment_id": "fragment-03",
+              "kind": "code",
+              "code": "def lint_file(path: Path) -> list[LintIssue]:\n    issues: list[LintIssue] = []\n    try:\n        source = path.read_text(encoding=\"utf-8\")\n    except FileNotFoundError:\n        return [LintIssue(path=path, message=\"file does not exist\")]\n\n    try:\n        data = load_yaml_text(source)\n    except Exception as exc:\n        return [LintIssue(path=path, message=str(exc))]\n\n    for message in _validate_spec_shape(data):\n        issues.append(LintIssue(path=path, message=message))\n\n    canonical = dump_canonical_yaml(data)\n    if source != canonical:\n        issues.append(\n            LintIssue(\n                path=path,\n                message=(\n                    \"file is not canonically formatted; run \"\n                    f\"`python tools/spec_yaml_format.py {path}`\"\n                ),\n            )\n        )\n    return issues\n"
+            },
+            {
+              "fragment_id": "fragment-04",
+              "kind": "code",
+              "code": "def format_file(path: Path) -> bool:\n    source = path.read_text(encoding=\"utf-8\")\n    canonical = canonicalize_text(source)\n    if source == canonical:\n        return False\n    path.write_text(canonical, encoding=\"utf-8\")\n    return True\n"
+            },
+            {
+              "fragment_id": "fragment-05",
+              "kind": "documented_contract",
+              "text": "The spec YAML formatter and linter default to `specs/nodes/*.yaml`. The formatter\nrewrites files into the repository's canonical YAML style; the linter enforces\nsyntax, rejects duplicate keys, and fails when a file has drifted from canonical\nformatting. Canonical spec nodes now require top-level `created_at` and\n`updated_at` timestamps immediately after `kind`.\n\n",
+              "authority": "tool_documentation"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "state_sha256": "49aa11c6bf1948d6e348c69bf98430471e09b027df3bcb9b9fa6edd177902c4a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130"
+    },
+    {
+      "case_id": "target-03",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "not step.valid",
+          "syntax_kind": "UnaryOp",
+          "scope": "exact expression only"
+        },
+        "evaluation_scope": {
+          "unit": "bound_application",
+          "definition": {
+            "symbol": "BDDScenarioValuesSpec.findings",
+            "path": "tools/native_bdd/values_spec.py",
+            "span": [
+              27,
+              23,
+              27,
+              37
+            ],
+            "code": "not step.valid",
+            "ast_sha256": "e2c759a02c2a2d774d78e589fac1bc4c92829a05ff1dee7f38102014eb872e89"
+          },
+          "application_binding": {
+            "enclosing_symbol": "evaluate",
+            "path": "tools/native_bdd/composition.py",
+            "span": [
+              36,
+              27,
+              36,
+              51
+            ],
+            "code": "policy.findings(context)",
+            "ast_sha256": "6b18680bdcd2dbe6d72f90088dd1ec061ef5eadf3c0fe2890b43648b866cae71",
+            "argument_binding": {
+              "parameter": "context",
+              "expression": "context"
+            },
+            "execution_claim": "static_possible_application_not_runtime_execution",
+            "receiver_binding": {
+              "receiver": "policy",
+              "selected_member": "BDDScenarioValuesSpec()",
+              "container": "POLICIES",
+              "membership_witness": {
+                "path": "tools/native_bdd/composition.py",
+                "span": [
+                  13,
+                  0,
+                  20,
+                  1
+                ],
+                "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)",
+                "ast_sha256": "e84eb1af7c839523493a740a88967bedca1cdbd789c22bee2c9bc4918b08718b"
+              }
+            }
+          }
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "kind": "code",
+              "code": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\"\n\n    def skip_reason(self, context: BDDContext) -> str | None:\n        return super().skip_reason(context) or entry_skip(context)\n\n    def findings(self, context: BDDContext):\n        findings = []\n        for index, entry in enumerate(context.entries):\n            if not entry.is_mapping:\n                continue\n            path = f\"specification.bdd_scenarios[{index}]\"\n            if not entry.id.valid:\n                findings.append(issue(\"invalid_value\", path + \".id\"))\n            if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))\n            else:\n                findings.extend(\n                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid\n                )\n        return tuple(findings)"
+            },
+            {
+              "fragment_id": "fragment-02",
+              "kind": "code",
+              "code": "class BDDPolicy(Specification[BDDContext]):\n    spec_id = \"SG-SPEC-0070\"\n    rule_ref: str\n\n    def __init__(self) -> None:\n        super().__init__(name=self.rule_ref)\n        self._seal()\n\n    def findings(self, context: BDDContext) -> tuple[BDDScenarioFinding, ...]:\n        raise NotImplementedError"
+            },
+            {
+              "fragment_id": "fragment-03",
+              "kind": "code",
+              "code": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)"
+            },
+            {
+              "fragment_id": "fragment-04",
+              "kind": "code",
+              "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)"
+            },
+            {
+              "fragment_id": "fragment-05",
+              "kind": "code",
+              "code": "    for policy in POLICIES:\n        skip = policy.skip_reason(context)\n        if skip:\n            if recorder is not None:\n                recorder.skipped(policy.rule_ref)\n            outcomes.append(PolicyOutcome(policy.rule_ref, \"skipped\", skip))\n            continue\n        passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)\n        findings.extend(current_findings)\n        outcomes.append(PolicyOutcome(policy.rule_ref, \"satisfied\" if passed else \"unsatisfied\"))\n        context = policy.transition(context, current_findings)"
+            },
+            {
+              "fragment_id": "fragment-06",
+              "kind": "code",
+              "code": "def load_native_bdd(source: str, *, profile: str, recorder=None) -> BDDResult:\n    digest = sha256(source.encode(\"utf-8\")).hexdigest()\n    try:\n        facts = context(load_yaml_text(source), profile)\n    except (DuplicateKeyError, yaml.YAMLError, ValueError, TypeError) as error:\n        code = \"duplicate_yaml_key\" if isinstance(error, DuplicateKeyError) else \"invalid_value\"\n        if recorder is not None:\n            for policy in POLICIES:\n                recorder.skipped(policy.rule_ref)\n        return BDDResult(\n            profile,\n            BDDScenarioPresence.INVALID,\n            (issue(code, \"document\"),),\n            tuple(PolicyOutcome(p.rule_ref, \"skipped\", \"invalid_yaml_boundary\") for p in POLICIES),\n            (),\n            digest,\n            POLICIES[0].safe_trace_label(profile),\n        )\n    return evaluate(facts, digest, recorder=recorder)\n"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+    },
+    {
+      "case_id": "target-02",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "gate != \"none\"",
+          "syntax_kind": "Compare",
+          "scope": "exact expression only"
+        },
+        "evaluation_scope": {
+          "unit": "shared_definition",
+          "definition": {
+            "symbol": "candidate_move",
+            "path": "tools/product_workspace_next_moves.py",
+            "span": [
+              71,
+              7,
+              71,
+              21
+            ],
+            "code": "gate != \"none\"",
+            "ast_sha256": "cc37db2b2b231e0995298ff81ac0c600c691b7a297c4df869c1e308376876789"
+          },
+          "application_binding": {
+            "enclosing_symbol": "build_product_workspace_next_moves",
+            "path": "tools/product_workspace_next_moves.py",
+            "span": [
+              150,
+              20,
+              155,
+              9
+            ],
+            "code": "candidate_move(\n            node,\n            source_path=source_path,\n            gate_order=gate_order,\n            status_order=status_order,\n        )",
+            "ast_sha256": "6713b4f320cfdc4dc6b9eee7a351f726bf5217cefe4d228a9335cb9e9e5daf99",
+            "argument_binding": {
+              "parameter": "node",
+              "expression": "node"
+            },
+            "execution_claim": "static_possible_application_not_runtime_execution"
+          }
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "kind": "code",
+              "code": "def candidate_move(\n    node: workspace.SpecNode,\n    *,\n    source_path: str,\n    gate_order: list[str],\n    status_order: list[str],\n) -> tuple[int, dict[str, Any]] | None:\n    if node.status not in VALID_STATUSES:\n        raise ValueError(f\"unsupported canonical status for {node.id}: {node.status}\")\n    gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)\n        kind = \"refine_spec\"\n    else:\n        return None\n\n    return rank, {\n        \"kind\": kind,\n        \"spec_id\": node.id,\n        \"title\": node.title,\n        \"status\": node.status,\n        \"gate_state\": gate,\n        \"next_gap\": next_gap,\n        \"source_artifact\": source_path,\n        \"command_hint\": command_hint,\n        \"review_required\": True,\n    }\n"
+            },
+            {
+              "fragment_id": "fragment-02",
+              "kind": "code",
+              "code": "VALID_STATUSES = {\"idea\", \"stub\", \"outlined\", \"specified\", \"linked\", \"reviewed\", \"frozen\"}\n"
+            },
+            {
+              "fragment_id": "fragment-03",
+              "kind": "code",
+              "code": "GATE_ACTIONS = {\n    \"review_pending\": (\n        \"review_gate\",\n        \"review_exact_gate_candidate\",\n        \"Read the exact run and candidate for {spec_id}, then resolve its review gate.\",\n    ),\n    \"split_required\": (\n        \"split_spec\",\n        \"structural_split\",\n        \"Review the structural split requirement for {spec_id} before rerunning refinement.\",\n    ),\n    \"retry_pending\": (\n        \"retry_refinement\",\n        \"repair_then_retry\",\n        \"Repair the failed condition for {spec_id}, then rerun targeted refinement.\",\n    ),\n    \"blocked\": (\n        \"resolve_blocker\",\n        \"resolve_blocker\",\n        \"Identify and resolve the recorded blocker for {spec_id} before retrying.\",\n    ),\n    \"redirected\": (\n        \"redirect_refinement\",\n        \"update_prompt_scope_and_rerun\",\n        \"Update the prompt or scope for {spec_id}, then rerun targeted refinement.\",\n    ),\n    \"escalated\": (\n        \"manual_escalation\",\n        \"manual_escalation\",\n        \"Review the manual escalation for {spec_id} before further refinement.\",\n    ),\n}\n"
+            },
+            {
+              "fragment_id": "fragment-04",
+              "kind": "code",
+              "code": "@dataclass(frozen=True)\nclass SpecNode:\n    path: Path\n    data: dict[str, Any]\n\n    @property\n    def id(self) -> str:\n        return str(self.data.get(\"id\", \"\")).strip()\n\n    @property\n    def title(self) -> str:\n        return str(self.data.get(\"title\", \"\")).strip()\n\n    @property\n    def status(self) -> str:\n        return str(self.data.get(\"status\", \"stub\")).strip()\n\n    @property\n    def gate_state(self) -> str:\n        return str(self.data.get(\"gate_state\", \"none\")).strip() or \"none\"\n\n    @property\n    def allowed_paths(self) -> list[str]:\n        value = self.data.get(\"allowed_paths\", [])\n        return list(value) if isinstance(value, list) else []\n"
+            },
+            {
+              "fragment_id": "fragment-05",
+              "kind": "code",
+              "code": "def build_product_workspace_next_moves(\n    workspace_root: Path,\n    *,\n    target_spec: str | None = None,\n) -> dict[str, Any]:\n    root = workspace_root.expanduser().resolve(strict=True)\n    if not root.is_dir():\n        raise ValueError(f\"workspace root is not a directory: {root}\")\n    policy = load_policy()\n    config_path = root / \"specgraph.project.yaml\"\n    if not config_path.is_file():\n        raise ValueError(\"product_workspace requires specgraph.project.yaml\")\n    project_policy = workspace.load_product_policy()\n    environment = workspace.product_environment(config_path, project_policy)\n    project = environment[\"project\"]\n    profile = project[\"governance_profile\"]\n\n    specs_dir = root / \"specs\" / \"nodes\"\n    if not specs_dir.is_dir():\n        raise ValueError(\"product_workspace requires specs/nodes directory\")\n    specs = workspace.load_specs_from_dir(specs_dir)\n    if any(not isinstance(node.data, dict) for node in specs):\n        raise ValueError(\"canonical spec nodes must be mappings with nonempty IDs\")\n    ids = [node.id for node in specs]\n    if any(not node.id for node in specs):\n        raise ValueError(\"canonical spec nodes must be mappings with nonempty IDs\")\n    if len(ids) != len(set(ids)):\n        raise ValueError(\"canonical spec node IDs must be unique\")\n    for node in specs:\n        if node.path.stem != node.id or node.data.get(\"kind\") != \"spec\":\n            raise ValueError(f\"invalid canonical spec identity: {node.path.name}\")\n\n    if target_spec:\n        target = next((node for node in specs if node.id == target_spec), None)\n        if target is None:\n            raise ValueError(f\"target spec is absent from product workspace: {target_spec}\")\n        selected_specs = workspace.subtree_nodes(target, specs)\n    else:\n        selected_specs = specs\n\n    gate_order = list(policy[\"priority\"][\"gates\"])\n    status_order = list(policy[\"priority\"][\"refinable_statuses\"])\n    if set(gate_order) != set(GATE_ACTIONS):\n        raise ValueError(\"product next-move policy must rank every canonical gate state\")\n    authority = environment.get(\"supervisor_authority\", {})\n    refinement_allowed = (\n        isinstance(authority, dict) and authority.get(\"allow_project_spec_refinement\") is True\n    )\n    eligible: list[tuple[int, dict[str, Any]]] = []\n    blocked: list[dict[str, Any]] = []\n    for node in selected_specs:\n        source_path = node.path.relative_to(root).as_posix()\n        candidate = candidate_move(\n            node,\n            source_path=source_path,\n            gate_order=gate_order,\n            status_order=status_order,\n        )\n        if candidate is None:\n            continue\n        rank, move = candidate\n        authorization = workspace.authorize_target(\n            target_spec_id=node.id,\n            target_paths=workspace.effective_allowed_paths_for_run(node, root),\n            environment=environment,\n        )\n        blocked_by = list(authorization[\"blocked_by\"])\n        if not refinement_allowed:\n            blocked_by.append(\"blocked_by_project_spec_refinement_disabled\")\n        if not blocked_by:\n            eligible.append((rank, move))\n        else:\n            blocked.append(\n                {\n                    **move,\n                    \"command_hint\": (\n                        f\"Resolve governance and workspace authority for {node.id} before action.\"\n                    ),\n                    \"blocked_by\": blocked_by,\n                    \"target_domain\": authorization[\"target_domain\"],\n                }\n            )\n    eligible.sort(key=lambda entry: (entry[0], entry[1][\"spec_id\"]))\n    blocked.sort(key=lambda move: move[\"spec_id\"])\n    recommended = eligible[0][1] if eligible else None\n    current_scene = (\n        (\"refinement_ready\" if recommended[\"kind\"] == \"refine_spec\" else recommended[\"kind\"])\n        if recommended\n        else \"governance_blocked\"\n        if blocked\n        else \"steady_state\"\n    )\n\n    return {\n        \"artifact_kind\": \"product_workspace_next_moves\",\n        \"schema_version\": 1,\n        \"generated_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"policy_reference\": {\n            \"artifact_path\": \"tools/product_workspace_next_moves_policy.json\",\n            \"sha256\": file_digest(POLICY_PATH),\n        },\n        \"project_environment_policy_reference\": {\n            \"artifact_path\": \"tools/project_environment_policy.json\",\n            \"sha256\": file_digest(workspace.PROJECT_POLICY_PATH),\n        },\n        \"project\": {\n            \"project_id\": project[\"project_id\"],\n            \"governance_profile\": profile,\n        },\n        \"scope\": {\n            \"target_spec\": target_spec or \"\",\n            \"selected_spec_ids\": [node.id for node in selected_specs],\n            \"selected_spec_count\": len(selected_specs),\n        },\n        \"input_contract\": policy[\"input_contract\"],\n        \"inputs\": {\n            \"project_config\": {\n                \"path\": \"specgraph.project.yaml\",\n                \"sha256\": file_digest(config_path),\n            },\n            \"canonical_specs\": [\n                {\n                    \"path\": node.path.relative_to(root).as_posix(),\n                    \"sha256\": file_digest(node.path),\n                }\n                for node in specs\n            ],\n        },\n        \"current_scene\": current_scene,\n        \"recommended_next_move_kind\": recommended[\"kind\"] if recommended else \"none\",\n        \"recommended_next_move\": recommended,\n        \"alternatives\": [move for _, move in eligible[1:]],\n        \"blocked_moves\": blocked,\n        \"canonical_mutations_allowed\": False,\n        \"tracked_artifacts_written\": False,\n    }\n"
+            },
+            {
+              "fragment_id": "fragment-06",
+              "kind": "documented_contract",
+              "text": "The artifact identifies the selected config and spec bytes by SHA-256 digest.\nIt prioritizes gate actions, then `outlined`, `specified`, and `linked` nodes\nfor bounded targeted refinement. Each candidate passes the product governance\npolicy and `allow_project_spec_refinement` authority checks. Forbidden\n`SG-SPEC-*` targets appear in `blocked_moves`, not as executable recommendations.\nA missing or invalid product config fails without writing an advisory artifact.\nThe output remains advice; gate approval and refinement still use their existing\nreview workflow.\n",
+              "authority": "operator_documentation"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "state_sha256": "785f38b1f538f15f3446c11ddffcf9097efc10a1c8a5fdf49a32560a561290c4",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f"
+    },
+    {
+      "case_id": "target-01",
+      "state": {
+        "architecture_profile": {
+          "architecture_intent": [
+            "Human intent is formalized into addressable rules, requirements, and policies linked to application architecture nodes.",
+            "A rule should be addressable from both its specification and its implementation, with a path toward runtime traceability.",
+            "Specifications support a durable, coherent development style and long-term localization of change; these benefits do not require immediate code reduction."
+          ],
+          "boundaries": [
+            "Parsing, serialization, persistence, transport, resource cleanup, and thin framework adaptation remain procedural when they only implement technical mechanics.",
+            "Callers may coordinate effects and lifecycle; a decision-bearing product policy may still be extracted from that coordination.",
+            "This profile describes architectural intent, not proof that a candidate is a rule, that a Specification already owns it, or that runtime tracing is currently implemented."
+          ],
+          "decision_principles": [
+            "A stable product or domain rule can be worth representing as a named Specification even when it currently has one use.",
+            "Repeated checks, variant dispatch, and high local complexity are useful clues, but none is required for a rule to be suitable.",
+            "Do not optimize lines of code or aggregate cyclomatic complexity in isolation."
+          ],
+          "evaluation_note": "The existing candidate opportunity classifier is evaluated here as an architectural fit signal. This profile is not an ownership detector and must not override formal ownership evidence.",
+          "id": "specificationcore.intent-centric",
+          "preferred_patterns": [
+            "Give a product rule a named, explicit identity and compose it from named rules where useful.",
+            "Keep specifications with their owning feature or bounded context.",
+            "Make rule evaluation observable and its relationship to implementation addressable where the surrounding system supports it."
+          ],
+          "purpose": "Treat SpecificationCore as a system-wide style for authoring, managing, observing, and controlling product rules consistently.",
+          "version": 2
+        },
+        "target": {
+          "language": "Python",
+          "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+          "syntax_kind": "BoolOp",
+          "scope": "exact expression only"
+        },
+        "evaluation_scope": {
+          "unit": "shared_definition",
+          "definition": {
+            "symbol": "_safe_path",
+            "path": "tools/static_artifact_incremental_stage.py",
+            "span": [
+              37,
+              7,
+              37,
+              75
+            ],
+            "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+            "ast_sha256": "af91fd46fa5cb5c1272b75a6561d4ed5ca3827849f2ab30fec3dec28ce148808"
+          },
+          "application_binding": {
+            "enclosing_symbol": "_manifest_files",
+            "path": "tools/static_artifact_incremental_stage.py",
+            "span": [
+              49,
+              15,
+              49,
+              42
+            ],
+            "code": "_safe_path(row.get(\"path\"))",
+            "ast_sha256": "f9f28c82edc0d05accdf4dfe7d892419dadbee14f04d165296a4c96b8f7911a6",
+            "argument_binding": {
+              "parameter": "value",
+              "expression": "row.get(\"path\")"
+            },
+            "execution_claim": "static_possible_application_not_runtime_execution"
+          }
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "fragment_id": "fragment-01",
+              "kind": "code",
+              "code": "def _safe_path(value: Any) -> str:\n    if not isinstance(value, str) or not value:\n        raise IncrementalStageError(\"manifest file path must be a non-empty string\")\n    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value\n"
+            },
+            {
+              "fragment_id": "fragment-02",
+              "kind": "code",
+              "code": "from pathlib import Path, PurePosixPath\n"
+            },
+            {
+              "fragment_id": "fragment-03",
+              "kind": "code",
+              "code": "class IncrementalStageError(ValueError):\n    pass\n"
+            },
+            {
+              "fragment_id": "fragment-04",
+              "kind": "code",
+              "code": "def _manifest_files(payload: Any) -> dict[str, dict[str, Any]]:\n    if not isinstance(payload, dict) or not isinstance(payload.get(\"files\"), list):\n        raise IncrementalStageError(\"artifact manifest must contain files[]\")\n    files: dict[str, dict[str, Any]] = {}\n    for row in payload[\"files\"]:\n        if not isinstance(row, dict):\n            raise IncrementalStageError(\"artifact manifest files[] entries must be objects\")\n        path = _safe_path(row.get(\"path\"))\n        digest = row.get(\"sha256\")\n        if not isinstance(digest, str) or len(digest) != 64:\n            raise IncrementalStageError(f\"manifest sha256 is invalid for {path}\")\n        if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row\n    return files\n"
+            },
+            {
+              "fragment_id": "fragment-05",
+              "kind": "code",
+              "code": "def _load_local_manifest(bundle_dir: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:\n    manifest_path = bundle_dir / \"artifact_manifest.json\"\n    try:\n        payload = json.loads(manifest_path.read_text(encoding=\"utf-8\"))\n    except (OSError, json.JSONDecodeError) as exc:\n        raise IncrementalStageError(f\"cannot read local artifact manifest: {exc}\") from exc\n    files = _manifest_files(payload)\n    for relative_path, row in files.items():\n        source = bundle_dir / relative_path\n        if not source.is_file():\n            raise IncrementalStageError(f\"local manifest path is missing: {relative_path}\")\n        actual = hashlib.sha256(source.read_bytes()).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"local manifest digest mismatch: {relative_path}\")\n    if not (bundle_dir / \"checksums.sha256\").is_file():\n        raise IncrementalStageError(\"local bundle is missing checksums.sha256\")\n    return payload, files\n"
+            },
+            {
+              "fragment_id": "fragment-06",
+              "kind": "code",
+              "code": "    prefix = _safe_path(staging_prefix) if staging_prefix else \"\"\n    _, local_files = _load_local_manifest(bundle_dir)\n    remote_files, remote_manifest_available = _remote_files(remote_manifest_url, fetcher)\n"
+            },
+            {
+              "fragment_id": "fragment-07",
+              "kind": "code",
+              "code": "    for relative_path in changed:\n        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path\n        destination.parent.mkdir(parents=True, exist_ok=True)\n        if destination.exists() and destination.read_bytes() != source.read_bytes():\n            raise IncrementalStageError(f\"staging path collision: {destination}\")\n        shutil.copyfile(source, destination)\n        payload_bytes += source.stat().st_size\n"
+            },
+            {
+              "fragment_id": "fragment-08",
+              "kind": "code",
+              "code": "    _, local_files = _load_local_manifest(bundle_dir)\n    base_url = remote_base_url.rstrip(\"/\")\n"
+            },
+            {
+              "fragment_id": "fragment-09",
+              "kind": "code",
+              "code": "    def verify(item: tuple[str, dict[str, Any]]) -> str:\n        path, row = item\n        try:\n            body = fetcher(f\"{base_url}/{path}\")\n        except Exception as exc:\n            raise IncrementalStageError(\n                f\"remote artifact request failed for {path}: {exc}\"\n            ) from exc\n        actual = hashlib.sha256(body).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"remote artifact digest mismatch: {path}\")\n        return path\n"
+            },
+            {
+              "fragment_id": "fragment-10",
+              "kind": "code",
+              "code": "      - name: Stage changed artifact payloads\n        if: env.SFTP_HOST != ''\n        run: |\n          rm -rf \"$INCREMENTAL_STAGE_DIR\"\n          mkdir -p \"$INCREMENTAL_STAGE_DIR\" \"$RUNNER_TEMP/specgraph-incremental-reports\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/root.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/team-decision-log \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/team-decision-log/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/team-decision-log \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/team-decision-log.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/hosted-operation-canary \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/hosted-operation-canary/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/hosted-operation-canary \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/hosted-operation-canary.json\"\n\n",
+              "language": "YAML"
+            }
+          ],
+          "truncated": false,
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence."
+        }
+      },
+      "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+    }
+  ]
+}
