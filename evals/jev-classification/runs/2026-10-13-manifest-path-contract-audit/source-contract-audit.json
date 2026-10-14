@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "status": "source_contract_audit_not_annotation_not_gold",
+  "repository": "0al-spec/SpecGraph",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "matches_prior_frozen_source_revision": true,
+  "file_sha256": {
+    "docs/proposals/0215_incremental_static_workspace_deployment.md": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+    "docs/archive/proposal_sources/0215_incremental_static_workspace_deployment.md": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+    "docs/static_artifact_publish.md": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+    "tools/static_artifact_incremental_stage.py": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+    "tools/build_static_artifact_bundle.py": "d19e06a035fa742aa282e9fe19c0537881d3936ab9cd893dc1c408d40244097a",
+    "tests/test_static_artifact_incremental_stage.py": "8f169df8d35f4303f08712384e7b9453516e2178db1467a8aa04416bcebe08b0",
+    ".github/workflows/publish-static-artifacts.yml": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+    "tools/README.md": "88037785f9777d26f9842de2e1f3382f8e1e771058ee81547cc190e218df0890",
+    "tools/proposal_runtime_registry.json": "9b9b349699f8af0e245a852e0cc4c4c54984bb82f23b40d1d3dc77c8b812f51c",
+    "tools/proposal_promotion_registry.json": "2c904b8fd87b40b984c8648176783858d62d1d5791b0ac6fc576f8073b0e7874"
+  },
+  "source_facts": {
+    "declared-publication-contract": {
+      "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+      "lines": [
+        17,
+        73
+      ],
+      "kind": "implemented_proposal_not_canonical_requirement",
+      "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+      "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+      "text": "The deploy job now computes a checksum-aware payload stage for each independently\nmanifested surface:\n\n- the root SpecGraph artifact bundle;\n- Team Decision Log;\n- Hosted Operation Canary.\n\nThe staging tool compares each local `artifact_manifest.json` with the manifest\nat the durable HTTPS base and copies only added or content-changed payload files\ninto one remote-root-shaped staging directory. Manifest-matched files are also\nchecked at the HTTPS origin, so a missing or stale payload is staged again and\nthe next deploy self-heals partial publication. Removed files remain physically\npresent because the shared webroot is non-destructive, but the new manifest no\nlonger authorizes them.\n\nDeployment uploads the changed payload first, then each `checksums.sha256`, and\nfinally each `artifact_manifest.json`. A post-upload verifier downloads each\npublished manifest, checksum file, and manifest-authorized payload from all\nthree HTTPS bases and checks its SHA-256. A missing, malformed, partial, or\ndigest-mismatched public surface fails the job.\n\nThe changed payload mirror uses four parallel transfers. This is a bounded\ntransport optimization for high-latency SFTP hosts; checksums and manifests\nremain sequential finalization writes after every payload transfer completes.\n\nThe Hosted Operation Canary bundle also publishes its scoped initialization\nexecution report at the top-level `runs/` bootstrap path. That single\npublic-safe alias lets SpecSpace discover and validate the durable workspace\nbinding before it follows the binding's scoped `runs/hosted-operation-canary`\nrefs. The remaining artifacts stay scoped and are not flattened by route slug.\n\n## Authority Boundary\n\nThis proposal changes static artifact transport only. It does not:\n\n- delete remote webroot files;\n- publish files absent from a public-safe manifest;\n- start Platform or hosted workers;\n- execute managed operations;\n- mutate canonical specs or Ontology packages;\n- approve candidates, create Git reviews, or publish read models.\n\nRemote manifests are planning hints, not final authority. Successful\npost-publication HTTP digest verification is required.\n\n## Acceptance Criteria\n\n- Unchanged files are absent from the staged payload.\n- Changed root and workspace payloads retain their relative durable URL paths.\n- Path traversal and local digest mismatches fail closed.\n- Payload upload precedes checksums and manifest finalization.\n- Payload transfer parallelism is explicitly bounded.\n- All three published surfaces receive post-upload HTTP digest verification.\n- Hosted Operation Canary exposes a public-safe initialization bootstrap alias\n  without flattening the remaining scoped run artifacts.\n- Root-level `mirror --delete` remains forbidden.\n- Static bundle safety validation and existing publication tests pass.\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/docs/proposals/0215_incremental_static_workspace_deployment.md#L17-L73"
+    },
+    "public-artifact-authority": {
+      "path": "docs/static_artifact_publish.md",
+      "lines": [
+        38,
+        62
+      ],
+      "kind": "operator_documentation",
+      "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+      "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+      "text": "\nDeployment mirrors the contents of `dist/specgraph-public/` into\n`SFTP_REMOTE_ROOT`. It must not create a nested `specgraph-public/` directory on\nthe static host.\n\nArtifact deployment is intentionally non-destructive for the webroot. The\nworkflow must not run a root-level `mirror --delete` because the same\n`SFTP_REMOTE_ROOT` can also contain the public landing page and hosting-managed\nfiles. Consumers should use `artifact_manifest.json` and `checksums.sha256` as\nthe authoritative artifact index instead of inferring validity from every file\nthat happens to remain under `specs/` or `runs/`.\n\nProposal `0215` makes the payload transfer checksum-aware. The deploy job\ncompares each local manifest with its durable HTTPS manifest and stages only\nadded or content-changed files for the root, Team Decision Log, and Hosted\nOperation Canary surfaces. Manifest-matched payload bytes are checked at the\nHTTPS origin so a rerun stages and repairs missing or stale files after partial\npublication. It uploads payload files first, then checksums, and manifests last.\nA post-upload pass verifies the published manifest, checksum file, and every\nmanifest-authorized payload, so an incomplete or stale public surface fails\nclosed.\nRemote files omitted by a new manifest are not deleted from the shared webroot;\nthey simply stop being authoritative.\n\nProposal `0217` adds one optional manual-dispatch input for a bounded hosted\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/docs/static_artifact_publish.md#L38-L62"
+    },
+    "_safe_path": {
+      "path": "tools/static_artifact_incremental_stage.py",
+      "lines": [
+        33,
+        39
+      ],
+      "kind": "implementation",
+      "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+      "excerpt_sha256": "e0210123730dea6b3e8ea0b9a19143fcd6efa72d32f5675a8bee9789ca6a74ba",
+      "text": "def _safe_path(value: Any) -> str:\n    if not isinstance(value, str) or not value:\n        raise IncrementalStageError(\"manifest file path must be a non-empty string\")\n    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L33-L39"
+    },
+    "_manifest_files": {
+      "path": "tools/static_artifact_incremental_stage.py",
+      "lines": [
+        42,
+        56
+      ],
+      "kind": "implementation",
+      "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+      "excerpt_sha256": "230bf2b8c7c47cb91b63c7cb6cd0e6dd0149a64e3a3c9ee28e7fe2973d25fd8f",
+      "text": "def _manifest_files(payload: Any) -> dict[str, dict[str, Any]]:\n    if not isinstance(payload, dict) or not isinstance(payload.get(\"files\"), list):\n        raise IncrementalStageError(\"artifact manifest must contain files[]\")\n    files: dict[str, dict[str, Any]] = {}\n    for row in payload[\"files\"]:\n        if not isinstance(row, dict):\n            raise IncrementalStageError(\"artifact manifest files[] entries must be objects\")\n        path = _safe_path(row.get(\"path\"))\n        digest = row.get(\"sha256\")\n        if not isinstance(digest, str) or len(digest) != 64:\n            raise IncrementalStageError(f\"manifest sha256 is invalid for {path}\")\n        if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row\n    return files\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L42-L56"
+    },
+    "_load_local_manifest": {
+      "path": "tools/static_artifact_incremental_stage.py",
+      "lines": [
+        59,
+        75
+      ],
+      "kind": "implementation",
+      "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+      "excerpt_sha256": "c060c00c4750a0c66b5d5535788cded33e439c47804c9500ae5882c890e9cb89",
+      "text": "def _load_local_manifest(bundle_dir: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:\n    manifest_path = bundle_dir / \"artifact_manifest.json\"\n    try:\n        payload = json.loads(manifest_path.read_text(encoding=\"utf-8\"))\n    except (OSError, json.JSONDecodeError) as exc:\n        raise IncrementalStageError(f\"cannot read local artifact manifest: {exc}\") from exc\n    files = _manifest_files(payload)\n    for relative_path, row in files.items():\n        source = bundle_dir / relative_path\n        if not source.is_file():\n            raise IncrementalStageError(f\"local manifest path is missing: {relative_path}\")\n        actual = hashlib.sha256(source.read_bytes()).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"local manifest digest mismatch: {relative_path}\")\n    if not (bundle_dir / \"checksums.sha256\").is_file():\n        raise IncrementalStageError(\"local bundle is missing checksums.sha256\")\n    return payload, files\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L59-L75"
+    },
+    "_remote_files": {
+      "path": "tools/static_artifact_incremental_stage.py",
+      "lines": [
+        78,
+        87
+      ],
+      "kind": "implementation",
+      "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+      "excerpt_sha256": "f4c728b6958c07ae04e6e1bbeb1fb6a163a5712da8ac6333d53d773f40ff5472",
+      "text": "def _remote_files(url: str, fetcher: Fetcher) -> tuple[dict[str, dict[str, Any]], bool]:\n    try:\n        payload = json.loads(fetcher(url))\n    except urllib.error.HTTPError as exc:\n        if exc.code == 404:\n            return {}, False\n        raise IncrementalStageError(f\"remote manifest request failed: HTTP {exc.code}\") from exc\n    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:\n        raise IncrementalStageError(f\"remote manifest request failed: {exc}\") from exc\n    return _manifest_files(payload), True\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L78-L87"
+    },
+    "stage_changed_files": {
+      "path": "tools/static_artifact_incremental_stage.py",
+      "lines": [
+        90,
+        159
+      ],
+      "kind": "implementation",
+      "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+      "excerpt_sha256": "4be5e7c63302d819e214225cbea99516b087be01b9229d2f6393ad08018a9a0f",
+      "text": "def stage_changed_files(\n    *,\n    bundle_dir: Path,\n    remote_manifest_url: str,\n    staging_dir: Path,\n    staging_prefix: str = \"\",\n    fetcher: Fetcher = _fetch,\n    workers: int = 12,\n) -> dict[str, Any]:\n    parsed = urllib.parse.urlparse(remote_manifest_url)\n    if parsed.scheme != \"https\" or not parsed.netloc:\n        raise IncrementalStageError(\"remote manifest URL must use absolute HTTPS\")\n    prefix = _safe_path(staging_prefix) if staging_prefix else \"\"\n    _, local_files = _load_local_manifest(bundle_dir)\n    remote_files, remote_manifest_available = _remote_files(remote_manifest_url, fetcher)\n    changed_from_manifest = {\n        path\n        for path, row in local_files.items()\n        if remote_files.get(path, {}).get(\"sha256\") != row[\"sha256\"]\n    }\n    remote_base_url = remote_manifest_url.rsplit(\"/\", 1)[0]\n\n    def manifest_match_is_stale(item: tuple[str, dict[str, Any]]) -> str | None:\n        path, row = item\n        if path in changed_from_manifest:\n            return None\n        try:\n            body = fetcher(f\"{remote_base_url}/{path}\")\n        except Exception:\n            return path\n        return path if hashlib.sha256(body).hexdigest() != row[\"sha256\"] else None\n\n    with ThreadPoolExecutor(max_workers=workers) as pool:\n        stale_matches = {\n            path\n            for path in pool.map(manifest_match_is_stale, local_files.items())\n            if path is not None\n        }\n    changed = sorted(changed_from_manifest | stale_matches)\n    removed = sorted(set(remote_files) - set(local_files))\n    payload_bytes = 0\n    for relative_path in changed:\n        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path\n        destination.parent.mkdir(parents=True, exist_ok=True)\n        if destination.exists() and destination.read_bytes() != source.read_bytes():\n            raise IncrementalStageError(f\"staging path collision: {destination}\")\n        shutil.copyfile(source, destination)\n        payload_bytes += source.stat().st_size\n    return {\n        \"artifact_kind\": \"specgraph_static_artifact_incremental_stage_report\",\n        \"schema_version\": 1,\n        \"status\": \"ready\",\n        \"bundle_dir\": str(bundle_dir),\n        \"remote_manifest_url\": remote_manifest_url,\n        \"staging_prefix\": prefix,\n        \"remote_manifest_available\": remote_manifest_available,\n        \"publication_required\": bool(changed or removed or not remote_manifest_available),\n        \"summary\": {\n            \"local_file_count\": len(local_files),\n            \"remote_file_count\": len(remote_files),\n            \"changed_file_count\": len(changed),\n            \"manifest_matched_but_stale_count\": len(stale_matches),\n            \"unchanged_file_count\": len(local_files) - len(changed),\n            \"removed_file_count\": len(removed),\n            \"payload_bytes\": payload_bytes,\n        },\n        \"changed_paths\": changed,\n        \"removed_paths\": removed,\n    }\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L90-L159"
+    },
+    "verify_remote_bundle": {
+      "path": "tools/static_artifact_incremental_stage.py",
+      "lines": [
+        162,
+        214
+      ],
+      "kind": "implementation",
+      "file_sha256": "0a16e00fb4b26bb3b25761866789b6de486736fa15edcc1d1d00715e4f9c3dfa",
+      "excerpt_sha256": "9a55eacb4fe5ff5669457c51a84432b8cb6fb7da3499fac7c043a5ce832137be",
+      "text": "def verify_remote_bundle(\n    *,\n    bundle_dir: Path,\n    remote_base_url: str,\n    fetcher: Fetcher = _fetch,\n    workers: int = 12,\n) -> dict[str, Any]:\n    parsed = urllib.parse.urlparse(remote_base_url)\n    if parsed.scheme != \"https\" or not parsed.netloc:\n        raise IncrementalStageError(\"remote base URL must use absolute HTTPS\")\n    _, local_files = _load_local_manifest(bundle_dir)\n    base_url = remote_base_url.rstrip(\"/\")\n\n    for metadata_name in (\"artifact_manifest.json\", \"checksums.sha256\"):\n        local_metadata = (bundle_dir / metadata_name).read_bytes()\n        try:\n            remote_metadata = fetcher(f\"{base_url}/{metadata_name}\")\n        except Exception as exc:\n            raise IncrementalStageError(\n                f\"remote metadata request failed for {metadata_name}: {exc}\"\n            ) from exc\n        if (\n            hashlib.sha256(remote_metadata).hexdigest()\n            != hashlib.sha256(local_metadata).hexdigest()\n        ):\n            raise IncrementalStageError(f\"remote metadata digest mismatch: {metadata_name}\")\n\n    def verify(item: tuple[str, dict[str, Any]]) -> str:\n        path, row = item\n        try:\n            body = fetcher(f\"{base_url}/{path}\")\n        except Exception as exc:\n            raise IncrementalStageError(\n                f\"remote artifact request failed for {path}: {exc}\"\n            ) from exc\n        actual = hashlib.sha256(body).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"remote artifact digest mismatch: {path}\")\n        return path\n\n    with ThreadPoolExecutor(max_workers=workers) as pool:\n        verified = list(pool.map(verify, local_files.items()))\n    return {\n        \"artifact_kind\": \"specgraph_static_artifact_remote_verification_report\",\n        \"schema_version\": 1,\n        \"status\": \"verified\",\n        \"remote_base_url\": base_url,\n        \"summary\": {\n            \"verified_file_count\": len(verified),\n            \"verified_metadata_file_count\": 2,\n            \"failure_count\": 0,\n        },\n    }\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L162-L214"
+    },
+    "iter_publish_sources": {
+      "path": "tools/build_static_artifact_bundle.py",
+      "lines": [
+        398,
+        426
+      ],
+      "kind": "producer_context",
+      "file_sha256": "d19e06a035fa742aa282e9fe19c0537881d3936ab9cd893dc1c408d40244097a",
+      "excerpt_sha256": "f51a2c7d73648536c7d4a34aced8ff03bd644e7f11976a040310b6ecad0d4d0f",
+      "text": "def iter_publish_sources(\n    repo_root: Path,\n    *,\n    workspace_bootstrap_run_dir: Path | None = None,\n) -> Iterable[tuple[str, Path, PurePosixPath]]:\n    selected_run_dir = workspace_bootstrap_run_dir or (repo_root / \"runs\")\n    active_candidate_ready = is_publishable_active_candidate_source(repo_root, selected_run_dir)\n    approval_ready = is_publishable_candidate_approval_decision(repo_root, selected_run_dir)\n    for root_name in PUBLISHED_ROOTS:\n        source_root = selected_run_dir if root_name == \"runs\" else repo_root / root_name\n        if not source_root.exists():\n            continue\n        for path in sorted(source_root.rglob(\"*\")):\n            if (\n                has_symlink_component(path, source_root)\n                or not path.is_file()\n                or should_skip_file(path, repo_root)\n            ):\n                continue\n            rel = PurePosixPath(root_name, path.relative_to(source_root).as_posix())\n            if root_name == \"runs\":\n                run_rel = rel.relative_to(\"runs\").as_posix()\n                if is_local_only_run_path(run_rel) or is_local_only_json_artifact(path):\n                    continue\n                if run_rel == ACTIVE_IDEA_TO_SPEC_CANDIDATE_SURFACE and not active_candidate_ready:\n                    continue\n                if run_rel == CANDIDATE_APPROVAL_DECISION_SURFACE and not approval_ready:\n                    continue\n            yield root_name, path, rel\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/build_static_artifact_bundle.py#L398-L426"
+    },
+    "build_manifest": {
+      "path": "tools/build_static_artifact_bundle.py",
+      "lines": [
+        667,
+        722
+      ],
+      "kind": "producer_context",
+      "file_sha256": "d19e06a035fa742aa282e9fe19c0537881d3936ab9cd893dc1c408d40244097a",
+      "excerpt_sha256": "d0a6d52ae766d67fa1a28a26bda231c3bb5791746e6e6565294152dfcc79af30",
+      "text": "def build_manifest(\n    *,\n    repo_root: Path,\n    output_dir: Path,\n    copied_files: list[PublishFile],\n    warnings: list[str],\n    redacted_local_path_occurrences: int,\n    run_dir: Path,\n    workspace_mode: bool,\n) -> dict[str, object]:\n    root_summary: dict[str, dict[str, int]] = {\n        root: {\"file_count\": 0, \"byte_count\": 0} for root in PUBLISHED_ROOTS\n    }\n    for file_info in copied_files:\n        root_info = root_summary.setdefault(file_info.root, {\"file_count\": 0, \"byte_count\": 0})\n        root_info[\"file_count\"] += 1\n        root_info[\"byte_count\"] += file_info.size_bytes\n\n    required_surfaces = ensure_required_surfaces(\n        output_dir,\n        WORKSPACE_REQUIRED_RUN_SURFACES if workspace_mode else REQUIRED_RUN_SURFACES,\n    )\n    active_candidate_source = active_candidate_source_manifest_entry(repo_root, run_dir)\n    platform_handoff_surfaces = {\n        surface: {\n            \"path\": f\"runs/{surface}\",\n            \"present\": required_surfaces.get(surface) is True,\n        }\n        for surface in PLATFORM_HANDOFF_RUN_SURFACES\n    }\n    platform_handoff_surfaces[ACTIVE_IDEA_TO_SPEC_CANDIDATE_SURFACE] = active_candidate_source\n    missing_required = [path for path, present in required_surfaces.items() if not present]\n    safety_status = \"passed\" if not missing_required else \"failed\"\n    if missing_required:\n        warnings.append(\"missing required run surfaces: \" + \", \".join(missing_required))\n\n    return {\n        \"artifact_kind\": \"specgraph_static_artifact_manifest\",\n        \"schema_version\": 1,\n        \"generated_at\": utc_now(),\n        \"git\": {\n            \"sha\": repo_git_value(repo_root, \"rev-parse\", \"HEAD\"),\n            \"ref\": repo_git_value(repo_root, \"rev-parse\", \"--abbrev-ref\", \"HEAD\"),\n        },\n        \"published_roots\": list(root_summary),\n        \"roots\": root_summary,\n        \"checksums_path\": \"checksums.sha256\",\n        \"required_surfaces\": required_surfaces,\n        \"platform_handoff_surfaces\": platform_handoff_surfaces,\n        \"safety_gate\": {\n            \"status\": safety_status,\n            \"redacted_local_path_occurrences\": redacted_local_path_occurrences,\n            \"warnings\": warnings,\n        },\n        \"files\": [file_info.__dict__ for file_info in copied_files],\n    }\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/build_static_artifact_bundle.py#L667-L722"
+    },
+    "test_stage_rejects_unsafe_manifest_path": {
+      "path": "tests/test_static_artifact_incremental_stage.py",
+      "lines": [
+        106,
+        121
+      ],
+      "kind": "test_contract_not_executed_by_audit",
+      "file_sha256": "8f169df8d35f4303f08712384e7b9453516e2178db1467a8aa04416bcebe08b0",
+      "excerpt_sha256": "956d32082c5db5f0c411d1b0fb3c24324ec80ca2907ed623f6747f2ad886ae61",
+      "text": "def test_stage_rejects_unsafe_manifest_path(tmp_path: Path) -> None:\n    bundle = tmp_path / \"bundle\"\n    bundle.mkdir()\n    (bundle / \"artifact_manifest.json\").write_text(\n        json.dumps({\"files\": [{\"path\": \"../private\", \"sha256\": \"0\" * 64}]}),\n        encoding=\"utf-8\",\n    )\n    (bundle / \"checksums.sha256\").write_text(\"checksums\\n\", encoding=\"utf-8\")\n\n    with pytest.raises(IncrementalStageError, match=\"unsafe\"):\n        stage_changed_files(\n            bundle_dir=bundle,\n            remote_manifest_url=\"https://specgraph.tech/artifact_manifest.json\",\n            staging_dir=tmp_path / \"stage\",\n            fetcher=lambda _url: b'{\"files\": []}',\n        )\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tests/test_static_artifact_incremental_stage.py#L106-L121"
+    },
+    "test_stage_copies_only_changed_payload_under_workspace_prefix": {
+      "path": "tests/test_static_artifact_incremental_stage.py",
+      "lines": [
+        40,
+        77
+      ],
+      "kind": "test_contract_not_executed_by_audit",
+      "file_sha256": "8f169df8d35f4303f08712384e7b9453516e2178db1467a8aa04416bcebe08b0",
+      "excerpt_sha256": "b286d4a7df6d9323c7da037449934d316539e01ee57ac1ff6e30164647abf94b",
+      "text": "def test_stage_copies_only_changed_payload_under_workspace_prefix(tmp_path: Path) -> None:\n    bundle = _bundle(tmp_path / \"bundle\", {\"runs/a.json\": b\"same\", \"runs/b.json\": b\"new\"})\n    remote = {\n        \"files\": [\n            {\"path\": \"runs/a.json\", \"sha256\": hashlib.sha256(b\"same\").hexdigest()},\n            {\"path\": \"runs/b.json\", \"sha256\": hashlib.sha256(b\"old\").hexdigest()},\n            {\"path\": \"runs/removed.json\", \"sha256\": hashlib.sha256(b\"gone\").hexdigest()},\n        ]\n    }\n\n    def fetch(url: str) -> bytes:\n        if url.endswith(\"artifact_manifest.json\"):\n            return json.dumps(remote).encode()\n        if url.endswith(\"runs/a.json\"):\n            return b\"same\"\n        raise AssertionError(f\"unexpected fetch: {url}\")\n\n    report = stage_changed_files(\n        bundle_dir=bundle,\n        remote_manifest_url=\"https://specgraph.tech/workspaces/example/artifact_manifest.json\",\n        staging_dir=tmp_path / \"stage\",\n        staging_prefix=\"workspaces/example\",\n        fetcher=fetch,\n    )\n\n    assert report[\"summary\"] == {\n        \"local_file_count\": 2,\n        \"remote_file_count\": 3,\n        \"changed_file_count\": 1,\n        \"manifest_matched_but_stale_count\": 0,\n        \"unchanged_file_count\": 1,\n        \"removed_file_count\": 1,\n        \"payload_bytes\": 3,\n    }\n    assert report[\"changed_paths\"] == [\"runs/b.json\"]\n    assert report[\"removed_paths\"] == [\"runs/removed.json\"]\n    assert (tmp_path / \"stage/workspaces/example/runs/b.json\").read_bytes() == b\"new\"\n    assert not (tmp_path / \"stage/workspaces/example/runs/a.json\").exists()\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tests/test_static_artifact_incremental_stage.py#L40-L77"
+    },
+    "test_verify_remote_bundle_hashes_every_manifest_file": {
+      "path": "tests/test_static_artifact_incremental_stage.py",
+      "lines": [
+        124,
+        145
+      ],
+      "kind": "test_contract_not_executed_by_audit",
+      "file_sha256": "8f169df8d35f4303f08712384e7b9453516e2178db1467a8aa04416bcebe08b0",
+      "excerpt_sha256": "307925d4f11d9cfaf93e17142fe627b5c3dadd20d81e83c87c23a6675ddec7d3",
+      "text": "def test_verify_remote_bundle_hashes_every_manifest_file(tmp_path: Path) -> None:\n    files = {\"specs/a.yaml\": b\"a\", \"runs/b.json\": b\"b\"}\n    bundle = _bundle(tmp_path / \"bundle\", files)\n\n    remote_files = {\n        **files,\n        \"artifact_manifest.json\": (bundle / \"artifact_manifest.json\").read_bytes(),\n        \"checksums.sha256\": (bundle / \"checksums.sha256\").read_bytes(),\n    }\n    report = verify_remote_bundle(\n        bundle_dir=bundle,\n        remote_base_url=\"https://specgraph.tech/workspaces/example\",\n        fetcher=lambda url: remote_files[url.split(\"/workspaces/example/\", 1)[1]],\n        workers=2,\n    )\n\n    assert report[\"status\"] == \"verified\"\n    assert report[\"summary\"] == {\n        \"verified_file_count\": 2,\n        \"verified_metadata_file_count\": 2,\n        \"failure_count\": 0,\n    }\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tests/test_static_artifact_incremental_stage.py#L124-L145"
+    },
+    "workflow-independent-bases": {
+      "path": ".github/workflows/publish-static-artifacts.yml",
+      "lines": [
+        233,
+        255
+      ],
+      "kind": "workflow_consumer_not_executed",
+      "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+      "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+      "text": "      - name: Stage changed artifact payloads\n        if: env.SFTP_HOST != ''\n        run: |\n          rm -rf \"$INCREMENTAL_STAGE_DIR\"\n          mkdir -p \"$INCREMENTAL_STAGE_DIR\" \"$RUNNER_TEMP/specgraph-incremental-reports\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/root.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/team-decision-log \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/team-decision-log/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/team-decision-log \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/team-decision-log.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/hosted-operation-canary \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/hosted-operation-canary/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/hosted-operation-canary \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/hosted-operation-canary.json\"\n\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/.github/workflows/publish-static-artifacts.yml#L233-L255"
+    },
+    "tool-authority-contract": {
+      "path": "tools/README.md",
+      "lines": [
+        1,
+        8
+      ],
+      "kind": "tool_documentation",
+      "file_sha256": "88037785f9777d26f9842de2e1f3382f8e1e771058ee81547cc190e218df0890",
+      "excerpt_sha256": "f3652bba6eec6b860864ee5e3f582f485860d95aa304fff81b8f1e43b10de306",
+      "text": "# Tools\n\nProposal 0215 adds `static_artifact_incremental_stage.py`. Its `stage` command\ncopies only manifest paths whose SHA-256 differs from the durable remote\nmanifest, with an optional workspace URL prefix. Its `verify` command downloads\nevery manifest-authorized artifact from the public HTTPS base and fails on any\nmissing or mismatched payload. Deployment still treats the local public-safe\nmanifest as authority and never deletes the shared remote webroot.\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/README.md#L1-L8"
+    },
+    "runtime-realization": {
+      "path": "tools/proposal_runtime_registry.json",
+      "lines": [
+        12300,
+        12366
+      ],
+      "kind": "registry_tracking_not_canonical_adoption",
+      "file_sha256": "9b9b349699f8af0e245a852e0cc4c4c54984bb82f23b40d1d3dc77c8b812f51c",
+      "excerpt_sha256": "7f37c401961a3b2189845f4647a8464d31701e8a23e6695c488748eb16b6c17c",
+      "text": "    \"proposal_id\": \"0215\",\n    \"posture\": \"synchronous_runtime_slice\",\n    \"runtime_surfaces\": [\n      \"docs/proposals/0215_incremental_static_workspace_deployment.md\",\n      \"docs/archive/proposal_sources/0215_incremental_static_workspace_deployment.md\",\n      \"tools/static_artifact_incremental_stage.py\",\n      \".github/workflows/publish-static-artifacts.yml\",\n      \"tests/test_static_artifact_incremental_stage.py\",\n      \"tests/test_publish_static_artifacts_workflow.py\",\n      \"docs/static_artifact_publish.md\",\n      \"docs/product_workspace_graph_versioning_roadmap.md\",\n      \"Sources/SpecGraph/Documentation.docc/ProductWorkspacePilots.md\",\n      \"tools/README.md\",\n      \"tools/build_static_artifact_bundle.py\",\n      \"tools/workspace_bundle_consumer_smoke.py\",\n      \"tests/test_static_artifact_bundle.py\",\n      \"tests/test_workspace_bundle_consumer_smoke.py\",\n      \"docs/evidence/workspace-publication-contract/README.md\"\n    ],\n    \"runtime_markers\": [\n      {\n        \"path\": \"tools/static_artifact_incremental_stage.py\",\n        \"pattern\": \"def stage_changed_files\"\n      },\n      {\n        \"path\": \".github/workflows/publish-static-artifacts.yml\",\n        \"pattern\": \"Stage changed artifact payloads\"\n      },\n      {\n        \"path\": \".github/workflows/publish-static-artifacts.yml\",\n        \"pattern\": \"Verify published artifact digests\"\n      }\n    ],\n    \"validation_markers\": [\n      {\n        \"path\": \"tests/test_static_artifact_incremental_stage.py\",\n        \"pattern\": \"test_stage_copies_only_changed_payload_under_workspace_prefix\"\n      },\n      {\n        \"path\": \"tests/test_static_artifact_incremental_stage.py\",\n        \"pattern\": \"test_verify_remote_bundle_fails_on_digest_drift\"\n      },\n      {\n        \"path\": \"tests/test_publish_static_artifacts_workflow.py\",\n        \"pattern\": \"test_deploy_stages_workspace_payloads_and_finalizes_manifests_last\"\n      }\n    ],\n    \"observation_markers\": [\n      {\n        \"path\": \"docs/static_artifact_publish.md\",\n        \"pattern\": \"Proposal `0215` makes the payload transfer checksum-aware\"\n      },\n      {\n        \"path\": \"docs/product_workspace_graph_versioning_roadmap.md\",\n        \"pattern\": \"Done in proposal `0215`\"\n      },\n      {\n        \"path\": \"Sources/SpecGraph/Documentation.docc/ProductWorkspacePilots.md\",\n        \"pattern\": \"Proposal `0215` publishes the root and tracked product workspace bundles\"\n      },\n      {\n        \"path\": \"tools/README.md\",\n        \"pattern\": \"Proposal 0215 adds `static_artifact_incremental_stage.py`\"\n      }\n    ],\n    \"notes\": \"Static publication now stages only checksum-changed root and workspace payloads, finalizes checksums and manifests after payload upload, and verifies all authoritative files over HTTPS without deleting the shared webroot.\"\n  },\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/proposal_runtime_registry.json#L12300-L12366"
+    },
+    "proposal-tracking": {
+      "path": "tools/proposal_promotion_registry.json",
+      "lines": [
+        2772,
+        2783
+      ],
+      "kind": "registry_tracking_not_canonical_adoption",
+      "file_sha256": "2c904b8fd87b40b984c8648176783858d62d1d5791b0ac6fc576f8073b0e7874",
+      "excerpt_sha256": "0bb7ce3f6d9afb15af1e095125b9eb7efe639cc813d8c17f6302dcdc26ffee84",
+      "text": "    \"proposal_id\": \"0215\",\n    \"source_artifact_class\": \"working_draft\",\n    \"source_refs\": [\n      \"docs/archive/proposal_sources/0215_incremental_static_workspace_deployment.md\"\n    ],\n    \"motivating_concern\": \"Publishing the root plus two workspace bundles through one recursive lftp mirror now takes about 30 minutes and retransfers unchanged workspace payloads.\",\n    \"normalized_title\": \"Incremental Static Workspace Deployment\",\n    \"bounded_scope\": \"Stage only manifest paths whose SHA-256 changed for the root and tracked workspace bundles, upload payload before checksums and manifests, and verify the resulting HTTPS surfaces without deleting remote webroot files, changing artifact authority, starting hosted execution, mutating canonical specs or Ontology, approving candidates, or executing Git operations.\",\n    \"required_provenance_links\": [\n      \"source_draft_ref\"\n    ]\n  },\n",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/proposal_promotion_registry.json#L2772-L2783"
+    }
+  },
+  "canonical_search": {
+    "scope": "tracked SPECS at pinned revision",
+    "pattern": "artifact_manifest|static.publication|static.artifact|path traversal|POSIX",
+    "exit_code": 1,
+    "matches": 0,
+    "interpretation": "No exact path-contract reference found by this bounded keyword search; not proof of global semantic absence."
+  },
+  "verification": {
+    "source_and_excerpts": "Read from pinned Git objects; SHA-256 verified; selected helper unchanged from frozen preparation.",
+    "pure_helper_cases": [
+      {
+        "value": "runs/a.json",
+        "accepted": true,
+        "returned_value": "runs/a.json"
+      },
+      {
+        "value": "workspaces/team-decision-log/runs/a.json",
+        "accepted": true,
+        "returned_value": "workspaces/team-decision-log/runs/a.json"
+      },
+      {
+        "value": "/runs/a.json",
+        "accepted": false,
+        "returned_value": null
+      },
+      {
+        "value": "../private",
+        "accepted": false,
+        "returned_value": null
+      },
+      {
+        "value": "runs/../private",
+        "accepted": false,
+        "returned_value": null
+      },
+      {
+        "value": "runs//a.json",
+        "accepted": false,
+        "returned_value": null
+      },
+      {
+        "value": "./runs/a.json",
+        "accepted": false,
+        "returned_value": null
+      },
+      {
+        "value": "runs/a.json/",
+        "accepted": false,
+        "returned_value": null
+      }
+    ],
+    "module_imported": false,
+    "network_requests": 0,
+    "source_tests_executed": false,
+    "deploy_or_upload_executed": false
+  },
+  "proposed_responsibility": "policy",
+  "proposed_opportunity": "eligible",
+  "authority": "integrator_inference_not_independent_annotation",
+  "canonical_requirement_id": null,
+  "human_gold": false,
+  "metric_effect": "none",
+  "provider_requests": 0,
+  "upstream_license": {
+    "file": "upstream-LICENSE.txt",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "scope": "Curated SpecGraph source excerpts; Apache License 2.0."
+  },
+  "proposal_interpretation": {
+    "primary_responsibility": "publication_namespace_path_admissibility",
+    "authority_scope": "Implemented proposal contract, not a canonical Requirement ID and not publication approval.",
+    "shared_use": "Same helper validates manifest file paths and the optional staging_prefix.",
+    "canonical_spelling_clause": "Observed additional lexical representation restriction; its independent normative justification is not explicit in proposal 0215.",
+    "label_status": "Advisory architectural-fit inference; the entire original expression remains the target; fresh independent semantic review is still needed."
+  }
+}

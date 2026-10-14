@@ -1,0 +1,34 @@
+{
+  "status": "review_repair_preserving_original_invalid_witness",
+  "review_comment": "https://github.com/SoundBlaster/SpecificationMetrics/pull/50#discussion_r4264006641",
+  "original_pr_head": "c64520adb67e6b44e4e0865e7a26a67399103ee9",
+  "original_audit_sha256": "35197b487c6e5a37ed20ae65a2e1aee028775bf0a7686221d68b8892326957a6",
+  "original_workflow_fact": {
+    "path": ".github/workflows/publish-static-artifacts.yml",
+    "lines": [
+      205,
+      227
+    ],
+    "kind": "workflow_consumer_not_executed",
+    "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+    "excerpt_sha256": "b607b19c5fc772defb3de9569df2b75433b5ec91f78d64caface08142c6e6b02",
+    "text": "    environment:\n      name: FTP\n    env:\n      SFTP_HOST: ${{ secrets.SFTP_HOST }}\n      SFTP_PORT: ${{ secrets.SFTP_PORT }}\n      SFTP_USER: ${{ secrets.SFTP_USER }}\n      SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}\n      SFTP_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}\n      SFTP_KNOWN_HOSTS: ${{ secrets.SFTP_KNOWN_HOSTS }}\n      SFTP_REMOTE_ROOT: ${{ secrets.SFTP_REMOTE_ROOT }}\n      FTPS_ALLOW_UNVERIFIED_CERT: ${{ secrets.FTPS_ALLOW_UNVERIFIED_CERT }}\n      STATIC_ARTIFACT_PUBLIC_BASE_URL: https://specgraph.tech\n      INCREMENTAL_STAGE_DIR: ${{ github.workspace }}/.specgraph-incremental-upload\n\n    steps:\n      - name: Checkout deploy tooling\n        uses: actions/checkout@v6\n\n      - name: Download bundle artifact\n        uses: actions/download-artifact@v8\n        with:\n          name: specgraph-static-artifacts\n          path: dist/specgraph-public\n",
+    "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/.github/workflows/publish-static-artifacts.yml#L205-L227"
+  },
+  "confirmed_cause": "Line coordinates were selected from a different local checkout, then extracted and byte-verified at the pinned revision without checking the claimed staging-call witness.",
+  "prevention": "Select by the Stage changed artifact payloads step marker in pinned Git bytes and validate all three calls, bundle roots, HTTPS bases and both workspace prefixes offline.",
+  "corrected_workflow_fact": {
+    "path": ".github/workflows/publish-static-artifacts.yml",
+    "lines": [
+      233,
+      255
+    ],
+    "kind": "workflow_consumer_not_executed",
+    "file_sha256": "817569cc91aa43b10c917bf263d221d4a09e7a267e7903c52369cdad3c627964",
+    "excerpt_sha256": "3c7b0bf29947966f90e7d98d7f2f2a5c2db67b0e949b5f9c487f498482312126",
+    "text": "      - name: Stage changed artifact payloads\n        if: env.SFTP_HOST != ''\n        run: |\n          rm -rf \"$INCREMENTAL_STAGE_DIR\"\n          mkdir -p \"$INCREMENTAL_STAGE_DIR\" \"$RUNNER_TEMP/specgraph-incremental-reports\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/root.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/team-decision-log \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/team-decision-log/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/team-decision-log \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/team-decision-log.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/hosted-operation-canary \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/hosted-operation-canary/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/hosted-operation-canary \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/hosted-operation-canary.json\"\n\n",
+    "source_url": "https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/.github/workflows/publish-static-artifacts.yml#L233-L255"
+  },
+  "corrected_audit_sha256": "f6edac636c053fd90544871ba9ddf9a17593da390e39c8d362720d69038cee63",
+  "verification": "Exact pinned Git bytes, three scoped stage calls, both prefixes and distinct HTTPS bases validated; original setup-only witness retained and rejected by regression."
+}
