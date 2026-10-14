@@ -1,5 +1,25 @@
 # Scope-binding diagnostic v3 — offline preparation
 
+## Текущий контракт: v3.1
+
+PR #57 review выявил конфликт в первоначальном составном prompt: scope был
+обязателен в начале, но отсутствовал в позднем exhaustive permitted-input list.
+Оригинальная v3.0 сохранена без изменений и superseded **до разметки**.
+Текущая `runs/2026-10-14-scope-binding-preparation-v3-1/` содержит заново
+написанный единый permitted-input list со `state.evaluation_scope`, новые task
+hashes и явные `scope_unit`/`scope_binding_sha256` в blank templates. Их копирование
+проверяет identity; смысл rationale по-прежнему требует отдельного review.
+Все state/code/profile bytes сохранены; будущий handoff должен принимать только
+v3.1. Дополнительная проверка final composed prompt запрещает прежний конфликт.
+
+```sh
+rtk proxy ../../.venv/bin/python prepare_scope_binding_v3_1.py
+rtk proxy ../../.venv/bin/python -m unittest -v test_scope_binding_v3_1.py
+```
+
+Описанная ниже v3.0 сохранена как provenance исходного дизайна; общие scope
+семантика и планируемые 48 annotations применяются и к исправленной v3.1.
+
 ## Вопрос
 
 Различаем ли мы ответственность общего определения predicate и роль того же

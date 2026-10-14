@@ -315,6 +315,22 @@ historical reference, production prompt or metric state was changed.
   copy elsewhere cannot hide changes to those files. Retain the delivery
   directory through replay rather than regenerating substitutes.
 
+## Scope permitted-input contract repair before dispatch
+
+- **Evidence:** PR #57 review found that v3.0 prepended mandatory scope use but
+  inherited a later exhaustive semantic-input list omitting `evaluation_scope`.
+  The complete composed prompt contains both clauses; no annotation had run.
+- **Confirmed cause:** concatenating a new instruction did not update the
+  inherited exhaustive contract. The protocol permitted inconsistent instruction
+  resolution; no claim is made about a model having already ignored scope.
+- **Correction:** preserve the published v3.0 producer/artifacts, supersede
+  before annotation with v3.1, rewrite the complete allowed-input list, and bind
+  structured scope acknowledgments into new templates/task identities.
+- **Verification:** `test_scope_binding_v3_1.py` checks the final composed prompt,
+  preserved semantic states, changed task identities, explicit unit/binding
+  hashes, overwrite refusal and prompt drift. Runtime rationale fidelity remains
+  a manual semantic judgment; copying a scope field is not proof of understanding.
+
 ## Record template
 
 1. Failure and exact command/criterion.

@@ -358,3 +358,8 @@ source code, consumers and binding facts fixed. Its 12 four-case packets plan
 48 annotations, with source-pinned AST anchors and offline CI replay. Templates
 remain blank; dispatch readiness is explicitly false until scope-aware actual-file
 handoff and retained-attempt validation are implemented. No metric or gold changes.
+
+The active scope-input contract is now v3.1 (`prepare_scope_binding_v3_1.py`):
+the permitted-input list explicitly includes `evaluation_scope`, and blank rows
+carry structured scope acknowledgments. Frozen v3.0 is preserved as superseded
+before annotation; no historical output is relabelled.
