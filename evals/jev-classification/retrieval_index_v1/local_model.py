@@ -31,7 +31,7 @@ class LocalEncoder:
                             device=device, dtype='float32', adapter='specmetrics.local-embedding/v1',
                             truncation='reject')
 
-    def __call__(self, texts):
+    def load(self):
         if self.model is None:
             import torch
             from sentence_transformers import SentenceTransformer
@@ -41,6 +41,17 @@ class LocalEncoder:
                                             model_kwargs={'torch_dtype': torch.float32})
             if self.model.get_embedding_dimension() != self.profile['dimensions']:
                 raise ValueError('model dimension differs')
+
+    def query(self, text):
+        self.load()
+        prompt = self.model.prompts['CodeRetrieval']
+        if len(self.model.tokenizer.encode(prompt + text)) > self.model.max_seq_length:
+            raise ValueError('query exceeds model context; refusing silent truncation')
+        return self.model.encode(text, prompt_name='CodeRetrieval', normalize_embeddings=True,
+                                 show_progress_bar=False).tolist()
+
+    def __call__(self, texts):
+        self.load()
         if any(len(self.model.tokenizer.encode(text)) > self.model.max_seq_length for text in texts):
             raise ValueError('input exceeds model context; refusing silent truncation')
         return self.model.encode(texts, prompt='', normalize_embeddings=True, batch_size=4,

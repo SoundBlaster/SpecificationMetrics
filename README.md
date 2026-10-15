@@ -43,6 +43,8 @@ refreshes local EmbeddingGemma document vectors from committed Python sources.
 It reuses unchanged inputs, removes deleted active entries, follows supported
 local predicate helpers, and rejects stale revision/profile reads. It is separate
 from the Rust classifier and from immutable benchmark snapshots.
+The [context preparation entry point](evals/jev-classification/retrieval-context-refresh-v1.md)
+refreshes that index before assembling source-bound Jev/Luna draft requests.
 
 ```bash
 export JEV_API_KEY='…'

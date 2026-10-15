@@ -123,7 +123,7 @@ PR70 review found that a structurally corrupt SQLite file bypassed the original
 `unavailable`/exit 2. A CLI regression with non-SQLite bytes reproduces the
 original failure and verifies the documented automation contract.
 
-Next integration: call this update/read boundary when assembling retrieved
-context for the new Jev/Luna experiment. Automatic execution in SpecGraph CI
-requires selecting a runner with the local model and persistent store; this PR
-adds only offline regression tests to CI.
+The [context preparation entry point](retrieval-context-refresh-v1.md) now calls
+this update/read boundary automatically before assembling new Jev/Luna draft
+requests. Automatic execution in SpecGraph CI still requires selecting a runner
+with the local model and persistent store; CI runs offline regression tests only.
