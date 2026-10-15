@@ -75,6 +75,8 @@ jobs:
           python3 prepare_scope_binding_v3_1.py
           python3 -m unittest -v test_intent_first_v4.py
           python3 prepare_intent_first_v4.py
+          python3 -m unittest -v test_intent_first_v4_1.py
+          python3 prepare_intent_first_v4_1.py
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
           python3 validate_scope_binding_annotations.py

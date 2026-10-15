@@ -1,0 +1,37 @@
+{
+  "artifact_file_sha256": {
+    "README.md": "5e08a2a51e20a11258ce718fe85d52e296b3988daaa531ff6634a7536c09236b",
+    "contract.json": "c8dde3e38d65f212b83f4e3a8717c5b00d6a942accb9dc5559e96a58a9093658",
+    "integrator-examples.json": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d",
+    "packet.json": "382f860b5b86a250ad867917827f3bc6b1d056f18a0fdaec3ce934addd564848",
+    "prompt.txt": "86f180c0fcb47a2181f22137f1587037896843cda66c23fe3aaa75985cc7155f",
+    "source-bindings.json": "2287b8c032585637a344ad2ac8202c6e7f7b54ccd1ba85376727d9e22a5c24e0",
+    "template.json": "c50b4bb5a6690612179fb29108eec8471c2ae95be59247c419e739e807bf2680"
+  },
+  "dispatch_ready": false,
+  "examples": 4,
+  "human_gold": false,
+  "input_file_sha256": {
+    "runs/2026-10-15-intent-first-v4-contract/README.md": "69a0cf139e05fd8eab94c7a139eef7e154ea255996a0c9cf99ec1311213ad505",
+    "runs/2026-10-15-intent-first-v4-contract/SHA256SUMS": "1dd7a6a4966d3145090d6fabbea19d0733ef200ee4d68d2cf187d401260ef1a5",
+    "runs/2026-10-15-intent-first-v4-contract/contract.json": "35c0e1f18dc58059d0561e257a6ed422bd0007ae832fb955634c974d1ebd95e6",
+    "runs/2026-10-15-intent-first-v4-contract/integrator-examples.json": "6a1b3c6ad569602ec8aed99fd60ebb0333f9d2bf88772d596f908b03ef155055",
+    "runs/2026-10-15-intent-first-v4-contract/packet.json": "8d6a2edb11ce2d98a317dc42e434831d8861266fe145fcd640d0664c0c6e00e5",
+    "runs/2026-10-15-intent-first-v4-contract/preparation-receipt.json": "813a09ab7221b5186d9d8077453da933cdac1249f3547a633905e6559fc74fa4",
+    "runs/2026-10-15-intent-first-v4-contract/prompt.txt": "86f180c0fcb47a2181f22137f1587037896843cda66c23fe3aaa75985cc7155f",
+    "runs/2026-10-15-intent-first-v4-contract/source-bindings.json": "dea87c5ad2137e4cb95643b3b9f5a65f65f191c5f26b87ec1f73e9604ffdff50",
+    "runs/2026-10-15-intent-first-v4-contract/template.json": "b1b52a7dfbefef70e8f6c05ed1f33fe5fca2889bb9e96f5a2da8e8b0be8bdf07"
+  },
+  "metric_effect": "none",
+  "new_model_contexts": 0,
+  "producer_file_sha256": {
+    "intent_first_contract_v4_1.py": "b2e5d12b3f0b0854812c0d45fc35b25cbf8af5261854bd480e2bbbc411ae4bcd",
+    "prepare_intent_first_v4_1.py": "ac4b826fc79ee03d19b561bbddaa1a2f913b0ed0b4f107572ab42a486908edc2"
+  },
+  "provider_requests": 0,
+  "provider_scoring_enabled": false,
+  "pydantic_version": "2.13.5",
+  "schema_version": "4.1",
+  "status": "offline_contract_examples_not_dispatched",
+  "supersedes": "runs/2026-10-15-intent-first-v4-contract"
+}

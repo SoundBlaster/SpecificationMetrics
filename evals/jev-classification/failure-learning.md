@@ -356,6 +356,34 @@ historical reference, production prompt or metric state was changed.
   score improves by redefining a past task. Provider wire mapping, reference
   adjudication and a bounded live comparison remain separate work.
 
+## Intent-first v4.1 consistency repair (2026-10-15)
+
+- **Evidence:** requested independent Astra/high review of `ccf1da2` reproduced
+  two invalid combinations accepted by v4: gate `policy / supported` and path
+  `unknown / insufficient`, both changed to `keep_procedural / basis=mechanics`.
+  The parent reproduced both. [GitHub review](https://github.com/SoundBlaster/SpecificationMetrics/pull/61#discussion_r4281998893)
+  separately found that exported schema described one row while the prompt and
+  consumer expected an `annotations` array envelope.
+- **Confirmed cause:** action/basis consistency was checked in one direction,
+  with no affirmative role/support precondition for procedural mechanics.
+  Row schema export also omitted the response envelope. These are deterministic
+  contract defects; no model inference or speculation about model reasoning is needed.
+- **Correction:** v4.1 requires `keep_procedural` to have `mechanics / supported`,
+  exports a strict `Response` model and validates exact response case coverage.
+  Template root matches the response schema; integrator-only status stays outside
+  model responses. Scope and quote checks still run. The supported domain-rule
+  basis is `domain_contract`; `formalization_preference` refers to uncertain role
+  support, not an unresolved implementation detail.
+- **Prevention:** `test_intent_first_v4_1.py` preserves reproduction of the old
+  failures and rejects them in the new version; exercises all twelve role/support
+  combinations for procedural action, supported-mechanics success, schema/template/
+  consumer compatibility, malformed/duplicate/missing responses, identities,
+  source quotes, documentary acknowledgments and overwrite refusal.
+- **Limits:** published v4 code, package and labels remain unchanged. Four v4.1
+  examples preserve state, source, scope, profile and labels/actions, changing
+  contract/task identities. No old failure is relabelled as a historical success;
+  no provider requests, scoring-reference activation or S/U change.
+
 ## Record template
 
 1. Failure and exact command/criterion.

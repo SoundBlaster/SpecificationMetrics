@@ -463,3 +463,13 @@ validation and CI cover uncertainty/action separation, stale identities, source
 quotes and document acknowledgments. These are development examples, not new
 model answers or an unseen/scoring reference. There is no provider wire adapter,
 dispatch, automatic old-label mapping or production S/U change.
+
+**Current correction: [intent-first v4.1](runs/2026-10-15-intent-first-v4-1-contract/README.md).**
+Independent Astra/high review found a reproducible consistency gap: v4 accepts
+`keep_procedural / mechanics` even when role is `policy` or `unknown`. v4.1
+requires `mechanics / supported` for this action and exports the strict
+`{"annotations": [...]}` response envelope requested by GitHub review. It
+clarifies `formalization_preference` as uncertain role support; supported domain
+rules keep their confidence and use `domain_contract`. The frozen v4 executable
+and examples remain historical; new tasks use v4.1 contract/task identities.
+No example labels/actions, model outputs, provider scoring or production S/U changed.

@@ -1,0 +1,38 @@
+[
+  {
+    "case_id": "target-01-cell03",
+    "prior_contract_id": "specification_metrics.intent-first.v4",
+    "prior_task_sha256": "157a1da323cfade1302f0b9a28003d76e0256603bc7950a7e9e0ba32e75137bf",
+    "scope_binding_sha256": "cc224f66470faf0d29b1e39e91c77b1932e7023c29602325697bf9efa5698a77",
+    "state_sha256": "afdb3db2bcf4a569c2a818a321b5473acb7a5da40be9755b7d56bb5f066e069a",
+    "task_sha256": "016ed314b4ddc7a1d6a07ecf76252c9ff273fe500c3bb0b6b86ace29ccd45a04",
+    "transformation": "contract/task identity changed; state, profile, scope, source code and example labels/actions preserved"
+  },
+  {
+    "case_id": "target-02-cell01",
+    "prior_contract_id": "specification_metrics.intent-first.v4",
+    "prior_task_sha256": "7c65c34bea8c8e54e60b7497461ce0956c8cb241a60556d817da58e4bc404e0d",
+    "scope_binding_sha256": "9015a5b2ceb3222e4779e8275e2bee708fc4643b8774fcc26f651a951b0c4000",
+    "state_sha256": "3f877d5baf708f1e9f041c9113a69f668663a2cad8d34fe6f93ff79f3532f451",
+    "task_sha256": "1fdb6e6ac8f805b4ae1ee4622a4e401d04361feab3988f5dd758b8a94ad14dba",
+    "transformation": "contract/task identity changed; state, profile, scope, source code and example labels/actions preserved"
+  },
+  {
+    "case_id": "target-03-cell03",
+    "prior_contract_id": "specification_metrics.intent-first.v4",
+    "prior_task_sha256": "a1fc2054fbb6c0aba8dd3ba6ae2b6753556ebaddd23f228a4d2d269536715224",
+    "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+    "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+    "task_sha256": "e0551552141fa651d84256e8d888055499966a7e4d098a66d34b13153c57dcc2",
+    "transformation": "contract/task identity changed; state, profile, scope, source code and example labels/actions preserved"
+  },
+  {
+    "case_id": "target-04-cell01",
+    "prior_contract_id": "specification_metrics.intent-first.v4",
+    "prior_task_sha256": "7bff1758b493da0f86818ae1ba2591765ae61c723f8507257c3f8d7b78bbb15b",
+    "scope_binding_sha256": "bfe162be71fc4a7e532b5022f52d6d1605c080c409061d966913646e7095c34f",
+    "state_sha256": "3e7c1fd924a7d7a3bf2879e06c786c8bbe50c46c92adf7b592df811b96135253",
+    "task_sha256": "e8ee7c4879f836bbd908d82c9af6126f2980e6b31f8323e848bfc838a2f05e42",
+    "transformation": "contract/task identity changed; state, profile, scope, source code and example labels/actions preserved"
+  }
+]
