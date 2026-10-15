@@ -5,7 +5,7 @@ import unittest
 from pydantic import ValidationError
 
 from recommendation_policy_v1 import evaluate
-from recommendation_policy_v1.context import Facts, LookupFact, OwnershipFact, Role, Source, ToolFact
+from recommendation_policy_v1.context import ConflictFact, Facts, LookupFact, OwnershipFact, Role, Source, ToolFact
 from recommendation_policy_v1.proposals import fingerprint, inspect_proposals, questions, task
 
 SOURCE = Source(artifact='fixture.json', sha256='a' * 64, locator='case-1', authority='development_premise')
@@ -17,10 +17,30 @@ def facts(kind='policy', support='supported', ownership='absent_in_scope', tool=
                  role=Role(kind=kind, support=support, sources=(SOURCE,)),
                  ownership=OwnershipFact(value=ownership, sources=(SOURCE,)),
                  tool_responsibility=ToolFact(value=tool, sources=(SOURCE,)),
-                 intent_lookup=LookupFact(value=lookup, sources=(SOURCE,)), conflicts=conflicts)
+                 intent_lookup=LookupFact(value=lookup, sources=(SOURCE,)),
+                 conflicts=tuple(ConflictFact(description=text, sources=(SOURCE,)) for text in conflicts))
 
 
 class PolicyTests(unittest.TestCase):
+    def test_explicit_conflicts_require_bound_immutable_provenance(self):
+        raw = facts().model_dump(mode='json')
+        invalid = ['unbound conflict', {'description': 'unbound conflict'},
+                   {'description': 'unbound conflict', 'sources': []},
+                   {'description': 'conflict', 'sources': [dict(artifact='x')]}]
+        for conflict in invalid:
+            with self.subTest(conflict=conflict), self.assertRaises(ValidationError):
+                Facts.model_validate_json(json.dumps(dict(raw, conflicts=[conflict])))
+        candidate = facts(conflicts=('sources disagree',))
+        restored = Facts.model_validate_json(candidate.model_dump_json())
+        decision = evaluate(restored)
+        self.assertEqual(decision['status'], 'needs_review')
+        self.assertEqual(decision['facts']['conflicts'][0]['sources'][0], SOURCE.model_dump())
+        with self.assertRaises(ValidationError):
+            restored.conflicts[0].sources[0].locator = 'changed'
+        changed = json.loads(candidate.model_dump_json())
+        changed['conflicts'][0]['sources'][0]['sha256'] = 'f' * 64
+        self.assertNotEqual(fingerprint(candidate), fingerprint(Facts.model_validate_json(json.dumps(changed))))
+
     def test_exhaustive_safety_invariants(self):
         roles = [('policy', 'supported'), ('variant_behavior', 'supported'), ('mechanics', 'supported'),
                  ('policy', 'limited'), ('variant_behavior', 'limited'), ('mechanics', 'limited'),
@@ -181,6 +201,9 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(rows[1]['decision']['facts']['ownership']['value'], 'unknown')
         self.assertEqual(rows[2]['decision']['facts']['ownership']['sources'][0]['authority'], 'source_binding')
         self.assertEqual(sum(len(r['observations']) for r in rows), 18)
+        self.assertEqual(result['source_bound_ownership_case_ids'], ['target-03-cell03'])
+        self.assertIn('Only target-03-cell03', result['interpretation'])
+        self.assertTrue(result['historical_cases_unchanged'])
 
 
 if __name__ == '__main__':
