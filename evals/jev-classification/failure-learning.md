@@ -496,6 +496,24 @@ historical reference, production prompt or metric state was changed.
   prompt change or extra paid run. Known cases and a single pair do not establish
   generalization; no provider scoring, production metric changes or semantic retries.
 
+## Formal recommendation after native premise drift (2026-10-15)
+
+- **Evidence:** the unchanged conditional live v2 report retains both providers'
+  path premise drift and Jev's policy/supported/keep_procedural gate tuple.
+- **Cause boundary:** model-internal cause remains unknown. Asking the provider
+  to choose the recommendation delegates a policy that the caller already owns.
+- **Prevention:** [formal policy v1](formal-recommendation-policy-v1.md) evaluates
+  immutable, provenance-bearing facts through six SpycificationCore rules. Model
+  outputs can only propose unresolved facts; they cannot mutate premises or select
+  an action. Conflict takes precedence; unchecked ownership is never absence.
+- **Verification:** 840 valid fact combinations, exact precedence/skipped traces,
+  stale and overreaching proposal rejection, and an offline replay alongside all
+  18 unchanged observations. Four development cases produce conditional actions;
+  this is not improved provider accuracy, independent gold or a production gate.
+- **Remaining boundary:** generic facts are trusted caller input. Establishing
+  source-backed facts, reviewing model proposals and attaching bounded source
+  evidence to future native requests still require their own integration.
+
 ## Record template
 
 1. Failure and exact command/criterion.
