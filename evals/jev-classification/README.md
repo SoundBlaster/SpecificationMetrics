@@ -427,3 +427,9 @@ one proposed D3 task and eight unconfirmed controls. Original three-response
 histograms remain distinct from decision authority. It lists a three-item
 confirmation packet and retained provenance limits; no scoring reference is frozen
 or activated by this inventory, and no new inference ran.
+
+Start with [four concrete code examples](scope-reference-code-examples.md) when
+reviewing those labels: the actual path helper and callers, gate/refinement
+precedence, YAML newline formatting, and the already-owned BDD predicate. Each
+example identifies the exact selected expression, its architectural question and
+the current decision status; snippets link to pinned SpecGraph source.

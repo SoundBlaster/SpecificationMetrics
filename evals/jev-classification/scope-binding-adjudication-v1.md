@@ -1,5 +1,8 @@
 # Scope binding: два решения для adjudication
 
+Практический вход: [четыре примера с реальным кодом и пояснениями](scope-reference-code-examples.md).
+Это объяснение выбранных expressions, а не только таблица меток.
+
 **Статус: D1/D2 подтверждены человеком 2026-10-14 после пояснения обеих рекомендаций.**
 Исходный автор предложения — nonblind model-integrator. Подтверждение и точные
 case/task bindings сохранены в [отдельном adjudication record](runs/2026-10-14-scope-binding-adjudication-v1/README.md).
