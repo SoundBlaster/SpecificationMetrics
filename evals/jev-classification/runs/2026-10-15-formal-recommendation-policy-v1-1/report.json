@@ -1,0 +1,1215 @@
+{
+  "cases": [
+    {
+      "decision": {
+        "basis": "formalization_preference",
+        "case_id": "target-01-cell03",
+        "facts": {
+          "case_id": "target-01-cell03",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-01-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [],
+            "value": "unknown"
+          },
+          "role": {
+            "kind": "unknown",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-01-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "insufficient"
+          },
+          "scope_binding_sha256": "cc224f66470faf0d29b1e39e91c77b1932e7023c29602325697bf9efa5698a77",
+          "state_sha256": "afdb3db2bcf4a569c2a818a321b5473acb7a5da40be9755b7d56bb5f066e069a",
+          "tool_responsibility": {
+            "sources": [],
+            "value": "unknown"
+          }
+        },
+        "metric_effect": "none",
+        "policy": "specmetrics.recommendation-policy/v1",
+        "recommendation": "formalize",
+        "scope_binding_sha256": "cc224f66470faf0d29b1e39e91c77b1932e7023c29602325697bf9efa5698a77",
+        "semantic_correctness_verified": false,
+        "state_sha256": "afdb3db2bcf4a569c2a818a321b5473acb7a5da40be9755b7d56bb5f066e069a",
+        "status": "provisional",
+        "trace": [
+          {
+            "name": "specmetrics.recommendation-policy/v1",
+            "outcome": "selected"
+          },
+          {
+            "name": "ConflictingFactsSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ExistingSpecificationSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ToolResponsibilitySpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "DomainContractSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "OrdinaryMechanicsSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "FormalizationPreferenceSpec",
+            "outcome": "satisfied"
+          }
+        ],
+        "unresolved": [
+          "role_not_established",
+          "same_decision_ownership_not_checked",
+          "tool_responsibility_not_checked"
+        ],
+        "write_authority": false
+      },
+      "observations": [
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "baseline",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-01-cell03-baseline-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "conditioned",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-01-cell03-conditioned-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "conditioned",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "insufficient",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": false,
+          "request_id": "target-01-cell03-conditioned-luna-decision-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "baseline",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "mechanics",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": false,
+          "request_id": "target-01-cell03-baseline-luna-decision-coreinfra-v2"
+        }
+      ],
+      "unresolved_fact_task": {
+        "accepted_facts": {
+          "case_id": "target-01-cell03",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-01-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [],
+            "value": "unknown"
+          },
+          "role": {
+            "kind": "unknown",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-01-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "insufficient"
+          },
+          "scope_binding_sha256": "cc224f66470faf0d29b1e39e91c77b1932e7023c29602325697bf9efa5698a77",
+          "state_sha256": "afdb3db2bcf4a569c2a818a321b5473acb7a5da40be9755b7d56bb5f066e069a",
+          "tool_responsibility": {
+            "sources": [],
+            "value": "unknown"
+          }
+        },
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "contract": "specmetrics.fact-proposal/v1",
+        "facts_sha256": "a6cfb0b9b079c075c944238a3e664b30003d1e4bd5a4c51b864d5e375696c1a1",
+        "inference_authorized": false,
+        "instructions": "Classify only the requested unresolved facts using the bound evidence. Do not propose a recommendation, change established facts or claim an unbounded search. Policy decides admissibility, authority, lifecycle or obligation precedence; variant_behavior selects HOW an established domain activity is implemented; mechanics handles representation, parsing, transport or adaptation without a domain decision. Use unknown/insufficient when primary role cannot be settled. Supported means direct contract/code witness; limited means incomplete role support. This is not provider probability. These are proposals for review, never accepted facts. Supply source locators for review. This question plan still needs the exact bound source evidence attached before execution.",
+        "questions": {
+          "ownership": [
+            "existing_specification",
+            "simple_composition",
+            "absent_in_scope",
+            "unknown"
+          ],
+          "role": [
+            "policy",
+            "variant_behavior",
+            "mechanics",
+            "unknown"
+          ],
+          "tool_responsibility": [
+            "yes",
+            "no_in_scope",
+            "unknown"
+          ]
+        },
+        "response_schema": {
+          "$defs": {
+            "Proposal": {
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "minLength": 1,
+                  "title": "Field",
+                  "type": "string"
+                },
+                "source_locators": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "title": "Source Locators",
+                  "type": "array"
+                },
+                "support": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "supported",
+                        "limited",
+                        "insufficient"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Support"
+                },
+                "value": {
+                  "minLength": 1,
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "value",
+                "source_locators"
+              ],
+              "title": "Proposal",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "contract": {
+              "minLength": 1,
+              "title": "Contract",
+              "type": "string"
+            },
+            "facts_sha256": {
+              "minLength": 1,
+              "title": "Facts Sha256",
+              "type": "string"
+            },
+            "proposals": {
+              "items": {
+                "$ref": "#/$defs/Proposal"
+              },
+              "title": "Proposals",
+              "type": "array"
+            }
+          },
+          "required": [
+            "contract",
+            "facts_sha256",
+            "proposals"
+          ],
+          "title": "Response",
+          "type": "object"
+        },
+        "status": "offline_question_plan_not_provider_request"
+      }
+    },
+    {
+      "decision": {
+        "basis": "domain_contract",
+        "case_id": "target-02-cell01",
+        "facts": {
+          "case_id": "target-02-cell01",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-02-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [],
+            "value": "unknown"
+          },
+          "role": {
+            "kind": "policy",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-02-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "supported"
+          },
+          "scope_binding_sha256": "9015a5b2ceb3222e4779e8275e2bee708fc4643b8774fcc26f651a951b0c4000",
+          "state_sha256": "3f877d5baf708f1e9f041c9113a69f668663a2cad8d34fe6f93ff79f3532f451",
+          "tool_responsibility": {
+            "sources": [],
+            "value": "unknown"
+          }
+        },
+        "metric_effect": "none",
+        "policy": "specmetrics.recommendation-policy/v1",
+        "recommendation": "formalize",
+        "scope_binding_sha256": "9015a5b2ceb3222e4779e8275e2bee708fc4643b8774fcc26f651a951b0c4000",
+        "semantic_correctness_verified": false,
+        "state_sha256": "3f877d5baf708f1e9f041c9113a69f668663a2cad8d34fe6f93ff79f3532f451",
+        "status": "provisional",
+        "trace": [
+          {
+            "name": "specmetrics.recommendation-policy/v1",
+            "outcome": "selected"
+          },
+          {
+            "name": "ConflictingFactsSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ExistingSpecificationSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ToolResponsibilitySpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "DomainContractSpec",
+            "outcome": "satisfied"
+          },
+          {
+            "name": "pair[4]:OrdinaryMechanicsSpec",
+            "outcome": "skipped"
+          },
+          {
+            "name": "pair[5]:FormalizationPreferenceSpec",
+            "outcome": "skipped"
+          }
+        ],
+        "unresolved": [
+          "same_decision_ownership_not_checked",
+          "tool_responsibility_not_checked"
+        ],
+        "write_authority": false
+      },
+      "observations": [
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "conditioned",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "keep_procedural"
+          },
+          "raw_tuple_consistent": false,
+          "request_id": "target-02-cell01-conditioned-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "baseline",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "keep_procedural"
+          },
+          "raw_tuple_consistent": false,
+          "request_id": "target-02-cell01-baseline-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "baseline",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-02-cell01-baseline-luna-decision-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "conditioned",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-02-cell01-conditioned-luna-decision-coreinfra-v2"
+        }
+      ],
+      "unresolved_fact_task": {
+        "accepted_facts": {
+          "case_id": "target-02-cell01",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-02-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [],
+            "value": "unknown"
+          },
+          "role": {
+            "kind": "policy",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-02-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "supported"
+          },
+          "scope_binding_sha256": "9015a5b2ceb3222e4779e8275e2bee708fc4643b8774fcc26f651a951b0c4000",
+          "state_sha256": "3f877d5baf708f1e9f041c9113a69f668663a2cad8d34fe6f93ff79f3532f451",
+          "tool_responsibility": {
+            "sources": [],
+            "value": "unknown"
+          }
+        },
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "contract": "specmetrics.fact-proposal/v1",
+        "facts_sha256": "8ae2f984f8a4530e4cfed070043d21d4b1aed580902560440fcd3b5ae0288b45",
+        "inference_authorized": false,
+        "instructions": "Classify only the requested unresolved facts using the bound evidence. Do not propose a recommendation, change established facts or claim an unbounded search. Policy decides admissibility, authority, lifecycle or obligation precedence; variant_behavior selects HOW an established domain activity is implemented; mechanics handles representation, parsing, transport or adaptation without a domain decision. Use unknown/insufficient when primary role cannot be settled. Supported means direct contract/code witness; limited means incomplete role support. This is not provider probability. These are proposals for review, never accepted facts. Supply source locators for review. This question plan still needs the exact bound source evidence attached before execution.",
+        "questions": {
+          "ownership": [
+            "existing_specification",
+            "simple_composition",
+            "absent_in_scope",
+            "unknown"
+          ],
+          "tool_responsibility": [
+            "yes",
+            "no_in_scope",
+            "unknown"
+          ]
+        },
+        "response_schema": {
+          "$defs": {
+            "Proposal": {
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "minLength": 1,
+                  "title": "Field",
+                  "type": "string"
+                },
+                "source_locators": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "title": "Source Locators",
+                  "type": "array"
+                },
+                "support": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "supported",
+                        "limited",
+                        "insufficient"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Support"
+                },
+                "value": {
+                  "minLength": 1,
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "value",
+                "source_locators"
+              ],
+              "title": "Proposal",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "contract": {
+              "minLength": 1,
+              "title": "Contract",
+              "type": "string"
+            },
+            "facts_sha256": {
+              "minLength": 1,
+              "title": "Facts Sha256",
+              "type": "string"
+            },
+            "proposals": {
+              "items": {
+                "$ref": "#/$defs/Proposal"
+              },
+              "title": "Proposals",
+              "type": "array"
+            }
+          },
+          "required": [
+            "contract",
+            "facts_sha256",
+            "proposals"
+          ],
+          "title": "Response",
+          "type": "object"
+        },
+        "status": "offline_question_plan_not_provider_request"
+      }
+    },
+    {
+      "decision": {
+        "basis": "existing_specification",
+        "case_id": "target-03-cell03",
+        "facts": {
+          "case_id": "target-03-cell03",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-03-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-conditional-native-action-preparation-v2/ownership-witness.json",
+                "authority": "source_binding",
+                "locator": "BDDScenarioValuesSpec.findings -> BDDPolicy._evaluate",
+                "sha256": "6be78d5c8285b902a0954e7aaddcb22627d6d6e0da5ccf41a11ec35f942d3c82"
+              }
+            ],
+            "value": "existing_specification"
+          },
+          "role": {
+            "kind": "policy",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-03-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "supported"
+          },
+          "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+          "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+          "tool_responsibility": {
+            "sources": [],
+            "value": "unknown"
+          }
+        },
+        "metric_effect": "none",
+        "policy": "specmetrics.recommendation-policy/v1",
+        "recommendation": "reuse_specification",
+        "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+        "semantic_correctness_verified": false,
+        "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+        "status": "recommended_in_scope",
+        "trace": [
+          {
+            "name": "specmetrics.recommendation-policy/v1",
+            "outcome": "selected"
+          },
+          {
+            "name": "ConflictingFactsSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ExistingSpecificationSpec",
+            "outcome": "satisfied"
+          },
+          {
+            "name": "pair[2]:ToolResponsibilitySpec",
+            "outcome": "skipped"
+          },
+          {
+            "name": "pair[3]:DomainContractSpec",
+            "outcome": "skipped"
+          },
+          {
+            "name": "pair[4]:OrdinaryMechanicsSpec",
+            "outcome": "skipped"
+          },
+          {
+            "name": "pair[5]:FormalizationPreferenceSpec",
+            "outcome": "skipped"
+          }
+        ],
+        "unresolved": [
+          "tool_responsibility_not_checked"
+        ],
+        "write_authority": false
+      },
+      "observations": [
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "ownership_witness",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "reuse_specification"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-03-cell03-ownership_witness-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "baseline",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "keep_procedural"
+          },
+          "raw_tuple_consistent": false,
+          "request_id": "target-03-cell03-baseline-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "conditioned",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "reuse_specification"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-03-cell03-conditioned-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "baseline",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-03-cell03-baseline-luna-decision-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "conditioned",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-03-cell03-conditioned-luna-decision-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": true,
+          "arm": "ownership_witness",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "policy",
+            "evidence_confidence": "supported",
+            "recommendation": "reuse_specification"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-03-cell03-ownership_witness-luna-decision-coreinfra-v2"
+        }
+      ],
+      "unresolved_fact_task": {
+        "accepted_facts": {
+          "case_id": "target-03-cell03",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-03-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-conditional-native-action-preparation-v2/ownership-witness.json",
+                "authority": "source_binding",
+                "locator": "BDDScenarioValuesSpec.findings -> BDDPolicy._evaluate",
+                "sha256": "6be78d5c8285b902a0954e7aaddcb22627d6d6e0da5ccf41a11ec35f942d3c82"
+              }
+            ],
+            "value": "existing_specification"
+          },
+          "role": {
+            "kind": "policy",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-03-cell03",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "supported"
+          },
+          "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+          "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+          "tool_responsibility": {
+            "sources": [],
+            "value": "unknown"
+          }
+        },
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "contract": "specmetrics.fact-proposal/v1",
+        "facts_sha256": "b8564d5e37faa383b25ff4be24af8ab884d5ae5ddea3cad4612d0221c81ef06b",
+        "inference_authorized": false,
+        "instructions": "Classify only the requested unresolved facts using the bound evidence. Do not propose a recommendation, change established facts or claim an unbounded search. Policy decides admissibility, authority, lifecycle or obligation precedence; variant_behavior selects HOW an established domain activity is implemented; mechanics handles representation, parsing, transport or adaptation without a domain decision. Use unknown/insufficient when primary role cannot be settled. Supported means direct contract/code witness; limited means incomplete role support. This is not provider probability. These are proposals for review, never accepted facts. Supply source locators for review. This question plan still needs the exact bound source evidence attached before execution.",
+        "questions": {
+          "tool_responsibility": [
+            "yes",
+            "no_in_scope",
+            "unknown"
+          ]
+        },
+        "response_schema": {
+          "$defs": {
+            "Proposal": {
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "minLength": 1,
+                  "title": "Field",
+                  "type": "string"
+                },
+                "source_locators": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "title": "Source Locators",
+                  "type": "array"
+                },
+                "support": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "supported",
+                        "limited",
+                        "insufficient"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Support"
+                },
+                "value": {
+                  "minLength": 1,
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "value",
+                "source_locators"
+              ],
+              "title": "Proposal",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "contract": {
+              "minLength": 1,
+              "title": "Contract",
+              "type": "string"
+            },
+            "facts_sha256": {
+              "minLength": 1,
+              "title": "Facts Sha256",
+              "type": "string"
+            },
+            "proposals": {
+              "items": {
+                "$ref": "#/$defs/Proposal"
+              },
+              "title": "Proposals",
+              "type": "array"
+            }
+          },
+          "required": [
+            "contract",
+            "facts_sha256",
+            "proposals"
+          ],
+          "title": "Response",
+          "type": "object"
+        },
+        "status": "offline_question_plan_not_provider_request"
+      }
+    },
+    {
+      "decision": {
+        "basis": "tool_responsibility",
+        "case_id": "target-04-cell01",
+        "facts": {
+          "case_id": "target-04-cell01",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-04-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [],
+            "value": "unknown"
+          },
+          "role": {
+            "kind": "mechanics",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-04-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "supported"
+          },
+          "scope_binding_sha256": "bfe162be71fc4a7e532b5022f52d6d1605c080c409061d966913646e7095c34f",
+          "state_sha256": "3e7c1fd924a7d7a3bf2879e06c786c8bbe50c46c92adf7b592df811b96135253",
+          "tool_responsibility": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-04-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "yes"
+          }
+        },
+        "metric_effect": "none",
+        "policy": "specmetrics.recommendation-policy/v1",
+        "recommendation": "use_tool_rules",
+        "scope_binding_sha256": "bfe162be71fc4a7e532b5022f52d6d1605c080c409061d966913646e7095c34f",
+        "semantic_correctness_verified": false,
+        "state_sha256": "3e7c1fd924a7d7a3bf2879e06c786c8bbe50c46c92adf7b592df811b96135253",
+        "status": "provisional",
+        "trace": [
+          {
+            "name": "specmetrics.recommendation-policy/v1",
+            "outcome": "selected"
+          },
+          {
+            "name": "ConflictingFactsSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ExistingSpecificationSpec",
+            "outcome": "unsatisfied"
+          },
+          {
+            "name": "ToolResponsibilitySpec",
+            "outcome": "satisfied"
+          },
+          {
+            "name": "pair[3]:DomainContractSpec",
+            "outcome": "skipped"
+          },
+          {
+            "name": "pair[4]:OrdinaryMechanicsSpec",
+            "outcome": "skipped"
+          },
+          {
+            "name": "pair[5]:FormalizationPreferenceSpec",
+            "outcome": "skipped"
+          }
+        ],
+        "unresolved": [
+          "same_decision_ownership_not_checked"
+        ],
+        "write_authority": false
+      },
+      "observations": [
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "conditioned",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "mechanics",
+            "evidence_confidence": "supported",
+            "recommendation": "keep_procedural"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-04-cell01-conditioned-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "baseline",
+          "provider": "jev-coreinfra",
+          "raw_labels": {
+            "concern_kind": "mechanics",
+            "evidence_confidence": "supported",
+            "recommendation": "keep_procedural"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-04-cell01-baseline-jev-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "baseline",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "mechanics",
+            "evidence_confidence": "supported",
+            "recommendation": "formalize"
+          },
+          "raw_tuple_consistent": false,
+          "request_id": "target-04-cell01-baseline-luna-decision-coreinfra-v2"
+        },
+        {
+          "action_matches_formal_recommendation": false,
+          "arm": "conditioned",
+          "provider": "luna-decision-coreinfra",
+          "raw_labels": {
+            "concern_kind": "mechanics",
+            "evidence_confidence": "supported",
+            "recommendation": "keep_procedural"
+          },
+          "raw_tuple_consistent": true,
+          "request_id": "target-04-cell01-conditioned-luna-decision-coreinfra-v2"
+        }
+      ],
+      "unresolved_fact_task": {
+        "accepted_facts": {
+          "case_id": "target-04-cell01",
+          "conflicts": [],
+          "contract": "specmetrics.recommendation-facts/v1",
+          "intent_lookup": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-04-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "completed"
+          },
+          "ownership": {
+            "sources": [],
+            "value": "unknown"
+          },
+          "role": {
+            "kind": "mechanics",
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-04-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "support": "supported"
+          },
+          "scope_binding_sha256": "bfe162be71fc4a7e532b5022f52d6d1605c080c409061d966913646e7095c34f",
+          "state_sha256": "3e7c1fd924a7d7a3bf2879e06c786c8bbe50c46c92adf7b592df811b96135253",
+          "tool_responsibility": {
+            "sources": [
+              {
+                "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+                "authority": "development_premise",
+                "locator": "target-04-cell01",
+                "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+              }
+            ],
+            "value": "yes"
+          }
+        },
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "contract": "specmetrics.fact-proposal/v1",
+        "facts_sha256": "49e945df0649268a95cea15bde0609ab6e9006c206faa48aa5e769a52e1f06d8",
+        "inference_authorized": false,
+        "instructions": "Classify only the requested unresolved facts using the bound evidence. Do not propose a recommendation, change established facts or claim an unbounded search. Policy decides admissibility, authority, lifecycle or obligation precedence; variant_behavior selects HOW an established domain activity is implemented; mechanics handles representation, parsing, transport or adaptation without a domain decision. Use unknown/insufficient when primary role cannot be settled. Supported means direct contract/code witness; limited means incomplete role support. This is not provider probability. These are proposals for review, never accepted facts. Supply source locators for review. This question plan still needs the exact bound source evidence attached before execution.",
+        "questions": {
+          "ownership": [
+            "existing_specification",
+            "simple_composition",
+            "absent_in_scope",
+            "unknown"
+          ]
+        },
+        "response_schema": {
+          "$defs": {
+            "Proposal": {
+              "additionalProperties": false,
+              "properties": {
+                "field": {
+                  "minLength": 1,
+                  "title": "Field",
+                  "type": "string"
+                },
+                "source_locators": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "title": "Source Locators",
+                  "type": "array"
+                },
+                "support": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "supported",
+                        "limited",
+                        "insufficient"
+                      ],
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Support"
+                },
+                "value": {
+                  "minLength": 1,
+                  "title": "Value",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "value",
+                "source_locators"
+              ],
+              "title": "Proposal",
+              "type": "object"
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "contract": {
+              "minLength": 1,
+              "title": "Contract",
+              "type": "string"
+            },
+            "facts_sha256": {
+              "minLength": 1,
+              "title": "Facts Sha256",
+              "type": "string"
+            },
+            "proposals": {
+              "items": {
+                "$ref": "#/$defs/Proposal"
+              },
+              "title": "Proposals",
+              "type": "array"
+            }
+          },
+          "required": [
+            "contract",
+            "facts_sha256",
+            "proposals"
+          ],
+          "title": "Response",
+          "type": "object"
+        },
+        "status": "offline_question_plan_not_provider_request"
+      }
+    }
+  ],
+  "contract": "specmetrics.formal-recommendation-replay/v1.1",
+  "historical_cases_unchanged": true,
+  "independent_gold": false,
+  "interpretation": "Deterministic compliance with development premises, not improved model accuracy. Only target-03-cell03 (BDD) uses the source-bound ownership witness. The other three cases retain development premises and unknown ownership; baseline model context is unchanged.",
+  "logical_cases": 4,
+  "metric_effect": "none",
+  "producer_sha256": {
+    "formal-recommendation-policy-v1.md": "e8ecd16222ba55acba746f0ed347a661825e5966547efd9474e91c7d1a45c208",
+    "recommendation_policy_v1/__init__.py": "3b26050d6c99a8de1fc6b9178ed3e933b075cceaa66588f091d678ff0af863b5",
+    "recommendation_policy_v1/conflicting_facts.py": "78404993b568d353573be36f91e96ef8605099538f1df7472c4e34aa1c6bb140",
+    "recommendation_policy_v1/context.py": "68b14ee5741e6fca9acfba77ae2b42efd70042c815f1c78ff951ea5f90ecd72d",
+    "recommendation_policy_v1/domain_contract.py": "00f1bb1a7bec6814b0971af41dd71e109ac7b790143e3ce8f29392ffad79a062",
+    "recommendation_policy_v1/existing_specification.py": "1c4d2c9de152fbbfea965354cc59796d8338ef727bb6b036e39fdb27398a3a3f",
+    "recommendation_policy_v1/formalization_preference.py": "b6b8a970f97905aa96155bfb4870b76633e08c796a840e3bd6d4bc6fb09253bd",
+    "recommendation_policy_v1/ordinary_mechanics.py": "f036a23f2ad6560c6d4ce254cad4901b0d152bd6ef0632afe95657441e8e56fd",
+    "recommendation_policy_v1/proposals.py": "20909156abda17293be16b40c27c95f1dc552a79fc72320d11221e0d8da47de3",
+    "recommendation_policy_v1/tool_responsibility.py": "e5ae7c3e965db91cd066451a0e4b78fc886a6910eb60d8a76536f06012641c39",
+    "replay_recommendation_policy_v1.py": "3d2087b451666aea3c8b61077b2091c7b5ccd77ddf5b58517de8c3f92cf46c08",
+    "requirements-policy.txt": "d61f37e69f99c4d3963c0e8e6e9398a230fc587adc162b2edcf98e0ab94753d8"
+  },
+  "provider_requests": 0,
+  "provider_scoring_enabled": false,
+  "raw_observations": 18,
+  "semantic_accuracy": null,
+  "source_bound_ownership_case_ids": [
+    "target-03-cell03"
+  ],
+  "source_sha256": {
+    "runs/2026-10-15-conditional-native-action-live-v2/analysis.json": "9b3887c05deb297e2f1fbcb6c63ef75713525669b0768646b48c83e1d6932f4a",
+    "runs/2026-10-15-conditional-native-action-live-v2/native-report.json": "7744caaf5ad2c23ef2fb5385b0983896cdcacb67d019387ce2acb730a2a5f28e",
+    "runs/2026-10-15-conditional-native-action-live-v2/responses.jsonl": "a86d9c7665027dbdc9d7730ecb35b4b9293db6a655e112001ac913e70871a11a"
+  },
+  "status": "offline_development_replay",
+  "supersedes_report": {
+    "artifact": "runs/2026-10-15-formal-recommendation-policy-v1/report.json",
+    "sha256": "fb5c1df21d059d7caf7250494e0edd27c5b523e7c1db04ed82343c2fae48ebaa"
+  }
+}
