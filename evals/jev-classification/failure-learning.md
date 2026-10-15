@@ -514,6 +514,26 @@ historical reference, production prompt or metric state was changed.
   source-backed facts, reviewing model proposals and attaching bounded source
   evidence to future native requests still require their own integration.
 
+## Ownership acceptance and retrieval coverage (2026-10-15)
+
+- **Boundary found during design:** the formal recommendation policy trusts its
+  input facts; a source locator or a model's `absent_in_scope` proposal does not
+  establish ownership or search completeness.
+- **Correction:** [ownership acceptance v1](ownership-fact-acceptance-v1.md)
+  separates source/identity checks, caller-approved review artifacts and three
+  transition Specifications. Existing/conflicting facts cannot be overwritten.
+  Positive BDD evidence reuses the pinned full-module verifier. Generic reviewed
+  evidence must bind the exact source scope, catalogue and prior Facts snapshot.
+- **Retrieval lesson:** a completed RAG request is not an exhaustive search.
+  Ranked results carry query/index/configuration digests and a limit, and can
+  support positive reuse after adjudication. Even an approved empty ranked result
+  cannot establish absence. This is a preventive contract rule, not a reported
+  failure of a RAG engine; no engine has been run.
+- **Verification:** 256 readiness combinations, tampered source/review, stale
+  scope, self-asserted approval, unknown/conflicting comparisons, ranked-result
+  limits and source-bound BDD handoff. Negative approvals exist only in synthetic
+  tests. Semantic review and trust configuration remain external responsibilities.
+
 ## Record template
 
 1. Failure and exact command/criterion.

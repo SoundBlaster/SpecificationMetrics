@@ -1,0 +1,275 @@
+{
+  "acceptance": {
+    "accepted_value": "existing_specification",
+    "authority": "pinned_static_source_binding",
+    "facts": {
+      "case_id": "target-03-cell03",
+      "conflicts": [],
+      "contract": "specmetrics.recommendation-facts/v1",
+      "intent_lookup": {
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+            "authority": "development_premise",
+            "locator": "target-03-cell03",
+            "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+          }
+        ],
+        "value": "completed"
+      },
+      "ownership": {
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-conditional-native-action-preparation-v2/ownership-witness.json",
+            "authority": "source_binding",
+            "locator": "BDDScenarioValuesSpec.findings -> BDDPolicy._evaluate",
+            "sha256": "6be78d5c8285b902a0954e7aaddcb22627d6d6e0da5ccf41a11ec35f942d3c82"
+          }
+        ],
+        "value": "existing_specification"
+      },
+      "role": {
+        "kind": "policy",
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+            "authority": "development_premise",
+            "locator": "target-03-cell03",
+            "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+          }
+        ],
+        "support": "supported"
+      },
+      "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+      "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+      "tool_responsibility": {
+        "sources": [],
+        "value": "unknown"
+      }
+    },
+    "limitations": [
+      "ordinary static Python bindings and trusted library contract",
+      "not runtime execution or a whole-project ownership proof"
+    ],
+    "metric_effect": "none",
+    "next_facts_sha256": "b8564d5e37faa383b25ff4be24af8ab884d5ae5ddea3cad4612d0221c81ef06b",
+    "policy": "specmetrics.ownership-acceptance/v1",
+    "prior_facts_sha256": "b524f3b8d060f929a2254dc94efc9b991db8b5670921336ab03110562b957b0f",
+    "reasons": [],
+    "runtime_identity_verified": false,
+    "semantic_correctness_verified": false,
+    "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+    "status": "accepted",
+    "trace": [
+      {
+        "name": "specmetrics.ownership-acceptance/v1",
+        "outcome": "selected"
+      },
+      {
+        "name": "BlockedOwnershipTransitionSpec",
+        "outcome": "unsatisfied"
+      },
+      {
+        "name": "VerifiedSameDecisionOwnershipSpec",
+        "outcome": "satisfied"
+      },
+      {
+        "name": "pair[2]:ReviewedScopedAbsenceSpec",
+        "outcome": "skipped"
+      }
+    ],
+    "write_authority": false
+  },
+  "after": {
+    "basis": "existing_specification",
+    "case_id": "target-03-cell03",
+    "facts": {
+      "case_id": "target-03-cell03",
+      "conflicts": [],
+      "contract": "specmetrics.recommendation-facts/v1",
+      "intent_lookup": {
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+            "authority": "development_premise",
+            "locator": "target-03-cell03",
+            "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+          }
+        ],
+        "value": "completed"
+      },
+      "ownership": {
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-conditional-native-action-preparation-v2/ownership-witness.json",
+            "authority": "source_binding",
+            "locator": "BDDScenarioValuesSpec.findings -> BDDPolicy._evaluate",
+            "sha256": "6be78d5c8285b902a0954e7aaddcb22627d6d6e0da5ccf41a11ec35f942d3c82"
+          }
+        ],
+        "value": "existing_specification"
+      },
+      "role": {
+        "kind": "policy",
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+            "authority": "development_premise",
+            "locator": "target-03-cell03",
+            "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+          }
+        ],
+        "support": "supported"
+      },
+      "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+      "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+      "tool_responsibility": {
+        "sources": [],
+        "value": "unknown"
+      }
+    },
+    "metric_effect": "none",
+    "policy": "specmetrics.recommendation-policy/v1",
+    "recommendation": "reuse_specification",
+    "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+    "semantic_correctness_verified": false,
+    "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+    "status": "recommended_in_scope",
+    "trace": [
+      {
+        "name": "specmetrics.recommendation-policy/v1",
+        "outcome": "selected"
+      },
+      {
+        "name": "ConflictingFactsSpec",
+        "outcome": "unsatisfied"
+      },
+      {
+        "name": "ExistingSpecificationSpec",
+        "outcome": "satisfied"
+      },
+      {
+        "name": "pair[2]:ToolResponsibilitySpec",
+        "outcome": "skipped"
+      },
+      {
+        "name": "pair[3]:DomainContractSpec",
+        "outcome": "skipped"
+      },
+      {
+        "name": "pair[4]:OrdinaryMechanicsSpec",
+        "outcome": "skipped"
+      },
+      {
+        "name": "pair[5]:FormalizationPreferenceSpec",
+        "outcome": "skipped"
+      }
+    ],
+    "unresolved": [
+      "tool_responsibility_not_checked"
+    ],
+    "write_authority": false
+  },
+  "before": {
+    "basis": "domain_contract",
+    "case_id": "target-03-cell03",
+    "facts": {
+      "case_id": "target-03-cell03",
+      "conflicts": [],
+      "contract": "specmetrics.recommendation-facts/v1",
+      "intent_lookup": {
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+            "authority": "development_premise",
+            "locator": "target-03-cell03",
+            "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+          }
+        ],
+        "value": "completed"
+      },
+      "ownership": {
+        "sources": [],
+        "value": "unknown"
+      },
+      "role": {
+        "kind": "policy",
+        "sources": [
+          {
+            "artifact": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+            "authority": "development_premise",
+            "locator": "target-03-cell03",
+            "sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d"
+          }
+        ],
+        "support": "supported"
+      },
+      "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+      "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+      "tool_responsibility": {
+        "sources": [],
+        "value": "unknown"
+      }
+    },
+    "metric_effect": "none",
+    "policy": "specmetrics.recommendation-policy/v1",
+    "recommendation": "formalize",
+    "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+    "semantic_correctness_verified": false,
+    "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+    "status": "provisional",
+    "trace": [
+      {
+        "name": "specmetrics.recommendation-policy/v1",
+        "outcome": "selected"
+      },
+      {
+        "name": "ConflictingFactsSpec",
+        "outcome": "unsatisfied"
+      },
+      {
+        "name": "ExistingSpecificationSpec",
+        "outcome": "unsatisfied"
+      },
+      {
+        "name": "ToolResponsibilitySpec",
+        "outcome": "unsatisfied"
+      },
+      {
+        "name": "DomainContractSpec",
+        "outcome": "satisfied"
+      },
+      {
+        "name": "pair[4]:OrdinaryMechanicsSpec",
+        "outcome": "skipped"
+      },
+      {
+        "name": "pair[5]:FormalizationPreferenceSpec",
+        "outcome": "skipped"
+      }
+    ],
+    "unresolved": [
+      "same_decision_ownership_not_checked",
+      "tool_responsibility_not_checked"
+    ],
+    "write_authority": false
+  },
+  "contract": "specmetrics.ownership-acceptance-replay/v1",
+  "metric_effect": "none",
+  "negative_ownership_approved_on_real_project": false,
+  "producer_sha256": {
+    "ownership-fact-acceptance-v1.md": "9837f6b4ae42fc6d5050d1238ba16f96f755bb7d46cd9ae9af14092cd373da3b",
+    "ownership_acceptance_v1/__init__.py": "7b092b74409c0854183391f998df9c3958ade1409be2a17acaa1e5f73c064611",
+    "ownership_acceptance_v1/adapters.py": "774cb0d4bbc19ba14686fffa322d56072827ccda9fafa584ff6984de33eaf1bc",
+    "ownership_acceptance_v1/blocked_transition.py": "435bb24851ef5a1e0a8bb2af9427e9f8e0e9a1113dc0592dc1ec1ad96d1284e2",
+    "ownership_acceptance_v1/context.py": "305fa0d90f3e66003b16b966298d2fc3a1afe71b11d2cd72ce34e412935874be",
+    "ownership_acceptance_v1/scoped_absence.py": "1e47199ee490ef936ae8224e7c7a532d2d5277e2d71ed4709b3dc9b1a61a70db",
+    "ownership_acceptance_v1/verified_ownership.py": "85262bfe4ae6c5a6d44b89b87d4e4f058d0daafb2da101d3c7e372e5866ad5f9",
+    "replay_ownership_acceptance_v1.py": "e3a18d9b6e183f796f56a833cfd47e485b25f90d6478436a1ac9710211c950a4"
+  },
+  "provider_requests": 0,
+  "semantic_accuracy": null,
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "source_snapshot_sha256": "d7c826e8a2736b8b27d657f6877aa3eaccb098bccc81d88789fa0365b1c086db",
+  "status": "offline_counterfactual_handoff_not_new_discovery"
+}

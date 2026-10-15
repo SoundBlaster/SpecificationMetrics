@@ -89,6 +89,8 @@ jobs:
           python3 -m unittest discover -v -s runs/2026-10-15-conditional-native-action-live-v2 -p test_results.py
           python3 -m unittest -v test_recommendation_policy_v1.py
           python3 replay_recommendation_policy_v1.py
+          python3 -m unittest -v test_ownership_acceptance_v1.py
+          python3 replay_ownership_acceptance_v1.py
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
           python3 validate_scope_binding_annotations.py
