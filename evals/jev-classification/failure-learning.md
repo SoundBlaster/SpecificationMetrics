@@ -545,3 +545,15 @@ historical reference, production prompt or metric state was changed.
 
 Keep lessons in repository artifacts rather than only in chat history. Do not
 turn a failed criterion green by relabelling an already observed case.
+
+## PR66 provenance and interpretation repair
+
+Review identified two confirmed implementation/reporting defects: a free-form
+`Facts.conflicts` string could trigger review without a traceable source, and
+the formal replay claimed source-bound ownership for all four cases although
+only BDD had that evidence. Conflict records now require immutable provenance;
+the decision table is unchanged. Regression coverage rejects bare/missing-source
+conflicts and binds conflict sources into the fact fingerprint. Replay v1.1
+lists the actual source-bound case and checks all decisions/observations against
+the preserved original report. The original v1 report is retained, not silently
+corrected. No inference or model-quality re-scoring is involved.

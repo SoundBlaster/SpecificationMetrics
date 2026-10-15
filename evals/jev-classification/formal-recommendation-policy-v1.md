@@ -20,6 +20,12 @@ authority. A digest proves association, not truth. The generic evaluator trusts
 caller-established premises; it does not read files, verify arbitrary source
 claims, search a repository or elevate a model answer into a fact.
 
+Explicit conflicts use the versioned `specmetrics.explicit-conflict/v1` record:
+`description` plus at least one `Source` (artifact, SHA-256, locator, authority).
+Bare strings and missing/empty provenance are rejected. The enclosing fact
+snapshot and decision table remain v1; existing snapshots without conflicts
+are unchanged. This validation repair does not establish the truth of a conflict.
+
 The replay adapter verifies the frozen v4.1 examples, source-bound BDD witness
 and historical live report before constructing facts. Examples remain
 `development_premise`, not independently adjudicated gold. BDD ownership uses
@@ -83,6 +89,14 @@ proposals can become a new snapshot. Existing live clients are not rewired yet.
 ```
 
 Replay keeps all 18 raw observations separate from four formal decisions:
+
+The active replay report is **v1.1** in
+`runs/2026-10-15-formal-recommendation-policy-v1-1/`. It corrects the original
+v1 interpretation: only the BDD case has source-bound ownership; the other
+three retain development premises and unknown ownership. The original report
+is preserved byte-for-byte as historical evidence, including its incorrect
+"all cases" claim. The corrected report binds its digest and verifies that
+all four historical decisions and 18 observations are unchanged.
 
 | Case | Decision | Remaining limitation |
 |---|---|---|
