@@ -1,0 +1,10 @@
+Use ONLY packet.json, contract.json and template.json from your assigned
+directory. Inspect each case independently under the complete contract instructions.
+The contract/profile supplies the global SpecificationCore goal and style preference;
+the case supplies the exact target, scope and bounded evidence. Do not read the source
+repository, other evidence views, source-bindings, integrator examples, prior labels,
+memory, credentials or network. Inspect supplied documents and disclose missing intent
+context; this bounded task does not authorize external lookup. Fill each template row
+with concern_kind, evidence_confidence, recommendation, basis, intent_review,
+rationales, evidence_quotes and uncertainties. Preserve every identity field.
+Return strict JSON with an annotations array. Do not refactor or count S/U.

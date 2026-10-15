@@ -1,0 +1,100 @@
+{
+  "annotations": [
+    {
+      "basis": null,
+      "case_id": "target-01-cell03",
+      "concern_kind": null,
+      "contract_id": "specification_metrics.intent-first.v4.1",
+      "contract_sha256": "c8dde3e38d65f212b83f4e3a8717c5b00d6a942accb9dc5559e96a58a9093658",
+      "evidence_confidence": null,
+      "evidence_quotes": [],
+      "intent_review": {
+        "checked_document_ids": [],
+        "missing_context": []
+      },
+      "rationales": {
+        "concern_kind": "",
+        "evidence_confidence": "",
+        "recommendation": ""
+      },
+      "recommendation": null,
+      "scope_binding_sha256": "cc224f66470faf0d29b1e39e91c77b1932e7023c29602325697bf9efa5698a77",
+      "scope_unit": "bound_application",
+      "state_sha256": "afdb3db2bcf4a569c2a818a321b5473acb7a5da40be9755b7d56bb5f066e069a",
+      "task_sha256": "016ed314b4ddc7a1d6a07ecf76252c9ff273fe500c3bb0b6b86ace29ccd45a04",
+      "uncertainties": []
+    },
+    {
+      "basis": null,
+      "case_id": "target-02-cell01",
+      "concern_kind": null,
+      "contract_id": "specification_metrics.intent-first.v4.1",
+      "contract_sha256": "c8dde3e38d65f212b83f4e3a8717c5b00d6a942accb9dc5559e96a58a9093658",
+      "evidence_confidence": null,
+      "evidence_quotes": [],
+      "intent_review": {
+        "checked_document_ids": [],
+        "missing_context": []
+      },
+      "rationales": {
+        "concern_kind": "",
+        "evidence_confidence": "",
+        "recommendation": ""
+      },
+      "recommendation": null,
+      "scope_binding_sha256": "9015a5b2ceb3222e4779e8275e2bee708fc4643b8774fcc26f651a951b0c4000",
+      "scope_unit": "shared_definition",
+      "state_sha256": "3f877d5baf708f1e9f041c9113a69f668663a2cad8d34fe6f93ff79f3532f451",
+      "task_sha256": "1fdb6e6ac8f805b4ae1ee4622a4e401d04361feab3988f5dd758b8a94ad14dba",
+      "uncertainties": []
+    },
+    {
+      "basis": null,
+      "case_id": "target-03-cell03",
+      "concern_kind": null,
+      "contract_id": "specification_metrics.intent-first.v4.1",
+      "contract_sha256": "c8dde3e38d65f212b83f4e3a8717c5b00d6a942accb9dc5559e96a58a9093658",
+      "evidence_confidence": null,
+      "evidence_quotes": [],
+      "intent_review": {
+        "checked_document_ids": [],
+        "missing_context": []
+      },
+      "rationales": {
+        "concern_kind": "",
+        "evidence_confidence": "",
+        "recommendation": ""
+      },
+      "recommendation": null,
+      "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+      "scope_unit": "bound_application",
+      "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+      "task_sha256": "e0551552141fa651d84256e8d888055499966a7e4d098a66d34b13153c57dcc2",
+      "uncertainties": []
+    },
+    {
+      "basis": null,
+      "case_id": "target-04-cell01",
+      "concern_kind": null,
+      "contract_id": "specification_metrics.intent-first.v4.1",
+      "contract_sha256": "c8dde3e38d65f212b83f4e3a8717c5b00d6a942accb9dc5559e96a58a9093658",
+      "evidence_confidence": null,
+      "evidence_quotes": [],
+      "intent_review": {
+        "checked_document_ids": [],
+        "missing_context": []
+      },
+      "rationales": {
+        "concern_kind": "",
+        "evidence_confidence": "",
+        "recommendation": ""
+      },
+      "recommendation": null,
+      "scope_binding_sha256": "bfe162be71fc4a7e532b5022f52d6d1605c080c409061d966913646e7095c34f",
+      "scope_unit": "shared_definition",
+      "state_sha256": "3e7c1fd924a7d7a3bf2879e06c786c8bbe50c46c92adf7b592df811b96135253",
+      "task_sha256": "e8ee7c4879f836bbd908d82c9af6126f2980e6b31f8323e848bfc838a2f05e42",
+      "uncertainties": []
+    }
+  ]
+}

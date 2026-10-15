@@ -331,6 +331,59 @@ historical reference, production prompt or metric state was changed.
   hashes, overwrite refusal and prompt drift. Runtime rationale fidelity remains
   a manual semantic judgment; copying a scope field is not proof of understanding.
 
+## Intent uncertainty versus architecture action (2026-10-15)
+
+- **Evidence:** the [human clarification](runs/2026-10-15-scope-binding-adjudication-v2/README.md)
+  corrected the practical interpretation of four pinned examples. For ambiguous
+  path design, inspect intent/proposal/spec and prefer strict formalization if
+  ambiguity remains. Gate precedence is a candidate, formatting belongs to tool
+  rule sets, and simple Specification composition needs no extra wrapper.
+- **Confirmed design mismatch:** our `needs_review / unknown` presentation left
+  architectural action unspecified although the human has an explicit style
+  preference. This does not establish why a model produced a particular label,
+  or prove that every historical abstention was incorrect.
+- **Correction:** version the output contract as v4 with concern kind, ordinal
+  evidence support and recommendation. Preserve uncertain role even when the
+  recommendation is `formalize`; retain exact source/scope and documentary
+  authority. Simple NOT/AND/OR and formatter rules are reuse boundaries.
+- **Prevention:** `test_intent_first_v4.py` accepts unknown/insufficient/formalize,
+  rejects unjustified certainty and action/basis contradictions, and exercises
+  stale identities, source substitution, documentary acknowledgments and prompt
+  drift. Four integrator examples illustrate the contract; they are not model
+  predictions or independent gold. JSON Schema plus Python validation establishes
+  structural/identity consistency, not semantic correctness.
+- **Limits:** frozen v3.1 data and raw answers are unchanged. No current accuracy
+  score improves by redefining a past task. Provider wire mapping, reference
+  adjudication and a bounded live comparison remain separate work.
+
+## Intent-first v4.1 consistency repair (2026-10-15)
+
+- **Evidence:** requested independent Astra/high review of `ccf1da2` reproduced
+  two invalid combinations accepted by v4: gate `policy / supported` and path
+  `unknown / insufficient`, both changed to `keep_procedural / basis=mechanics`.
+  The parent reproduced both. [GitHub review](https://github.com/SoundBlaster/SpecificationMetrics/pull/61#discussion_r4281998893)
+  separately found that exported schema described one row while the prompt and
+  consumer expected an `annotations` array envelope.
+- **Confirmed cause:** action/basis consistency was checked in one direction,
+  with no affirmative role/support precondition for procedural mechanics.
+  Row schema export also omitted the response envelope. These are deterministic
+  contract defects; no model inference or speculation about model reasoning is needed.
+- **Correction:** v4.1 requires `keep_procedural` to have `mechanics / supported`,
+  exports a strict `Response` model and validates exact response case coverage.
+  Template root matches the response schema; integrator-only status stays outside
+  model responses. Scope and quote checks still run. The supported domain-rule
+  basis is `domain_contract`; `formalization_preference` refers to uncertain role
+  support, not an unresolved implementation detail.
+- **Prevention:** `test_intent_first_v4_1.py` preserves reproduction of the old
+  failures and rejects them in the new version; exercises all twelve role/support
+  combinations for procedural action, supported-mechanics success, schema/template/
+  consumer compatibility, malformed/duplicate/missing responses, identities,
+  source quotes, documentary acknowledgments and overwrite refusal.
+- **Limits:** published v4 code, package and labels remain unchanged. Four v4.1
+  examples preserve state, source, scope, profile and labels/actions, changing
+  contract/task identities. No old failure is relabelled as a historical success;
+  no provider requests, scoring-reference activation or S/U change.
+
 ## Record template
 
 1. Failure and exact command/criterion.

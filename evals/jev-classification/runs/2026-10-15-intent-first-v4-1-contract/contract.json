@@ -1,0 +1,261 @@
+{
+  "annotation_prompt": "Use ONLY packet.json, contract.json and template.json from your assigned\ndirectory. Inspect each case independently under the complete contract instructions.\nThe contract/profile supplies the global SpecificationCore goal and style preference;\nthe case supplies the exact target, scope and bounded evidence. Do not read the source\nrepository, other evidence views, source-bindings, integrator examples, prior labels,\nmemory, credentials or network. Inspect supplied documents and disclose missing intent\ncontext; this bounded task does not authorize external lookup. Fill each template row\nwith concern_kind, evidence_confidence, recommendation, basis, intent_review,\nrationales, evidence_quotes and uncertainties. Preserve every identity field.\nReturn strict JSON with an annotations array. Do not refactor or count S/U.\n",
+  "axes": [
+    "concern_kind",
+    "evidence_confidence",
+    "recommendation"
+  ],
+  "confidence_semantics": "ordinal_evidence_support_not_provider_probability",
+  "consistency_policy": {
+    "formalization_preference_scope": "limited_or_insufficient_support_for_primary_role",
+    "keep_procedural_requires": {
+      "concern_kind": "mechanics",
+      "evidence_confidence": "supported"
+    },
+    "response_envelope": "strict_annotations_array"
+  },
+  "id": "specification_metrics.intent-first.v4.1",
+  "instructions": "Judge the exact expression in the selected shared_definition or\nbound_application scope, not a later dispatch, caller or isolated clause.\nThe permitted semantic inputs are ONLY the supplied state.target,\nstate.bounded_context, state.architecture_profile, state.evaluation_scope and\nthe supplied contract/profile instructions. Inspect the available intent,\nproposal and spec fragments; list their IDs in intent_review.checked_document_ids.\nRecord missing material context or conflicts. Missing documents are not a universal\nreason to abstain when code already establishes the contract. Never import documents\nor expected labels from another view. A proposal is not a canonical Requirement.\n\nClassify concern_kind: policy decides admissibility, authority, lifecycle or which\nobligation has precedence; variant_behavior selects HOW an established domain\nactivity is implemented; mechanics handles representation/parsing/transport/\nadaptation without a distinct domain decision; unknown retains unresolved primary\nrole. Names, rejection, branch count, imports and file location alone do not prove it.\n\nevidence_confidence describes support for concern_kind, not native provider\nprobability: supported = direct contract/code witness; limited = relevant but\nincomplete or conflicting evidence; insufficient = primary role cannot be settled.\nUse unknown with insufficient. These ordinal self-reports are not calibrated scores.\n\nChoose recommendation after inspecting intent and existing responsibilities:\n- reuse_specification for explicit same-decision ownership through evaluation or\n  recognized simple Specification composition. Do not create a wrapper for NOT/AND/OR.\n- use_tool_rules for formatter/linter responsibilities; do not claim configured\n  enforcement unless the supplied evidence establishes it.\n- keep_procedural for affirmatively established ordinary mechanics.\n- formalize for an inline domain decision, including pure contracts with one use;\n  also prefer formalize if meaningful architectural ambiguity remains after lookup.\n  In that fallback use basis=formalization_preference and retain role uncertainty.\n\nUse basis=domain_contract, formalization_preference, existing_specification,\nsimple_composition, tool_responsibility or mechanics as appropriate. Give a reason\nfor each axis, exact source quotes supporting concern_kind and recommendation,\nand uncertainties. A source quote proves association, not semantic correctness.\nPreserve case/task/state/scope/contract identities. No change in target boundaries,\nnew composition threshold, refactor, write authority or production S/U follows.\n\nV4.1 consistency clarification: keep_procedural requires concern_kind=mechanics AND evidence_confidence=supported. Unknown, policy, variant_behavior or merely limited support cannot justify procedural mechanics. formalization_preference specifically covers limited/insufficient support for the primary role after bounded intent lookup. For a supported inline domain rule use domain_contract; describe uncertainty about implementation separately without lowering role confidence. Return the strict object {\"annotations\": [...]} described by output_schema, not a bare annotation row.",
+  "output_schema": {
+    "$defs": {
+      "Annotation": {
+        "additionalProperties": false,
+        "properties": {
+          "basis": {
+            "enum": [
+              "domain_contract",
+              "formalization_preference",
+              "existing_specification",
+              "simple_composition",
+              "tool_responsibility",
+              "mechanics"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "case_id": {
+            "minLength": 1,
+            "title": "Case Id",
+            "type": "string"
+          },
+          "concern_kind": {
+            "enum": [
+              "policy",
+              "mechanics",
+              "variant_behavior",
+              "unknown"
+            ],
+            "title": "Concern Kind",
+            "type": "string"
+          },
+          "contract_id": {
+            "const": "specification_metrics.intent-first.v4.1",
+            "title": "Contract Id",
+            "type": "string"
+          },
+          "contract_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Contract Sha256",
+            "type": "string"
+          },
+          "evidence_confidence": {
+            "enum": [
+              "supported",
+              "limited",
+              "insufficient"
+            ],
+            "title": "Evidence Confidence",
+            "type": "string"
+          },
+          "evidence_quotes": {
+            "items": {
+              "$ref": "#/$defs/EvidenceQuote"
+            },
+            "minItems": 2,
+            "title": "Evidence Quotes",
+            "type": "array"
+          },
+          "intent_review": {
+            "$ref": "#/$defs/IntentReview"
+          },
+          "rationales": {
+            "$ref": "#/$defs/Rationales"
+          },
+          "recommendation": {
+            "enum": [
+              "formalize",
+              "reuse_specification",
+              "use_tool_rules",
+              "keep_procedural"
+            ],
+            "title": "Recommendation",
+            "type": "string"
+          },
+          "scope_binding_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Scope Binding Sha256",
+            "type": "string"
+          },
+          "scope_unit": {
+            "enum": [
+              "shared_definition",
+              "bound_application"
+            ],
+            "title": "Scope Unit",
+            "type": "string"
+          },
+          "state_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "State Sha256",
+            "type": "string"
+          },
+          "task_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Task Sha256",
+            "type": "string"
+          },
+          "uncertainties": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Uncertainties",
+            "type": "array"
+          }
+        },
+        "required": [
+          "contract_id",
+          "contract_sha256",
+          "case_id",
+          "task_sha256",
+          "state_sha256",
+          "scope_unit",
+          "scope_binding_sha256",
+          "concern_kind",
+          "evidence_confidence",
+          "recommendation",
+          "basis",
+          "intent_review",
+          "rationales",
+          "evidence_quotes",
+          "uncertainties"
+        ],
+        "title": "Annotation",
+        "type": "object"
+      },
+      "EvidenceQuote": {
+        "additionalProperties": false,
+        "properties": {
+          "axis": {
+            "enum": [
+              "concern_kind",
+              "recommendation"
+            ],
+            "title": "Axis",
+            "type": "string"
+          },
+          "fragment_id": {
+            "minLength": 1,
+            "title": "Fragment Id",
+            "type": "string"
+          },
+          "quote": {
+            "minLength": 1,
+            "title": "Quote",
+            "type": "string"
+          }
+        },
+        "required": [
+          "axis",
+          "fragment_id",
+          "quote"
+        ],
+        "title": "EvidenceQuote",
+        "type": "object"
+      },
+      "IntentReview": {
+        "additionalProperties": false,
+        "properties": {
+          "checked_document_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Checked Document Ids",
+            "type": "array"
+          },
+          "missing_context": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "title": "Missing Context",
+            "type": "array"
+          }
+        },
+        "required": [
+          "checked_document_ids",
+          "missing_context"
+        ],
+        "title": "IntentReview",
+        "type": "object"
+      },
+      "Rationales": {
+        "additionalProperties": false,
+        "properties": {
+          "concern_kind": {
+            "minLength": 1,
+            "title": "Concern Kind",
+            "type": "string"
+          },
+          "evidence_confidence": {
+            "minLength": 1,
+            "title": "Evidence Confidence",
+            "type": "string"
+          },
+          "recommendation": {
+            "minLength": 1,
+            "title": "Recommendation",
+            "type": "string"
+          }
+        },
+        "required": [
+          "concern_kind",
+          "evidence_confidence",
+          "recommendation"
+        ],
+        "title": "Rationales",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "annotations": {
+        "items": {
+          "$ref": "#/$defs/Annotation"
+        },
+        "minItems": 1,
+        "title": "Annotations",
+        "type": "array"
+      }
+    },
+    "required": [
+      "annotations"
+    ],
+    "title": "Response",
+    "type": "object"
+  },
+  "profile": {
+    "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+    "composition_complexity_limit": null,
+    "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+    "id": "specification-centric-intent-first-v1",
+    "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+    "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+    "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+    "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+  },
+  "status": "offline_development_contract_not_scoring_reference",
+  "supersedes_for_future_tasks": "specification_metrics.intent-first.v4",
+  "version": "4.1"
+}

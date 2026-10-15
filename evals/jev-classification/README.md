@@ -452,3 +452,24 @@ it does not retrofit a new rubric or gold label into old tasks. Future evaluatio
 must version architectural action separately from concern kind and evidence
 confidence. Frozen artifacts, production S/U and scoring remain unchanged; no
 new inference ran.
+
+The [intent-first evaluation contract v4](intent-first-evaluation-v4.md) now
+separates `concern_kind`, ordinal `evidence_confidence` and `recommendation`.
+It encodes the human preference to formalize ambiguous decisions after bounded
+intent lookup, reuse simple Specification compositions, and leave formatting
+with formatter/linter rule sets. The [four integrator examples](runs/2026-10-15-intent-first-v4-contract/README.md)
+preserve pinned source/scope but use a new profile and task identities. Typed
+validation and CI cover uncertainty/action separation, stale identities, source
+quotes and document acknowledgments. These are development examples, not new
+model answers or an unseen/scoring reference. There is no provider wire adapter,
+dispatch, automatic old-label mapping or production S/U change.
+
+**Current correction: [intent-first v4.1](runs/2026-10-15-intent-first-v4-1-contract/README.md).**
+Independent Astra/high review found a reproducible consistency gap: v4 accepts
+`keep_procedural / mechanics` even when role is `policy` or `unknown`. v4.1
+requires `mechanics / supported` for this action and exports the strict
+`{"annotations": [...]}` response envelope requested by GitHub review. It
+clarifies `formalization_preference` as uncertain role support; supported domain
+rules keep their confidence and use `domain_contract`. The frozen v4 executable
+and examples remain historical; new tasks use v4.1 contract/task identities.
+No example labels/actions, model outputs, provider scoring or production S/U changed.
