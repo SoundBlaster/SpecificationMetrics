@@ -3,13 +3,14 @@
 Сначала код и вопрос к нему; затем метка и причина. Ниже реальные функции или
 сокращённые **непрерывные** фрагменты из SpecGraph revision
 `51c8d93cc385569864b3cd7f5040d4b3e0820a1b`. Пропущенные части функций не заменены
-новой логикой. Это пояснение существующей разметки, не patch приложения.
+новой логикой. Это пояснение с учётом [уточнения человека от 2026-10-15](runs/2026-10-15-scope-binding-adjudication-v2/README.md),
+не patch приложения. Исторические raw labels и frozen rubric сохранены.
 
 | Пример | Какой вопрос задаёт выбранное выражение | Рекомендация / статус |
 | --- | --- | --- |
-| Manifest path | Допустима ли такая ссылка на artifact — или это только требуемая форма пути для адаптера? | Без документов D3 `needs_review / unknown`, предложено. Для documented manifest binding D1 `eligible / policy`, подтверждено |
-| Gate precedence | Нужно ли выбрать gate work перед обычным refinement? | `eligible / policy`, контрольное предложение |
-| YAML newline | Нужно ли дописать terminator сериализованного текста? | `excluded / mechanics`, контрольное предложение |
+| Manifest path | Какой contract ограничивает пути manifest и staging? | Смотреть intent/proposal/spec; при сохраняющемся сомнении предпочесть Specification. Documented manifest: `eligible / policy` |
+| Gate precedence | Нужно ли выбрать gate work перед обычным refinement? | `eligible / policy`, подтверждено человеком на уровне семейства |
+| YAML newline | Нужно ли дописать terminator сериализованного текста? | `excluded / mechanics`, подтверждено человеком на уровне семейства |
 | BDD invalid step | Какие шаги нарушают уже существующее scenario-values rule? | `excluded / policy`, D2 подтверждено |
 
 `eligible` — предложение представить решение как Specification, а не команда
@@ -17,7 +18,7 @@
 это либо mechanics, либо решение уже представлено Specification. Эти причины
 различаются, поэтому нужны две оси.
 
-## 1. Спорный пример: `_safe_path` в manifest parser
+## 1. Manifest path: найти intent и формализовать contract
 
 [Исходник helper](https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/tools/static_artifact_incremental_stage.py#L33).
 Полная функция из [сохранённого packet](runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-03/packet.json),
@@ -63,19 +64,25 @@ bundle-relative file access. **Что остаётся спорным:** как�
 | «Файловый адаптер принимает только canonical relative POSIX paths» | Mechanics: технический precondition выбранного способа обращения к файлам |
 | «Публикуемый artifact reference обязан быть canonical relative path без parent components» | Policy: именованное правило допустимости ссылок на артефакты |
 
-Один и тот же fragment совместим с обоими смыслами. File access не делает правило
-автоматически mechanics, а отбор допустимых строк не делает любой parser policy.
-Нужен witness primary contract. Документы для другой evidence view описывают
-fail-closed traversal и authoritative manifest index — поэтому для **documented
-application** D1 подтверждает policy. Эти отсутствующие документы не подставлены
-задним числом в no-doc task.
+Один и тот же fragment допускает обе трактовки. Поэтому следующий шаг —
+посмотреть **intent, proposal и spec**, прежде чем выбирать representation.
+В [proposal 0215](https://github.com/0al-spec/SpecGraph/blob/51c8d93cc385569864b3cd7f5040d4b3e0820a1b/docs/proposals/0215_incremental_static_workspace_deployment.md)
+есть явное требование fail-closed path traversal; operator docs определяют manifest
+как authoritative artifact index. Это поддерживает **`eligible / policy` для
+manifest-применения**. Authority документа — implemented proposal, не автоматически
+canonical Requirement.
 
-Для no-doc application предложено **`needs_review / unknown`**. Это не finding
-«код неправильный» и не обещание, что LLM должна угадать intent. Проверка сама по
-себе также не доказывает physical filesystem containment, например через symlinks.
+**Уточнённый выбор человека:** если после поиска документов решение остаётся
+колеблющимся, предпочесть строгую формализацию. Прежнее предложение D3
+`needs_review / unknown` описывало неопределённость роли, но не давало практического
+направления. Оно сохранено в истории; теперь рекомендация — сформулировать contract
+и выделить Specification. Не требуется ещё одно подтверждение этого предпочтения.
 
-Общий `_safe_path` — ещё одна единица оценки: его используют также для staging
-prefix. Смысл одного manifest binding не переносится автоматически на все uses.
+Различаем две оси: **что делать с кодом** и **насколько установлен смысл правила**.
+Новый intent не следует подставлять в старое no-doc model task: для будущей оценки
+нужна новая версия contract. Общий helper обслуживает также staging prefix;
+единый primary contract обоих uses не доказан одним manifest witness. Само наличие
+проверки также не доказывает physical filesystem containment через symlinks.
 
 ## 2. Более ясный кандидат: gate перед refinement
 
@@ -104,13 +111,14 @@ Target — только **`gate != "none"`**. Из кода видно соде�
 outstanding gate выбирает gate work вместо status-based refinement; rank ставит
 refinement после gates. Это выбор приоритета domain obligations.
 
-Предложение: **`eligible / policy`**. Такой rule можно назвать, адресовать,
+**Решение человека: `eligible / policy`** — это явный кандидат в Specification. Такой rule можно назвать, адресовать,
 тестировать и наблюдать централизованно. Последующий `GATE_ACTIONS[gate]` — другой
 участок; его роль не подменяет вопрос о precedence. Здесь не требуется README,
 чтобы увидеть показанные alternatives и priority. При этом речь об advisory
 next move, не о доказательстве исполнения работы или выдачи полномочий.
 
-Это одна из двух контрольных семей, ожидающих подтверждения в readiness matrix.
+Кандидат подтверждён. Предыдущая readiness matrix сохранена как исторический
+снимок до этого подтверждения.
 
 ## 3. Технический control: newline в YAML
 
@@ -136,11 +144,14 @@ Target — **`not rendered.endswith("\n")`**. Его непосредствен�
 один terminator к сериализованному тексту. Он не выбирает разрешённую работу,
 приоритет обязательств или валидность BDD-сценария.
 
-Предложение: **`excluded / mechanics`**. В выбранном architecture profile обычная
-serialization/representation mechanics остаётся procedural. Это правило
-архитектурного стиля оценки, не математическое свойство любого newline check во
-всех программах. Здесь мы не предлагаем отдельную Specification только потому,
-что встретился `if`. Контрольное предложение ещё не human-confirmed.
+**Решение человека: `excluded / mechanics`.** Форматтеры и линтеры уже имеют
+свои rule sets; форматирование следует оставлять в их ответственности. Отдельная
+Specification над таким правилом дублировала бы механизм управления правилами.
+
+В этом примере речь о representation/serialization. Мы не доказали, что конкретный
+formatter уже выполняет этот точный check в проекте; уточнение задаёт архитектурную
+ответственность, а не результат проверки конфигурации Ruff. Если внешняя форма
+несёт самостоятельный product contract, его рассматривают по intent отдельно.
 
 ## 4. Уже оформленная policy: невалидный BDD step
 
@@ -186,14 +197,30 @@ target-03, fragments 01/03/05. D2 подтверждает **`excluded / policy`
 но это уже другой target. Мы не утверждаем точные внутренние правила `step.valid`,
 runtime execution или чистоту всех вызываемых методов.
 
-## Что утверждать и что из этого не следует
+## Простая композиция остаётся Specification
 
-Для завершения [16-task readiness matrix](runs/2026-10-15-scope-reference-readiness-v1/README.md)
-предложены три пункта: no-doc manifest `needs_review / unknown`, gate precedence
-`eligible / policy`, newline formatting `excluded / mechanics`. D2 для BDD уже
-подтверждён; его не нужно подтверждать повторно. D1/D2 и raw outcomes сохранены.
+Проблема BDD-примера **не в `not`**. Решение уже находится в Specification;
+новая обёртка ему не требуется. В общем случае известные Specifications и их
+простые NOT/AND/OR-композиции остаются Specifications. Сам Boolean operator
+не создаёт новую возможность внедрения и не требует нового класса.
 
-Это вопросы о **пригодности архитектурного представления**, не список runtime
-bugs и не измерение скорости или количества дефектов. На основании таблицы
-рефакторинг не запускался, новые метрики не начислялись, scoring не включался.
-Новый provider/model run не нужен, чтобы прочитать код и выбрать эти трактовки.
+В показанном коде `step.valid` — Boolean fact, а не доказанный объект Specification.
+Здесь принадлежность решению установлена по цепочке findings → evaluation.
+Поэтому нельзя механически объявить любой `not flag` композицией спек.
+
+Предел сложности композиции пользователь оставил открытым. Числовой порог
+не придумываем; самостоятельное доменное имя может быть полезно, но простой
+NOT/AND/OR сам по себе его не требует.
+
+## Текущие решения и следующий шаг
+
+Все четыре пояснения уточнены [решением v2](runs/2026-10-15-scope-binding-adjudication-v2/README.md).
+Gate — кандидат; formatting — ответственность formatter/linter; BDD — уже
+Specification; спорные path decisions формализуем после поиска intent.
+Повторное одобрение этих принципов не требуется.
+
+[Readiness v1](runs/2026-10-15-scope-reference-readiness-v1/README.md),
+первое adjudication и прежнее D3 сохранены как история. Новый профиль будущей
+оценки должен различать architectural action, concern kind и evidence confidence.
+Это ещё не scoring reference. Приложение, метрики и модельные ответы не менялись;
+нового inference не было.

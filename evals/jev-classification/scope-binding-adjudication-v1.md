@@ -1,5 +1,12 @@
 # Scope binding: два решения для adjudication
 
+> **Историческая версия D1/D2.** Уточнение пользователя от 2026-10-15 и текущее
+> руководство — в [adjudication v2](runs/2026-10-15-scope-binding-adjudication-v2/README.md).
+> Для спорного path design после поиска intent предпочтена формализация;
+> gate/newline больше не ожидают подтверждения. Простая композиция спек не требует
+> wrapper. Прежние evidence-role decisions и frozen records сохранены.
+
+
 Практический вход: [четыре примера с реальным кодом и пояснениями](scope-reference-code-examples.md).
 Это объяснение выбранных expressions, а не только таблица меток.
 

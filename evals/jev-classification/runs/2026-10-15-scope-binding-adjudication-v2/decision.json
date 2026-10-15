@@ -1,0 +1,291 @@
+{
+  "schema": "scope-binding-human-adjudication-v2",
+  "status": "human_confirmed_family_guidance_not_scoring_reference",
+  "recorded_at_utc": "2026-10-15T09:47:27.901147+00:00",
+  "timestamp_kind": "recording_time_not_user_message_timestamp",
+  "approval": {
+    "source": "current_conversation",
+    "message_id": null,
+    "human_confirmation": true,
+    "blind": false,
+    "after_model_outputs": true,
+    "verbatim_points": [
+      "1. Я в пользу строгой формализации в спеку если решение колеблющееся. Но вообще надо в таких случаях смотреть intent, proposal и spec документы.",
+      "2. Не понял вопроса. Мне очевидно, что тут кандидат в спеку.",
+      "3. То что делают форматтеры и линтеры уже имеет правила в их наборах. Тут спека не нужна.",
+      "4. Тут не понял. Проблема в not? Производные от спек автоматически спеки, пока не достигается некий предел сложности композиции. Банальные «не и или» не повод создавать спеку-обертку."
+    ]
+  },
+  "presentation": {
+    "git_commit": "9c8a65fce8d987c316ecfcae711e4ab747501155",
+    "path": "scope-reference-code-examples.md",
+    "sha256": "709c4ca6ce0698aabe1167908855bccc8a7aff46fbd20298df6e2b07c3c876af"
+  },
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "source_file_sha256": {
+    "runs/2026-10-14-scope-binding-preparation-v3-1/source-mapping.json": "cd59074d35e9a19c4092c55e380220ed34ced30abd0d4910061ec46242308813",
+    "runs/2026-10-15-scope-reference-readiness-v1/matrix.json": "49830b8c18eb99ce67e0ca70214a5d9f99342b51c4150f8b98241abeb5503611",
+    "runs/2026-10-14-scope-binding-adjudication-v1/decision.json": "b440a2bcd070358af3caedd1296491d4b4b6ec7bd33b80ab7206620468e2a4f3"
+  },
+  "document_inspection": [
+    {
+      "fragment_id": "fragment-11",
+      "path": "docs/proposals/0215_incremental_static_workspace_deployment.md",
+      "lines": [
+        17,
+        73
+      ],
+      "file_sha256": "a7a1045e52cda1a8337af608879e5df4e60b1706aa2599afc13344a058eb031c",
+      "excerpt_sha256": "32c364bd2135caaa09ec719043e3ea2b3f2824faf266cfe421e87f8c7dff9427",
+      "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "inspection": "pinned full file inspected; excerpt already present only in documentary evidence views",
+      "authority": "implemented_proposal_not_canonical_requirement"
+    },
+    {
+      "fragment_id": "fragment-12",
+      "path": "docs/static_artifact_publish.md",
+      "lines": [
+        38,
+        62
+      ],
+      "file_sha256": "41463522442891c9a7e86a55a807397414b4f9c512f92fdd3161cea973844c18",
+      "excerpt_sha256": "4ef3ef30561b66b41958893a06274539063583d50c28cc65d0ffa99a2ac59ae9",
+      "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+      "inspection": "pinned full file inspected; excerpt already present only in documentary evidence views",
+      "authority": "operator_documentation"
+    }
+  ],
+  "document_inspection_conclusion": "Proposal 0215 explicitly requires fail-closed path traversal and retained relative durable URL paths. Operator documentation makes manifests authoritative artifact indexes. These support the selected manifest application; they do not establish one primary domain contract for every staging-prefix use. A targeted pinned specs/ keyword search found no direct traversal/0215 match; this is not an exhaustive canonical Requirement absence proof.",
+  "decisions": [
+    {
+      "case_id": "target-01",
+      "user_point": 1,
+      "architecture_action": "inspect_intent_then_prefer_formalization_if_still_ambiguous",
+      "labels": null,
+      "binding_author": "integrator mapping of the human family-level clarification to all four frozen views; not sixteen separately presented human judgments",
+      "tasks": [
+        {
+          "case_id": "target-01",
+          "cell": "01",
+          "scope_unit": "shared_definition",
+          "documents_present": false,
+          "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+          "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+        },
+        {
+          "case_id": "target-01",
+          "cell": "02",
+          "scope_unit": "shared_definition",
+          "documents_present": true,
+          "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8"
+        },
+        {
+          "case_id": "target-01",
+          "cell": "03",
+          "scope_unit": "bound_application",
+          "documents_present": false,
+          "state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d"
+        },
+        {
+          "case_id": "target-01",
+          "cell": "04",
+          "scope_unit": "bound_application",
+          "documents_present": true,
+          "state_sha256": "6090f93d4252b65f8c23be63fb837f11274f788350cd2d949cc39fcaddcfa97f",
+          "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d"
+        }
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "user_point": 2,
+      "architecture_action": "formalize_named_gate_precedence",
+      "labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "binding_author": "integrator mapping of the human family-level clarification to all four frozen views; not sixteen separately presented human judgments",
+      "tasks": [
+        {
+          "case_id": "target-02",
+          "cell": "01",
+          "scope_unit": "shared_definition",
+          "documents_present": false,
+          "state_sha256": "c0ac7925ab68845d000026cbcc86bdb240c4ec76c3e7556df3f37cee8cd42efc",
+          "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f"
+        },
+        {
+          "case_id": "target-02",
+          "cell": "02",
+          "scope_unit": "shared_definition",
+          "documents_present": true,
+          "state_sha256": "785f38b1f538f15f3446c11ddffcf9097efc10a1c8a5fdf49a32560a561290c4",
+          "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f"
+        },
+        {
+          "case_id": "target-02",
+          "cell": "03",
+          "scope_unit": "bound_application",
+          "documents_present": false,
+          "state_sha256": "a69b647aad24d93dc04c8ea9bcf7993467d5fe13ef9828f806790daa4869a29e",
+          "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7"
+        },
+        {
+          "case_id": "target-02",
+          "cell": "04",
+          "scope_unit": "bound_application",
+          "documents_present": true,
+          "state_sha256": "dd1897b012a794d3c34ac935cb88ea8544b0c7b96ba3fe99aff222ce174924e7",
+          "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7"
+        }
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "user_point": 3,
+      "architecture_action": "retain_formatter_linter_representation_responsibility",
+      "labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "binding_author": "integrator mapping of the human family-level clarification to all four frozen views; not sixteen separately presented human judgments",
+      "tasks": [
+        {
+          "case_id": "target-04",
+          "cell": "01",
+          "scope_unit": "shared_definition",
+          "documents_present": false,
+          "state_sha256": "b884ad56bcc19698ddc73f9cc6482ae97d38b610ef8c1ee5deb089a9e941699f",
+          "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15"
+        },
+        {
+          "case_id": "target-04",
+          "cell": "02",
+          "scope_unit": "shared_definition",
+          "documents_present": true,
+          "state_sha256": "a33bbda8483f9c69b0f2dc38a4b6af21e79f3874412ae9658b7d91b6723b7362",
+          "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15"
+        },
+        {
+          "case_id": "target-04",
+          "cell": "03",
+          "scope_unit": "bound_application",
+          "documents_present": false,
+          "state_sha256": "b1a951f6390085f94deb7d51959347b2eef94e43222cd2d7f310e6c84c8c2cdd",
+          "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130"
+        },
+        {
+          "case_id": "target-04",
+          "cell": "04",
+          "scope_unit": "bound_application",
+          "documents_present": true,
+          "state_sha256": "49aa11c6bf1948d6e348c69bf98430471e09b027df3bcb9b9fa6edd177902c4a",
+          "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130"
+        }
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "user_point": 4,
+      "architecture_action": "reuse_existing_specification_without_trivial_wrapper",
+      "labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "binding_author": "integrator mapping of the human family-level clarification to all four frozen views; not sixteen separately presented human judgments",
+      "tasks": [
+        {
+          "case_id": "target-03",
+          "cell": "01",
+          "scope_unit": "shared_definition",
+          "documents_present": false,
+          "state_sha256": "bd5098b19f0a0f1adea4b382600d6399985e08d40f567f9a05cb2edb8fc2830c",
+          "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a"
+        },
+        {
+          "case_id": "target-03",
+          "cell": "02",
+          "scope_unit": "shared_definition",
+          "documents_present": true,
+          "state_sha256": "4b4ba23dfccff5fd6a0171b2a488cb3d8b6043942f7f5809c6e5b33b162a992e",
+          "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a"
+        },
+        {
+          "case_id": "target-03",
+          "cell": "03",
+          "scope_unit": "bound_application",
+          "documents_present": false,
+          "state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+          "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+        },
+        {
+          "case_id": "target-03",
+          "cell": "04",
+          "scope_unit": "bound_application",
+          "documents_present": true,
+          "state_sha256": "9f3f5d7da53b750d11d4c6492e31365f4d59beee73bc46daf9ec2d20aa2645d1",
+          "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+          "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627"
+        }
+      ]
+    }
+  ],
+  "path_role_boundary": {
+    "documented_manifest_application": "existing D1 eligible/policy remains supported",
+    "shared_definition_and_no_document_views": "No new gold concern_kind assigned. Human prefers formalization after intent lookup if architecture choice remains ambiguous. Additional documentary evidence does not become an input of historical no-document tasks.",
+    "previous_D3_proposal": "not approved as the current architecture action; retained as historical epistemic analysis"
+  },
+  "composition_boundary": {
+    "simple_not_and_or": "recognized specifications and their simple compositions remain specifications; no new wrapper required merely for the operator",
+    "bdd_example": "not step.valid is a Boolean fact selection within an existing Specification evaluation path, not demonstrated invocation of a NotSpecification API",
+    "complexity_limit": null,
+    "limit_status": "not defined by this clarification; no numeric threshold invented",
+    "counting": "do not infer a new inline opportunity or require an additional declaration solely from NOT/AND/OR; production S/U aggregation is not changed here"
+  },
+  "precedence": {
+    "supersedes": "Earlier recommendation to leave ambiguous path design undecided as the only action, pending-approval wording for gate/newline, and any interpretation requiring a wrapper solely for Boolean composition.",
+    "retains": "Historical raw outputs, D1/D2 evidence-role decisions and their original input boundaries.",
+    "future_evaluation": "A new architecture profile/output contract must encode action separately from evidence confidence; this record does not silently change the frozen rubric."
+  },
+  "frozen_raw_annotations_edited": false,
+  "frozen_model_review_edited": false,
+  "rubric_changed": false,
+  "provider_scoring_reference_frozen": false,
+  "production_classifier_changed": false,
+  "metric_effect": "none",
+  "new_model_contexts": 0,
+  "direct_provider_requests": 0
+}
