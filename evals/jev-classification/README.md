@@ -482,3 +482,11 @@ can be staged offline into a new execution directory for the existing transport;
 real inference still requires explicit authorization and `--live`. The decoder
 retains contradictions as observations and never fabricates a full rich Annotation.
 No provider calls or semantic scoring ran during preparation.
+
+The authorized [2026-10-15 native smoke](runs/2026-10-15-intent-first-native-smoke-v1/README.md)
+has now completed: 8 HTTP/native-valid responses in 16.01 seconds, eight attempts,
+no retries. Four returned tuples violate the frozen consistency contract; a
+consistent BDD tuple separately misses existing Specification reuse. Raw outputs,
+local ledger/receipt replay and an explicit facts-versus-hypotheses diagnosis are
+retained. This verifies this bounded API integration, not semantic accuracy or
+full v4.1 annotation quality; production S/U remains unchanged.

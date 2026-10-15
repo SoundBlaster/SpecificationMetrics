@@ -1,0 +1,25 @@
+{
+  "source": "current_conversation",
+  "user_reply": "Проверь и запусти",
+  "message_id": null,
+  "recorded_at_utc": "2026-10-15T13:48:47.327074+00:00",
+  "timestamp_kind": "recording_time_not_user_message_timestamp",
+  "scope": "Prepared PR62 native transport smoke: four cases x two providers; no expansion or semantic retries",
+  "logical_requests": 8,
+  "max_network_attempts": 24,
+  "head_sha": "7b33dbaf6f042daf7ecd8f3d878682bd7a78e2bb",
+  "preparation": "runs/2026-10-15-intent-first-native-preparation-v1",
+  "checks": {
+    "current_head_CI": "all_four_jobs_success",
+    "unresolved_review_threads": 0,
+    "focused_native_tests_passed": 12
+  },
+  "preflight": {
+    "validated": true,
+    "planned_requests": 8,
+    "max_network_attempts": 24,
+    "inference": false
+  },
+  "metric_effect": "none",
+  "full_v4_1_annotation": false
+}
