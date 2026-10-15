@@ -1,0 +1,396 @@
+{
+  "cases": [
+    {
+      "case_id": "target-01-cell03",
+      "scope_binding_sha256": "cc224f66470faf0d29b1e39e91c77b1932e7023c29602325697bf9efa5698a77",
+      "state": {
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "code": "def _safe_path(value: Any) -> str:\n    if not isinstance(value, str) or not value:\n        raise IncrementalStageError(\"manifest file path must be a non-empty string\")\n    path = PurePosixPath(value)\n    if path.is_absolute() or \"..\" in path.parts or value != path.as_posix():\n        raise IncrementalStageError(f\"manifest file path is unsafe: {value!r}\")\n    return value\n",
+              "fragment_id": "fragment-01",
+              "kind": "code"
+            },
+            {
+              "code": "from pathlib import Path, PurePosixPath\n",
+              "fragment_id": "fragment-02",
+              "kind": "code"
+            },
+            {
+              "code": "class IncrementalStageError(ValueError):\n    pass\n",
+              "fragment_id": "fragment-03",
+              "kind": "code"
+            },
+            {
+              "code": "def _manifest_files(payload: Any) -> dict[str, dict[str, Any]]:\n    if not isinstance(payload, dict) or not isinstance(payload.get(\"files\"), list):\n        raise IncrementalStageError(\"artifact manifest must contain files[]\")\n    files: dict[str, dict[str, Any]] = {}\n    for row in payload[\"files\"]:\n        if not isinstance(row, dict):\n            raise IncrementalStageError(\"artifact manifest files[] entries must be objects\")\n        path = _safe_path(row.get(\"path\"))\n        digest = row.get(\"sha256\")\n        if not isinstance(digest, str) or len(digest) != 64:\n            raise IncrementalStageError(f\"manifest sha256 is invalid for {path}\")\n        if path in files:\n            raise IncrementalStageError(f\"artifact manifest contains duplicate path: {path}\")\n        files[path] = row\n    return files\n",
+              "fragment_id": "fragment-04",
+              "kind": "code"
+            },
+            {
+              "code": "def _load_local_manifest(bundle_dir: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:\n    manifest_path = bundle_dir / \"artifact_manifest.json\"\n    try:\n        payload = json.loads(manifest_path.read_text(encoding=\"utf-8\"))\n    except (OSError, json.JSONDecodeError) as exc:\n        raise IncrementalStageError(f\"cannot read local artifact manifest: {exc}\") from exc\n    files = _manifest_files(payload)\n    for relative_path, row in files.items():\n        source = bundle_dir / relative_path\n        if not source.is_file():\n            raise IncrementalStageError(f\"local manifest path is missing: {relative_path}\")\n        actual = hashlib.sha256(source.read_bytes()).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"local manifest digest mismatch: {relative_path}\")\n    if not (bundle_dir / \"checksums.sha256\").is_file():\n        raise IncrementalStageError(\"local bundle is missing checksums.sha256\")\n    return payload, files\n",
+              "fragment_id": "fragment-05",
+              "kind": "code"
+            },
+            {
+              "code": "    prefix = _safe_path(staging_prefix) if staging_prefix else \"\"\n    _, local_files = _load_local_manifest(bundle_dir)\n    remote_files, remote_manifest_available = _remote_files(remote_manifest_url, fetcher)\n",
+              "fragment_id": "fragment-06",
+              "kind": "code"
+            },
+            {
+              "code": "    for relative_path in changed:\n        source = bundle_dir / relative_path\n        destination = staging_dir / prefix / relative_path\n        destination.parent.mkdir(parents=True, exist_ok=True)\n        if destination.exists() and destination.read_bytes() != source.read_bytes():\n            raise IncrementalStageError(f\"staging path collision: {destination}\")\n        shutil.copyfile(source, destination)\n        payload_bytes += source.stat().st_size\n",
+              "fragment_id": "fragment-07",
+              "kind": "code"
+            },
+            {
+              "code": "    _, local_files = _load_local_manifest(bundle_dir)\n    base_url = remote_base_url.rstrip(\"/\")\n",
+              "fragment_id": "fragment-08",
+              "kind": "code"
+            },
+            {
+              "code": "    def verify(item: tuple[str, dict[str, Any]]) -> str:\n        path, row = item\n        try:\n            body = fetcher(f\"{base_url}/{path}\")\n        except Exception as exc:\n            raise IncrementalStageError(\n                f\"remote artifact request failed for {path}: {exc}\"\n            ) from exc\n        actual = hashlib.sha256(body).hexdigest()\n        if actual != row[\"sha256\"]:\n            raise IncrementalStageError(f\"remote artifact digest mismatch: {path}\")\n        return path\n",
+              "fragment_id": "fragment-09",
+              "kind": "code"
+            },
+            {
+              "code": "      - name: Stage changed artifact payloads\n        if: env.SFTP_HOST != ''\n        run: |\n          rm -rf \"$INCREMENTAL_STAGE_DIR\"\n          mkdir -p \"$INCREMENTAL_STAGE_DIR\" \"$RUNNER_TEMP/specgraph-incremental-reports\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/root.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/team-decision-log \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/team-decision-log/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/team-decision-log \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/team-decision-log.json\"\n          python tools/static_artifact_incremental_stage.py stage \\\n            --bundle-dir dist/specgraph-public/workspaces/hosted-operation-canary \\\n            --remote-manifest-url \"$STATIC_ARTIFACT_PUBLIC_BASE_URL/workspaces/hosted-operation-canary/artifact_manifest.json\" \\\n            --staging-dir \"$INCREMENTAL_STAGE_DIR\" \\\n            --staging-prefix workspaces/hosted-operation-canary \\\n            --output \"$RUNNER_TEMP/specgraph-incremental-reports/hosted-operation-canary.json\"\n\n",
+              "fragment_id": "fragment-10",
+              "kind": "code",
+              "language": "YAML"
+            }
+          ],
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence.",
+          "truncated": false
+        },
+        "evaluation_scope": {
+          "application_binding": {
+            "argument_binding": {
+              "expression": "row.get(\"path\")",
+              "parameter": "value"
+            },
+            "ast_sha256": "f9f28c82edc0d05accdf4dfe7d892419dadbee14f04d165296a4c96b8f7911a6",
+            "code": "_safe_path(row.get(\"path\"))",
+            "enclosing_symbol": "_manifest_files",
+            "execution_claim": "static_possible_application_not_runtime_execution",
+            "path": "tools/static_artifact_incremental_stage.py",
+            "span": [
+              49,
+              15,
+              49,
+              42
+            ]
+          },
+          "definition": {
+            "ast_sha256": "af91fd46fa5cb5c1272b75a6561d4ed5ca3827849f2ab30fec3dec28ce148808",
+            "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+            "path": "tools/static_artifact_incremental_stage.py",
+            "span": [
+              37,
+              7,
+              37,
+              75
+            ],
+            "symbol": "_safe_path"
+          },
+          "unit": "bound_application"
+        },
+        "target": {
+          "code": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()",
+          "language": "Python",
+          "scope": "exact expression only",
+          "syntax_kind": "BoolOp"
+        }
+      },
+      "state_sha256": "afdb3db2bcf4a569c2a818a321b5473acb7a5da40be9755b7d56bb5f066e069a",
+      "task_sha256": "157a1da323cfade1302f0b9a28003d76e0256603bc7950a7e9e0ba32e75137bf"
+    },
+    {
+      "case_id": "target-02-cell01",
+      "scope_binding_sha256": "9015a5b2ceb3222e4779e8275e2bee708fc4643b8774fcc26f651a951b0c4000",
+      "state": {
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "code": "def candidate_move(\n    node: workspace.SpecNode,\n    *,\n    source_path: str,\n    gate_order: list[str],\n    status_order: list[str],\n) -> tuple[int, dict[str, Any]] | None:\n    if node.status not in VALID_STATUSES:\n        raise ValueError(f\"unsupported canonical status for {node.id}: {node.status}\")\n    gate = node.gate_state\n    if gate != \"none\":\n        if gate not in gate_order or gate not in GATE_ACTIONS:\n            raise ValueError(f\"unsupported gate state for {node.id}: {gate}\")\n        kind, next_gap, hint_template = GATE_ACTIONS[gate]\n        command_hint = hint_template.format(spec_id=node.id)\n        rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)\n        kind = \"refine_spec\"\n    else:\n        return None\n\n    return rank, {\n        \"kind\": kind,\n        \"spec_id\": node.id,\n        \"title\": node.title,\n        \"status\": node.status,\n        \"gate_state\": gate,\n        \"next_gap\": next_gap,\n        \"source_artifact\": source_path,\n        \"command_hint\": command_hint,\n        \"review_required\": True,\n    }\n",
+              "fragment_id": "fragment-01",
+              "kind": "code"
+            },
+            {
+              "code": "VALID_STATUSES = {\"idea\", \"stub\", \"outlined\", \"specified\", \"linked\", \"reviewed\", \"frozen\"}\n",
+              "fragment_id": "fragment-02",
+              "kind": "code"
+            },
+            {
+              "code": "GATE_ACTIONS = {\n    \"review_pending\": (\n        \"review_gate\",\n        \"review_exact_gate_candidate\",\n        \"Read the exact run and candidate for {spec_id}, then resolve its review gate.\",\n    ),\n    \"split_required\": (\n        \"split_spec\",\n        \"structural_split\",\n        \"Review the structural split requirement for {spec_id} before rerunning refinement.\",\n    ),\n    \"retry_pending\": (\n        \"retry_refinement\",\n        \"repair_then_retry\",\n        \"Repair the failed condition for {spec_id}, then rerun targeted refinement.\",\n    ),\n    \"blocked\": (\n        \"resolve_blocker\",\n        \"resolve_blocker\",\n        \"Identify and resolve the recorded blocker for {spec_id} before retrying.\",\n    ),\n    \"redirected\": (\n        \"redirect_refinement\",\n        \"update_prompt_scope_and_rerun\",\n        \"Update the prompt or scope for {spec_id}, then rerun targeted refinement.\",\n    ),\n    \"escalated\": (\n        \"manual_escalation\",\n        \"manual_escalation\",\n        \"Review the manual escalation for {spec_id} before further refinement.\",\n    ),\n}\n",
+              "fragment_id": "fragment-03",
+              "kind": "code"
+            },
+            {
+              "code": "@dataclass(frozen=True)\nclass SpecNode:\n    path: Path\n    data: dict[str, Any]\n\n    @property\n    def id(self) -> str:\n        return str(self.data.get(\"id\", \"\")).strip()\n\n    @property\n    def title(self) -> str:\n        return str(self.data.get(\"title\", \"\")).strip()\n\n    @property\n    def status(self) -> str:\n        return str(self.data.get(\"status\", \"stub\")).strip()\n\n    @property\n    def gate_state(self) -> str:\n        return str(self.data.get(\"gate_state\", \"none\")).strip() or \"none\"\n\n    @property\n    def allowed_paths(self) -> list[str]:\n        value = self.data.get(\"allowed_paths\", [])\n        return list(value) if isinstance(value, list) else []\n",
+              "fragment_id": "fragment-04",
+              "kind": "code"
+            },
+            {
+              "code": "def build_product_workspace_next_moves(\n    workspace_root: Path,\n    *,\n    target_spec: str | None = None,\n) -> dict[str, Any]:\n    root = workspace_root.expanduser().resolve(strict=True)\n    if not root.is_dir():\n        raise ValueError(f\"workspace root is not a directory: {root}\")\n    policy = load_policy()\n    config_path = root / \"specgraph.project.yaml\"\n    if not config_path.is_file():\n        raise ValueError(\"product_workspace requires specgraph.project.yaml\")\n    project_policy = workspace.load_product_policy()\n    environment = workspace.product_environment(config_path, project_policy)\n    project = environment[\"project\"]\n    profile = project[\"governance_profile\"]\n\n    specs_dir = root / \"specs\" / \"nodes\"\n    if not specs_dir.is_dir():\n        raise ValueError(\"product_workspace requires specs/nodes directory\")\n    specs = workspace.load_specs_from_dir(specs_dir)\n    if any(not isinstance(node.data, dict) for node in specs):\n        raise ValueError(\"canonical spec nodes must be mappings with nonempty IDs\")\n    ids = [node.id for node in specs]\n    if any(not node.id for node in specs):\n        raise ValueError(\"canonical spec nodes must be mappings with nonempty IDs\")\n    if len(ids) != len(set(ids)):\n        raise ValueError(\"canonical spec node IDs must be unique\")\n    for node in specs:\n        if node.path.stem != node.id or node.data.get(\"kind\") != \"spec\":\n            raise ValueError(f\"invalid canonical spec identity: {node.path.name}\")\n\n    if target_spec:\n        target = next((node for node in specs if node.id == target_spec), None)\n        if target is None:\n            raise ValueError(f\"target spec is absent from product workspace: {target_spec}\")\n        selected_specs = workspace.subtree_nodes(target, specs)\n    else:\n        selected_specs = specs\n\n    gate_order = list(policy[\"priority\"][\"gates\"])\n    status_order = list(policy[\"priority\"][\"refinable_statuses\"])\n    if set(gate_order) != set(GATE_ACTIONS):\n        raise ValueError(\"product next-move policy must rank every canonical gate state\")\n    authority = environment.get(\"supervisor_authority\", {})\n    refinement_allowed = (\n        isinstance(authority, dict) and authority.get(\"allow_project_spec_refinement\") is True\n    )\n    eligible: list[tuple[int, dict[str, Any]]] = []\n    blocked: list[dict[str, Any]] = []\n    for node in selected_specs:\n        source_path = node.path.relative_to(root).as_posix()\n        candidate = candidate_move(\n            node,\n            source_path=source_path,\n            gate_order=gate_order,\n            status_order=status_order,\n        )\n        if candidate is None:\n            continue\n        rank, move = candidate\n        authorization = workspace.authorize_target(\n            target_spec_id=node.id,\n            target_paths=workspace.effective_allowed_paths_for_run(node, root),\n            environment=environment,\n        )\n        blocked_by = list(authorization[\"blocked_by\"])\n        if not refinement_allowed:\n            blocked_by.append(\"blocked_by_project_spec_refinement_disabled\")\n        if not blocked_by:\n            eligible.append((rank, move))\n        else:\n            blocked.append(\n                {\n                    **move,\n                    \"command_hint\": (\n                        f\"Resolve governance and workspace authority for {node.id} before action.\"\n                    ),\n                    \"blocked_by\": blocked_by,\n                    \"target_domain\": authorization[\"target_domain\"],\n                }\n            )\n    eligible.sort(key=lambda entry: (entry[0], entry[1][\"spec_id\"]))\n    blocked.sort(key=lambda move: move[\"spec_id\"])\n    recommended = eligible[0][1] if eligible else None\n    current_scene = (\n        (\"refinement_ready\" if recommended[\"kind\"] == \"refine_spec\" else recommended[\"kind\"])\n        if recommended\n        else \"governance_blocked\"\n        if blocked\n        else \"steady_state\"\n    )\n\n    return {\n        \"artifact_kind\": \"product_workspace_next_moves\",\n        \"schema_version\": 1,\n        \"generated_at\": dt.datetime.now(dt.timezone.utc).isoformat(),\n        \"policy_reference\": {\n            \"artifact_path\": \"tools/product_workspace_next_moves_policy.json\",\n            \"sha256\": file_digest(POLICY_PATH),\n        },\n        \"project_environment_policy_reference\": {\n            \"artifact_path\": \"tools/project_environment_policy.json\",\n            \"sha256\": file_digest(workspace.PROJECT_POLICY_PATH),\n        },\n        \"project\": {\n            \"project_id\": project[\"project_id\"],\n            \"governance_profile\": profile,\n        },\n        \"scope\": {\n            \"target_spec\": target_spec or \"\",\n            \"selected_spec_ids\": [node.id for node in selected_specs],\n            \"selected_spec_count\": len(selected_specs),\n        },\n        \"input_contract\": policy[\"input_contract\"],\n        \"inputs\": {\n            \"project_config\": {\n                \"path\": \"specgraph.project.yaml\",\n                \"sha256\": file_digest(config_path),\n            },\n            \"canonical_specs\": [\n                {\n                    \"path\": node.path.relative_to(root).as_posix(),\n                    \"sha256\": file_digest(node.path),\n                }\n                for node in specs\n            ],\n        },\n        \"current_scene\": current_scene,\n        \"recommended_next_move_kind\": recommended[\"kind\"] if recommended else \"none\",\n        \"recommended_next_move\": recommended,\n        \"alternatives\": [move for _, move in eligible[1:]],\n        \"blocked_moves\": blocked,\n        \"canonical_mutations_allowed\": False,\n        \"tracked_artifacts_written\": False,\n    }\n",
+              "fragment_id": "fragment-05",
+              "kind": "code"
+            }
+          ],
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence.",
+          "truncated": false
+        },
+        "evaluation_scope": {
+          "application_binding": {
+            "argument_binding": {
+              "expression": "node",
+              "parameter": "node"
+            },
+            "ast_sha256": "6713b4f320cfdc4dc6b9eee7a351f726bf5217cefe4d228a9335cb9e9e5daf99",
+            "code": "candidate_move(\n            node,\n            source_path=source_path,\n            gate_order=gate_order,\n            status_order=status_order,\n        )",
+            "enclosing_symbol": "build_product_workspace_next_moves",
+            "execution_claim": "static_possible_application_not_runtime_execution",
+            "path": "tools/product_workspace_next_moves.py",
+            "span": [
+              150,
+              20,
+              155,
+              9
+            ]
+          },
+          "definition": {
+            "ast_sha256": "cc37db2b2b231e0995298ff81ac0c600c691b7a297c4df869c1e308376876789",
+            "code": "gate != \"none\"",
+            "path": "tools/product_workspace_next_moves.py",
+            "span": [
+              71,
+              7,
+              71,
+              21
+            ],
+            "symbol": "candidate_move"
+          },
+          "unit": "shared_definition"
+        },
+        "target": {
+          "code": "gate != \"none\"",
+          "language": "Python",
+          "scope": "exact expression only",
+          "syntax_kind": "Compare"
+        }
+      },
+      "state_sha256": "3f877d5baf708f1e9f041c9113a69f668663a2cad8d34fe6f93ff79f3532f451",
+      "task_sha256": "7c65c34bea8c8e54e60b7497461ce0956c8cb241a60556d817da58e4bc404e0d"
+    },
+    {
+      "case_id": "target-03-cell03",
+      "scope_binding_sha256": "7f7731e7b3d1a8790ee1f0b1d07ae5e9853efe40545ce1f8598805a55ad60cc1",
+      "state": {
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "code": "class BDDScenarioValuesSpec(BDDPolicy):\n    rule_ref = \"SG-RFC-0223.native.scenario-values\"\n\n    def skip_reason(self, context: BDDContext) -> str | None:\n        return super().skip_reason(context) or entry_skip(context)\n\n    def findings(self, context: BDDContext):\n        findings = []\n        for index, entry in enumerate(context.entries):\n            if not entry.is_mapping:\n                continue\n            path = f\"specification.bdd_scenarios[{index}]\"\n            if not entry.id.valid:\n                findings.append(issue(\"invalid_value\", path + \".id\"))\n            if not entry.steps_is_list or not entry.steps:\n                findings.append(issue(\"invalid_value\", path + \".steps\"))\n            else:\n                findings.extend(\n                    issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid\n                )\n        return tuple(findings)",
+              "fragment_id": "fragment-01",
+              "kind": "code"
+            },
+            {
+              "code": "class BDDPolicy(Specification[BDDContext]):\n    spec_id = \"SG-SPEC-0070\"\n    rule_ref: str\n\n    def __init__(self) -> None:\n        super().__init__(name=self.rule_ref)\n        self._seal()\n\n    def findings(self, context: BDDContext) -> tuple[BDDScenarioFinding, ...]:\n        raise NotImplementedError",
+              "fragment_id": "fragment-02",
+              "kind": "code"
+            },
+            {
+              "code": "    def _evaluate(self, candidate: BDDContext, recorder: TraceRecorder | None) -> bool:\n        return not self.findings(candidate)",
+              "fragment_id": "fragment-03",
+              "kind": "code"
+            },
+            {
+              "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)",
+              "fragment_id": "fragment-04",
+              "kind": "code"
+            },
+            {
+              "code": "    for policy in POLICIES:\n        skip = policy.skip_reason(context)\n        if skip:\n            if recorder is not None:\n                recorder.skipped(policy.rule_ref)\n            outcomes.append(PolicyOutcome(policy.rule_ref, \"skipped\", skip))\n            continue\n        passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)\n        findings.extend(current_findings)\n        outcomes.append(PolicyOutcome(policy.rule_ref, \"satisfied\" if passed else \"unsatisfied\"))\n        context = policy.transition(context, current_findings)",
+              "fragment_id": "fragment-05",
+              "kind": "code"
+            },
+            {
+              "code": "def load_native_bdd(source: str, *, profile: str, recorder=None) -> BDDResult:\n    digest = sha256(source.encode(\"utf-8\")).hexdigest()\n    try:\n        facts = context(load_yaml_text(source), profile)\n    except (DuplicateKeyError, yaml.YAMLError, ValueError, TypeError) as error:\n        code = \"duplicate_yaml_key\" if isinstance(error, DuplicateKeyError) else \"invalid_value\"\n        if recorder is not None:\n            for policy in POLICIES:\n                recorder.skipped(policy.rule_ref)\n        return BDDResult(\n            profile,\n            BDDScenarioPresence.INVALID,\n            (issue(code, \"document\"),),\n            tuple(PolicyOutcome(p.rule_ref, \"skipped\", \"invalid_yaml_boundary\") for p in POLICIES),\n            (),\n            digest,\n            POLICIES[0].safe_trace_label(profile),\n        )\n    return evaluate(facts, digest, recorder=recorder)\n",
+              "fragment_id": "fragment-06",
+              "kind": "code"
+            }
+          ],
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence.",
+          "truncated": false
+        },
+        "evaluation_scope": {
+          "application_binding": {
+            "argument_binding": {
+              "expression": "context",
+              "parameter": "context"
+            },
+            "ast_sha256": "6b18680bdcd2dbe6d72f90088dd1ec061ef5eadf3c0fe2890b43648b866cae71",
+            "code": "policy.findings(context)",
+            "enclosing_symbol": "evaluate",
+            "execution_claim": "static_possible_application_not_runtime_execution",
+            "path": "tools/native_bdd/composition.py",
+            "receiver_binding": {
+              "container": "POLICIES",
+              "membership_witness": {
+                "ast_sha256": "e84eb1af7c839523493a740a88967bedca1cdbd789c22bee2c9bc4918b08718b",
+                "code": "POLICIES = (\n    BDDProfileSelectionSpec(),\n    BDDContainerPresenceSpec(),\n    BDDScenarioFieldsSpec(),\n    BDDScenarioValuesSpec(),\n    BDDScenarioIDsSpec(),\n    BDDScenarioReferencesSpec(),\n)",
+                "path": "tools/native_bdd/composition.py",
+                "span": [
+                  13,
+                  0,
+                  20,
+                  1
+                ]
+              },
+              "receiver": "policy",
+              "selected_member": "BDDScenarioValuesSpec()"
+            },
+            "span": [
+              36,
+              27,
+              36,
+              51
+            ]
+          },
+          "definition": {
+            "ast_sha256": "e2c759a02c2a2d774d78e589fac1bc4c92829a05ff1dee7f38102014eb872e89",
+            "code": "not step.valid",
+            "path": "tools/native_bdd/values_spec.py",
+            "span": [
+              27,
+              23,
+              27,
+              37
+            ],
+            "symbol": "BDDScenarioValuesSpec.findings"
+          },
+          "unit": "bound_application"
+        },
+        "target": {
+          "code": "not step.valid",
+          "language": "Python",
+          "scope": "exact expression only",
+          "syntax_kind": "UnaryOp"
+        }
+      },
+      "state_sha256": "95cabd8c0c6e366b5a01a9127a7eec242ffc1662497244540e4b8e9ccb05ff0b",
+      "task_sha256": "a1fc2054fbb6c0aba8dd3ba6ae2b6753556ebaddd23f228a4d2d269536715224"
+    },
+    {
+      "case_id": "target-04-cell01",
+      "scope_binding_sha256": "bfe162be71fc4a7e532b5022f52d6d1605c080c409061d966913646e7095c34f",
+      "state": {
+        "architecture_profile": {
+          "ambiguity": "After bounded intent lookup, prefer formalization if the architecture choice remains ambiguous. This preference does not prove a domain role.",
+          "composition_complexity_limit": null,
+          "goal": "Uniform, addressable, composable and observable domain rules for human and AI SDLC; preserve product behavior.",
+          "id": "specification-centric-intent-first-v1",
+          "intent_first": "Inspect supplied intent, proposal and spec documents before guessing purpose from syntax. Record missing or conflicting context. Documents retain their declared authority.",
+          "mechanics": "Keep demonstrated parsing, representation, transport and adaptation mechanics procedural when they define no distinct domain rule.",
+          "reuse": "Reuse existing same-decision Specifications and their simple NOT/AND/OR compositions; no wrapper solely for a Boolean operator. An arbitrary Boolean fact is not automatically a Specification.",
+          "tools": "Formatting/linting responsibilities belong to formatter/linter rule sets. This responsibility does not prove an exact rule is configured or already enforced."
+        },
+        "bounded_context": {
+          "fragments": [
+            {
+              "code": "def dump_canonical_yaml(data: dict[str, Any]) -> str:\n    rendered = yaml.safe_dump(\n        data,\n        sort_keys=False,\n        allow_unicode=True,\n        default_flow_style=False,\n        width=100,\n    )\n    if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered\n",
+              "fragment_id": "fragment-01",
+              "kind": "code"
+            },
+            {
+              "code": "import yaml\n",
+              "fragment_id": "fragment-02",
+              "kind": "code"
+            },
+            {
+              "code": "def lint_file(path: Path) -> list[LintIssue]:\n    issues: list[LintIssue] = []\n    try:\n        source = path.read_text(encoding=\"utf-8\")\n    except FileNotFoundError:\n        return [LintIssue(path=path, message=\"file does not exist\")]\n\n    try:\n        data = load_yaml_text(source)\n    except Exception as exc:\n        return [LintIssue(path=path, message=str(exc))]\n\n    for message in _validate_spec_shape(data):\n        issues.append(LintIssue(path=path, message=message))\n\n    canonical = dump_canonical_yaml(data)\n    if source != canonical:\n        issues.append(\n            LintIssue(\n                path=path,\n                message=(\n                    \"file is not canonically formatted; run \"\n                    f\"`python tools/spec_yaml_format.py {path}`\"\n                ),\n            )\n        )\n    return issues\n",
+              "fragment_id": "fragment-03",
+              "kind": "code"
+            },
+            {
+              "code": "def format_file(path: Path) -> bool:\n    source = path.read_text(encoding=\"utf-8\")\n    canonical = canonicalize_text(source)\n    if source == canonical:\n        return False\n    path.write_text(canonical, encoding=\"utf-8\")\n    return True\n",
+              "fragment_id": "fragment-04",
+              "kind": "code"
+            }
+          ],
+          "limitations": "Only the supplied exact fragments are evidence. Unlisted dependencies and contracts are not proved. Judge each case from its own evidence.",
+          "truncated": false
+        },
+        "evaluation_scope": {
+          "application_binding": {
+            "argument_binding": {
+              "expression": "data",
+              "parameter": "data"
+            },
+            "ast_sha256": "487cc5818ea1470caeae621083d2a0126928cd3696f268cf2708059a899f1b5e",
+            "code": "dump_canonical_yaml(data)",
+            "enclosing_symbol": "lint_file",
+            "execution_claim": "static_possible_application_not_runtime_execution",
+            "path": "tools/spec_yaml.py",
+            "span": [
+              235,
+              16,
+              235,
+              41
+            ]
+          },
+          "definition": {
+            "ast_sha256": "49bf7a97e37843d0320ba3d1bdc9c8c5786bcb780b7c2ad5e1c96b09e5e3bcb4",
+            "code": "not rendered.endswith(\"\\n\")",
+            "path": "tools/spec_yaml.py",
+            "span": [
+              73,
+              7,
+              73,
+              34
+            ],
+            "symbol": "dump_canonical_yaml"
+          },
+          "unit": "shared_definition"
+        },
+        "target": {
+          "code": "not rendered.endswith(\"\\n\")",
+          "language": "Python",
+          "scope": "exact expression only",
+          "syntax_kind": "UnaryOp"
+        }
+      },
+      "state_sha256": "3e7c1fd924a7d7a3bf2879e06c786c8bbe50c46c92adf7b592df811b96135253",
+      "task_sha256": "7bff1758b493da0f86818ae1ba2591765ae61c723f8507257c3f8d7b78bbb15b"
+    }
+  ],
+  "contract_id": "specification_metrics.intent-first.v4",
+  "contract_sha256": "35c0e1f18dc58059d0561e257a6ed422bd0007ae832fb955634c974d1ebd95e6"
+}

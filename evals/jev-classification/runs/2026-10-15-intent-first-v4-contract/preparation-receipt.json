@@ -1,0 +1,34 @@
+{
+  "artifact_file_sha256": {
+    "README.md": "69a0cf139e05fd8eab94c7a139eef7e154ea255996a0c9cf99ec1311213ad505",
+    "contract.json": "35c0e1f18dc58059d0561e257a6ed422bd0007ae832fb955634c974d1ebd95e6",
+    "integrator-examples.json": "6a1b3c6ad569602ec8aed99fd60ebb0333f9d2bf88772d596f908b03ef155055",
+    "packet.json": "8d6a2edb11ce2d98a317dc42e434831d8861266fe145fcd640d0664c0c6e00e5",
+    "prompt.txt": "86f180c0fcb47a2181f22137f1587037896843cda66c23fe3aaa75985cc7155f",
+    "source-bindings.json": "dea87c5ad2137e4cb95643b3b9f5a65f65f191c5f26b87ec1f73e9604ffdff50",
+    "template.json": "b1b52a7dfbefef70e8f6c05ed1f33fe5fca2889bb9e96f5a2da8e8b0be8bdf07"
+  },
+  "dispatch_ready": false,
+  "examples": 4,
+  "human_gold": false,
+  "input_file_sha256": {
+    "runs/2026-10-14-scope-binding-preparation-v3-1/preparation-receipt.json": "ba828c9023eeb496b3e8b3d8c4c28bf3798bf6818006d7411cb09efc7a04a2fb",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01/packet.json": "3d0ded0bd2daa5fc2afc518c34768cc6c85059723a97179e0690c4c7bb47085e",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-02/packet.json": "1a39a6909319418ce7b1f563d8c40728a34a03339cad66d0306512e32b97b321",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-03/packet.json": "d4dc3558253fe5d99cfdeee8a2700f1cdd1e827baa9929f7620bc5fb991511d4",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-04/packet.json": "c4386499245f192276d1b5fd6aaab0be7cccbe7d0e7a3cca0896c3664df7b146",
+    "runs/2026-10-15-scope-binding-adjudication-v2/decision.json": "70b79331e370d30e5a1900da60191df694887d872183fb35a010be36c447363f",
+    "runs/2026-10-15-scope-reference-readiness-v1/matrix.json": "49830b8c18eb99ce67e0ca70214a5d9f99342b51c4150f8b98241abeb5503611"
+  },
+  "metric_effect": "none",
+  "new_model_contexts": 0,
+  "producer_file_sha256": {
+    "intent_first_contract_v4.py": "e3f04a1486b6dee5f2426599721eccab4a1d9a2c418f102f47781dd21e273254",
+    "prepare_intent_first_v4.py": "9c0d9b27268f86898373eb7b224ee7956a48b849614c38088636ce459d314507"
+  },
+  "provider_requests": 0,
+  "provider_scoring_enabled": false,
+  "pydantic_version": "2.13.5",
+  "schema_version": "4.0",
+  "status": "offline_contract_examples_not_dispatched"
+}

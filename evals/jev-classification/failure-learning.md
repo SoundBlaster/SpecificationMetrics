@@ -331,6 +331,31 @@ historical reference, production prompt or metric state was changed.
   hashes, overwrite refusal and prompt drift. Runtime rationale fidelity remains
   a manual semantic judgment; copying a scope field is not proof of understanding.
 
+## Intent uncertainty versus architecture action (2026-10-15)
+
+- **Evidence:** the [human clarification](runs/2026-10-15-scope-binding-adjudication-v2/README.md)
+  corrected the practical interpretation of four pinned examples. For ambiguous
+  path design, inspect intent/proposal/spec and prefer strict formalization if
+  ambiguity remains. Gate precedence is a candidate, formatting belongs to tool
+  rule sets, and simple Specification composition needs no extra wrapper.
+- **Confirmed design mismatch:** our `needs_review / unknown` presentation left
+  architectural action unspecified although the human has an explicit style
+  preference. This does not establish why a model produced a particular label,
+  or prove that every historical abstention was incorrect.
+- **Correction:** version the output contract as v4 with concern kind, ordinal
+  evidence support and recommendation. Preserve uncertain role even when the
+  recommendation is `formalize`; retain exact source/scope and documentary
+  authority. Simple NOT/AND/OR and formatter rules are reuse boundaries.
+- **Prevention:** `test_intent_first_v4.py` accepts unknown/insufficient/formalize,
+  rejects unjustified certainty and action/basis contradictions, and exercises
+  stale identities, source substitution, documentary acknowledgments and prompt
+  drift. Four integrator examples illustrate the contract; they are not model
+  predictions or independent gold. JSON Schema plus Python validation establishes
+  structural/identity consistency, not semantic correctness.
+- **Limits:** frozen v3.1 data and raw answers are unchanged. No current accuracy
+  score improves by redefining a past task. Provider wire mapping, reference
+  adjudication and a bounded live comparison remain separate work.
+
 ## Record template
 
 1. Failure and exact command/criterion.

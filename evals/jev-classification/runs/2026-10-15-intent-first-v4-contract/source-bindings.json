@@ -1,0 +1,42 @@
+[
+  {
+    "case_id": "target-01-cell03",
+    "new_task_sha256": "157a1da323cfade1302f0b9a28003d76e0256603bc7950a7e9e0ba32e75137bf",
+    "source_case_id": "target-01",
+    "source_cell": "03",
+    "source_packet": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-03/packet.json",
+    "source_state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+    "source_task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+    "transformation": "target/context/evaluation_scope unchanged; architecture_profile, state/task hashes and contract version changed"
+  },
+  {
+    "case_id": "target-02-cell01",
+    "new_task_sha256": "7c65c34bea8c8e54e60b7497461ce0956c8cb241a60556d817da58e4bc404e0d",
+    "source_case_id": "target-02",
+    "source_cell": "01",
+    "source_packet": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-02/packet.json",
+    "source_state_sha256": "c0ac7925ab68845d000026cbcc86bdb240c4ec76c3e7556df3f37cee8cd42efc",
+    "source_task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+    "transformation": "target/context/evaluation_scope unchanged; architecture_profile, state/task hashes and contract version changed"
+  },
+  {
+    "case_id": "target-03-cell03",
+    "new_task_sha256": "a1fc2054fbb6c0aba8dd3ba6ae2b6753556ebaddd23f228a4d2d269536715224",
+    "source_case_id": "target-03",
+    "source_cell": "03",
+    "source_packet": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-01/packet.json",
+    "source_state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+    "source_task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+    "transformation": "target/context/evaluation_scope unchanged; architecture_profile, state/task hashes and contract version changed"
+  },
+  {
+    "case_id": "target-04-cell01",
+    "new_task_sha256": "7bff1758b493da0f86818ae1ba2591765ae61c723f8507257c3f8d7b78bbb15b",
+    "source_case_id": "target-04",
+    "source_cell": "01",
+    "source_packet": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-04/packet.json",
+    "source_state_sha256": "b884ad56bcc19698ddc73f9cc6482ae97d38b610ef8c1ee5deb089a9e941699f",
+    "source_task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+    "transformation": "target/context/evaluation_scope unchanged; architecture_profile, state/task hashes and contract version changed"
+  }
+]
