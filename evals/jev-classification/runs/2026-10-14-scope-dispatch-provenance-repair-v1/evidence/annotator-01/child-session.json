@@ -1,0 +1,20 @@
+{
+  "projection": "session_meta_allowlist_v1",
+  "fields": {
+    "id": "01a13a56-8186-7a22-874b-2b86c5753b4d",
+    "parent_thread_id": "01a13a55-cb4b-7773-a0cf-2f94fa39c998",
+    "timestamp": "2026-10-14T12:15:10.233Z",
+    "agent_path": "/root/astra_scope_v3_1_run/annotator_01",
+    "source": {
+      "subagent": {
+        "thread_spawn": {
+          "parent_thread_id": "01a13a55-cb4b-7773-a0cf-2f94fa39c998",
+          "depth": 2,
+          "agent_path": "/root/astra_scope_v3_1_run/annotator_01",
+          "agent_nickname": "Cicero",
+          "agent_role": null
+        }
+      }
+    }
+  }
+}

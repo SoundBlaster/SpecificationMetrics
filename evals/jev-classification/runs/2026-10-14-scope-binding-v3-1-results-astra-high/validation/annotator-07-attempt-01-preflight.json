@@ -1,0 +1,8 @@
+{
+  "status": "scope_delivery_bytes_verified_not_dispatched",
+  "slot": "annotator-07",
+  "protocol": "scope-binding-v3.1",
+  "scope_input_binding_verified": true,
+  "semantic_correctness_verified": false,
+  "metric_effect": "none"
+}

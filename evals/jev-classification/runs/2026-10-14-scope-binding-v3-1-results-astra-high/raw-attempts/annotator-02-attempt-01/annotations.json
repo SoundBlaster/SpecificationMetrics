@@ -1,0 +1,212 @@
+{
+  "status": "independently_annotated_not_adjudicated",
+  "annotations": [
+    {
+      "case_id": "target-01",
+      "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "scope_unit": "shared_definition",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The selected unit is shared_definition: the entire disjunction in _safe_path across the supplied manifest-path and staging-prefix uses. It distinguishes absolute, parent-traversing or noncanonical paths from canonical relative paths. The implemented proposal explicitly requires path traversal to fail closed and changed payloads to retain relative durable URL paths; the callers use these values to locate manifest-authorized payloads and construct staged destinations. Together these establish a coherent artifact-publication path-integrity decision, including the representation constraint as part of the accepted reference form, suitable for a named Specification. The shared prefix use participates in that same scoped destination construction. No supplied evaluation path establishes existing Specification ownership of this decision. The proposal is implemented-proposal evidence, not a canonical requirement.",
+        "concern_kind": "The selected unit is shared_definition, covering the whole _safe_path disjunction and both supplied uses. Its primary demonstrated role is policy: restricting the path forms admitted for artifact references and their staging destinations under the stated fail-closed traversal and relative-path preservation contract. The manifest entries subsequently identify checked payloads, and prefix plus relative_path forms the staging destination. The canonical spelling test is part of the combined admissibility condition; the target neither performs transfer nor selects a variant implementation. This interpretation rests on the supplied implemented proposal and operator documentation, not merely the unsafe error wording or the static binding metadata."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "target",
+          "quote": "path.is_absolute() or \"..\" in path.parts or value != path.as_posix()"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-11",
+          "quote": "- Changed root and workspace payloads retain their relative durable URL paths.\n- Path traversal and local digest mismatches fail closed."
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-06",
+          "quote": "prefix = _safe_path(staging_prefix) if staging_prefix else \"\""
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-04",
+          "quote": "path = _safe_path(row.get(\"path\"))"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-07",
+          "quote": "destination = staging_dir / prefix / relative_path"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-11",
+          "quote": "- Changed root and workspace payloads retain their relative durable URL paths.\n- Path traversal and local digest mismatches fail closed."
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-12",
+          "quote": "Consumers should use `artifact_manifest.json` and `checksums.sha256` as\nthe authoritative artifact index instead of inferring validity from every file\nthat happens to remain under `specs/` or `runs/`."
+        }
+      ],
+      "uncertainties": [
+        "The path-integrity contract is documented in an implemented proposal and operator documentation; canonical requirement adoption is not established.",
+        "The evidence shows lexical path checks and possible static uses, not runtime execution or complete filesystem confinement such as symlink safety."
+      ]
+    },
+    {
+      "case_id": "target-02",
+      "state_sha256": "c0ac7925ab68845d000026cbcc86bdb240c4ec76c3e7556df3f37cee8cd42efc",
+      "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+      "scope_unit": "shared_definition",
+      "opportunity": "eligible",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The selected unit is shared_definition: gate != \"none\" in candidate_move across the supplied use. Its subject is a SpecNode gate state; it distinguishes an outstanding gate obligation from absence of a gate. In the supplied definition the true branch assigns a gate action and gate rank, while ordinary status-based refinement is available only in the elif branch and receives a rank after all gates. This is a stable lifecycle-priority decision suitable for a named, addressable Specification. The policy configuration reference does not demonstrate that an existing Specification evaluates and owns this same predicate, and runtime execution is not asserted.",
+        "concern_kind": "The selected unit is shared_definition. The exact comparison decides whether gate resolution takes precedence over ordinary refinement: the mutually exclusive elif and the rank offset demonstrate that role. It therefore has policy responsibility under the obligation-precedence tie rule. The later GATE_ACTIONS lookup chooses an individual action, but that dispatch is not the selected expression and does not change this expression into variant_behavior. The supplied caller uses the returned rank to order recommendations, corroborating the decision role without transferring its separate authorization decisions into this target."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "gate = node.gate_state\n    if gate != \"none\":"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:\n        next_gap = \"targeted_refinement\"\n        command_hint = f\"Run a targeted dry-run for {node.id}, then refine one bounded concern.\"\n        rank = len(gate_order) + status_order.index(node.status)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-05",
+          "quote": "eligible.sort(key=lambda entry: (entry[0], entry[1][\"spec_id\"]))"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "\"Review the structural split requirement for {spec_id} before rerunning refinement.\""
+        }
+      ],
+      "uncertainties": [
+        "The configured order among individual gates is not supplied, but it does not alter the visible precedence of the gate branch over status refinement.",
+        "The recorded application is a possible static binding; no runtime invocation or performed refinement is established."
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "state_sha256": "9f3f5d7da53b750d11d4c6492e31365f4d59beee73bc46daf9ec2d20aa2645d1",
+      "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+      "scope_unit": "bound_application",
+      "opportunity": "excluded",
+      "concern_kind": "policy",
+      "rationales": {
+        "opportunity": "The selected unit is bound_application: not step.valid inside BDDScenarioValuesSpec.findings for the selected BDDScenarioValuesSpec receiver at policy.findings(context) in evaluate. Exclusion follows from explicit same-decision Specification ownership, rather than from the callsite or class name alone. BDDScenarioValuesSpec inherits BDDPolicy, BDDPolicy inherits Specification[BDDContext], and its _evaluate returns not self.findings(candidate). Thus this very step-invalidity filter contributes to the findings that determine that Specification verdict; the supplied composition invokes is_satisfied_by and then findings for the same policy and context. A direct diagnostic retrieval at the selected binding does not remove that demonstrated ownership. This is static evaluation-path evidence, not proof of a runtime call.",
+        "concern_kind": "The selected unit is bound_application, judging the exact not step.valid expression for BDDScenarioValuesSpec at the recorded findings(context) binding. The filter distinguishes invalid from valid scenario steps and emits invalid_value findings for those steps, participating in the scenario-values admissibility decision. Its primary responsibility is policy even though the selected caller also collects findings for reporting and the same decision already belongs to a Specification. The supplied draft describes the intended nonempty-string step constraint but is review-only evidence, not canonical adoption; the concrete findings and evaluation path independently demonstrate the domain validity role without establishing every detail of step.valid."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "class BDDScenarioValuesSpec(BDDPolicy):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-02",
+          "quote": "class BDDPolicy(Specification[BDDContext]):"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-03",
+          "quote": "return not self.findings(candidate)"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-05",
+          "quote": "passed = policy.is_satisfied_by(context, recorder=recorder)\n        current_findings = policy.findings(context)"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "issue(\"invalid_value\", f\"{path}.steps[{i}]\")\n                    for i, step in enumerate(entry.steps)\n                    if not step.valid"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-07",
+          "quote": "steps is a nonempty ordered list of nonempty strings. Whitespace-only values are invalid,\n      meaningful strings are not trimmed."
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "return not self.findings(candidate)"
+        }
+      ],
+      "uncertainties": [
+        "The implementation of step.valid is not supplied, so its precise accepted value set cannot be verified.",
+        "The proposed native profile has review_only_draft_not_canonical_adoption authority; no canonical adoption is inferred.",
+        "Receiver membership establishes a possible static binding, not runtime execution."
+      ]
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "b1a951f6390085f94deb7d51959347b2eef94e43222cd2d7f310e6c84c8c2cdd",
+      "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+      "scope_unit": "bound_application",
+      "opportunity": "excluded",
+      "concern_kind": "mechanics",
+      "rationales": {
+        "opportunity": "The selected unit is bound_application: not rendered.endswith(\"\\n\") inside dump_canonical_yaml for data passed by lint_file at the recorded callsite. The supplied implementation checks the serialized YAML string and appends a newline if absent; lint_file compares that representation with the original source and reports a formatting issue. This is affirmative serialization and formatting mechanics without a distinct domain admissibility or behavior-selection decision in the exact target, so it is excluded. The other format_file use is contextual and is not needed to infer this application role.",
+        "concern_kind": "The selected unit is bound_application. For the recorded lint_file data binding, the expression distinguishes rendered YAML with and without a final newline and controls only appending that newline. Its primary responsibility is mechanics: normalizing a textual representation that lint_file uses for canonical-format comparison. The caller separately performs shape validation, but that separate work does not become the responsibility of this exact newline predicate. The static binding supports the association without proving execution."
+      },
+      "evidence_quotes": [
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-01",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-03",
+          "quote": "canonical = dump_canonical_yaml(data)\n    if source != canonical:"
+        },
+        {
+          "axis": "opportunity",
+          "fragment_id": "fragment-03",
+          "quote": "\"file is not canonically formatted; run \""
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-01",
+          "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"\n    return rendered"
+        },
+        {
+          "axis": "concern_kind",
+          "fragment_id": "fragment-03",
+          "quote": "canonical = dump_canonical_yaml(data)\n    if source != canonical:"
+        }
+      ],
+      "uncertainties": [
+        "The supplied static binding does not show whether this newline branch runs for any concrete input; its demonstrated formatting responsibility does not depend on that."
+      ]
+    }
+  ],
+  "isolation_report": {
+    "input_files": [
+      "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-02/packet.json",
+      "/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-14-scope-binding-v3-1-results-astra-high/delivery/annotator-02/template.json"
+    ],
+    "other_inputs_read": false
+  }
+}

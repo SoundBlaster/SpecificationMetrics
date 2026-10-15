@@ -1,0 +1,1161 @@
+{
+  "schema": "scope-reference-readiness-v1",
+  "status": "complete_inventory_reference_not_frozen",
+  "recorded_at_utc": "2026-10-15T05:11:14.673312+00:00",
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "unit": "unique_target_cell_task_not_raw_annotation_or_production_candidate",
+  "counts": {
+    "unique_tasks": 16,
+    "raw_annotations": 48,
+    "annotation_contexts": 12,
+    "rows_per_context": 4,
+    "repetitions_per_task": 3,
+    "decision_authority": {
+      "human_confirmed": 7,
+      "proposed_D3": 1,
+      "unconfirmed_control": 8
+    },
+    "human_confirmed_decisive_tasks": 5,
+    "human_confirmed_abstention_tasks": 2
+  },
+  "rows": [
+    {
+      "case_id": "target-01",
+      "state_sha256": "eae3d37a4965a347db4f203a4ea813d7b33793fc0218d08e4a6b1b0a73c9c862",
+      "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "name": "Manifest path",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "mechanics": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-01",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-01-attempt-01/annotations.json",
+          "sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-05",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-05-attempt-01/annotations.json",
+          "sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-09",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-09-attempt-01/annotations.json",
+          "sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D1",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-01",
+      "state_sha256": "9dae0196364a5fdc32011c4a6fcba05c7e9f6e65ca16ffd63e1524d0bed97a57",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "name": "Manifest path",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "eligible": 1,
+          "needs_review": 2
+        },
+        "concern_kind": {
+          "policy": 1,
+          "unknown": 2
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-02",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-02-attempt-01/annotations.json",
+          "sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-06",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-06-attempt-01/annotations.json",
+          "sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+          "labels": {
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          }
+        },
+        {
+          "slot": "annotator-10",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-10-attempt-01/annotations.json",
+          "sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+          "labels": {
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D1",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-01",
+      "state_sha256": "7b9cc18477b8b42e36e7d85586e6f139839bfcde37f4350baeb44909c7247e76",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "name": "Manifest path",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "needs_review": 2,
+          "excluded": 1
+        },
+        "concern_kind": {
+          "unknown": 2,
+          "mechanics": 1
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-03",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-03-attempt-01/annotations.json",
+          "sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+          "labels": {
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          }
+        },
+        {
+          "slot": "annotator-07",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-07-attempt-01/annotations.json",
+          "sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+          "labels": {
+            "opportunity": "needs_review",
+            "concern_kind": "unknown"
+          }
+        },
+        {
+          "slot": "annotator-11",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-11-attempt-01/annotations.json",
+          "sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        }
+      ],
+      "decision_status": "proposed_D3",
+      "decision_id": "D3",
+      "decision_authority": "runs/2026-10-15-manifest-application-without-documents-analysis/analysis.json",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      },
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-01",
+      "state_sha256": "6090f93d4252b65f8c23be63fb837f11274f788350cd2d949cc39fcaddcfa97f",
+      "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "name": "Manifest path",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-04",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-04-attempt-01/annotations.json",
+          "sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-08",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-08-attempt-01/annotations.json",
+          "sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-12",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-12-attempt-01/annotations.json",
+          "sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D1",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-02",
+      "state_sha256": "c0ac7925ab68845d000026cbcc86bdb240c4ec76c3e7556df3f37cee8cd42efc",
+      "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "name": "Gate precedence",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-02",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-02-attempt-01/annotations.json",
+          "sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-06",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-06-attempt-01/annotations.json",
+          "sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-10",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-10-attempt-01/annotations.json",
+          "sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:",
+        "reason": "The predicate gives gate obligations precedence over status refinement; later handler dispatch is a separate target."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-02",
+      "state_sha256": "785f38b1f538f15f3446c11ddffcf9097efc10a1c8a5fdf49a32560a561290c4",
+      "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "name": "Gate precedence",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-01",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-01-attempt-01/annotations.json",
+          "sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-05",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-05-attempt-01/annotations.json",
+          "sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-09",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-09-attempt-01/annotations.json",
+          "sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:",
+        "reason": "The predicate gives gate obligations precedence over status refinement; later handler dispatch is a separate target."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-02",
+      "state_sha256": "a69b647aad24d93dc04c8ea9bcf7993467d5fe13ef9828f806790daa4869a29e",
+      "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "name": "Gate precedence",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-04",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-04-attempt-01/annotations.json",
+          "sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-08",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-08-attempt-01/annotations.json",
+          "sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-12",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-12-attempt-01/annotations.json",
+          "sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:",
+        "reason": "The predicate gives gate obligations precedence over status refinement; later handler dispatch is a separate target."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-02",
+      "state_sha256": "dd1897b012a794d3c34ac935cb88ea8544b0c7b96ba3fe99aff222ce174924e7",
+      "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "name": "Gate precedence",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "eligible": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-03",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-03-attempt-01/annotations.json",
+          "sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-07",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-07-attempt-01/annotations.json",
+          "sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-11",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-11-attempt-01/annotations.json",
+          "sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+          "labels": {
+            "opportunity": "eligible",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "rank = gate_order.index(gate)\n    elif node.status in status_order:",
+        "reason": "The predicate gives gate obligations precedence over status refinement; later handler dispatch is a separate target."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-03",
+      "state_sha256": "bd5098b19f0a0f1adea4b382600d6399985e08d40f567f9a05cb2edb8fc2830c",
+      "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "name": "BDD invalid-step",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-03",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-03-attempt-01/annotations.json",
+          "sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-07",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-07-attempt-01/annotations.json",
+          "sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-11",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-11-attempt-01/annotations.json",
+          "sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D2",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-03",
+      "state_sha256": "4b4ba23dfccff5fd6a0171b2a488cb3d8b6043942f7f5809c6e5b33b162a992e",
+      "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "name": "BDD invalid-step",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-04",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-04-attempt-01/annotations.json",
+          "sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-08",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-08-attempt-01/annotations.json",
+          "sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-12",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-12-attempt-01/annotations.json",
+          "sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D2",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-03",
+      "state_sha256": "b352013ceafbf3e49dcf67aea88379701f92ddd2dba42f4ab750ee8fa641bcda",
+      "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "name": "BDD invalid-step",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "unknown": 1,
+          "policy": 2
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-01",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-01-attempt-01/annotations.json",
+          "sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "unknown"
+          }
+        },
+        {
+          "slot": "annotator-05",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-05-attempt-01/annotations.json",
+          "sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-09",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-09-attempt-01/annotations.json",
+          "sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D2",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-03",
+      "state_sha256": "9f3f5d7da53b750d11d4c6492e31365f4d59beee73bc46daf9ec2d20aa2645d1",
+      "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "name": "BDD invalid-step",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "policy": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-02",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-02-attempt-01/annotations.json",
+          "sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-06",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-06-attempt-01/annotations.json",
+          "sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        },
+        {
+          "slot": "annotator-10",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-10-attempt-01/annotations.json",
+          "sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "policy"
+          }
+        }
+      ],
+      "decision_status": "human_confirmed",
+      "decision_id": "D2",
+      "decision_authority": "runs/2026-10-14-scope-binding-adjudication-v1/decision.json",
+      "confirmed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "policy"
+      },
+      "proposed_labels": null,
+      "control_role_witness": null,
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "b884ad56bcc19698ddc73f9cc6482ae97d38b610ef8c1ee5deb089a9e941699f",
+      "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "name": "YAML newline",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "mechanics": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-04",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-04-attempt-01/annotations.json",
+          "sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-08",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-08-attempt-01/annotations.json",
+          "sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-12",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-12-attempt-01/annotations.json",
+          "sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"",
+        "reason": "The predicate only selects whether to append a representation terminator after serialization; domain shape validation is separate."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "a33bbda8483f9c69b0f2dc38a4b6af21e79f3874412ae9658b7d91b6723b7362",
+      "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "name": "YAML newline",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "mechanics": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-03",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-03-attempt-01/annotations.json",
+          "sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-07",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-07-attempt-01/annotations.json",
+          "sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-11",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-11-attempt-01/annotations.json",
+          "sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"",
+        "reason": "The predicate only selects whether to append a representation terminator after serialization; domain shape validation is separate."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "b1a951f6390085f94deb7d51959347b2eef94e43222cd2d7f310e6c84c8c2cdd",
+      "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "name": "YAML newline",
+      "documents_present": false,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "mechanics": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-02",
+          "position": 4,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-02-attempt-01/annotations.json",
+          "sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-06",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-06-attempt-01/annotations.json",
+          "sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-10",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-10-attempt-01/annotations.json",
+          "sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"",
+        "reason": "The predicate only selects whether to append a representation terminator after serialization; domain shape validation is separate."
+      },
+      "provider_scoring_enabled": false
+    },
+    {
+      "case_id": "target-04",
+      "state_sha256": "49aa11c6bf1948d6e348c69bf98430471e09b027df3bcb9b9fa6edd177902c4a",
+      "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+      "rubric_sha256": "173c694b48041a7640b7254903eb970cbc9f992aedf72be5d06b1c81bd88f59e",
+      "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "name": "YAML newline",
+      "documents_present": true,
+      "raw_axis_denominator": 3,
+      "raw_histograms": {
+        "opportunity": {
+          "excluded": 3
+        },
+        "concern_kind": {
+          "mechanics": 3
+        }
+      },
+      "raw_annotations": [
+        {
+          "slot": "annotator-01",
+          "position": 3,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-01-attempt-01/annotations.json",
+          "sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-05",
+          "position": 2,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-05-attempt-01/annotations.json",
+          "sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        },
+        {
+          "slot": "annotator-09",
+          "position": 1,
+          "path": "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-09-attempt-01/annotations.json",
+          "sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+          "labels": {
+            "opportunity": "excluded",
+            "concern_kind": "mechanics"
+          }
+        }
+      ],
+      "decision_status": "unconfirmed_control",
+      "decision_id": null,
+      "decision_authority": "nonblind_integrator_control_proposal_from_supplied_code_not_majority_vote",
+      "confirmed_labels": null,
+      "proposed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      },
+      "control_role_witness": {
+        "fragment_id": "fragment-01",
+        "quote": "if not rendered.endswith(\"\\n\"):\n        rendered += \"\\n\"",
+        "reason": "The predicate only selects whether to append a representation terminator after serialization; domain shape validation is separate."
+      },
+      "provider_scoring_enabled": false
+    }
+  ],
+  "source_file_sha256": {
+    "runs/2026-10-14-scope-binding-adjudication-v1/decision.json": "b440a2bcd070358af3caedd1296491d4b4b6ec7bd33b80ab7206620468e2a4f3",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/dispatch-plan.json": "4f8e4884c0f6b4d619cb9573b249e48cfa5269df0add6697aab1b02fbb028dac",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-01.json": "3d0ded0bd2daa5fc2afc518c34768cc6c85059723a97179e0690c4c7bb47085e",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-02.json": "1a39a6909319418ce7b1f563d8c40728a34a03339cad66d0306512e32b97b321",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-03.json": "d4dc3558253fe5d99cfdeee8a2700f1cdd1e827baa9929f7620bc5fb991511d4",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-04.json": "c4386499245f192276d1b5fd6aaab0be7cccbe7d0e7a3cca0896c3664df7b146",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-05.json": "3e7917d09855f3daa95635b0ca3007edea41c5143817481bc167bf339da9025c",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-06.json": "1a7286024a0b20bd88a1d212bdbce26f7f63be3ab2740c24c8dc5be42f920f5a",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-07.json": "c8aa089a17bd8faf189115a9df8d9fcf9832f9111ad65e147a7554f67c09c912",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-08.json": "5a15f14cc32bbce9024f208a58f2547f196dee7e2c95ce8d4a3193c64f1cb71a",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-09.json": "ba91160296a98a9bcc71a0cf263843636ebed2630e2620034f5328fb100e2a33",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-10.json": "8872b1ddaeb6fb590cb458ded2c7586519f0040497254822035e48cad746d794",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-11.json": "020d8d6a47e9b32a3cb14c94de97c3b667a612b6e22deb5173806d07e2fb819e",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/packet-annotator-12.json": "19ce53ea6d92163a712ff4b67557ca41fcfd505cf42917db124bac419e48b807",
+    "runs/2026-10-14-scope-binding-preparation-v3-1/preparation-receipt.json": "ba828c9023eeb496b3e8b3d8c4c28bf3798bf6818006d7411cb09efc7a04a2fb",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/execution-receipt.json": "2f4532f69755fbaa3c491831bb16b3941eea73a7d06eaecd4a1fd61ba7bdb8fe",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-01-attempt-01/annotations.json": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-02-attempt-01/annotations.json": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-03-attempt-01/annotations.json": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-04-attempt-01/annotations.json": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-05-attempt-01/annotations.json": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-06-attempt-01/annotations.json": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-07-attempt-01/annotations.json": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-08-attempt-01/annotations.json": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-09-attempt-01/annotations.json": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-10-attempt-01/annotations.json": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-11-attempt-01/annotations.json": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/raw-attempts/annotator-12-attempt-01/annotations.json": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+    "runs/2026-10-14-scope-binding-v3-1-results-astra-high/review/semantic-review.json": "8a05466e84e3c5ddbc54655c8c3a21889521c2c509ace44bad8cb87afb53ec30",
+    "runs/2026-10-14-scope-dispatch-provenance-repair-v1/provenance-repair.json": "56ff428fecb26ebb33ff76861568b9986910d6f088ab4acea83a59bf5125b15a",
+    "runs/2026-10-15-manifest-application-without-documents-analysis/analysis.json": "b771862f60d50fd2c61c85fc12acd06bc5de1f66133a4fe6331f4d88508e8749"
+  },
+  "consistency_review": {
+    "role": "nonblind_integrator",
+    "formal_task_coverage": "16 unique tasks, each with three original annotations and exact identities",
+    "authority_partition": "7 confirmed + 1 proposal + 8 unconfirmed controls; no automatic majority-to-gold conversion",
+    "shared_vs_bound_path": "D1 shared abstention does not conflict with documented application policy; definition and selected application are different units",
+    "ownership_vs_role": "BDD excluded opportunity remains policy responsibility, including direct findings binding",
+    "code_only": "Gate precedence is supported by code without requiring documentary evidence",
+    "abstention": "Two confirmed abstention tasks are assigned labels, not missing records; do not silently treat them as excluded",
+    "contradictory_confirmed_labels_for_same_task": false,
+    "blind_independent_validation": false
+  },
+  "remaining_actions": [
+    {
+      "id": "confirm_D3",
+      "scope": [
+        "target-01/03"
+      ],
+      "proposed_labels": {
+        "opportunity": "needs_review",
+        "concern_kind": "unknown"
+      }
+    },
+    {
+      "id": "confirm_gate_controls",
+      "scope": [
+        "target-02/01",
+        "target-02/02",
+        "target-02/03",
+        "target-02/04"
+      ],
+      "proposed_labels": {
+        "opportunity": "eligible",
+        "concern_kind": "policy"
+      }
+    },
+    {
+      "id": "confirm_newline_controls",
+      "scope": [
+        "target-04/01",
+        "target-04/02",
+        "target-04/03",
+        "target-04/04"
+      ],
+      "proposed_labels": {
+        "opportunity": "excluded",
+        "concern_kind": "mechanics"
+      }
+    },
+    {
+      "id": "freeze_reference_explicitly",
+      "requires": "Confirmed mapping and explicit scoring scope/abstention treatment; no automatic scoring enabled by this inventory"
+    }
+  ],
+  "retained_limits": {
+    "plaintext_prompt_equality_verified": false,
+    "runtime_model_identity_verified": false,
+    "filesystem_isolation_verified": false,
+    "writer_numeric_exit_codes_verified": 11,
+    "writer_numeric_exit_codes_missing": [
+      "annotator-09"
+    ],
+    "source_session_and_output_associations_repaired": 12,
+    "all_48_rows_statistically_independent": false,
+    "target_cell_by_position_fully_crossed": false,
+    "variant_behavior_represented": false,
+    "generalization_to_full_SpecGraph_established": false,
+    "limits_do_not_automatically_require_new_annotation_run": true
+  },
+  "frozen_sources_edited": false,
+  "provider_scoring_reference_frozen": false,
+  "rubric_changed": false,
+  "production_classifier_changed": false,
+  "metric_effect": "none",
+  "new_model_contexts": 0,
+  "direct_provider_requests": 0,
+  "recommended_first_use": "development_diagnostic_or_regression_not_unseen_holdout"
+}

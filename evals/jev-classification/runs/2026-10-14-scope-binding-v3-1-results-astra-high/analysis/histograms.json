@@ -1,0 +1,1902 @@
+{
+  "status": "descriptive_not_adjudicated",
+  "target_cells": [
+    {
+      "case_id": "target-01",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 2,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 4,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 2,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 3,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "9b6b4c7068e1a2e4895e364c5f6c78c715917c11db498fc46ca6446c923f69cf",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 4,
+              "label": "mechanics"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-01",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 1,
+            "excluded": 0,
+            "needs_review": 2
+          },
+          "decisive_coverage": {
+            "numerator": 1,
+            "denominator": 3
+          },
+          "agreement": false,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 1,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 2,
+              "label": "needs_review"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 4,
+              "label": "needs_review"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 1,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 2
+          },
+          "decisive_coverage": {
+            "numerator": 1,
+            "denominator": 3
+          },
+          "agreement": false,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 2,
+              "label": "unknown"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+              "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+              "position": 4,
+              "label": "unknown"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 1,
+            "needs_review": 2
+          },
+          "decisive_coverage": {
+            "numerator": 1,
+            "denominator": 3
+          },
+          "agreement": false,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 1,
+              "label": "needs_review"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 2,
+              "label": "needs_review"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 3,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 0,
+            "mechanics": 1,
+            "variant_behavior": 0,
+            "unknown": 2
+          },
+          "decisive_coverage": {
+            "numerator": 1,
+            "denominator": 3
+          },
+          "agreement": false,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 1,
+              "label": "unknown"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 2,
+              "label": "unknown"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 3,
+              "label": "mechanics"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-01",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 1,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 3,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 4,
+              "label": "eligible"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 3,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "5d3b401b42638a249b6a9dbf875e3f0250d1954b6e817d6bfc368ab95763e0f0",
+              "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+              "position": 4,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 2,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 1,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 3,
+              "label": "eligible"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 2,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "2ea95e775828253ba015c6b9e70e9fe3cf740e4e7ed6bcf38af7d808ad690fdd",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 3,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 1,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 4,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 3,
+              "label": "eligible"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 4,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "34de10f2f2d08cdba6d17beb36b261fcf2f14dd5b385a4099e97c4676e5b0854",
+              "scope_binding_sha256": "554c63f5c1fc0fea1f09a7a5718bb06cc102dd4dc6e898f9fc0fe6ab410de92f",
+              "position": 3,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 2,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 4,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 3,
+              "label": "eligible"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 2,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 4,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "cf61a281ad00eb8e2fca5e6f87b55145ec465a98aaebc438ad229e4872fd2765",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 3,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-02",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 3,
+            "excluded": 0,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 2,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 1,
+              "label": "eligible"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 4,
+              "label": "eligible"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 2,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "901ab64184c3bd7bd047709f5e962a8b844bddfb09bbb2396a53d73a0789c900",
+              "scope_binding_sha256": "e1224fe0ed348a12c93552b4355033200d5881c5f5d392ddc1fa10cbbf25cbc7",
+              "position": 4,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 4,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 1,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 3,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 4,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "f2da22aefa42b464b142b57f04834a7c0eae03a1bb65205aa4f132a15b7c4c88",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 1,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 1,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 2,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 3,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "7c6fa0abd442556a579c921813e0b40c301b32d56accd697f9984c5b24d27926",
+              "scope_binding_sha256": "30ed86f32d5f7b8787e4add4c3cc677066f4eb294dff69c6b47443477671084a",
+              "position": 2,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 4,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 1,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 2,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 2,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 1
+          },
+          "decisive_coverage": {
+            "numerator": 2,
+            "denominator": 3
+          },
+          "agreement": false,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 4,
+              "label": "unknown"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 1,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 2,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-03",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 4,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 2,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 3,
+            "mechanics": 0,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 3,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 4,
+              "label": "policy"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "4ae812c8e4f25b3bf0ea3f06e952db9b9ab0a9aafba425ee109c5c58492ee46c",
+              "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+              "position": 2,
+              "label": "policy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "01",
+      "scope_unit": "shared_definition",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 4,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 2,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 1,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-04",
+              "attempt_id": "annotator-04-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_04",
+              "raw_output_sha256": "e24c40e381f27557b66abf7d8b521b0ba0efb45ecf4e87ccf82c3c57fad60fa2",
+              "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 4,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-08",
+              "attempt_id": "annotator-08-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_08",
+              "raw_output_sha256": "9d4c8ac999a453bbd57ec09b7c64f20c9ae5d5ac8b5ad03513e6fc8da82e253d",
+              "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 2,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-12",
+              "attempt_id": "annotator-12-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_12",
+              "raw_output_sha256": "9a97d07a402189932cdaa47152d7209de9632479034620988db0808026e3a33e",
+              "task_sha256": "cd41a7e59b9cd99207fe649bbe16e71e629d61b9531dc6517444e6dff72ec41b",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 1,
+              "label": "mechanics"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "02",
+      "scope_unit": "shared_definition",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 4,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 2,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-03",
+              "attempt_id": "annotator-03-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+              "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+              "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 4,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-07",
+              "attempt_id": "annotator-07-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+              "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+              "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 3,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-11",
+              "attempt_id": "annotator-11-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+              "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+              "task_sha256": "7bb87a62a494d214dd4e4904c5609ea792235b57f129817b47b6766f80e4d3b4",
+              "scope_binding_sha256": "3b7fe1aed774cca4f6765da128737a780fddee31357a96f423961574e9c4ac15",
+              "position": 2,
+              "label": "mechanics"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "03",
+      "scope_unit": "bound_application",
+      "documents": false,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 4,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 1,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-02",
+              "attempt_id": "annotator-02-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+              "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+              "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 4,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-06",
+              "attempt_id": "annotator-06-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+              "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+              "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 3,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-10",
+              "attempt_id": "annotator-10-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+              "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+              "task_sha256": "6b3fb332ddec2a0808995a6fe87140a2f3b0260dabaee187dfe12bc2231b959a",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 1,
+              "label": "mechanics"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "target-04",
+      "cell": "04",
+      "scope_unit": "bound_application",
+      "documents": true,
+      "axes": {
+        "opportunity": {
+          "histogram": {
+            "eligible": 0,
+            "excluded": 3,
+            "needs_review": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 3,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 2,
+              "label": "excluded"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 1,
+              "label": "excluded"
+            }
+          ]
+        },
+        "concern_kind": {
+          "histogram": {
+            "policy": 0,
+            "mechanics": 3,
+            "variant_behavior": 0,
+            "unknown": 0
+          },
+          "decisive_coverage": {
+            "numerator": 3,
+            "denominator": 3
+          },
+          "agreement": true,
+          "members": [
+            {
+              "slot": "annotator-01",
+              "attempt_id": "annotator-01-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+              "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+              "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 3,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-05",
+              "attempt_id": "annotator-05-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+              "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+              "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 2,
+              "label": "mechanics"
+            },
+            {
+              "slot": "annotator-09",
+              "attempt_id": "annotator-09-attempt-01",
+              "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+              "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+              "task_sha256": "7d1e243413b22bb3b55f5285e7256dcd41f380f3625adf2f666baebe836725b1",
+              "scope_binding_sha256": "4a156104472afa51e42feba28377280aec36e22b11c8b8429bc15489b8a9a130",
+              "position": 1,
+              "label": "mechanics"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "disagreements": [
+    {
+      "case_id": "target-01",
+      "cell": "02",
+      "axis": "opportunity",
+      "members": [
+        {
+          "slot": "annotator-02",
+          "attempt_id": "annotator-02-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+          "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+          "position": 1,
+          "label": "eligible"
+        },
+        {
+          "slot": "annotator-06",
+          "attempt_id": "annotator-06-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+          "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+          "position": 2,
+          "label": "needs_review"
+        },
+        {
+          "slot": "annotator-10",
+          "attempt_id": "annotator-10-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+          "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+          "position": 4,
+          "label": "needs_review"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "cell": "02",
+      "axis": "concern_kind",
+      "members": [
+        {
+          "slot": "annotator-02",
+          "attempt_id": "annotator-02-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_02",
+          "raw_output_sha256": "cdfce13e2152b4336c57fe12bbf11ba0e0e676612da3db7a804adbb96fc13171",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+          "position": 1,
+          "label": "policy"
+        },
+        {
+          "slot": "annotator-06",
+          "attempt_id": "annotator-06-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_06",
+          "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+          "position": 2,
+          "label": "unknown"
+        },
+        {
+          "slot": "annotator-10",
+          "attempt_id": "annotator-10-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_10",
+          "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+          "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+          "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+          "position": 4,
+          "label": "unknown"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "axis": "opportunity",
+      "members": [
+        {
+          "slot": "annotator-03",
+          "attempt_id": "annotator-03-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+          "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+          "position": 1,
+          "label": "needs_review"
+        },
+        {
+          "slot": "annotator-07",
+          "attempt_id": "annotator-07-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+          "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+          "position": 2,
+          "label": "needs_review"
+        },
+        {
+          "slot": "annotator-11",
+          "attempt_id": "annotator-11-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+          "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+          "position": 3,
+          "label": "excluded"
+        }
+      ]
+    },
+    {
+      "case_id": "target-01",
+      "cell": "03",
+      "axis": "concern_kind",
+      "members": [
+        {
+          "slot": "annotator-03",
+          "attempt_id": "annotator-03-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_03",
+          "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+          "position": 1,
+          "label": "unknown"
+        },
+        {
+          "slot": "annotator-07",
+          "attempt_id": "annotator-07-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_07",
+          "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+          "position": 2,
+          "label": "unknown"
+        },
+        {
+          "slot": "annotator-11",
+          "attempt_id": "annotator-11-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_11",
+          "raw_output_sha256": "013b08347ebc81bd2b6df9afc868507899cb40300b87ae64861a998645b7b11c",
+          "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+          "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+          "position": 3,
+          "label": "mechanics"
+        }
+      ]
+    },
+    {
+      "case_id": "target-03",
+      "cell": "03",
+      "axis": "concern_kind",
+      "members": [
+        {
+          "slot": "annotator-01",
+          "attempt_id": "annotator-01-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_01",
+          "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+          "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+          "position": 4,
+          "label": "unknown"
+        },
+        {
+          "slot": "annotator-05",
+          "attempt_id": "annotator-05-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_05",
+          "raw_output_sha256": "c36cb0559df4c0b06e1540761b304f06719ee2c5e0badebc3009c4682e7ff99c",
+          "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+          "position": 1,
+          "label": "policy"
+        },
+        {
+          "slot": "annotator-09",
+          "attempt_id": "annotator-09-attempt-01",
+          "agent_task": "/root/astra_scope_v3_1_run/annotator_09",
+          "raw_output_sha256": "c794470ea3835d30fec3a2f4c0b85a0fd033e497b106a4bea56aa1b85912eca3",
+          "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+          "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+          "position": 2,
+          "label": "policy"
+        }
+      ]
+    }
+  ],
+  "abstentions": [
+    {
+      "slot": "annotator-06",
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 2,
+      "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "axis": "opportunity",
+      "label": "needs_review",
+      "rationale": "Selected unit: shared_definition. The whole exact disjunction in _safe_path rejects absolute paths, parent traversal and noncanonical POSIX spelling. Its supplied uses include both manifest-entry paths in fragment-04 and a staging prefix in fragment-06. Fragment-11 explicitly requires traversal to fail closed, while fragment-12 makes manifests the authoritative artifact index; these support a possible artifact-reference integrity rule. However, fragment-11 also limits the proposal to static artifact transport, and the same predicate serves generic path joining and staging constraints. The supplied material does not settle whether the shared definition owns a distinct domain reference-admissibility contract or is a reusable transport/representation guard. That specific missing definition-level contract leaves eligible and excluded plausible for the whole expression. The implemented-proposal and operator-documentation authorities are retained; canonical requirement adoption and runtime execution are not inferred.",
+      "uncertainties": [
+        "A definition-level contract establishing whether all arms and supplied uses of _safe_path express domain artifact-reference integrity or generic transport constraints is absent.",
+        "The integrity-related proposal is explicitly implemented_proposal_not_canonical_requirement; the operator documentation does not prove canonical adoption or Specification ownership.",
+        "The static code and binding do not prove execution, filesystem containment under symlinks, or any unshown runtime enforcement."
+      ]
+    },
+    {
+      "slot": "annotator-10",
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 4,
+      "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "axis": "opportunity",
+      "label": "needs_review",
+      "rationale": "Selected unit: shared_definition of the whole absolute-path, parent-component, and canonical-spelling disjunction in _safe_path across supplied uses, not solely its manifest-row application. The manifest path use is linked to bundle-relative reads, digest checks, and a documented fail-closed traversal/publication-integrity contract, making a named domain-reference rule plausible. The same shared predicate also validates staging_prefix, which is combined with staging_dir and relative_path to construct destinations; its canonical-spelling clause can implement general path adaptation. No supplied shared contract establishes whether this expression owns a publication-domain reference decision across those uses or is a generic relative-path utility implementing constraints chosen by callers. That specific unresolved shared responsibility leaves eligible and excluded materially plausible. The proposal is implemented but noncanonical, and binding metadata neither resolves the shared contract nor proves execution.",
+      "uncertainties": [
+        "A shared contract stating whether _safe_path itself owns publication-reference admissibility or only generic relative-path representation/enforcement is absent.",
+        "The explicit path-traversal acceptance criterion comes from an implemented proposal, not a canonical requirement; operator documentation establishes artifact-index authority but does not separately define the shared helper contract.",
+        "No actual filesystem containment or runtime execution is proved, and the supplied checks do not establish symlink behavior."
+      ]
+    },
+    {
+      "slot": "annotator-06",
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 2,
+      "raw_output_sha256": "00d73b2c60bcf93cdf4c5da84a7cbfa3eb4583bdf1e99864768271b0b9bb727d",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "axis": "concern_kind",
+      "label": "unknown",
+      "rationale": "Selected unit: shared_definition. The exact expression combines lexical path representation checks with traversal and absolute-path rejection across manifest paths and staging prefixes. Fragments-04, -06 and -07 demonstrate both input validation and transport destination construction. The fail-closed traversal acceptance criterion and authoritative manifest-index documentation support an integrity-policy interpretation, but do not establish it as the primary contract of this shared helper, whose canonical-spelling arm and prefix use also support generic technical enforcement. Because the supplied evidence does not resolve that shared primary responsibility, unknown retains the material ambiguity without splitting the target or transferring the manifest role to every use. The proposal is implemented but not a canonical requirement, and the recorded binding proves no runtime execution.",
+      "uncertainties": [
+        "A definition-level contract establishing whether all arms and supplied uses of _safe_path express domain artifact-reference integrity or generic transport constraints is absent.",
+        "The integrity-related proposal is explicitly implemented_proposal_not_canonical_requirement; the operator documentation does not prove canonical adoption or Specification ownership.",
+        "The static code and binding do not prove execution, filesystem containment under symlinks, or any unshown runtime enforcement."
+      ]
+    },
+    {
+      "slot": "annotator-10",
+      "case_id": "target-01",
+      "cell": "02",
+      "position": 4,
+      "raw_output_sha256": "544c19799d32d988bf8515908b40bed0c915bc1f7f9838d5bda9a3c4f33752de",
+      "task_sha256": "a8d73ad117da5de9f17818e98a084fad2e2a239192293a80f9c786057fb87881",
+      "scope_binding_sha256": "f571f8f80ac9f290afa10e7b6dbf2821b6a6fbde216da9282ae545b5f35046c8",
+      "axis": "concern_kind",
+      "label": "unknown",
+      "rationale": "Selected unit: shared_definition of the complete disjunction, including value != path.as_posix(). It rejects absolute, parent-traversing, or noncanonical path values. In the manifest use, the supplied integrity and authoritative-index documentation supports a policy interpretation; in the prefix use, the code demonstrates relative destination construction and generic path constraints. The supplied evidence does not settle the primary contract of this shared expression across those distinct uses, so unknown preserves the ambiguity between domain-integrity policy and technical enforcement. This judgment does not label the whole deployment workflow, discard the canonicalization clause, or transfer the manifest role to every application.",
+      "uncertainties": [
+        "A shared contract stating whether _safe_path itself owns publication-reference admissibility or only generic relative-path representation/enforcement is absent.",
+        "The explicit path-traversal acceptance criterion comes from an implemented proposal, not a canonical requirement; operator documentation establishes artifact-index authority but does not separately define the shared helper contract.",
+        "No actual filesystem containment or runtime execution is proved, and the supplied checks do not establish symlink behavior."
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-01",
+      "cell": "03",
+      "position": 1,
+      "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "axis": "opportunity",
+      "label": "needs_review",
+      "rationale": "Selected unit: bound_application, evaluating the whole path predicate with value statically bound to row.get(\"path\") inside _manifest_files. It distinguishes absolute, parent-traversing or noncanonical manifest paths from canonical relative paths. The supplied uses join those accepted manifest paths to a bundle directory and a staging destination, and use them in remote fetch URLs. This establishes consequential path validation, but does not settle whether this exact combined restriction defines permitted artifact references as a durable domain integrity rule or implements generic path representation and adapter constraints. The unsafe error is not a domain contract. The distinct domain decision needed for eligible, and an exclusively mechanical contract needed for excluded, remain materially uncertain. The separate staging_prefix application cannot establish the role of this selected manifest application.",
+      "uncertainties": [
+        "No supplied contract settles whether canonical relative manifest references constitute a domain integrity rule or generic adapter representation constraints.",
+        "The fragments do not prove runtime execution or comprehensive filesystem containment, including symlink behavior; neither is inferred."
+      ]
+    },
+    {
+      "slot": "annotator-07",
+      "case_id": "target-01",
+      "cell": "03",
+      "position": 2,
+      "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "axis": "opportunity",
+      "label": "needs_review",
+      "rationale": "Selected unit: bound_application, the entire disjunction in _safe_path for value bound to row.get(\"path\") in _manifest_files. Fragment-01 rejects absolute paths, parent components and noncanonical POSIX spelling; fragment-04 makes the accepted value a manifest key, and fragment-05 joins that key to the local bundle before digest verification. These facts support a possible artifact-reference integrity rule, but also a generic representation and safe-I/O precondition. No supplied contract settles whether these combined constraints define permitted domain artifact references or only normalize and constrain an adapter path. That specific ambiguity leaves eligible and excluded plausible under the profile, so needs_review preserves it. The separate staging_prefix application is not authority for this selected binding, and the binding itself proves no runtime execution.",
+      "uncertainties": [
+        "The supplied code does not establish whether the complete path constraint is a domain artifact-reference integrity contract or a generic adapter precondition.",
+        "The expression combines canonical spelling with absolute-path and parent-component rejection; its primary contract cannot be resolved by selecting only one clause.",
+        "The static binding does not prove execution, and lexical path restrictions alone do not establish physical filesystem containment."
+      ]
+    },
+    {
+      "slot": "annotator-03",
+      "case_id": "target-01",
+      "cell": "03",
+      "position": 1,
+      "raw_output_sha256": "891df731ca8158ec5eebc66ea82476936b2e28408ab492af87e659992855d9c8",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "axis": "concern_kind",
+      "label": "unknown",
+      "rationale": "Selected unit: bound_application of the exact Boolean expression to the manifest row path in _manifest_files. Absolute paths, parent traversal and noncanonical spelling all cause rejection; downstream supplied code uses accepted references for bundle reads, staging copies and remote requests. Those facts support both an artifact-reference integrity interpretation and a generic path-adaptation interpretation, without establishing which is the primary contract of this whole predicate. Therefore unknown is preferable to guessing policy from the unsafe message or mechanics from its parser location. The static binding does not prove runtime execution; the staging-prefix use is context only.",
+      "uncertainties": [
+        "No supplied contract settles whether canonical relative manifest references constitute a domain integrity rule or generic adapter representation constraints.",
+        "The fragments do not prove runtime execution or comprehensive filesystem containment, including symlink behavior; neither is inferred."
+      ]
+    },
+    {
+      "slot": "annotator-07",
+      "case_id": "target-01",
+      "cell": "03",
+      "position": 2,
+      "raw_output_sha256": "419d722c17ce5cc598aa7e35e6a0d2047d981f8d05915565b9fc42a9909eac1c",
+      "task_sha256": "e758b093cf1bab5408483eb7b18a0a333e1d4e9c75c5227310bbf3269ca468b1",
+      "scope_binding_sha256": "6722cd4a0501d78ef4fb07077d56d328e98f2c53e93f558f4f75282b50f7672d",
+      "axis": "concern_kind",
+      "label": "unknown",
+      "rationale": "Selected unit: bound_application of the whole exact path disjunction to the manifest row path. Its alternatives are relative, parent-free, canonical spellings versus paths rejected by one of the three clauses. Fragment-05 supplies a concrete bundle-read and hash-verification use; fragment-04 supplies manifest indexing. However, these uses do not settle the primary contract of the combined containment-like and representation checks: artifact-reference admissibility policy versus generic safe path adaptation. The unsafe error text cannot settle that distinction, and classifying only the traversal clauses would change the target boundaries. Therefore primary responsibility is unknown. The staging-prefix use and any runtime execution are not attributed to this application.",
+      "uncertainties": [
+        "The supplied code does not establish whether the complete path constraint is a domain artifact-reference integrity contract or a generic adapter precondition.",
+        "The expression combines canonical spelling with absolute-path and parent-component rejection; its primary contract cannot be resolved by selecting only one clause.",
+        "The static binding does not prove execution, and lexical path restrictions alone do not establish physical filesystem containment."
+      ]
+    },
+    {
+      "slot": "annotator-01",
+      "case_id": "target-03",
+      "cell": "03",
+      "position": 4,
+      "raw_output_sha256": "1afa77b0787482ef6aa1234edb39b915f10c4d626030c04d3826053e4f0364e4",
+      "task_sha256": "64956c4f995c3f93663837ceceea8cdb96f809db5f1baedea264b3f23ec1514a",
+      "scope_binding_sha256": "0bcbd73e29dc8f7f9fe312567539a4c1b85770af9054316adaa9f902dff59627",
+      "axis": "concern_kind",
+      "label": "unknown",
+      "rationale": "Selected unit: bound_application. At evaluate's selected direct findings(context) call, the exact not step.valid expression filters which scenario steps produce invalid_value findings. The caller has already obtained passed through is_satisfied_by and then collects findings and passes them to transition. The supplied evidence does not define step.valid or transition, so it does not settle whether this application primarily applies a durable scenario-admissibility rule or adapts an already established validity fact into diagnostic output. Specification ownership and the evaluation use alone cannot transfer a policy responsibility to this selected application. With that material ambiguity, unknown is more reliable than classifying the whole Specification or caller.",
+      "uncertainties": [
+        "The definition or declared contract of step.valid is omitted.",
+        "The contract of transition and the primary role of the direct findings application are not supplied; domain admissibility and diagnostic adaptation remain plausible.",
+        "The selected receiver membership establishes a possible static application, not execution."
+      ]
+    }
+  ],
+  "pooling_across_families": false,
+  "causal_order_effect_identified": false,
+  "reference_frozen_for_provider_scoring": false,
+  "human_gold": false,
+  "metric_effect": "none"
+}

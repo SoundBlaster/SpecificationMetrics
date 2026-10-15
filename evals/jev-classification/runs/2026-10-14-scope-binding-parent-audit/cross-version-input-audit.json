@@ -1,0 +1,139 @@
+{
+  "status": "input_comparison_only_no_outcome_labels",
+  "comparisons": [
+    {
+      "case_id": "target-01",
+      "v2_cell": "03",
+      "v3_1_cell": "01",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-01",
+      "v2_cell": "03",
+      "v3_1_cell": "03",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-01",
+      "v2_cell": "04",
+      "v3_1_cell": "02",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-01",
+      "v2_cell": "04",
+      "v3_1_cell": "04",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-02",
+      "v2_cell": "03",
+      "v3_1_cell": "01",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-02",
+      "v2_cell": "03",
+      "v3_1_cell": "03",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-02",
+      "v2_cell": "04",
+      "v3_1_cell": "02",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-02",
+      "v2_cell": "04",
+      "v3_1_cell": "04",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-03",
+      "v2_cell": "03",
+      "v3_1_cell": "01",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-03",
+      "v2_cell": "03",
+      "v3_1_cell": "03",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-03",
+      "v2_cell": "04",
+      "v3_1_cell": "02",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-03",
+      "v2_cell": "04",
+      "v3_1_cell": "04",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-04",
+      "v2_cell": "03",
+      "v3_1_cell": "01",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-04",
+      "v2_cell": "03",
+      "v3_1_cell": "03",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-04",
+      "v2_cell": "04",
+      "v3_1_cell": "02",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    },
+    {
+      "case_id": "target-04",
+      "v2_cell": "04",
+      "v3_1_cell": "04",
+      "evidence_text_multiset_equal": true,
+      "state_bytes_equal": false,
+      "task_bytes_equal": false
+    }
+  ],
+  "limits": [
+    "New scope/binding fields and rubric/prompt/output contract differ.",
+    "Documentary fragments follow consumers in v3.1 but precede them in v2.",
+    "Fragment IDs and some code-kind annotations differ; equal text does not mean identical state or task.",
+    "Only within-v3.1 scope comparisons hold all supplied input facts and ordering fixed."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "projection": "spawn_request_allowlist_v1",
+  "fields": {
+    "type": "function_call",
+    "name": "spawn_agent",
+    "call_id": "call_5bcfff6184404e238ed0237a009caf95",
+    "arguments": {
+      "task_name": "annotator_03",
+      "fork_turns": "none",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high"
+    },
+    "message_representation": "opaque_encrypted",
+    "message_payload_sha256": "0915928531b9835c13223b64d432d2356b9d5a87f4521af48fcb070531b49ff6"
+  }
+}

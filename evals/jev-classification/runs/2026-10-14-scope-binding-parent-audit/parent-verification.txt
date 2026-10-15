@@ -1,0 +1,17 @@
+Parent audit passed: 141 checksums; 12 unique contexts; 48 rows; 144 exact review bindings
+target-01 01 {'opportunity': {'excluded': 3}, 'concern_kind': {'mechanics': 3}}
+target-01 02 {'opportunity': {'eligible': 1, 'needs_review': 2}, 'concern_kind': {'policy': 1, 'unknown': 2}}
+target-01 03 {'opportunity': {'needs_review': 2, 'excluded': 1}, 'concern_kind': {'unknown': 2, 'mechanics': 1}}
+target-01 04 {'opportunity': {'eligible': 3}, 'concern_kind': {'policy': 3}}
+target-02 01 {'opportunity': {'eligible': 3}, 'concern_kind': {'policy': 3}}
+target-02 02 {'opportunity': {'eligible': 3}, 'concern_kind': {'policy': 3}}
+target-02 03 {'opportunity': {'eligible': 3}, 'concern_kind': {'policy': 3}}
+target-02 04 {'opportunity': {'eligible': 3}, 'concern_kind': {'policy': 3}}
+target-03 01 {'opportunity': {'excluded': 3}, 'concern_kind': {'policy': 3}}
+target-03 02 {'opportunity': {'excluded': 3}, 'concern_kind': {'policy': 3}}
+target-03 03 {'opportunity': {'excluded': 3}, 'concern_kind': {'unknown': 1, 'policy': 2}}
+target-03 04 {'opportunity': {'excluded': 3}, 'concern_kind': {'policy': 3}}
+target-04 01 {'opportunity': {'excluded': 3}, 'concern_kind': {'mechanics': 3}}
+target-04 02 {'opportunity': {'excluded': 3}, 'concern_kind': {'mechanics': 3}}
+target-04 03 {'opportunity': {'excluded': 3}, 'concern_kind': {'mechanics': 3}}
+target-04 04 {'opportunity': {'excluded': 3}, 'concern_kind': {'mechanics': 3}}

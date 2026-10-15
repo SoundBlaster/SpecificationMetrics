@@ -386,3 +386,69 @@ shared-definition/application ambiguity and proposes a separately versioned
 scope-binding diagnostic. The conservative integrator preference remains
 review-pending, not a replacement for raw labels or human adjudication; no new
 inference, scoring rule or metric change is introduced.
+
+The [completed scope-binding v3.1 diagnostic](runs/2026-10-14-scope-binding-v3-1-results-astra-high/analysis/report.md)
+retains 48 raw annotations in twelve fresh Astra/high contexts, with no formal
+failures or replacements. The manifest application with documents received three
+`eligible / policy` answers; the shared definition with the same documents retained
+a 1–2 split against `needs_review / unknown`. All sixteen per-target/cell histograms
+and both axes are retained. Proposed nonblind review leaves six role-witness
+judgments pending; agreement does not establish correctness or a scoring reference.
+The [parent audit](runs/2026-10-14-scope-binding-parent-audit/README.md) separately
+checks raw/review bindings and records why comparison with v2 is descriptive only.
+No direct Jev/Luna API calls or production S/U changes were made.
+
+The [scope-binding adjudication table](scope-binding-adjudication-v1.md) proposes
+two explicit decisions for human review: retain uncertainty for the shared path
+contract, and distinguish an already-owned domain predicate from its findings
+collection caller. The human confirmed D1/D2 on 2026-10-14; the
+[bounded adjudication record](runs/2026-10-14-scope-binding-adjudication-v1/README.md)
+binds those decisions to exact cases/tasks. Provider-scoring reference application
+remains pending and frozen annotations are unchanged. The table also records the PR #60 context-identity provenance finding;
+unique receipt strings do not by themselves establish isolated contexts.
+
+The [dispatch provenance repair](runs/2026-10-14-scope-dispatch-provenance-repair-v1/README.md)
+binds twelve actual returned task names to distinct child-session UUIDs and exact
+writer/output associations. The [replacement retention runbook](scope-dispatch-provenance-runbook.md)
+uses captured tool results instead of slot-derived identities. Encrypted task
+delivery can be correlated, but plaintext prompt equality, runtime model identity
+and filesystem isolation remain unverified. Frozen historical artifacts are unchanged.
+
+The historical [remaining manifest-application analysis](runs/2026-10-15-manifest-application-without-documents-analysis/README.md)
+proposes `needs_review / unknown` for target-01/cell03. Its code establishes path
+validation and adapter uses but leaves the primary artifact-reference contract
+ambiguous. This is not a rule that documentation is mandatory: code-only gate
+precedence provides a contrasting role witness. At that snapshot the proposed D3 decision was unconfirmed; see the subsequent
+human clarification below for the current architecture action.
+
+The historical [16-task reference-readiness matrix](runs/2026-10-15-scope-reference-readiness-v1/README.md)
+separates seven human-confirmed tasks (five decisive pairs and two abstentions),
+one proposed D3 task and eight unconfirmed controls. Original three-response
+histograms remain distinct from decision authority. It lists a three-item
+confirmation packet and retained provenance limits; no scoring reference is frozen
+or activated by this inventory, and no new inference ran.
+
+Start with [four concrete code examples](scope-reference-code-examples.md) when
+reviewing those labels: the actual path helper and callers, gate/refinement
+precedence, YAML newline formatting, and the already-owned BDD predicate. Each
+example identifies the exact selected expression, its architectural question and
+the current decision status; snippets link to pinned SpecGraph source.
+
+The [2026-10-15 human clarification / adjudication v2](runs/2026-10-15-scope-binding-adjudication-v2/README.md)
+records all four corrections: inspect intent/proposal/spec documents and prefer
+formalization if path design remains ambiguous; gate precedence is a Specification
+candidate; formatter/linter rule sets own formatting; recognized Specifications
+remain Specifications under simple NOT/AND/OR without mandatory wrapper classes.
+Gate/newline are now human-confirmed family decisions, with integrator mappings
+to the four frozen views each. BDD ownership is reaffirmed. The composition
+complexity limit is not yet defined. The earlier D3 abstention is retained as
+historical evidence-role analysis, not the only architecture action.
+
+Pinned proposal 0215 explicitly requires fail-closed path traversal. This supports
+the documented manifest application, while shared-helper primary role and old
+no-document task inputs remain distinct. The new record pins source digests,
+prior presentation and all16 task identities. It changes current guidance;
+it does not retrofit a new rubric or gold label into old tasks. Future evaluation
+must version architectural action separately from concern kind and evidence
+confidence. Frozen artifacts, production S/U and scoring remain unchanged; no
+new inference ran.
