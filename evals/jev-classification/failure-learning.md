@@ -558,6 +558,33 @@ historical reference, production prompt or metric state was changed.
   observed float32 BLAS warnings on synthetic normalized inputs; upstream cause
   remains unresolved. CI replays vectors without loading a model or inference.
 
+## Helper context and unsupported lexical votes (2026-10-15)
+
+- **Frozen evidence:** [local follow-up](runs/2026-10-15-retrieval-helper-live-v1/README.md)
+  changes only one historical document and reuses all original query vectors.
+  Adding the source-bound predicate body moves the known miss to rank 1 in all
+  five methods; all other designated-target ranks stay unchanged. This is one
+  controlled representation repair, not generalization evidence.
+- **New failure:** on 518 current-source documents, original hybrid256 meets
+  English top-5 7/8 but Russian only 3/8, so preregistered H2 fails. Dense768
+  reaches 8/8 in both languages. Known targets are authored development locators.
+- **Confirmed cause:** ASCII tokenization empties six Russian queries; full-list
+  RRF nevertheless adds votes from zero BM25 scores ordered alphabetically. The
+  no-evidence channel changes dense rankings without lexical support.
+- **Discriminating repair:** [v2 offline replay](runs/2026-10-15-retrieval-fusion-replay-v2/README.md)
+  varies Unicode support and positive-only lexical contributions independently on
+  the same vectors. Unicode alone leaves Russian top-5 unchanged. Removing
+  unsupported votes restores hybrid768 to 8/8 and hybrid256 to 7/8. Preserve H2's
+  original failure; these are post-failure development repair results.
+- **Prevention:** regression tests require empty/nonpositive lexical channels to
+  leave dense order unchanged, while positive scores still contribute. Cyrillic
+  tokens must survive tokenization. A lexical Windows/time-windows collision
+  remains: nonzero scores are not proof of semantic relevance.
+- **Preparation lesson:** parse complete source ASTs constrained by verified spans,
+  not isolated possibly indented fragments. Reject already-used target locators
+  before inference. Both checks are retained; new queries still need independent
+  validation before any production recommendation.
+
 ## Record template
 
 1. Failure and exact command/criterion.

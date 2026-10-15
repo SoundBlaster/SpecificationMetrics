@@ -525,3 +525,11 @@ BM25, dense 768d/256d and RRF hybrid rankings on the same frozen vectors. This i
 a development retrieval test, with source provenance and offline replay; it does
 not approve ownership evidence or modify production S/U. Results and runtime
 limits are recorded in the [run report](runs/2026-10-15-embeddinggemma-retrieval-v1-attempt-3/README.md).
+
+The [helper-context/bilingual follow-up](runs/2026-10-15-retrieval-helper-live-v1/README.md)
+repairs the known missing-body retrieval case and evaluates 518 current-source
+declarations with eight authored English/Russian query pairs. H1 is supported on
+the known case; the original hybrid H2 fails. Dense768 reaches top-5 8/8 per
+language. An isolated [fusion v2 replay](runs/2026-10-15-retrieval-fusion-replay-v2/README.md)
+fixes discarded Unicode text and unsupported zero-score BM25 votes without new
+inference. Use v2 for further fusion experiments; v1 remains frozen evidence.
