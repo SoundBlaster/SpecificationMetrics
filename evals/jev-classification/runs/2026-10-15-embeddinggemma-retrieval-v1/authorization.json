@@ -1,0 +1,10 @@
+{
+  "basis": "User: Ок, делай — local EmbeddingGemma pilot",
+  "documents": 45,
+  "hosted_inference": false,
+  "local_inference": true,
+  "model": "google/embeddinggemma-2",
+  "queries": 30,
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "warmup_inputs": 1
+}

@@ -1,4 +1,5 @@
 /target/
 /metrics/
 /.venv-metrics/
+/.venv-embedding/
 __pycache__/

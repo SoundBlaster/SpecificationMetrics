@@ -5,6 +5,21 @@ on:
   pull_request:
 
 jobs:
+  retrieval-offline-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install ranking dependencies only
+        run: python -m pip install -r evals/jev-classification/requirements-retrieval-replay.txt
+      - name: Replay local retrieval evidence without model download or inference
+        working-directory: evals/jev-classification
+        run: |
+          python -W error -m unittest -v test_embeddinggemma_pilot_v1.py
+          python embeddinggemma_pilot_v1.py --verify runs/2026-10-15-embeddinggemma-retrieval-v1-attempt-3
+
   check:
     runs-on: ubuntu-latest
     steps:

@@ -534,6 +534,30 @@ historical reference, production prompt or metric state was changed.
   limits and source-bound BDD handoff. Negative approvals exist only in synthetic
   tests. Semantic review and trust configuration remain external responsibilities.
 
+## Local retrieval: representation and environment boundaries (2026-10-15)
+
+- **Evidence:** [EmbeddingGemma 2 pilot](runs/2026-10-15-embeddinggemma-retrieval-v1-attempt-3/README.md)
+  retained 30 queries, 45 documents, vectors and all five rankings. Hybrid intent
+  top-1 is 14/15 versus BM25 11/15; raw-code BM25 is 14/15 versus dense 6/15.
+  All methods already achieve intent top-5 15/15. Gains and losses concentrate
+  in the correlated eight-site lifecycle family.
+- **Confirmed boundaries:** all eight dense lifecycle code queries rank a broad
+  dispatcher first. The no-op handoff target indexes a PredicateSpec declaration
+  without its helper body and misses code top-5 under every method. This is a
+  representation gap; the model-internal reason for its ranking is unproven.
+- **Prevention:** retain lexical search and separate counterpart retrieval from
+  semantic ownership adjudication. Test helper-body expansion in a new corpus
+  version; do not change this run's references or equate an empty ranked result
+  with absence. The proposed larger/Russian-query evaluation has not run.
+- **Runtime evidence:** SciPy 1.15.3 import was rejected by the macOS loader;
+  1.14.1 passed. Attempts 1/2 failed on missing processor dependencies Pillow and
+  Torchvision despite text-only encoders; both failure receipts are preserved.
+  Pin those dependencies and check actual encoding, not just module import.
+- **Verification:** attempt 3 completed on MPS; six offline regression tests and
+  exact saved-vector ranking replay pass. Fixed-order float64 scoring avoids
+  observed float32 BLAS warnings on synthetic normalized inputs; upstream cause
+  remains unresolved. CI replays vectors without loading a model or inference.
+
 ## Record template
 
 1. Failure and exact command/criterion.

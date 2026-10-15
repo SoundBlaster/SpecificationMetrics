@@ -516,3 +516,12 @@ strict H1 is not supported. Luna selected BDD reuse only with the explicit
 source-bound witness (H2 supported in one pair); Jev already selected reuse with
 conditioning. Raw outputs, preregistered comparisons and offline evidence replay
 are retained; no accuracy or production S/U claim follows.
+
+## Local retrieval pilot
+
+The [EmbeddingGemma 2 pilot](embeddinggemma-retrieval-pilot-v1.md) evaluates
+local discovery of historical SpecGraph refactoring counterparts. It compares
+BM25, dense 768d/256d and RRF hybrid rankings on the same frozen vectors. This is
+a development retrieval test, with source provenance and offline replay; it does
+not approve ownership evidence or modify production S/U. Results and runtime
+limits are recorded in the [run report](runs/2026-10-15-embeddinggemma-retrieval-v1-attempt-3/README.md).
