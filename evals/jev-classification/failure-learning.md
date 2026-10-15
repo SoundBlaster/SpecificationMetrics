@@ -475,6 +475,27 @@ historical reference, production prompt or metric state was changed.
   the incorrect containment. Tampered snapshot, changed method and stale wire
   tests complement this reproduction. No runtime execution claim follows.
 
+## Conditional action live: improvements without moving acceptance (2026-10-15)
+
+- **Evidence:** [v2 live](runs/2026-10-15-conditional-native-action-live-v2/README.md)
+  received 18 valid native answers in 18 attempts, no retries. Action violations
+  against common development premises fell Jev 2→1, Luna 1→0. Both respected
+  assigned role/support in only 3/4 conditioned targets, so preregistered H1 failed.
+  Luna BDD changed formalize→reuse only with witness; Jev already chose reuse in
+  conditioned. H2 has one supportive Luna pair and no incremental Jev evidence.
+- **Unresolved cause:** path conditioning was not obeyed; Jev retained policy /
+  supported, Luna returned policy / insufficient instead of unknown / insufficient.
+  This is observable noncompliance, not proof of model-internal reasoning. Jev gate
+  kept a contradictory action even while respecting its premises.
+- **Prevention:** do not remove the path case, lower the echo criterion or treat
+  fewer action failures as full H1 success. Keep baseline echo unassessed, preserve
+  raw choices and common-premise checks separately, and distinguish missed reuse
+  from tuple inconsistency. Source-containment P1 was fixed before inference.
+- **Next diagnostic design:** separate externally established facts from model
+  classification and formal recommendation policy. This is proposed, not a post-hoc
+  prompt change or extra paid run. Known cases and a single pair do not establish
+  generalization; no provider scoring, production metric changes or semantic retries.
+
 ## Record template
 
 1. Failure and exact command/criterion.
