@@ -1,0 +1,4 @@
+# Local retrieval + existing typed fact planning, no hosted transport dependency.
+-r requirements-embeddinggemma.txt
+-r requirements-policy.txt
+pydantic==2.13.5
