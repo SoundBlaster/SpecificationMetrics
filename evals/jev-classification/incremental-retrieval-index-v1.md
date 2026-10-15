@@ -118,6 +118,11 @@ documents; the second reused all 8 with zero encoder calls; `check` returned
 retrieval quality or full-project source coverage. Model downloads and hosted
 requests were disabled. The mutable smoke database stays outside the repository.
 
+PR70 review found that a structurally corrupt SQLite file bypassed the original
+`ValueError` handler. `check` now also maps SQLite database errors to
+`unavailable`/exit 2. A CLI regression with non-SQLite bytes reproduces the
+original failure and verifies the documented automation contract.
+
 Next integration: call this update/read boundary when assembling retrieved
 context for the new Jev/Luna experiment. Automatic execution in SpecGraph CI
 requires selecting a runner with the local model and persistent store; this PR

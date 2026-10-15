@@ -1,10 +1,13 @@
 import copy
+import io
 import json
 import sqlite3
 import subprocess
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from retrieval_index_v1.source import digest, snapshot
 from retrieval_index_v1.store import plan, read_current, update
@@ -167,6 +170,20 @@ class IncrementalTests(unittest.TestCase):
             plan(self.store, source, PROFILE)
         with self.assertRaisesRegex(ValueError, 'checksum'):
             read_current(self.store, source, PROFILE)
+
+    def test_check_reports_structurally_corrupt_sqlite_as_unavailable(self):
+        from retrieval_index_v1.__main__ import main
+        self.store.write_bytes(b'not a SQLite database')
+        args = ['retrieval_index_v1', 'check', '--repo', str(self.repo), '--repository-id', 'fixture',
+                '--include', 'tools/*.py', '--store', str(self.store), '--model-path', 'unused']
+        output = io.StringIO()
+        with patch('sys.argv', args), patch('retrieval_index_v1.__main__.LocalEncoder') as encoder:
+            encoder.return_value.profile = PROFILE
+            with redirect_stdout(output):
+                self.assertEqual(main(), 2)
+        result = json.loads(output.getvalue())
+        self.assertEqual(result['status'], 'unavailable')
+        self.assertIn('not a database', result['reason'])
 
     def test_incomplete_manifest_is_not_readable_even_with_valid_checksum(self):
         source = self.source()
