@@ -1,0 +1,16 @@
+{
+  "artifact_file_sha256": {
+    "README.md": "0cb5d6fc26f842cbc7fce8940044a8a0436becfd029659fbf63bf9d1c59c8978",
+    "manifest.json": "c1687e2472f35eeb7ee68d7c6f7b319c7a82f3645b7024d21ec6bc497b742c52",
+    "questions.json": "4241553ba40bf7b124c75b330d473307d2b52417d69ab6f19ba262eebe2fc35e"
+  },
+  "full_v4_1_annotation": false,
+  "human_gold": false,
+  "logical_requests": 8,
+  "max_network_attempts": 24,
+  "metric_effect": "none",
+  "projection_policy": "specmetrics.intent-first-native-choice/v1",
+  "provider_requests": 0,
+  "status": "native_wires_prepared_no_inference",
+  "study": "specmetrics.intent-first-native-transport-smoke/v1"
+}
