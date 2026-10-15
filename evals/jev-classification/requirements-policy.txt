@@ -1,0 +1,2 @@
+# Offline recommendation evaluation only; not a runtime dependency of the Rust CLI.
+specification-core @ git+https://github.com/SoundBlaster/SpycificationCore.git@6113d773e78cb94c4eb0ce31e8439877fef45494
