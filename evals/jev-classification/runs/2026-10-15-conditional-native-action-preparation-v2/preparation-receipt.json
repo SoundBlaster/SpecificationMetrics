@@ -1,0 +1,38 @@
+{
+  "artifact_file_sha256": {
+    "README.md": "fc12b8e20accce93ea8284380c82d8320c621e9eb307b90dfe7ae3831dad076b",
+    "manifest.json": "b9dc22f4438ba8a48afb7b39927441ef4e52a252c175dd2f8f20c8cb0810f615",
+    "ownership-witness.json": "6be78d5c8285b902a0954e7aaddcb22627d6d6e0da5ccf41a11ec35f942d3c82",
+    "premises.json": "66232ecb3c2a734d968bdb86ec4e766717c99ef5c81b395bb26f61314e8ab8a7",
+    "protocol.md": "3ffe68ef3c1556c043de34e37faebb5ff8729ccf08ac85dcc8c0b0e09aee24c6",
+    "repair.md": "20aa13f286f97e1747398532c9131d8e9447be75415f57bc0216ddf51735ead3",
+    "source.json": "d7c826e8a2736b8b27d657f6877aa3eaccb098bccc81d88789fa0365b1c086db"
+  },
+  "diagnostic_producer_sha256": {
+    "conditional_native_action_v1.py": "daf5528581222477ed7ca3885c5f0b9bfa581b97fb8d73b79afd7ebe58e89811",
+    "conditional_native_action_v2.py": "b44aaabae7ee8c5036d0d2bfde59083fce9d5d56790cfba8bc1cfe3482360602",
+    "coreinfra_retry_run.py": "9784804e6a0b0cfe44eff99619ceeb952349e80bb52911bc6b0e956de4f474e3",
+    "coreinfra_transport.py": "cd91b127e5c413da153fea6dabdf7e89d7c6f1ff25b59a97de535cef6684bbcf",
+    "decision_choice_contract.py": "5e3d2a46d2eaad7a82a2f49a71b2936178eae059992e15a0da2154780f8c850e",
+    "decision_choice_contract_v2.py": "acd13808bfdc1121ce4bf9823e582f30a771ab798d7ec62b2e7cdf1eed4f4308",
+    "intent_first_native_v1.py": "24c410311d591336ada1d0fb785db7ccae6d299f532d7c0938689f23d4969f87",
+    "prepare_intent_first_native.py": "e40720d6c086e14c6c8a00f016925c499991ba04a51753323acc70f7c8e336fc",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "input_file_sha256": {
+    "runs/2026-10-15-conditional-native-action-preparation-v1/README.md": "5e316c8a2fe52540ae124e93cfeaf51848dc2a9ffa2e37ad813215056df18cff",
+    "runs/2026-10-15-conditional-native-action-preparation-v1/SHA256SUMS": "aa80d03a9bb3e604f158e0f856594fe3abb7fafa0836d2739f96c355f9a3c4e8",
+    "runs/2026-10-15-conditional-native-action-preparation-v1/manifest.json": "ac5547f289fb6e5fe38844b3401aa299b66936c885762e78825ccd03ff778001",
+    "runs/2026-10-15-conditional-native-action-preparation-v1/ownership-witness.json": "16974036f3605d55486d8ed1cd65f89b06de1a000b5bb97607c6fa0dc612d321",
+    "runs/2026-10-15-conditional-native-action-preparation-v1/premises.json": "66232ecb3c2a734d968bdb86ec4e766717c99ef5c81b395bb26f61314e8ab8a7",
+    "runs/2026-10-15-conditional-native-action-preparation-v1/preparation-receipt.json": "3f4a5cc5bb16d0a71c8274fe8716b836848e62b90fa5aa1c0736e05e7387edcf",
+    "runs/2026-10-15-conditional-native-action-preparation-v1/protocol.md": "3ffe68ef3c1556c043de34e37faebb5ff8729ccf08ac85dcc8c0b0e09aee24c6",
+    "runs/2026-10-15-conditional-native-source-binding-v2/source.json": "d7c826e8a2736b8b27d657f6877aa3eaccb098bccc81d88789fa0365b1c086db"
+  },
+  "max_network_attempts": 54,
+  "metric_effect": "none",
+  "planned_requests": 18,
+  "provider_requests": 0,
+  "status": "source_bound_prepared_offline",
+  "study": "specmetrics.conditional-native-action/v2"
+}

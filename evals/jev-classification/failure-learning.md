@@ -436,6 +436,45 @@ historical reference, production prompt or metric state was changed.
 - **Limits:** 8 responses / 8 attempts within the 8-request / 24-attempt budget;
   no semantic retries, scoring reference, accuracy claim or production S/U change.
 
+## Conditional-action diagnostic preparation (2026-10-15)
+
+- **Evidence:** the native smoke includes both self-contradictory tuples and a
+  consistent BDD action that misses recognized Specification reuse. Model-internal
+  cause remains unresolved; changing the rubric would not explain these failures.
+- **Controlled next step:** [18 frozen requests](conditional-native-action.md)
+  retain all three axes and contrast unchanged fresh baseline with explicit
+  development role/support premises. BDD alone receives a third arm highlighting
+  existing source facts in a checked ownership witness. No expected action labels
+  or previous provider predictions enter the wire. This tests conditioning/salience,
+  not independent role accuracy or discovery of previously unseen ownership.
+- **Prevention:** inspect raw tuples separately from action checks against the
+  common development premises. Flag incorrect premise echo, keep consistent BDD
+  formalization visible as missed reuse, reject stale wire bindings, and never
+  infer execution from missing rows. Source witness checks reject broken inheritance,
+  moved target, changed verdict and changed receiver. Tests use no credentials or POST.
+- **Limits:** source and previous failed outputs remain frozen. Preparation is
+  offline and requires separate bounded live authorization; no provider scoring,
+  production metric changes or semantic retries. Full-batch criteria and control
+  regressions are declared before inference.
+
+## Declaring-class provenance before paid H2 (2026-10-15)
+
+- **Evidence:** PR64 P1 correctly identified that free fragment-03 had no class
+  containment binding. Name/body equality did not establish BDDPolicy._evaluate.
+  Preflight caught the review before any new provider request.
+- **Root cause:** the v1 witness inferred ownership across disconnected snippets.
+  An AST match establishes structure, not location or declaring-class identity.
+- **Correction:** [v2](conditional-native-action-v2.md) pins three full SpecGraph
+  modules at the existing commit and verifies direct containment of the method,
+  class-prefix, child class, membership and consumer loop. Source blobs/hashes,
+  path, symbol and spans are retained. Sixteen wires and H1/H2 criteria are unchanged;
+  two witness wires gain provenance. V1 source/preparation remain unexecuted and
+  reproducible; v2 is the active live selection.
+- **Prevention:** a regression keeps the method snippet identical but relocates
+  the definition to another class. V1 still accepts the free snippet; v2 rejects
+  the incorrect containment. Tampered snapshot, changed method and stale wire
+  tests complement this reproduction. No runtime execution claim follows.
+
 ## Record template
 
 1. Failure and exact command/criterion.

@@ -1,0 +1,40 @@
+{
+  "declared_type": "BDDScenarioValuesSpec",
+  "evidence": [
+    {
+      "fragment_id": "fragment-01",
+      "quote": "class BDDScenarioValuesSpec(BDDPolicy):",
+      "source_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e"
+    },
+    {
+      "fragment_id": "fragment-02",
+      "quote": "class BDDPolicy(Specification[BDDContext]):",
+      "source_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882"
+    },
+    {
+      "fragment_id": "fragment-03",
+      "quote": "return not self.findings(candidate)",
+      "source_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+    },
+    {
+      "fragment_id": "fragment-04",
+      "quote": "BDDScenarioValuesSpec(),",
+      "source_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270"
+    },
+    {
+      "fragment_id": "fragment-05",
+      "quote": "current_findings = policy.findings(context)",
+      "source_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2"
+    }
+  ],
+  "inheritance": [
+    "BDDScenarioValuesSpec",
+    "BDDPolicy",
+    "Specification[BDDContext]"
+  ],
+  "proof_scope": "pinned supplied AST and binding only; no runtime execution or general import resolution",
+  "selected_application": "policy.findings(context)",
+  "selected_method": "BDDScenarioValuesSpec.findings",
+  "status": "established_in_supplied_context",
+  "verdict_path": "BDDPolicy._evaluate -> self.findings(candidate)"
+}

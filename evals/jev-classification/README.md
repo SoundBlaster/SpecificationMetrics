@@ -490,3 +490,20 @@ consistent BDD tuple separately misses existing Specification reuse. Raw outputs
 local ledger/receipt replay and an explicit facts-versus-hypotheses diagnosis are
 retained. This verifies this bounded API integration, not semantic accuracy or
 full v4.1 annotation quality; production S/U remains unchanged.
+
+Next is the [conditional-action diagnostic](conditional-native-action.md): a
+[frozen offline package](runs/2026-10-15-conditional-native-action-preparation-v1/README.md)
+for 18 requests / at most 54 network attempts. It contrasts fresh unchanged
+baseline wires with explicit role/support premises, plus a BDD-only source-derived
+ownership witness. All arms retain three Choice questions. Report native shape,
+raw tuple consistency, premise compliance, action violations against common
+premises and BDD reuse separately. These are known development fixtures, not
+independent classification gold; no new inference has run in preparation.
+
+**Live selection: [source-bound v2](conditional-native-action-v2.md).** PR64 review
+found that v1 checked a free method snippet without proving it belonged to
+BDDPolicy. V2 pins contiguous source and binds the method to its declaring class;
+the [active package](runs/2026-10-15-conditional-native-action-preparation-v2/README.md)
+keeps the same 18/54 budget and H1/H2 criteria. Sixteen baseline/conditioned wires
+are unchanged; two BDD witness wires gain verified source provenance. V1 is
+retained unexecuted for replay, and superseded for live use.
