@@ -1,0 +1,478 @@
+{
+  "status": "observed_native_rows_decoded_not_semantically_scored",
+  "planned_requests": 8,
+  "observed_response_rows": 8,
+  "rows": [
+    {
+      "request_id": "target-01-cell03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "target-01-cell03",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "jev-1.13.0",
+        "returned_model": "jev-1.13.0",
+        "answers": {
+          "concern_kind": {
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.18,
+              "policy": 0.8200000000000001,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "provider_confidence": 0.76
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.09,
+              "limited": 0.06,
+              "supported": 0.85
+            },
+            "provider_confidence": 0.77
+          },
+          "recommendation": {
+            "choice": "formalize",
+            "probabilities": {
+              "formalize": 0.58,
+              "keep_procedural": 0.39,
+              "reuse_specification": 0.03,
+              "use_tool_rules": 0.0
+            },
+            "provider_confidence": 0.44
+          }
+        },
+        "labels": {
+          "concern_kind": "policy",
+          "evidence_confidence": "supported",
+          "recommendation": "formalize"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [],
+        "tuple_consistent": true,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "consistent_native_projection"
+    },
+    {
+      "request_id": "target-01-cell03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "target-01-cell03",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "gpt-6-luna",
+        "returned_model": "gpt-6-luna",
+        "answers": {
+          "concern_kind": {
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.53,
+              "policy": 0.43,
+              "unknown": 0.03,
+              "variant_behavior": 0.01
+            },
+            "provider_confidence": 0.37
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.17,
+              "limited": 0.12,
+              "supported": 0.71
+            },
+            "provider_confidence": 0.56
+          },
+          "recommendation": {
+            "choice": "formalize",
+            "probabilities": {
+              "formalize": 0.9,
+              "keep_procedural": 0.07,
+              "reuse_specification": 0.02,
+              "use_tool_rules": 0.01
+            },
+            "provider_confidence": 0.87
+          }
+        },
+        "labels": {
+          "concern_kind": "mechanics",
+          "evidence_confidence": "supported",
+          "recommendation": "formalize"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [
+          "established_mechanics_do_not_justify_formalization"
+        ],
+        "tuple_consistent": false,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "inconsistent_native_projection"
+    },
+    {
+      "request_id": "target-02-cell01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "target-02-cell01",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "gpt-6-luna",
+        "returned_model": "gpt-6-luna",
+        "answers": {
+          "concern_kind": {
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.4,
+              "policy": 0.53,
+              "unknown": 0.06,
+              "variant_behavior": 0.01
+            },
+            "provider_confidence": 0.37
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.09,
+              "limited": 0.24,
+              "supported": 0.67
+            },
+            "provider_confidence": 0.51
+          },
+          "recommendation": {
+            "choice": "formalize",
+            "probabilities": {
+              "formalize": 0.79,
+              "keep_procedural": 0.16,
+              "reuse_specification": 0.04,
+              "use_tool_rules": 0.01
+            },
+            "provider_confidence": 0.72
+          }
+        },
+        "labels": {
+          "concern_kind": "policy",
+          "evidence_confidence": "supported",
+          "recommendation": "formalize"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [],
+        "tuple_consistent": true,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "consistent_native_projection"
+    },
+    {
+      "request_id": "target-02-cell01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "target-02-cell01",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "jev-1.13.0",
+        "returned_model": "jev-1.13.0",
+        "answers": {
+          "concern_kind": {
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.4,
+              "policy": 0.58,
+              "unknown": 0.01,
+              "variant_behavior": 0.01
+            },
+            "provider_confidence": 0.44
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.09,
+              "limited": 0.13,
+              "supported": 0.78
+            },
+            "provider_confidence": 0.67
+          },
+          "recommendation": {
+            "choice": "keep_procedural",
+            "probabilities": {
+              "formalize": 0.19,
+              "keep_procedural": 0.74,
+              "reuse_specification": 0.07,
+              "use_tool_rules": 0.0
+            },
+            "provider_confidence": 0.65
+          }
+        },
+        "labels": {
+          "concern_kind": "policy",
+          "evidence_confidence": "supported",
+          "recommendation": "keep_procedural"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [
+          "procedural_requires_supported_mechanics"
+        ],
+        "tuple_consistent": false,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "inconsistent_native_projection"
+    },
+    {
+      "request_id": "target-03-cell03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "target-03-cell03",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "jev-1.13.0",
+        "returned_model": "jev-1.13.0",
+        "answers": {
+          "concern_kind": {
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.31,
+              "policy": 0.66,
+              "unknown": 0.02,
+              "variant_behavior": 0.01
+            },
+            "provider_confidence": 0.55
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.11,
+              "limited": 0.1,
+              "supported": 0.79
+            },
+            "provider_confidence": 0.69
+          },
+          "recommendation": {
+            "choice": "keep_procedural",
+            "probabilities": {
+              "formalize": 0.18,
+              "keep_procedural": 0.43,
+              "reuse_specification": 0.39,
+              "use_tool_rules": 0.0
+            },
+            "provider_confidence": 0.24
+          }
+        },
+        "labels": {
+          "concern_kind": "policy",
+          "evidence_confidence": "supported",
+          "recommendation": "keep_procedural"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [
+          "procedural_requires_supported_mechanics"
+        ],
+        "tuple_consistent": false,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "inconsistent_native_projection"
+    },
+    {
+      "request_id": "target-03-cell03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "target-03-cell03",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "gpt-6-luna",
+        "returned_model": "gpt-6-luna",
+        "answers": {
+          "concern_kind": {
+            "choice": "policy",
+            "probabilities": {
+              "mechanics": 0.35,
+              "policy": 0.57,
+              "unknown": 0.04,
+              "variant_behavior": 0.04
+            },
+            "provider_confidence": 0.43
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.02,
+              "limited": 0.04,
+              "supported": 0.94
+            },
+            "provider_confidence": 0.91
+          },
+          "recommendation": {
+            "choice": "formalize",
+            "probabilities": {
+              "formalize": 0.84,
+              "keep_procedural": 0.1,
+              "reuse_specification": 0.05,
+              "use_tool_rules": 0.01
+            },
+            "provider_confidence": 0.79
+          }
+        },
+        "labels": {
+          "concern_kind": "policy",
+          "evidence_confidence": "supported",
+          "recommendation": "formalize"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [],
+        "tuple_consistent": true,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "consistent_native_projection"
+    },
+    {
+      "request_id": "target-04-cell01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "case_id": "target-04-cell01",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "gpt-6-luna",
+        "returned_model": "gpt-6-luna",
+        "answers": {
+          "concern_kind": {
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.86,
+              "policy": 0.05,
+              "unknown": 0.03,
+              "variant_behavior": 0.06
+            },
+            "provider_confidence": 0.81
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.12,
+              "limited": 0.25,
+              "supported": 0.63
+            },
+            "provider_confidence": 0.45
+          },
+          "recommendation": {
+            "choice": "formalize",
+            "probabilities": {
+              "formalize": 0.44,
+              "keep_procedural": 0.3,
+              "reuse_specification": 0.04,
+              "use_tool_rules": 0.22
+            },
+            "provider_confidence": 0.25
+          }
+        },
+        "labels": {
+          "concern_kind": "mechanics",
+          "evidence_confidence": "supported",
+          "recommendation": "formalize"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [
+          "established_mechanics_do_not_justify_formalization"
+        ],
+        "tuple_consistent": false,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "inconsistent_native_projection"
+    },
+    {
+      "request_id": "target-04-cell01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "case_id": "target-04-cell01",
+      "transport_status": "json_received",
+      "prediction": {
+        "requested_model": "jev-1.13.0",
+        "returned_model": "jev-1.13.0",
+        "answers": {
+          "concern_kind": {
+            "choice": "mechanics",
+            "probabilities": {
+              "mechanics": 0.99,
+              "policy": 0.01,
+              "unknown": 0.0,
+              "variant_behavior": 0.0
+            },
+            "provider_confidence": 0.99
+          },
+          "evidence_confidence": {
+            "choice": "supported",
+            "probabilities": {
+              "insufficient": 0.13,
+              "limited": 0.13,
+              "supported": 0.74
+            },
+            "provider_confidence": 0.61
+          },
+          "recommendation": {
+            "choice": "keep_procedural",
+            "probabilities": {
+              "formalize": 0.05,
+              "keep_procedural": 0.73,
+              "reuse_specification": 0.01,
+              "use_tool_rules": 0.21
+            },
+            "provider_confidence": 0.64
+          }
+        },
+        "labels": {
+          "concern_kind": "mechanics",
+          "evidence_confidence": "supported",
+          "recommendation": "keep_procedural"
+        },
+        "warnings": [],
+        "validation_policy": "specmetrics.intent-first-native-choice/v1",
+        "tuple_violations": [],
+        "tuple_consistent": true,
+        "full_v4_1_annotation": false,
+        "semantic_correctness_verified": false,
+        "provider_scoring_enabled": false,
+        "confidence_semantics": "ordinal_choice_separate_from_uncalibrated_native_provider_confidence",
+        "metric_effect": "none"
+      },
+      "native_status": "valid",
+      "projection_status": "consistent_native_projection"
+    }
+  ],
+  "requests_without_response_rows": [],
+  "execution_inferred_from_missing_rows": false,
+  "transport_ledger_verified": false,
+  "response_file_sha256": "207435f9f926b6a61b903b59e80f490d2cd47f58db7046e14819867e0fcd56e6",
+  "full_v4_1_annotation": false,
+  "provider_scoring_enabled": false,
+  "metric_effect": "none"
+}

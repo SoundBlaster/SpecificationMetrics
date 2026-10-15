@@ -414,6 +414,28 @@ historical reference, production prompt or metric state was changed.
   24 attempts are prepared for a separately authorized transport smoke. No new
   provider calls, reference scoring or production S/U changes occurred.
 
+## Native transport success versus semantic consistency (2026-10-15 live)
+
+- **Evidence:** [eight frozen native results](runs/2026-10-15-intent-first-native-smoke-v1/README.md)
+  received HTTP 200 and valid native choices, with no TLS retries. Four violate
+  the already frozen tuple rules: policy + supported + keep_procedural (Jev gate
+  and BDD), mechanics + supported + formalize (Luna path and newline).
+- **Confirmed boundary:** native validity does not enforce cross-question rules.
+  The existing checker flags all four without relabelling or more inference.
+  Luna's consistent BDD tuple still proposes formalization despite an existing
+  Specification evaluation path: tuple consistency is not semantic correctness.
+- **Cause status:** actual backend reasoning is unknown. Conditional action
+  selection, explicit ownership witnesses and ambiguity in keep_procedural are
+  hypotheses, not established root causes. No prompt/threshold rewrite follows
+  from a single smoke over four known development examples.
+- **Prevention/verification:** preserve raw responses, durable attempt ledger,
+  authorization, unchanged native report and source/wire identities. A run-specific
+  offline replay checks local event/row/receipt associations and inventories all
+  result files; CI repeats that replay without credentials or inference. A new
+  controlled package is proposed before changing inference behavior.
+- **Limits:** 8 responses / 8 attempts within the 8-request / 24-attempt budget;
+  no semantic retries, scoring reference, accuracy claim or production S/U change.
+
 ## Record template
 
 1. Failure and exact command/criterion.

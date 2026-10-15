@@ -1,0 +1,209 @@
+{
+  "status": "offline_replay_verified_not_semantically_scored",
+  "source_sha256": {
+    "manifest.json": "c1687e2472f35eeb7ee68d7c6f7b319c7a82f3645b7024d21ec6bc497b742c52",
+    "receipt.json": "49af8bd373f0111291a1d4fa70d3c0d2d5625cd96caed4dd087a3274e3597776",
+    "responses.jsonl": "207435f9f926b6a61b903b59e80f490d2cd47f58db7046e14819867e0fcd56e6",
+    "attempts.jsonl": "63b3f5cfa46147bcfe4dbdce7e7e224b3e31594037386a88474c8ed1f0033046",
+    "native-report.json": "292a7625fa3ef05463b2794d3bc7ff6334c95dd939bbd8ffeaacb8abdb27be3e",
+    "authorization.json": "e998894b19db291346ae05961882722b8fa1c22e5d6fd2fedef464edf7e60eaf"
+  },
+  "analyzer_sha256": "b360c764d9e1cd5c44e6d9afc2368bc7116fbec57e04ad70e4c4a6fb67b021ef",
+  "local_ledger_response_receipt_associations_verified": true,
+  "independent_provider_execution_or_billing_attestation": false,
+  "planned_requests": 8,
+  "received_responses": 8,
+  "network_attempts": 8,
+  "tls_retries": 0,
+  "native_valid": 8,
+  "consistent_tuples": 4,
+  "elapsed_wall_seconds": 16.010231,
+  "provider_reported_usage": {
+    "jev-coreinfra": {
+      "requests": 4,
+      "consistent_tuples": 2,
+      "input_tokens": 12540,
+      "output_tokens": 609
+    },
+    "luna-decision-coreinfra": {
+      "requests": 4,
+      "consistent_tuples": 2,
+      "input_tokens": 11268,
+      "output_tokens": 0
+    }
+  },
+  "rows": [
+    {
+      "request_id": "target-01-cell03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "labels": {
+        "concern_kind": "policy",
+        "evidence_confidence": "supported",
+        "recommendation": "formalize"
+      },
+      "violations": [],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 2.263989,
+      "reported_usage": {
+        "input_tokens": 3322,
+        "output_tokens": 151
+      }
+    },
+    {
+      "request_id": "target-01-cell03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "labels": {
+        "concern_kind": "mechanics",
+        "evidence_confidence": "supported",
+        "recommendation": "formalize"
+      },
+      "violations": [
+        "established_mechanics_do_not_justify_formalization"
+      ],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 3.226363,
+      "reported_usage": {
+        "input_tokens": 2956,
+        "output_tokens": 0,
+        "total_tokens": 2956,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      }
+    },
+    {
+      "request_id": "target-02-cell01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "labels": {
+        "concern_kind": "policy",
+        "evidence_confidence": "supported",
+        "recommendation": "formalize"
+      },
+      "violations": [],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 1.751233,
+      "reported_usage": {
+        "input_tokens": 3845,
+        "output_tokens": 0,
+        "total_tokens": 3845,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      }
+    },
+    {
+      "request_id": "target-02-cell01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "labels": {
+        "concern_kind": "policy",
+        "evidence_confidence": "supported",
+        "recommendation": "keep_procedural"
+      },
+      "violations": [
+        "procedural_requires_supported_mechanics"
+      ],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 1.772748,
+      "reported_usage": {
+        "input_tokens": 4153,
+        "output_tokens": 152
+      }
+    },
+    {
+      "request_id": "target-03-cell03-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "labels": {
+        "concern_kind": "policy",
+        "evidence_confidence": "supported",
+        "recommendation": "keep_procedural"
+      },
+      "violations": [
+        "procedural_requires_supported_mechanics"
+      ],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 1.57137,
+      "reported_usage": {
+        "input_tokens": 2873,
+        "output_tokens": 152
+      }
+    },
+    {
+      "request_id": "target-03-cell03-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "labels": {
+        "concern_kind": "policy",
+        "evidence_confidence": "supported",
+        "recommendation": "formalize"
+      },
+      "violations": [],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 2.374127,
+      "reported_usage": {
+        "input_tokens": 2520,
+        "output_tokens": 0,
+        "total_tokens": 2520,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      }
+    },
+    {
+      "request_id": "target-04-cell01-luna-decision-coreinfra",
+      "provider": "luna-decision-coreinfra",
+      "labels": {
+        "concern_kind": "mechanics",
+        "evidence_confidence": "supported",
+        "recommendation": "formalize"
+      },
+      "violations": [
+        "established_mechanics_do_not_justify_formalization"
+      ],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 1.515648,
+      "reported_usage": {
+        "input_tokens": 1947,
+        "output_tokens": 0,
+        "total_tokens": 1947,
+        "input_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      }
+    },
+    {
+      "request_id": "target-04-cell01-jev-coreinfra",
+      "provider": "jev-coreinfra",
+      "labels": {
+        "concern_kind": "mechanics",
+        "evidence_confidence": "supported",
+        "recommendation": "keep_procedural"
+      },
+      "violations": [],
+      "probability_mass_warnings": [],
+      "elapsed_seconds": 1.525457,
+      "reported_usage": {
+        "input_tokens": 2192,
+        "output_tokens": 154
+      }
+    }
+  ],
+  "semantic_accuracy": null,
+  "full_v4_1_annotation": false,
+  "provider_scoring_enabled": false,
+  "metric_effect": "none"
+}
