@@ -1,0 +1,26 @@
+{
+  "source": "current_conversation",
+  "user_reply": "Прогони через api",
+  "message_id": null,
+  "recorded_at_utc": "2026-10-15T15:05:52.996419+00:00",
+  "timestamp_kind": "recording_time_not_user_message_timestamp",
+  "scope": "18 logical requests, at most 54 attempts; source-bound v2 repair of reviewed package, no semantic retries",
+  "logical_requests": 18,
+  "max_network_attempts": 54,
+  "head_sha": "ed975a17ceb89c7b2e42701b7236ca34647dd57e",
+  "preparation": "runs/2026-10-15-conditional-native-action-preparation-v2",
+  "checks": {
+    "previous_head_CI": "four_success_at_fe46399",
+    "executed_head_CI": "in_progress",
+    "focused_tests_passed": 26,
+    "review_P1": "source_containment_fixed_in_v2_old_v1_unexecuted"
+  },
+  "preflight": {
+    "validated": true,
+    "planned_requests": 18,
+    "max_network_attempts": 54,
+    "inference": false
+  },
+  "metric_effect": "none",
+  "full_v4_1_annotation": false
+}

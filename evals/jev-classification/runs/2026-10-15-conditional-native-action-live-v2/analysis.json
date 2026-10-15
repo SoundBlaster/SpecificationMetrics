@@ -1,0 +1,96 @@
+{
+  "analyzer_sha256": "2a08b9f58bcb6ad3f42481970490cb516a9d2baba8c3d40d5a24dd23889cec75",
+  "comparisons": {
+    "jev-coreinfra": {
+      "H1": "not_supported_premise_echo_failed",
+      "H2": "no_incremental_evidence_already_reused",
+      "bdd_actions": {
+        "baseline": "keep_procedural",
+        "conditioned": "reuse_specification",
+        "ownership_witness": "reuse_specification"
+      },
+      "controls": {
+        "lost_gate_formalization": false,
+        "new_yaml_formalization": false
+      },
+      "counts": {
+        "baseline": {
+          "actions_violating_common_premises": 2,
+          "consistent_returned_tuples": 2,
+          "native_valid": 4,
+          "observed": 4,
+          "premise_echo_matches": null
+        },
+        "conditioned": {
+          "actions_violating_common_premises": 1,
+          "consistent_returned_tuples": 3,
+          "native_valid": 4,
+          "observed": 4,
+          "premise_echo_matches": 3
+        }
+      }
+    },
+    "luna-decision-coreinfra": {
+      "H1": "not_supported_premise_echo_failed",
+      "H2": "supported_in_single_pair",
+      "bdd_actions": {
+        "baseline": "formalize",
+        "conditioned": "formalize",
+        "ownership_witness": "reuse_specification"
+      },
+      "controls": {
+        "lost_gate_formalization": false,
+        "new_yaml_formalization": false
+      },
+      "counts": {
+        "baseline": {
+          "actions_violating_common_premises": 1,
+          "consistent_returned_tuples": 2,
+          "native_valid": 4,
+          "observed": 4,
+          "premise_echo_matches": null
+        },
+        "conditioned": {
+          "actions_violating_common_premises": 0,
+          "consistent_returned_tuples": 3,
+          "native_valid": 4,
+          "observed": 4,
+          "premise_echo_matches": 3
+        }
+      }
+    }
+  },
+  "consistent_returned_tuples": 12,
+  "full_v4_1_annotation": false,
+  "independent_provider_execution_or_billing_attestation": false,
+  "local_ledger_response_receipt_associations_verified": true,
+  "mass_warnings": 0,
+  "metric_effect": "none",
+  "native_valid": 18,
+  "network_attempts": 18,
+  "provider_reported_usage": {
+    "jev-coreinfra": {
+      "input_tokens": 30636,
+      "output_tokens": 1372
+    },
+    "luna-decision-coreinfra": {
+      "input_tokens": 27378,
+      "output_tokens": 0
+    }
+  },
+  "provider_scoring_enabled": false,
+  "received": 18,
+  "semantic_accuracy": null,
+  "source_sha256": {
+    "attempts.jsonl": "93decaa2031a0a25a4c34766f64cdcc175bd9635b1c20c4724975eb48f227190",
+    "authorization.json": "96173b3686b11dd9ba3b22765bf2da6c26244a8e179023275e755aba684c1af9",
+    "manifest.json": "b9dc22f4438ba8a48afb7b39927441ef4e52a252c175dd2f8f20c8cb0810f615",
+    "native-report.json": "7744caaf5ad2c23ef2fb5385b0983896cdcacb67d019387ce2acb730a2a5f28e",
+    "receipt.json": "c2d99e1bfb531fd6e2362723e91dc55781cd93ec763be7860404056f89f4dc85",
+    "responses.jsonl": "a86d9c7665027dbdc9d7730ecb35b4b9293db6a655e112001ac913e70871a11a"
+  },
+  "status": "completed_local_evidence_verified_not_accuracy_scored",
+  "study": "specmetrics.conditional-native-action/v2",
+  "tls_retries": 0,
+  "wall_seconds": 42.2383
+}

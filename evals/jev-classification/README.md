@@ -507,3 +507,12 @@ the [active package](runs/2026-10-15-conditional-native-action-preparation-v2/RE
 keeps the same 18/54 budget and H1/H2 criteria. Sixteen baseline/conditioned wires
 are unchanged; two BDD witness wires gain verified source provenance. V1 is
 retained unexecuted for replay, and superseded for live use.
+
+The authorized [v2 live diagnostic](runs/2026-10-15-conditional-native-action-live-v2/README.md)
+completed 18/18 HTTP/native-valid answers in 42.24 seconds with no retries.
+Conditioning reduced action violations against common development premises from
+2 to 1 for Jev and 1 to 0 for Luna, but both echoed only 3/4 assigned premises:
+strict H1 is not supported. Luna selected BDD reuse only with the explicit
+source-bound witness (H2 supported in one pair); Jev already selected reuse with
+conditioning. Raw outputs, preregistered comparisons and offline evidence replay
+are retained; no accuracy or production S/U claim follows.
