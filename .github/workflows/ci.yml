@@ -80,6 +80,8 @@ jobs:
           python3 -m unittest -v test_intent_first_native.py
           python3 prepare_intent_first_native.py
           python3 runs/2026-10-15-intent-first-native-smoke-v1/verify_results.py
+          python3 -m unittest -v test_conditional_native_action.py
+          python3 conditional_native_action_v1.py
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
           python3 validate_scope_binding_annotations.py

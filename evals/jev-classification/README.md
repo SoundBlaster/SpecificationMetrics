@@ -490,3 +490,12 @@ consistent BDD tuple separately misses existing Specification reuse. Raw outputs
 local ledger/receipt replay and an explicit facts-versus-hypotheses diagnosis are
 retained. This verifies this bounded API integration, not semantic accuracy or
 full v4.1 annotation quality; production S/U remains unchanged.
+
+Next is the [conditional-action diagnostic](conditional-native-action.md): a
+[frozen offline package](runs/2026-10-15-conditional-native-action-preparation-v1/README.md)
+for 18 requests / at most 54 network attempts. It contrasts fresh unchanged
+baseline wires with explicit role/support premises, plus a BDD-only source-derived
+ownership witness. All arms retain three Choice questions. Report native shape,
+raw tuple consistency, premise compliance, action violations against common
+premises and BDD reuse separately. These are known development fixtures, not
+independent classification gold; no new inference has run in preparation.

@@ -436,6 +436,27 @@ historical reference, production prompt or metric state was changed.
 - **Limits:** 8 responses / 8 attempts within the 8-request / 24-attempt budget;
   no semantic retries, scoring reference, accuracy claim or production S/U change.
 
+## Conditional-action diagnostic preparation (2026-10-15)
+
+- **Evidence:** the native smoke includes both self-contradictory tuples and a
+  consistent BDD action that misses recognized Specification reuse. Model-internal
+  cause remains unresolved; changing the rubric would not explain these failures.
+- **Controlled next step:** [18 frozen requests](conditional-native-action.md)
+  retain all three axes and contrast unchanged fresh baseline with explicit
+  development role/support premises. BDD alone receives a third arm highlighting
+  existing source facts in a checked ownership witness. No expected action labels
+  or previous provider predictions enter the wire. This tests conditioning/salience,
+  not independent role accuracy or discovery of previously unseen ownership.
+- **Prevention:** inspect raw tuples separately from action checks against the
+  common development premises. Flag incorrect premise echo, keep consistent BDD
+  formalization visible as missed reuse, reject stale wire bindings, and never
+  infer execution from missing rows. Source witness checks reject broken inheritance,
+  moved target, changed verdict and changed receiver. Tests use no credentials or POST.
+- **Limits:** source and previous failed outputs remain frozen. Preparation is
+  offline and requires separate bounded live authorization; no provider scoring,
+  production metric changes or semantic retries. Full-batch criteria and control
+  regressions are declared before inference.
+
 ## Record template
 
 1. Failure and exact command/criterion.

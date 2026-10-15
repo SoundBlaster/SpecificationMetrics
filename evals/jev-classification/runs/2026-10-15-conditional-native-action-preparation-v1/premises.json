@@ -1,0 +1,24 @@
+{
+  "interpretation": "Supplied experimental role/support premises, not measured classification accuracy.",
+  "roles": {
+    "target-01-cell03": {
+      "concern_kind": "unknown",
+      "evidence_confidence": "insufficient"
+    },
+    "target-02-cell01": {
+      "concern_kind": "policy",
+      "evidence_confidence": "supported"
+    },
+    "target-03-cell03": {
+      "concern_kind": "policy",
+      "evidence_confidence": "supported"
+    },
+    "target-04-cell01": {
+      "concern_kind": "mechanics",
+      "evidence_confidence": "supported"
+    }
+  },
+  "source": "runs/2026-10-15-intent-first-v4-1-contract/integrator-examples.json",
+  "source_sha256": "aa545fa562086f01c4a47c1521443272d028c977e56118447033d8afa9c2835d",
+  "status": "known_development_premises_not_gold"
+}
