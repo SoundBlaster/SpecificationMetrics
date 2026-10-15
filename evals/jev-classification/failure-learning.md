@@ -457,6 +457,24 @@ historical reference, production prompt or metric state was changed.
   production metric changes or semantic retries. Full-batch criteria and control
   regressions are declared before inference.
 
+## Declaring-class provenance before paid H2 (2026-10-15)
+
+- **Evidence:** PR64 P1 correctly identified that free fragment-03 had no class
+  containment binding. Name/body equality did not establish BDDPolicy._evaluate.
+  Preflight caught the review before any new provider request.
+- **Root cause:** the v1 witness inferred ownership across disconnected snippets.
+  An AST match establishes structure, not location or declaring-class identity.
+- **Correction:** [v2](conditional-native-action-v2.md) pins three full SpecGraph
+  modules at the existing commit and verifies direct containment of the method,
+  class-prefix, child class, membership and consumer loop. Source blobs/hashes,
+  path, symbol and spans are retained. Sixteen wires and H1/H2 criteria are unchanged;
+  two witness wires gain provenance. V1 source/preparation remain unexecuted and
+  reproducible; v2 is the active live selection.
+- **Prevention:** a regression keeps the method snippet identical but relocates
+  the definition to another class. V1 still accepts the free snippet; v2 rejects
+  the incorrect containment. Tampered snapshot, changed method and stale wire
+  tests complement this reproduction. No runtime execution claim follows.
+
 ## Record template
 
 1. Failure and exact command/criterion.

@@ -1,0 +1,92 @@
+{
+  "declared_type": "BDDScenarioValuesSpec",
+  "evidence": [
+    {
+      "fragment_id": "fragment-01",
+      "quote": "class BDDScenarioValuesSpec(BDDPolicy):",
+      "source_sha256": "fb0e0299e993c10f1fff92a083d7ccd6ed1dfd23bf0adbedac007f2ab317e38e"
+    },
+    {
+      "fragment_id": "fragment-02",
+      "quote": "class BDDPolicy(Specification[BDDContext]):",
+      "source_sha256": "52c0eff0ef4e80873296c687f1b4a52c470a08e5201cdd846184b6a967022882"
+    },
+    {
+      "fragment_id": "fragment-03",
+      "quote": "return not self.findings(candidate)",
+      "source_sha256": "52f8414efc1336c5146f32dcd84720c047468aea553d05ac290362b8cb1a6b16"
+    },
+    {
+      "fragment_id": "fragment-04",
+      "quote": "BDDScenarioValuesSpec(),",
+      "source_sha256": "4c37d5588f6c62361de808a0c9487fee830f35a4ee950191f4883ab5a2766270"
+    },
+    {
+      "fragment_id": "fragment-05",
+      "quote": "current_findings = policy.findings(context)",
+      "source_sha256": "410d04f54fbc1a65c17bc2eb52609bff711416c2d66c48f4e820fc49c2969bb2"
+    }
+  ],
+  "inheritance": [
+    "BDDScenarioValuesSpec",
+    "BDDPolicy",
+    "Specification[BDDContext]"
+  ],
+  "proof_scope": "contiguous pinned modules bind fragments to direct class/function declarations; not runtime execution",
+  "selected_application": "policy.findings(context)",
+  "selected_method": "BDDScenarioValuesSpec.findings",
+  "source_bindings": [
+    {
+      "defining_symbol": "BDDScenarioValuesSpec",
+      "fragment_id": "fragment-01",
+      "path": "tools/native_bdd/values_spec.py",
+      "source_sha256": "1c7509f9beef4d79511d5e6ad1fcf94a1d217ef74f7c55d3e31594ae166b49e8",
+      "span": [
+        7,
+        0,
+        29,
+        30
+      ]
+    },
+    {
+      "defining_symbol": "BDDPolicy",
+      "fragment_id": "fragment-02",
+      "path": "tools/native_bdd/policy.py",
+      "source_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+      "span": [
+        8,
+        0,
+        32,
+        43
+      ]
+    },
+    {
+      "defining_symbol": "BDDPolicy._evaluate",
+      "fragment_id": "fragment-03",
+      "path": "tools/native_bdd/policy.py",
+      "source_sha256": "3dd63737b8c3a32a4ea5d4c790dd30d6ee8b9f27de0cb0ddfc2de395ff61a827",
+      "span": [
+        31,
+        4,
+        32,
+        43
+      ]
+    },
+    {
+      "defining_symbol": "evaluate",
+      "fragment_id": "fragment-05",
+      "path": "tools/native_bdd/composition.py",
+      "source_sha256": "a7c9a90bd105417079e200106da909f3437e183c415ea4a544b62c7fdd7bb753",
+      "span": [
+        23,
+        0,
+        63,
+        5
+      ]
+    }
+  ],
+  "source_revision": "51c8d93cc385569864b3cd7f5040d4b3e0820a1b",
+  "source_snapshot_sha256": "d7c826e8a2736b8b27d657f6877aa3eaccb098bccc81d88789fa0365b1c086db",
+  "status": "established_in_supplied_context",
+  "verdict_path": "BDDPolicy._evaluate -> self.findings(candidate)"
+}
