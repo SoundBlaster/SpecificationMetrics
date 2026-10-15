@@ -1,0 +1,7 @@
+{
+  "elapsed_seconds": 157.2348272909876,
+  "error_type": "ImportError",
+  "message": "EmbeddingGemma2Processor requires the PIL library but it was not found in your environment. You can install it with pip:\n`pip install pillow`. Please note that you may need to restart your runtime after installation.\n\nTo install the required dependencies, run:\npip install -U \"sentence-transformers[image]\"",
+  "producer_sha256": "af28c0a0a79986a77284cbe0de4dd03980f250afb9be7c64fcaf2b759f04049a",
+  "status": "failed"
+}
