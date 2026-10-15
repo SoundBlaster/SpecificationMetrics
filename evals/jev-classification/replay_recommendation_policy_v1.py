@@ -12,7 +12,8 @@ from recommendation_policy_v1.proposals import task
 
 ROOT = Path(__file__).resolve().parent
 LIVE = ROOT / 'runs/2026-10-15-conditional-native-action-live-v2'
-RUN = ROOT / 'runs/2026-10-15-formal-recommendation-policy-v1'
+HISTORICAL_RUN = ROOT / 'runs/2026-10-15-formal-recommendation-policy-v1'
+RUN = ROOT / 'runs/2026-10-15-formal-recommendation-policy-v1-1'
 
 
 def sha(raw):
@@ -68,14 +69,24 @@ def replay():
         results.append(dict(decision=decision, unresolved_fact_task=task(facts), observations=observations))
     producers = [Path(__file__), ROOT / 'requirements-policy.txt', ROOT / 'formal-recommendation-policy-v1.md']
     producers += sorted((ROOT / 'recommendation_policy_v1').glob('*.py'))
-    return dict(contract='specmetrics.formal-recommendation-replay/v1', status='offline_development_replay',
+    historical_raw = (HISTORICAL_RUN / 'report.json').read_bytes()
+    prep.require(json.loads(historical_raw)['cases'] == results, 'historical decisions or observations changed')
+    witness_cases = [r['decision']['case_id'] for r in results
+                     if any(s['authority'] == 'source_binding'
+                            for s in r['decision']['facts']['ownership']['sources'])]
+    return dict(contract='specmetrics.formal-recommendation-replay/v1.1', status='offline_development_replay',
+                supersedes_report=dict(artifact=str((HISTORICAL_RUN / 'report.json').relative_to(ROOT)),
+                                       sha256=sha(historical_raw)), historical_cases_unchanged=True,
+                source_bound_ownership_case_ids=witness_cases,
                 source_sha256={str((LIVE / n).relative_to(ROOT)): sha((LIVE / n).read_bytes())
                                for n in ('analysis.json', 'native-report.json', 'responses.jsonl')},
                 producer_sha256={str(p.relative_to(ROOT)): sha(p.read_bytes()) for p in producers},
                 cases=results, logical_cases=len(results), raw_observations=len(report['rows']),
                 provider_requests=0, semantic_accuracy=None, independent_gold=False,
                 interpretation='Deterministic compliance with development premises, not improved model accuracy. '
-                'All cases use the source-bound witness for orchestration; baseline model context is unchanged.',
+                'Only target-03-cell03 (BDD) uses the source-bound ownership witness. '
+                'The other three cases retain development premises and unknown ownership; '
+                'baseline model context is unchanged.',
                 provider_scoring_enabled=False, metric_effect='none')
 
 

@@ -69,6 +69,13 @@ class LookupFact(Frozen):
         return self
 
 
+class ConflictFact(Frozen):
+    """A reviewable disagreement, not an untraceable instruction to stop."""
+    contract: Literal['specmetrics.explicit-conflict/v1'] = 'specmetrics.explicit-conflict/v1'
+    description: Text
+    sources: tuple[Source, ...] = Field(min_length=1)
+
+
 class Facts(Frozen):
     contract: Literal['specmetrics.recommendation-facts/v1'] = 'specmetrics.recommendation-facts/v1'
     case_id: Text
@@ -78,7 +85,7 @@ class Facts(Frozen):
     ownership: OwnershipFact
     tool_responsibility: ToolFact
     intent_lookup: LookupFact
-    conflicts: tuple[Text, ...] = ()
+    conflicts: tuple[ConflictFact, ...] = ()
 
     @property
     def has_conflict(self):
