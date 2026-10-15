@@ -420,3 +420,10 @@ validation and adapter uses but leaves the primary artifact-reference contract
 ambiguous. This is not a rule that documentation is mandatory: code-only gate
 precedence provides a contrasting role witness. The proposed D3 decision remains
 unconfirmed; existing raw annotations, approved D1/D2 and scoring status are unchanged.
+
+The [16-task reference-readiness matrix](runs/2026-10-15-scope-reference-readiness-v1/README.md)
+separates seven human-confirmed tasks (five decisive pairs and two abstentions),
+one proposed D3 task and eight unconfirmed controls. Original three-response
+histograms remain distinct from decision authority. It lists a three-item
+confirmation packet and retained provenance limits; no scoring reference is frozen
+or activated by this inventory, and no new inference ran.
