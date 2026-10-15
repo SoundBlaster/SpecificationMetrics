@@ -1,0 +1,31 @@
+{
+  "concern_kind": {
+    "criteria": {
+      "mechanics": "Representation, parsing, transport or adaptation without a distinct domain decision.",
+      "policy": "Decides domain admissibility, authority, lifecycle or which obligation has precedence.",
+      "unknown": "Supplied evidence cannot settle primary role; pair with insufficient evidence support.",
+      "variant_behavior": "Selects HOW an already established domain activity is implemented for a variant."
+    },
+    "instructions": "The goal is uniform, addressable, composable and observable domain rules for human and AI SDLC. Judge ONLY state.target in state.evaluation_scope: shared_definition across supplied uses, or the exact expression for the selected bound_application, not the call or whole caller. Use ONLY the supplied architecture_profile, target, bounded_context and evaluation_scope. Inspect supplied intent/proposal/spec documents with their stated authority; record no invented facts. Missing documents do not force uncertainty if code establishes the contract. After bounded intent lookup prefer formalization if primary role remains ambiguous. Reuse an existing same-decision Specification through its evaluation path, including simple NOT/AND/OR; Boolean facts alone are not Specifications and operators alone require no wrapper. Formatting/linting belong to tool rule sets; this does not prove configured enforcement. This is a native Choice projection: select the requested category, not JSON/rationales/citations. Classify primary responsibility independently of recommendation.",
+    "type": "choice"
+  },
+  "evidence_confidence": {
+    "criteria": {
+      "insufficient": "Primary role cannot be settled; concern_kind must remain unknown.",
+      "limited": "Relevant evidence supports a tentative role but remains incomplete or conflicting.",
+      "supported": "Direct code/contract witness establishes primary role."
+    },
+    "instructions": "The goal is uniform, addressable, composable and observable domain rules for human and AI SDLC. Judge ONLY state.target in state.evaluation_scope: shared_definition across supplied uses, or the exact expression for the selected bound_application, not the call or whole caller. Use ONLY the supplied architecture_profile, target, bounded_context and evaluation_scope. Inspect supplied intent/proposal/spec documents with their stated authority; record no invented facts. Missing documents do not force uncertainty if code establishes the contract. After bounded intent lookup prefer formalization if primary role remains ambiguous. Reuse an existing same-decision Specification through its evaluation path, including simple NOT/AND/OR; Boolean facts alone are not Specifications and operators alone require no wrapper. Formatting/linting belong to tool rule sets; this does not prove configured enforcement. This is a native Choice projection: select the requested category, not JSON/rationales/citations. Classify evidence support for concern_kind. This ordinal category is NOT your numeric native provider confidence.",
+    "type": "choice"
+  },
+  "recommendation": {
+    "criteria": {
+      "formalize": "Inline domain decision, or meaningful role ambiguity after intent lookup. One use/pure contract is enough.",
+      "keep_procedural": "ONLY affirmatively established ordinary mechanics with supported evidence and no distinct domain decision.",
+      "reuse_specification": "Same decision already belongs to a Specification evaluation or simple recognized composition; no wrapper required.",
+      "use_tool_rules": "Formatter/linter responsibility; use existing tool rule management without claiming configured exact enforcement."
+    },
+    "instructions": "The goal is uniform, addressable, composable and observable domain rules for human and AI SDLC. Judge ONLY state.target in state.evaluation_scope: shared_definition across supplied uses, or the exact expression for the selected bound_application, not the call or whole caller. Use ONLY the supplied architecture_profile, target, bounded_context and evaluation_scope. Inspect supplied intent/proposal/spec documents with their stated authority; record no invented facts. Missing documents do not force uncertainty if code establishes the contract. After bounded intent lookup prefer formalization if primary role remains ambiguous. Reuse an existing same-decision Specification through its evaluation path, including simple NOT/AND/OR; Boolean facts alone are not Specifications and operators alone require no wrapper. Formatting/linting belong to tool rule sets; this does not prove configured enforcement. This is a native Choice projection: select the requested category, not JSON/rationales/citations. Choose architectural action. Retain role uncertainty instead of converting it to affirmative mechanics.",
+    "type": "choice"
+  }
+}

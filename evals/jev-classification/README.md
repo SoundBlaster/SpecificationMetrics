@@ -473,3 +473,12 @@ clarifies `formalization_preference` as uncertain role support; supported domain
 rules keep their confidence and use `domain_contract`. The frozen v4 executable
 and examples remain historical; new tasks use v4.1 contract/task identities.
 No example labels/actions, model outputs, provider scoring or production S/U changed.
+
+The [native v4.1 handoff](intent-first-native-handoff.md) prepares eight bounded
+Jev/Luna transport-smoke requests with three Choice questions: concern kind,
+ordinal evidence support and action. Native provider confidence stays separate.
+The [frozen wire package](runs/2026-10-15-intent-first-native-preparation-v1/README.md)
+can be staged offline into a new execution directory for the existing transport;
+real inference still requires explicit authorization and `--live`. The decoder
+retains contradictions as observations and never fabricates a full rich Annotation.
+No provider calls or semantic scoring ran during preparation.

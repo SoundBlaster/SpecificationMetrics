@@ -384,6 +384,36 @@ historical reference, production prompt or metric state was changed.
   contract/task identities. No old failure is relabelled as a historical success;
   no provider requests, scoring-reference activation or S/U change.
 
+## Rich annotation versus native Choice projection (2026-10-15 preparation)
+
+- **Evidence:** v4.1 requires basis, rationales, intent-review and exact source
+  quotes. The retained Jev/Luna native Choice formats return selected categories,
+  probabilities and numeric confidence. Historical parsers also bind exactly two
+  question names. This is a capability/contract difference, not a failed new live run.
+- **Cause:** a rich annotation envelope cannot be obtained by relabelling native
+  categories; provider confidence does not measure the ordinal evidence-support
+  field. Passing the old rich-output prompt into Choice instructions would also
+  request an incompatible output form.
+- **Preparation:** use a separately versioned three-question native projection,
+  new task/wire identities and explicit semantic instructions. Do not synthesize
+  basis/rationale/quotes or claim full v4.1 validation. Preserve raw choices and
+  probability mass warnings; flag contradictory tuples instead of fixing labels.
+- **Verification:** `test_intent_first_native.py` covers both wire envelopes,
+  identical source state/questions, no label injection, no credential access in
+  offline mode, frozen-byte staging, simulated 24-attempt transport, native shape
+  failures, separate confidence semantics and inconsistent projections. Missing
+  response rows do not prove that no POST occurred; the decoder does not attest
+  the transport ledger or operational/billing completeness.
+- **Snapshot prevention:** decode and hash one response-file snapshot; rereading
+  for the hash could bind a concurrent append to a report that parsed older bytes.
+  A regression mutates the file after its first read and verifies the report
+  remains bound to the parsed snapshot. Native-valid but contradictory results
+  have an explicit `inconsistent_native_projection` status.
+- **Limits:** actual model availability, three-question native compatibility
+  and semantic quality remain unverified. Eight known-case requests / at most
+  24 attempts are prepared for a separately authorized transport smoke. No new
+  provider calls, reference scoring or production S/U changes occurred.
+
 ## Record template
 
 1. Failure and exact command/criterion.

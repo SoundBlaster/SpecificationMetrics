@@ -155,8 +155,11 @@ v4 producer, validator и артефакты сохранены побайтов
 Прямое сравнение accuracy
 потребует отдельно зафиксированного reference mapping; `formalize` не переводится
 автоматически в production `eligible`, S или U. Старый native Jev/Luna wire adapter
-ожидает две Choice questions; v4.1 к нему пока не подключён. Нельзя отправить этот
-пакет через прежний runner и считать это v4.1 experiment.
+ожидает две Choice questions. Для нового smoke подготовлена отдельная
+[native projection](intent-first-native-handoff.md) из трёх Choice questions.
+Она сохраняет границу: полный v4.1 Annotation с rationale/quotes этим API не
+возвращается. Нельзя отправить rich packet через старый two-question runner
+и считать это v4.1 experiment.
 
 Следующий этап — bounded handoff и reference mapping для v4: независимая
 семантическая проверка новых примеров, отдельный учёт role support и architecture
