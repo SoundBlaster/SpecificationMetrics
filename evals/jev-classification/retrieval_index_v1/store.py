@@ -134,7 +134,7 @@ def update(path, source, profile, encode):
         return dict(report, status='complete', manifest_sha256=digest(raw))
 
 
-def read_current(path, expected_source, expected_profile):
+def read_snapshot(path, expected_source, expected_profile):
     """Consumers must supply the desired revision/scope; stale data is never returned."""
     with connection(path) as db:
         manifest = active(db)
@@ -151,4 +151,12 @@ def read_current(path, expected_source, expected_profile):
             if vector is None:
                 raise ValueError('active vector is missing')
             result.append(dict(doc, vector=vector))
-        return result
+        # Exclude update counters from content identity: a no-op refresh must not
+        # change model context merely because vectors were reused this time.
+        content = dict(source=expected_source, profile=expected_profile, documents=result)
+        return dict(documents=result, content_sha256=digest(encoded(content)),
+                    manifest_sha256=digest(encoded(manifest)))
+
+
+def read_current(path, expected_source, expected_profile):
+    return read_snapshot(path, expected_source, expected_profile)['documents']
