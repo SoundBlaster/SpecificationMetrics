@@ -137,6 +137,13 @@ def prepare(repo, repository_id, revision, includes, excludes, store, encoder, t
                 response_adapter_ready=False)
 
 
+def producer_digests():
+    return {name: digest((Path(__file__).parent / name).read_text()) for name in (
+        'prepare_retrieval_context_v1.py', 'retrieval_index_v1/source.py',
+        'retrieval_index_v1/store.py', 'retrieval_index_v1/local_model.py',
+        'recommendation_policy_v1/proposals.py', 'intent_first_native_v1.py')}
+
+
 def write_bundle(output, packet):
     """A new directory only; receipt last is the completion marker."""
     files = {'packet.json': encoded(packet)}
@@ -146,10 +153,7 @@ def write_bundle(output, packet):
         (output / name).write_text(raw + '\n', encoding='utf-8')
     receipt = dict(contract=CONTRACT, status='complete_preparation_not_live_authorized',
                    file_sha256={name: digest(raw + '\n') for name, raw in files.items()},
-                   producer_sha256={name: digest((Path(__file__).parent / name).read_text()) for name in (
-                       'prepare_retrieval_context_v1.py', 'retrieval_index_v1/source.py',
-                       'retrieval_index_v1/store.py', 'retrieval_index_v1/local_model.py',
-                       'recommendation_policy_v1/proposals.py', 'intent_first_native_v1.py')},
+                   producer_sha256=producer_digests(),
                    hosted_requests=0, response_adapter_ready=False)
     (output / 'preparation-receipt.json').write_text(encoded(receipt) + '\n', encoding='utf-8')
     verify_bundle(output)
@@ -160,9 +164,17 @@ def verify_bundle(output):
     if {p.name for p in output.iterdir()} != expected:
         raise ValueError('incomplete or unexpected preparation file set')
     receipt = json.loads((output / 'preparation-receipt.json').read_text())
+    if not isinstance(receipt, dict) or set(receipt) != {
+            'contract', 'status', 'file_sha256', 'producer_sha256', 'hosted_requests', 'response_adapter_ready'}:
+        raise ValueError('preparation receipt metadata fields differ')
     if receipt['contract'] != CONTRACT or receipt['status'] != 'complete_preparation_not_live_authorized':
         raise ValueError('preparation receipt is not complete')
-    if set(receipt['file_sha256']) != expected - {'preparation-receipt.json'}:
+    if receipt['producer_sha256'] != producer_digests():
+        raise ValueError('preparation producer provenance differs')
+    if (type(receipt['hosted_requests']) is not int or receipt['hosted_requests'] != 0
+            or receipt['response_adapter_ready'] is not False):
+        raise ValueError('preparation receipt execution metadata differs')
+    if not isinstance(receipt['file_sha256'], dict) or set(receipt['file_sha256']) != expected - {'preparation-receipt.json'}:
         raise ValueError('receipt file coverage differs')
     for name, sha in receipt['file_sha256'].items():
         if digest((output / name).read_text()) != sha:
@@ -177,7 +189,8 @@ def verify_bundle(output):
     for request in packet['requests']:
         if (output / (request['provider'] + '.json')).read_text() != request['wire_json'] + '\n':
             raise ValueError('provider request file differs')
-    if packet['inference_authorized'] is not False or packet['hosted_requests'] != 0:
+    if (packet['inference_authorized'] is not False or type(packet['hosted_requests']) is not int
+            or packet['hosted_requests'] != 0 or packet.get('response_adapter_ready') is not False):
         raise ValueError('preparation cannot grant execution authority')
     return packet
 

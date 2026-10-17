@@ -74,6 +74,12 @@ hashes, state binding and equality with both provider projections. A partial
 directory without this receipt is not a completed preparation. No credentials
 are read, no model is downloaded, and no hosted request is sent by this command.
 
+Receipt verification also requires the exact declared producer map to match the
+current six producer files, integer `hosted_requests=0` and Boolean
+`response_adapter_ready=false`. Packet execution metadata must agree. To verify
+an older preparation after producer changes, use its recorded source revision;
+do not rewrite the old receipt to pass a newer verifier.
+
 The four-question fact projection is **not** the rich proposal response schema:
 native Choice cannot supply its source locators/rationale. It has no response
 adapter yet and is marked `response_adapter_ready=false`. It is not a transport
@@ -89,6 +95,16 @@ changes, deletion, stable no-op wire bytes, whole-hit budgeting, stale/error
 rejection, a moving ref, malformed query vectors, equal Jev/Luna state and
 bundle integrity. Existing index tests continue to cover atomic publication,
 rollback and reader isolation. CI runs integration tests without a model.
+
+PR71 review exposed a confirmed verification defect: changing the receipt alone
+could bypass producer/execution provenance checks. Before the repair,
+`python -W error -m unittest -v test_retrieval_context_v1.ContextTests.test_receipt_metadata_cannot_be_changed_independently`
+failed all 11 mutation cases (missing/replaced producer fields, substituted or
+extra producers, missing/false execution claims, and Boolean/integer confusion).
+The shared producer-digest function and strict metadata checks now reject those
+mutations. Two added regression tests bring the suite to 11, including packet
+claims that contradict the receipt. Historical bundles and model outputs were
+not rewritten; this repairs validation rather than semantic scoring.
 
 A local smoke on SpecGraph commit
 `51c8d93cc385569864b3cd7f5040d4b3e0820a1b`, restricted to

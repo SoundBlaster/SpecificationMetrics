@@ -159,6 +159,45 @@ class ContextTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'incomplete'):
             verify_bundle(output)
 
+    def test_receipt_metadata_cannot_be_changed_independently(self):
+        output = self.root / 'bundle'
+        write_bundle(output, self.prepare())
+        path = output / 'preparation-receipt.json'
+        original = json.loads(path.read_text())
+        variants = []
+        for field in ('producer_sha256', 'hosted_requests', 'response_adapter_ready'):
+            value = copy.deepcopy(original)
+            del value[field]
+            variants.append(('missing_' + field, value))
+        for field, replacement in (
+                ('producer_sha256', {}), ('hosted_requests', 1),
+                ('hosted_requests', False), ('hosted_requests', '0'),
+                ('response_adapter_ready', True), ('response_adapter_ready', 0)):
+            value = copy.deepcopy(original)
+            value[field] = replacement
+            variants.append((field + repr(replacement), value))
+        changed = copy.deepcopy(original)
+        changed['producer_sha256']['prepare_retrieval_context_v1.py'] = '0' * 64
+        variants.append(('substituted_producer', changed))
+        extra = copy.deepcopy(original)
+        extra['producer_sha256']['unexpected.py'] = '0' * 64
+        variants.append(('extra_producer', extra))
+        for name, value in variants:
+            with self.subTest(name=name):
+                path.write_text(json.dumps(value))
+                with self.assertRaises(ValueError):
+                    verify_bundle(output)
+        path.write_text(json.dumps(original))
+        verify_bundle(output)
+
+    def test_packet_execution_metadata_must_agree_with_receipt(self):
+        for field, value in (('hosted_requests', False), ('response_adapter_ready', True)):
+            with self.subTest(field=field):
+                packet = self.prepare()
+                packet[field] = value
+                with self.assertRaisesRegex(ValueError, 'execution authority'):
+                    write_bundle(self.root / field, packet)
+
 
 if __name__ == '__main__':
     unittest.main()
