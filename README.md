@@ -38,6 +38,12 @@ external-tool setup, before/after comparisons, statuses and strict exit codes.
 
 ## Semantic candidate suggestions
 
+The experimental [incremental retrieval index](evals/jev-classification/incremental-retrieval-index-v1.md)
+refreshes local EmbeddingGemma document vectors from committed Python sources.
+It reuses unchanged inputs, removes deleted active entries, follows supported
+local predicate helpers, and rejects stale revision/profile reads. It is separate
+from the Rust classifier and from immutable benchmark snapshots.
+
 ```bash
 export JEV_API_KEY='…'
 cargo run -- scan ../SpecGraph --include src --output /tmp/specgraph-scan.json

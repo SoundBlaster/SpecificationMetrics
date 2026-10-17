@@ -23,6 +23,7 @@ jobs:
           python retrieval_helper_pilot_v1.py --verify runs/2026-10-15-retrieval-helper-live-v1
           python -W error -m unittest -v test_retrieval_fusion_replay_v2.py
           python retrieval_fusion_replay_v2.py
+          python -W error -m unittest -v test_retrieval_index_v1.py
 
   check:
     runs-on: ubuntu-latest
