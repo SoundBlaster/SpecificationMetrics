@@ -41,6 +41,14 @@ This supports a bounded compatibility/quality observation, not general accuracy,
 retrieval gain or an unconditional efficiency claim. Python 3.11 is now the
 common supported baseline, including the unchanged historical offline replays.
 
+The [consolidated provider comparison](provider-comparison-2026-10-18.md) separates
+quality, timing scope, repeatability and still-unattributed monetary cost. It also
+reconciles ordinary Luna's input with the cache read/write buckets in the raw
+responses. The [semantic review cascade contract](../../docs/semantic-review-cascade-v1.md)
+selects unresolved System One assessments for one ordinary-Luna review and keeps
+remaining ambiguity explicit in PR review. This is the implementation contract;
+the runtime cascade and publisher are not enabled yet.
+
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
 
