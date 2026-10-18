@@ -1,5 +1,10 @@
 # Jev/Luna agreement with the Sol top line
 
+For new incomplete-run reports, use the [v2 diagnostic consumer](../../docs/sol-comparison-diagnostics-v2.md).
+V1 remains the exact historical replay implementation; it can fail on a truncated
+last response record. V2 preserves complete capture counts without treating them
+as verified complete-cohort agreement.
+
 This is a new comparison contract, pinned before observing the 16 provider
 responses. It consumes the source-checked 24-context Sol 6.1 Medium cohort and
 the original paired preparation without modifying either. Sol is a model-specific
