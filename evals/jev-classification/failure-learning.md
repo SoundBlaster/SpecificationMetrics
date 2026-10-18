@@ -608,3 +608,22 @@ conflicts and binds conflict sources into the fact fingerprint. Replay v1.1
 lists the actual source-bound case and checks all decisions/observations against
 the preserved original report. The original v1 report is retained, not silently
 corrected. No inference or model-quality re-scoring is involved.
+
+## Typed Specification extraction gap (2026-10-18)
+
+Preparing the [paired retrieval study](paired-retrieval-study-v1.md) reproduced
+`snapshot` omitting SpecGraph's `WORKSPACE_ALLOCATION_SPEC` at commit
+`51c8d93cc385569864b3cd7f5040d4b3e0820a1b`. The confirmed cause was matching
+`ast.Assign` only; that declaration uses `ast.AnnAssign`. The source selector is
+now version 2 and includes typed direct PredicateSpec assignments. This changes
+current snapshot identity and forces refresh; historical experiments are intact.
+`test_typed_predicate_declarations_are_indexed_with_local_helpers` checks the
+original shape, helper inclusion and invalidation after a helper change. Empty
+retrieval from the old selector was a coverage failure, never proof of no owner.
+
+The paired runner also separates native shape, local transport consistency and
+semantic quality. Synthetic regressions preserve interrupted-after-POST ambiguity,
+stop on native identity mismatch, reject rebound-but-inconsistent receipts/ledgers,
+and prevent a blank reference template being silently replaced by author labels.
+These checks establish orchestration behavior, not provider accuracy; references
+and live observations for this cohort remain pending.
