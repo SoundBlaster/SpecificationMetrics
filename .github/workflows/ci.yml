@@ -121,6 +121,8 @@ jobs:
           python3 paired_blind_reference_v1.py --run runs/2026-10-18-paired-blind-reference-v1
           python3 -W error -m unittest -v test_paired_reference_qualification_v1.py
           python3 paired_reference_qualification_v1.py --verify runs/2026-10-18-paired-reference-qualification-v1
+          python3 -W error -m unittest -v test_paired_retrieval_scoring_v1.py
+          python3 paired_retrieval_scoring_v1.py --verify-contract
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
           python3 validate_scope_binding_annotations.py
