@@ -713,3 +713,26 @@ provider schedule is executed.
 - **Boundary:** no repeated annotation or provider request has been launched.
   Old qualification/scoring artifacts and original labels remain unchanged;
   repeatability, correctness and authority remain separate claims.
+
+## Strong-model repeatability is an empirical comparator (2026-10-18)
+
+The authorized [Sol 6.1 Medium cohort](runs/2026-10-18-sol61-medium-repeatability-v1/adjudication.md)
+completed exactly 24 fresh contexts using the frozen eight views and common
+explicit requested configuration. Same-view agreement was 48/48 on primary axes
+and 96/96 on all axes; all source witnesses and line spans passed replay and no
+category-consistency conflicts occurred. Original raw labels were not repaired.
+
+Rationales differ in quote selection and missing-fact descriptions, with no
+categorical contradictions. In particular, parsing authorization fields does not
+itself establish a write-authorization policy; lexical path admissibility does
+not establish filesystem safety; related review/allocation Specifications do not
+prove ownership of another decision. The known baseline-sufficiency ceiling
+remains: this run establishes a bounded stability observation, not retrieval gain.
+
+The top line is a source-auditable model-specific comparison target, not an upper
+bound or semantic accuracy claim. Unknown remains unknown, including 18 ownership
+judgments and all 24 tool-responsibility judgments. Config/runtime metadata and
+instruction-bounded isolation limits remain explicit. Replay regressions inject
+quote/span, context/model/input, inventory and authority mutations; an injected
+disagreement stays visible rather than being repaired by majority vote. None of
+these synthetic mutations is an observed annotation failure.
