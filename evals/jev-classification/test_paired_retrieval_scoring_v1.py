@@ -132,5 +132,11 @@ class ScoringTests(unittest.TestCase):
                     self.assertEqual(provider['H2']['status'], 'not_evaluable_reference_design')
 
 
+def load_tests(loader, tests, pattern):
+    if pattern is None:
+        tests.addTests(loader.loadTestsFromName('test_paired_retrieval_scoring_v2'))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main()
