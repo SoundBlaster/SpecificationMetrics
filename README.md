@@ -18,6 +18,10 @@ The proposed [formal analysis roadmap](docs/formal-analysis-roadmap.md) describe
 decision contracts, structural evidence, transformation tests and a bounded
 predicate-equivalence pilot before extending semantic review or PR gates.
 
+The proposed [classification backend roadmap](docs/classification-backends-roadmap.md)
+adds configurable general LLM API and Codex CLI execution alongside System One,
+with **Ollama** and **LM Studio** planned as local model-server backends.
+
 ## Unified collection
 
 `collect` uses a TOML config to collect **S, U and S/U first**, then optional

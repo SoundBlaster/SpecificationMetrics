@@ -131,6 +131,13 @@ separate reviewed gate extension is approved.
 
 ## Stage 5: Semantic review and PR pilot
 
+The proposed [classification backend roadmap](classification-backends-roadmap.md)
+extends this stage with configurable System One, general LLM API and Codex CLI
+routes, plus explicit **Ollama** and **LM Studio** local server adapters. Backend
+selection optimizes usable-decision quality, cost and end-to-end latency while
+preserving the common evidence/validation boundary. These adapters are planned,
+not implemented by this roadmap.
+
 Give Jev bounded source context, the architecture intent profile and checked
 structural facts. Check its suggested output against the decision contract.
 Preserve provider limitations: the current Choice adapter supplies labels and
