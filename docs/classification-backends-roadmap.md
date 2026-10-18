@@ -16,6 +16,23 @@ CLI has a Jev-specific client; a general backend interface remains planned.
 Suggestions continue to be separate from reviewed facts, registry dispositions
 and S/U snapshots.
 
+## Progress and remaining scope
+
+The initial instruction gap has already been investigated in the merged
+[semantic instruction-parity diagnostic](../evals/jev-classification/semantic-instruction-parity-v1.md)
+and its [captured native run](../evals/jev-classification/runs/2026-10-18-semantic-instruction-parity-live-v1/README.md).
+That diagnostic reused the unchanged Sol reference; it made zero new Sol calls.
+The [ordinary Luna pilot](../evals/jev-classification/ordinary-luna-categorical-pilot-v1.md)
+also ran through the public Jev4Mellea categorical SDK. The current evaluation
+environment uses [SDK 0.9.0](jev4mellea-0.9-upgrade.md), and the
+[categorical review bridge](categorical-review-bridge-v1.md) connects captured
+native results to the existing routing Specifications and independent review.
+
+These bounded Python evaluation consumers do not implement the general Rust CLI
+backend interface, a Codex CLI adapter or local server adapters. The delivery
+sequence below addresses that remaining scope; it does not require repeating
+completed experiments or grant new inference authorization.
+
 ## Planned backends
 
 | Backend | Execution route | Required planning scope |
@@ -72,10 +89,13 @@ merely because it appears in this plan.
 Phase 4 additionally requires the
 [prompt-parity protocol](classification-prompt-parity.md): all selected backends
 receive the same canonical semantic guidance and evidence view, with rendered
-prompt hashes and capability differences recorded. Existing Sol/native pipeline
-results used unequal instruction detail; they remain diagnostics and must not
-be reused as an equal-instruction model benchmark. Establish parity before the
-separate accepted-facts placeholder ablation or model-selection conclusions.
+prompt hashes and capability differences recorded. The original Sol/native
+comparison used unequal instruction detail; the later instruction-parity and
+ordinary Luna pilots are separate, source-bound observations. Keep those prompt
+conditions distinct. Reuse an existing reference only after verifying the
+unchanged semantic guidance, rubric, evidence views and recorded configuration
+under the protocol. Establish parity before the separate accepted-facts
+placeholder ablation or model-selection conclusions.
 
 Measure both `medium` and `high` only for models that expose those settings; do
 not assume more reasoning makes a cheap model as accurate as the strong-model
@@ -97,6 +117,8 @@ subscription allowance usage and local resource/runtime costs separately; an
 already-paid subscription or local server is not unlimited zero-cost capacity.
 Do not invent dollar equivalents when billing evidence is unavailable.
 
-First implementation slice: define the shared proposal/capability contract and
-Codex CLI adapter, followed by ordinary Luna medium/high comparison. Ollama and
-LM Studio follow as explicit local adapter milestones under the same contract.
+First remaining implementation slice: define the general proposal/capability
+contract and Codex CLI adapter, reusing the existing categorical SDK integration
+where applicable. Review the captured ordinary Luna low-effort pilot before
+preparing a separately authorized medium/high comparison. Ollama and LM Studio
+follow as explicit local adapter milestones under the same contract.

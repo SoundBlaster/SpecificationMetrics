@@ -1,7 +1,8 @@
 # Prompt parity before backend selection
 
-Date: 2026-10-18. Status: planned correction to comparison methodology; no
-additional inference is authorized or performed by this document.
+Date: 2026-10-18. Status: comparison protocol; the initial instruction-parity
+diagnostic is complete. No additional inference is authorized or performed by
+this document.
 
 ## Observed framing difference
 
@@ -62,12 +63,25 @@ This field is proposed; existing artifact schemas are unchanged.
 
 ## Next bounded experiment
 
-First perform an offline parity audit of the canonical task and every rendered
-adapter prompt. Then prepare a new versioned comparison on the explicit-owner
-R01 and mechanics R03 controls, using the same full semantic guidance for each
-selected backend. Ordinary Luna and Sol must also receive this common version;
-do not reuse old observations as if they came from the new prompt condition.
-Freeze selected configurations and request/attempt limits before execution.
+The [offline audit and native instruction-parity diagnostic](../evals/jev-classification/semantic-instruction-parity-v1.md)
+are complete; the [captured run](../evals/jev-classification/runs/2026-10-18-semantic-instruction-parity-live-v1/README.md)
+reused the original Sol instructions, rubric, evidence views and verified
+reference receipt, with zero new Sol calls. The subsequent
+[ordinary Luna pilot](../evals/jev-classification/ordinary-luna-categorical-pilot-v1.md)
+used the aligned semantic task. These are bounded configured-pipeline
+observations, with output-format and provider execution differences retained.
+
+For the next backend comparison, audit the canonical task and every rendered
+adapter prompt against that existing evidence before scheduling calls. Reuse a
+saved Sol reference when its substantive semantic instructions, rubric, exact
+evidence views and required model configuration remain unchanged and its source
+and receipt bindings verify. Record the original prompt/input hashes and the
+mapping to the canonical task; do not relabel an old observation as a new run.
+If those conditions change or cannot be verified, mark the old reference
+ineligible for that comparison and prepare a new annotation only with explicit
+authorization. New calls must have frozen configurations and request/attempt
+limits. Neither a new adapter envelope nor a model configuration being added
+requires rerunning an otherwise unchanged comparator.
 
 If the effect of instruction detail is itself the question, use a separate
 crossed design: every selected model receives both concise and full versions on
