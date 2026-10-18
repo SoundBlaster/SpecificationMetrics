@@ -81,12 +81,18 @@ an older preparation after producer changes, use its recorded source revision;
 do not rewrite the old receipt to pass a newer verifier.
 
 The four-question fact projection is **not** the rich proposal response schema:
-native Choice cannot supply its source locators/rationale. It has no response
-adapter yet and is marked `response_adapter_ready=false`. It is not a transport
+native Choice cannot supply its source locators/rationale. The packet has no
+response adapter selected at preparation time and retains
+`response_adapter_ready=false`. It is not a transport
 run manifest and cannot be handed directly to the old three-axis decoder. Before
-live evaluation, implement the fact-projection response adapter, freeze the
-bounded experiment/reference and obtain its live authorization. Do not fabricate
+live evaluation, connect the fact adapter to verified transport inspection,
+freeze the bounded experiment/reference and obtain its live authorization. Do not fabricate
 citations or automatically promote native labels into accepted facts.
+
+The separate [native fact-response adapter](retrieval-fact-response-adapter-v1.md)
+now validates saved four-question responses. Select it explicitly after preparing
+the bundle; the original preparation metadata remains intact. Live inspection
+still needs a verified transport ledger and a bounded evaluation protocol.
 
 ## Validation
 

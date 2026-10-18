@@ -45,6 +45,9 @@ local predicate helpers, and rejects stale revision/profile reads. It is separat
 from the Rust classifier and from immutable benchmark snapshots.
 The [context preparation entry point](evals/jev-classification/retrieval-context-refresh-v1.md)
 refreshes that index before assembling source-bound Jev/Luna draft requests.
+The [native fact-response adapter](evals/jev-classification/retrieval-fact-response-adapter-v1.md)
+checks saved four-question responses and emits unaccepted proposals or explicit
+review/rejection diagnostics.
 
 ```bash
 export JEV_API_KEY='…'
