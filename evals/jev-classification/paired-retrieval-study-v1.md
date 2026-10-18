@@ -110,6 +110,9 @@ eight-identity run as an H1/H2 paired reference: logical slots do not balance
 actual annotators. Its labels are diagnostic candidates only; immutable integrity
 receipts do not establish readiness. There is no claimed provider accuracy.
 H1/H2 require a new balanced reference version before interpretation.
+The [scoring v1 contract](paired-retrieval-scoring-v1.md) freezes denominators,
+unknown/error handling and H1/H2/H3 rules before provider observations. Its real
+H1/H2 results remain not evaluable under the current mandatory qualification.
 
 ### Integrator-only assignment v1
 

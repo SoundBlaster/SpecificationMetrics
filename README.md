@@ -54,6 +54,9 @@ semantic comparison. [Independent view annotations](evals/jev-classification/run
 are available as diagnostics. Their actual annotator allocation is unbalanced;
 the mandatory design qualification rejects them as an H1/H2 paired reference.
 Live results remain pending.
+The [scoring contract](evals/jev-classification/paired-retrieval-scoring-v1.md)
+fixes denominators, abstention/error handling and qualification prerequisites;
+operational H3 results remain separate from semantic H1/H2 claims.
 
 ```bash
 export JEV_API_KEY='…'

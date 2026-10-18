@@ -682,3 +682,12 @@ and producer versions remain intact. Consumers must use qualification, never
 promote an integrity receipt into design readiness. Regression tests reject a
 rebound checksum attempting to make this run eligible. H3 transport checks and
 explicit diagnostic label agreement remain distinct from semantic effect claims.
+
+The [scoring v1 contract](paired-retrieval-scoring-v1.md) now enforces that
+qualification at the consumer boundary. Planned response/axis denominators remain
+visible when observations are missing or invalid; justified unknown answers can
+agree without receiving positive fact-resolution credit. A synthetic full
+transport chain demonstrates H3 success while H1/H2 stay not evaluable on the
+actual reference. These fixtures are arithmetic/orchestration checks, not live
+provider results. The contract and producer hashes are frozen before this paired
+provider schedule is executed.
