@@ -1,7 +1,7 @@
 # Semantic review cascade v1
 
-Date: 2026-10-18. Status: agreed direction and implementation contract;
-the runtime cascade and PR publisher are not implemented by this document.
+Date: 2026-10-18. Status: offline first-stage routing implemented;
+the ordinary-review adapter and PR publisher remain planned.
 
 ## Purpose
 
@@ -139,3 +139,59 @@ zero invalid-citation resolutions in deterministic regression cases, unchanged
 accepted facts/S/U, and no inference during offline checks. Declare live quality
 thresholds and sample size before qualification. A retrospective 32/32 selection
 on four development targets does not qualify the cascade.
+
+## Implemented offline routing
+
+`evals/jev-classification/semantic_review_routing_v1` implements the first delivery
+step. `evaluate(RoutingContext)` returns all applicable findings and a trace from
+named SpecificationCore rules, then selects one route with `FirstMatch`:
+
+| Route | Status | Meaning |
+| --- | --- | --- |
+| `retain_proposal` | `proposed_not_accepted` | Keep the source-bound classification suggestion; no review is currently required. |
+| `ordinary_review` | `needs_review` | Select one future ordinary review; its current status is `not_run`. |
+| `stop_incomplete` | `analysis_incomplete` | A response, model/provider identity, decision binding or checked-claim binding is invalid/missing. No semantic fallback is scheduled. |
+
+Operational failure has precedence, but semantic reasons are retained too.
+The trace records the shared `RoleSupportConsistentSpec` and
+`ResponsibilitiesCompatibleSpec`, every routing observation, and skipped later
+`FirstMatch` branches. There is no numeric confidence threshold, network call,
+review-resolution claim, fact acceptance or S/U mutation.
+
+The immutable binding includes repository/revision, path and line span, decision
+ID, evidence digest, rubric/category versions, prompt/configuration digest,
+requested action and additional required axes. Provider/model identities are
+also checked against the caller's expectation. Checked claims require their
+binding digest and a reviewed/source-bound locator; development hypotheses
+cannot satisfy those claims. These are caller-established premises, not proof
+that the router verified source contents or authenticated a remote response.
+The future adapter must establish them independently of model-generated labels.
+
+For `assess_role`, unknown owner/tool does not escalate. `reuse_specification`
+and `exclude_owned` additionally need a known owner plus an exact-decision
+claim. `delegate_tool` needs a known tool responsibility and a tool-rule claim.
+`create_specification` needs checked scoped ownership absence; an unknown label
+never becomes absence. A caller can require additional axes. The requested
+action sets evidence requirements; retaining a classification does not approve
+that action. Recommendation semantics remain with the recommendation policy.
+
+Run the read-only replay in the repository Python environment:
+
+```bash
+cd evals/jev-classification
+../../.venv/bin/python -W error -m unittest -v test_semantic_review_routing_v1.py
+../../.venv/bin/python replay_semantic_review_routing_v1.py
+```
+
+Replay verifies the pinned native result receipt, complete artifact inventory,
+producer source hashes, request/response identities and captured source excerpt.
+It parses captured responses with the existing native adapter; no Sol labels
+are routing inputs. The frozen Jev cohort selects R04/baseline only: seven
+retained, one review. Native Luna Decision selects seven reviews and retains
+one. No reviewer is invoked, and no item is reported as resolved. The suite
+also checks 144 combinations of role/support/owner/tool/operational state,
+action-specific evidence, stale bindings, missing premises, immutability and
+tampered observations. CI runs the policy suite and offline replay.
+The existing `test_recommendation_policy_v1` CI entry point composes the routing
+suite through `unittest.load_tests`; workflow files are unchanged. General test
+discovery finds the routing module directly without adding a duplicate suite.
