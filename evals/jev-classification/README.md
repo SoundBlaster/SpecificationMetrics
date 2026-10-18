@@ -1,5 +1,12 @@
 # Jev prompt evaluation
 
+The supported Python baseline is **3.11+** across collection, evaluation and CI.
+Install `requirements-categorical-pilot.lock` into the repository `.venv` for
+the pinned Jev4Mellea 0.8.0 Responses integration and common evaluation tools.
+Native and ordinary models share category semantics; label-only Responses
+answers never acquire synthetic native probabilities. Old benchmark artifacts
+keep their historical runtime metadata and are replayed on the current baseline.
+
 Current paired-reference design assessment:
 [configuration qualification v2 and prepared repeatability pilot](paired-reference-qualification-v2.md).
 This supersedes the invocation-ID interpretation in qualification v1 while
@@ -22,6 +29,17 @@ Sol's existing semantic guidance and category catalog raised Jev agreement from
 Luna Decision rose from 15/32 to 18/32 while conflicts increased from one to two.
 All 16 native requests completed without TLS retries. This remains a small
 instruction-condition diagnostic; the general backend refactor is deferred.
+
+The [ordinary-Luna SDK pilot](runs/2026-10-18-ordinary-luna-live-v1/README.md)
+then used Jev4Mellea 0.8.0 / Responses, `gpt-6-luna` / low on those same eight
+views: **32/32 Sol agreement, 16/16 primary agreement and zero conflicts**.
+All eight calls completed in 34.939 seconds with no retries; usage was 35,167
+input / 874 output tokens. Native Jev and Luna Decision remain at 31/32 and
+18/32 from their saved run; Sol was not called again. Ordinary client latency
+was greater than the historical native HTTP timings, and monetary cost is unknown.
+This supports a bounded compatibility/quality observation, not general accuracy,
+retrieval gain or an unconditional efficiency claim. Python 3.11 is now the
+common supported baseline, including the unchanged historical offline replays.
 
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:

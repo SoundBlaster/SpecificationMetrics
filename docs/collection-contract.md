@@ -82,11 +82,11 @@ Enable the desired additions in the config:
 [supplementary]
 python_complexity = true
 duplication = true
-python = "../.venv-metrics/bin/python"
+python = "../.venv/bin/python"
 ```
 
 The interpreter path is config-relative (a bare executable name uses PATH).
-Python 3.10+ is supported. Duplication requires Node.js/npm; the adapter invokes
+Python 3.11+ is the supported baseline. Duplication requires Node.js/npm; the adapter invokes
 `npx --yes jscpd@5.0.11`, which may download that pinned package when explicitly
 enabled. CI tests it on Node 22. jscpd has a 120-second timeout.
 

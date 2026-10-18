@@ -785,3 +785,43 @@ the captured execution inventory, all files/receipts, producer source, request a
 response identity and semantic results remain strict. Regression checks allow
 host-only differences and reject execution/label changes. Frozen producer files
 and observations were preserved.
+
+## Read forwarded SDK streams before auditing body identity (2026-10-18)
+
+During ordinary-Luna consumer preparation, synthetic execution failed with
+`httpx2.RequestNotRead` before any hosted inference. The smallest input is a
+POST whose JSON body is supplied as two stream chunks to `DispatchTransport`.
+The Jev4Mellea exact-endpoint router forwards a streaming request. Our consumer
+read `.content` before materializing it; MockTransport normally does that read
+later, so successful offline rendering alone did not verify the audit boundary.
+
+Confirmed local defect: request inspection assumed a buffered body. The bounded
+fix calls `request.read()` before checking the frozen bytes and forwards those
+same bytes without reserialization. The direct streaming regression first proves
+`.content` is unavailable, then verifies one identical dispatch and rejection of
+a second dispatch. Full synthetic SDK execution additionally checks captured
+response replay, typed failures and result-tampering rejection. Unexpected client
+exceptions now retain only their class as a failed task and stop the cohort;
+their diagnostic text/objects cannot leak credentials or turn into abstention.
+No historical producer source, benchmark label or hosted result changed.
+
+## A shared label contract can improve coherence without native probabilities (2026-10-18)
+
+The [ordinary-Luna SDK pilot](runs/2026-10-18-ordinary-luna-live-v1/diagnosis.md)
+completed eight real source views through Jev4Mellea 0.8.0 / Responses / Luna low:
+32/32 agreement with saved Sol labels, 16/16 primary agreement and zero conflicts.
+Native Jev's saved condition has 31/32 and one conflict; native Luna Decision
+18/32 and two conflicts. No previous provider or Sol was rerun. State, categories
+and aligned question instructions were preserved; SDK format, joint generation
+and reasoning execution remain distinct conditions.
+
+Confirmed result: a label-only ordinary backend can satisfy this consumer's
+categorical contract and existing Specification checks on this development
+cohort without inventing probabilities or weakening gates. The cause of the
+agreement difference is not isolated, and four decisions cannot establish
+general quality or reliability. Both evidence arms reach the reference ceiling.
+The ordinary condition also had greater observed latency and no reported monetary
+price; more agreement does not establish a better speed/cost trade-off. Preserve
+raw usage, configured/returned model, timing scopes and error/abstention separation
+before broader decisions. Python 3.11 is now the common baseline; all 129 prior
+decision/retrieval/classic-metrics tests passed there with historical data intact.

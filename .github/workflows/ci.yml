@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
       - name: Install ranking dependencies only
         run: python -m pip install -r evals/jev-classification/requirements-retrieval-replay.txt
       - name: Replay local retrieval evidence without model download or inference
@@ -34,9 +34,9 @@ jobs:
           components: clippy, rustfmt
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
-      - run: python -m pip install pydantic==2.13.5
-      - run: python -m pip install -r evals/jev-classification/requirements-policy.txt
+          python-version: "3.11"
+      - name: Install pinned Python evaluation tooling including Jev4Mellea
+        run: python -m pip install -r evals/jev-classification/requirements-categorical-pilot.lock
       - run: cargo fmt --check
       - run: cargo test --locked
       - run: cargo clippy --all-targets --locked -- -D warnings
@@ -131,6 +131,7 @@ jobs:
           python3 -W error -m unittest -v test_sol_top_line_comparison_v1.py
           # Reuse the frozen Sol comparator; no hosted inference in CI.
           python3 -W error -m unittest -v test_instruction_parity_v1.py
+          python3 -W error -m unittest -v test_categorical_luna_pilot_v1.py
           python3 sol_top_line_comparison_v1.py --verify-contract
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
