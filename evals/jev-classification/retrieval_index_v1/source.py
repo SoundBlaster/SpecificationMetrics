@@ -47,10 +47,13 @@ def snapshot(repo, repository_id, revision='HEAD', includes=('tools/*.py',), exc
             symbol = None
             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
                 symbol = node.name
-            elif isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+                if len(targets) != 1 or not isinstance(targets[0], ast.Name):
+                    continue
                 if any(isinstance(c, ast.Call) and isinstance(c.func, ast.Name)
                        and c.func.id == 'PredicateSpec' for c in ast.walk(node)):
-                    symbol = node.targets[0].id
+                    symbol = targets[0].id
             if symbol is None:
                 continue
             if not 4 <= node.end_lineno - node.lineno + 1 <= 100:
@@ -60,9 +63,9 @@ def snapshot(repo, repository_id, revision='HEAD', includes=('tools/*.py',), exc
             documents.append(doc)
     if len({d['id'] for d in documents}) != len(documents):
         raise ValueError('ambiguous declaration IDs; refuse silent overwriting')
-    return dict(contract='specmetrics.retrieval-source-snapshot/v1', repository_id=repository_id,
+    return dict(contract='specmetrics.retrieval-source-snapshot/v2', repository_id=repository_id,
                 revision=commit, tree=tree, includes=sorted(set(includes)), excludes=sorted(set(excludes)),
-                extraction='top_level_functions_or_PredicateSpec_assignments_4_to_100_lines_one_local_helper_hop',
+                extraction='top_level_functions_or_typed_and_untyped_PredicateSpec_assignments_4_to_100_lines_one_local_helper_hop',
                 extraction_sha256=digest(Path(extraction.__file__).read_text()),
                 collector_sha256=digest(Path(__file__).read_text()),
                 files=files, documents=sorted(documents, key=lambda d: d['id']),

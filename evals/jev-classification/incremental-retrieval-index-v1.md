@@ -91,8 +91,8 @@ need new query vectors; this store contains document vectors only.
 
 ## Scope and evidence
 
-This v1 mirrors the established Python source selector: top-level functions and
-direct `PredicateSpec` assignments spanning 4–100 lines, with one unambiguous
+The index v1 now uses source-snapshot selector **v2**: top-level functions and
+direct typed or untyped `PredicateSpec` assignments spanning 4–100 lines, with one unambiguous
 same-module predicate-function hop. All matching declarations are indexed; there
 is no 512-document sample. Include/exclude use Python `fnmatchcase`: `*` matches
 slashes, so `tools/*.py` also includes Python files in nested directories.
@@ -102,6 +102,15 @@ general dependency analysis are **not** covered. Length-filtered declarations
 are counted. A source syntax/encoding error is fatal; unsupported selected
 symlinks are rejected. Missing query hits cannot prove absent ownership. Source
 matching and current vectors do not create accepted facts or change S/U.
+
+Paired-study preparation exposed a confirmed extraction defect: `ast.Assign`
+matched `RULE = PredicateSpec(...)` but omitted real declarations such as
+`RULE: PredicateSpec[Context] = PredicateSpec(...)`. Selector v2 also handles
+`ast.AnnAssign`; its contract and collector digest change, so old active
+manifests are stale until an explicit update. Unchanged exact document inputs
+can still reuse cached vectors. A regression checks typed-wrapper extraction,
+helper-body inclusion and helper-change invalidation. This does not add class,
+import-alias or imported-helper coverage, nor rewrite historical frozen corpora.
 
 Regression tests use a deterministic test encoder and temporary Git histories,
 not model quality labels. They cover no-op reuse, helper invalidation, source
