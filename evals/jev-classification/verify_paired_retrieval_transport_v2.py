@@ -169,4 +169,3 @@ def inspect(preparation, run):
         verification_scope='completed_prefix_local_ledger_and_body_not_complete_cohort',
         captured_complete_records=len(rows), response_tail=response_tail, ledger_tail=ledger_tail,
         prefix_stop=prefix_stop, verified_completed_prefix=len(adaptations))
-
