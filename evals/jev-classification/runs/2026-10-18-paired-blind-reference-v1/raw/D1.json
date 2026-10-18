@@ -1,0 +1,7 @@
+{
+  "view_id":"view-c857a7ccc688b285","status":"completed","annotator":"/root/blind_view_c857_20261018",
+  "concern_kind":"policy","evidence_confidence":"supported","ownership":"unknown","tool_responsibility":"unknown",
+  "rationale":"The decision unit is whether a candidate workspace path is admissible. The target directly requires nonempty text and rejects absolute/home-prefixed forms, backslashes, colons and parent traversal components, establishing a safety policy with supported evidence. String conversion and trimming are supporting mechanics. No supplied Specification establishes ownership of this exact decision, and no supplied evidence assigns workspace-path admissibility to formatter/linter rules.",
+  "source_locators":[{"document_id":"tools/product_workspace_next_moves_support.py::safe_workspace_path","path":"tools/product_workspace_next_moves_support.py","symbol":"safe_workspace_path","start_line":57,"end_line":62,"quote":"    return bool(text) and not (\n        text.startswith((\"/\", \"~\"))\n        or \"\\\\\" in text\n        or \":\" in text\n        or \"..\" in PurePosixPath(text).parts\n    )","evidence_for":["concern_kind","evidence_confidence"]}],
+  "unresolved":["Intent documents and caller contracts are not supplied.","No same-decision Specification or Specification composition is supplied; retrieval coverage is partial.","Formatter/linter responsibility and configured enforcement are not established.","Workspace root containment, symlink handling and subsequent filesystem use are not supplied."]
+}

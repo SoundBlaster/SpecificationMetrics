@@ -649,3 +649,36 @@ and live observations for this cohort remain pending.
   reused/exposed roster identities, changed view hashes and receipt/provenance
   mutations. The original 51 preparation artifacts remain byte-for-byte intact.
   Actual dispatch and identity assertions still require operator enforcement.
+
+## Independent reference ceiling and identity unit (2026-10-18)
+
+The [eight fresh-agent run](runs/2026-10-18-paired-blind-reference-v1/adjudication.md)
+found no categorical changes across the four evidence pairs (0/16 paired axes),
+with all baseline roles already supported and the only recognized owner visible
+in the target itself. This is a confirmed baseline-sufficiency ceiling in this
+development cohort, not evidence of no retrieval benefit or provider accuracy.
+R04's added caller witness strengthens rationale without changing its coarse
+support category. A future semantic-gain cohort needs independently checked
+hidden decision witnesses; preserve this control/distractor cohort unchanged.
+
+The user's explicit request for eight new context-free subagents refined the
+original four-actual-annotator execution assumption. Actual agent identity and
+logical balanced slot are now separate: eight unique invocations in four slots,
+with identical requested inherited configuration and no context forks. Do not
+claim within-person counterbalancing or pass this run through the old four-person
+roster checker. Actual backend configuration, OS-level file isolation and semantic
+truth are not independently attested. Regressions verify input/prompt hashes,
+fresh identities, baseline-before-retrieval seals, supplied quotes/spans and
+reconstructed comparisons/references, including checksum-rebound tampering.
+
+## PR74 qualification correction (2026-10-18)
+
+The eight-context execution did not preserve actual-annotator crossover. The
+earlier explicit identity refinement documented this limitation but still emitted
+a provisional paired-reference label; that was insufficient prevention. A new
+[qualification](paired-reference-qualification-v1.md) counts actual mode exposure
+and rejects H1/H2 paired scoring (8 actual annotators, 0 balanced). Original data
+and producer versions remain intact. Consumers must use qualification, never
+promote an integrity receipt into design readiness. Regression tests reject a
+rebound checksum attempting to make this run eligible. H3 transport checks and
+explicit diagnostic label agreement remain distinct from semantic effect claims.
