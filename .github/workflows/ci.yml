@@ -5,6 +5,21 @@ on:
   pull_request:
 
 jobs:
+  evaluation-sdk-current:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install current pinned Jev4Mellea 0.9.0 evaluation environment
+        run: python -m pip install -r evals/jev-classification/requirements-evaluation.lock
+      - name: Check SDK compatibility and semantic review offline
+        working-directory: evals/jev-classification
+        run: |
+          python -W error -m unittest -v test_jev4mellea_compatibility.py
+          python -W error -m unittest -v test_recommendation_policy_v1.py test_retrieval_fact_adapter_v1.py test_coreinfra_transport.py
+
   retrieval-offline-replay:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +50,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install pinned Python evaluation tooling including Jev4Mellea
+      - name: Install historical Jev4Mellea 0.8.0 environment for frozen replay
         run: python -m pip install -r evals/jev-classification/requirements-categorical-pilot.lock
       - run: cargo fmt --check
       - run: cargo test --locked
