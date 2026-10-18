@@ -3,10 +3,12 @@
 A Rust CLI for measuring Specification adoption in Python, Swift, and Rust.
 
 Python collection/evaluation tools use **Python 3.11+**, with 3.11 selected in
-`.python-version` and CI. Jev4Mellea 0.8.0 and the categorical SDK dependencies are
-pinned in [the evaluation lock](evals/jev-classification/requirements-categorical-pilot.lock).
+`.python-version` and CI. Jev4Mellea 0.9.0 and the categorical SDK dependencies are
+pinned in [the current evaluation lock](evals/jev-classification/requirements-evaluation.lock).
 Use the repository `.venv` for local Python commands. Historical benchmark
-artifacts retain their actual recorded Python versions.
+artifacts retain their actual recorded Python and SDK versions; their separate
+0.8.0 environment remains pinned for exact replay. See the
+[upgrade and compatibility checks](docs/jev4mellea-0.9-upgrade.md).
 It scans the current source snapshot and reports the live ratio of distinct
 Specification definitions to remaining control-flow opportunities.
 

@@ -1,11 +1,16 @@
 # Jev prompt evaluation
 
 The supported Python baseline is **3.11+** across collection, evaluation and CI.
-Install `requirements-categorical-pilot.lock` into the repository `.venv` for
-the pinned Jev4Mellea 0.8.0 Responses integration and common evaluation tools.
+Install `requirements-evaluation.lock` into the repository `.venv` for
+the pinned Jev4Mellea 0.9.0 Responses integration and common evaluation tools.
 Native and ordinary models share category semantics; label-only Responses
 answers never acquire synthetic native probabilities. Old benchmark artifacts
-keep their historical runtime metadata and are replayed on the current baseline.
+keep their historical runtime metadata. The ordinary-Luna 0.8.0 pilot requires
+an isolated environment from `requirements-categorical-pilot.lock` for exact
+replay; the `check` CI job retains that environment. The separate
+`evaluation-sdk-current` job checks 0.9.0 against all eight captured request and
+response pairs and runs the current review suites. See the
+[upgrade notes](../../docs/jev4mellea-0.9-upgrade.md) for commands and scope.
 
 Current paired-reference design assessment:
 [configuration qualification v2 and prepared repeatability pilot](paired-reference-qualification-v2.md).

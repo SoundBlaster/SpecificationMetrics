@@ -1,0 +1,7 @@
+# Current Python >=3.11 evaluation environment; not a Rust CLI dependency.
+# requirements-categorical-pilot.* remain frozen for the SDK 0.8.0 experiment.
+-r requirements-policy.txt
+-r requirements-retrieval-replay.txt
+mellea-jev-adapter[openai] @ git+https://github.com/SoundBlaster/Jev4Mellea.git@e94d6ba1808b95208ef8ac05da7b256f3988532f
+openai==3.31.0
+pydantic==2.13.5
