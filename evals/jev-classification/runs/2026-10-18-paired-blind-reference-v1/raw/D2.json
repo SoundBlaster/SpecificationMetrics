@@ -1,0 +1,8 @@
+{
+  "annotator":"/root/blind_view_10fa_20261018","concern_kind":"mechanics","evidence_confidence":"supported","ownership":"unknown","tool_responsibility":"unknown",
+  "rationale":"The decision unit is parse_write_authorization as a whole. Its visible responsibility is decoding document fields into SubjectWriteAuthorization, including adapting transition_refs to a tuple. This directly supports mechanics; no distinct authority or admissibility decision is visible. The supplied Specifications address other decisions and do not establish same-decision ownership. Formatter/linter responsibility is not established.",
+  "source_locators":[{"document_id":"tools/subject_source_write.py::parse_write_authorization","path":"tools/subject_source_write.py","symbol":"parse_write_authorization","start_line":209,"end_line":216,"quote":"    return SubjectWriteAuthorization(\n        data[\"request_sha256\"],\n        data[\"decision_ref\"],\n        data[\"reviewer\"],\n        data[\"reviewer_authority\"],\n        data[\"recorded_at\"],\n        tuple(_list(data[\"transition_refs\"])),\n    )","evidence_for":["concern_kind","evidence_confidence"]}],
+  "status":"completed",
+  "unresolved":["Bodies of _object, _version, _list and SubjectWriteAuthorization are not supplied.","Intent documents are not supplied.","Same-decision Specification ownership is not established by the partial candidate evidence.","Formatter/linter responsibility and configured enforcement are not established."],
+  "view_id":"view-10fae588db04d002"
+}

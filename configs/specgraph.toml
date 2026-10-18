@@ -9,4 +9,4 @@ includes = ["tools", "src"]
 python_complexity = false
 duplication = false
 # When enabling external tools, set python to the prepared metrics interpreter.
-# python = "../.venv-metrics/bin/python"
+# python = "../.venv/bin/python"

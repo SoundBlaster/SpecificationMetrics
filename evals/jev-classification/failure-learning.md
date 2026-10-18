@@ -649,3 +649,267 @@ and live observations for this cohort remain pending.
   reused/exposed roster identities, changed view hashes and receipt/provenance
   mutations. The original 51 preparation artifacts remain byte-for-byte intact.
   Actual dispatch and identity assertions still require operator enforcement.
+
+## Independent reference ceiling and identity unit (2026-10-18)
+
+The [eight fresh-agent run](runs/2026-10-18-paired-blind-reference-v1/adjudication.md)
+found no categorical changes across the four evidence pairs (0/16 paired axes),
+with all baseline roles already supported and the only recognized owner visible
+in the target itself. This is a confirmed baseline-sufficiency ceiling in this
+development cohort, not evidence of no retrieval benefit or provider accuracy.
+R04's added caller witness strengthens rationale without changing its coarse
+support category. A future semantic-gain cohort needs independently checked
+hidden decision witnesses; preserve this control/distractor cohort unchanged.
+
+The user's explicit request for eight new context-free subagents refined the
+original four-actual-annotator execution assumption. Actual agent identity and
+logical balanced slot are now separate: eight unique invocations in four slots,
+with identical requested inherited configuration and no context forks. Do not
+claim within-person counterbalancing or pass this run through the old four-person
+roster checker. Actual backend configuration, OS-level file isolation and semantic
+truth are not independently attested. Regressions verify input/prompt hashes,
+fresh identities, baseline-before-retrieval seals, supplied quotes/spans and
+reconstructed comparisons/references, including checksum-rebound tampering.
+
+## PR74 qualification correction (2026-10-18)
+
+The eight-context execution did not preserve actual-annotator crossover. The
+earlier explicit identity refinement documented this limitation but still emitted
+a provisional paired-reference label; that was insufficient prevention. A new
+[qualification](paired-reference-qualification-v1.md) counts actual mode exposure
+and rejects H1/H2 paired scoring (8 actual annotators, 0 balanced). Original data
+and producer versions remain intact. Consumers must use qualification, never
+promote an integrity receipt into design readiness. Regression tests reject a
+rebound checksum attempting to make this run eligible. H3 transport checks and
+explicit diagnostic label agreement remain distinct from semantic effect claims.
+
+The [scoring v1 contract](paired-retrieval-scoring-v1.md) now enforces that
+qualification at the consumer boundary. Planned response/axis denominators remain
+visible when observations are missing or invalid; justified unknown answers can
+agree without receiving positive fact-resolution credit. A synthetic full
+transport chain demonstrates H3 success while H1/H2 stay not evaluable on the
+actual reference. These fixtures are arithmetic/orchestration checks, not live
+provider results. The contract and producer hashes are frozen before this paired
+provider schedule is executed.
+
+## LLM configuration is not invocation identity (2026-10-18)
+
+- **Evidence:** all eight historical dispatches requested identical inherited
+  settings with no context forks; each agent ID identified one execution. V1
+  nevertheless inferred mode/annotator confounding from unique invocation IDs.
+- **Confirmed assessment defect:** invocation identity alone does not establish
+  a different stable LLM annotation policy. The claim of confounding was stronger
+  than the evidence. Actual backend equivalence and same-view stability remain
+  unobserved; the historical baseline-first wave also leaves time effects open.
+- **Correction:** [qualification v2](paired-reference-qualification-v2.md) groups
+  requested configuration and common rubric/prompt settings, while retaining IDs
+  for isolation/provenance. One requested group has 4/4 mode exposure. Runtime
+  fields remain unavailable; v2 neither fabricates them nor grants H1/H2 scoring.
+- **Prevention:** tests separate configuration changes from renamed contexts,
+  reject reused contexts and checksum-rebound eligibility changes. A frozen
+  24-context same-view repeatability plan defines primary/secondary axes and
+  denominators before observation. Missing rows, changed inputs/configuration,
+  repeated tasks and invalid categories cannot silently improve agreement.
+- **Boundary:** no repeated annotation or provider request has been launched.
+  Old qualification/scoring artifacts and original labels remain unchanged;
+  repeatability, correctness and authority remain separate claims.
+
+## Strong-model repeatability is an empirical comparator (2026-10-18)
+
+The authorized [Sol 6.1 Medium cohort](runs/2026-10-18-sol61-medium-repeatability-v1/adjudication.md)
+completed exactly 24 fresh contexts using the frozen eight views and common
+explicit requested configuration. Same-view agreement was 48/48 on primary axes
+and 96/96 on all axes; all source witnesses and line spans passed replay and no
+category-consistency conflicts occurred. Original raw labels were not repaired.
+
+Rationales differ in quote selection and missing-fact descriptions, with no
+categorical contradictions. In particular, parsing authorization fields does not
+itself establish a write-authorization policy; lexical path admissibility does
+not establish filesystem safety; related review/allocation Specifications do not
+prove ownership of another decision. The known baseline-sufficiency ceiling
+remains: this run establishes a bounded stability observation, not retrieval gain.
+
+The top line is a source-auditable model-specific comparison target, not an upper
+bound or semantic accuracy claim. Unknown remains unknown, including 18 ownership
+judgments and all 24 tool-responsibility judgments. Config/runtime metadata and
+instruction-bounded isolation limits remain explicit. Replay regressions inject
+quote/span, context/model/input, inventory and authority mutations; an injected
+disagreement stays visible rather than being repaired by majority vote. None of
+these synthetic mutations is an observed annotation failure.
+
+## Matched Jev/Luna comparison exposes support conflicts and abstention (2026-10-18)
+
+The authorized [16-call live run](runs/2026-10-18-jev-luna-sol-comparison-v1/diagnosis.md)
+completed in 16 attempts with no TLS failures or retries. Every native response
+passed identity/shape checks. Jev matched 15/16 primary-axis Sol labels but only
+2/8 support labels and produced five role/support conflicts; Luna matched 7/16
+primary-axis labels, abstained on 7/8 roles and produced one conflict. Existing
+Specification-based consistency rules correctly required review for those six
+tuples; no gate was weakened and no model labels were repaired.
+
+Confirmed causes are limited to the observed categorical combinations, not the
+models' internal reasoning. Unknown/insufficient values in initial accepted facts
+are a possible anchoring source, not a proven explanation. A proposed eight-call
+state-only ablation on explicit-Specification and mechanics controls isolates
+that hypothesis before altering instructions. It has not been executed.
+
+Keep coverage, raw agreement, coherence and useful positive resolution separate:
+Luna's mostly coherent abstentions are not strong agreement with Sol; Jev's role
+agreement is not a production acceptance rate. Native API framing also differs
+from Sol's fuller annotation brief, so this is a pipeline comparison, not an
+intrinsic model ranking. One 0.99 Jev probability total remains a recorded warning
+under the existing versioned allowance; it did not cause these semantic failures.
+
+## Align task semantics before attributing model limitations (2026-10-18)
+
+The [instruction-parity repeat](runs/2026-10-18-semantic-instruction-parity-live-v1/diagnosis.md)
+transferred the existing Sol semantic paragraph and four-axis category catalog
+into native question instructions. Its 24 annotations were reused unchanged;
+no Sol calls, state/retrieval changes, semantic retries or gate changes occurred.
+Jev agreement rose 25/32 → 31/32 and role/support conflicts fell 5 → 1. Luna
+agreement rose 15/32 → 18/32 but conflicts increased 1 → 2. Do not conflate better
+role resolution with coherence, unknown agreement with positive resolution, or
+this small pipeline diagnostic with a representative model-accuracy benchmark.
+
+Confirmed asymmetry: the earlier Sol brief explained unresolved placeholders,
+whole-target responsibility and unavailable definitions more explicitly. The new
+condition improves Jev substantially, but individual-clause causality and
+placeholder anchoring remain unproved. Keep the paragraph/catalog changes and
+cost together in the record: input tokens grew by 42.0% for Jev and 46.7% for Luna.
+Next test a smaller semantic contract before generalizing the backend runner.
+
+Preparation also found a replay portability defect: PR #78's test compared current
+analysis-host fingerprints with frozen historical fingerprints. Cross-host
+comparison now excludes only three documented analysis-time diagnostic locations;
+the captured execution inventory, all files/receipts, producer source, request and
+response identity and semantic results remain strict. Regression checks allow
+host-only differences and reject execution/label changes. Frozen producer files
+and observations were preserved.
+
+## Read forwarded SDK streams before auditing body identity (2026-10-18)
+
+During ordinary-Luna consumer preparation, synthetic execution failed with
+`httpx2.RequestNotRead` before any hosted inference. The smallest input is a
+POST whose JSON body is supplied as two stream chunks to `DispatchTransport`.
+The Jev4Mellea exact-endpoint router forwards a streaming request. Our consumer
+read `.content` before materializing it; MockTransport normally does that read
+later, so successful offline rendering alone did not verify the audit boundary.
+
+Confirmed local defect: request inspection assumed a buffered body. The bounded
+fix calls `request.read()` before checking the frozen bytes and forwards those
+same bytes without reserialization. The direct streaming regression first proves
+`.content` is unavailable, then verifies one identical dispatch and rejection of
+a second dispatch. Full synthetic SDK execution additionally checks captured
+response replay, typed failures and result-tampering rejection. Unexpected client
+exceptions now retain only their class as a failed task and stop the cohort;
+their diagnostic text/objects cannot leak credentials or turn into abstention.
+No historical producer source, benchmark label or hosted result changed.
+
+## A shared label contract can improve coherence without native probabilities (2026-10-18)
+
+The [ordinary-Luna SDK pilot](runs/2026-10-18-ordinary-luna-live-v1/diagnosis.md)
+completed eight real source views through Jev4Mellea 0.8.0 / Responses / Luna low:
+32/32 agreement with saved Sol labels, 16/16 primary agreement and zero conflicts.
+Native Jev's saved condition has 31/32 and one conflict; native Luna Decision
+18/32 and two conflicts. No previous provider or Sol was rerun. State, categories
+and aligned question instructions were preserved; SDK format, joint generation
+and reasoning execution remain distinct conditions.
+
+Confirmed result: a label-only ordinary backend can satisfy this consumer's
+categorical contract and existing Specification checks on this development
+cohort without inventing probabilities or weakening gates. The cause of the
+agreement difference is not isolated, and four decisions cannot establish
+general quality or reliability. Both evidence arms reach the reference ceiling.
+The ordinary condition also had greater observed latency and no reported monetary
+price; more agreement does not establish a better speed/cost trade-off. Preserve
+raw usage, configured/returned model, timing scopes and error/abstention separation
+before broader decisions. Python 3.11 is now the common baseline; all 129 prior
+decision/retrieval/classic-metrics tests passed there with historical data intact.
+
+## Preserve provider-specific state envelopes in shared routing replay (2026-10-18)
+
+The first offline semantic-routing suite passed 16 tests but failed saved native
+replay with `KeyError: state`. Confirmed cause: the reader assumed every native
+wire used Jev's `state` field. The frozen Luna Decision requests instead use
+`input`; their semantic state is shared, but their API envelopes are different.
+This was an implementation error before any hosted call, not model uncertainty.
+
+The bounded fix selects the state field explicitly by provider, requires a text
+payload, and preserves its captured bytes for the evidence digest. The direct
+`test_native_provider_state_fields_are_explicit` regression accepts each real
+envelope and rejects the other provider's envelope instead of guessing. The
+saved-run regression replays all sixteen captured requests without network
+access and verifies one Jev escalation and seven Luna Decision escalations.
+Historical requests, labels, producers and result receipts remain unchanged.
+
+## Resolve environment paths before concurrent SDK checks (2026-10-18)
+
+During the 0.9.0 upgrade, `test_categorical_luna_pilot_v1.py` was launched through
+the repository `.venv` symlink, initially targeting the preserved 0.8.0
+environment. Retargeting that symlink to the new 0.9.0 environment before the
+suite finished made later distribution metadata lookups report 0.9.0. The run
+ended with six `SDK version differs` errors across seven tests. The separate
+0.9.0 compatibility/review suites had passed 100 tests.
+
+The cause was local environment routing during a running process, not an SDK
+or model defect. The unchanged original environment still reported 0.8.0 when
+invoked by its absolute interpreter path. The correction reruns the historical
+suite through that stable path; upgrade instructions now require resolved paths
+for concurrent environments and prohibit changing a running process's `.venv`
+link. The historical suite's exact-version/source checks are the regression
+gate; they must not be relaxed to accommodate an environment mix-up. No frozen
+source, lock, provider response, receipt or label was changed.
+The corrected run passed all seven historical tests in 271.596 seconds.
+
+## Preserve request cardinality at categorical boundaries (2026-10-18)
+
+Integrating Jev4Mellea 0.9.0 revealed a contract distinction, not an SDK defect:
+its new native categorical wrappers require one Choice question, whereas this
+classifier sends four axes in one System One request. A direct four-question
+wrapper call rejects before dispatch. Splitting it would silently multiply the
+request budget by four and change the execution condition. The bounded bridge
+retains `TypeSafeProvider.system_one` batching and uses public
+`project_choice_results`, with a regression asserting one request, original
+question IDs/native distributions and caller-owned provider lifetime.
+
+The SDK also applies a tighter probability-mass check than the historical
+capture parser's scoped allowance. A synthetic 0.5% deficit confirms that the
+old parser warns while the SDK rejects. The bridge preserves that rejection as
+`analysis_incomplete`, without renormalization, semantic relabeling or an ordinary
+fallback. This is a parser-contract difference, not evidence of poor model
+reasoning. All eight real captured Jev responses pass both parsers.
+
+The full offline bridge replay retains seven proposals and selects the same one
+review. That review's complete request matches the pinned earlier Luna request,
+so its saved receipt can be reused after full verification. Its result remains
+`needs_review`; connecting uniform interfaces neither clears evidence gaps nor
+establishes semantic correctness. See the
+[bridge contract](../../docs/categorical-review-bridge-v1.md) and
+`test_categorical_review_bridge_v1.py` for the concrete regression checks.
+
+## Bind review resolution to the original assessment, not only the request (2026-10-18)
+
+Self-review of PR #87 at `e39b88b` reproduced a false advisory resolution without
+any new model call. Two valid plans had the same bound source/questions and thus
+the same independent Luna request, but different original roles: `policy` versus
+`unknown`, both with insufficient support. A synthetic `mechanics / supported`
+review correctly remained `needs_review` for the known role and resolved the
+unknown role as a proposal. Replacing the known plan's prepared review with the
+unknown plan's review made its report show `policy` while inspection incorrectly
+returned `resolved_proposal`.
+
+Confirmed cause: the frozen plan held context, categorical snapshot and prepared
+review as independent fields. Each field could be valid without their joint
+identity being checked. The independent request digest deliberately excludes
+first-stage labels, so it cannot protect downstream disagreement resolution.
+Adding those labels to the model prompt would also defeat independent review.
+
+The bounded fix validates plan coherence at construction and at all public
+consumers: capture identity/labels/model metadata agree with the assessment,
+review presence agrees with routing, and the prepared review's complete original
+context equals the plan context. Mismatches raise before returning a report,
+request or inspection result. Two regressions cover the original same-request
+counterexample, mutation/replacement, capture snapshot mix-ups and inconsistent
+review selection. Valid reuse remains allowed: the same saved review is resolved
+against each coherent plan's own assessment. Historical sources, responses,
+receipts and routing/resolution policies are unchanged.

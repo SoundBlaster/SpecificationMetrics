@@ -206,5 +206,14 @@ class ProposalTests(unittest.TestCase):
         self.assertTrue(result['historical_cases_unchanged'])
 
 
+def load_tests(loader, tests, pattern):
+    """The existing offline policy CI entry point also checks semantic routing."""
+    # General discovery already finds that module; avoid adding it twice there.
+    if pattern is None:
+        for module in ('test_semantic_review_routing_v1', 'test_structured_semantic_review_v1', 'test_rich_review_pilot_v1'):
+            tests.addTests(loader.loadTestsFromName(module))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main()

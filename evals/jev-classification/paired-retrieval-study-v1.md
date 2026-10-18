@@ -102,9 +102,17 @@ blinding, not treatment blinding.
    tool configuration can keep a fact unresolved. Record adjudication identity,
    input/view hashes and rationale. Do not manufacture categorical gold for it.
 
-Independent annotation has **not run**. There is no scoring command or claimed
-accuracy in this preparation PR. The next reference/scoring change must freeze
-the adjudicated reference and its scoring rules before a live run is interpreted.
+At preparation time independent annotation had **not run**. The subsequent
+[eight-agent run](runs/2026-10-18-paired-blind-reference-v1/README.md) now preserves
+the independently dispatched views, source audit and a provisional view reference.
+The [design qualification](paired-reference-qualification-v1.md) rejects this
+eight-identity run as an H1/H2 paired reference: logical slots do not balance
+actual annotators. Its labels are diagnostic candidates only; immutable integrity
+receipts do not establish readiness. There is no claimed provider accuracy.
+H1/H2 require a new balanced reference version before interpretation.
+The [scoring v1 contract](paired-retrieval-scoring-v1.md) freezes denominators,
+unknown/error handling and H1/H2/H3 rules before provider observations. Its real
+H1/H2 results remain not evaluable under the current mandatory qualification.
 
 ### Integrator-only assignment v1
 
@@ -150,10 +158,15 @@ general proof of disjoint transitive dependencies.
   access to other packets does not bypass this handoff. Human/agent identity and
   exposure statements are operator attestations, not authenticated facts.
 
-The handoff remains `prepared_not_dispatched`: no actual identities are bound,
-no annotation has run, and neither receipt nor a valid private roster authorizes
-dispatch. If four suitable identities cannot be provisioned, pause annotation
-and redesign the handoff/cohort rather than reusing an exposed participant.
+The immutable handoff retains its original `prepared_not_dispatched` preparation
+status; its presence is not current dispatch evidence. The later eight-agent run
+uses a separately recorded execution refinement at the user's request: A–D are
+balanced assignment blocks with two distinct fresh invocations per block,
+rather than four actual returning identities. Its validator requires eight
+unique agents and baseline sealing order; it does not pass those eight agents
+off as a valid four-person roster. See that run's receipt and limitations for
+actual dispatch evidence. For a future four-person execution, if suitable
+identities cannot be provisioned, redesign rather than reuse exposed participants.
 
 `paired_reference_assignment_v1.py` reconstructs and checks the frozen plan,
 balanced coverage, family isolation, sealed-baseline prerequisite and exact

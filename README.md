@@ -1,6 +1,16 @@
 # SpecificationMetrics
 
 A Rust CLI for measuring Specification adoption in Python, Swift, and Rust.
+
+Python collection/evaluation tools use **Python 3.11+**, with 3.11 selected in
+`.python-version` and CI. Jev4Mellea 0.9.0 and the categorical SDK dependencies are
+pinned in [the current evaluation lock](evals/jev-classification/requirements-evaluation.lock).
+Use the repository `.venv` for local Python commands. Historical benchmark
+artifacts retain their actual recorded Python and SDK versions; their separate
+0.8.0 environment remains pinned for exact replay. See the
+[upgrade and compatibility checks](docs/jev4mellea-0.9-upgrade.md).
+The [categorical review bridge](docs/categorical-review-bridge-v1.md) connects
+native Jev batches and categorical results to the existing semantic review route.
 It scans the current source snapshot and reports the live ratio of distinct
 Specification definitions to remaining control-flow opportunities.
 
@@ -57,7 +67,13 @@ checks saved four-question responses and emits unaccepted proposals or explicit
 review/rejection diagnostics.
 The [paired retrieval study](evals/jev-classification/paired-retrieval-study-v1.md)
 freezes matching evidence views and validates local transport attribution before
-semantic comparison. Independent references and live results remain pending.
+semantic comparison. [Independent view annotations](evals/jev-classification/runs/2026-10-18-paired-blind-reference-v1/README.md)
+are available as diagnostics. Their actual annotator allocation is unbalanced;
+the mandatory design qualification rejects them as an H1/H2 paired reference.
+Live results remain pending.
+The [scoring contract](evals/jev-classification/paired-retrieval-scoring-v1.md)
+fixes denominators, abstention/error handling and qualification prerequisites;
+operational H3 results remain separate from semantic H1/H2 claims.
 
 ```bash
 export JEV_API_KEY='…'

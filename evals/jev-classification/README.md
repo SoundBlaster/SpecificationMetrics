@@ -1,5 +1,76 @@
 # Jev prompt evaluation
 
+The supported Python baseline is **3.11+** across collection, evaluation and CI.
+Install `requirements-evaluation.lock` into the repository `.venv` for
+the pinned Jev4Mellea 0.9.0 Responses integration and common evaluation tools.
+Native and ordinary models share category semantics; label-only Responses
+answers never acquire synthetic native probabilities. Old benchmark artifacts
+keep their historical runtime metadata. The ordinary-Luna 0.8.0 pilot requires
+an isolated environment from `requirements-categorical-pilot.lock` for exact
+replay; the `check` CI job retains that environment. The separate
+`evaluation-sdk-current` job checks 0.9.0 against all eight captured request and
+response pairs and runs the current review suites. See the
+[upgrade notes](../../docs/jev4mellea-0.9-upgrade.md) for commands and scope.
+
+Current paired-reference design assessment:
+[configuration qualification v2 and prepared repeatability pilot](paired-reference-qualification-v2.md).
+This supersedes the invocation-ID interpretation in qualification v1 while
+preserving its frozen artifacts and scoring v1. The subsequently authorized
+[24 Sol 6.1 Medium repeats](runs/2026-10-18-sol61-medium-repeatability-v1/README.md)
+completed in fresh contexts with no historical labels: all eight views were
+unanimous. Their top line is a model-specific comparator, not independent semantic
+truth. Preparation artifacts and the old scoring contract remain unchanged.
+
+The matched [Jev/Luna live comparison](runs/2026-10-18-jev-luna-sol-comparison-v1/diagnosis.md)
+completed all 16 requests: Jev agreed with 15/16 primary-axis labels but had five
+role/support consistency conflicts; Luna agreed with 7/16 and mostly abstained.
+The full raw-label comparison is 25/32 versus 15/32. These are agreement counts
+against Sol on four targets, not semantic accuracy or production acceptance rates.
+
+The subsequent [semantic-instruction parity repeat](runs/2026-10-18-semantic-instruction-parity-live-v1/README.md)
+reused those same 24 Sol annotations with **zero new Sol calls**. Transferring
+Sol's existing semantic guidance and category catalog raised Jev agreement from
+25/32 to 31/32 (primary axes 15/16 → 16/16) and reduced conflicts from five to one.
+Luna Decision rose from 15/32 to 18/32 while conflicts increased from one to two.
+All 16 native requests completed without TLS retries. This remains a small
+instruction-condition diagnostic; the general backend refactor is deferred.
+
+The [ordinary-Luna SDK pilot](runs/2026-10-18-ordinary-luna-live-v1/README.md)
+then used Jev4Mellea 0.8.0 / Responses, `gpt-6-luna` / low on those same eight
+views: **32/32 Sol agreement, 16/16 primary agreement and zero conflicts**.
+All eight calls completed in 34.939 seconds with no retries; usage was 35,167
+input / 874 output tokens. Native Jev and Luna Decision remain at 31/32 and
+18/32 from their saved run; Sol was not called again. Ordinary client latency
+was greater than the historical native HTTP timings, and monetary cost is unknown.
+This supports a bounded compatibility/quality observation, not general accuracy,
+retrieval gain or an unconditional efficiency claim. Python 3.11 is now the
+common supported baseline, including the unchanged historical offline replays.
+
+The [consolidated provider comparison](provider-comparison-2026-10-18.md) separates
+quality, timing scope, repeatability and still-unattributed monetary cost. It also
+reconciles ordinary Luna's input with the cache read/write buckets in the raw
+responses. The [semantic review cascade contract](../../docs/semantic-review-cascade-v1.md)
+selects unresolved System One assessments for one ordinary-Luna review and keeps
+remaining ambiguity explicit in PR review. Its offline first-stage router is
+implemented in `semantic_review_routing_v1`, with named SpecificationCore rules,
+all-reason traces and immutable source/action bindings. Run
+`../../.venv/bin/python replay_semantic_review_routing_v1.py` from this directory:
+the pinned Jev cohort retains seven views and selects one for review. The
+[structured ordinary-review consumer](../../docs/structured-semantic-review-v1.md)
+prepares independent requests and validates captured rich responses, exact
+citations and provisional resolution. The separately authorized
+[one-request live pilot and report](../../docs/rich-review-pilot-2026-10-18.md)
+returned `policy / limited` with an exact quote and final `needs_review`.
+It used one POST with zero retries; historical observations stay unchanged.
+The [categorical SDK bridge](../../docs/categorical-review-bridge-v1.md) now connects
+one native Jev batch to the same categorical result abstraction, unchanged routing
+Specifications and optional rich Luna review preparation. Its offline replay
+keeps seven proposals, selects one review and can reuse the exact matching saved
+Luna receipt without another call:
+`../../.venv/bin/python replay_categorical_review_v1.py --reuse-saved-review`.
+The publisher is not enabled. Run `../../.venv/bin/python rich_review_pilot_v1.py --verify`
+for offline replay; `--live` is an opt-in dispatch and an already spent preparation cannot be repeated.
+
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
 

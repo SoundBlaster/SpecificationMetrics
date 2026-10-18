@@ -5,13 +5,29 @@ on:
   pull_request:
 
 jobs:
+  evaluation-sdk-current:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install current pinned Jev4Mellea 0.9.0 evaluation environment
+        run: python -m pip install -r evals/jev-classification/requirements-evaluation.lock
+      - name: Check SDK compatibility and semantic review offline
+        working-directory: evals/jev-classification
+        run: |
+          python -W error -m unittest -v test_jev4mellea_compatibility.py
+          python -W error -m unittest -v test_categorical_review_bridge_v1.py
+          python -W error -m unittest -v test_recommendation_policy_v1.py test_retrieval_fact_adapter_v1.py test_coreinfra_transport.py
+
   retrieval-offline-replay:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
       - name: Install ranking dependencies only
         run: python -m pip install -r evals/jev-classification/requirements-retrieval-replay.txt
       - name: Replay local retrieval evidence without model download or inference
@@ -34,9 +50,9 @@ jobs:
           components: clippy, rustfmt
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
-      - run: python -m pip install pydantic==2.13.5
-      - run: python -m pip install -r evals/jev-classification/requirements-policy.txt
+          python-version: "3.11"
+      - name: Install historical Jev4Mellea 0.8.0 environment for frozen replay
+        run: python -m pip install -r evals/jev-classification/requirements-categorical-pilot.lock
       - run: cargo fmt --check
       - run: cargo test --locked
       - run: cargo clippy --all-targets --locked -- -D warnings
@@ -117,6 +133,22 @@ jobs:
           python3 paired_retrieval_study_v1.py --verify runs/2026-10-18-paired-retrieval-preparation-v1
           python3 -W error -m unittest -v test_paired_reference_assignment_v1.py
           python3 paired_reference_assignment_v1.py --preparation runs/2026-10-18-paired-retrieval-preparation-v1 --verify runs/2026-10-18-paired-reference-assignment-v1
+          python3 -W error -m unittest -v test_paired_blind_reference_v1.py
+          python3 paired_blind_reference_v1.py --run runs/2026-10-18-paired-blind-reference-v1
+          python3 -W error -m unittest -v test_paired_reference_qualification_v1.py
+          python3 paired_reference_qualification_v1.py --verify runs/2026-10-18-paired-reference-qualification-v1
+          python3 -W error -m unittest -v test_paired_retrieval_scoring_v1.py
+          python3 paired_retrieval_scoring_v1.py --verify-contract
+          python3 -W error -m unittest -v test_paired_reference_qualification_v2.py test_paired_reference_repeatability_v1.py
+          python3 paired_reference_qualification_v2.py --verify runs/2026-10-18-paired-reference-qualification-v2
+          python3 paired_reference_repeatability_v1.py --verify runs/2026-10-18-paired-reference-repeatability-v1
+          python3 -W error -m unittest -v test_sol_reference_repeatability_v1.py
+          python3 sol_reference_repeatability_v1.py
+          python3 -W error -m unittest -v test_sol_top_line_comparison_v1.py
+          # Reuse the frozen Sol comparator; no hosted inference in CI.
+          python3 -W error -m unittest -v test_instruction_parity_v1.py
+          python3 -W error -m unittest -v test_categorical_luna_pilot_v1.py
+          python3 sol_top_line_comparison_v1.py --verify-contract
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
           python3 validate_scope_binding_annotations.py

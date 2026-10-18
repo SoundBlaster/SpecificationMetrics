@@ -23,6 +23,17 @@
   annotation context, with a balanced mixture of evidence modes across targets;
   do not correlate one annotator with one evidence mode. Keep the combined
   catalog and mapping with the integrator. Document the actual isolation boundary.
+- Annotation integrity is not design qualification. For human/stable participants,
+  track identity and mode exposure. For fresh stateless LLM contexts, group by
+  model/reasoning/decoding and common rubric/prompt configuration; agent ID records
+  execution/context identity, not a distinct stable rater. Keep treatment-specific
+  inputs out of the configuration fingerprint. Distinguish requested settings
+  from observed runtime metadata; unknown backend fields are not attestation.
+  Require versioned qualification and same-view repeatability diagnostics before
+  promoting a provisional reference. Neither invocation counts nor cross-view
+  agreement prove bias, stability or semantic truth. Preserve earlier assessments
+  and raw runs when correcting qualification criteria; use a new consumer version
+  rather than retroactively changing a frozen scoring contract.
 - When varying helper/type-definition visibility, do not group targets sharing
   that hidden dependency if another case reveals it. Balance evidence modes
   across distinct dependency families and check for direct definition leakage;
