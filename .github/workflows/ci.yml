@@ -129,6 +129,8 @@ jobs:
           python3 -W error -m unittest -v test_sol_reference_repeatability_v1.py
           python3 sol_reference_repeatability_v1.py
           python3 -W error -m unittest -v test_sol_top_line_comparison_v1.py
+          # Reuse the frozen Sol comparator; no hosted inference in CI.
+          python3 -W error -m unittest -v test_instruction_parity_v1.py
           python3 sol_top_line_comparison_v1.py --verify-contract
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py

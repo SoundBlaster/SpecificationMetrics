@@ -15,6 +15,14 @@ role/support consistency conflicts; Luna agreed with 7/16 and mostly abstained.
 The full raw-label comparison is 25/32 versus 15/32. These are agreement counts
 against Sol on four targets, not semantic accuracy or production acceptance rates.
 
+The subsequent [semantic-instruction parity repeat](runs/2026-10-18-semantic-instruction-parity-live-v1/README.md)
+reused those same 24 Sol annotations with **zero new Sol calls**. Transferring
+Sol's existing semantic guidance and category catalog raised Jev agreement from
+25/32 to 31/32 (primary axes 15/16 → 16/16) and reduced conflicts from five to one.
+Luna Decision rose from 15/32 to 18/32 while conflicts increased from one to two.
+All 16 native requests completed without TLS retries. This remains a small
+instruction-condition diagnostic; the general backend refactor is deferred.
+
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
 
