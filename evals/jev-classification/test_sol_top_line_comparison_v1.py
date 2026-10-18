@@ -146,5 +146,11 @@ class SolComparisonTests(unittest.TestCase):
                 self.assertFalse(result['automatic_fact_acceptance'])
 
 
+def load_tests(loader, tests, pattern):
+    if pattern is None:
+        tests.addTests(loader.loadTestsFromName('test_sol_top_line_comparison_v2'))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main()

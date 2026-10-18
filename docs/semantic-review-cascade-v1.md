@@ -40,7 +40,7 @@ earlier row determines the route.
 | Condition | Route and reason |
 | --- | --- |
 | Source identity/digest is invalid, response is missing/invalid, or transport fails | Mark `analysis_incomplete`; report operational cause separately. Do not turn failure into a semantic label or silently invoke another model. |
-| A required definition or intent/proposal/spec document is known to be missing | Preserve the evidence gap. A review can inspect available evidence, but cannot mark the missing premise resolved by guessing. |
+| A required definition or intent/proposal/spec document is known to be missing | Select `ordinary_review`, reason `missing_premises`, status `needs_review` (`review_status=not_run` until execution). Preserve the gap through any completed review; it cannot resolve by guessing or omission. An earlier operational failure instead selects `stop_incomplete` / `analysis_incomplete`, while retaining this semantic reason. |
 | Existing SpecificationCore consistency rules reject the tuple | Ordinary review, `inconsistent_answers`. Preserve all original labels. |
 | `concern_kind=unknown`, or evidence support is `insufficient` or `limited` | Ordinary review, `unresolved_role` and/or `insufficient_evidence`. |
 | A required axis is unknown, or supplied trusted facts contradict a material claim | Ordinary review, `required_axis_unknown` or `evidence_conflict`. |
