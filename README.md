@@ -9,6 +9,8 @@ Use the repository `.venv` for local Python commands. Historical benchmark
 artifacts retain their actual recorded Python and SDK versions; their separate
 0.8.0 environment remains pinned for exact replay. See the
 [upgrade and compatibility checks](docs/jev4mellea-0.9-upgrade.md).
+The [categorical review bridge](docs/categorical-review-bridge-v1.md) connects
+native Jev batches and categorical results to the existing semantic review route.
 It scans the current source snapshot and reports the live ratio of distinct
 Specification definitions to remaining control-flow opportunities.
 

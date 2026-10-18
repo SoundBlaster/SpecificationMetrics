@@ -860,3 +860,29 @@ link. The historical suite's exact-version/source checks are the regression
 gate; they must not be relaxed to accommodate an environment mix-up. No frozen
 source, lock, provider response, receipt or label was changed.
 The corrected run passed all seven historical tests in 271.596 seconds.
+
+## Preserve request cardinality at categorical boundaries (2026-10-18)
+
+Integrating Jev4Mellea 0.9.0 revealed a contract distinction, not an SDK defect:
+its new native categorical wrappers require one Choice question, whereas this
+classifier sends four axes in one System One request. A direct four-question
+wrapper call rejects before dispatch. Splitting it would silently multiply the
+request budget by four and change the execution condition. The bounded bridge
+retains `TypeSafeProvider.system_one` batching and uses public
+`project_choice_results`, with a regression asserting one request, original
+question IDs/native distributions and caller-owned provider lifetime.
+
+The SDK also applies a tighter probability-mass check than the historical
+capture parser's scoped allowance. A synthetic 0.5% deficit confirms that the
+old parser warns while the SDK rejects. The bridge preserves that rejection as
+`analysis_incomplete`, without renormalization, semantic relabeling or an ordinary
+fallback. This is a parser-contract difference, not evidence of poor model
+reasoning. All eight real captured Jev responses pass both parsers.
+
+The full offline bridge replay retains seven proposals and selects the same one
+review. That review's complete request matches the pinned earlier Luna request,
+so its saved receipt can be reused after full verification. Its result remains
+`needs_review`; connecting uniform interfaces neither clears evidence gaps nor
+establishes semantic correctness. See the
+[bridge contract](../../docs/categorical-review-bridge-v1.md) and
+`test_categorical_review_bridge_v1.py` for the concrete regression checks.
