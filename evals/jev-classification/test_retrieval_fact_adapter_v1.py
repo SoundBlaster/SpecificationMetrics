@@ -15,7 +15,7 @@ from decision_choice_contract_v2 import ChoiceContractError, ResponseIdentityErr
 from prepare_retrieval_context_v1 import PROVIDERS, QUESTIONS, prepare, wire, write_bundle
 from recommendation_policy_v1.context import Facts
 from recommendation_policy_v1.proposals import fingerprint, questions
-from retrieval_fact_adapter_v1 import adapt_response
+from retrieval_fact_adapter_v1 import adapt_response, producer_digests
 from retrieval_fact_adapter_v1.native import parse_response
 from retrieval_index_v1.source import digest, encoded
 from test_retrieval_context_v1 import Encoder
@@ -41,6 +41,21 @@ def raw(body):
 
 
 class NativeContractTests(unittest.TestCase):
+    def test_provenance_covers_transitive_sources_and_installed_rule_runtime(self):
+        before = producer_digests()
+        critical = ('prepare_retrieval_context_v1.py', 'recommendation_policy_v1/context.py',
+                    'recommendation_policy_v1/proposals.py', 'retrieval_index_v1/source.py')
+        self.assertTrue(set(critical) <= before.keys())
+        self.assertTrue(any(k.startswith('@dependency/specification_core/') for k in before))
+        self.assertTrue(any(k.startswith('@dependency/pydantic_core/') for k in before))
+        root = Path(__file__).resolve().parent
+        original_read = Path.read_bytes
+        for name in critical:
+            def changed(path):
+                return b'changed producer bytes' if path == root / name else original_read(path)
+            with self.subTest(name=name), patch.object(Path, 'read_bytes', changed):
+                self.assertNotEqual(before[name], producer_digests()[name])
+
     def parse(self, body, provider='jev-coreinfra'):
         return parse_response(raw(body), provider=provider, model=PROVIDERS[provider][0])
 

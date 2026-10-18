@@ -73,7 +73,14 @@ cannot be distinguished by these native bytes alone.
 
 The report records the selected request wire, model state, scope, target-state,
 accepted-fact fingerprint and exact response SHA-256, plus adapter producer
-digests. It does not create rationale, quotes or source locators that native
+digests. The inventory follows the conservative static import closure of the
+adapter entry point and hashes installed SpecificationCore, Pydantic/core and
+their validation typing dependencies, including distribution and Python runtime
+identities. PR72 review exposed that the original explicit list omitted direct
+and transitive dependencies; regression checks now require those paths and
+verify that changing their bytes changes provenance. This is a confirmed
+reproducibility repair, without rewriting earlier reports or semantic labels.
+It does not create rationale, quotes or source locators that native
 Choice did not return. Therefore `rich_proposal_compatible=false`: these values
 cannot be passed off as the citation-bearing `fact-proposal/v1` response or
 automatically accepted by the ownership adapter. Accepted facts, metric counts

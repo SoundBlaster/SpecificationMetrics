@@ -10,6 +10,7 @@ from recommendation_policy_v1.proposals import fingerprint, questions
 from retrieval_index_v1.source import digest, encoded
 
 from .context import NativeProposal
+from .dependencies import producer_inventory
 from .native import parse_response
 from .responsibilities_compatible import ResponsibilitiesCompatibleSpec
 from .role_support_consistent import RoleSupportConsistentSpec
@@ -21,11 +22,7 @@ RULES = ((RoleSupportConsistentSpec(), 'unknown_requires_insufficient_and_vice_v
 
 def producer_digests():
     root = Path(__file__).resolve().parent.parent
-    paths = sorted((root / 'retrieval_fact_adapter_v1').glob('*.py'))
-    paths += [root / name for name in ('adapt_retrieval_facts_v1.py', 'decision_choice_contract.py',
-                                      'decision_choice_contract_v2.py', 'coreinfra_retry_run.py',
-                                      'question_grouping.py')]
-    return {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
+    return producer_inventory(root)
 
 
 def adapt_response(preparation, provider, raw):
