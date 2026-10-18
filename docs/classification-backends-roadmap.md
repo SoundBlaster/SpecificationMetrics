@@ -28,10 +28,12 @@ environment uses [SDK 0.9.0](jev4mellea-0.9-upgrade.md), and the
 [categorical review bridge](categorical-review-bridge-v1.md) connects captured
 native results to the existing routing Specifications and independent review.
 
-These bounded Python evaluation consumers do not implement the general Rust CLI
-backend interface, a Codex CLI adapter or local server adapters. The delivery
-sequence below addresses that remaining scope; it does not require repeating
-completed experiments or grant new inference authorization.
+The experimental [Rust categorical packet contract and Codex CLI adapter](categorical-backend-contract-v1.md)
+now provide offline preparation and explicit bounded execution through separate
+commands. They do not migrate the existing scanner's Jev provider, implement
+general API/local server adapters, or establish hosted model compatibility.
+The remaining delivery sequence does not require repeating completed experiments
+or grant new inference authorization.
 
 ## Planned backends
 
@@ -117,8 +119,8 @@ subscription allowance usage and local resource/runtime costs separately; an
 already-paid subscription or local server is not unlimited zero-cost capacity.
 Do not invent dollar equivalents when billing evidence is unavailable.
 
-First remaining implementation slice: define the general proposal/capability
-contract and Codex CLI adapter, reusing the existing categorical SDK integration
-where applicable. Review the captured ordinary Luna low-effort pilot before
-preparing a separately authorized medium/high comparison. Ollama and LM Studio
-follow as explicit local adapter milestones under the same contract.
+Next slice: qualify the experimental Codex route on one approved frozen packet,
+then connect prepared backend results to the existing validation consumers and
+add the general API route. Review the captured ordinary Luna low-effort pilot
+before preparing a separately authorized medium/high comparison. Ollama and
+LM Studio follow as explicit local adapter milestones under the same contract.

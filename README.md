@@ -34,6 +34,10 @@ with **Ollama** and **LM Studio** planned as local model-server backends.
 Backend comparisons will follow the proposed
 [prompt-parity protocol](docs/classification-prompt-parity.md), separating model
 configuration effects from differences in semantic instructions.
+The experimental [categorical backend contract](docs/categorical-backend-contract-v1.md)
+adds offline `prepare-classification` and separately authorized
+`run-classification` for a bounded Codex CLI packet, without changing the
+existing scanner classification or S/U authority.
 
 ## Unified collection
 
