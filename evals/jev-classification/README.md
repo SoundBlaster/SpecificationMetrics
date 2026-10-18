@@ -53,8 +53,12 @@ all-reason traces and immutable source/action bindings. Run
 the pinned Jev cohort retains seven views and selects one for review. The
 [structured ordinary-review consumer](../../docs/structured-semantic-review-v1.md)
 prepares independent requests and validates captured rich responses, exact
-citations and provisional resolution. It makes no hosted requests; the executor
-and publisher are not enabled, so historical selected reviews remain `not_run`.
+citations and provisional resolution. The separately authorized
+[one-request live pilot and report](../../docs/rich-review-pilot-2026-10-18.md)
+returned `policy / limited` with an exact quote and final `needs_review`.
+It used one POST with zero retries; historical observations stay unchanged.
+The publisher is not enabled. Run `../../.venv/bin/python rich_review_pilot_v1.py --verify`
+for offline replay; `--live` is an opt-in dispatch and an already spent preparation cannot be repeated.
 
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
