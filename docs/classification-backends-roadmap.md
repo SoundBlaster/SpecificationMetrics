@@ -69,6 +69,14 @@ merely because it appears in this plan.
 | 3 | LM Studio adapter | The same contract suite passes against its adapter; selected server/model compatibility is verified independently |
 | 4 | Matched quality/cost/latency comparison | Compare supported configurations on frozen packets with reviewed disagreements and complete coverage accounting |
 
+Phase 4 additionally requires the
+[prompt-parity protocol](classification-prompt-parity.md): all selected backends
+receive the same canonical semantic guidance and evidence view, with rendered
+prompt hashes and capability differences recorded. Existing Sol/native pipeline
+results used unequal instruction detail; they remain diagnostics and must not
+be reused as an equal-instruction model benchmark. Establish parity before the
+separate accepted-facts placeholder ablation or model-selection conclusions.
+
 Measure both `medium` and `high` only for models that expose those settings; do
 not assume more reasoning makes a cheap model as accurate as the strong-model
 comparator. A local pilot requires an explicitly selected model and available
