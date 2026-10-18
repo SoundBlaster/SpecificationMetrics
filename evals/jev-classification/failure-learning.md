@@ -627,3 +627,25 @@ stop on native identity mismatch, reject rebound-but-inconsistent receipts/ledge
 and prevent a blank reference template being silently replaced by author labels.
 These checks establish orchestration behavior, not provider accuracy; references
 and live observations for this cohort remain pending.
+
+## PR73 annotation identity confound (2026-10-18)
+
+- **Confirmed preparation defect:** one-packet-per-context instructions did not
+  specify a balanced assignment. An operator could assign baseline-only and
+  retrieval-only annotators, or reuse one human for the shared R02/R03 source
+  family. No annotation or provider outcome had yet been collected.
+- **Correction:** a separate frozen assignment v1 binds eight existing views to
+  four distinct annotator slots, each receiving both modes in different source
+  families. Paired views and R02/R03 never share an identity. A private roster
+  must bind distinct unexposed actual identities across contexts; labels and
+  participant identity cannot be reset by opening a chat.
+- **Leakage evidence:** each slot's later retrieval view contains declarations
+  withheld from its baseline. Baseline must be sealed before the later packet is
+  released. This prevents that direct carryover, but leaves annotation order and
+  general learning effects unestimated. Do not describe the handoff as fully
+  independent or order-balanced, or infer provider quality from its existence.
+- **Prevention:** offline tests reject mode-only allocation, paired/shared-family
+  grouping, substituted families, absent sealing prerequisites, reversed order,
+  reused/exposed roster identities, changed view hashes and receipt/provenance
+  mutations. The original 51 preparation artifacts remain byte-for-byte intact.
+  Actual dispatch and identity assertions still require operator enforcement.

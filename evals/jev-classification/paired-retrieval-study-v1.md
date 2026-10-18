@@ -87,9 +87,9 @@ model answers, the selection-purpose table above, expected labels or
 The presence of source hits can reveal evidence mode: this is label/model-output
 blinding, not treatment blinding.
 
-1. Deliver only one packet/template per fresh annotation context. Never show
-   baseline and retrieval of the same target to one annotator. Fresh contexts
-   also prevent the shared R02/R03 file from leaking between those cases.
+1. Use the frozen [assignment plan](runs/2026-10-18-paired-reference-assignment-v1/plan.json)
+   and the identity/order rules below. Deliver only one packet/template per fresh
+   annotation context. A fresh context is not proof of a fresh human memory.
 2. Record each view's justified categories, rationale, exact source locators and
    unresolved questions. `unknown`/insufficient support is not automatically an
    error. Do not infer an absent specification from missing retrieved hits.
@@ -105,6 +105,71 @@ blinding, not treatment blinding.
 Independent annotation has **not run**. There is no scoring command or claimed
 accuracy in this preparation PR. The next reference/scoring change must freeze
 the adjudicated reference and its scoring rules before a live run is interpreted.
+
+### Integrator-only assignment v1
+
+PR73 review found that the original instructions allowed evidence mode to be
+confounded with annotator identity. The following plan is a separate, versioned
+handoff, bound to the existing preparation manifest, receipt and exact view
+bytes. The original 51 preparation files are preserved unchanged.
+
+| Annotator slot | First: baseline | Second: retrieval | Dependency families |
+|---|---|---|---|
+| A | R01 | R02 | workspace allocation / subject source write |
+| B | R02 | R01 | subject source write / workspace allocation |
+| C | R03 | R04 | subject source write / workspace paths |
+| D | R04 | R03 | workspace paths / subject source write |
+
+Each annotator sees both modes across two distinct dependency families; no one
+receives paired views or both R02 and R03. R02/R03 share a module and are
+deliberately treated as the same family, despite their different target roles.
+These are conservative grouping constraints for this supplied cohort, not a
+general proof of disjoint transitive dependencies.
+
+- Bind A–D to **four distinct actual annotators**, each without prior exposure to
+  this cohort, its labels, outputs or combined mapping. Track identity/memory
+  across sessions: renaming one person or stateful agent does not create a new
+  annotator. The current integrator, who has inspected all views, is ineligible.
+  Keep real identities in a private roster, not in the public artifact.
+- Give each annotator only their first packet/template, without arm name, the
+  combined plan or this document. Obtain and seal the completed baseline
+  annotation with its content hash before releasing that slot's second packet.
+  Keep a dispatch log binding actual identity, task/view hashes, session IDs,
+  annotation hash and release order. Violations invalidate that annotation;
+  a new unexposed annotator needs the same balanced two-task slot, not a one-off
+  replacement of only its baseline or retrieval result.
+- The plan audits supplied declaration/helper identities: for all four slots,
+  the later packet contains definitions withheld from that slot's baseline.
+  Therefore annotations use baseline-first order. Reversing the order would
+  contaminate baseline for a human or shared-memory agent, even with a new chat.
+  Later annotations can still have learning/fatigue effects; **annotation order
+  is not balanced or estimated** in this pilot. The model request schedule's
+  alternating order remains unchanged and does not cure annotation carryover.
+- Keep one context per task even within a slot. For agent annotators also record
+  a consistent model/configuration and verify that hidden shared memory or
+  access to other packets does not bypass this handoff. Human/agent identity and
+  exposure statements are operator attestations, not authenticated facts.
+
+The handoff remains `prepared_not_dispatched`: no actual identities are bound,
+no annotation has run, and neither receipt nor a valid private roster authorizes
+dispatch. If four suitable identities cannot be provisioned, pause annotation
+and redesign the handoff/cohort rather than reusing an exposed participant.
+
+`paired_reference_assignment_v1.py` reconstructs and checks the frozen plan,
+balanced coverage, family isolation, sealed-baseline prerequisite and exact
+packet/template hashes. Its receipt binds producer sources; rebinding a changed
+plan's checksum cannot bypass reconstruction. Optional roster validation rejects
+duplicate registered identities or declared prior exposure; it cannot detect
+someone lying or using aliases, nor enforce the later manual release order.
+
+```bash
+../../.venv/bin/python paired_reference_assignment_v1.py \
+  --preparation runs/2026-10-18-paired-retrieval-preparation-v1 \
+  --verify runs/2026-10-18-paired-reference-assignment-v1
+# Optional private JSON list: one entry per A/B/C/D, actual_identity (canonical
+# nonempty string), prior_cohort_exposure: false. Do not commit real identities.
+# Add --roster /private/path/annotators.json to check that binding before handoff.
+```
 
 ## Hypotheses and reporting contract
 
