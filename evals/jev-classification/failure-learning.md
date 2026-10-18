@@ -759,3 +759,29 @@ agreement is not a production acceptance rate. Native API framing also differs
 from Sol's fuller annotation brief, so this is a pipeline comparison, not an
 intrinsic model ranking. One 0.99 Jev probability total remains a recorded warning
 under the existing versioned allowance; it did not cause these semantic failures.
+
+## Align task semantics before attributing model limitations (2026-10-18)
+
+The [instruction-parity repeat](runs/2026-10-18-semantic-instruction-parity-live-v1/diagnosis.md)
+transferred the existing Sol semantic paragraph and four-axis category catalog
+into native question instructions. Its 24 annotations were reused unchanged;
+no Sol calls, state/retrieval changes, semantic retries or gate changes occurred.
+Jev agreement rose 25/32 → 31/32 and role/support conflicts fell 5 → 1. Luna
+agreement rose 15/32 → 18/32 but conflicts increased 1 → 2. Do not conflate better
+role resolution with coherence, unknown agreement with positive resolution, or
+this small pipeline diagnostic with a representative model-accuracy benchmark.
+
+Confirmed asymmetry: the earlier Sol brief explained unresolved placeholders,
+whole-target responsibility and unavailable definitions more explicitly. The new
+condition improves Jev substantially, but individual-clause causality and
+placeholder anchoring remain unproved. Keep the paragraph/catalog changes and
+cost together in the record: input tokens grew by 42.0% for Jev and 46.7% for Luna.
+Next test a smaller semantic contract before generalizing the backend runner.
+
+Preparation also found a replay portability defect: PR #78's test compared current
+analysis-host fingerprints with frozen historical fingerprints. Cross-host
+comparison now excludes only three documented analysis-time diagnostic locations;
+the captured execution inventory, all files/receipts, producer source, request and
+response identity and semantic results remain strict. Regression checks allow
+host-only differences and reject execution/label changes. Frozen producer files
+and observations were preserved.
