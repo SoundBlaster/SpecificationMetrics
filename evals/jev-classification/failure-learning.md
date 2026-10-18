@@ -736,3 +736,26 @@ instruction-bounded isolation limits remain explicit. Replay regressions inject
 quote/span, context/model/input, inventory and authority mutations; an injected
 disagreement stays visible rather than being repaired by majority vote. None of
 these synthetic mutations is an observed annotation failure.
+
+## Matched Jev/Luna comparison exposes support conflicts and abstention (2026-10-18)
+
+The authorized [16-call live run](runs/2026-10-18-jev-luna-sol-comparison-v1/diagnosis.md)
+completed in 16 attempts with no TLS failures or retries. Every native response
+passed identity/shape checks. Jev matched 15/16 primary-axis Sol labels but only
+2/8 support labels and produced five role/support conflicts; Luna matched 7/16
+primary-axis labels, abstained on 7/8 roles and produced one conflict. Existing
+Specification-based consistency rules correctly required review for those six
+tuples; no gate was weakened and no model labels were repaired.
+
+Confirmed causes are limited to the observed categorical combinations, not the
+models' internal reasoning. Unknown/insufficient values in initial accepted facts
+are a possible anchoring source, not a proven explanation. A proposed eight-call
+state-only ablation on explicit-Specification and mechanics controls isolates
+that hypothesis before altering instructions. It has not been executed.
+
+Keep coverage, raw agreement, coherence and useful positive resolution separate:
+Luna's mostly coherent abstentions are not strong agreement with Sol; Jev's role
+agreement is not a production acceptance rate. Native API framing also differs
+from Sol's fuller annotation brief, so this is a pipeline comparison, not an
+intrinsic model ranking. One 0.99 Jev probability total remains a recorded warning
+under the existing versioned allowance; it did not cause these semantic failures.
