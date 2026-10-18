@@ -12,7 +12,7 @@ import rich_review_pilot_v1 as pilot
 from rich_review_report_v1 import render
 from structured_semantic_review_v1.preparation import CONTRACT, MODEL, encoded
 
-LIVE_RESULT_RECEIPT_SHA256 = None  # Filled after the authorized one-request capture; not a producer input.
+LIVE_RESULT_RECEIPT_SHA256 = '25bc5df1412d62b8daf1ee2d129bc9e3e39161c4816d486e5dea36f905eedcbd'
 
 
 def response(prepared, *, role='policy', quote=None, rationale='Synthetic offline review, not provider evidence.'):

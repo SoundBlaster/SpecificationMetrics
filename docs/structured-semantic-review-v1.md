@@ -1,8 +1,9 @@
 # Structured ordinary-Luna review v1
 
 Date: 2026-10-18. Status: offline request preparation, captured Responses adapter
-and provisional resolution policy implemented. No network executor, live rich
-review, budget enforcement service or PR publisher is enabled by this module.
+and provisional resolution policy implemented. A separate bounded executor and
+[one live pilot](rich-review-pilot-2026-10-18.md) now exercise this consumer.
+This module itself performs no network calls; no PR publisher is enabled.
 
 This implements delivery step 2 of the [cascade contract](semantic-review-cascade-v1.md)
 on top of the [first-stage router](semantic-review-cascade-v1.md#implemented-offline-routing).
@@ -126,6 +127,8 @@ this is not a new Luna quality result. A saved historical label-only Responses
 body is deliberately rejected as a rich review. Existing policy CI composes this
 suite through `unittest.load_tests`; workflow files are unchanged.
 
-Next: render a revision-bound PR report for all three statuses and prepare a
-bounded one-review execution with a dispatch receipt. Publish or invoke hosted
-inference only within separately established authorization and budget.
+The separate `rich_review_pilot_v1.py` executor and `rich_review_report_v1.py`
+renderer now implement a one-request run and historical-revision report. The
+authorized [live result](rich-review-pilot-2026-10-18.md) is `needs_review`, with
+an exact quote and limited role support. Publication to GitHub comments remains
+disabled. Further inference needs a new explicit scope and budget.

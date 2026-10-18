@@ -1,7 +1,8 @@
 # Semantic review cascade v1
 
-Date: 2026-10-18. Status: offline first-stage routing and captured ordinary-review
-adaptation implemented; the network executor and PR publisher remain planned.
+Date: 2026-10-18. Status: first-stage routing, captured ordinary-review adaptation,
+a bounded one-request executor and report renderer implemented. A first live
+pilot is recorded; publication to GitHub comments remains disabled.
 
 ## Purpose
 
@@ -198,6 +199,7 @@ discovery finds the routing module directly without adding a duplicate suite.
 
 The [structured review consumer](structured-semantic-review-v1.md) now prepares
 independent strict-schema ordinary-Luna requests and checks captured Responses
-reviews, quotations and provisional resolution. Its network executor and report
-publisher are not enabled. Historical label-only pilot answers remain distinct
+reviews, quotations and provisional resolution. A separate
+[bounded executor and live report](rich-review-pilot-2026-10-18.md) exercise this
+consumer; the comment publisher is not enabled. Historical label-only pilot answers remain distinct
 and cannot be presented as already completed rich reviews.
