@@ -115,5 +115,11 @@ class RepeatabilityTests(unittest.TestCase):
                 verify(output)
 
 
+def load_tests(loader, tests, pattern):
+    if pattern is None:
+        tests.addTests(loader.loadTestsFromName('test_paired_reference_repeatability_v2'))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main()

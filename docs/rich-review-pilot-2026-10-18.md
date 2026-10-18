@@ -1,5 +1,10 @@
 # One live rich review on SpecGraph
 
+For a future execution use [runtime v2](../evals/jev-classification/rich-review-runtime-v2.md),
+which initializes fallible runtime metadata before acquiring its dispatch lease.
+The v1 code and artifacts below remain immutable historical evidence; no old
+preparation or live authorization can be reused by v2.
+
 Observed: 2026-10-18 16:43:47.464–16:43:58.032 UTC. Status: completed review,
 remaining semantic uncertainty. This is one historical development view, not
 an accuracy estimate, model ranking or production qualification.

@@ -195,5 +195,11 @@ class SavedCaptureTests(unittest.TestCase):
         self.assertEqual(verified['additional_hosted_requests'], 0)
 
 
+def load_tests(loader, tests, pattern):
+    if pattern is None:
+        tests.addTests(loader.loadTestsFromName('test_rich_review_pilot_v2'))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main()
