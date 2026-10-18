@@ -1,5 +1,7 @@
 # Paired retrieval scoring v1
 
+For new incomplete-run diagnostics, use the [v2 operational consumer](../../docs/paired-prefix-scoring-v2.md). This v1 is retained for exact historical replay; its early incomplete return does not preserve completed prefix rows.
+
 ## Frozen scope and authority
 
 This contract is fixed before observing responses to the frozen paired provider
