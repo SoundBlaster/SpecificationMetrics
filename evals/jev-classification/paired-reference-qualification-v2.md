@@ -58,7 +58,10 @@ cross-task messages or delegation. The shared filesystem is instruction-bounded,
 not an OS sandbox. Record that limitation rather than assert audited isolation.
 
 There are three deterministic blocks, each containing all eight views and equal
-mode counts. Within each case pair, the first mode alternates by case/block.
+mode counts. V1 intended per-case first-mode alternation, but its frozen schedule
+kept R03 baseline-first and R04 retrieval-first in every block. For future runs,
+use the [portable, counterbalanced v2 preparation](../../docs/portable-repeatability-v2.md).
+The historical schedule and labels remain unchanged; order effects are unestimated.
 This interleaves modes across time. Separate fresh contexts prevent direct
 cross-view memory; block effects can still be described, not estimated reliably
 from this small cohort. The frozen task order and all exact input/prompt hashes
