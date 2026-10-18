@@ -48,6 +48,9 @@ refreshes that index before assembling source-bound Jev/Luna draft requests.
 The [native fact-response adapter](evals/jev-classification/retrieval-fact-response-adapter-v1.md)
 checks saved four-question responses and emits unaccepted proposals or explicit
 review/rejection diagnostics.
+The [paired retrieval study](evals/jev-classification/paired-retrieval-study-v1.md)
+freezes matching evidence views and validates local transport attribution before
+semantic comparison. Independent references and live results remain pending.
 
 ```bash
 export JEV_API_KEY='…'

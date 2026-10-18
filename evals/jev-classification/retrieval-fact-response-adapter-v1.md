@@ -99,7 +99,9 @@ probability/confidence validation, stale accepted facts, known-field overwrite
 rejection, no preparation mutation, CLI exit states and exclusive output writes.
 Synthetic response fixtures are test data, not provider observations or gold.
 
-Next: freeze paired baseline/retrieval preparations and independent references,
-then connect the new adapter to a bounded transport inspector before a separately
-authorized Jev/Luna run. Source retrieval quality and semantic accuracy require
-that experiment; an offline decoder test cannot establish them.
+The [paired study v1](paired-retrieval-study-v1.md) now freezes baseline/retrieval
+inputs and blank independent-reference packets, stages a bounded execution and
+connects this adapter to a local transport inspector. Independent annotation,
+adjudication and separately authorized live inference remain pending. Source
+retrieval quality and semantic accuracy require that experiment; an offline
+decoder test cannot establish them.

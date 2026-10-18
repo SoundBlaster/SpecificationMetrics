@@ -32,6 +32,17 @@ def unrelated(value):
 
 
 class IncrementalTests(unittest.TestCase):
+    def test_typed_predicate_declarations_are_indexed_with_local_helpers(self):
+        self.commit(CODE.replace('Rule = PredicateSpec(', 'Rule: PredicateSpec[int] = PredicateSpec('))
+        source = self.source()
+        self.assertEqual(source['contract'], 'specmetrics.retrieval-source-snapshot/v2')
+        wrapper = next(d for d in source['documents'] if d['id'].endswith('::Rule'))
+        self.assertEqual(wrapper['helpers'][0]['symbol'], 'allowed')
+        update(self.store, source, PROFILE, self.encode)
+        self.commit(CODE.replace('Rule = PredicateSpec(', 'Rule: PredicateSpec[int] = PredicateSpec(')
+                    .replace('value > 0', 'value > 10'))
+        self.assertEqual(update(self.store, self.source(), PROFILE, self.encode)['encode_inputs'], 2)
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
