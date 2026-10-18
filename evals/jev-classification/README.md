@@ -51,8 +51,10 @@ implemented in `semantic_review_routing_v1`, with named SpecificationCore rules,
 all-reason traces and immutable source/action bindings. Run
 `../../.venv/bin/python replay_semantic_review_routing_v1.py` from this directory:
 the pinned Jev cohort retains seven views and selects one for review. The
-ordinary-review adapter and publisher are not enabled yet; selected reviews
-remain explicitly `not_run`.
+[structured ordinary-review consumer](../../docs/structured-semantic-review-v1.md)
+prepares independent requests and validates captured rich responses, exact
+citations and provisional resolution. It makes no hosted requests; the executor
+and publisher are not enabled, so historical selected reviews remain `not_run`.
 
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
