@@ -13,6 +13,18 @@ from test_retrieval_fact_adapter_v1 import response
 LABELS = dict(concern_kind='policy', evidence_confidence='supported', ownership='unknown', tool_responsibility='unknown')
 
 
+def portable_comparison(report):
+    # Analysis-host diagnostics may vary; frozen execution inventories must not.
+    import copy
+    result = copy.deepcopy(report)
+    evidence = result['transport_evidence']
+    evidence.pop('analysis_runtime_inventory', None)
+    evidence.pop('analysis_runtime_matches_execution', None)
+    for row in evidence.get('rows', []):
+        row.pop('adapter_producer_sha256', None)
+    return result
+
+
 def fixture():
     requests = [dict(request_id=arm, provider='fixture', case_id='C', arm=arm) for arm in ('baseline', 'retrieval')]
     rows = [dict(r, native_status='valid', status='proposed_not_accepted', consistency_violations=[],
@@ -21,10 +33,25 @@ def fixture():
 
 
 class SolComparisonTests(unittest.TestCase):
+    def test_portable_replay_retains_execution_evidence_and_labels(self):
+        import copy
+        original = dict(transport_evidence=dict(analysis_runtime_inventory={'host': 'local'},
+            analysis_runtime_matches_execution=True, recorded_execution_runtime_inventory={'host': 'captured'},
+            rows=[dict(adapter_producer_sha256={'host': 'local'}, wire_sha256='wire', prediction={'label': 'policy'})]))
+        remote = copy.deepcopy(original)
+        remote['transport_evidence']['analysis_runtime_inventory'] = {'host': 'CI'}
+        remote['transport_evidence']['analysis_runtime_matches_execution'] = False
+        remote['transport_evidence']['rows'][0]['adapter_producer_sha256'] = {'host': 'CI'}
+        self.assertEqual(portable_comparison(original), portable_comparison(remote))
+        for field in ('recorded_execution_runtime_inventory', 'rows'):
+            changed = copy.deepcopy(remote)
+            changed['transport_evidence'][field] = []
+            self.assertNotEqual(portable_comparison(original), portable_comparison(changed))
+
     def test_recorded_live_comparison_reconstructs_without_network(self):
         run = comparison.ROOT / 'runs/2026-10-18-jev-luna-sol-comparison-v1'
         result = comparison.score(run)
-        self.assertEqual(result, decode((run / 'comparison.json').read_bytes()))
+        self.assertEqual(portable_comparison(result), portable_comparison(decode((run / 'comparison.json').read_bytes())))
         self.assertTrue(result['transport_evidence']['operationally_complete'])
         self.assertTrue(result['transport_evidence']['native_contract_valid'])
         jev = result['providers']['jev-coreinfra']
