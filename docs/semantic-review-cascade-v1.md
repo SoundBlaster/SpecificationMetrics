@@ -1,7 +1,7 @@
 # Semantic review cascade v1
 
-Date: 2026-10-18. Status: offline first-stage routing implemented;
-the ordinary-review adapter and PR publisher remain planned.
+Date: 2026-10-18. Status: offline first-stage routing and captured ordinary-review
+adaptation implemented; the network executor and PR publisher remain planned.
 
 ## Purpose
 
@@ -195,3 +195,9 @@ tampered observations. CI runs the policy suite and offline replay.
 The existing `test_recommendation_policy_v1` CI entry point composes the routing
 suite through `unittest.load_tests`; workflow files are unchanged. General test
 discovery finds the routing module directly without adding a duplicate suite.
+
+The [structured review consumer](structured-semantic-review-v1.md) now prepares
+independent strict-schema ordinary-Luna requests and checks captured Responses
+reviews, quotations and provisional resolution. Its network executor and report
+publisher are not enabled. Historical label-only pilot answers remain distinct
+and cannot be presented as already completed rich reviews.
