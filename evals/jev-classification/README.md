@@ -46,8 +46,13 @@ quality, timing scope, repeatability and still-unattributed monetary cost. It al
 reconciles ordinary Luna's input with the cache read/write buckets in the raw
 responses. The [semantic review cascade contract](../../docs/semantic-review-cascade-v1.md)
 selects unresolved System One assessments for one ordinary-Luna review and keeps
-remaining ambiguity explicit in PR review. This is the implementation contract;
-the runtime cascade and publisher are not enabled yet.
+remaining ambiguity explicit in PR review. Its offline first-stage router is
+implemented in `semantic_review_routing_v1`, with named SpecificationCore rules,
+all-reason traces and immutable source/action bindings. Run
+`../../.venv/bin/python replay_semantic_review_routing_v1.py` from this directory:
+the pinned Jev cohort retains seven views and selects one for review. The
+ordinary-review adapter and publisher are not enabled yet; selected reviews
+remain explicitly `not_run`.
 
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:

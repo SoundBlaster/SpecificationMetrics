@@ -825,3 +825,19 @@ price; more agreement does not establish a better speed/cost trade-off. Preserve
 raw usage, configured/returned model, timing scopes and error/abstention separation
 before broader decisions. Python 3.11 is now the common baseline; all 129 prior
 decision/retrieval/classic-metrics tests passed there with historical data intact.
+
+## Preserve provider-specific state envelopes in shared routing replay (2026-10-18)
+
+The first offline semantic-routing suite passed 16 tests but failed saved native
+replay with `KeyError: state`. Confirmed cause: the reader assumed every native
+wire used Jev's `state` field. The frozen Luna Decision requests instead use
+`input`; their semantic state is shared, but their API envelopes are different.
+This was an implementation error before any hosted call, not model uncertainty.
+
+The bounded fix selects the state field explicitly by provider, requires a text
+payload, and preserves its captured bytes for the evidence digest. The direct
+`test_native_provider_state_fields_are_explicit` regression accepts each real
+envelope and rejects the other provider's envelope instead of guessing. The
+saved-run regression replays all sixteen captured requests without network
+access and verifies one Jev escalation and seven Luna Decision escalations.
+Historical requests, labels, producers and result receipts remain unchanged.
