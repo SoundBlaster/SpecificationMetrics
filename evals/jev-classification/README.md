@@ -62,6 +62,12 @@ citations and provisional resolution. The separately authorized
 [one-request live pilot and report](../../docs/rich-review-pilot-2026-10-18.md)
 returned `policy / limited` with an exact quote and final `needs_review`.
 It used one POST with zero retries; historical observations stay unchanged.
+The [categorical SDK bridge](../../docs/categorical-review-bridge-v1.md) now connects
+one native Jev batch to the same categorical result abstraction, unchanged routing
+Specifications and optional rich Luna review preparation. Its offline replay
+keeps seven proposals, selects one review and can reuse the exact matching saved
+Luna receipt without another call:
+`../../.venv/bin/python replay_categorical_review_v1.py --reuse-saved-review`.
 The publisher is not enabled. Run `../../.venv/bin/python rich_review_pilot_v1.py --verify`
 for offline replay; `--live` is an opt-in dispatch and an already spent preparation cannot be repeated.
 
