@@ -1,0 +1,11 @@
+{
+  "annotator":"/root/blind_view_500c_20261018","concern_kind":"policy","evidence_confidence":"supported","ownership":"unknown","tool_responsibility":"unknown",
+  "rationale":"The decision unit is admissibility of a workspace path: it requires nonempty text and rejects absolute or home-relative prefixes, backslashes, colons and parent traversal. String coercion and path decomposition support this policy. Its caller uses the result to reject workspace configuration, directly supporting the primary role. The supplied allocation Specification addresses identity and authorization rather than this path decision, so same-decision Specification ownership is unestablished. Formatter/linter responsibility is also unestablished.",
+  "source_locators":[
+    {"document_id":"tools/product_workspace_next_moves_support.py::safe_workspace_path","path":"tools/product_workspace_next_moves_support.py","symbol":"safe_workspace_path","start_line":57,"end_line":62,"quote":"    return bool(text) and not (\n        text.startswith((\"/\", \"~\"))\n        or \"\\\\\" in text\n        or \":\" in text\n        or \"..\" in PurePosixPath(text).parts\n    )","evidence_for":["concern_kind","evidence_confidence"]},
+    {"document_id":"tools/product_workspace_next_moves_support.py::product_environment","path":"tools/product_workspace_next_moves_support.py","symbol":"product_environment","start_line":87,"end_line":90,"quote":"    required_fields = policy.get(\"workspace_contract\", {}).get(\"required_fields\", [])\n    for field in required_fields:\n        if not safe_workspace_path(workspace.get(field)):\n            raise ValueError(f\"unsafe or missing workspace.{field}\")","evidence_for":["concern_kind","evidence_confidence"]}
+  ],
+  "status":"completed",
+  "unresolved":["No intent or specification documents explaining the workspace path contract were supplied.","The partial evidence view does not establish an existing Specification or simple Specification composition owning this exact path admissibility decision.","Formatter/linter responsibility and configured exact enforcement are not established by the supplied evidence."],
+  "view_id":"view-500c9cbb7069c584"
+}

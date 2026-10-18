@@ -649,3 +649,24 @@ and live observations for this cohort remain pending.
   reused/exposed roster identities, changed view hashes and receipt/provenance
   mutations. The original 51 preparation artifacts remain byte-for-byte intact.
   Actual dispatch and identity assertions still require operator enforcement.
+
+## Independent reference ceiling and identity unit (2026-10-18)
+
+The [eight fresh-agent run](runs/2026-10-18-paired-blind-reference-v1/adjudication.md)
+found no categorical changes across the four evidence pairs (0/16 paired axes),
+with all baseline roles already supported and the only recognized owner visible
+in the target itself. This is a confirmed baseline-sufficiency ceiling in this
+development cohort, not evidence of no retrieval benefit or provider accuracy.
+R04's added caller witness strengthens rationale without changing its coarse
+support category. A future semantic-gain cohort needs independently checked
+hidden decision witnesses; preserve this control/distractor cohort unchanged.
+
+The user's explicit request for eight new context-free subagents refined the
+original four-actual-annotator execution assumption. Actual agent identity and
+logical balanced slot are now separate: eight unique invocations in four slots,
+with identical requested inherited configuration and no context forks. Do not
+claim within-person counterbalancing or pass this run through the old four-person
+roster checker. Actual backend configuration, OS-level file isolation and semantic
+truth are not independently attested. Regressions verify input/prompt hashes,
+fresh identities, baseline-before-retrieval seals, supplied quotes/spans and
+reconstructed comparisons/references, including checksum-rebound tampering.

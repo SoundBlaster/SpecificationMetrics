@@ -50,7 +50,8 @@ checks saved four-question responses and emits unaccepted proposals or explicit
 review/rejection diagnostics.
 The [paired retrieval study](evals/jev-classification/paired-retrieval-study-v1.md)
 freezes matching evidence views and validates local transport attribution before
-semantic comparison. Independent references and live results remain pending.
+semantic comparison. [Independent view annotations](evals/jev-classification/runs/2026-10-18-paired-blind-reference-v1/README.md)
+and a provisional source-audited reference are available; live results remain pending.
 
 ```bash
 export JEV_API_KEY='…'
