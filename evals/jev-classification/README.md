@@ -3,8 +3,11 @@
 Current paired-reference design assessment:
 [configuration qualification v2 and prepared repeatability pilot](paired-reference-qualification-v2.md).
 This supersedes the invocation-ID interpretation in qualification v1 while
-preserving its frozen artifacts and scoring v1. The 24 annotation repeats are
-prepared, not dispatched; no new provider requests are authorized by preparation.
+preserving its frozen artifacts and scoring v1. The subsequently authorized
+[24 Sol 6.1 Medium repeats](runs/2026-10-18-sol61-medium-repeatability-v1/README.md)
+completed in fresh contexts with no historical labels: all eight views were
+unanimous. Their top line is a model-specific comparator, not independent semantic
+truth. Preparation artifacts and the old scoring contract remain unchanged.
 
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:

@@ -1,5 +1,11 @@
 # Configuration qualification v2 and repeatability pilot
 
+Follow-up: the user subsequently authorized
+[24 Sol 6.1 Medium repeats](runs/2026-10-18-sol61-medium-repeatability-v1/README.md).
+That separate cohort completed with 8/8 unanimous views and source-checked
+witnesses. The frozen v2 assessment below remains the pre-execution assessment;
+new explicit model settings do not retroactively attest the historical backend.
+
 ## Correction of the identity unit
 
 [Qualification v1](paired-reference-qualification-v1.md) treated every fresh
