@@ -1,6 +1,12 @@
 # SpecificationMetrics
 
 A Rust CLI for measuring Specification adoption in Python, Swift, and Rust.
+
+Python collection/evaluation tools use **Python 3.11+**, with 3.11 selected in
+`.python-version` and CI. Jev4Mellea 0.8.0 and the categorical SDK dependencies are
+pinned in [the evaluation lock](evals/jev-classification/requirements-categorical-pilot.lock).
+Use the repository `.venv` for local Python commands. Historical benchmark
+artifacts retain their actual recorded Python versions.
 It scans the current source snapshot and reports the live ratio of distinct
 Specification definitions to remaining control-flow opportunities.
 

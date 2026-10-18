@@ -69,11 +69,12 @@ explicit state and null ratio; no infinity or division by zero is serialized.
 
 ## Opt-in external metrics
 
-Prepare a dedicated interpreter; no metric package becomes a scanner dependency:
+Install the optional tools in the repository's Python 3.11+ environment;
+no metric package becomes a dependency of the Rust scanner:
 
 ```bash
-python3 -m venv .venv-metrics
-.venv-metrics/bin/python -m pip install -r scripts/requirements-metrics.txt
+# If needed, create the common environment first: python3.11 -m venv .venv
+.venv/bin/python -m pip install -r scripts/requirements-metrics.txt
 ```
 
 Enable the desired additions in the config:
@@ -82,11 +83,11 @@ Enable the desired additions in the config:
 [supplementary]
 python_complexity = true
 duplication = true
-python = "../.venv-metrics/bin/python"
+python = "../.venv/bin/python"
 ```
 
 The interpreter path is config-relative (a bare executable name uses PATH).
-Python 3.10+ is supported. Duplication requires Node.js/npm; the adapter invokes
+Python 3.11+ is the supported baseline. Duplication requires Node.js/npm; the adapter invokes
 `npx --yes jscpd@5.0.11`, which may download that pinned package when explicitly
 enabled. CI tests it on Node 22. jscpd has a 120-second timeout.
 

@@ -1,0 +1,6 @@
+# Isolated Python >=3.11 evaluation; not a dependency of the Rust CLI or old runs.
+-r requirements-policy.txt
+-r requirements-retrieval-replay.txt
+mellea-jev-adapter[openai] @ git+https://github.com/SoundBlaster/Jev4Mellea.git@b9b7f9a340473cb2705fbdf62b4011c19ddb09b2
+openai==3.31.0
+pydantic==2.13.5
