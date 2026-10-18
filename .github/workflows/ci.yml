@@ -112,6 +112,7 @@ jobs:
           python3 -m unittest -v test_ownership_acceptance_v1.py
           python3 replay_ownership_acceptance_v1.py
           python3 -W error -m unittest -v test_retrieval_context_v1.py
+          python3 -W error -m unittest -v test_retrieval_fact_adapter_v1.py
           python3 -m unittest -v test_scope_binding_handoff.py
           python3 prepare_scope_binding_handoff.py
           python3 validate_scope_binding_annotations.py
