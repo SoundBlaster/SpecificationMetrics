@@ -9,6 +9,12 @@ completed in fresh contexts with no historical labels: all eight views were
 unanimous. Their top line is a model-specific comparator, not independent semantic
 truth. Preparation artifacts and the old scoring contract remain unchanged.
 
+The matched [Jev/Luna live comparison](runs/2026-10-18-jev-luna-sol-comparison-v1/diagnosis.md)
+completed all 16 requests: Jev agreed with 15/16 primary-axis labels but had five
+role/support consistency conflicts; Luna agreed with 7/16 and mostly abstained.
+The full raw-label comparison is 25/32 versus 15/32. These are agreement counts
+against Sol on four targets, not semantic accuracy or production acceptance rates.
+
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
 
