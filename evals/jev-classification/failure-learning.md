@@ -859,3 +859,4 @@ for concurrent environments and prohibit changing a running process's `.venv`
 link. The historical suite's exact-version/source checks are the regression
 gate; they must not be relaxed to accommodate an environment mix-up. No frozen
 source, lock, provider response, receipt or label was changed.
+The corrected run passed all seven historical tests in 271.596 seconds.

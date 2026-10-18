@@ -21,7 +21,7 @@ consumer to either API or enable automatic semantic acceptance.
 Use the repository `.venv` with the current lock:
 
 ```bash
-.venv/bin/python -m pip install -r evals/jev-classification/requirements-evaluation.lock
+uv pip install --python .venv/bin/python -r evals/jev-classification/requirements-evaluation.lock
 cd evals/jev-classification
 ../../.venv/bin/python -W error -m unittest -v test_jev4mellea_compatibility.py
 ../../.venv/bin/python -W error -m unittest -v \
@@ -73,3 +73,15 @@ commit, and exercises the public SDK through an in-memory HTTP transport:
 This is a consumer compatibility check, not a new live run, provider accuracy
 measurement or validation of newly introduced native/Requirement APIs. No new
 model calls are authorized or required by the upgrade.
+
+## Verification on 2026-10-18
+
+- Python 3.11.13 / SDK 0.9.0: all 100 compatibility, policy, routing, structured
+  review, saved rich-review replay, fact-adapter and transport tests passed.
+- The preserved SDK 0.8.0 environment, invoked by its resolved interpreter path:
+  all seven historical pilot tests passed in 271.596 seconds.
+- `uv pip check` confirmed compatibility of all 21 installed packages; comparison
+  of both locks found only the adapter commit changed. Workflow YAML parsing and
+  `git diff --check` passed.
+- GitHub's `evaluation-sdk-current` job also passed on commit `8c2d3ba`.
+  This is distinct from completion of the whole CI workflow.
