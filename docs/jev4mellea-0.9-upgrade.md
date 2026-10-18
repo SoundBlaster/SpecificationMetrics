@@ -51,8 +51,11 @@ historical lock. Invoke that environment's interpreter from
 
 Do not install both locks into one environment. In particular, broad unittest
 discovery includes incompatible exact-version checks; use the explicit current
-or historical suites above. Source, receipts, labels and recorded metrics of
-prior experiments are preserved.
+or historical suites above. For concurrent runs, invoke each environment by its
+resolved interpreter path. Do not retarget `.venv` while a process launched
+through that symlink is still running: later package/metadata lookups can follow
+the changed link. Source, receipts, labels and recorded metrics of prior
+experiments are preserved.
 
 ## What compatibility proves
 

@@ -841,3 +841,21 @@ envelope and rejects the other provider's envelope instead of guessing. The
 saved-run regression replays all sixteen captured requests without network
 access and verifies one Jev escalation and seven Luna Decision escalations.
 Historical requests, labels, producers and result receipts remain unchanged.
+
+## Resolve environment paths before concurrent SDK checks (2026-10-18)
+
+During the 0.9.0 upgrade, `test_categorical_luna_pilot_v1.py` was launched through
+the repository `.venv` symlink, initially targeting the preserved 0.8.0
+environment. Retargeting that symlink to the new 0.9.0 environment before the
+suite finished made later distribution metadata lookups report 0.9.0. The run
+ended with six `SDK version differs` errors across seven tests. The separate
+0.9.0 compatibility/review suites had passed 100 tests.
+
+The cause was local environment routing during a running process, not an SDK
+or model defect. The unchanged original environment still reported 0.8.0 when
+invoked by its absolute interpreter path. The correction reruns the historical
+suite through that stable path; upgrade instructions now require resolved paths
+for concurrent environments and prohibit changing a running process's `.venv`
+link. The historical suite's exact-version/source checks are the regression
+gate; they must not be relaxed to accommodate an environment mix-up. No frozen
+source, lock, provider response, receipt or label was changed.
