@@ -1,5 +1,11 @@
 # Jev prompt evaluation
 
+Current paired-reference design assessment:
+[configuration qualification v2 and prepared repeatability pilot](paired-reference-qualification-v2.md).
+This supersedes the invocation-ID interpretation in qualification v1 while
+preserving its frozen artifacts and scoring v1. The 24 annotation repeats are
+prepared, not dispatched; no new provider requests are authorized by preparation.
+
 This Promptfoo suite compares two versions of the opportunity question against
 the same Jev model, candidate state, label set, and concern-kind question:
 

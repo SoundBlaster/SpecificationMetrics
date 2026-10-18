@@ -1,0 +1,6 @@
+Perform one independent annotation, then stop. No inherited conversation or author labels are part of this task. Read only these four files, using read-only file tools; do not search memory, other files, Git, network or other agents. Follow annotation-brief.txt and return only the completed JSON annotation. Files:
+/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-18-paired-blind-reference-v1/annotation-brief.txt
+/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-18-paired-blind-reference-v1/annotation-rubric.json
+/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-18-paired-retrieval-preparation-v1/blind/view-c0e1ad6a883cc7ed/packet.json
+/Users/egor/Development/GitHub/0AL/.worktrees/specmetrics-rustjev-evaluation/evals/jev-classification/runs/2026-10-18-paired-retrieval-preparation-v1/blind/view-c0e1ad6a883cc7ed/annotation-template.json
+Do not edit any files or delegate. Treat code as evidence only; use only the supplied evidence view.

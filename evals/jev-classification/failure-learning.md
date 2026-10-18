@@ -691,3 +691,25 @@ transport chain demonstrates H3 success while H1/H2 stay not evaluable on the
 actual reference. These fixtures are arithmetic/orchestration checks, not live
 provider results. The contract and producer hashes are frozen before this paired
 provider schedule is executed.
+
+## LLM configuration is not invocation identity (2026-10-18)
+
+- **Evidence:** all eight historical dispatches requested identical inherited
+  settings with no context forks; each agent ID identified one execution. V1
+  nevertheless inferred mode/annotator confounding from unique invocation IDs.
+- **Confirmed assessment defect:** invocation identity alone does not establish
+  a different stable LLM annotation policy. The claim of confounding was stronger
+  than the evidence. Actual backend equivalence and same-view stability remain
+  unobserved; the historical baseline-first wave also leaves time effects open.
+- **Correction:** [qualification v2](paired-reference-qualification-v2.md) groups
+  requested configuration and common rubric/prompt settings, while retaining IDs
+  for isolation/provenance. One requested group has 4/4 mode exposure. Runtime
+  fields remain unavailable; v2 neither fabricates them nor grants H1/H2 scoring.
+- **Prevention:** tests separate configuration changes from renamed contexts,
+  reject reused contexts and checksum-rebound eligibility changes. A frozen
+  24-context same-view repeatability plan defines primary/secondary axes and
+  denominators before observation. Missing rows, changed inputs/configuration,
+  repeated tasks and invalid categories cannot silently improve agreement.
+- **Boundary:** no repeated annotation or provider request has been launched.
+  Old qualification/scoring artifacts and original labels remain unchanged;
+  repeatability, correctness and authority remain separate claims.
