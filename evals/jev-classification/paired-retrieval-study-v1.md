@@ -105,8 +105,11 @@ blinding, not treatment blinding.
 At preparation time independent annotation had **not run**. The subsequent
 [eight-agent run](runs/2026-10-18-paired-blind-reference-v1/README.md) now preserves
 the independently dispatched views, source audit and a provisional view reference.
-There is no scoring command or claimed provider accuracy. Scoring rules still
-need to be frozen before a live run is interpreted.
+The [design qualification](paired-reference-qualification-v1.md) rejects this
+eight-identity run as an H1/H2 paired reference: logical slots do not balance
+actual annotators. Its labels are diagnostic candidates only; immutable integrity
+receipts do not establish readiness. There is no claimed provider accuracy.
+H1/H2 require a new balanced reference version before interpretation.
 
 ### Integrator-only assignment v1
 

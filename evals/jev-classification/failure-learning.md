@@ -670,3 +670,15 @@ roster checker. Actual backend configuration, OS-level file isolation and semant
 truth are not independently attested. Regressions verify input/prompt hashes,
 fresh identities, baseline-before-retrieval seals, supplied quotes/spans and
 reconstructed comparisons/references, including checksum-rebound tampering.
+
+## PR74 qualification correction (2026-10-18)
+
+The eight-context execution did not preserve actual-annotator crossover. The
+earlier explicit identity refinement documented this limitation but still emitted
+a provisional paired-reference label; that was insufficient prevention. A new
+[qualification](paired-reference-qualification-v1.md) counts actual mode exposure
+and rejects H1/H2 paired scoring (8 actual annotators, 0 balanced). Original data
+and producer versions remain intact. Consumers must use qualification, never
+promote an integrity receipt into design readiness. Regression tests reject a
+rebound checksum attempting to make this run eligible. H3 transport checks and
+explicit diagnostic label agreement remain distinct from semantic effect claims.

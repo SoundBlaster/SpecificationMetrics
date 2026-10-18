@@ -104,6 +104,7 @@ inputs and blank independent-reference packets, stages a bounded execution and
 connects this adapter to a local transport inspector. The later
 [eight-agent annotation run](runs/2026-10-18-paired-blind-reference-v1/README.md)
 supplies view-conditioned annotations and a provisional integrator-audited
-reference. Separately authorized live inference and scoring remain pending. Source
+label candidates. Its actual-annotator allocation is unbalanced and a separate
+qualification rejects use as an H1/H2 paired reference. Separately authorized live inference and scoring remain pending. Source
 retrieval quality and semantic accuracy require that experiment; an offline
 decoder test cannot establish them.
