@@ -61,6 +61,17 @@ earlier execution that produced an input capture. Request IDs/usage are reported
 metadata. Unknown cost remains unknown. No source locator is promoted into
 semantic correctness; accepted facts, S/U and write authority remain unchanged.
 
+`CascadePlan` checks its internal binding at construction and at every public
+consumer. Its capture snapshot must match the typed assessment's status,
+response digest, labels and valid model metadata. The presence of a prepared
+review must match the route, and that review's complete original context must
+equal the plan's context. Request identity alone is insufficient: independent
+review input intentionally omits the first-stage labels, but material-disagreement
+resolution still depends on those labels. A mixed plan is rejected before
+rendering, request access or review inspection. The same independent review
+response may still be reused by coherent plans; each resolves it against its
+own preserved first-stage assessment.
+
 The SDK's native probability-mass check is independent of the older native
 capture parser's model-specific allowance. This bridge does not relax the SDK,
 normalize its numbers or reinterpret its protocol rejection as semantic doubt:
@@ -100,12 +111,13 @@ durable single-spend reservation and transport-receipt rules.
 
 ## Verification
 
-Local Python 3.11 / SDK 0.9.0 validation passed **113 tests**: the 13 new bridge
+Local Python 3.11 / SDK 0.9.0 validation passed **115 tests**: the 15 new bridge
 tests and 100 existing compatibility/policy/routing/review/transport tests.
 They cover one-batch cardinality, borrowed lifetime, complete native evidence,
 ordinary categorical results without invented probabilities, stale source/tasks,
 invalid labels/model/HTTP/JSON, mutated distributions, preserved missing premises,
-exact saved-review reuse and rejection of a changed task. The replay entry point
+exact saved-review reuse, rejection of a changed task and mixed-plan contexts.
+The replay entry point
 also completed with seven retained, one reviewed, zero new hosted requests and
 the saved review still unresolved. Workflow YAML parsing and whitespace checks
 passed. The dedicated current-SDK CI job includes the bridge suite.

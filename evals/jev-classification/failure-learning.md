@@ -886,3 +886,30 @@ so its saved receipt can be reused after full verification. Its result remains
 establishes semantic correctness. See the
 [bridge contract](../../docs/categorical-review-bridge-v1.md) and
 `test_categorical_review_bridge_v1.py` for the concrete regression checks.
+
+## Bind review resolution to the original assessment, not only the request (2026-10-18)
+
+Self-review of PR #87 at `e39b88b` reproduced a false advisory resolution without
+any new model call. Two valid plans had the same bound source/questions and thus
+the same independent Luna request, but different original roles: `policy` versus
+`unknown`, both with insufficient support. A synthetic `mechanics / supported`
+review correctly remained `needs_review` for the known role and resolved the
+unknown role as a proposal. Replacing the known plan's prepared review with the
+unknown plan's review made its report show `policy` while inspection incorrectly
+returned `resolved_proposal`.
+
+Confirmed cause: the frozen plan held context, categorical snapshot and prepared
+review as independent fields. Each field could be valid without their joint
+identity being checked. The independent request digest deliberately excludes
+first-stage labels, so it cannot protect downstream disagreement resolution.
+Adding those labels to the model prompt would also defeat independent review.
+
+The bounded fix validates plan coherence at construction and at all public
+consumers: capture identity/labels/model metadata agree with the assessment,
+review presence agrees with routing, and the prepared review's complete original
+context equals the plan context. Mismatches raise before returning a report,
+request or inspection result. Two regressions cover the original same-request
+counterexample, mutation/replacement, capture snapshot mix-ups and inconsistent
+review selection. Valid reuse remains allowed: the same saved review is resolved
+against each coherent plan's own assessment. Historical sources, responses,
+receipts and routing/resolution policies are unchanged.

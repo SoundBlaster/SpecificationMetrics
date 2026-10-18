@@ -1,4 +1,5 @@
 import base64
+import copy
 from dataclasses import replace
 import json
 from pathlib import Path
@@ -137,6 +138,41 @@ class CategoricalBridgeTests(unittest.TestCase):
         plan = replay_jev_capture(changed, self.raw)
         with self.assertRaisesRegex(ValueError, 'different task'):
             saved_review(plan)
+
+    def test_same_review_request_cannot_replace_the_original_assessment(self):
+        from test_rich_review_pilot_v1 import response
+        known = categorical_plan(self.bound(), self.sdk_result(), response_sha256=sha(self.raw))
+        unknown_result = replace(self.sdk_result(), answers=dict(self.sdk_result().answers, concern_kind='unknown'))
+        unknown = categorical_plan(self.bound(), unknown_result, response_sha256=sha(self.raw))
+        self.assertEqual(request_sha256(known.review), request_sha256(unknown.review))
+        raw = response(unknown.review, role='mechanics')
+        for plan, status in ((known, 'needs_review'), (unknown, 'resolved_proposal')):
+            result = plan.inspect_review(raw, captured_request_sha256=request_sha256(plan.review),
+                                         execution_status='completed')
+            self.assertEqual(result['status'], status)
+        with self.assertRaisesRegex(ValueError, 'review context differs'):
+            replace(known, review=unknown.review)
+        # Every consumer revalidates even an object mutated outside frozen APIs.
+        mixed = copy.copy(known)
+        object.__setattr__(mixed, 'review', unknown.review)
+        for consume in (mixed.report, mixed.review_request, mixed.inspect_review, lambda: mixed.context):
+            with self.subTest(consumer=consume), self.assertRaisesRegex(ValueError, 'review context differs'):
+                consume()
+
+    def test_plan_rejects_capture_snapshot_and_route_selection_mixups(self):
+        plan = categorical_plan(self.bound(), self.sdk_result(), response_sha256=sha(self.raw))
+        original = json.loads(plan.categorical_json)
+        changes = (dict(status='not_run'), dict(response_sha256='f' * 64), dict(requested_model='other'),
+                   dict(answers=dict(original['answers'], concern_kind='unknown')))
+        for change in changes:
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                replace(plan, categorical_json=encoded(dict(original, **change)))
+        with self.assertRaisesRegex(ValueError, 'review selection differs'):
+            replace(plan, review=None)
+        retained = categorical_plan(self.bound(), replace(self.sdk_result(), answers=dict(
+            self.sdk_result().answers, evidence_confidence='supported')), response_sha256=sha(self.raw))
+        with self.assertRaisesRegex(ValueError, 'review selection differs'):
+            replace(retained, review=plan.review)
 
     def test_sdk_mass_rejection_is_not_normalized_or_escalated_as_semantic_doubt(self):
         body = json.loads(self.raw)

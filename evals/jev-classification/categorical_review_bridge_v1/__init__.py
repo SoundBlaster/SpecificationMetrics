@@ -5,10 +5,11 @@ import httpx2
 from mellea_jev import CategoricalResult, JevError, TypeSafeProvider, project_choice_results
 
 from semantic_review_routing_v1 import evaluate
-from semantic_review_routing_v1.context import CapturedAssessment, Labels
+from semantic_review_routing_v1.context import CapturedAssessment, Labels, RoutingContext
 from structured_semantic_review_v1 import inspect as inspect_review
 from structured_semantic_review_v1.preparation import (
     MAX_RESPONSE_BYTES, PreparedReview, encoded, load, prepare, request_body, request_sha256, sha,
+    verify as verify_review,
 )
 
 from .inputs import BoundTask, bind, verify
@@ -24,15 +25,42 @@ class CascadePlan:
     categorical_json: str
     review: PreparedReview | None
 
+    def __post_init__(self):
+        self._validated()
+
+    def _validated(self):
+        # Request identity deliberately excludes the first-stage labels. The
+        # resolution context must nevertheless retain that exact assessment.
+        load(self.context_json)
+        context = RoutingContext.model_validate_json(self.context_json)
+        summary = load(self.categorical_json)
+        assessment = context.assessment
+        if (not isinstance(summary, dict) or summary.get('status') != assessment.status
+                or summary.get('response_sha256') != assessment.response_sha256):
+            raise ValueError('categorical plan capture differs from its assessment')
+        if assessment.labels is not None and summary.get('answers') != assessment.labels.model_dump(mode='json'):
+            raise ValueError('categorical plan labels differ from its assessment')
+        if assessment.status == 'valid' and any(
+                key not in summary or summary[key] != getattr(assessment, key)
+                for key in ('requested_model', 'returned_model')):
+            raise ValueError('categorical plan model metadata differs from its assessment')
+        route = evaluate(context)
+        if (self.review is not None) != (route['route'] == 'ordinary_review'):
+            raise ValueError('categorical plan review selection differs from its route')
+        if self.review is not None:
+            if not isinstance(self.review, PreparedReview) or self.review.original != context:
+                raise ValueError('categorical plan review context differs from its assessment')
+            verify_review(self.review)
+        return context, summary, route
+
     @property
     def context(self):
-        from semantic_review_routing_v1.context import RoutingContext
-        return RoutingContext.model_validate_json(self.context_json)
+        return self._validated()[0]
 
     def report(self):
-        route = evaluate(self.context)
+        _, summary, route = self._validated()
         return dict(contract=CONTRACT, original_route=route,
-            categorical=load(self.categorical_json),
+            categorical=summary,
             review_request_sha256=request_sha256(self.review) if self.review else None,
             review_status=route['review_status'],
             hosted_requests=0, hosted_request_count_scope='adapter_only_not_upstream_capture',
@@ -41,9 +69,11 @@ class CascadePlan:
             provenance_scope='caller_bound_categorical_capture_not_authenticated_transport')
 
     def review_request(self):
+        self._validated()
         return request_body(self.review) if self.review else None
 
     def inspect_review(self, raw=None, *, captured_request_sha256=None, execution_status='not_run'):
+        self._validated()
         if self.review is None:
             raise ValueError('ordinary review was not selected')
         return inspect_review(self.review, raw, captured_request_sha256=captured_request_sha256,
