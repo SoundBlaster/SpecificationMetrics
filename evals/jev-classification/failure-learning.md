@@ -913,3 +913,27 @@ counterexample, mutation/replacement, capture snapshot mix-ups and inconsistent
 review selection. Valid reuse remains allowed: the same saved review is resolved
 against each coherent plan's own assessment. Historical sources, responses,
 receipts and routing/resolution policies are unchanged.
+
+## Categorical consistency does not establish concentration (2026-10-19)
+
+The preserved PR714 live run retained all four Jev proposals. D01/D02 selected
+`variant_behavior` with mass 0.43 versus 0.57 for alternatives; D03 selected
+`policy` with 0.48 versus 0.52. All returned `supported`. This reproduces a
+confirmed routing-contract gap relative to the intended doubt escalation, not
+an implementation defect or proof of semantic misclassification: router v1
+checks categorical/evidence consistency and never consumes native confidence or
+distributions. The model's internal reason for those outputs remains unknown.
+
+The bounded prevention proposal is the separately versioned offline
+`native-uncertainty-shadow/v1` policy: preserve original incomplete/review routes,
+then require strict selected-mass majority on role/evidence and action-required
+axes. It selects D01/D02/D03, retains D04 and invokes no model. Scalar confidence
+is deliberately not thresholded without a qualified interpretation; high-mass
+wrong answers and low-confidence majorities remain a documented residual.
+
+`test_native_uncertainty_v1.py` covers majority/tie boundaries, evidence-only
+ambiguity, required-axis scope, invalid-capture precedence and original-review
+preservation. The independent comparison receipt preserves old/new routes and
+raw response identities; source runs, labels, prompts and leases are unchanged.
+This post-observation diagnostic is not independent model-quality validation or
+live activation. See [the contract](../../docs/native-uncertainty-routing-v1.md).
