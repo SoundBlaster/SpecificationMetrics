@@ -124,3 +124,10 @@ then connect prepared backend results to the existing validation consumers and
 add the general API route. Review the captured ordinary Luna low-effort pilot
 before preparing a separately authorized medium/high comparison. Ollama and
 LM Studio follow as explicit local adapter milestones under the same contract.
+
+The [R01/baseline one-packet qualification preparation](../evals/jev-classification/runs/2026-10-19-codex-one-packet-preparation-v1/README.md)
+now freezes the historical task, aligned guidance, source witness and comparator
+bindings for the Codex route. Its portable configuration and prepared artifact
+are offline templates: authentication/model availability and live execution
+remain unqualified. It authorizes no inference and cannot establish accuracy
+from one selected control.
