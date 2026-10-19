@@ -22,6 +22,18 @@ fn historical_pr714_packets_prepare_offline_without_model_execution() {
             "--binary",
             env!("CARGO_BIN_EXE_specification-metrics"),
         ],
+        vec![
+            "-m",
+            "unittest",
+            "-v",
+            "test_specgraph_pr714_preparation_v2.PreparationTests",
+        ],
+        vec![
+            "prepare_specgraph_pr714_v2.py",
+            "verify",
+            "--binary",
+            env!("CARGO_BIN_EXE_specification-metrics"),
+        ],
     ] {
         let result = Command::new(python)
             .arg("-B")

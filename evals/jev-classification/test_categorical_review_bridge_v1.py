@@ -272,6 +272,8 @@ def load_tests(loader, tests, pattern):
     if pattern is None:
         from test_specgraph_pr714_preparation_v1 import BridgePreparationTests
         tests.addTests(loader.loadTestsFromTestCase(BridgePreparationTests))
+        from test_specgraph_pr714_preparation_v2 import BridgePreparationTests as V2BridgePreparationTests
+        tests.addTests(loader.loadTestsFromTestCase(V2BridgePreparationTests))
     return tests
 
 
