@@ -35,6 +35,14 @@ model answer, not a transport failure converted into an abstention.
 The reported input-token difference is **7,518** (3.27 times the historical
 count). Codex supplies its own transport/system envelope, but the experiment
 does not capture the server's full prompt or isolate the cause of this difference.
+The [subsequent offline context audit](context-audit.json) found that our visible
+task text grew only from 15,686 to 16,801 characters (**7.11%**). The task-home
+model cache, fetched during this run, contains a separate **18,037-character**
+Codex instruction template. Cached availability is not proof of the exact
+rendered request or that every cached message was active. Question instructions
+also moved from the API `instructions` field into the stdin user packet beneath
+the CLI's agent envelope. See the diagnosis for these additional confounders.
+
 It is not a controlled latency, cost or effort comparison. Codex reported zero
 reasoning output tokens; that neither attests medium effort took effect nor
 proves the absence of internal reasoning. Model/effort remain requested settings.

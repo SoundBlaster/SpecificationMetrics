@@ -1,0 +1,48 @@
+{
+  "contract": "specmetrics.codex-context-audit/v1",
+  "scope": "Offline analysis; zero new inference. Model-cache template availability is not a captured rendered server request.",
+  "case_id": "R01",
+  "arm": "baseline",
+  "source_bindings_sha256": {
+    "evals/jev-classification/runs/2026-10-18-ordinary-luna-preparation-v1/manifest.json": "8405e1ec2c9d643ee7b8e945d4355616125c399c6663a8d067ce01fc038a9ef2",
+    "evals/jev-classification/runs/2026-10-19-codex-one-packet-live-v1/prepared.json": "68064ca75b19bac6f9b3f7b0274d2bb506ad557f1fa28b60c74283493bd283fa"
+  },
+  "visible_text": {
+    "historical_api_input_chars": 3909,
+    "historical_api_instructions_chars": 11777,
+    "historical_api_total_chars": 15686,
+    "codex_stdin_chars": 16801,
+    "increase_chars": 1115,
+    "increase_percent": 7.11,
+    "not_token_counts": true
+  },
+  "reported_input_tokens": {
+    "api": 3316,
+    "codex": 10834,
+    "difference": 7518,
+    "ratio": 3.267189384800965,
+    "accounting_equivalence_attested": false
+  },
+  "cached_model_metadata": {
+    "source": "Task authentication-home/models_cache.json; full cache not published because it contains account metadata.",
+    "fetched_at": "2026-10-19T07:25:05.678999Z",
+    "client_version": "0.156.1",
+    "slug": "gpt-6-luna",
+    "instructions_template_chars": 18037,
+    "instructions_template_sha256": "b707476816bfe5e571a1bd2179f130fff2b132da5ab8e61063acdb7fd24daf12",
+    "persistent_instructions_present": true,
+    "all_cached_messages_assumed_active": false,
+    "rendered_request_captured": false
+  },
+  "instruction_placement": {
+    "historical_api": "Question instructions and criteria are in the Responses instructions field; state is in input.",
+    "codex": "Packet and semantic/question guidance are supplied on stdin as user task data beneath the CLI agent instruction envelope.",
+    "priority_equivalence_verified": false
+  },
+  "other_confounders": [
+    "Historical API endpoint is CoreInfra Responses; the CLI requests its OpenAI provider and uses existing Codex authentication. Same model alias does not attest identical backend revision or server route.",
+    "Requested effort differs: API low versus Codex medium. Effective CLI effort and returned model are not attested.",
+    "Single historical and current observations; repeatability and temporal drift are uncontrolled."
+  ],
+  "conclusion": "Measured task text grew about 7%; the available CLI agent template supplies a concrete overhead candidate. Exact attribution of 7518 tokens and the ownership disagreement remains unproven."
+}

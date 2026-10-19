@@ -82,6 +82,58 @@ for unchanged evidence. A new reference or inference budget requires separate
 authorization. No large refactor, new threshold or prompt patch is supported by
 this single observation.
 
+## Subsequent offline context audit — 2026-10-19
+
+The [context audit](context-audit.json) separates visible task growth from
+reported token growth:
+
+| Component | Measured characters |
+| --- | ---: |
+| Historical API `input` | 3,909 |
+| Historical API `instructions` | 11,777 |
+| API visible total, excluding schema/transport envelope | 15,686 |
+| Codex task on stdin, excluding its schema/agent envelope | 16,801 |
+| Visible increase | 1,115 (7.11%) |
+| Cached Codex Luna instruction template | 18,037 |
+
+The source state/questions remain equal. Both old and new tasks already repeat
+common guidance across four questions; this repetition is not a newly introduced
+threefold expansion. The new wrapper adds another common semantic paragraph and
+structural guidance. These character measurements are not tokenizer counts.
+
+The task home's `models_cache.json` was fetched at
+`2026-10-19T07:25:05.678999Z` by CLI 0.156.1. Its `gpt-6-luna` metadata includes a
+substantial generic Codex instruction template as well as persistent-mode and
+other optional message templates. The audit records only the selected template's
+length/hash and non-sensitive metadata; the full cache includes account metadata
+and is not published. **Do not sum all cached templates as active context.**
+This supplies a concrete candidate for substantial CLI overhead, but no full
+rendered server request was captured, so it cannot allocate the exact 7,518-token
+difference to individual components or prove identical token accounting.
+
+Another confirmed difference is **instruction placement**: the historical SDK
+places all question instructions/criteria in the Responses `instructions` field,
+and state in `input`; the CLI receives the whole packet on stdin as the user task,
+under its generic agent instructions. Equality of semantic strings did not
+establish equality of their message roles, priority or surrounding instructions.
+This is a comparison-control gap, not evidence that more source context was
+supplied. The historical endpoint is CoreInfra Responses; the CLI requests its
+OpenAI provider and uses the existing Codex authentication. The shared model alias
+does not attest identical backend revisions or server execution routes.
+
+These differences make the ownership change less surprising, but its internal
+cause is still unresolved: the available response contains no rationale and one
+observation cannot establish that the template or instruction placement caused
+the abstention. Greater token count supplied no additional source evidence and
+does not entail a better answer.
+
+Before comparing quality again, extend the matched-condition protocol to record
+instruction placement, effective envelope evidence, provider route and requested
+effort alongside task hashes. Attribute unknown portions explicitly. Changing
+the CLI's base instructions would be a new capability/profile version requiring
+separate preparation, not a silent patch to this frozen run. No new model call
+was made during this audit.
+
 ## Confirmed offline verifier defect: distinct serialization stages
 
 The first replay check failed with `ValueError: authorization preparation`.
