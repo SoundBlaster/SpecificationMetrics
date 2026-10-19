@@ -1,0 +1,34 @@
+{
+  "contract": "specmetrics.codex-route-followup-audit/v1",
+  "new_inference_calls": 0,
+  "scope": "Static source plus selected metadata from the earlier CLI task cache; not a captured server request.",
+  "cache_fetched_at": "2026-10-19T07:25:05.678999Z",
+  "cache_client_version": "0.156.1",
+  "cache_model_fields": {
+    "slug": "gpt-6-luna",
+    "use_responses_lite": true,
+    "tool_mode": "code_mode_only",
+    "default_reasoning_level": "medium",
+    "supports_reasoning_effort_updates": true
+  },
+  "upstream_commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+  "sources": [
+    {
+      "path": "codex-rs/core/src/client.rs",
+      "git_blob_sha": "1c5b49353a0fa1a5f41c1a3e1a613ca2cb813ebd",
+      "sha256": "37d57264e6b9b2e56230af547104545af579819b95fcda40138fcf1cf3fae29a",
+      "url": "https://github.com/openai/codex/blob/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/core/src/client.rs"
+    },
+    {
+      "path": "codex-rs/core/src/context/base_instructions.rs",
+      "git_blob_sha": "b4dc3677cebec80e78546f6bba92650029c0c2b8",
+      "sha256": "d3c394eb1fc677328c973e0558007aca01fc9c1f819d3eedd0a442775972dc6c",
+      "url": "https://github.com/openai/codex/blob/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/core/src/context/base_instructions.rs"
+    }
+  ],
+  "conditional_source_finding": "When use_responses_lite is true, client.rs 885-916 places base instructions into an input fragment and clears the top-level instructions field. BaseInstructionsFragment role is developer (base_instructions.rs 12-14). Reasoning is still constructed and included; Lite is not evidence that effort is ignored.",
+  "prior_cli_reasoning_output_tokens": 0,
+  "current_api_nonzero_reasoning_tokens": true,
+  "exact_runtime_route_attested": false,
+  "cause_of_prior_cli_abstention": "unresolved"
+}

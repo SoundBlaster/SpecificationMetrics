@@ -1,0 +1,68 @@
+{
+  "contract": "specmetrics.envelope-usage-audit/v1",
+  "source_responses_sha256": "b6889017eea45fa1b4a9334c0477ca95e7b4054a6f237b4da79681142d0ecc59",
+  "arms": {
+    "minimal": {
+      "responses": 6,
+      "input_tokens": 20212,
+      "output_tokens": 959,
+      "reasoning_tokens": 725,
+      "cached_input_tokens": 14583,
+      "cache_write_input_tokens": 5611,
+      "reported_efforts": [
+        "medium"
+      ],
+      "billing_field_names": [
+        "payer"
+      ]
+    },
+    "codex_default": {
+      "responses": 6,
+      "input_tokens": 46408,
+      "output_tokens": 962,
+      "reasoning_tokens": 728,
+      "cached_input_tokens": 36413,
+      "cache_write_input_tokens": 9977,
+      "reported_efforts": [
+        "medium"
+      ],
+      "billing_field_names": [
+        "payer"
+      ]
+    }
+  },
+  "paired_input_token_deltas": [
+    {
+      "case_id": "R01",
+      "repeat": 1,
+      "added_input_tokens": 4366
+    },
+    {
+      "case_id": "R01",
+      "repeat": 2,
+      "added_input_tokens": 4366
+    },
+    {
+      "case_id": "R02",
+      "repeat": 1,
+      "added_input_tokens": 4366
+    },
+    {
+      "case_id": "R02",
+      "repeat": 2,
+      "added_input_tokens": 4366
+    },
+    {
+      "case_id": "R03",
+      "repeat": 1,
+      "added_input_tokens": 4366
+    },
+    {
+      "case_id": "R03",
+      "repeat": 2,
+      "added_input_tokens": 4366
+    }
+  ],
+  "monetary_cost": null,
+  "billing_note": "Captured billing objects identify payer only; no currency amount was reported. Gross input token counts are not currency charges."
+}

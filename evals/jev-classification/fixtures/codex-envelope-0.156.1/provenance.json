@@ -1,0 +1,27 @@
+{
+  "repository": "https://github.com/openai/codex",
+  "commit": "b412ff32c417f855c2b2d1581b77058eed87c84b",
+  "cli_version": "0.156.1",
+  "license": "Apache-2.0",
+  "files": {
+    "instructions.md": {
+      "path": "codex-rs/protocol/src/prompts/base_instructions/default.md",
+      "git_blob_sha": "907ff8b877026871b088f01f4366cea36e1f02cd",
+      "sha256": "ac8ae107a0d72fe3476b430afb161ea4e67da2e446d778aefc44828160559807",
+      "bytes": 20903
+    },
+    "LICENSE": {
+      "path": "LICENSE",
+      "git_blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc",
+      "bytes": 10926
+    },
+    "NOTICE": {
+      "path": "NOTICE",
+      "git_blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915",
+      "bytes": 242
+    }
+  },
+  "scope": "Public default template; differs from the 18037-character server-cached template of the earlier CLI observation. Not a reconstruction of all active CLI messages."
+}

@@ -139,3 +139,13 @@ semantic accuracy is unqualified. The capture also reports 10,834 input tokens
 versus 3,316 for the historical API observation under different settings. Preserve
 the disagreement and investigate matched conditions before backend selection.
 No new Sol call, retry or metric/registry update was made.
+
+The separately approved [public-envelope API ablation](../evals/jev-classification/runs/2026-10-19-codex-envelope-ablation-v1/README.md)
+then held provider/model/medium effort and classification-instruction placement
+fixed. Both arms matched the frozen comparator on all 24 axis slots and repeated
+R01 ownership as `existing_specification`; the predicted template-induced
+abstention did not reproduce. The template added 4,366 reported input tokens per
+request. This screens the pinned public default prompt, which differs from the
+earlier server-cached CLI template; it does not identify the CLI error's cause.
+Instruction placement and actual CLI request construction remain separate
+diagnostics before any backend-quality conclusion.
