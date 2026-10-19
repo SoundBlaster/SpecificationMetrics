@@ -1403,6 +1403,7 @@ dependencies = [
  "blake3",
  "clap",
  "ignore",
+ "libc",
  "reqwest",
  "rusqlite",
  "serde",

@@ -16,6 +16,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{Context, Result, bail};
 use clap::{Parser, Subcommand};
 use serde::Serialize;
+use specification_metrics::backend;
 
 #[derive(Parser)]
 #[command(
@@ -29,6 +30,26 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Render a frozen categorical packet for Codex without invoking any process.
+    PrepareClassification {
+        #[arg(long)]
+        packet: PathBuf,
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        output: Option<PathBuf>,
+    },
+    /// Execute one prepared categorical task in a fresh directory (experimental).
+    RunClassification {
+        #[arg(long)]
+        prepared: PathBuf,
+        /// Fresh absolute directory outside repositories; preserves failed attempts.
+        #[arg(long)]
+        run_dir: PathBuf,
+        /// Explicit authorization for one CLI invocation; provider HTTP counts are unknown.
+        #[arg(long)]
+        allow_hosted_classification: bool,
+    },
     /// Extract one explicitly selected Python decision expression (experimental).
     ExtractDecisionTarget {
         root: PathBuf,
@@ -227,6 +248,28 @@ struct SyncResult {
 fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.command {
+        Command::PrepareClassification {
+            packet,
+            config,
+            output,
+        } => {
+            emit_json(
+                &backend::prepare_files(&packet, &config)?,
+                output.as_deref(),
+            )?;
+        }
+        Command::RunClassification {
+            prepared,
+            run_dir,
+            allow_hosted_classification,
+        } => {
+            let prepared = backend::load_prepared(&prepared)?;
+            let report = backend::execute(&prepared, &run_dir, allow_hosted_classification)?;
+            emit_json(&report, None)?;
+            if report.status != "proposal" {
+                bail!("classification analysis incomplete; inspect the run report");
+            }
+        }
         Command::ExtractDecisionTarget {
             root,
             path,

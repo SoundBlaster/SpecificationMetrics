@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source_revision": "synthetic-documentation-fixture",
+  "rubric_version": "illustrative-role-v1",
+  "semantic_instructions": "The goal is consistent representation, reuse, management, tracing and control of product decisions through named Specifications. Product policies and variant behavior are candidates; transport, syntax, formatter and linter mechanics are not. Treat uncertainty explicitly. Do not infer hidden helpers or missing Intent.",
+  "task": {
+    "state": {
+      "code": "return workspace == approved_workspace",
+      "intent": "Only the explicitly approved workspace may be allocated.",
+      "architecture_goal": "Keep allocation authorization in one named Specification."
+    },
+    "questions": {
+      "role": {
+        "instructions": "Classify the responsibility of this specific decision using the supplied Intent and code.",
+        "criteria": {
+          "policy": "The decision defines product authorization or a domain invariant.",
+          "mechanics": "The decision only implements transport, syntax or a local operation.",
+          "unknown": "The bounded evidence cannot establish the responsibility."
+        }
+      }
+    }
+  }
+}
