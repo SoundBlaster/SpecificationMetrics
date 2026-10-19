@@ -109,6 +109,13 @@ in this change. Further inference still requires an approved bounded run. The
 next execution layer can use the public adapter while retaining the existing
 durable single-spend reservation and transport-receipt rules.
 
+The active [historical SpecGraph PR714 packet preparation v2](../evals/jev-classification/runs/2026-10-19-specgraph-pr714-preparation-v2/README.md)
+contains four exact source-bound decisions, their intent/document/test context,
+and `not_run` bindings. Current SDK and Rust CLI checks are offline only;
+there is no new classifier result, independent reference or live authorization.
+V2 retains surrounding context without repeating selected source intervals.
+The frozen v1 overlap and its correction are documented in the v2 preparation.
+
 ## Verification
 
 Local Python 3.11 / SDK 0.9.0 validation passed **115 tests**: the 15 new bridge
