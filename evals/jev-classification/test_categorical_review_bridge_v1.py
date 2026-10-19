@@ -266,5 +266,14 @@ class CategoricalBridgeTests(unittest.TestCase):
         self.assertNotIn('confidence', plan.report()['categorical'])
 
 
+def load_tests(loader, tests, pattern):
+    # Named current-SDK CI invocation also checks the new offline source packets.
+    # Discovery already finds that module, so do not duplicate it there.
+    if pattern is None:
+        from test_specgraph_pr714_preparation_v1 import BridgePreparationTests
+        tests.addTests(loader.loadTestsFromTestCase(BridgePreparationTests))
+    return tests
+
+
 if __name__ == '__main__':
     unittest.main()
