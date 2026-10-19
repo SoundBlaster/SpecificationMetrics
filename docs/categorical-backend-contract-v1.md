@@ -22,8 +22,10 @@ canonically sorted; historical wire bytes and question order are not rewritten.
 Use the [prompt-parity protocol](classification-prompt-parity.md) before treating
 a newly rendered packet as comparable to an old observation.
 
-The packet, effective configuration, rendered prompt and schema each have a
-`blake3:` digest. Duplicate JSON keys, unknown protocol fields, malformed JSON,
+The packet, effective configuration, rendered prompt, schema and exact CLI argv
+each have a `blake3:` digest. Preparation freezes argv as well as the packet;
+execution reconstructs and verifies the current profile before reservation.
+Duplicate JSON keys, unknown protocol fields, malformed JSON,
 empty instructions/definitions and oversized input are rejected. This verifies
 local content binding. The source revision, Intent and rubric remain caller
 premises; the backend does not rescan a checkout or attest that supplied code
@@ -100,7 +102,8 @@ explicit invocation; this is not a global ban on repeating an experiment.
 Codex uses a fresh ephemeral session, ignores user config, requests the read-only
 sandbox and disables project instructions, automatic skill instructions, shell,
 MCP/apps/plugins, memories, agents, browser and search tools through its pinned
-configuration profile. Only packet input is supplied on stdin. Unexpected tool
+configuration profile. The default local `view_image` and `sleep_tool` features
+are explicitly disabled before dispatch. Only packet input is supplied on stdin. Unexpected tool
 events make the result incomplete. These are requested CLI restrictions, not a
 claim of identical system prompts, remote execution attestation or a new OS
 security boundary. Existing managed controls can reject the invocation.
@@ -151,3 +154,38 @@ CLI semantics were checked against installed 0.156.1 `exec --help` and the
 [official CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli)
 and [non-interactive guide](https://learn.chatgpt.com/docs/non-interactive-mode).
 Actual hosted execution and model-quality/cost comparison remain unmeasured.
+
+## Review corrections and prevention — 2026-10-19
+
+Two confirmed P1 findings exposed a gap in the original offline fixtures:
+
+- `codex_hooks`, `memory_tool` and `imagegenext` are legacy aliases in the pinned
+  CLI. Their canonical `hooks`, `memories` and `image_generation` settings already
+  existed in the profile. Redundant aliases can emit configuration-warning
+  `item.completed` error events before `turn.started`; the strict stream parser
+  correctly treats that stream as incomplete. Removed the aliases, along with
+  obsolete no-op feature switches, rather than accepting warning/error streams.
+- The pinned registry enables `view_image` and `sleep_tool` by default. Omitting
+  a setting did not disable those tools. In particular, a local image could be
+  read outside the frozen evidence before an after-the-fact event check rejected
+  the run. Both features are now disabled in the invocation profile itself.
+
+Root cause: the process fixture accepted arbitrary argv. Checking CLI help and
+mocked successful output had not verified version-specific aliases, removed
+switches or default tool exposure. The independent
+[registry fixture](../tests/fixtures/backends/codex-0.156.1-features.json) records
+149 canonical keys, legacy aliases, removed/deprecated switches and the audited
+default local-tool subset, with upstream commit/source hashes. It is extracted
+from the exact 0.156.1
+[feature registry](https://github.com/openai/codex/blob/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/features/src/lib.rs)
+and [alias map](https://github.com/openai/codex/blob/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/features/src/legacy.rs).
+Warning serialization is verified against the same revision's
+[JSONL processor](https://github.com/openai/codex/blob/b412ff32c417f855c2b2d1581b77058eed87c84b/codex-rs/exec/src/event_processor_with_jsonl_output.rs).
+
+The two profile regressions failed against the original argv, reporting
+`noncanonical feature codex_hooks` and missing `features.view_image=false`.
+They pass after correction. Additional cases keep pre-turn configuration
+warnings invalid and reject a modified frozen tool restriction even when its
+local digest is recomputed. Experimental preparations made before this review
+must be regenerated offline; no historical model result is rewritten or rerun.
+This remains source/fixture evidence, not a new live provider qualification.

@@ -40,6 +40,7 @@ fn shared_packet_preserves_semantics_and_does_not_require_an_installed_backend()
         json!(["role"])
     );
     let args = backend::codex_argv(&prepared);
+    assert_eq!(prepared.arguments, args);
     for required in [
         "--ignore-user-config",
         "--strict-config",
@@ -61,6 +62,68 @@ fn shared_packet_preserves_semantics_and_does_not_require_an_installed_backend()
         prepared.capability_status,
         "configured_not_runtime_verified"
     );
+}
+
+#[test]
+fn cli_profile_features_are_canonical_active_keys_in_the_pinned_registry() {
+    // Independent upstream capability evidence, not a duplicate of our argv.
+    let registry: Value = serde_json::from_str(include_str!(
+        "fixtures/backends/codex-0.156.1-features.json"
+    ))
+    .unwrap();
+    let prepared = backend::prepare(packet(), config(Path::new("/not-installed/codex"))).unwrap();
+    assert_eq!(
+        prepared.config.required_cli_version,
+        registry["cli_version"]
+    );
+    let args = backend::codex_argv(&prepared);
+    for key in args
+        .iter()
+        .filter_map(|arg| arg.strip_prefix("features."))
+        .map(|arg| arg.split('=').next().unwrap())
+    {
+        assert!(
+            registry["canonical_features"]
+                .as_array()
+                .unwrap()
+                .contains(&json!(key)),
+            "noncanonical feature {key}"
+        );
+        assert!(
+            !registry["legacy_aliases"]
+                .as_array()
+                .unwrap()
+                .contains(&json!(key)),
+            "legacy feature alias {key}"
+        );
+        assert!(
+            !registry["removed_or_deprecated_features"]
+                .as_array()
+                .unwrap()
+                .contains(&json!(key)),
+            "ineffective feature toggle {key}"
+        );
+    }
+}
+
+#[test]
+fn cli_profile_disables_default_local_tools_before_dispatch() {
+    let registry: Value = serde_json::from_str(include_str!(
+        "fixtures/backends/codex-0.156.1-features.json"
+    ))
+    .unwrap();
+    let prepared = backend::prepare(packet(), config(Path::new("/not-installed/codex"))).unwrap();
+    let args = backend::codex_argv(&prepared);
+    for feature in registry["default_enabled_local_tools_to_disable"]
+        .as_array()
+        .unwrap()
+    {
+        let toggle = format!("features.{}=false", feature.as_str().unwrap());
+        assert!(
+            args.contains(&toggle),
+            "default local tool remains enabled: {toggle}"
+        );
+    }
 }
 
 #[test]
@@ -340,6 +403,44 @@ mod unix {
             assert!(report.answers.is_none());
             assert!(started.elapsed().as_secs() < 5);
         }
+    }
+
+    #[test]
+    fn changing_frozen_tool_restrictions_is_rejected_before_reservation() {
+        let root = tempfile::tempdir().unwrap();
+        let executable = fake(root.path(), "exit 99", "codex-cli 0.156.1");
+        let mut prepared = backend::prepare(packet(), config(&executable)).unwrap();
+        prepared
+            .arguments
+            .retain(|arg| arg != "features.view_image=false");
+        // Even rebinding the local digest cannot replace the current profile.
+        prepared.arguments_digest = format!(
+            "blake3:{}",
+            blake3::hash(&serde_json::to_vec(&prepared.arguments).unwrap())
+        );
+        let run = root.path().join("run");
+        assert!(
+            backend::execute(&prepared, &run, true)
+                .unwrap_err()
+                .to_string()
+                .contains("prepared task binding changed")
+        );
+        assert!(!run.exists());
+    }
+
+    #[test]
+    fn configuration_warning_before_turn_is_not_ignored() {
+        let root = tempfile::tempdir().unwrap();
+        let answer = json!({"answers":{"role":"policy"}});
+        let body=success(answer.clone(),answer,"").replace(
+            "{\"type\":\"turn.started\"}",
+            "{\"type\":\"item.completed\",\"item\":{\"id\":\"warning\",\"type\":\"error\",\"message\":\"legacy feature configuration\"}}\n{\"type\":\"turn.started\"}"
+        );
+        let executable = fake(root.path(), &body, "codex-cli 0.156.1");
+        let prepared = backend::prepare(packet(), config(&executable)).unwrap();
+        let report = backend::execute(&prepared, &root.path().join("run"), true).unwrap();
+        assert_eq!(report.status, "analysis_incomplete");
+        assert!(report.answers.is_none());
     }
 }
 

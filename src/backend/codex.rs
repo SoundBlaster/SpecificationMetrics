@@ -1,4 +1,4 @@
-use super::contract::{ADAPTER, PreparedTask, bounded_file, digest, read_json};
+use super::contract::{ADAPTER, BackendConfig, PreparedTask, bounded_file, digest, read_json};
 use anyhow::{Result, ensure};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
@@ -53,6 +53,10 @@ fn execute_platform(_: &PreparedTask, _: &Path) -> Result<ExecutionReport> {
 }
 
 pub fn argv(prepared: &PreparedTask) -> Vec<String> {
+    config_argv(&prepared.config)
+}
+
+pub(super) fn config_argv(config: &BackendConfig) -> Vec<String> {
     let mut args = [
         "exec",
         "--ignore-user-config",
@@ -72,7 +76,7 @@ pub fn argv(prepared: &PreparedTask) -> Vec<String> {
     ]
     .map(String::from)
     .to_vec();
-    args.push(prepared.config.model.clone());
+    args.push(config.model.clone());
     for setting in [
         "approval_policy=\"never\"",
         "model_provider=\"openai\"",
@@ -81,31 +85,25 @@ pub fn argv(prepared: &PreparedTask) -> Vec<String> {
         "web_search=\"disabled\"",
         "mcp_servers={}",
         "features.shell_tool=false",
+        "features.view_image=false",
+        "features.sleep_tool=false",
         "features.multi_agent=false",
         "features.multi_agent_v2=false",
         "features.apps=false",
         "features.plugins=false",
         "features.hooks=false",
-        "features.codex_hooks=false",
-        "features.plugin_hooks=false",
         "features.memories=false",
-        "features.memory_tool=false",
-        "features.js_repl=false",
         "features.code_mode=false",
         "features.browser_use=false",
         "features.computer_use=false",
         "features.image_generation=false",
-        "features.imagegenext=false",
-        "features.search_tool=false",
         "features.standalone_web_search=false",
-        "features.tool_search=false",
         "features.skill_search=false",
-        "features.apply_patch_freeform=false",
         "features.goals=false",
     ] {
         args.extend(["-c".into(), setting.into()]);
     }
-    let effort = serde_json::to_string(&prepared.config.reasoning_effort).unwrap();
+    let effort = serde_json::to_string(&config.reasoning_effort).unwrap();
     args.extend([
         "-c".into(),
         format!("model_reasoning_effort={effort}"),

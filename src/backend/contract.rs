@@ -79,6 +79,8 @@ pub struct PreparedTask {
     pub config_digest: String,
     pub prompt_digest: String,
     pub schema_digest: String,
+    pub arguments: Vec<String>,
+    pub arguments_digest: String,
     pub prompt: String,
     pub response_schema: Value,
     pub capability_status: String,
@@ -185,12 +187,16 @@ pub fn prepare(packet: CategoricalPacket, config: BackendConfig) -> Result<Prepa
         prompt.len() <= INPUT_LIMIT,
         "rendered prompt exceeds 65536 bytes"
     );
+    let arguments = super::codex::config_argv(&config);
+    let arguments_digest = digest(&serde_json::to_vec(&arguments)?);
     Ok(PreparedTask {
         adapter: ADAPTER.into(),
         packet_digest: digest(&packet_bytes),
         config_digest: digest(&serde_json::to_vec(&config)?),
         prompt_digest: digest(prompt.as_bytes()),
         schema_digest: digest(&serde_json::to_vec(&response_schema)?),
+        arguments,
+        arguments_digest,
         packet,
         config,
         prompt,
