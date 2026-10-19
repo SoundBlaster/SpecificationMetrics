@@ -149,3 +149,17 @@ request. This screens the pinned public default prompt, which differs from the
 earlier server-cached CLI template; it does not identify the CLI error's cause.
 Instruction placement and actual CLI request construction remain separate
 diagnostics before any backend-quality conclusion.
+
+## Investigation closure — 2026-10-19
+
+At the user's request, the [final instruction-role check](../evals/jev-classification/runs/2026-10-19-final-instruction-placement-v1/README.md)
+completed the bounded investigation. Both conditions matched 24/24 comparator
+axes and recognized the existing Specification in both repeats. The original
+CLI abstention remains visible with an unresolved cause. No further ablation,
+corpus expansion or deeper CLI investigation is scheduled; continuing those
+probes requires a new user request.
+
+The next work is ordinary PR review/integration and connecting captured proposals
+to existing formal validation/review consumers. Keep the general backend/local
+adapter roadmap as planned engineering; these small control studies do not
+establish broad model accuracy or select a universally best backend.
