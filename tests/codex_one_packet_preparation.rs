@@ -36,8 +36,8 @@ fn captured_codex_run_keeps_bindings_and_semantic_disagreement_without_inference
     };
     let result = Command::new(python)
         .arg("-B")
-        .arg(root.join("evals/jev-classification/verify_codex_live_v1.py"))
-        .current_dir(root)
+        .args(["-m", "unittest", "-v", "test_verify_codex_live_v2.py"])
+        .current_dir(root.join("evals/jev-classification"))
         .output()
         .unwrap();
     assert!(
