@@ -1,0 +1,1 @@
+{"ambiguous_posts":0,"attempts":[{"attempt":1,"backoff_seconds":0.0,"elapsed_seconds":1.863832,"http_status":200,"post_may_have_been_sent":true,"retry_scheduled":false,"status":"http_response"}],"duplicate_execution_possible":false,"elapsed_attempt_backoff_seconds":1.863832,"http_status":200,"network_attempts":1,"potentially_billable_posts":1,"status":"http_response"}

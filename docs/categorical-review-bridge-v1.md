@@ -116,6 +116,12 @@ there is no new classifier result, independent reference or live authorization.
 V2 retains surrounding context without repeating selected source intervals.
 The frozen v1 overlap and its correction are documented in the v2 preparation.
 
+The separately authorized [PR714 live route pilot](../evals/jev-classification/runs/2026-10-19-specgraph-pr714-live-v1/README.md)
+now records four Jev batches in 9.706 seconds, four retained proposals and no
+selected ordinary reviews. It preserves low native confidence values that the
+categorical consistency router does not use; this is an explicit routing
+limitation, not an accuracy claim or a reason to accept those proposals.
+
 ## Verification
 
 Local Python 3.11 / SDK 0.9.0 validation passed **115 tests**: the 15 new bridge
