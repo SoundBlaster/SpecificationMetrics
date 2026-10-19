@@ -1,0 +1,32 @@
+{
+  "protocol": "specmetrics.coreinfra-tls-retry/v1",
+  "manifest_sha256": "aa9335fc9d200e9677c6d69b980b2b771a168f9e54bff5eda7f83352a5518beb",
+  "producer_digests": {
+    "coreinfra_retry_run.py": "9784804e6a0b0cfe44eff99619ceeb952349e80bb52911bc6b0e956de4f474e3",
+    "coreinfra_transport.py": "cd91b127e5c413da153fea6dabdf7e89d7c6f1ff25b59a97de535cef6684bbcf",
+    "question_grouping.py": "444e878ac9d1cc77dded98d68d641ea8c39ef8e9ac314a2cf421f2cc67532035"
+  },
+  "retry_policy": {
+    "max_attempts": 3,
+    "backoff_seconds": [
+      1.0,
+      2.0
+    ],
+    "timeout_seconds": 30.0,
+    "max_response_bytes": 1048576
+  },
+  "started_at": "2026-10-19T08:11:55.219567+00:00",
+  "planned_requests": 12,
+  "max_network_attempts": 36,
+  "attempted_requests": 12,
+  "received_json_responses": 12,
+  "network_attempts": 12,
+  "potentially_billable_posts": 12,
+  "ambiguous_posts": 0,
+  "duplicate_execution_possible": false,
+  "attempt_ledger_complete": true,
+  "completed": true,
+  "stop_reason": null,
+  "semantic_status": "unscored",
+  "finished_at": "2026-10-19T08:13:08.543816+00:00"
+}

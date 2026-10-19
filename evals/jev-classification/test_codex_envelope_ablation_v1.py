@@ -94,6 +94,27 @@ class EnvelopeAblationTests(unittest.TestCase):
             self.skipTest("live observation is not captured")
         self.assertEqual(study.analyze(study.RUN), study.decode((study.RUN / "comparison.json").read_bytes()))
 
+    def test_recorded_usage_preserves_reasoning_and_cache_accounting(self):
+        if not (study.RUN / "usage-audit.json").exists():
+            self.skipTest("usage observation is not captured")
+        path = study.RUN / "responses.jsonl"
+        audit = study.decode((study.RUN / "usage-audit.json").read_bytes())
+        self.assertEqual(audit["source_responses_sha256"], study.sha(path.read_bytes()))
+        rows = [study.decode(line) for line in path.read_bytes().splitlines()]
+        for arm in study.ARMS:
+            usage = [r["response"]["usage"] for r in rows if r["request_id"].endswith("-" + arm)]
+            saved = audit["arms"][arm]
+            self.assertEqual(saved["input_tokens"], sum(u["input_tokens"] for u in usage))
+            self.assertEqual(saved["output_tokens"], sum(u["output_tokens"] for u in usage))
+            self.assertEqual(saved["reasoning_tokens"], sum(u["output_tokens_details"]["reasoning_tokens"] for u in usage))
+            self.assertEqual(saved["cached_input_tokens"], sum(u["input_tokens_details"]["cached_tokens"] for u in usage))
+            self.assertEqual(saved["cache_write_input_tokens"], sum(u["input_tokens_details"]["cache_write_tokens"] for u in usage))
+        for pair in audit["paired_input_token_deltas"]:
+            selected = {arm: next(r["response"]["usage"]["input_tokens"] for r in rows
+                        if r["request_id"] == f'{pair["case_id"]}-r{pair["repeat"]}-{arm}') for arm in study.ARMS}
+            self.assertEqual(pair["added_input_tokens"], selected["codex_default"] - selected["minimal"])
+        self.assertIsNone(audit["monetary_cost"])
+
 
 if __name__ == "__main__":
     unittest.main()
