@@ -274,6 +274,9 @@ def load_tests(loader, tests, pattern):
         tests.addTests(loader.loadTestsFromTestCase(BridgePreparationTests))
         from test_specgraph_pr714_preparation_v2 import BridgePreparationTests as V2BridgePreparationTests
         tests.addTests(loader.loadTestsFromTestCase(V2BridgePreparationTests))
+        from test_specgraph_pr714_live_v1 import PilotTests, TransportTests
+        tests.addTests(loader.loadTestsFromTestCase(PilotTests))
+        tests.addTests(loader.loadTestsFromTestCase(TransportTests))
     return tests
 
 

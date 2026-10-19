@@ -4,3 +4,4 @@
 /.venv-metrics/
 /.venv-embedding/
 __pycache__/
+/evals/jev-classification/runs/*/local-execution.json

@@ -14,6 +14,12 @@ fn historical_pr714_packets_prepare_offline_without_model_execution() {
             "-m",
             "unittest",
             "-v",
+            "test_specgraph_pr714_live_v1.TransportTests",
+        ],
+        vec![
+            "-m",
+            "unittest",
+            "-v",
             "test_specgraph_pr714_preparation_v1.PreparationTests",
         ],
         vec![
