@@ -1,0 +1,40 @@
+{
+  "adapter": "specmetrics.codex-categorical/v1",
+  "status": "proposal",
+  "diagnostic": null,
+  "packet_digest": "blake3:2639770612e1e81aad1c27c588098ceae2ef3d79a65cf0ec78be76b80b4e5d75",
+  "config_digest": "blake3:8b186cf046c12098c8c048ae5d966ed3193d33c2d56af427e854ef073c3ea60e",
+  "prompt_digest": "blake3:7df1ea9de7aa0bf0ed6e5c73abfeadedd1bc41152032545a5fdac6b458c4752d",
+  "answers": {
+    "concern_kind": "policy",
+    "evidence_confidence": "supported",
+    "ownership": "unknown",
+    "tool_responsibility": "unknown"
+  },
+  "requested_model": "gpt-6-luna",
+  "returned_model": null,
+  "native_probabilities": null,
+  "usage": {
+    "cache_write_input_tokens": 0,
+    "cached_input_tokens": 0,
+    "input_tokens": 10834,
+    "output_tokens": 37,
+    "reasoning_output_tokens": 0
+  },
+  "monetary_cost": null,
+  "inference_process_invocations": 1,
+  "hosted_request_count": null,
+  "elapsed_ms": 9645,
+  "semantic_validation_status": "not_run",
+  "metric_effect": "none",
+  "capture_digests": {
+    "answer.json": "blake3:98d9bd43a8a93da3885d3a7bf62464644e9e67dde36c7966a91ef880c688d378",
+    "argv.json": "blake3:8eb09b8e745c05c2da884ddab0d25c0cfbe4ccd6718b70563b28a5999cc05d5b",
+    "events.jsonl": "blake3:0fd794260edf8c0831ce83bfe07f8f8f115db8f4cba2829d6fcdc18f2fc321fd",
+    "prepared.json": "blake3:a905514ad28ec933b968100b2488d53f0f95dda74a89d6ea9e4e5ea301a1bcea",
+    "request.stdin": "blake3:7df1ea9de7aa0bf0ed6e5c73abfeadedd1bc41152032545a5fdac6b458c4752d",
+    "response.schema.json": "blake3:4449ae985d392ad460620dfa92a4ce77a0a71a7df8aa4914565550a369538faa",
+    "runtime.json": "blake3:76fe42ca10c56377b3e0ae688aea06c0ca0e7aba371130997f126161671736a0",
+    "stderr.txt": "blake3:af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262"
+  }
+}

@@ -1,0 +1,12 @@
+schema_version = 1
+backend = "codex_cli"
+# Replace with the absolute path of the already-installed executable.
+executable = "/opt/homebrew/bin/codex"
+# An existing Codex authentication home without global AGENTS files.
+authentication_home = "/Volumes/TB5/Developer/Builds/GitHub/specmetrics-rustjev-evaluation-dfede6457c8a275f/python/pytest/codex-r01-live-v1/authentication-home"
+required_cli_version = "codex-cli 0.156.1"
+model = "gpt-6-luna"
+reasoning_effort = "medium"
+timeout_seconds = 120
+max_output_bytes = 1048576
+require_native_distribution = false

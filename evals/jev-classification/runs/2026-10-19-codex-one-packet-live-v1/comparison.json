@@ -1,0 +1,75 @@
+{
+  "contract": "specmetrics.codex-one-packet-observation/v1",
+  "case_id": "R01",
+  "arm": "baseline",
+  "status": "transport_qualified_semantic_disagreement",
+  "transport_status": "proposal",
+  "axes": [
+    {
+      "axis": "concern_kind",
+      "codex_label": "policy",
+      "sol_label": "policy",
+      "historical_api_label": "policy",
+      "agrees_with_sol": true
+    },
+    {
+      "axis": "evidence_confidence",
+      "codex_label": "supported",
+      "sol_label": "supported",
+      "historical_api_label": "supported",
+      "agrees_with_sol": true
+    },
+    {
+      "axis": "ownership",
+      "codex_label": "unknown",
+      "sol_label": "existing_specification",
+      "historical_api_label": "existing_specification",
+      "agrees_with_sol": false
+    },
+    {
+      "axis": "tool_responsibility",
+      "codex_label": "unknown",
+      "sol_label": "unknown",
+      "historical_api_label": "unknown",
+      "agrees_with_sol": true
+    }
+  ],
+  "agreement_with_sol": {
+    "matching_axes": 3,
+    "total_axes": 4,
+    "complete_view_agreement": false
+  },
+  "historical_api": {
+    "requested_model": "gpt-6-luna",
+    "returned_model": "gpt-6-luna",
+    "reasoning_effort": "low",
+    "elapsed_seconds": 6.361300207965542,
+    "usage": {
+      "input_tokens": 3316,
+      "output_tokens": 181
+    }
+  },
+  "codex": {
+    "requested_model": "gpt-6-luna",
+    "returned_model": null,
+    "requested_reasoning_effort": "medium",
+    "effective_reasoning_effort_attested": false,
+    "elapsed_ms": 9645,
+    "usage": {
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 0,
+      "input_tokens": 10834,
+      "output_tokens": 37,
+      "reasoning_output_tokens": 0
+    },
+    "inference_process_invocations": 1,
+    "underlying_http_requests": null,
+    "monetary_cost": null
+  },
+  "reference_authority": "evaluation_comparator_not_accepted_domain_facts_or_mathematical_upper_bound",
+  "semantic_accuracy_estimate": null,
+  "semantic_validation_status": "not_run",
+  "metric_effect": "none",
+  "new_sol_calls": 0,
+  "automatic_fact_acceptance": false
+}

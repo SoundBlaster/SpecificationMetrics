@@ -2,7 +2,10 @@
 
 Status: experimental Rust packet/adapter seam. The existing Jev `classify`,
 scanner, registry, rule-reuse gates and S/U calculations retain their behavior.
-There are no new model runs or changes to frozen experiment producers.
+The initial implementation changed no frozen experiment producers. A subsequent
+single authorized [live qualification](../evals/jev-classification/runs/2026-10-19-codex-one-packet-live-v1/README.md)
+observed a schema-valid proposal with an ownership disagreement; it did not
+establish semantic quality or change accepted facts.
 
 ## Task and proposal
 
@@ -153,7 +156,11 @@ already runs this integration suite via `cargo test --locked`.
 CLI semantics were checked against installed 0.156.1 `exec --help` and the
 [official CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli)
 and [non-interactive guide](https://learn.chatgpt.com/docs/non-interactive-mode).
-Actual hosted execution and model-quality/cost comparison remain unmeasured.
+The subsequent [R01/baseline capture](../evals/jev-classification/runs/2026-10-19-codex-one-packet-live-v1/README.md)
+records one successful hosted CLI turn (9.645 seconds) and three matching axes
+out of four against the frozen Sol comparator. This qualifies that observed
+transport/schema path only. Model-quality/cost comparisons remain unqualified;
+returned model/currency/HTTP-attempt metadata are unavailable.
 
 ## Review corrections and prevention — 2026-10-19
 

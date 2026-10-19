@@ -1,0 +1,11 @@
+{
+  "adapter_executable": "/Volumes/TB5/Developer/Builds/GitHub/specmetrics-rustjev-evaluation-dfede6457c8a275f/cargo/debug/specification-metrics",
+  "adapter_executable_digest": "blake3:6fc98fa966e9932b8d03dffa2afad942f03615e9fc5522c147767fcca7ec69d6",
+  "architecture": "aarch64",
+  "capability_status": "version_checked_configuration_requested",
+  "cli_version": "codex-cli 0.156.1",
+  "executable": "/opt/homebrew/lib/node_modules/@openai/codex/bin/codex.js",
+  "executable_digest": "blake3:4b077a2faa72f35950b7f172893428130296a095490a65871885d90b50dc7afc",
+  "os": "macos",
+  "remote_execution_attested": false
+}

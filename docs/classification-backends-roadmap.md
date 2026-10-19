@@ -119,9 +119,9 @@ subscription allowance usage and local resource/runtime costs separately; an
 already-paid subscription or local server is not unlimited zero-cost capacity.
 Do not invent dollar equivalents when billing evidence is unavailable.
 
-Next slice: qualify the experimental Codex route on one approved frozen packet,
-then connect prepared backend results to the existing validation consumers and
-add the general API route. Review the captured ordinary Luna low-effort pilot
+Next slice: connect captured Codex proposals to the existing validation consumers
+while preserving abstention/review routing, then add the general API route.
+Review the captured ordinary Luna low-effort pilot
 before preparing a separately authorized medium/high comparison. Ollama and
 LM Studio follow as explicit local adapter milestones under the same contract.
 
@@ -131,3 +131,11 @@ bindings for the Codex route. Its portable configuration and prepared artifact
 are offline templates: authentication/model availability and live execution
 remain unqualified. It authorizes no inference and cannot establish accuracy
 from one selected control.
+
+A separately authorized [one-process live observation](../evals/jev-classification/runs/2026-10-19-codex-one-packet-live-v1/README.md)
+subsequently completed the transport/schema qualification for R01/baseline.
+Ownership remained `unknown`, differing from Sol and historical API Luna;
+semantic accuracy is unqualified. The capture also reports 10,834 input tokens
+versus 3,316 for the historical API observation under different settings. Preserve
+the disagreement and investigate matched conditions before backend selection.
+No new Sol call, retry or metric/registry update was made.

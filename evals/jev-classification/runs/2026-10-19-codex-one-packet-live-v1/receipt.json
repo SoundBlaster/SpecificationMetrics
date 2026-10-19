@@ -1,0 +1,33 @@
+{
+  "contract": "specmetrics.codex-one-packet-live-receipt/v1",
+  "producer_commit": "f719773fba434eb2584b025aa5fc83582f30a32b",
+  "authorization": "User: Выполняй; one prepared Codex qualification run.",
+  "inference_process_invocations": 1,
+  "adapter_retries": 0,
+  "semantic_retries": 0,
+  "new_sol_calls": 0,
+  "auth_symlink_removed_after_run": true,
+  "credential_contents_in_artifacts": false,
+  "historical_inputs_sha256": {
+    "evals/jev-classification/runs/2026-10-18-sol61-medium-repeatability-v1/top-line.json": "3f25fe46df4537286501fa39552087020cf7a138dd44e2f1a9603354e6d54e3c",
+    "evals/jev-classification/runs/2026-10-18-ordinary-luna-live-v1/responses.jsonl": "42d3aed3cf136783c2ea4a82af876a58baea46db08e7a52d6f8a806472941b6b",
+    "evals/jev-classification/runs/2026-10-18-sol61-medium-repeatability-v1/receipt.json": "34975430d472e483cbebcaaaf455a6e442f008682442a310d0ce88fa7228ea35",
+    "evals/jev-classification/runs/2026-10-18-ordinary-luna-live-v1/result-receipt.json": "ee23a4e6c6625adbb5b561028a1e5eb688650ce12a0482797e8eda2f32282b49",
+    "evals/jev-classification/runs/2026-10-19-codex-one-packet-preparation-v1/plan.json": "0edfb826dcef1093308b509461303c2a99fca93d92b5f582c86d54cdffbc7633"
+  },
+  "files_sha256": {
+    "answer.json": "cbd7f2235efd100a09358c2d64f21222a7fa53187cf99a4584dd0edd9328fa18",
+    "argv.json": "90d39b0403b74423ce3767a4bd2bbf62a561538960e2bf28886a2ebb5bb15569",
+    "authorization.json": "0642d8fec3229171cb2b0869bb912ea189017aac136725ec5caf6b4f114de009",
+    "backend.toml": "a651b2d89ac51eb8d121e892d228a0bbf99f67a9230929804574a257e186488b",
+    "comparison.json": "91226cc3b0017ca2d16abebcd07d10ce52d5fa7ad7faccb4f2c89215e31a0acc",
+    "events.jsonl": "6d97cb1fdfd98ca8e850f444d67923fe0b5976f15decf16c5d86c1e1fcf89360",
+    "prepared.json": "68064ca75b19bac6f9b3f7b0274d2bb506ad557f1fa28b60c74283493bd283fa",
+    "report.json": "8f98b979eebc2764006e23366df62b94c376fcce2c98ac72753e7af6da939745",
+    "request.stdin": "f5d6d2d96b1c6665060ae6240b1596fc62645acdeea9180f7e7a4ca37bd92abd",
+    "response.schema.json": "4de0fc2c8fd123104a2eb5bfa600d8dc5cfb70b81f18c29951a4e4abb9ee344f",
+    "runtime.json": "c6482ac730de299c32811cb229fbc5a0fe0059d7264d569be0abb1ee97d4332d",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "authorized-prepared.json": "71ee1e94a919fc9e4fc7bc6e58ad8b5ac7dbbb6492658efe3ba7d4827973c0de"
+  }
+}

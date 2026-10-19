@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "answers": {
+      "additionalProperties": false,
+      "properties": {
+        "concern_kind": {
+          "enum": [
+            "mechanics",
+            "policy",
+            "unknown",
+            "variant_behavior"
+          ],
+          "type": "string"
+        },
+        "evidence_confidence": {
+          "enum": [
+            "insufficient",
+            "limited",
+            "supported"
+          ],
+          "type": "string"
+        },
+        "ownership": {
+          "enum": [
+            "existing_specification",
+            "simple_composition",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "tool_responsibility": {
+          "enum": [
+            "unknown",
+            "yes"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "concern_kind",
+        "evidence_confidence",
+        "ownership",
+        "tool_responsibility"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "answers"
+  ],
+  "type": "object"
+}

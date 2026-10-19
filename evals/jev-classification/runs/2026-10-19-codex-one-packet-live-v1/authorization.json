@@ -1,0 +1,21 @@
+{
+  "contract": "specmetrics.codex-live-authorization/v1",
+  "authorization_source": "User message: Выполняй; bounded continuation of PR #89 one-packet preparation.",
+  "case_id": "R01",
+  "arm": "baseline",
+  "preparation_commit": "f719773fba434eb2584b025aa5fc83582f30a32b",
+  "planned_inference_processes": 1,
+  "adapter_retries": 0,
+  "semantic_retries": 0,
+  "new_sol_calls": 0,
+  "prepared_sha256": "71ee1e94a919fc9e4fc7bc6e58ad8b5ac7dbbb6492658efe3ba7d4827973c0de",
+  "config_sha256": "a651b2d89ac51eb8d121e892d228a0bbf99f67a9230929804574a257e186488b",
+  "packet_sha256": "8d4b8918895b4fdc22f24eb4a126b1c3530bae850dfde12617b1e5650488743a",
+  "authentication_setup": "Private dedicated home; auth.json symlink to existing owner-only credential file; harness did not read or copy credential contents. No user/project configuration copied.",
+  "semantic_packet_unchanged": true,
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "timeout_seconds": 120,
+  "provider_http_request_limit": null,
+  "currency_limit": null
+}
