@@ -128,6 +128,13 @@ replay would select three of those four proposals for review. It leaves this
 bridge, the original live router/results and the spent dispatch lease unchanged;
 the new shadow selection has not been activated or executed against Luna.
 
+The subsequent [enforced native review cascade](native-review-cascade-v1.md)
+connects that signal in `specgraph_pr714_live_v2.py`, with a new capture-bound
+adapter and independent-review inspector. The old bridge/runner and shadow
+comparison remain unchanged. The v2 runner is verified with offline synthetic
+transport; no new live Luna outcome or additional inference authorization is
+implied by activation.
+
 ## Verification
 
 Local Python 3.11 / SDK 0.9.0 validation passed **115 tests**: the 15 new bridge

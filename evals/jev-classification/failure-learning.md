@@ -937,3 +937,39 @@ preservation. The independent comparison receipt preserves old/new routes and
 raw response identities; source runs, labels, prompts and leases are unchanged.
 This post-observation diagnostic is not independent model-quality validation or
 live activation. See [the contract](../../docs/native-uncertainty-routing-v1.md).
+
+## Connect route selection through preparation and resolution (2026-10-19)
+
+Integration reproduced another contract boundary: the frozen rich-review v1
+`prepare` rejects PR714 D01's real context, since categorical router v1 retained
+it despite the new uncertainty rule selecting review. Replacing only the route
+caller would therefore leave the additional review path unreachable. This is a
+confirmed consumer-gate mismatch, not a defect in the original frozen contract.
+
+Do not falsify an `unknown` label or add a fake evidence gap to pass the old gate:
+that would change the assessment used for disagreement resolution. The bounded
+fix is `native_review_cascade_v1` plus the v2 runtime. Selection, preparation,
+dispatch matching, inspection and report all consume the enforced route, while
+the original assessment and independent review wire remain unchanged. Existing
+citation/coverage/disagreement/evidence Specifications are reused.
+
+`test_native_review_cascade_v1.py` checks the original rejection, exact independent
+request equality, the same review request resolving differently against two
+actual original assessments, and a complete synthetic seven-dispatch lifecycle
+with three selected reviews and resolved/conflicting/failed outcomes. The old
+spent preparation is rejected by the new runner. No new inference is performed;
+historical results, contracts, producers and leases remain frozen.
+
+The initial integration fixture failed three expected-resolution assertions:
+it reused a single-fragment helper that quoted `fragments[0]` while declaring
+`target/source`. The real multi-fragment PR714 task starts with characterization
+context, so the unchanged citation gate correctly rejected that quote. Confirmed
+test-fixture cause: positional selection, not a runtime resolution failure. The
+new fixture selects `target/source` by stable ID; the negative invalid-quote test
+continues to require rejection. Citation checks were not relaxed.
+
+Exercising the actual worker also caught a fixture collision: the short fake key
+`synthetic` occurred in the synthetic response ID, so credential-reflection
+redaction correctly removed the body and resolution stayed incomplete. Use a
+distinct fake key absent from fixture payloads; retain the production reflection
+guard and exercise the real worker in the lifecycle regression.
