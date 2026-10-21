@@ -79,8 +79,11 @@ stores an assignment-expression (`:=`) target in `name`, while ordinary
 assignment targets use `left`. A failing regression reproduced false descendant
 coverage before the correction. The regression now covers walrus rebinding in
 conditions, standalone expressions, comprehensions, module aliases and static
-re-export modules. This prevents those bindings from silently removing branches
-from `U`.
+re-export modules, and expressions in class bases and function defaults.
+Class/function headers are visited for outer-scope bindings while their body
+assignments stay local. A separate positive regression prevents local body
+names from hiding a valid module base. This prevents those bindings from
+silently removing branches from `U`.
 
 Discovery reaches a fixed point from recognized native/marker declarations.
 Only statically resolved module-level ancestry is promoted. It does not

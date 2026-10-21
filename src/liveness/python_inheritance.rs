@@ -215,10 +215,21 @@ fn unique_binding(source: &ParsedPythonSource, name: &str) -> Option<(usize, Bin
 
 fn binds_name(node: Node<'_>, name: &str, source: &[u8]) -> bool {
     if matches!(node.kind(), "class_definition" | "function_definition") {
-        return node
+        if node
             .child_by_field_name("name")
             .and_then(|n| n.utf8_text(source).ok())
-            == Some(name);
+            == Some(name)
+        {
+            return true;
+        }
+        // Bases, decorators and default arguments execute outside the body.
+        // Body-local assignments must not shadow the surrounding module name.
+        let body = node.child_by_field_name("body");
+        let mut cursor = node.walk();
+        return node
+            .named_children(&mut cursor)
+            .filter(|child| Some(*child) != body)
+            .any(|child| binds_name(child, name, source));
     }
     if node.kind() == "lambda" {
         return false;
@@ -599,6 +610,18 @@ Final()
                 "Policy",
                 true,
             ),
+            (
+                "class Other((Policy := object)): pass",
+                "from .policy import Policy",
+                "Policy",
+                false,
+            ),
+            (
+                "def expose(value=(Policy := object)): pass",
+                "from .policy import Policy",
+                "Policy",
+                false,
+            ),
         ] {
             let dir = tempdir().unwrap();
             write(
@@ -639,6 +662,33 @@ Final()
             );
             assert!(live::measure(&report, None).unwrap().provisional);
         }
+    }
+
+    #[test]
+    fn body_local_rebindings_do_not_hide_the_module_base() {
+        let dir = tempdir().unwrap();
+        write(
+            dir.path(),
+            "pkg/policy.py",
+            "from specification_core import Specification\nclass Policy(Specification): pass\n",
+        );
+        write(
+            dir.path(),
+            "pkg/child.py",
+            "\
+from .policy import Policy
+class Other:
+    Policy = object
+def local():
+    Policy = object
+class Child(Policy):
+    if enabled: apply()
+Child()
+",
+        );
+        let report = scan::scan(dir.path(), &["pkg".to_owned()]).unwrap();
+        assert_eq!(report.specifications.len(), 2);
+        assert!(report.candidates.iter().all(|c| c.inside_specification));
     }
 
     #[test]
