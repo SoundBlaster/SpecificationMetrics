@@ -66,7 +66,7 @@ annotation; old snapshots are not rewritten when the contract changes.
 
 ## Current implementation boundary
 
-Counting rule v8 implements versioned source roles, semantic manifest digests,
+Counting rule v9 implements versioned source roles, semantic manifest digests,
 the exact-subtree `inside_specification` exclusion for directly recognized
 definitions, factories, the Python type marker, the Swift
 `SpecificationMetricV1` protocol marker, and the Rust
@@ -77,3 +77,23 @@ liveness statuses; Swift remains `unknown`.
 unrestricted directory-root measurement without a manifest is provisional
 discovery. The `provisional` flag also covers parse/marker errors, unassigned
 files, and conflicting roles.
+
+Python discovery now also follows static module-level class inheritance from
+an already recognized native or marker declaration. It resolves multi-level
+chains, generic bases, relative imports, symbol/module aliases and static
+`from`-import re-exports within the measured source set. Each resolved subclass
+counts once and its exact class subtree is excluded from `U`. A base-class
+reference is a runtime use when its binding resolves unambiguously.
+
+Discovery uses a fixed point, so file order does not change the result and
+unseeded inheritance cycles do not invent Specifications. Rebound/conflicting
+names, conditional or function-local imports, dynamic base expressions and
+nested class qualification are not promoted to definite module-level ancestry.
+Their branch candidates remain in `U` unless another explicit recognition rule
+applies. This is syntactic source analysis, not execution or proof that an
+import cycle can initialize at runtime.
+
+The v8 -> v9 change corrects the previously missing transitive discovery and
+inheritance use. It can increase `S`, decrease `U` and resolve `unknown` without
+any application change. Treat that as an analyzer correction and start a new
+comparison contract; do not rewrite v8 history or report it as a refactoring gain.

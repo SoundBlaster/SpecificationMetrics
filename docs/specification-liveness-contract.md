@@ -1,7 +1,7 @@
 # Specification liveness contract
 
 This contract defines liveness classification for named Specification
-declarations. Counting rule v8 implements conservative subsets for Python and
+declarations. Counting rule v9 implements conservative subsets for Python and
 Rust, including their declaration markers. The scanner recognizes declaration
 markers for Python, Swift, and Rust as described in the [declaration marker
 contract](declaration-marker-contract.md). Swift liveness remains `unknown`.
@@ -25,7 +25,7 @@ Each named declaration receives exactly one status:
 
 | Status | Rule | Effect on `S / U` |
 | --- | --- | --- |
-| `live` | At least one resolved runtime use, including construction, passing the value to a Specification evaluator/combinator, runtime `isinstance`/`issubclass` checks, class patterns, or an explicit runtime registry/factory value. | Count the declaration in `S`. |
+| `live` | At least one resolved runtime use, including construction, a class base, passing the value to a Specification evaluator/combinator, runtime `isinstance`/`issubclass` checks, class patterns, or an explicit runtime registry/factory value. | Count the declaration in `S`. |
 | `dead` | No resolved runtime use, the complete owning module/target is in scope, the symbol is not externally visible, and no unresolved dynamic lookup could refer to it. | Exclude the declaration from `S`. Its internal decision sites remain excluded from `U`. |
 | `unknown` | Visibility, source completeness, symbol resolution, reflection, dynamic lookup, macros, or another supported uncertainty prevents proving either status. | Keep the declaration in `S` conservatively and mark the report provisional until reviewed. |
 
@@ -65,7 +65,7 @@ Specification base or the typed `__specmetrics_specification__` marker,
 `from` imports,
 aliased and unaliased module imports, and static `from`-import re-export chains
 within the measured source set. It counts direct and parameterized generic
-constructor calls, class-level factory calls, a bounded list of Specification
+constructor calls, statically resolved class bases, class-level factory calls, a bounded list of Specification
 consumers, runtime class checks and patterns, static registry values, and
 explicit registration calls. Public names,
 shadowed or conflicting bindings, unresolved same-name imports, wildcard
@@ -74,6 +74,16 @@ an explicit closed-world manifest remain `unknown`. Assignment-based exports
 and dynamic `__getattr__` re-exports are not resolved; a module-level
 `__getattr__` hook or computed `__all__` keeps potentially affected
 declarations `unknown`. Cyclic re-export resolution is also `unknown`.
+Python v9 also discovers module-level subclasses transitively through resolved
+native/marker bases, including aliases, import-based re-exports and generic
+bases. The same binding checks guard discovery and inheritance liveness:
+conditional, duplicate, rebound or dynamically resolved bases cannot silently
+establish `live` or exclude descendant branches from `U`. A resolved inheritance
+edge is a use of the base class even if no direct base constructor appears.
+Nested/function-local class discovery and dynamic class factories remain outside
+this ancestry subset. This does not prove that a subclass is ever instantiated;
+each newly discovered class receives its own conservative liveness result.
+
 Rust liveness resolves the scanner's conventional crate/module ownership for
 recognized trait implementations. It confirms runtime uses through local
 construction, fully qualified crate/module paths, call arguments, and known
