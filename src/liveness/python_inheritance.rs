@@ -231,8 +231,12 @@ fn binds_name(node: Node<'_>, name: &str, source: &[u8]) -> bool {
         node.kind(),
         "assignment" | "augmented_assignment" | "named_expression" | "for_statement"
     ) && node
-        .child_by_field_name("left")
-        .is_some_and(|left| target_contains(left, name, source))
+        .child_by_field_name(if node.kind() == "named_expression" {
+            "name"
+        } else {
+            "left"
+        })
+        .is_some_and(|target| target_contains(target, name, source))
     {
         return true;
     }
@@ -559,6 +563,81 @@ Final()
                 "{name}: {:?}",
                 report.specification_liveness
             );
+        }
+    }
+
+    #[test]
+    fn walrus_rebinding_never_establishes_specification_ancestry() {
+        for (binding, import, base, reexport) in [
+            (
+                "if (Policy := object): pass",
+                "from .policy import Policy",
+                "Policy",
+                false,
+            ),
+            (
+                "(Policy := object)",
+                "from .policy import Policy",
+                "Policy",
+                false,
+            ),
+            (
+                "[(Policy := object) for _ in items]",
+                "from .policy import Policy",
+                "Policy",
+                false,
+            ),
+            (
+                "if (rules := other): pass",
+                "import pkg.policy as rules",
+                "rules.Policy",
+                false,
+            ),
+            (
+                "if (Policy := object): pass",
+                "from .policy import Policy",
+                "Policy",
+                true,
+            ),
+        ] {
+            let dir = tempdir().unwrap();
+            write(
+                dir.path(),
+                "pkg/policy.py",
+                "from specification_core import Specification\nclass Policy(Specification): pass\n",
+            );
+            let source = if reexport {
+                write(dir.path(), "pkg/api.py", &format!("{import}\n{binding}\n"));
+                "from .api import Policy\n".to_owned()
+            } else {
+                format!("{import}\n{binding}\n")
+            };
+            write(
+                dir.path(),
+                "pkg/child.py",
+                &format!("{source}class Child({base}):\n    if enabled: apply()\n"),
+            );
+            let report = scan::scan(dir.path(), &["pkg".to_owned()]).unwrap();
+            assert!(
+                report.parse_issues.is_empty(),
+                "{binding}: {:?}",
+                report.parse_issues
+            );
+            assert_eq!(
+                report.specifications.len(),
+                1,
+                "{binding}: {:?}",
+                report.specifications
+            );
+            assert!(
+                report
+                    .candidates
+                    .iter()
+                    .filter(|c| c.path == "pkg/child.py")
+                    .all(|c| !c.inside_specification),
+                "{binding}"
+            );
+            assert!(live::measure(&report, None).unwrap().provisional);
         }
     }
 

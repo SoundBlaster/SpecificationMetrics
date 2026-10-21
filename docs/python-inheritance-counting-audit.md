@@ -74,6 +74,14 @@ and negative cases for conflicting, conditional, function-local, wildcard,
 rebound and cyclic re-export bindings. These exercise discovery, inherited
 runtime use, S/U and sibling branch preservation together.
 
+PR review additionally exposed a grammar-field assumption: tree-sitter Python
+stores an assignment-expression (`:=`) target in `name`, while ordinary
+assignment targets use `left`. A failing regression reproduced false descendant
+coverage before the correction. The regression now covers walrus rebinding in
+conditions, standalone expressions, comprehensions, module aliases and static
+re-export modules. This prevents those bindings from silently removing branches
+from `U`.
+
 Discovery reaches a fixed point from recognized native/marker declarations.
 Only statically resolved module-level ancestry is promoted. It does not
 interpret Python execution, arbitrary mutations, dynamic base expressions or
