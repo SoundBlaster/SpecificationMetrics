@@ -235,6 +235,7 @@ pub fn scan_with_scope(
             message: "scope manifest selected no application source files".to_owned(),
         });
     }
+    liveness::discover_python_specifications(&python_sources, &mut specifications, &mut candidates);
     candidates.sort_by(|a, b| {
         (&a.path, a.line, a.column, &a.fingerprint).cmp(&(
             &b.path,

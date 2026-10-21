@@ -2,6 +2,9 @@ use std::collections::{HashMap, HashSet};
 
 use tree_sitter::{Node, Parser, Tree};
 
+mod python_inheritance;
+pub(crate) use python_inheritance::discover_python_specifications;
+
 use crate::model::{
     Language, SpecificationDefinition, SpecificationLiveness, SpecificationLivenessStatus,
 };
@@ -898,6 +901,7 @@ impl PythonLiveness {
             }
             let mut inspection = ReferenceInspection {
                 resolver: self,
+                source_path: &source.path,
                 source: &source.source,
                 imports: &imports,
                 target: declaration_index,
@@ -923,7 +927,7 @@ impl PythonLiveness {
         if direct_use {
             return (
                 SpecificationLivenessStatus::Live,
-                "resolved constructor or Specification consumer use".to_owned(),
+                "resolved constructor, inheritance, or Specification consumer use".to_owned(),
             );
         }
         if self.dynamic_lookup {
@@ -1352,6 +1356,7 @@ fn resolve_import_module(source_path: &str, import: &str) -> String {
 
 struct ReferenceInspection<'a> {
     resolver: &'a PythonLiveness,
+    source_path: &'a str,
     source: &'a str,
     imports: &'a ImportResolution,
     target: usize,
@@ -1411,12 +1416,12 @@ fn inspect_runtime_references(
                 if resolved.indices.contains(&inspection.target) {
                     if modules.len() == 1
                         && !resolved.ambiguous
-                        && is_runtime_use(
+                        && reference_is_runtime_use(
                             node,
                             parent,
                             grandparent,
                             great_grandparent,
-                            inspection.source,
+                            inspection,
                         )
                     {
                         *inspection.direct_use = true;
@@ -1444,13 +1449,15 @@ fn inspect_runtime_references(
             && let Some(indices) = inspection.imports.aliases.get(name)
             && indices.contains(&inspection.target)
         {
-            if is_runtime_use(
-                node,
-                parent,
-                grandparent,
-                great_grandparent,
-                inspection.source,
-            ) {
+            if indices.len() == 1
+                && reference_is_runtime_use(
+                    node,
+                    parent,
+                    grandparent,
+                    great_grandparent,
+                    inspection,
+                )
+            {
                 *inspection.direct_use = true;
             } else {
                 *inspection.ambiguous_use = true;
@@ -1484,6 +1491,53 @@ fn expression_path(node: Node<'_>, source: &str) -> Option<String> {
         }
         _ => None,
     }
+}
+
+fn is_inheritance_reference(
+    node: Node<'_>,
+    parent: Option<Node<'_>>,
+    grandparent: Option<Node<'_>>,
+    great_grandparent: Option<Node<'_>>,
+) -> bool {
+    let is_base_list = |arguments: Node<'_>, class: Option<Node<'_>>| {
+        class.is_some_and(|class| {
+            class.kind() == "class_definition"
+                && class.child_by_field_name("superclasses") == Some(arguments)
+        })
+    };
+    parent.is_some_and(|parent| {
+        is_base_list(parent, grandparent)
+            || (parent.kind() == "subscript"
+                && parent.child_by_field_name("value") == Some(node)
+                && grandparent.is_some_and(|arguments| is_base_list(arguments, great_grandparent)))
+    })
+}
+
+fn reference_is_runtime_use(
+    node: Node<'_>,
+    parent: Option<Node<'_>>,
+    grandparent: Option<Node<'_>>,
+    great_grandparent: Option<Node<'_>>,
+    inspection: &ReferenceInspection<'_>,
+) -> bool {
+    if is_inheritance_reference(node, parent, grandparent, great_grandparent) {
+        return inspection
+            .resolver
+            .sources
+            .iter()
+            .find(|source| source.path == inspection.source_path)
+            .and_then(|source| {
+                python_inheritance::resolve_base(inspection.resolver, source, node)
+            })
+            == Some(inspection.target);
+    }
+    is_runtime_use(
+        node,
+        parent,
+        grandparent,
+        great_grandparent,
+        inspection.source,
+    )
 }
 
 fn is_runtime_use(
