@@ -329,7 +329,13 @@ fn resolve_expression(
     let mut symbol = resolve_symbol(resolver, &source.module, root, visited)?;
     for part in parts {
         symbol = match symbol {
-            Symbol::Module(module) => resolve_symbol(resolver, &module, part, visited)?,
+            Symbol::Module(module) => {
+                resolve_symbol(resolver, &module, part, visited).or_else(|| {
+                    explicit_module_import(source, &format!("{module}.{part}"))
+                        .then(|| imported_submodule(resolver, &module, part))
+                        .flatten()
+                })?
+            }
             _ => return None,
         };
     }
@@ -352,12 +358,7 @@ fn resolve_symbol(
     }
     let Some(source) = source else {
         return (module == "specification_core" && name == "PredicateSpec")
-            .then(|| Symbol::Constructor(name.to_owned()))
-            .or_else(|| {
-                resolver
-                    .module_exists(&format!("{module}.{name}"))
-                    .then(|| Symbol::Module(format!("{module}.{name}")))
-            });
+            .then(|| Symbol::Constructor(name.to_owned()));
     };
     if resolver.parse_failed.contains(&source.path)
         || has_module_getattr(source.tree.root_node(), &source.source)
@@ -367,7 +368,8 @@ fn resolve_symbol(
     }
     let (position, binding) = unique_binding(source, name)?;
     match binding {
-        Binding::Imported(module, name) => resolve_symbol(resolver, &module, &name, visited),
+        Binding::Imported(module, name) => resolve_symbol(resolver, &module, &name, visited)
+            .or_else(|| imported_submodule(resolver, &module, &name)),
         Binding::Module(module) => Some(Symbol::Module(module)),
         Binding::Other => {
             let node = source
@@ -407,6 +409,53 @@ fn resolve_symbol(
         }
         Binding::Class => None,
     }
+}
+
+fn explicit_module_import(source: &ParsedPythonSource, module: &str) -> bool {
+    let mut cursor = source.tree.root_node().walk();
+    source
+        .tree
+        .root_node()
+        .named_children(&mut cursor)
+        .any(|node| {
+            if node.kind() != "import_statement" {
+                return false;
+            }
+            let mut cursor = node.walk();
+            node.named_children(&mut cursor).any(|import| {
+                let name = import.child_by_field_name("name").unwrap_or(import);
+                name.utf8_text(source.source.as_bytes())
+                    .ok()
+                    .is_some_and(|name| name == module || name.starts_with(&format!("{module}.")))
+            })
+        })
+}
+
+fn imported_submodule(resolver: &PythonLiveness, module: &str, name: &str) -> Option<Symbol> {
+    let target = format!("{module}.{name}");
+    let targets: Vec<_> = resolver
+        .sources
+        .iter()
+        .filter(|s| s.module == target)
+        .collect();
+    if targets.len() != 1 || resolver.parse_failed.contains(&targets[0].path) {
+        return None;
+    }
+    let parents: Vec<_> = resolver
+        .sources
+        .iter()
+        .filter(|s| s.module == module)
+        .collect();
+    if parents.len() > 1
+        || parents.iter().any(|s| {
+            resolver.parse_failed.contains(&s.path)
+                || has_module_getattr(s.tree.root_node(), &s.source)
+                || binds_name(s.tree.root_node(), name, s.source.as_bytes())
+        })
+    {
+        return None;
+    }
+    Some(Symbol::Module(target))
 }
 
 fn mutates_object(node: Node<'_>, name: &str, text: &str) -> bool {
@@ -693,5 +742,62 @@ mod tests {
             ),
         ]);
         assert_eq!(shadowed.unresolved_call, 1);
+    }
+
+    #[test]
+    fn explicit_submodule_import_works_for_regular_and_namespace_packages_only_when_loaded() {
+        for initializer in [None, Some("")] {
+            for (import, direct) in [
+                ("import pkg.policy", true),
+                ("from pkg import policy", true),
+                ("import pkg", false),
+            ] {
+                let app = format!(
+                    "{import}\nif {}.RULE.is_satisfied_by(None): pass\n",
+                    if import.starts_with("from") {
+                        "policy"
+                    } else {
+                        "pkg.policy"
+                    }
+                );
+                let mut files = vec![("pkg/policy.py", POLICY), ("app.py", app.as_str())];
+                if let Some(text) = initializer {
+                    files.push(("pkg/__init__.py", text));
+                }
+                let (_, report) = analyze(&files);
+                assert_eq!(
+                    report.direct_application,
+                    usize::from(direct),
+                    "{initializer:?} {import}"
+                );
+                assert_eq!(report.unresolved_call, usize::from(!direct));
+            }
+        }
+        for initializer in [
+            "policy = None\n",
+            "policy = None\npolicy = None\n",
+            "if flag:\n    policy = None\n",
+            "from unknown import *\n",
+        ] {
+            let (_, report) = analyze(&[
+                ("pkg/__init__.py", initializer),
+                ("pkg/policy.py", POLICY),
+                (
+                    "app.py",
+                    "import pkg.policy\nif pkg.policy.RULE.is_satisfied_by(None): pass\n",
+                ),
+            ]);
+            assert_eq!(report.unresolved_call, 1, "{initializer}");
+        }
+        let (_, report) = analyze(&[
+            ("pkg/__init__.py", ""),
+            ("pkg/policy.py", POLICY),
+            ("src/pkg/policy.py", POLICY),
+            (
+                "app.py",
+                "import pkg.policy\nif pkg.policy.RULE.is_satisfied_by(None): pass\n",
+            ),
+        ]);
+        assert_eq!(report.unresolved_call, 1);
     }
 }

@@ -44,6 +44,11 @@ supported. Target evidence contains the factory's path, line, UTF-8 byte column
 and constructor. The whole selected-source digest binds that evidence to the
 snapshot; the candidate retains its existing fingerprint and anchor.
 
+Explicit submodule imports work with both regular packages (`__init__.py`)
+and namespace packages. A submodule file's presence alone does not establish
+that it was imported. Package shadowing and ambiguous module paths remain
+unresolved.
+
 Same-named local factories do not qualify. Duplicate/reassigned bindings,
 wildcards, conditional bindings, cycles, missing or ambiguous source modules,
 parse failures, module `__getattr__`, local shadowing, and observed receiver
