@@ -1,0 +1,496 @@
+{
+  "corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "analyzer_binary_sha256": "6d004babf556e3e791a30457b7dcb2ad46e42d1926fae0f0dc385b013f168bbb",
+  "label_status": "author_labeled_before_replay; independent_review_pending",
+  "cases": 29,
+  "agreement": 29,
+  "by_tier": {
+    "decide_call": 23,
+    "structural_analogue": 6
+  },
+  "families": 19,
+  "metric_effect": "none",
+  "measurements": {
+    "specgraph": {
+      "revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "30ca3d1a73957ad2c0a1e2013f0428265419f9cf946deaf5800a4ece05510d93",
+      "examined_decide_calls": 7,
+      "examined_bindings": 5,
+      "linked_bindings": 1,
+      "unresolved_bindings": 4,
+      "not_linked_bindings": 0
+    },
+    "spycification": {
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "source_digest": "e6ebbd75e7fd1d948604e7be529ea2f9d8741551c5c1ca00cd52e3921243ef9d",
+      "scope_manifest_digest": "274775a9a49af4fcd6c5e8d21c8f043b880f57fd61df0188d040c8d72b797556",
+      "flow_report_sha256": "1b4cd812e72a0501091a722e1c338b8a7d7de43f998bfe802fb3cde70262cc1a",
+      "examined_decide_calls": 14,
+      "examined_bindings": 2,
+      "linked_bindings": 0,
+      "unresolved_bindings": 2,
+      "not_linked_bindings": 0
+    },
+    "cctally": {
+      "revision": "4b14b4c37fd56af3545bd6ee90111e2feaf89e00",
+      "source_digest": "3b0eb7a94a0e8717392b08d8c6294ef687bec0616b894e30e24840b6da4b0556",
+      "scope_manifest_digest": "3f71ba0a74e3235f0b43c4b4f11b2266c2c680827a678d525837b0d8d2ddd62c",
+      "flow_report_sha256": "b426552656e391852b5adcaf77bd4062c6c5951b9288989df9ded2165470f8a2",
+      "examined_decide_calls": 2,
+      "examined_bindings": 2,
+      "linked_bindings": 0,
+      "unresolved_bindings": 2,
+      "not_linked_bindings": 0
+    },
+    "flask": {
+      "revision": "954f5684e4841aad84a8eec7ace7b81a0d3f6831",
+      "source_digest": "7624e016a6199993c545eb956c702867934584ce44f6a3a2e2ca38117aca6ebc",
+      "scope_manifest_digest": "4cf252b21d87111c7a6cb639cc6503f4a7c0a50fd17cb0617a28d717315210b6",
+      "flow_report_sha256": "f91b0536de2b5b5db0665a4835c764afd3176ea7a57ccf8cc330233d73098ade",
+      "examined_decide_calls": 0,
+      "examined_bindings": 0,
+      "linked_bindings": 0,
+      "unresolved_bindings": 0,
+      "not_linked_bindings": 0
+    },
+    "fastapi": {
+      "revision": "9a9c4ad5d06f5fe8ee6775a5aeaa2f83c854f263",
+      "source_digest": "f75fa8b2457bfd28a29df2f632e3c7fd970a9f6bac8924f13f007e736c83bae3",
+      "scope_manifest_digest": "87fa3e44df7d35657c35ca7efcdecb5acc281054e590b69f4a71a0c9ea034908",
+      "flow_report_sha256": "d357fa22bb08ac30a266f45d328579b86741f03a2fd749937234bbfd82acb4ad",
+      "examined_decide_calls": 0,
+      "examined_bindings": 0,
+      "linked_bindings": 0,
+      "unresolved_bindings": 0,
+      "not_linked_bindings": 0
+    }
+  },
+  "outcomes": [
+    {
+      "id": "specgraph-01",
+      "tier": "decide_call",
+      "family": "specgraph/pre-sib",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "control_flow_or_effect_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "control_flow_or_effect_barrier"
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-02",
+      "tier": "decide_call",
+      "family": "specgraph/acceptance",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-03",
+      "tier": "decide_call",
+      "family": "specgraph/claims",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-04",
+      "tier": "decide_call",
+      "family": "specgraph/preview",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-05",
+      "tier": "decide_call",
+      "family": "specgraph/publication-binding",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-06",
+      "tier": "decide_call",
+      "family": "specgraph/test-suite",
+      "expected": {
+        "call_category": "mixed_expression",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "mixed_expression",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-07",
+      "tier": "decide_call",
+      "family": "specgraph/reference-status",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-01",
+      "tier": "decide_call",
+      "family": "spycification/test_first_match_distinguishes_none_payload_from_no_match",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-02",
+      "tier": "decide_call",
+      "family": "spycification/test_first_match_distinguishes_none_payload_from_no_match",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-03",
+      "tier": "decide_call",
+      "family": "spycification/test_first_match_stops_after_first_satisfied_rule",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-04",
+      "tier": "decide_call",
+      "family": "spycification/test_boolean_rules_and_decision_adapters",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-05",
+      "tier": "decide_call",
+      "family": "spycification/test_boolean_rules_and_decision_adapters",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-06",
+      "tier": "decide_call",
+      "family": "spycification/test_boolean_rules_and_decision_adapters",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-07",
+      "tier": "decide_call",
+      "family": "spycification/test_first_match_fallback_and_decision_trace",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-08",
+      "tier": "decide_call",
+      "family": "spycification/test_first_match_fallback_and_decision_trace",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-09",
+      "tier": "decide_call",
+      "family": "spycification/run",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-10",
+      "tier": "decide_call",
+      "family": "spycification/run",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-11",
+      "tier": "decide_call",
+      "family": "spycification/run",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-12",
+      "tier": "decide_call",
+      "family": "spycification/run",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-13",
+      "tier": "decide_call",
+      "family": "spycification/run",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "spycification-14",
+      "tier": "decide_call",
+      "family": "spycification/run",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "agrees": true
+    },
+    {
+      "id": "cctally-01",
+      "tier": "decide_call",
+      "family": "cctally/segment-elision",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "agrees": true
+    },
+    {
+      "id": "cctally-02",
+      "tier": "decide_call",
+      "family": "cctally/segment-elision",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "agrees": true
+    },
+    {
+      "id": "flask-01",
+      "tier": "structural_analogue",
+      "family": "flask/session-serializer",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "agrees": true
+    },
+    {
+      "id": "flask-02",
+      "tier": "structural_analogue",
+      "family": "flask/environment",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "agrees": true
+    },
+    {
+      "id": "flask-03",
+      "tier": "structural_analogue",
+      "family": "flask/propagate",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "agrees": true
+    },
+    {
+      "id": "fastapi-01",
+      "tier": "structural_analogue",
+      "family": "fastapi/authorization",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "agrees": true
+    },
+    {
+      "id": "fastapi-02",
+      "tier": "structural_analogue",
+      "family": "fastapi/callable-introspection",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "agrees": true
+    },
+    {
+      "id": "fastapi-03",
+      "tier": "structural_analogue",
+      "family": "fastapi/regex-routing",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "agrees": true
+    }
+  ]
+}
