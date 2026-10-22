@@ -59,14 +59,14 @@ struct ApplicationCall {
 }
 
 #[derive(Clone, Debug, Serialize)]
-struct FactoryTarget {
+pub(super) struct FactoryTarget {
     path: String,
     line: usize,
     column: usize,
-    constructor: String,
+    pub(super) constructor: String,
 }
 
-enum Symbol {
+pub(super) enum Symbol {
     Module(String),
     Constructor(String),
     Value(FactoryTarget),
@@ -201,19 +201,8 @@ fn collect_calls(
         return;
     }
     if let Some(receiver) = application_receiver(node, &source.source) {
-        let shadowed = root_name(receiver, &source.source)
-            .is_none_or(|name| lexical_binding(node, &name, &source.source));
-        let target = if shadowed || resolver.parse_failed.contains(&source.path) {
-            None
-        } else {
-            resolve_expression(resolver, source, receiver, &mut HashSet::new()).and_then(|symbol| {
-                if let Symbol::Value(target) = symbol {
-                    Some(target)
-                } else {
-                    None
-                }
-            })
-        };
+        let target = resolved_factory(resolver, source, node, receiver)
+            .filter(|target| target.constructor == "PredicateSpec");
         let reason = if target.is_some() {
             "resolved_static_factory_binding"
         } else {
@@ -237,6 +226,36 @@ fn collect_calls(
     let mut cursor = node.walk();
     for child in node.named_children(&mut cursor) {
         collect_calls(resolver, source, child, calls);
+    }
+}
+
+pub(super) fn resolved_factory(
+    resolver: &PythonLiveness,
+    source: &ParsedPythonSource,
+    call: Node<'_>,
+    receiver: Node<'_>,
+) -> Option<FactoryTarget> {
+    let name = root_name(receiver, &source.source)?;
+    if resolver.parse_failed.contains(&source.path) || lexical_binding(call, &name, &source.source)
+    {
+        return None;
+    }
+    let mut ancestor = call.parent();
+    while let Some(node) = ancestor {
+        if matches!(
+            node.kind(),
+            "generator_expression"
+                | "list_comprehension"
+                | "set_comprehension"
+                | "dictionary_comprehension"
+        ) {
+            return None;
+        }
+        ancestor = node.parent();
+    }
+    match resolve_expression(resolver, source, receiver, &mut HashSet::new())? {
+        Symbol::Value(target) => Some(target),
+        _ => None,
     }
 }
 
@@ -357,7 +376,7 @@ fn resolve_symbol(
         return None;
     }
     let Some(source) = source else {
-        return (module == "specification_core" && name == "PredicateSpec")
+        return (module == "specification_core" && matches!(name, "PredicateSpec" | "FirstMatch"))
             .then(|| Symbol::Constructor(name.to_owned()));
     };
     if resolver.parse_failed.contains(&source.path)
@@ -394,9 +413,27 @@ fn resolve_symbol(
                 return None;
             }
             let function = call.child_by_field_name("function")?;
-            let Symbol::Constructor(constructor) =
-                resolve_expression(resolver, source, function, visited)?
-            else {
+            let mut fallback_visited = visited.clone();
+            let constructor = if let Some(Symbol::Constructor(constructor)) =
+                resolve_expression(resolver, source, function, visited)
+            {
+                constructor
+            } else if function.kind() == "attribute"
+                && function
+                    .child_by_field_name("attribute")?
+                    .utf8_text(source.source.as_bytes())
+                    .ok()?
+                    == "with_fallback"
+                && let Some(Symbol::Constructor(constructor)) = resolve_expression(
+                    resolver,
+                    source,
+                    function.child_by_field_name("object")?,
+                    &mut fallback_visited,
+                )
+                && constructor == "FirstMatch"
+            {
+                "FirstMatch.with_fallback".to_owned()
+            } else {
                 return None;
             };
             let point = call.start_position();

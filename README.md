@@ -108,6 +108,17 @@ applications, mixed expressions, and unresolved `.is_satisfied_by` calls.
 It preserves raw S/U. Source digests, candidate anchors and factory locations
 make the results inspectable. See the [contract and supported subset](docs/application-sites-contract.md).
 
+For synchronous `FirstMatch.decide`, including assignments and arguments:
+
+```sh
+cargo run -- application-sites ../SpecGraph/tools --profile python-decisions-v1 \
+  --scope-manifest /path/to/tools-source-roles.toml --output /tmp/decisions.json
+```
+
+This separate opt-in profile records direct result consumption, embedded
+processing and unresolved calls. See its [contract](docs/decision-applications-contract.md)
+and [frozen SpecGraph pilot](docs/firstmatch-application-pilot.md).
+
 ## Live metric
 
 For each source snapshot, calculate `S / U`: `S` is the number of distinct

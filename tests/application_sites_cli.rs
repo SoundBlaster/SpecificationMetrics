@@ -1,6 +1,60 @@
 use serde_json::Value;
 use std::{fs, path::Path, process::Command};
 
+#[test]
+fn typed_profile_is_opt_in_and_does_not_change_default_or_primary_reports() {
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+    let manifest = root.join("scope.toml");
+    fs::write(
+        &manifest,
+        "schema_version = 1\n[[source_sets]]\nrole = 'application'\npaths = ['app.py']\n",
+    )
+    .unwrap();
+    fs::write(root.join("app.py"), "from specification_core import FirstMatch\nRULE = FirstMatch.with_fallback((), 'ready')\nresult = RULE.decide(None).value\nif result: pass\n").unwrap();
+    let before = invoke("measure", root, &manifest, &["--require-complete"]);
+    assert!(before.status.success());
+    let default_before = invoke("application-sites", root, &manifest, &[]);
+    let typed = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decisions-v1"],
+    );
+    assert!(
+        typed.status.success(),
+        "{}",
+        String::from_utf8_lossy(&typed.stderr)
+    );
+    let typed: Value = serde_json::from_slice(&typed.stdout).unwrap();
+    assert_eq!(typed["examined_decide_calls"], 1);
+    assert_eq!(typed["direct_application"], 1);
+    assert_eq!(typed["metric_effect"], "none");
+    assert_eq!(typed["provisional"], false);
+    let raw: Value = serde_json::from_slice(&before.stdout).unwrap();
+    assert_eq!(typed["source_digest"], raw["source_digest"]);
+    assert_eq!(typed["scope_manifest_digest"], raw["scope_manifest_digest"]);
+    assert_eq!(raw["remaining_opportunities"], 1);
+    assert_eq!(
+        before.stdout,
+        invoke("measure", root, &manifest, &["--require-complete"]).stdout
+    );
+    assert_eq!(
+        default_before.stdout,
+        invoke("application-sites", root, &manifest, &[]).stdout
+    );
+    assert_eq!(
+        default_before.stdout,
+        invoke(
+            "application-sites",
+            root,
+            &manifest,
+            &["--profile", "python-if-v1"]
+        )
+        .stdout
+    );
+}
+
 fn invoke(command: &str, root: &Path, manifest: &Path, extra: &[&str]) -> std::process::Output {
     Command::new(env!("CARGO_BIN_EXE_specification-metrics"))
         .arg(command)

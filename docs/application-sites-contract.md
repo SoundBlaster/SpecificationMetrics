@@ -105,3 +105,7 @@ explicit migration of historical comparisons.
 See the [frozen SpecGraph pilot](python-application-sites-pilot.md) for measured
 source identities, three resolved real applications, and the regression learned
 from method/global name lookup.
+
+Typed `FirstMatch.decide` calls are available through the separate opt-in
+[`python-decisions-v1` profile](decision-applications-contract.md). The default
+Boolean-if profile above retains its existing contract and unit.

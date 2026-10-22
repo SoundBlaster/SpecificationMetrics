@@ -30,9 +30,11 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
-    /// Diagnose Python if-condition Specification applications without changing S/U.
+    /// Diagnose Python Specification applications without changing S/U.
     ApplicationSites {
         root: PathBuf,
+        #[arg(long, value_enum, default_value_t = liveness::ApplicationProfile::PythonIfV1)]
+        profile: liveness::ApplicationProfile,
         #[arg(long = "include")]
         includes: Vec<String>,
         #[arg(long)]
@@ -260,6 +262,7 @@ fn main() -> Result<()> {
     match cli.command {
         Command::ApplicationSites {
             root,
+            profile,
             includes,
             scope_manifest,
             output,
@@ -269,7 +272,14 @@ fn main() -> Result<()> {
                 .map(scope::ScopeManifest::load)
                 .transpose()?;
             let scan = scan::scan_with_scope(&root, &includes, manifest.as_ref())?;
-            emit_json(&liveness::application_sites(&scan), output.as_deref())?;
+            match profile {
+                liveness::ApplicationProfile::PythonIfV1 => {
+                    emit_json(&liveness::application_sites(&scan), output.as_deref())?
+                }
+                liveness::ApplicationProfile::PythonDecisionsV1 => {
+                    emit_json(&liveness::decision_applications(&scan), output.as_deref())?
+                }
+            }
         }
         Command::PrepareClassification {
             packet,
