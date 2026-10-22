@@ -141,6 +141,15 @@ class NativeCascadeTests(unittest.TestCase):
 
 
 class NativeCascadeRuntimeTests(unittest.TestCase):
+    def approval(self, prep, path):
+        runtime.write(path, dict(schema_version=1, study=runtime.STUDY,
+            approval_kind="explicit_user_approval", approved_by="synthetic offline fixture",
+            approval_reference="unit test only; not a live approval",
+            manifest_sha256=sha((prep/'manifest.json').read_bytes()),
+            preparation_identity_sha256=sha(str(prep.resolve()).encode()),
+            max_logical_requests=8, max_network_attempts=24, max_possible_posts=8))
+        return path
+
     def synthetic_dispatch(self, directory, timeout):
         request = runtime.read(directory/'request.json')
         case = request['case']
@@ -167,9 +176,10 @@ class NativeCascadeRuntimeTests(unittest.TestCase):
                 'socket.socket.connect', side_effect=AssertionError('offline only')):
             prep, run = Path(td)/'prep', Path(td)/'run'
             runtime.freeze(prep)
+            authorization = self.approval(prep, Path(td)/'approval.json')
             self.assertFalse(runtime.run(prep, run)['inference'])
             self.assertFalse(run.exists())
-            result = runtime.run(prep, run, live=True, dispatcher=self.synthetic_dispatch)
+            result = runtime.run(prep, run, live=True, authorization=authorization, dispatcher=self.synthetic_dispatch)
             self.assertEqual(result['logical_requests'], 7)
             report = runtime.analyze(prep, run)
             self.assertEqual(report['selected_reviews'], 3)
@@ -178,11 +188,22 @@ class NativeCascadeRuntimeTests(unittest.TestCase):
             self.assertFalse(report['automatic_fact_acceptance'])
             runtime.save_report(prep, run)
             self.assertTrue(runtime.verify_result(prep, run)['verified'])
+            saved_approval = (run/'authorization.json').read_bytes()
+            changed_approval = runtime.read(run/'authorization.json')
+            changed_approval['approval_reference'] = 'different approval'
+            (run/'authorization.json').write_text(encoded(changed_approval))
+            with patch.object(runtime, 'send') as send:
+                with self.assertRaisesRegex(ValueError, 'dispatch lease differs'):
+                    runtime.worker(run/'D01-jev')
+                send.assert_not_called()
+            with self.assertRaisesRegex(ValueError, 'authorization differs'):
+                runtime.analyze(prep, run)
+            (run/'authorization.json').write_bytes(saved_approval)
             rendered = (run/'report.md').read_text()
             self.assertIn('Axes without strict majority: concern_kind', rendered)
             self.assertIn('material_disagreement', rendered)
             with self.assertRaisesRegex(ValueError, 'already spent'):
-                runtime.run(prep, Path(td)/'another', live=True, dispatcher=self.synthetic_dispatch)
+                runtime.run(prep, Path(td)/'another', live=True, authorization=authorization, dispatcher=self.synthetic_dispatch)
             (run/'D04-review').mkdir()
             with self.assertRaisesRegex(ValueError, 'unselected review'):
                 runtime.analyze(prep, run)
@@ -191,6 +212,32 @@ class NativeCascadeRuntimeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td, patch('socket.socket.connect', side_effect=AssertionError('offline')):
             with self.assertRaisesRegex(ValueError, 'frozen request'):
                 runtime.run(historical.PREPARATION, Path(td)/'run')
+
+    def test_live_flag_and_key_do_not_authorize_a_preparation(self):
+        with tempfile.TemporaryDirectory() as td, patch.dict('os.environ', COREINFRA_API_KEY='test-key'), patch.object(runtime, 'dispatch') as dispatch:
+            prep, run = Path(td)/'prep', Path(td)/'run'
+            runtime.freeze(prep)
+            with self.assertRaisesRegex(ValueError, 'authorization artifact required'):
+                runtime.run(prep, run, live=True, dispatcher=dispatch)
+            dispatch.assert_not_called()
+            self.assertFalse(run.exists())
+            self.assertFalse((prep/'dispatch-reservation.json').exists())
+            auth = self.approval(prep, Path(td)/'approval.json')
+            good = runtime.read(auth)
+            for changes in [dict(manifest_sha256='0'*64), dict(max_logical_requests=9),
+                            dict(schema_version=True), dict(approval_reference=''),
+                            dict(preparation_identity_sha256='0'*64)]:
+                auth.write_text(encoded(dict(good, **changes)))
+                with self.assertRaises(ValueError):
+                    runtime.run(prep, run, live=True, authorization=auth, dispatcher=dispatch)
+                self.assertFalse(run.exists())
+                self.assertFalse((prep/'dispatch-reservation.json').exists())
+            auth.write_text(encoded(good))
+            other = Path(td)/'other-prep'
+            runtime.freeze(other)
+            with self.assertRaisesRegex(ValueError, 'scope or budget'):
+                runtime.run(other, run, live=True, authorization=auth, dispatcher=dispatch)
+            dispatch.assert_not_called()
 
 
 if __name__ == '__main__':

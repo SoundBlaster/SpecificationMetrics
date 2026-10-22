@@ -65,7 +65,9 @@ Valid but materially disagreeing or insufficiently supported review remains
 The v2 runner consumes this API for native response selection, exact conditional
 request matching, dispatch, reporting and replay. Its baseline and new-route
 traces remain visible beside review findings and missing evidence. It retains
-the prior transport bounds, fresh single-spend preparation and explicit `--live`.
+the prior transport bounds, fresh single-spend preparation and explicit `--live`
+plus a separate approval artifact bound to the exact preparation, request
+manifest and budget. The runner validates supplied approval, never grants it.
 See the [runtime contract](../evals/jev-classification/native-review-cascade-runtime-v1.md).
 
 ## Evidence and remaining work

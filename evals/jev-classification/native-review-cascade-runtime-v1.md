@@ -52,7 +52,24 @@ Private local paths and child stdout/stderr are not published.
 
 **Implementing or freezing this runtime does not authorize inference.** A future
 live run requires a separately approved bounded budget and fresh preparation/run
-paths. No request is made without `run --live`; default `run` only validates.
+paths. Default `run` only validates. `run --live` also requires a separate
+`--authorization PATH`; a flag and an API key do not authorize dispatch.
+
+The external approval record must contain exactly `schema_version: 1`, the
+current `study`, `approval_kind: "explicit_user_approval"`, nonempty
+`approved_by` and `approval_reference`, the frozen `manifest_sha256`, and
+`preparation_identity_sha256` (SHA-256 of the resolved preparation path).
+Its exact limits are `max_logical_requests: 8`, `max_network_attempts: 24`,
+and `max_possible_posts: 8`. Wrong types, stale scope, missing provenance and
+different limits fail before output creation or leasing. Path identity plus
+the preparation's exclusive lease prevents reusing approval at a fresh path.
+
+The runner validates an operator-supplied approval record; it never creates
+human approval or proves its authenticity. The trusted operator must obtain
+explicit user approval before supplying it. No real approval artifact is
+included in this PR. The record is copied into the run, hashed into its lease,
+revalidated by each worker, checked on replay and included in result inventory.
+Test-only records explicitly identify synthetic offline fixtures.
 The original paid PR714 reservation must not be reused. This task performs no
 new hosted calls and does not prepare a second paid run automatically.
 

@@ -69,6 +69,23 @@ def verify_preparation(preparation=PREPARATION):
     return wanted
 
 
+def verify_authorization(path, preparation):
+    """Validate a separately supplied approval record; never create approval."""
+    check(path is not None, "separately approved authorization artifact required")
+    approval = read(Path(path))
+    fixed = dict(schema_version=1, study=STUDY, approval_kind="explicit_user_approval",
+        manifest_sha256=sha((preparation / "manifest.json").read_bytes()),
+        preparation_identity_sha256=sha(str(preparation.resolve()).encode()),
+        max_logical_requests=8, max_network_attempts=24, max_possible_posts=8)
+    check(isinstance(approval, dict) and set(approval) == set(fixed) | {"approved_by", "approval_reference"},
+          "authorization fields differ")
+    check(all(type(approval[k]) is type(v) and approval[k] == v for k, v in fixed.items()),
+          "authorization scope or budget differs")
+    check(all(isinstance(approval[k], str) and approval[k].strip() for k in ("approved_by", "approval_reference")),
+          "explicit approval provenance required")
+    return approval
+
+
 def worker(directory):
     """Internal bounded child; parent owns the hard deadline and dispatch lease."""
     request = read(directory / "request.json")
@@ -76,11 +93,13 @@ def worker(directory):
     check(directory.name == request["id"], "request directory identity differs")
     preparation = Path(read(run / "local-execution.json")["preparation_path"])
     manifest = verify_preparation(preparation)
+    approval = verify_authorization(run / "authorization.json", preparation)
     check(request in manifest["requests"], "unfrozen request")
     check(read(run / "manifest.json") == manifest, "run manifest differs")
     lease = read(preparation / "dispatch-reservation.json")
     check(lease == read(run / "dispatch-reservation.json")
           and lease["manifest_sha256"] == sha((run / "manifest.json").read_bytes())
+          and lease["authorization_sha256"] == sha(encoded(approval).encode())
           and lease["output_identity_sha256"] == sha(str(run.resolve()).encode()), "dispatch lease differs")
     key = os.environ.get("COREINFRA_API_KEY")
     check(isinstance(key, str) and key and key.isascii() and not any(c.isspace() for c in key), "key unavailable or invalid")
@@ -131,18 +150,21 @@ def first_plan(case, directory, request):
     return observed, plan
 
 
-def run(preparation=PREPARATION, output=RUN, *, live=False, dispatcher=dispatch):
+def run(preparation=PREPARATION, output=RUN, *, live=False, authorization=None, dispatcher=dispatch):
     manifest = verify_preparation(preparation)
     if not live:
         return dict(validated=True, hosted_requests=0, inference=False)
+    approval = verify_authorization(authorization, preparation)
     key = os.environ.get("COREINFRA_API_KEY")
     check(isinstance(key, str) and key and key.isascii() and not any(c.isspace() for c in key), "key unavailable or invalid")
     check(not (preparation / "dispatch-reservation.json").exists(), "preparation already spent")
     output.mkdir(mode=0o700, exist_ok=False)
     write(output / "manifest.json", manifest)
+    write(output / "authorization.json", approval)
     # This machine-local path is needed only by the child, never published.
     write(output / "local-execution.json", dict(preparation_path=str(preparation.resolve())))
     lease = dict(study=STUDY, manifest_sha256=sha((preparation / "manifest.json").read_bytes()), run_id=uuid.uuid4().hex,
+                 authorization_sha256=sha(encoded(approval).encode()),
                  started_at_utc=now(),
                  output_identity_sha256=sha(str(output.resolve()).encode()),
                  max_logical_requests=8, max_network_attempts=24, max_possible_posts=8)
@@ -193,8 +215,11 @@ def run(preparation=PREPARATION, output=RUN, *, live=False, dispatcher=dispatch)
 
 def analyze(preparation=PREPARATION, output=RUN):
     manifest = verify_preparation(preparation)
+    approval = verify_authorization(output / "authorization.json", preparation)
     check(read(output / "manifest.json") == manifest, "captured manifest differs")
     check(read(output / "dispatch-reservation.json") == read(preparation / "dispatch-reservation.json"), "run lease differs")
+    check(read(output / "dispatch-reservation.json")["authorization_sha256"] == sha(encoded(approval).encode()),
+          "run authorization differs")
     receipt = read(output / "run-receipt.json")
     check(receipt["producer_sha256"] == producers()
           and receipt["manifest_sha256"] == sha((output / "manifest.json").read_bytes()), "run receipt differs")
@@ -293,12 +318,14 @@ if __name__ == "__main__":
     parser.add_argument("--preparation", type=Path, default=PREPARATION)
     parser.add_argument("--run", type=Path, default=RUN)
     parser.add_argument("--live", action="store_true")
+    parser.add_argument("--authorization", type=Path,
+        help="separate human-approved record bound to this exact frozen preparation and budget")
     args = parser.parse_args()
     if args.action == "worker":
         check(args.run.is_dir(), "missing request directory")
         worker(args.run)
     else:
         result = (freeze(args.preparation) if args.action == "freeze" else
-            run(args.preparation, args.run, live=args.live) if args.action == "run" else
+            run(args.preparation, args.run, live=args.live, authorization=args.authorization) if args.action == "run" else
             save_report(args.preparation, args.run) if args.action == "report" else verify_result(args.preparation, args.run))
         print(encoded(result))

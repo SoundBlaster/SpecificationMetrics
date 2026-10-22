@@ -973,3 +973,21 @@ Exercising the actual worker also caught a fixture collision: the short fake key
 redaction correctly removed the body and resolution stayed incomplete. Use a
 distinct fake key absent from fixture payloads; retain the production reflection
 guard and exercise the real worker in the lifecycle regression.
+
+
+## PR96 review: preparation is not paid-run authorization
+
+Confirmed by source inspection and the new missing-approval regression: v2
+accepted `--live` plus a key even though its frozen manifest described only
+preparation. The runner now requires a separate explicit-approval record bound
+to exact manifest bytes, the resolved preparation identity and fixed budgets.
+It rejects missing/stale/malformed approval before output creation or leasing.
+Each worker and replay revalidate the copied record and its lease hash. A
+fresh preparation path cannot reuse the approval. This validates supplied
+operator provenance; it does not mint or authenticate human approval.
+
+Prevention: `test_live_flag_and_key_do_not_authorize_a_preparation` covers the
+original bypass plus stale scope, limits, types and empty provenance. The full
+synthetic lifecycle verifies authorization tampering is rejected before send
+and on replay. Only explicitly identified offline fixture approvals were used;
+no real approval artifact, provider call or historical evidence rewrite.
