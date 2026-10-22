@@ -1,0 +1,3 @@
+{"attempt":1,"event":"attempt_started","recorded_at":"2026-10-19T14:23:29.827267+00:00","request_sha256":"a687d64020203efb6fd5900ae40e18ee8b0eed138e410f7b683aeb2f917f8b87"}
+{"attempt":1,"event":"post_may_start","recorded_at":"2026-10-19T14:23:30.748574+00:00","request_sha256":"a687d64020203efb6fd5900ae40e18ee8b0eed138e410f7b683aeb2f917f8b87"}
+{"attempt":1,"backoff_seconds":0.0,"elapsed_seconds":2.034272,"event":"attempt_finished","http_status":200,"post_may_have_been_sent":true,"recorded_at":"2026-10-19T14:23:31.861558+00:00","request_sha256":"a687d64020203efb6fd5900ae40e18ee8b0eed138e410f7b683aeb2f917f8b87","retry_scheduled":false,"status":"http_response"}
