@@ -61,6 +61,10 @@ count, even when the scanner walks through that directory.
 The report and stored snapshot retain the source-scope manifest digest and
 counting-rule version. The complete four-way candidate partition remains
 future work because resolved `uses_specification` is not yet implemented.
+
+The separate [application-site diagnostic](application-sites-contract.md) records
+direct/mixed/unresolved Python-if evidence as preparation for that work. It does
+not activate `uses_specification`, remove candidates from U, or change v9.
 Comparing ratios across different scopes or rule versions requires an explicit
 annotation; old snapshots are not rewritten when the contract changes.
 
