@@ -83,4 +83,6 @@ is conservatively embedded in this first profile.
 
 Next separate analysis: track bound results to branch consumers with scope,
 reassignment and control-flow checks before proposing uses_specification
-exclusions. See the [frozen pilot](firstmatch-application-pilot.md).
+exclusions. A conservative subset is now available through the separate
+[`python-decision-flow-v1` profile](decision-flow-contract.md); this call-inventory
+profile keeps its existing contract. See the [frozen pilot](firstmatch-application-pilot.md).

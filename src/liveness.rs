@@ -8,6 +8,8 @@ mod python_applications;
 pub(crate) use python_applications::application_sites;
 mod python_decisions;
 pub(crate) use python_decisions::{ApplicationProfile, decision_applications};
+mod python_decision_flow;
+pub(crate) use python_decision_flow::decision_flow;
 
 use crate::model::{
     Language, SpecificationDefinition, SpecificationLiveness, SpecificationLivenessStatus,
