@@ -6,6 +6,8 @@ mod python_inheritance;
 pub(crate) use python_inheritance::discover_python_specifications;
 mod python_applications;
 pub(crate) use python_applications::application_sites;
+mod python_decisions;
+pub(crate) use python_decisions::{ApplicationProfile, decision_applications};
 
 use crate::model::{
     Language, SpecificationDefinition, SpecificationLiveness, SpecificationLivenessStatus,
