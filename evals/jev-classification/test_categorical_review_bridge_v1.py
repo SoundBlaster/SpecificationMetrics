@@ -279,6 +279,9 @@ def load_tests(loader, tests, pattern):
         tests.addTests(loader.loadTestsFromTestCase(TransportTests))
         from test_native_uncertainty_v1 import NativeUncertaintyTests
         tests.addTests(loader.loadTestsFromTestCase(NativeUncertaintyTests))
+        from test_native_review_cascade_v1 import NativeCascadeTests, NativeCascadeRuntimeTests
+        tests.addTests(loader.loadTestsFromTestCase(NativeCascadeTests))
+        tests.addTests(loader.loadTestsFromTestCase(NativeCascadeRuntimeTests))
     return tests
 
 
