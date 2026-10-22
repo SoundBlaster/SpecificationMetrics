@@ -210,6 +210,22 @@ fn trace(
                     return;
                 };
                 if matches!(expression.kind(), "assignment" | "augmented_assignment") {
+                    // Local variable annotations neither evaluate their annotation
+                    // nor overwrite an existing value. Attribute/subscript annotation
+                    // targets may evaluate expressions, so keep those as barriers.
+                    if expression.kind() == "assignment"
+                        && expression.child_by_field_name("right").is_none()
+                        && expression.child_by_field_name("type").is_some()
+                    {
+                        if expression
+                            .child_by_field_name("left")
+                            .is_some_and(|n| n.kind() == "identifier")
+                        {
+                            continue;
+                        }
+                        result.reason = "annotation_target_effect_unsupported";
+                        return;
+                    }
                     if expression
                         .child_by_field_name("left")
                         .is_some_and(|n| target_mentions(n, &result.variable, text))
@@ -453,5 +469,26 @@ mod tests {
         }
         let r = analyze("def run(c):\n    value = RULE.decide(c).value\n");
         assert_eq!(r.not_linked_bindings, 1);
+    }
+
+    #[test]
+    fn annotation_only_locals_preserve_values_but_assignment_and_effectful_targets_do_not() {
+        for annotation in ["value: str", "other: str", "value: side_effect()"] {
+            let r = analyze(&format!(
+                "def run(c):\n    value = RULE.decide(c).value\n    {annotation}\n    if value: pass\n"
+            ));
+            assert_eq!(r.linked_bindings, 1, "{annotation}");
+        }
+        let reassigned = analyze(
+            "def run(c):\n    value = RULE.decide(c).value\n    value: str = None\n    if value: pass\n",
+        );
+        assert_eq!(reassigned.not_linked_bindings, 1);
+        for annotation in ["value.field: str", "value[index()]: str"] {
+            let r = analyze(&format!(
+                "def run(c):\n    value = RULE.decide(c).value\n    {annotation}\n    if value: pass\n"
+            ));
+            assert_eq!(r.unresolved_bindings, 1, "{annotation}");
+            assert_eq!(r.bindings[0].reason, "annotation_target_effect_unsupported");
+        }
     }
 }

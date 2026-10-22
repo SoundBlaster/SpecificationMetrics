@@ -58,6 +58,10 @@ walrus assignments, aliases, additional names and custom transformations in the
 condition are unresolved. No semantic equivalence or path feasibility is proved.
 
 Comments, pass and unrelated primitive-literal assignments may intervene.
+Local identifier annotations without a value may also intervene: they do not
+evaluate the annotation or overwrite the binding. An annotation with a value
+is still an assignment. Annotation-only attribute/subscript targets remain
+unresolved because evaluating the target may have effects.
 Writes/deletion of the tracked name or its attributes/subscripts invalidate the
 origin. An intervening call, alias assignment, return/raise, definition, loop,
 try/with/match, unsupported mutation or unrelated if stops analysis explicitly.
@@ -99,3 +103,15 @@ overwrites (including a newer decision), deletion/mutation, side-effect/control
 barriers, aliases, closure definitions, nested/module/global scopes, unresolved
 receivers and absent supported consumers. CLI regression verifies the scanner
 fingerprint and byte-identical measurement/preceding-profile outputs.
+
+### Review finding: annotation is not reassignment
+
+The initial version incorrectly reported `value: str` as
+`binding_reassigned_or_mutated`. A four-case diagnostic reproduced the error
+alongside correct reassignment, call-barrier and unrelated-literal outcomes;
+an isolated Python check confirmed that the annotation preserves the value.
+The fix distinguishes annotation-only syntax before write invalidation.
+Regression `annotation_only_locals_preserve_values_but_assignment_and_effectful_targets_do_not`
+covers tracked/unrelated local annotations, unevaluated annotation expressions,
+actual annotated assignment and effectful annotation targets. This corrects a
+false negative; the original frozen pilot result is unchanged.
