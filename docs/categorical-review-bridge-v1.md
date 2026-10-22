@@ -122,6 +122,12 @@ selected ordinary reviews. It preserves low native confidence values that the
 categorical consistency router does not use; this is an explicit routing
 limitation, not an accuracy claim or a reason to accept those proposals.
 
+The separate [native uncertainty shadow policy v1](native-uncertainty-routing-v1.md)
+formalizes an additional strict-majority signal over relevant axes. Offline
+replay would select three of those four proposals for review. It leaves this
+bridge, the original live router/results and the spent dispatch lease unchanged;
+the new shadow selection has not been activated or executed against Luna.
+
 ## Verification
 
 Local Python 3.11 / SDK 0.9.0 validation passed **115 tests**: the 15 new bridge

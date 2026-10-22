@@ -277,6 +277,8 @@ def load_tests(loader, tests, pattern):
         from test_specgraph_pr714_live_v1 import PilotTests, TransportTests
         tests.addTests(loader.loadTestsFromTestCase(PilotTests))
         tests.addTests(loader.loadTestsFromTestCase(TransportTests))
+        from test_native_uncertainty_v1 import NativeUncertaintyTests
+        tests.addTests(loader.loadTestsFromTestCase(NativeUncertaintyTests))
     return tests
 
 
