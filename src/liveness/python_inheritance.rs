@@ -131,14 +131,14 @@ fn module_classes(root: Node<'_>) -> Vec<Node<'_>> {
         .collect()
 }
 
-enum Binding {
+pub(super) enum Binding {
     Class,
     Imported(String, String),
     Module(String),
     Other,
 }
 
-fn unique_binding(source: &ParsedPythonSource, name: &str) -> Option<(usize, Binding)> {
+pub(super) fn unique_binding(source: &ParsedPythonSource, name: &str) -> Option<(usize, Binding)> {
     let text = source.source.as_bytes();
     let mut bindings = Vec::new();
     let mut cursor = source.tree.root_node().walk();
@@ -213,7 +213,7 @@ fn unique_binding(source: &ParsedPythonSource, name: &str) -> Option<(usize, Bin
     }
 }
 
-fn binds_name(node: Node<'_>, name: &str, source: &[u8]) -> bool {
+pub(super) fn binds_name(node: Node<'_>, name: &str, source: &[u8]) -> bool {
     if matches!(node.kind(), "class_definition" | "function_definition") {
         if node
             .child_by_field_name("name")

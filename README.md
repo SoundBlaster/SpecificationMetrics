@@ -96,6 +96,18 @@ automatic retries. The report is informational and keeps the opportunity and
 concern-kind classifications on separate axes. Set `--min-confidence` only
 after calibrating the Jev-specific threshold against reviewed examples.
 
+## Specification application diagnostics
+
+```sh
+cargo run -- application-sites ../SpecGraph \
+  --scope-manifest /path/to/source-roles.toml --output /tmp/applications.json
+```
+
+The advisory Python-if profile distinguishes confirmed direct `PredicateSpec`
+applications, mixed expressions, and unresolved `.is_satisfied_by` calls.
+It preserves raw S/U. Source digests, candidate anchors and factory locations
+make the results inspectable. See the [contract and supported subset](docs/application-sites-contract.md).
+
 ## Live metric
 
 For each source snapshot, calculate `S / U`: `S` is the number of distinct

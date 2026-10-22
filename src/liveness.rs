@@ -4,6 +4,8 @@ use tree_sitter::{Node, Parser, Tree};
 
 mod python_inheritance;
 pub(crate) use python_inheritance::discover_python_specifications;
+mod python_applications;
+pub(crate) use python_applications::application_sites;
 
 use crate::model::{
     Language, SpecificationDefinition, SpecificationLiveness, SpecificationLivenessStatus,

@@ -30,6 +30,16 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Diagnose Python if-condition Specification applications without changing S/U.
+    ApplicationSites {
+        root: PathBuf,
+        #[arg(long = "include")]
+        includes: Vec<String>,
+        #[arg(long)]
+        scope_manifest: Option<PathBuf>,
+        #[arg(long)]
+        output: Option<PathBuf>,
+    },
     /// Render a frozen categorical packet for Codex without invoking any process.
     PrepareClassification {
         #[arg(long)]
@@ -248,6 +258,19 @@ struct SyncResult {
 fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.command {
+        Command::ApplicationSites {
+            root,
+            includes,
+            scope_manifest,
+            output,
+        } => {
+            let manifest = scope_manifest
+                .as_deref()
+                .map(scope::ScopeManifest::load)
+                .transpose()?;
+            let scan = scan::scan_with_scope(&root, &includes, manifest.as_ref())?;
+            emit_json(&liveness::application_sites(&scan), output.as_deref())?;
+        }
         Command::PrepareClassification {
             packet,
             config,
