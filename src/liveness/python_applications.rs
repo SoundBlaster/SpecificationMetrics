@@ -331,7 +331,7 @@ fn resolve_expression(
         symbol = match symbol {
             Symbol::Module(module) => {
                 resolve_symbol(resolver, &module, part, visited).or_else(|| {
-                    explicit_module_import(source, &format!("{module}.{part}"))
+                    explicit_module_import(source, &format!("{module}.{part}"), node.start_byte())
                         .then(|| imported_submodule(resolver, &module, part))
                         .flatten()
                 })?
@@ -411,14 +411,14 @@ fn resolve_symbol(
     }
 }
 
-fn explicit_module_import(source: &ParsedPythonSource, module: &str) -> bool {
+fn explicit_module_import(source: &ParsedPythonSource, module: &str, before: usize) -> bool {
     let mut cursor = source.tree.root_node().walk();
     source
         .tree
         .root_node()
         .named_children(&mut cursor)
         .any(|node| {
-            if node.kind() != "import_statement" {
+            if node.kind() != "import_statement" || node.start_byte() >= before {
                 return false;
             }
             let mut cursor = node.walk();
@@ -643,6 +643,15 @@ mod tests {
         let (_, report) = analyze(&[("app.py", &text)]);
         assert_eq!(report.direct_application, 1);
         assert_eq!(report.unresolved_call, 1);
+        let (_, late) = analyze(&[
+            ("pkg/__init__.py", ""),
+            ("pkg/policy.py", POLICY),
+            (
+                "app.py",
+                "import pkg as alias\nif alias.policy.RULE.is_satisfied_by(None): pass\nimport pkg.policy as later\n",
+            ),
+        ]);
+        assert_eq!(late.unresolved_call, 1);
     }
 
     #[test]
