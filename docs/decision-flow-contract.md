@@ -38,7 +38,11 @@ branch body or requirement is implemented by a Specification.
 
 ## Supported straight-line subset
 
-An origin must be a direct statement in a function/method body:
+An origin must be a direct statement in a function/method body or in the body
+of an enclosing `for`/`while` loop. Nested loops are supported when every
+enclosing block between the origin and its function is a loop body. The read
+must be in the same block after the assignment; there is no loop-back, exit,
+loop-else or cross-iteration inference:
 
 ```python
 error = POLICY.decide(ctx).value
@@ -53,7 +57,9 @@ if not decision.matched:
 Track an immediate `.value`/`.matched` binding or a raw MatchResult later read
 through exactly one `.value`/`.matched` access. Supported conditions are that
 single reference, parentheses/`not`, or one such reference compared with primitive
-literals. Plain MatchResult truthiness is unresolved. Calls, Boolean combinations,
+literals. A binary `==`, `!=`, `is` or `is not` comparison can also use a verified
+same-module enum member as described below. Plain MatchResult truthiness is
+unresolved. Calls, Boolean combinations,
 walrus assignments, aliases, additional names and custom transformations in the
 condition are unresolved. No semantic equivalence or path feasibility is proved.
 
@@ -72,9 +78,12 @@ inspect either branch body or continue beyond that first if.
 Inventory and supported flow origins are separate. A call/projection used as an
 immediate assignment RHS with an identifier target contributes a binding row,
 including module/class-body assignments, assignments nested under control flow,
-and global/nonlocal bindings. These unsupported scopes produce `unresolved`;
-they are not omitted from the binding inventory. Only direct function-body
-assignments can establish a supported flow link.
+and global/nonlocal bindings. Module/class bodies, global/nonlocal bindings and
+origins nested under unsupported control flow (such as an `if` or `try`) produce
+`unresolved`; they are not omitted from the binding inventory. Only the direct
+function/loop-body subset above can establish a supported flow link. Scope
+directives are checked over the entire containing function body, including
+directives outside the origin's loop.
 
 Without such an identifier target, there is no binding row: destructuring or
 attribute/subscript assignment targets, argument/return consumption and a call
@@ -85,6 +94,51 @@ binding; otherwise retain only the call. Inventory presence is not proof of
 supported scope. No CFG joins, alias propagation, closure/interprocedural
 analysis, runtime execution, external frame mutation, tracing hooks or
 concurrency proof.
+
+## Verified same-module enum comparisons
+
+```python
+from enum import Enum
+
+class Disposition(Enum):
+    IGNORE = "ignore"
+    ADD = "add"
+
+def repair(nodes):
+    for node in nodes:
+        decision = REPAIR_RULE.decide(node)
+        if decision.value == Disposition.ADD:
+            apply(node)
+```
+
+Require one undecorated, module-level class in the current source file, defined
+before the comparison, with exactly one verified `enum.Enum` base. Direct
+`from enum import Enum` aliases and `import enum` module aliases are supported.
+The class body may contain comments, docstrings, pass and unique, ordinary
+member assignments to primitive literals. The requested member must exist.
+Reject leading-underscore control names, annotations, decorators, methods,
+custom/multiple bases, `auto()`, dynamic values, imported enum classes, class
+aliases and other shapes outside this subset.
+
+Do not infer enum identity from capitalization or attribute spelling. Reject
+lexical shadowing, ambiguous/rebound class or base names, selected local modules
+named `enum`, and observed attribute/subscript writes or `setattr`/`delattr`
+mutations. Arbitrary external monkey-patching/import hooks remain outside the
+static assumptions, as for factory resolution. Ordering, membership and chained
+comparisons with enum members remain unresolved. This establishes local source
+read provenance, not runtime type compatibility, execution or branch feasibility.
+
+New linked branches retain optional evidence:
+
+- `enum_member`: class/member names and their 1-based source anchors, in the
+  binding's source file.
+- `loop_anchors`: enclosing loop anchors, innermost first. This describes the
+  syntactic iteration context, not iterations observed at runtime.
+
+Absent evidence fields are omitted, preserving the original direct-function
+link shape. Call inventory/IDs, preceding profiles, raw S/U and counting rule
+remain unchanged. The [extension replay](../evals/python-decision-flow-v1/extensions/loop-enum-2026-10-23/README.md)
+records the expected two-case improvement without rewriting frozen v1 labels.
 
 ## Frozen SpecGraph #787 pilot
 

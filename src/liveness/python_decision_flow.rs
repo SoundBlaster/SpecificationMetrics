@@ -2,9 +2,13 @@
 use serde::Serialize;
 use tree_sitter::Node;
 
+use super::ParsedPythonSource;
 use super::python_decisions::{DecisionReport, DecisionSite, decision_applications};
 use super::{PythonLiveness, PythonSource};
 use crate::model::ScanReport;
+
+mod enum_members;
+use enum_members::EnumMemberEvidence;
 
 #[derive(Serialize)]
 pub struct FlowReport {
@@ -43,6 +47,10 @@ struct BranchUse {
     candidate_fingerprint: Option<String>,
     condition: String,
     reference_projection: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    enum_member: Option<EnumMemberEvidence>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    loop_anchors: Vec<Anchor>,
 }
 
 pub fn decision_flow(scan: &ScanReport) -> FlowReport {
@@ -79,13 +87,7 @@ pub fn decision_flow(scan: &ScanReport) -> FlowReport {
             if site.target.is_some()
                 && let Some(source) = resolver.sources.iter().find(|s| s.path == site.path)
             {
-                trace(
-                    scan,
-                    site,
-                    source.tree.root_node(),
-                    &source.source,
-                    &mut result,
-                );
+                trace(scan, site, source, &resolver, &mut result);
             }
             Some(result)
         })
@@ -124,10 +126,12 @@ fn origin<'a>(node: Node<'a>, site: &DecisionSite) -> Option<Node<'a>> {
 fn trace(
     scan: &ScanReport,
     site: &DecisionSite,
-    root: Node<'_>,
-    text: &str,
+    source: &ParsedPythonSource,
+    resolver: &PythonLiveness,
     result: &mut BindingFlow,
 ) {
+    let root = source.tree.root_node();
+    let text = &source.source;
     let Some(mut node) = origin(root, site) else {
         result.reason = "origin_anchor_unavailable";
         return;
@@ -147,14 +151,11 @@ fn trace(
         result.reason = "function_body_required";
         return;
     };
-    if block
-        .parent()
-        .is_none_or(|n| n.kind() != "function_definition")
-    {
+    let Some((function_body, loops)) = straight_line_scope(block) else {
         result.reason = "straight_line_function_body_required";
         return;
-    }
-    if contains_scope_directive(block) {
+    };
+    if contains_scope_directive(function_body) {
         result.reason = "global_or_nonlocal_scope";
         return;
     }
@@ -171,11 +172,12 @@ fn trace(
                     result.reason = "condition_unavailable";
                     return;
                 };
-                let Some(projection) = condition_reference(
+                let Some(condition_read) = condition_reference(
                     condition,
                     &result.variable,
                     site.projection.as_deref(),
-                    text,
+                    source,
+                    resolver,
                 ) else {
                     result.reason = "condition_or_control_flow_unsupported";
                     return;
@@ -200,7 +202,9 @@ fn trace(
                         .utf8_text(text.as_bytes())
                         .unwrap_or_default()
                         .to_owned(),
-                    reference_projection: projection,
+                    reference_projection: condition_read.projection,
+                    enum_member: condition_read.enum_member,
+                    loop_anchors: loops,
                 });
                 return;
             }
@@ -264,6 +268,27 @@ fn trace(
     result.status = "not_linked";
     result.reason = "no_supported_branch_before_scope_end";
     result.stop = None;
+}
+
+// Follow enclosing loop bodies only. No joins, loop else, back edges or exits.
+fn straight_line_scope(mut block: Node<'_>) -> Option<(Node<'_>, Vec<Anchor>)> {
+    let mut loops = Vec::new();
+    loop {
+        let parent = block.parent()?;
+        match parent.kind() {
+            "function_definition" => return Some((block, loops)),
+            "for_statement" | "while_statement"
+                if parent.child_by_field_name("body") == Some(block) =>
+            {
+                loops.push(anchor(parent));
+                block = parent.parent()?;
+                if block.kind() != "block" {
+                    return None;
+                }
+            }
+            _ => return None,
+        }
+    }
 }
 
 fn target_mentions(node: Node<'_>, name: &str, text: &str) -> bool {
@@ -336,32 +361,61 @@ fn reference(node: Node<'_>, name: &str, projection: Option<&str>, text: &str) -
     None
 }
 
+struct ConditionRead {
+    projection: String,
+    enum_member: Option<EnumMemberEvidence>,
+}
+
 fn condition_reference(
     node: Node<'_>,
     name: &str,
     projection: Option<&str>,
-    text: &str,
-) -> Option<String> {
+    source: &ParsedPythonSource,
+    resolver: &PythonLiveness,
+) -> Option<ConditionRead> {
+    let text = &source.source;
     if let Some(reference) = reference(node, name, projection, text) {
-        return Some(reference);
+        return Some(ConditionRead {
+            projection: reference,
+            enum_member: None,
+        });
     }
     if matches!(node.kind(), "parenthesized_expression" | "not_operator") {
-        return condition_reference(node.named_child(0)?, name, projection, text);
+        return condition_reference(node.named_child(0)?, name, projection, source, resolver);
     }
     if node.kind() == "comparison_operator" {
         let mut found = None;
+        let mut enum_member = None;
         let mut cursor = node.walk();
-        for operand in node.named_children(&mut cursor) {
-            if let Some(value) = reference(operand, name, projection, text) {
+        let operands: Vec<_> = node.named_children(&mut cursor).collect();
+        for operand in &operands {
+            if let Some(value) = reference(*operand, name, projection, text) {
                 if found.is_some() {
                     return None;
                 }
                 found = Some(value);
-            } else if !literal(operand) {
+            } else if !literal(*operand) {
+                if enum_member.is_some() {
+                    return None;
+                }
+                enum_member = Some(enum_members::resolve(resolver, source, *operand)?);
+            }
+        }
+        if enum_member.is_some() {
+            if operands.len() != 2 {
+                return None;
+            }
+            let operator = text
+                .get(operands[0].end_byte()..operands[1].start_byte())?
+                .trim();
+            if !matches!(operator, "==" | "!=" | "is" | "is not") {
                 return None;
             }
         }
-        return found;
+        return Some(ConditionRead {
+            projection: found?,
+            enum_member,
+        });
     }
     None
 }
@@ -373,11 +427,18 @@ mod tests {
     use std::fs;
 
     fn analyze(body: &str) -> FlowReport {
+        analyze_sources(body, &[])
+    }
+
+    fn analyze_sources(body: &str, additional: &[(&str, &str)]) -> FlowReport {
         let dir = tempfile::tempdir().unwrap();
         let source = format!(
             "from specification_core import FirstMatch\nRULE = FirstMatch.with_fallback((), 'ok')\n{body}"
         );
         fs::write(dir.path().join("app.py"), source).unwrap();
+        for (path, source) in additional {
+            fs::write(dir.path().join(path), source).unwrap();
+        }
         decision_flow(&scan::scan(dir.path(), &[]).unwrap())
     }
 
@@ -490,5 +551,142 @@ mod tests {
             assert_eq!(r.unresolved_bindings, 1, "{annotation}");
             assert_eq!(r.bindings[0].reason, "annotation_target_effect_unsupported");
         }
+    }
+
+    const ENUM: &str = "from enum import Enum\nclass Choice(Enum):\n    ACCEPT = 'accept'\n    IGNORE = 'ignore'\n";
+
+    #[test]
+    fn loop_origins_and_verified_enum_members_are_independent_capabilities() {
+        for body in [
+            "def run(c):\n    for item in c:\n        value = RULE.decide(item).value\n        if value: pass\n",
+            "def run(c):\n    while c:\n        value = RULE.decide(c).value\n        if value: pass\n",
+        ] {
+            let r = analyze(body);
+            assert_eq!(r.linked_bindings, 1);
+            let branch = r.bindings[0].branch.as_ref().unwrap();
+            assert_eq!(branch.loop_anchors.len(), 1);
+            assert!(branch.enum_member.is_none());
+        }
+        for guard in [
+            "value == Choice.ACCEPT",
+            "Choice.ACCEPT != value",
+            "value is Choice.ACCEPT",
+            "value is not Choice.ACCEPT",
+        ] {
+            let r = analyze(&format!(
+                "{ENUM}def run(c):\n    value = RULE.decide(c).value\n    if {guard}: pass\n"
+            ));
+            assert_eq!(r.linked_bindings, 1, "{guard}");
+            assert!(r.bindings[0].branch.as_ref().unwrap().enum_member.is_some());
+        }
+        let r = analyze(&format!(
+            "{ENUM}def run(c):\n    for node in c:\n        for item in node:\n            value = RULE.decide(item)\n            if value.value == Choice.ACCEPT: pass\n"
+        ));
+        assert_eq!(r.linked_bindings, 1);
+        let branch = r.bindings[0].branch.as_ref().unwrap();
+        assert_eq!(branch.loop_anchors.len(), 2);
+        assert_eq!(branch.reference_projection, "value");
+        assert!(branch.candidate_fingerprint.is_some());
+    }
+
+    #[test]
+    fn enum_base_aliases_work_but_unknown_or_mutated_types_do_not() {
+        for preamble in [
+            ENUM.to_owned(),
+            "from enum import Enum as Base\nclass Choice(Base):\n    ACCEPT = 'accept'\n"
+                .to_owned(),
+            "import enum as std_enum\nclass Choice(std_enum.Enum):\n    ACCEPT = 'accept'\n"
+                .to_owned(),
+        ] {
+            let r = analyze(&format!(
+                "{preamble}def run(c):\n    value = RULE.decide(c).value\n    if value == Choice.ACCEPT: pass\n"
+            ));
+            assert_eq!(r.linked_bindings, 1, "{preamble}");
+        }
+        for preamble in [
+            "class Choice:\n    ACCEPT = 'accept'\n".to_owned(),
+            "from fake import Enum\nclass Choice(Enum):\n    ACCEPT = 'accept'\n".to_owned(),
+            format!("{ENUM}Choice = unknown\n"),
+            format!("{ENUM}Choice.ACCEPT = 'other'\n"),
+            format!("{ENUM}setattr(Choice, 'ACCEPT', 'other')\n"),
+            "from enum import Enum\n@decorate\nclass Choice(Enum):\n    ACCEPT = 'accept'\n".to_owned(),
+            "from enum import Enum\nclass Choice(Enum):\n    ACCEPT = auto()\n".to_owned(),
+            "from enum import Enum\nclass Choice(Enum):\n    ACCEPT = 'accept'\n    def custom(self): pass\n".to_owned(),
+            "from enum import Enum\nclass Choice(Enum):\n    ACCEPT = 'accept'\n    ACCEPT = 'other'\n".to_owned(),
+            "from enum import Enum\nclass Choice(Enum):\n    _ignore_ = 'ACCEPT'\n    ACCEPT = 'accept'\n".to_owned(),
+            format!("{ENUM}from unknown import *\n"),
+        ] {
+            let r = analyze(&format!("{preamble}def run(c):\n    value = RULE.decide(c).value\n    if value == Choice.ACCEPT: pass\n"));
+            assert_eq!(r.unresolved_bindings, 1, "{preamble}");
+        }
+        let r = analyze_sources(
+            &format!(
+                "{ENUM}def run(c):\n    value = RULE.decide(c).value\n    if value == Choice.ACCEPT: pass\n"
+            ),
+            &[("enum.py", "class Enum: pass\n")],
+        );
+        assert_eq!(r.unresolved_bindings, 1);
+    }
+
+    #[test]
+    fn enum_comparisons_do_not_guess_members_or_ignore_lexical_shadowing() {
+        for guard in [
+            "value == Choice.MISSING",
+            "value == obj.ACCEPT",
+            "value < Choice.ACCEPT",
+            "value == Choice.ACCEPT == 'accept'",
+            "value == Choice.ACCEPT or c",
+            "value == Choice.ACCEPT()",
+        ] {
+            let r = analyze(&format!(
+                "{ENUM}def run(c):\n    value = RULE.decide(c).value\n    if {guard}: pass\n"
+            ));
+            assert_eq!(r.unresolved_bindings, 1, "{guard}");
+        }
+        for body in [
+            "def run(c, Choice):\n    value = RULE.decide(c).value\n    if value == Choice.ACCEPT: pass\n",
+            "def run(c):\n    value = RULE.decide(c).value\n    if value == Choice.ACCEPT: pass\n    Choice = unknown\n",
+            "def outer(Choice):\n    def run(c):\n        value = RULE.decide(c).value\n        if value == Choice.ACCEPT: pass\n",
+            "def run(c):\n    for Choice in c:\n        value = RULE.decide(c).value\n        if value == Choice.ACCEPT: pass\n",
+        ] {
+            let r = analyze(&format!("{ENUM}{body}"));
+            assert_eq!(r.unresolved_bindings, 1, "{body}");
+        }
+    }
+
+    #[test]
+    fn loop_scan_stops_at_effects_exits_and_body_boundary() {
+        for statement in [
+            "log(value)",
+            "continue",
+            "break",
+            "return value",
+            "assert value",
+            "if c: pass",
+        ] {
+            let r = analyze(&format!(
+                "def run(c):\n    for item in c:\n        value = RULE.decide(item).value\n        {statement}\n        if value: pass\n"
+            ));
+            assert_eq!(r.unresolved_bindings, 1, "{statement}");
+        }
+        for body in [
+            "def run(c):\n    for item in c:\n        value = RULE.decide(item).value\n    if value: pass\n",
+            "def run(c):\n    for item in c:\n        value = RULE.decide(item).value\n    else:\n        if value: pass\n",
+        ] {
+            let r = analyze(body);
+            assert_eq!(r.not_linked_bindings, 1, "{body}");
+        }
+        for body in [
+            "def run(c):\n    for item in c:\n        if item:\n            value = RULE.decide(item).value\n            if value: pass\n",
+            "def run(c):\n    global value\n    for item in c:\n        value = RULE.decide(item).value\n        if value: pass\n",
+            "def run(c):\n    for item in c:\n        pass\n    else:\n        value = RULE.decide(c).value\n        if value: pass\n",
+        ] {
+            let r = analyze(body);
+            assert_eq!(r.unresolved_bindings, 1, "{body}");
+        }
+        let r = analyze(
+            "def run(c):\n    for item in c:\n        value = RULE.decide(item).value\n        value = None\n        if value: pass\n",
+        );
+        assert_eq!(r.not_linked_bindings, 1);
     }
 }
