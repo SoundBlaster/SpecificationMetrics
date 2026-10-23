@@ -119,6 +119,11 @@ This separate opt-in profile records direct result consumption, embedded
 processing and unresolved calls. See its [contract](docs/decision-applications-contract.md)
 and [frozen SpecGraph pilot](docs/firstmatch-application-pilot.md).
 
+`--profile python-decision-flow-v1` additionally traces an immediately bound
+result to a subsequent if-condition within a conservative straight-line function
+subset. Reassignment and unsupported effects stop analysis explicitly. See the
+[flow contract and pilot](docs/decision-flow-contract.md). It does not change U.
+
 ## Live metric
 
 For each source snapshot, calculate `S / U`: `S` is the number of distinct

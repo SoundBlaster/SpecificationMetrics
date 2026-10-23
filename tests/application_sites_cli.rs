@@ -2,6 +2,72 @@ use serde_json::Value;
 use std::{fs, path::Path, process::Command};
 
 #[test]
+fn flow_links_the_scan_candidate_without_mutating_prior_profiles_or_measurement() {
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+    let manifest = root.join("scope.toml");
+    fs::write(
+        &manifest,
+        "schema_version = 1\n[[source_sets]]\nrole = 'application'\npaths = ['app.py']\n",
+    )
+    .unwrap();
+    fs::write(root.join("app.py"), "from specification_core import FirstMatch\nRULE = FirstMatch.with_fallback((), 'ok')\ndef run(c):\n    value = RULE.decide(c).value\n    if value: return True\n").unwrap();
+    let before = invoke("measure", root, &manifest, &["--require-complete"]);
+    assert!(before.status.success());
+    let typed = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decisions-v1"],
+    );
+    let old = invoke("application-sites", root, &manifest, &[]);
+    let flow = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decision-flow-v1"],
+    );
+    assert!(
+        flow.status.success(),
+        "{}",
+        String::from_utf8_lossy(&flow.stderr)
+    );
+    assert!(flow.stderr.is_empty());
+    let flow: Value = serde_json::from_slice(&flow.stdout).unwrap();
+    assert_eq!(flow["linked_bindings"], 1);
+    assert_eq!(flow["metric_effect"], "none");
+    assert_eq!(
+        flow["applications"],
+        serde_json::from_slice::<Value>(&typed.stdout).unwrap()
+    );
+    let scan = invoke("scan", root, &manifest, &[]);
+    let scan: Value = serde_json::from_slice(&scan.stdout).unwrap();
+    assert_eq!(
+        flow["bindings"][0]["branch"]["candidate_fingerprint"],
+        scan["candidates"][0]["fingerprint"]
+    );
+    assert_eq!(flow["applications"]["source_digest"], scan["source_digest"]);
+    assert_eq!(
+        before.stdout,
+        invoke("measure", root, &manifest, &["--require-complete"]).stdout
+    );
+    assert_eq!(
+        old.stdout,
+        invoke("application-sites", root, &manifest, &[]).stdout
+    );
+    assert_eq!(
+        typed.stdout,
+        invoke(
+            "application-sites",
+            root,
+            &manifest,
+            &["--profile", "python-decisions-v1"]
+        )
+        .stdout
+    );
+}
+
+#[test]
 fn typed_profile_is_opt_in_and_does_not_change_default_or_primary_reports() {
     let dir = tempfile::tempdir().unwrap();
     let root = dir.path();

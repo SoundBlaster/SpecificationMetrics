@@ -11,6 +11,7 @@ use crate::model::{ParseIssue, ScanReport, ScopeIssue};
 pub enum ApplicationProfile {
     PythonIfV1,
     PythonDecisionsV1,
+    PythonDecisionFlowV1,
 }
 
 #[derive(Serialize)]
@@ -32,7 +33,7 @@ pub struct DecisionReport {
     direct_application: usize,
     mixed_expression: usize,
     unresolved_call: usize,
-    sites: Vec<DecisionSite>,
+    pub(super) sites: Vec<DecisionSite>,
 }
 
 #[derive(Debug, PartialEq, Serialize)]
@@ -44,20 +45,20 @@ enum Category {
 }
 
 #[derive(Serialize)]
-struct DecisionSite {
-    application_id: String,
-    path: String,
-    line: usize,
-    column: usize,
+pub(super) struct DecisionSite {
+    pub(super) application_id: String,
+    pub(super) path: String,
+    pub(super) line: usize,
+    pub(super) column: usize,
     end_line: usize,
     end_column: usize,
     receiver: String,
     method: &'static str,
     category: Category,
-    projection: Option<String>,
+    pub(super) projection: Option<String>,
     consumer: &'static str,
-    bound_to: Option<String>,
-    target: Option<FactoryTarget>,
+    pub(super) bound_to: Option<String>,
+    pub(super) target: Option<FactoryTarget>,
     reason: &'static str,
 }
 
