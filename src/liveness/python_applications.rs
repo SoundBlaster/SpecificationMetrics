@@ -281,7 +281,7 @@ fn root_name(node: Node<'_>, source: &str) -> Option<String> {
     Some(expression_path(node, source)?.split('.').next()?.to_owned())
 }
 
-fn lexical_binding(mut node: Node<'_>, name: &str, text: &str) -> bool {
+pub(super) fn lexical_binding(mut node: Node<'_>, name: &str, text: &str) -> bool {
     let mut inside_function = false;
     while let Some(parent) = node.parent() {
         if parent.kind() == "lambda" || (parent.kind() == "class_definition" && !inside_function) {
@@ -495,7 +495,7 @@ fn imported_submodule(resolver: &PythonLiveness, module: &str, name: &str) -> Op
     Some(Symbol::Module(target))
 }
 
-fn mutates_object(node: Node<'_>, name: &str, text: &str) -> bool {
+pub(super) fn mutates_object(node: Node<'_>, name: &str, text: &str) -> bool {
     // Capture patterns and type-alias binding have different binding grammars.
     if matches!(node.kind(), "match_statement" | "type_alias_statement")
         && mentions_identifier(node, name, text)
