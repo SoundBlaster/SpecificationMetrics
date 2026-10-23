@@ -167,3 +167,24 @@ inflate the current diagnostic's measured coverage.
 Next: independently review the 19 families, then propose bounded support for
 within-iteration block origins and statically verified enum comparisons using
 the two unchanged SpecGraph examples. Keep this separate from U exclusion.
+
+## Independent review, 2026-10-23 UTC
+
+A fresh **gpt-6-astra / medium** subagent reviewed all 29 examples against a
+source-only packet and the pre-clarification written contracts. It received no
+author labels, semantic tags, rationales, family/tier labels, previous analyzer
+results or conversation history, and was instructed not to access them. This
+was an instructional boundary in a shared filesystem, not an OS sandbox; see
+its recorded input-access statement.
+
+See the [review report](reviews/astra-medium-2026-10-23/README.md), unchanged
+independent labels and comparison. Categories agree **29/29**; flow statuses
+agree **29/29**, with no disagreements to adjudicate. The reviewer identified
+two documentation ambiguities: `assert` must be an explicit barrier, and
+unsupported-scope identifier bindings must be distinguished from calls with
+no binding row. Both are clarified in the flow contract; analyzer behavior and
+the original corpus/assessment remain unchanged.
+
+This is one independent model review of a small, purposive development sample.
+It does not turn agreement into semantic coverage or population precision/recall.
+Next: evaluate bounded support for the unchanged loop/enum SpecGraph examples.
