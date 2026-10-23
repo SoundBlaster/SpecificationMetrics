@@ -92,9 +92,11 @@ No analyzer behavior, counting rule or frozen label changes are needed.
   receipt hash, allowed access and comparison scope.
 - [packet-receipt.json](packet-receipt.json): original input filenames/hashes and
   source corpus hash; full source files remain recoverable from pinned Git blobs.
-- `input-contracts/`: exact pre-clarification contract bytes, not revised after
-  the review. Receipt paths are relative to the external packet root; these
-  copies add the `input-contracts/` prefix.
+- [input-contracts.json](input-contracts.json): exact pre-clarification contract
+  texts, keyed by the original packet filenames. Decode each JSON string and
+  encode UTF-8 to verify its receipt hash; retain the original terminal blank
+  lines. The JSON container avoids treating frozen input payloads as current
+  Markdown documents or rewriting their whitespace.
 
 The neutral `cases.json` input can be reconstructed from the frozen corpus:
 retain `id`, `project`, `path`, `analysis_path`, `call_anchor`, `excerpt`; rename
