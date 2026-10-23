@@ -1,0 +1,30 @@
+{
+  "baseline_analyzer_revision": "60a063282b6fcb86b3ad308500480752c6a16760",
+  "baseline_binary_sha256": "6d004babf556e3e791a30457b7dcb2ad46e42d1926fae0f0dc385b013f168bbb",
+  "corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "expected_changes": {
+    "specgraph-02": {
+      "call_category": "direct_application",
+      "flow_status": "linked"
+    },
+    "specgraph-03": {
+      "call_category": "direct_application",
+      "flow_status": "linked"
+    }
+  },
+  "all_other_case_categories_and_statuses": "unchanged",
+  "expected_bindings": {
+    "linked": 3,
+    "unresolved": 6,
+    "not_linked": 0
+  },
+  "raw_measure_and_prior_profiles": "byte_identical_on_identical_source_root_and_scope",
+  "expected_reason_only_changes": {
+    "specgraph-04": {
+      "from": "straight_line_function_body_required",
+      "to": "control_flow_or_effect_barrier",
+      "status": "unresolved",
+      "barrier": "assert"
+    }
+  }
+}
