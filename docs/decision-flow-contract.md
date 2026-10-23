@@ -65,13 +65,26 @@ unresolved because evaluating the target may have effects.
 Writes/deletion of the tracked name or its attributes/subscripts invalidate the
 origin. An intervening call, alias assignment, return/raise, definition, loop,
 try/with/match, unsupported mutation or unrelated if stops analysis explicitly.
-Do not inspect either branch body or continue beyond that first if.
+An intervening `assert` also stops with `unresolved`, even when it checks the
+tracked result: assertion success is not a supported if-candidate link. Do not
+inspect either branch body or continue beyond that first if.
 
-Only direct function-body assignments qualify: module/class-body definitions,
-assignments nested under control flow, chained/destructuring assignments and
-global/nonlocal bindings are unresolved or outside the immediate-identifier
-inventory. No CFG joins, alias propagation, closure/interprocedural analysis,
-runtime execution, external frame mutation, tracing hooks or concurrency proof.
+Inventory and supported flow origins are separate. A call/projection used as an
+immediate assignment RHS with an identifier target contributes a binding row,
+including module/class-body assignments, assignments nested under control flow,
+and global/nonlocal bindings. These unsupported scopes produce `unresolved`;
+they are not omitted from the binding inventory. Only direct function-body
+assignments can establish a supported flow link.
+
+Without such an identifier target, there is no binding row: destructuring or
+attribute/subscript assignment targets, argument/return consumption and a call
+embedded in a conditional-expression RHS remain in `applications` only. For
+other unsupported assignment shapes (including chained assignments), retain an
+`unresolved` row when the call inventory supplies an immediate identifier
+binding; otherwise retain only the call. Inventory presence is not proof of
+supported scope. No CFG joins, alias propagation, closure/interprocedural
+analysis, runtime execution, external frame mutation, tracing hooks or
+concurrency proof.
 
 ## Frozen SpecGraph #787 pilot
 

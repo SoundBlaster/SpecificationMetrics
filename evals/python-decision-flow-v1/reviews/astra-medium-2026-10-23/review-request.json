@@ -1,0 +1,26 @@
+{
+  "schema": "python-decision-flow-independent-review/v1",
+  "reviewer_configuration_requested": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "fork_turns": "none"
+  },
+  "agent_task": "/root/astra_medium_real_flow_blind_review",
+  "case_count": 29,
+  "packet_receipt_sha256": "bf88d2ec2b12a4fa8c705391acb623e3735c3192f3de92b14a5cfda6af9f5b76",
+  "source_corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "allowed_output": "independent-labels.json",
+  "access_boundary": "Instructional read boundary in shared filesystem; no operating-system isolation.",
+  "prohibited_inputs": [
+    "author expectations",
+    "author semantic labels and rationale",
+    "prior analyzer output",
+    "analyzer implementation",
+    "prior conversation"
+  ],
+  "requested_comparison_axes": [
+    "call_category",
+    "flow_status"
+  ],
+  "scope": "Source and written bounded contract only; no analyzer/source execution, networking or credentials."
+}

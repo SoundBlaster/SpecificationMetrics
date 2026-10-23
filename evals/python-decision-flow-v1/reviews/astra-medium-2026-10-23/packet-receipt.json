@@ -1,0 +1,178 @@
+{
+  "source_corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "excluded_fields": [
+    "expected",
+    "rationale",
+    "semantic_read",
+    "label_status",
+    "lexical_scopes",
+    "family",
+    "tier"
+  ],
+  "files": [
+    {
+      "path": "application-contract.md",
+      "sha256": "5c5303c5529aa9c9ccc26eece9af08fe13f77d9d82b06af4bb954515ee4f764e"
+    },
+    {
+      "path": "cases.json",
+      "sha256": "29add1e631ef29c0027ecfd4460a0b1dd3931d70954f88b1ac34c49d5e78bf22"
+    },
+    {
+      "path": "flow-contract.md",
+      "sha256": "ea7b0dcc52ee192407e93a8474da5de87431cd124d2981c67e03bd24c98ac536"
+    },
+    {
+      "path": "sources/cctally/bin/_cctally_journal.py",
+      "sha256": "5bf5523399c54bf8a0301844c215846e2d27933b7677b4ae71638ae91786dea6"
+    },
+    {
+      "path": "sources/fastapi/fastapi/dependencies/models.py",
+      "sha256": "5cf22411aba41da4da173f4ba1e23d7ff4fede8b4e015928382d75dd3a456d62"
+    },
+    {
+      "path": "sources/fastapi/fastapi/routing.py",
+      "sha256": "fe3246412ad4ab688ea3b894e1c0afc4c2400c20a03f91853a22e2190e7ddbe3"
+    },
+    {
+      "path": "sources/fastapi/fastapi/security/oauth2.py",
+      "sha256": "b12a96e2d6efa07696365778e9361ab6d6b9ae015f8e87782e1c6679d5f3908f"
+    },
+    {
+      "path": "sources/flask/src/flask/app.py",
+      "sha256": "09a3a1a7b3d1f174a4d274da2c329f9377745bbf6f138b17c3187352f7466a15"
+    },
+    {
+      "path": "sources/flask/src/flask/config.py",
+      "sha256": "3e2a85d033da9ba1d6d051f8087d61a574c17b7d0d4b38cf10ec2bcf56fa92dd"
+    },
+    {
+      "path": "sources/flask/src/flask/sessions.py",
+      "sha256": "7b2c11aa6cad4e66275ff102efcf980462684dce570ff951a61406e4b6cdd5dd"
+    },
+    {
+      "path": "sources/specgraph/tools/candidate_repair_loop.py",
+      "sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416"
+    },
+    {
+      "path": "sources/specgraph/tools/idea_to_spec_promotion_gate.py",
+      "sha256": "e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/__init__.py",
+      "sha256": "329011afbd50064bdedc1f30bf2fe7c89aceeb9b12ce30f2852fbc46c90537a2"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/bindings_spec.py",
+      "sha256": "ac51e677e49778c63ee7da8060a25ffaa35d9dcba52f90a4839f82f66d8b3226"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/bound_observation_spec.py",
+      "sha256": "f3e296d7ef70e7e5d5cee30274ce2d9968f9565dca8e3ff1b3e23060f9c3feed"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/case_spec.py",
+      "sha256": "678cc38bc73e2e45e6dcc775af82ade8d886cc92484070f317665bd3dd89b13a"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/context.py",
+      "sha256": "ce17623df9d4d32dff098c87d8385822e719c60e9ab629aafa4c834c74591a8e"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/execution_context.py",
+      "sha256": "ea9033bfe11c44c6fec4846d71cfd4338069f6368df504b41c6fbb8176578b31"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/http_observation_spec.py",
+      "sha256": "16699c83064b9dc2b0b7e1bc00fd3489502655340fa667657d36cd9d44e10526"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/merged_revision_spec.py",
+      "sha256": "70b26ebbb2d2c816122cccded29547b5d73695a85735dee631dd6dd7b432b411"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/snapshot_spec.py",
+      "sha256": "c58b66852ce1e409e998dab7f9f33b088b4dcdbf39d073816e34b5c08ba1f421"
+    },
+    {
+      "path": "sources/specgraph/tools/publication_evidence/suite_spec.py",
+      "sha256": "d5a056eaff0d26d1709bc92dbe4c5df096c3340de6d67276206e44e157d04793"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/__init__.py",
+      "sha256": "32d5e0187562a9dcc4e1595a48d2bafe0dedf1b532917370a70cddfa8cf0ff39"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/atom_roles_spec.py",
+      "sha256": "e8bcb51c5f828b71dae28f7d9e351e6e765c6e06b7d9f8d19fd3c4da19c0fb09"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/context.py",
+      "sha256": "2a27bb4f61dd747f1bbe78ce5f5cbac66387efd9f0681168a13f79a30b192d85"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/evidence.py",
+      "sha256": "3d76b5e1c0269ef20d3628f542dec4e389f7039f57b9698cd97bb3738a59de04"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/execution.py",
+      "sha256": "2c49da0829aaba1cb7faad4e9cd76de74724e9fa95e55b43a0c4ef810f80d2b5"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/execution_binding_spec.py",
+      "sha256": "8494459fcade134a94507f09a874035344bb3cf0a90844383ca5e139eb9956fa"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/fact_agreement_spec.py",
+      "sha256": "8f7417ee1b0771f5908d6d96d180b4d786fab25f51f21f24b07129722e6741e6"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/policy_atom_bindings_spec.py",
+      "sha256": "e12e2f7ff99df78c380f13194a73db33f0b8a8f8ba20c9c6831f595f3511c759"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/providers.py",
+      "sha256": "3da504cd8a763a4a7d20ec3bb53eee238a60d244672afa7263ac077f93941042"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/publication.py",
+      "sha256": "c4884e043c9489b9ee46e4b9da92a8191c0da2f19354572cb632a1abf9ecdee7"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/publication_execution_provider.py",
+      "sha256": "b1a0c7769aed7c88c2c110cc32ca2fa717a5a5d363e0ccdcdf3defff5f11836a"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/publication_provider.py",
+      "sha256": "65899f2e5316abb95c7e6a4bce31dd281c115abce6ee96cc0c1fa254f1299cfc"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/reference_status_spec.py",
+      "sha256": "77303598e3a8c63baf97c72d1f23aceca466144dd9304b6641253b13b3150c64"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/references.py",
+      "sha256": "50ffff8343abcd7b53d6f81c673d84dd9bb2fdb09ec7409673e203b399b79414"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/resolution_completeness_spec.py",
+      "sha256": "c65c1a0138859b36d550bc2ef205b3c01e661e25934a59fd64521d020c96234e"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/retained_runtime_binding_spec.py",
+      "sha256": "da572625f2bd698665c01797f7a5c33534ff97a09a58967c5f1476236df9bac9"
+    },
+    {
+      "path": "sources/specgraph/tools/traceability/snapshot.py",
+      "sha256": "98bfe9ef62114c31e9867d00b92761db9737419a3b12eeb0e0d3aa3e7a40fda4"
+    },
+    {
+      "path": "sources/spycification/tests/test_async.py",
+      "sha256": "9129ac469ed250f58d391cbdd0dee13c6447cb46f8850725c7731182c3f623b8"
+    },
+    {
+      "path": "sources/spycification/tests/test_core.py",
+      "sha256": "3fe5b89185b781d74f71395b870eff26c45812f93b62c4f8e448e65b8d2a133d"
+    }
+  ]
+}
