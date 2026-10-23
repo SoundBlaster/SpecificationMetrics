@@ -115,3 +115,12 @@ Regression `annotation_only_locals_preserve_values_but_assignment_and_effectful_
 covers tracked/unrelated local annotations, unevaluated annotation expressions,
 actual annotated assignment and effectful annotation targets. This corrects a
 false negative; the original frozen pilot result is unchanged.
+
+### Real-project corpus
+
+The separate [real-source corpus](../evals/python-decision-flow-v1/README.md)
+contains 29 unmodified examples from five projects, including other-API controls
+and ordinary-code analogues. Its author labels were frozen before replay.
+Agreement with the current bounded contract is reported separately from semantic
+consumption and unsupported real usage; it does not establish population
+precision/recall or authorize U exclusions.

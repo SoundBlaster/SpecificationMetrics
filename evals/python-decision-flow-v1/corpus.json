@@ -1,0 +1,1206 @@
+{
+  "schema": "python-decision-flow-real-corpus/v1",
+  "label_status": "author_labeled_before_replay; independent_review_pending",
+  "analyzer_contract": "specification-metrics.python-decision-flow/v1",
+  "purpose": "Separate source-level semantic consumption, bounded analyzer expectations, and other-API controls. No correctness, coverage, or U exclusion claim.",
+  "selection_method": "Bounded local discovery using rg for FirstMatch/.decide and assignment-to-if shapes. Pin Git objects, not mutable working-tree bytes. All 23 decide calls in selected native example files are included. Six curated ordinary-code analogues are a separate tier.",
+  "synthetic_cases": 0,
+  "snapshots": {
+    "specgraph": {
+      "repository": "https://github.com/0al-spec/SpecGraph",
+      "revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "import_root": "tools",
+      "selection": "Unmodified Git blobs; explicit benchmark scope, including library tests. Not project-wide production scope.",
+      "license_source": "LICENSE",
+      "license_copy": "licenses/specgraph.txt",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "files": [
+        {
+          "path": "tools/candidate_repair_loop.py",
+          "sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416"
+        },
+        {
+          "path": "tools/idea_to_spec_promotion_gate.py",
+          "sha256": "e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec"
+        },
+        {
+          "path": "tools/publication_evidence/__init__.py",
+          "sha256": "329011afbd50064bdedc1f30bf2fe7c89aceeb9b12ce30f2852fbc46c90537a2"
+        },
+        {
+          "path": "tools/publication_evidence/bindings_spec.py",
+          "sha256": "ac51e677e49778c63ee7da8060a25ffaa35d9dcba52f90a4839f82f66d8b3226"
+        },
+        {
+          "path": "tools/publication_evidence/bound_observation_spec.py",
+          "sha256": "f3e296d7ef70e7e5d5cee30274ce2d9968f9565dca8e3ff1b3e23060f9c3feed"
+        },
+        {
+          "path": "tools/publication_evidence/case_spec.py",
+          "sha256": "678cc38bc73e2e45e6dcc775af82ade8d886cc92484070f317665bd3dd89b13a"
+        },
+        {
+          "path": "tools/publication_evidence/context.py",
+          "sha256": "ce17623df9d4d32dff098c87d8385822e719c60e9ab629aafa4c834c74591a8e"
+        },
+        {
+          "path": "tools/publication_evidence/execution_context.py",
+          "sha256": "ea9033bfe11c44c6fec4846d71cfd4338069f6368df504b41c6fbb8176578b31"
+        },
+        {
+          "path": "tools/publication_evidence/http_observation_spec.py",
+          "sha256": "16699c83064b9dc2b0b7e1bc00fd3489502655340fa667657d36cd9d44e10526"
+        },
+        {
+          "path": "tools/publication_evidence/merged_revision_spec.py",
+          "sha256": "70b26ebbb2d2c816122cccded29547b5d73695a85735dee631dd6dd7b432b411"
+        },
+        {
+          "path": "tools/publication_evidence/snapshot_spec.py",
+          "sha256": "c58b66852ce1e409e998dab7f9f33b088b4dcdbf39d073816e34b5c08ba1f421"
+        },
+        {
+          "path": "tools/publication_evidence/suite_spec.py",
+          "sha256": "d5a056eaff0d26d1709bc92dbe4c5df096c3340de6d67276206e44e157d04793"
+        },
+        {
+          "path": "tools/traceability/__init__.py",
+          "sha256": "32d5e0187562a9dcc4e1595a48d2bafe0dedf1b532917370a70cddfa8cf0ff39"
+        },
+        {
+          "path": "tools/traceability/atom_roles_spec.py",
+          "sha256": "e8bcb51c5f828b71dae28f7d9e351e6e765c6e06b7d9f8d19fd3c4da19c0fb09"
+        },
+        {
+          "path": "tools/traceability/context.py",
+          "sha256": "2a27bb4f61dd747f1bbe78ce5f5cbac66387efd9f0681168a13f79a30b192d85"
+        },
+        {
+          "path": "tools/traceability/evidence.py",
+          "sha256": "3d76b5e1c0269ef20d3628f542dec4e389f7039f57b9698cd97bb3738a59de04"
+        },
+        {
+          "path": "tools/traceability/execution.py",
+          "sha256": "2c49da0829aaba1cb7faad4e9cd76de74724e9fa95e55b43a0c4ef810f80d2b5"
+        },
+        {
+          "path": "tools/traceability/execution_binding_spec.py",
+          "sha256": "8494459fcade134a94507f09a874035344bb3cf0a90844383ca5e139eb9956fa"
+        },
+        {
+          "path": "tools/traceability/fact_agreement_spec.py",
+          "sha256": "8f7417ee1b0771f5908d6d96d180b4d786fab25f51f21f24b07129722e6741e6"
+        },
+        {
+          "path": "tools/traceability/policy_atom_bindings_spec.py",
+          "sha256": "e12e2f7ff99df78c380f13194a73db33f0b8a8f8ba20c9c6831f595f3511c759"
+        },
+        {
+          "path": "tools/traceability/providers.py",
+          "sha256": "3da504cd8a763a4a7d20ec3bb53eee238a60d244672afa7263ac077f93941042"
+        },
+        {
+          "path": "tools/traceability/publication.py",
+          "sha256": "c4884e043c9489b9ee46e4b9da92a8191c0da2f19354572cb632a1abf9ecdee7"
+        },
+        {
+          "path": "tools/traceability/publication_execution_provider.py",
+          "sha256": "b1a0c7769aed7c88c2c110cc32ca2fa717a5a5d363e0ccdcdf3defff5f11836a"
+        },
+        {
+          "path": "tools/traceability/publication_provider.py",
+          "sha256": "65899f2e5316abb95c7e6a4bce31dd281c115abce6ee96cc0c1fa254f1299cfc"
+        },
+        {
+          "path": "tools/traceability/reference_status_spec.py",
+          "sha256": "77303598e3a8c63baf97c72d1f23aceca466144dd9304b6641253b13b3150c64"
+        },
+        {
+          "path": "tools/traceability/references.py",
+          "sha256": "50ffff8343abcd7b53d6f81c673d84dd9bb2fdb09ec7409673e203b399b79414"
+        },
+        {
+          "path": "tools/traceability/resolution_completeness_spec.py",
+          "sha256": "c65c1a0138859b36d550bc2ef205b3c01e661e25934a59fd64521d020c96234e"
+        },
+        {
+          "path": "tools/traceability/retained_runtime_binding_spec.py",
+          "sha256": "da572625f2bd698665c01797f7a5c33534ff97a09a58967c5f1476236df9bac9"
+        },
+        {
+          "path": "tools/traceability/snapshot.py",
+          "sha256": "98bfe9ef62114c31e9867d00b92761db9737419a3b12eeb0e0d3aa3e7a40fda4"
+        }
+      ]
+    },
+    "spycification": {
+      "repository": "https://github.com/SoundBlaster/SpycificationCore",
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "import_root": ".",
+      "selection": "Unmodified Git blobs; explicit benchmark scope, including library tests. Not project-wide production scope.",
+      "license_source": "LICENSE",
+      "license_copy": "licenses/spycification.txt",
+      "license_sha256": "75d8eff51be1ab3d9e22c0167e4e4fb83c47de625d68b4496885f0749e94ac64",
+      "files": [
+        {
+          "path": "tests/test_async.py",
+          "sha256": "9129ac469ed250f58d391cbdd0dee13c6447cb46f8850725c7731182c3f623b8"
+        },
+        {
+          "path": "tests/test_core.py",
+          "sha256": "3fe5b89185b781d74f71395b870eff26c45812f93b62c4f8e448e65b8d2a133d"
+        }
+      ]
+    },
+    "cctally": {
+      "repository": "https://github.com/omrikais/cctally",
+      "revision": "4b14b4c37fd56af3545bd6ee90111e2feaf89e00",
+      "import_root": ".",
+      "selection": "Unmodified Git blobs; explicit benchmark scope, including library tests. Not project-wide production scope.",
+      "license_source": "LICENSE",
+      "license_copy": "licenses/cctally.txt",
+      "license_sha256": "5589c015359addd20eef3c51f32ce0264faab02bfd77ccff9d6d3f87cb53043e",
+      "files": [
+        {
+          "path": "bin/_cctally_journal.py",
+          "sha256": "5bf5523399c54bf8a0301844c215846e2d27933b7677b4ae71638ae91786dea6"
+        }
+      ]
+    },
+    "flask": {
+      "repository": "https://github.com/pallets/flask",
+      "revision": "954f5684e4841aad84a8eec7ace7b81a0d3f6831",
+      "import_root": ".",
+      "selection": "Unmodified Git blobs; explicit benchmark scope, including library tests. Not project-wide production scope.",
+      "license_source": "LICENSE.txt",
+      "license_copy": "licenses/flask.txt",
+      "license_sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+      "files": [
+        {
+          "path": "src/flask/app.py",
+          "sha256": "09a3a1a7b3d1f174a4d274da2c329f9377745bbf6f138b17c3187352f7466a15"
+        },
+        {
+          "path": "src/flask/config.py",
+          "sha256": "3e2a85d033da9ba1d6d051f8087d61a574c17b7d0d4b38cf10ec2bcf56fa92dd"
+        },
+        {
+          "path": "src/flask/sessions.py",
+          "sha256": "7b2c11aa6cad4e66275ff102efcf980462684dce570ff951a61406e4b6cdd5dd"
+        }
+      ]
+    },
+    "fastapi": {
+      "repository": "https://github.com/fastapi/fastapi",
+      "revision": "9a9c4ad5d06f5fe8ee6775a5aeaa2f83c854f263",
+      "import_root": ".",
+      "selection": "Unmodified Git blobs; explicit benchmark scope, including library tests. Not project-wide production scope.",
+      "license_source": "LICENSE",
+      "license_copy": "licenses/fastapi.txt",
+      "license_sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+      "files": [
+        {
+          "path": "fastapi/dependencies/models.py",
+          "sha256": "5cf22411aba41da4da173f4ba1e23d7ff4fede8b4e015928382d75dd3a456d62"
+        },
+        {
+          "path": "fastapi/routing.py",
+          "sha256": "fe3246412ad4ab688ea3b894e1c0afc4c2400c20a03f91853a22e2190e7ddbe3"
+        },
+        {
+          "path": "fastapi/security/oauth2.py",
+          "sha256": "b12a96e2d6efa07696365778e9361ab6d6b9ae015f8e87782e1c6679d5f3908f"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "specgraph-01",
+      "project": "specgraph",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "analysis_path": "idea_to_spec_promotion_gate.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/pre-sib",
+      "call_anchor": {
+        "line": 213,
+        "column": 14
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "_pre_sib_state",
+          "line": 203
+        }
+      ],
+      "excerpt_lines": [
+        203,
+        215
+      ],
+      "excerpt": "def _pre_sib_state(\n    pre_sib: dict[str, Any],\n    materialization: dict[str, Any],\n    *,\n    recorder: TraceRecorder | None = None,\n) -> _PreSibState:\n    context = _PreSibDecisionContext(\n        pre_sib_ready=_readiness_ready(pre_sib),\n        materialization_source=_text(materialization.get(\"materialization_source\")),\n    )\n    result = _PRE_SIB_STATE_DECISION.decide(context, recorder=recorder)\n    assert result.matched and result.value is not None\n    return result.value\n",
+      "excerpt_sha256": "f69b81c24874fd6512c5eb9ae96d68859c477bd67b64c702c451108bc42a1407",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/idea_to_spec_promotion_gate.py#L203-L215",
+      "semantic_read": "assert_and_return",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "control_flow_or_effect_barrier"
+      },
+      "rationale": "The result is consumed by assert and return. Assert is a barrier, not the supported next if."
+    },
+    {
+      "id": "specgraph-02",
+      "project": "specgraph",
+      "path": "tools/candidate_repair_loop.py",
+      "analysis_path": "candidate_repair_loop.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/acceptance",
+      "call_anchor": {
+        "line": 425,
+        "column": 24
+      },
+      "lexical_scopes": [
+        {
+          "kind": "For",
+          "name": null,
+          "line": 419
+        },
+        {
+          "kind": "For",
+          "name": null,
+          "line": 413
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "_repair_acceptance_criteria",
+          "line": 411
+        }
+      ],
+      "excerpt_lines": [
+        419,
+        428
+      ],
+      "excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+      "excerpt_sha256": "333bc313c9d7524ef6101d8330eca1f8c56092fe31cca15923dd40f0eb263436",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L419-L428",
+      "semantic_read": "branch_reads_result_enum",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "rationale": "The origin is inside a loop body. Preserve the actual nested scope; do not promote it to a direct function statement."
+    },
+    {
+      "id": "specgraph-03",
+      "project": "specgraph",
+      "path": "tools/candidate_repair_loop.py",
+      "analysis_path": "candidate_repair_loop.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/claims",
+      "call_anchor": {
+        "line": 530,
+        "column": 24
+      },
+      "lexical_scopes": [
+        {
+          "kind": "For",
+          "name": null,
+          "line": 525
+        },
+        {
+          "kind": "For",
+          "name": null,
+          "line": 524
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "_repair_unsupported_claims",
+          "line": 522
+        }
+      ],
+      "excerpt_lines": [
+        522,
+        533
+      ],
+      "excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+      "excerpt_sha256": "69dfc30afa7fafbd05e15743b25984c19a56bb36932a6ace562cfc9e672a3299",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L522-L533",
+      "semantic_read": "branch_reads_result_enum",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "rationale": "The origin is inside a loop body. Preserve the actual nested scope; do not promote it to a direct function statement."
+    },
+    {
+      "id": "specgraph-04",
+      "project": "specgraph",
+      "path": "tools/candidate_repair_loop.py",
+      "analysis_path": "candidate_repair_loop.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/preview",
+      "call_anchor": {
+        "line": 680,
+        "column": 20
+      },
+      "lexical_scopes": [
+        {
+          "kind": "For",
+          "name": null,
+          "line": 676
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "_apply_preview_actions",
+          "line": 660
+        }
+      ],
+      "excerpt_lines": [
+        676,
+        683
+      ],
+      "excerpt": "    for action in actions:\n        if action[\"status\"] != \"applied_to_preview\":\n            continue\n        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n",
+      "excerpt_sha256": "5edd9782650b193fc6fcb7615aa263f0fbdf28a38c08616f8d3bd31be2c247a8",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L676-L683",
+      "semantic_read": "assert_and_handler",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "rationale": "The origin is inside a loop body. Preserve the actual nested scope; do not promote it to a direct function statement."
+    },
+    {
+      "id": "specgraph-05",
+      "project": "specgraph",
+      "path": "tools/traceability/publication.py",
+      "analysis_path": "traceability/publication.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/publication-binding",
+      "call_anchor": {
+        "line": 238,
+        "column": 21
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "collect_publication_links",
+          "line": 158
+        }
+      ],
+      "excerpt_lines": [
+        235,
+        247
+      ],
+      "excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    if binding_error:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+      "excerpt_sha256": "f65ceb5fc4a64beb5c686945ad3ce6f4f7f9180ea28ca92495ab345f379a9417",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/traceability/publication.py#L235-L247",
+      "semantic_read": "branch_reads_result",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "rationale": "binding_error is the unchanged .value result, read directly by the next if at line 246."
+    },
+    {
+      "id": "specgraph-06",
+      "project": "specgraph",
+      "path": "tools/traceability/publication_execution_provider.py",
+      "analysis_path": "traceability/publication_execution_provider.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/test-suite",
+      "call_anchor": {
+        "line": 138,
+        "column": 9
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_signal",
+          "line": 115
+        }
+      ],
+      "excerpt_lines": [
+        137,
+        150
+      ],
+      "excerpt": "    result = (\n        TEST_SUITE_SPEC.decide(\n            TestSuiteContext(\n                exit_code,\n                frozenset(text(r.get(\"result\"), \"test case result\") for r in rows),\n                len(rows),\n                len(expected_obligations),\n                declared,\n            )\n        ).value\n        if matched\n        else None\n    )\n    return ExecutionSignal(\"tests\", declared, \"matched\" if matched else \"mismatch\", result)\n",
+      "excerpt_sha256": "300f4ae05ebfe9de5bdef34bdd79e3ef14265f986ca6ea19c7a3e9ae268ca9cb",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/traceability/publication_execution_provider.py#L137-L150",
+      "semantic_read": "conditional_expression",
+      "expected": {
+        "call_category": "mixed_expression",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "The conditional expression selects the result before assigning result; the decide call is not an immediate identifier origin."
+    },
+    {
+      "id": "specgraph-07",
+      "project": "specgraph",
+      "path": "tools/traceability/references.py",
+      "analysis_path": "traceability/references.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "specgraph/reference-status",
+      "call_anchor": {
+        "line": 68,
+        "column": 44
+      },
+      "lexical_scopes": [
+        {
+          "kind": "For",
+          "name": null,
+          "line": 46
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "resolve_references",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        60,
+        69
+      ],
+      "excerpt": "                    else {\"Assign\", \"AnnAssign\"}\n                )\n                for c in candidates\n            )\n            if reference.target_kind in PYTHON_KINDS\n            else True,\n        )\n        results.append(\n            ReferenceResolution(reference, REFERENCE_STATUS_SPEC.decide(facts).value, candidates)\n        )\n",
+      "excerpt_sha256": "ccd7c2c747c8f3ad53a6c860bfdca008fa6d80122ce7d99d0d4e2b3fc04d2197",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/traceability/references.py#L60-L69",
+      "semantic_read": "argument",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "The .value result is a constructor argument, not assigned to a local identifier."
+    },
+    {
+      "id": "spycification-01",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_first_match_distinguishes_none_payload_from_no_match",
+      "call_anchor": {
+        "line": 47,
+        "column": 16
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_first_match_distinguishes_none_payload_from_no_match",
+          "line": 43
+        }
+      ],
+      "excerpt_lines": [
+        43,
+        49
+      ],
+      "excerpt": "def test_first_match_distinguishes_none_payload_from_no_match() -> None:\n    rule: FirstMatch[object, None] = FirstMatch([(PredicateSpec(lambda value: True, \"matches\"), None)])\n    no_match: FirstMatch[object, str] = FirstMatch([])\n\n    selected = rule.decide(object())\n    absent = no_match.decide(object())\n\n",
+      "excerpt_sha256": "c24187f85d1264194002eb7b352e1ec4f9349b34f0447e739e13782b26de5a3a",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L43-L49",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-02",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_first_match_distinguishes_none_payload_from_no_match",
+      "call_anchor": {
+        "line": 48,
+        "column": 14
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_first_match_distinguishes_none_payload_from_no_match",
+          "line": 43
+        }
+      ],
+      "excerpt_lines": [
+        43,
+        50
+      ],
+      "excerpt": "def test_first_match_distinguishes_none_payload_from_no_match() -> None:\n    rule: FirstMatch[object, None] = FirstMatch([(PredicateSpec(lambda value: True, \"matches\"), None)])\n    no_match: FirstMatch[object, str] = FirstMatch([])\n\n    selected = rule.decide(object())\n    absent = no_match.decide(object())\n\n    assert selected == MatchResult.match(None)\n",
+      "excerpt_sha256": "6d98202d3105441a2ce20a6ef01f39e1da30cf5d6415312822c6d88ada3f07f1",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L43-L50",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-03",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_first_match_stops_after_first_satisfied_rule",
+      "call_anchor": {
+        "line": 72,
+        "column": 12
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_first_match_stops_after_first_satisfied_rule",
+          "line": 54
+        }
+      ],
+      "excerpt_lines": [
+        65,
+        73
+      ],
+      "excerpt": "    rule = FirstMatch(\n        [\n            (PredicateSpec(first, \"first\"), \"review\"),\n            (PredicateSpec(second, \"second\"), \"publish\"),\n        ]\n    )\n\n    assert rule.decide(object()) == MatchResult.match(\"review\")\n    assert calls == [\"first\"]\n",
+      "excerpt_sha256": "379e18f3e5c71763e575716c12d0f255c9ba36dd99217371d91604368324326a",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L65-L73",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-04",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_boolean_rules_and_decision_adapters",
+      "call_anchor": {
+        "line": 83,
+        "column": 12
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_boolean_rules_and_decision_adapters",
+          "line": 76
+        }
+      ],
+      "excerpt_lines": [
+        76,
+        85
+      ],
+      "excerpt": "def test_boolean_rules_and_decision_adapters() -> None:\n    positive: PredicateSpec[int] = PredicateSpec(lambda value: value > 0, \"positive\")\n\n    assert (AlwaysTrue[int]() & positive).is_satisfied_by(1)\n    assert (AlwaysFalse[int]() | positive).is_satisfied_by(1)\n    assert (~positive).is_satisfied_by(-1)\n    adapted: BooleanDecisionAdapter[int, None] = positive.returning(None)\n    assert adapted.decide(1) == MatchResult.match(None)\n    decision: PredicateDecisionSpec[int, str] = PredicateDecisionSpec(lambda value: value > 0, \"accept\")\n    assert decision.decide(1) == MatchResult.match(\"accept\")\n",
+      "excerpt_sha256": "b9ca397d6ae499afdacc03f70fd3a4350196e40b72427d1fdcdc041ea4d3dc60",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L76-L85",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-05",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_boolean_rules_and_decision_adapters",
+      "call_anchor": {
+        "line": 85,
+        "column": 12
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_boolean_rules_and_decision_adapters",
+          "line": 76
+        }
+      ],
+      "excerpt_lines": [
+        78,
+        86
+      ],
+      "excerpt": "\n    assert (AlwaysTrue[int]() & positive).is_satisfied_by(1)\n    assert (AlwaysFalse[int]() | positive).is_satisfied_by(1)\n    assert (~positive).is_satisfied_by(-1)\n    adapted: BooleanDecisionAdapter[int, None] = positive.returning(None)\n    assert adapted.decide(1) == MatchResult.match(None)\n    decision: PredicateDecisionSpec[int, str] = PredicateDecisionSpec(lambda value: value > 0, \"accept\")\n    assert decision.decide(1) == MatchResult.match(\"accept\")\n    assert decision.decide(-1) == MatchResult.no_match()\n",
+      "excerpt_sha256": "d3517390dfb6aac0563da9dea034f06183e17b6bd90369df5c1f9bceecdb5ff6",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L78-L86",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-06",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_boolean_rules_and_decision_adapters",
+      "call_anchor": {
+        "line": 86,
+        "column": 12
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_boolean_rules_and_decision_adapters",
+          "line": 76
+        }
+      ],
+      "excerpt_lines": [
+        79,
+        86
+      ],
+      "excerpt": "    assert (AlwaysTrue[int]() & positive).is_satisfied_by(1)\n    assert (AlwaysFalse[int]() | positive).is_satisfied_by(1)\n    assert (~positive).is_satisfied_by(-1)\n    adapted: BooleanDecisionAdapter[int, None] = positive.returning(None)\n    assert adapted.decide(1) == MatchResult.match(None)\n    decision: PredicateDecisionSpec[int, str] = PredicateDecisionSpec(lambda value: value > 0, \"accept\")\n    assert decision.decide(1) == MatchResult.match(\"accept\")\n    assert decision.decide(-1) == MatchResult.no_match()\n",
+      "excerpt_sha256": "b55eb7ce470fd9252318802ce67b64b7f2063c5b866a21fb391464eb96b48a64",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L79-L86",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-07",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_first_match_fallback_and_decision_trace",
+      "call_anchor": {
+        "line": 92,
+        "column": 12
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_first_match_fallback_and_decision_trace",
+          "line": 89
+        }
+      ],
+      "excerpt_lines": [
+        89,
+        94
+      ],
+      "excerpt": "def test_first_match_fallback_and_decision_trace() -> None:\n    recorder = TraceRecorder()\n    fallback: FirstMatch[object, str] = FirstMatch.with_fallback([], \"review\")\n    assert fallback.decide(object()) == MatchResult.match(\"review\")\n\n    route: FirstMatch[object, str] = FirstMatch(\n",
+      "excerpt_sha256": "e55dbc12e929bf7cf7302de6ca269a6926afdeddba8679483af355b5ea052427",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L89-L94",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-08",
+      "project": "spycification",
+      "path": "tests/test_core.py",
+      "analysis_path": "tests/test_core.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/test_first_match_fallback_and_decision_trace",
+      "call_anchor": {
+        "line": 100,
+        "column": 12
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "test_first_match_fallback_and_decision_trace",
+          "line": 89
+        }
+      ],
+      "excerpt_lines": [
+        93,
+        102
+      ],
+      "excerpt": "\n    route: FirstMatch[object, str] = FirstMatch(\n        [\n            (PredicateSpec(lambda value: True, \"matches\"), \"publish\"),\n            (PredicateSpec(lambda value: True, \"later\"), \"review\"),\n        ]\n    )\n    assert route.decide(object(), recorder=recorder) == MatchResult.match(\"publish\")\n    assert [event.outcome for event in recorder.events] == [\n        TraceOutcome.SELECTED,\n",
+      "excerpt_sha256": "a443ba2e901587b3515e256db38e7a609f65a5b48f92dceb2254629d0163e896",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_core.py#L93-L102",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-09",
+      "project": "spycification",
+      "path": "tests/test_async.py",
+      "analysis_path": "tests/test_async.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/run",
+      "call_anchor": {
+        "line": 47,
+        "column": 22
+      },
+      "lexical_scopes": [
+        {
+          "kind": "AsyncFunctionDef",
+          "name": "run",
+          "line": 43
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "test_async_decisions_and_composition",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        43,
+        49
+      ],
+      "excerpt": "    async def run() -> None:\n        good: AsyncPredicateSpec[object] = AsyncPredicateSpec(accepted, \"good\")\n        bad: AsyncPredicateSpec[object] = AsyncPredicateSpec(rejected, \"bad\")\n        allow: AsyncBooleanDecisionAdapter[object, str] = AsyncBooleanDecisionAdapter(good, \"allow\")\n        assert await allow.decide(object()) == MatchResult.match(\"allow\")\n        assert await AsyncBooleanDecisionAdapter(bad, \"allow\").decide(object()) == MatchResult.no_match()\n        decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(accepted, \"allow\")\n",
+      "excerpt_sha256": "d8ce653c91ab88b6b95eb7a4eef266bf91bc18deb159f29289d9f4346d42568e",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_async.py#L43-L49",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-10",
+      "project": "spycification",
+      "path": "tests/test_async.py",
+      "analysis_path": "tests/test_async.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/run",
+      "call_anchor": {
+        "line": 48,
+        "column": 22
+      },
+      "lexical_scopes": [
+        {
+          "kind": "AsyncFunctionDef",
+          "name": "run",
+          "line": 43
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "test_async_decisions_and_composition",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        43,
+        50
+      ],
+      "excerpt": "    async def run() -> None:\n        good: AsyncPredicateSpec[object] = AsyncPredicateSpec(accepted, \"good\")\n        bad: AsyncPredicateSpec[object] = AsyncPredicateSpec(rejected, \"bad\")\n        allow: AsyncBooleanDecisionAdapter[object, str] = AsyncBooleanDecisionAdapter(good, \"allow\")\n        assert await allow.decide(object()) == MatchResult.match(\"allow\")\n        assert await AsyncBooleanDecisionAdapter(bad, \"allow\").decide(object()) == MatchResult.no_match()\n        decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(accepted, \"allow\")\n        assert await decision.decide(object()) == MatchResult.match(\"allow\")\n",
+      "excerpt_sha256": "546bbcfed5c244551b49e3f418928b8ce3c62910dbe6bb4eb00f3ae03aeabe8a",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_async.py#L43-L50",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-11",
+      "project": "spycification",
+      "path": "tests/test_async.py",
+      "analysis_path": "tests/test_async.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/run",
+      "call_anchor": {
+        "line": 50,
+        "column": 22
+      },
+      "lexical_scopes": [
+        {
+          "kind": "AsyncFunctionDef",
+          "name": "run",
+          "line": 43
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "test_async_decisions_and_composition",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        43,
+        52
+      ],
+      "excerpt": "    async def run() -> None:\n        good: AsyncPredicateSpec[object] = AsyncPredicateSpec(accepted, \"good\")\n        bad: AsyncPredicateSpec[object] = AsyncPredicateSpec(rejected, \"bad\")\n        allow: AsyncBooleanDecisionAdapter[object, str] = AsyncBooleanDecisionAdapter(good, \"allow\")\n        assert await allow.decide(object()) == MatchResult.match(\"allow\")\n        assert await AsyncBooleanDecisionAdapter(bad, \"allow\").decide(object()) == MatchResult.no_match()\n        decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(accepted, \"allow\")\n        assert await decision.decide(object()) == MatchResult.match(\"allow\")\n        rejected_decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(rejected, \"allow\")\n        assert await rejected_decision.decide(object()) == MatchResult.no_match()\n",
+      "excerpt_sha256": "601ad47d47e198a21acd4792a4eb5735562647b630943f429747e6c04f43d966",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_async.py#L43-L52",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-12",
+      "project": "spycification",
+      "path": "tests/test_async.py",
+      "analysis_path": "tests/test_async.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/run",
+      "call_anchor": {
+        "line": 52,
+        "column": 22
+      },
+      "lexical_scopes": [
+        {
+          "kind": "AsyncFunctionDef",
+          "name": "run",
+          "line": 43
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "test_async_decisions_and_composition",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        45,
+        54
+      ],
+      "excerpt": "        bad: AsyncPredicateSpec[object] = AsyncPredicateSpec(rejected, \"bad\")\n        allow: AsyncBooleanDecisionAdapter[object, str] = AsyncBooleanDecisionAdapter(good, \"allow\")\n        assert await allow.decide(object()) == MatchResult.match(\"allow\")\n        assert await AsyncBooleanDecisionAdapter(bad, \"allow\").decide(object()) == MatchResult.no_match()\n        decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(accepted, \"allow\")\n        assert await decision.decide(object()) == MatchResult.match(\"allow\")\n        rejected_decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(rejected, \"allow\")\n        assert await rejected_decision.decide(object()) == MatchResult.no_match()\n        assert await AsyncOrSpecification(bad, good).is_satisfied_by(object())\n        assert await AsyncNotSpecification(bad).is_satisfied_by(object())\n",
+      "excerpt_sha256": "b30b59462ba27f9200c090348e9e421124bb28661e2e0bee44d2731d92a77425",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_async.py#L45-L54",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-13",
+      "project": "spycification",
+      "path": "tests/test_async.py",
+      "analysis_path": "tests/test_async.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/run",
+      "call_anchor": {
+        "line": 55,
+        "column": 22
+      },
+      "lexical_scopes": [
+        {
+          "kind": "AsyncFunctionDef",
+          "name": "run",
+          "line": 43
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "test_async_decisions_and_composition",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        48,
+        57
+      ],
+      "excerpt": "        assert await AsyncBooleanDecisionAdapter(bad, \"allow\").decide(object()) == MatchResult.no_match()\n        decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(accepted, \"allow\")\n        assert await decision.decide(object()) == MatchResult.match(\"allow\")\n        rejected_decision: AsyncPredicateDecisionSpec[object, str] = AsyncPredicateDecisionSpec(rejected, \"allow\")\n        assert await rejected_decision.decide(object()) == MatchResult.no_match()\n        assert await AsyncOrSpecification(bad, good).is_satisfied_by(object())\n        assert await AsyncNotSpecification(bad).is_satisfied_by(object())\n        assert await AsyncFirstMatch.with_fallback([(good, \"publish\")], \"review\").decide(object()) == MatchResult.match(\n            \"publish\"\n        )\n",
+      "excerpt_sha256": "467fd9ba1899b29bc88553f6a729d28aac57796fa35e4d741eafc751c97f92d4",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_async.py#L48-L57",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "spycification-14",
+      "project": "spycification",
+      "path": "tests/test_async.py",
+      "analysis_path": "tests/test_async.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "spycification/run",
+      "call_anchor": {
+        "line": 59,
+        "column": 22
+      },
+      "lexical_scopes": [
+        {
+          "kind": "AsyncFunctionDef",
+          "name": "run",
+          "line": 43
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "test_async_decisions_and_composition",
+          "line": 36
+        }
+      ],
+      "excerpt_lines": [
+        52,
+        59
+      ],
+      "excerpt": "        assert await rejected_decision.decide(object()) == MatchResult.no_match()\n        assert await AsyncOrSpecification(bad, good).is_satisfied_by(object())\n        assert await AsyncNotSpecification(bad).is_satisfied_by(object())\n        assert await AsyncFirstMatch.with_fallback([(good, \"publish\")], \"review\").decide(object()) == MatchResult.match(\n            \"publish\"\n        )\n        fallback: AsyncFirstMatch[object, str] = AsyncFirstMatch([], fallback=\"review\", has_fallback=True)\n        assert await fallback.decide(object()) == MatchResult.match(\"review\")\n",
+      "excerpt_sha256": "c4518a70c0dbf0538726709aa89903b981921e11d452585aa9adeb34f42700b7",
+      "source_url": "https://github.com/SoundBlaster/SpycificationCore/blob/5bf3c0f48588f8fdc6d96b69dd1b1420dff29419/tests/test_async.py#L52-L59",
+      "semantic_read": "assertion_without_if",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      },
+      "rationale": "These are genuine library examples, but local/generic factories and async/adapted decisions exceed the synchronous module-constant resolver. No guessed FirstMatch proof."
+    },
+    {
+      "id": "cctally-01",
+      "project": "cctally",
+      "path": "bin/_cctally_journal.py",
+      "analysis_path": "bin/_cctally_journal.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "cctally/segment-elision",
+      "call_anchor": {
+        "line": 8175,
+        "column": 31
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "_elide_segment",
+          "line": 8173
+        },
+        {
+          "kind": "If",
+          "name": null,
+          "line": 8172
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "stats_index_matches_journal_prefix",
+          "line": 8122
+        }
+      ],
+      "excerpt_lines": [
+        8172,
+        8177
+      ],
+      "excerpt": "            if high_water is not None:\n                def _elide_segment(name, lo, hi, stat_result) -> bool:\n                    nonlocal prior_high_water\n                    summary = elision.decide(name, hi, stat_result)\n                    if summary is None:\n                        return False\n",
+      "excerpt_sha256": "4f60084f392040d79c662492202b606b520807df12012e946779f3f755df3fb7",
+      "source_url": "https://github.com/omrikais/cctally/blob/4b14b4c37fd56af3545bd6ee90111e2feaf89e00/bin/_cctally_journal.py#L8172-L8177",
+      "semantic_read": "other_api_branch_reads_result",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "rationale": "elision is produced by plan_segment_elision, not a statically imported FirstMatch factory. Matching the method name must not prove SpecificationCore usage."
+    },
+    {
+      "id": "cctally-02",
+      "project": "cctally",
+      "path": "bin/_cctally_journal.py",
+      "analysis_path": "bin/_cctally_journal.py",
+      "tier": "decide_call",
+      "origin": "real_unmodified",
+      "family": "cctally/segment-elision",
+      "call_anchor": {
+        "line": 10903,
+        "column": 23
+      },
+      "lexical_scopes": [
+        {
+          "kind": "FunctionDef",
+          "name": "_elide_segment",
+          "line": 10899
+        },
+        {
+          "kind": "FunctionDef",
+          "name": "_rebuild_stats_index_locked",
+          "line": 10751
+        }
+      ],
+      "excerpt_lines": [
+        10899,
+        10909
+      ],
+      "excerpt": "        def _elide_segment(name, lo, hi, stat_result) -> bool:\n            \"\"\"Contribute an elided segment's share instead of reading it.\"\"\"\n            nonlocal prior_high_water\n            nonlocal malformed\n            summary = elision.decide(name, hi, stat_result)\n            if summary is None:\n                return False\n            prefix[\"lines\"] += summary.lines\n            prefix[\"bytes\"] += summary.bytes\n            prefix[\"decodes\"] += summary.decodes\n            malformed += summary.malformed\n",
+      "excerpt_sha256": "dda86b0888141018b762313be97f905342fd5663b008b859bc0c29088110cebf",
+      "source_url": "https://github.com/omrikais/cctally/blob/4b14b4c37fd56af3545bd6ee90111e2feaf89e00/bin/_cctally_journal.py#L10899-L10909",
+      "semantic_read": "other_api_branch_reads_result",
+      "expected": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      },
+      "rationale": "elision is produced by plan_segment_elision, not a statically imported FirstMatch factory. Matching the method name must not prove SpecificationCore usage."
+    },
+    {
+      "id": "flask-01",
+      "project": "flask",
+      "path": "src/flask/sessions.py",
+      "analysis_path": "src/flask/sessions.py",
+      "tier": "structural_analogue",
+      "origin": "real_unmodified",
+      "family": "flask/session-serializer",
+      "call_anchor": null,
+      "lexical_scopes": [],
+      "excerpt_lines": [
+        324,
+        329
+      ],
+      "excerpt": "        s = self.get_signing_serializer(app)\n        if s is None:\n            return None\n        val = request.cookies.get(self.get_cookie_name(app))\n        if not val:\n            return self.session_class()\n",
+      "excerpt_sha256": "dfb2164d7ebc25d5316391812a803fae113beb5850cf69639925b3edad7decbe",
+      "source_url": "https://github.com/pallets/flask/blob/954f5684e4841aad84a8eec7ace7b81a0d3f6831/src/flask/sessions.py#L324-L329",
+      "semantic_read": "branch_reads_result",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "rationale": "Serializer lookup is tested against None; this is a structural analogue, not SpecificationCore."
+    },
+    {
+      "id": "flask-02",
+      "project": "flask",
+      "path": "src/flask/config.py",
+      "analysis_path": "src/flask/config.py",
+      "tier": "structural_analogue",
+      "origin": "real_unmodified",
+      "family": "flask/environment",
+      "call_anchor": null,
+      "lexical_scopes": [],
+      "excerpt_lines": [
+        114,
+        118
+      ],
+      "excerpt": "        rv = os.environ.get(variable_name)\n        if not rv:\n            if silent:\n                return False\n            raise RuntimeError(\n",
+      "excerpt_sha256": "2deb75b7cb956247d78eed9510e5545528a7dd2c2e281e16ac8a6c945fc93160",
+      "source_url": "https://github.com/pallets/flask/blob/954f5684e4841aad84a8eec7ace7b81a0d3f6831/src/flask/config.py#L114-L118",
+      "semantic_read": "branch_reads_result",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "rationale": "Environment lookup followed by a truth test; not a .decide API."
+    },
+    {
+      "id": "flask-03",
+      "project": "flask",
+      "path": "src/flask/app.py",
+      "analysis_path": "src/flask/app.py",
+      "tier": "structural_analogue",
+      "origin": "real_unmodified",
+      "family": "flask/propagate",
+      "call_anchor": null,
+      "lexical_scopes": [],
+      "excerpt_lines": [
+        927,
+        932
+      ],
+      "excerpt": "        propagate = self.config[\"PROPAGATE_EXCEPTIONS\"]\n\n        if propagate is None:\n            propagate = self.testing or self.debug\n\n        if propagate:\n",
+      "excerpt_sha256": "0da18f0fed2493676ceea6a2fdbd4dbe772a97e5effbec6d6d4e00af6f49a004",
+      "source_url": "https://github.com/pallets/flask/blob/954f5684e4841aad84a8eec7ace7b81a0d3f6831/src/flask/app.py#L927-L932",
+      "semantic_read": "conditional_reassignment",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "rationale": "The first if may overwrite propagate; a later if reads either original or replacement. Do not assert one unconditional original-definition link."
+    },
+    {
+      "id": "fastapi-01",
+      "project": "fastapi",
+      "path": "fastapi/security/oauth2.py",
+      "analysis_path": "fastapi/security/oauth2.py",
+      "tier": "structural_analogue",
+      "origin": "real_unmodified",
+      "family": "fastapi/authorization",
+      "call_anchor": null,
+      "lexical_scopes": [],
+      "excerpt_lines": [
+        424,
+        429
+      ],
+      "excerpt": "        authorization = request.headers.get(\"Authorization\")\n        if not authorization:\n            if self.auto_error:\n                raise self.make_not_authenticated_error()\n            else:\n                return None\n",
+      "excerpt_sha256": "9a4e3cffefe04eec63e1d79fec872d50895cd139488278ae4caa029b3db69711",
+      "source_url": "https://github.com/fastapi/fastapi/blob/9a9c4ad5d06f5fe8ee6775a5aeaa2f83c854f263/fastapi/security/oauth2.py#L424-L429",
+      "semantic_read": "branch_reads_result",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "rationale": "Header lookup and a nested authorization response; no SpecificationCore API."
+    },
+    {
+      "id": "fastapi-02",
+      "project": "fastapi",
+      "path": "fastapi/dependencies/models.py",
+      "analysis_path": "fastapi/dependencies/models.py",
+      "tier": "structural_analogue",
+      "origin": "real_unmodified",
+      "family": "fastapi/callable-introspection",
+      "call_anchor": null,
+      "lexical_scopes": [],
+      "excerpt_lines": [
+        115,
+        120
+      ],
+      "excerpt": "        dunder_call = getattr(_impartial(self.call), \"__call__\", None)  # noqa: B004\n        if dunder_call is None:\n            return False  # pragma: no cover\n        if inspect.isgeneratorfunction(\n            _impartial(dunder_call)\n        ) or inspect.isgeneratorfunction(_unwrapped_call(dunder_call)):\n",
+      "excerpt_sha256": "70ffdc239f4fe75d7f60b7ed1940a274cdae3279b420d2156c7872d1683c6fe8",
+      "source_url": "https://github.com/fastapi/fastapi/blob/9a9c4ad5d06f5fe8ee6775a5aeaa2f83c854f263/fastapi/dependencies/models.py#L115-L120",
+      "semantic_read": "branch_reads_result",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "rationale": "Callable introspection tested against None; no .decide API."
+    },
+    {
+      "id": "fastapi-03",
+      "project": "fastapi",
+      "path": "fastapi/routing.py",
+      "analysis_path": "fastapi/routing.py",
+      "tier": "structural_analogue",
+      "origin": "real_unmodified",
+      "family": "fastapi/regex-routing",
+      "call_anchor": null,
+      "lexical_scopes": [],
+      "excerpt_lines": [
+        1391,
+        1397
+      ],
+      "excerpt": "        route_path = get_route_path(scope)\n        match = self.path_regex.match(route_path)\n        if not match:\n            return Match.NONE, {}\n        matched_params = match.groupdict()\n        for key, value in matched_params.items():\n            matched_params[key] = self.param_convertors[key].convert(value)\n",
+      "excerpt_sha256": "b3967091b314abb80bfd687fa0e39c4332bd18b6c9985b35fec193281e440c49",
+      "source_url": "https://github.com/fastapi/fastapi/blob/9a9c4ad5d06f5fe8ee6775a5aeaa2f83c854f263/fastapi/routing.py#L1391-L1397",
+      "semantic_read": "branch_reads_result",
+      "expected": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      },
+      "rationale": "Regex result is guarded and then used; the match method is not a Specification factory."
+    }
+  ]
+}
