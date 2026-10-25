@@ -1,0 +1,127 @@
+{
+  "schema": "not-linked-real-source-search/v1",
+  "source_repository": "https://github.com/0al-spec/SpecGraph",
+  "analyzer_revision": "1bc73afc9352ec59e6716816f91be8d6b1ed9a8f",
+  "snapshots": {
+    "delivery": {
+      "revision": "2a4789e665a135664ea5096b220c5cd643316da8",
+      "directories": [
+        "tools/publication_evidence"
+      ],
+      "extra": [
+        "tools/publication_delivery_evidence.py"
+      ],
+      "files": [
+        {
+          "path": "tools/publication_delivery_evidence.py",
+          "sha256": "4fbf67714b328ad6e839f590dd9e37b74638d488124aec2712f8dcf8eecbac37"
+        },
+        {
+          "path": "tools/publication_evidence/__init__.py",
+          "sha256": "329011afbd50064bdedc1f30bf2fe7c89aceeb9b12ce30f2852fbc46c90537a2"
+        },
+        {
+          "path": "tools/publication_evidence/bindings_spec.py",
+          "sha256": "ac51e677e49778c63ee7da8060a25ffaa35d9dcba52f90a4839f82f66d8b3226"
+        },
+        {
+          "path": "tools/publication_evidence/bound_observation_spec.py",
+          "sha256": "f3e296d7ef70e7e5d5cee30274ce2d9968f9565dca8e3ff1b3e23060f9c3feed"
+        },
+        {
+          "path": "tools/publication_evidence/case_spec.py",
+          "sha256": "678cc38bc73e2e45e6dcc775af82ade8d886cc92484070f317665bd3dd89b13a"
+        },
+        {
+          "path": "tools/publication_evidence/context.py",
+          "sha256": "ce17623df9d4d32dff098c87d8385822e719c60e9ab629aafa4c834c74591a8e"
+        },
+        {
+          "path": "tools/publication_evidence/http_observation_spec.py",
+          "sha256": "cdeab87c97d51cb6c331696ef39ba3182dadd39d18c1526be96ff95d1c0d7ad2"
+        },
+        {
+          "path": "tools/publication_evidence/merged_revision_spec.py",
+          "sha256": "70b26ebbb2d2c816122cccded29547b5d73695a85735dee631dd6dd7b432b411"
+        },
+        {
+          "path": "tools/publication_evidence/snapshot_spec.py",
+          "sha256": "c58b66852ce1e409e998dab7f9f33b088b4dcdbf39d073816e34b5c08ba1f421"
+        },
+        {
+          "path": "tools/publication_evidence/suite_spec.py",
+          "sha256": "d5a056eaff0d26d1709bc92dbe4c5df096c3340de6d67276206e44e157d04793"
+        }
+      ]
+    },
+    "legacy": {
+      "revision": "e12a006dc4db24934454e3c73ddaa4050fbbd098",
+      "directories": [
+        "tools/metric_packs"
+      ],
+      "extra": [],
+      "files": [
+        {
+          "path": "tools/metric_packs/__init__.py",
+          "sha256": "5845a2bccc0db27d4e42d22db48beeb8a366af2fbc2e5051498d8f77f977379f"
+        },
+        {
+          "path": "tools/metric_packs/context.py",
+          "sha256": "fde0200797fc795d1909e60383b66a0d4139e8737c151529d49e92df9979e7db"
+        },
+        {
+          "path": "tools/metric_packs/legacy_verifiability.py",
+          "sha256": "98405099bf58fdae8b6ffbc79f4d8e1b524fcc54db94151eede25f0b112c1cee"
+        },
+        {
+          "path": "tools/metric_packs/score_status_spec.py",
+          "sha256": "6477e3bb4d216dbe7ef132b358b5b1220b5adf6594cd7edee2100e52dcd62618"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "delivery-binding",
+      "snapshot": "delivery",
+      "path": "publication_delivery_evidence.py",
+      "line": 58,
+      "expected_status": "linked",
+      "expected_reason": "local_straight_line_read"
+    },
+    {
+      "id": "delivery-case-consumed",
+      "snapshot": "delivery",
+      "path": "publication_delivery_evidence.py",
+      "line": 121,
+      "expected_status": "unresolved",
+      "expected_reason": "intervening_expression_barrier"
+    },
+    {
+      "id": "delivery-suite-returned",
+      "snapshot": "delivery",
+      "path": "publication_delivery_evidence.py",
+      "line": 132,
+      "expected_status": "unresolved",
+      "expected_reason": "control_flow_or_effect_barrier"
+    },
+    {
+      "id": "delivery-nested-if",
+      "snapshot": "delivery",
+      "path": "publication_delivery_evidence.py",
+      "line": 289,
+      "expected_status": "unresolved",
+      "expected_reason": "straight_line_function_body_required"
+    },
+    {
+      "id": "legacy-counts-call",
+      "snapshot": "legacy",
+      "path": "metric_packs/legacy_verifiability.py",
+      "line": 47,
+      "expected_status": "unresolved",
+      "expected_reason": "intervening_expression_barrier"
+    }
+  ],
+  "confirmed_new_not_linked_examples": 0,
+  "label_status": "author_reviewed_before_cli; not a blind benchmark"
+}

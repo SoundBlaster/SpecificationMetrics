@@ -1,0 +1,99 @@
+{
+  "schema": "not-linked-search-checks/v1",
+  "expected_checks_sha256": "e11cfaa527fe482666dd73dbea560654b86aea22c707cc37824daf46f7011f04",
+  "analyzer_revision": "1bc73afc9352ec59e6716816f91be8d6b1ed9a8f",
+  "analyzer_binary_sha256": "e3742383b1854984abb1e38f0bc9c70c2be46bfb3f1c8a5b999f3c1947d4fcba",
+  "checks": 5,
+  "all_match_expected": true,
+  "confirmed_new_not_linked_examples": 0,
+  "metric_effect": "none",
+  "snapshots": {
+    "delivery": {
+      "source_digest": "c0c0c2a74cdfabf725a1e1b9e9ec33273c3a92d0c10f1db63cf687db4d7e77e7",
+      "scope_manifest_digest": "fa62bb63e209c329b94bd170416da51c53c6fae0165c05d19683363fdb4f3391",
+      "flow_sha256": "08fd2e04ee04dc15fda386fb59a82c18565f50b07058296d1d65943373bea567",
+      "examined_bindings": 4,
+      "linked_bindings": 1,
+      "unresolved_bindings": 3,
+      "not_linked_bindings": 0
+    },
+    "legacy": {
+      "source_digest": "141ab7b42dfdf941b72026334d050f5bceac8fc37eadf8003325eb43db406ebd",
+      "scope_manifest_digest": "ba08376438eda2fc6039679a4d7f955bbbe28f19dd721e223a9dced4080134ca",
+      "flow_sha256": "ff0776f477e6720ca88624e81042420ce7ae9da6d11fa424e630f389662b700f",
+      "examined_bindings": 1,
+      "linked_bindings": 0,
+      "unresolved_bindings": 1,
+      "not_linked_bindings": 0
+    }
+  },
+  "observations": [
+    {
+      "id": "delivery-binding",
+      "application_id": "991bde08576d9dd5f074e577edbd74d0c54e5ce1fb5d70e3863f715951cc8864",
+      "path": "publication_delivery_evidence.py",
+      "line": 58,
+      "category": "direct_application",
+      "status": "linked",
+      "reason": "local_straight_line_read",
+      "stop": {
+        "line": 66,
+        "column": 5,
+        "syntax_kind": "if_statement"
+      }
+    },
+    {
+      "id": "delivery-case-consumed",
+      "application_id": "997e476d15c9c8e2a345be7a7a652fca40c8b715c74e426aaec67b00e3134d81",
+      "path": "publication_delivery_evidence.py",
+      "line": 121,
+      "category": "direct_application",
+      "status": "unresolved",
+      "reason": "intervening_expression_barrier",
+      "stop": {
+        "line": 131,
+        "column": 9,
+        "syntax_kind": "expression_statement"
+      }
+    },
+    {
+      "id": "delivery-suite-returned",
+      "application_id": "77dcf48c9951a8e41ea42d777b0b72a55003e480a45007a853f4dad866a41dbd",
+      "path": "publication_delivery_evidence.py",
+      "line": 132,
+      "category": "direct_application",
+      "status": "unresolved",
+      "reason": "control_flow_or_effect_barrier",
+      "stop": {
+        "line": 140,
+        "column": 5,
+        "syntax_kind": "return_statement"
+      }
+    },
+    {
+      "id": "delivery-nested-if",
+      "application_id": "b40f758075abbe8c50e10ed3d450ccc7038efa8014cb623055eaa71b652a904a",
+      "path": "publication_delivery_evidence.py",
+      "line": 289,
+      "category": "direct_application",
+      "status": "unresolved",
+      "reason": "straight_line_function_body_required",
+      "stop": null
+    },
+    {
+      "id": "legacy-counts-call",
+      "application_id": "9b5b4ecf528f148d04fc2ff54d2f750b32db7dee16d0a1956d10adb749045b84",
+      "path": "metric_packs/legacy_verifiability.py",
+      "line": 47,
+      "category": "direct_application",
+      "status": "unresolved",
+      "reason": "intervening_expression_barrier",
+      "stop": {
+        "line": 48,
+        "column": 9,
+        "syntax_kind": "expression_statement"
+      }
+    }
+  ],
+  "scope_limit": "42 history call observations were manually inspected; these five selected call sites were run through the analyzer. No claim of full dynamic replay of all history."
+}

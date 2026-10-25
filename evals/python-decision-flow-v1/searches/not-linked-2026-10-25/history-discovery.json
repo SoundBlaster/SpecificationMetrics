@@ -1,0 +1,1053 @@
+{
+  "repository": "https://github.com/0al-spec/SpecGraph",
+  "decide_changing_commits": [
+    "6539b55bf9e7b32c6bae350a886a8f2cd3f425b7",
+    "ca9c0d95b0049ce9f034b3107836cd994702c8e6",
+    "e12a006dc4db24934454e3c73ddaa4050fbbd098",
+    "2a4789e665a135664ea5096b220c5cd643316da8",
+    "6eeb61b8bd5cffd32a54e62b9a31a65b81091d92",
+    "ad576ec376826bbe6fb090ce0b246db60945d1d9",
+    "c28b86c251b3100ec4c0cb98ff0c605f8e75d7a7",
+    "e5d8895dc58d4b7bcf67bc6ce4d05dabff2fc7c4",
+    "54fd3826df2ca33dc8cdf70a4b94d08bab520e5e",
+    "06cde6c4899e6ca072661c5792e906b2a51b5045",
+    "2a75229c29ebbb0c28ffb3439c52a8be69f4c2fd",
+    "6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+    "425078cc74e1c2cccbff259b5505b1b958b8e904",
+    "6e31c37bbdb2d87f1ffc1696a9decaec754e85a0",
+    "695671873ef80a2793c76d50fbaca6b0f7c5a7c5",
+    "5df7dbfe92b3bb0d319e7d1b9096ed2530c91f69",
+    "710367a01881d34c1291e09b534925f8cd7f79ae",
+    "4b5b9e2e7f5cdf36588cac9f05ecf9e252a5179c",
+    "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+    "b56dde9454a9163f29352db657c23c968c034c84",
+    "90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+    "218da57ad4fc7642b401066d062831808d41b9e7",
+    "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+    "55c5fca863022cd0ade534de45e3d343ae6b4abb"
+  ],
+  "unique_file_versions": [
+    {
+      "revision": "6539b55bf9e7b32c6bae350a886a8f2cd3f425b7",
+      "other_revisions": [],
+      "path": "tools/traceability/publication_execution_provider.py",
+      "sha256": "b1a0c7769aed7c88c2c110cc32ca2fa717a5a5d363e0ccdcdf3defff5f11836a",
+      "sites": [
+        {
+          "line": 138,
+          "column": 9,
+          "call": "TEST_SUITE_SPEC.decide(\n            TestSuiteContext(\n                exit_code,\n                frozenset(text(r.get(\"result\"), \"test case result\") for r in rows),\n                len(rows),\n                len(expected_obligations),\n                declared,\n            )\n        )",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "result",
+          "after": [
+            {
+              "kind": "Return",
+              "line": 150,
+              "source": "return ExecutionSignal(\"tests\", declared, \"matched\" if matched else \"mismatch\", result)"
+            }
+          ],
+          "excerpt": "    result = (\n        TEST_SUITE_SPEC.decide(\n            TestSuiteContext(\n                exit_code,\n                frozenset(text(r.get(\"result\"), \"test case result\") for r in rows),\n                len(rows),\n                len(expected_obligations),\n                declared,\n            )\n        ).value\n        if matched\n        else None\n    )\n    return ExecutionSignal(\"tests\", declared, \"matched\" if matched else \"mismatch\", result)"
+        }
+      ]
+    },
+    {
+      "revision": "ca9c0d95b0049ce9f034b3107836cd994702c8e6",
+      "other_revisions": [],
+      "path": "tests/test_publication_trace_links.py",
+      "sha256": "d79ffda77652cbbae3d60a0d8bb72a440a075184c2b5922dbfafb57d1c90d576",
+      "sites": [
+        {
+          "line": 118,
+          "column": 12,
+          "call": "REFERENCE_STATUS_SPEC.decide(facts)",
+          "statement_kind": "Assert",
+          "owner_kind": "FunctionDef",
+          "assignment_target": null,
+          "after": [],
+          "excerpt": "def test_reference_status_policy(facts, expected):\n    assert REFERENCE_STATUS_SPEC.decide(facts).value == expected\n\n\ndef test_generic_exact_ids_and_zeusus_reported_failures():\n    # Small synthetic regression based on the intake; no executed Swift evidence."
+        }
+      ]
+    },
+    {
+      "revision": "ca9c0d95b0049ce9f034b3107836cd994702c8e6",
+      "other_revisions": [],
+      "path": "tools/traceability/publication.py",
+      "sha256": "259e2e7bc59e810a928df6c0c50f1ccaf36ea97089805b4a0542b15100a1d0d6",
+      "sites": [
+        {
+          "line": 209,
+          "column": 21,
+          "call": "BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    )",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "binding_error",
+          "after": [
+            {
+              "kind": "If",
+              "line": 217,
+              "source": "if binding_error:"
+            },
+            {
+              "kind": "If",
+              "line": 219,
+              "source": "if len(passport_ids) != len(set(passport_ids)):"
+            },
+            {
+              "kind": "For",
+              "line": 221,
+              "source": "for i, criterion in enumerate(passport_criteria):"
+            },
+            {
+              "kind": "Assign",
+              "line": 231,
+              "source": "atom_channels = {a[\"id\"]: a[\"verifiable_by\"] for a in atoms}"
+            }
+          ],
+          "excerpt": "    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    if binding_error:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n    if len(passport_ids) != len(set(passport_ids)):\n        findings.append({\"code\": \"duplicate_passport_criterion\"})"
+        }
+      ]
+    },
+    {
+      "revision": "ca9c0d95b0049ce9f034b3107836cd994702c8e6",
+      "other_revisions": [],
+      "path": "tools/traceability/references.py",
+      "sha256": "50ffff8343abcd7b53d6f81c673d84dd9bb2fdb09ec7409673e203b399b79414",
+      "sites": [
+        {
+          "line": 68,
+          "column": 44,
+          "call": "REFERENCE_STATUS_SPEC.decide(facts)",
+          "statement_kind": "Expr",
+          "owner_kind": "For",
+          "assignment_target": null,
+          "after": [],
+          "excerpt": "        results.append(\n            ReferenceResolution(reference, REFERENCE_STATUS_SPEC.decide(facts).value, candidates)\n        )\n    return tuple(results)"
+        }
+      ]
+    },
+    {
+      "revision": "e12a006dc4db24934454e3c73ddaa4050fbbd098",
+      "other_revisions": [],
+      "path": "tests/test_legacy_verifiability.py",
+      "sha256": "e52b91efdd09e1087d5a714179962ed0acde663e5bf2980b5029a94feaa90722",
+      "sites": [
+        {
+          "line": 54,
+          "column": 16,
+          "call": "pack.SCORE_STATUS_SPEC.decide(pack.ScoreThreshold(None, 0.45), recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 55,
+              "source": "assert decision.value == \"not_applicable\""
+            },
+            {
+              "kind": "Assert",
+              "line": 56,
+              "source": "assert (\"pair[1]:metrics.score_meets_threshold\", \"skipped\") in ["
+            }
+          ],
+          "excerpt": "    recorder = TraceRecorder()\n    decision = pack.SCORE_STATUS_SPEC.decide(pack.ScoreThreshold(None, 0.45), recorder=recorder)\n    assert decision.value == \"not_applicable\"\n    assert (\"pair[1]:metrics.score_meets_threshold\", \"skipped\") in [\n        (event.name, event.outcome.value) for event in recorder.events\n    ]"
+        }
+      ]
+    },
+    {
+      "revision": "e12a006dc4db24934454e3c73ddaa4050fbbd098",
+      "other_revisions": [],
+      "path": "tools/metric_packs/legacy_verifiability.py",
+      "sha256": "98405099bf58fdae8b6ffbc79f4d8e1b524fcc54db94151eede25f0b112c1cee",
+      "sites": [
+        {
+          "line": 47,
+          "column": 18,
+          "call": "SCORE_STATUS_SPEC.decide(ScoreThreshold(score, context.minimum_score))",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "status",
+          "after": [
+            {
+              "kind": "Assign",
+              "line": 48,
+              "source": "counts = Counter(item.status for item in context.observations)"
+            },
+            {
+              "kind": "Return",
+              "line": 49,
+              "source": "return VerifiabilityResult("
+            }
+          ],
+          "excerpt": "        score = round(sum(scores) / len(scores), 3) if scores else None\n        status = SCORE_STATUS_SPEC.decide(ScoreThreshold(score, context.minimum_score)).value\n        counts = Counter(item.status for item in context.observations)\n        return VerifiabilityResult(\n            score=score,\n            minimum_score=context.minimum_score,"
+        }
+      ]
+    },
+    {
+      "revision": "e12a006dc4db24934454e3c73ddaa4050fbbd098",
+      "other_revisions": [],
+      "path": "tools/supervisor.py",
+      "sha256": "c625c165966403452e6960a4558dc7a6f52c4192950fcc6d36f44b7cfedb69c6",
+      "sites": [
+        {
+          "line": 40860,
+          "column": 12,
+          "call": "metrics.SCORE_STATUS_SPEC.decide(metrics.ScoreThreshold(score, threshold))",
+          "statement_kind": "Return",
+          "owner_kind": "FunctionDef",
+          "assignment_target": null,
+          "after": [],
+          "excerpt": "    metrics = get_metric_packs_module()\n    return metrics.SCORE_STATUS_SPEC.decide(metrics.ScoreThreshold(score, threshold)).value\n\n\ndef metric_gap_from_threshold(score: float | None, threshold: float) -> float | None:\n    if score is None:"
+        }
+      ]
+    },
+    {
+      "revision": "2a4789e665a135664ea5096b220c5cd643316da8",
+      "other_revisions": [],
+      "path": "tests/test_publication_evidence_policies.py",
+      "sha256": "3c7da4c404f16ee7102cc6bdf0ab8fb6d9a3352bbd9c7b44e65fc7c8b9c3173f",
+      "sites": [
+        {
+          "line": 47,
+          "column": 13,
+          "call": "BINDING_ERROR_SPEC.decide(replace(context, **change))",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "error",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 48,
+              "source": "assert (error is None) if error_fragment is None else error_fragment in error"
+            }
+          ],
+          "excerpt": "    )\n    error = BINDING_ERROR_SPEC.decide(replace(context, **change)).value\n    assert (error is None) if error_fragment is None else error_fragment in error\n\n\n@pytest.mark.parametrize("
+        },
+        {
+          "line": 62,
+          "column": 12,
+          "call": "TEST_CASE_SPEC.decide(facts.TestCaseContext(count, failed, skipped))",
+          "statement_kind": "Assert",
+          "owner_kind": "FunctionDef",
+          "assignment_target": null,
+          "after": [],
+          "excerpt": "def test_test_case_decision(count, failed, skipped, expected) -> None:\n    assert TEST_CASE_SPEC.decide(facts.TestCaseContext(count, failed, skipped)).value == expected\n\n\n@pytest.mark.parametrize(\n    \"exit_code,outcomes,count,declared,expected\","
+        },
+        {
+          "line": 79,
+          "column": 12,
+          "call": "TEST_SUITE_SPEC.decide(context)",
+          "statement_kind": "Assert",
+          "owner_kind": "FunctionDef",
+          "assignment_target": null,
+          "after": [],
+          "excerpt": "    context = facts.TestSuiteContext(exit_code, frozenset(outcomes), count, 2, declared)\n    assert TEST_SUITE_SPEC.decide(context).value == expected\n\n\ndef test_failure_priority_records_skipped_success_branch() -> None:\n    recorder = TraceRecorder()"
+        },
+        {
+          "line": 85,
+          "column": 12,
+          "call": "TEST_SUITE_SPEC.decide(context, recorder=recorder)",
+          "statement_kind": "Assert",
+          "owner_kind": "FunctionDef",
+          "assignment_target": null,
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 86,
+              "source": "assert (\"pair[1]:publication.suite_complete\", \"skipped\") in ["
+            }
+          ],
+          "excerpt": "    context = facts.TestSuiteContext(1, frozenset({\"observed_success\"}), 2, 2)\n    assert TEST_SUITE_SPEC.decide(context, recorder=recorder).value == \"observed_failure\"\n    assert (\"pair[1]:publication.suite_complete\", \"skipped\") in [\n        (event.name, event.outcome.value) for event in recorder.events\n    ]\n"
+        }
+      ]
+    },
+    {
+      "revision": "2a4789e665a135664ea5096b220c5cd643316da8",
+      "other_revisions": [],
+      "path": "tools/publication_delivery_evidence.py",
+      "sha256": "4fbf67714b328ad6e839f590dd9e37b74638d488124aec2712f8dcf8eecbac37",
+      "sites": [
+        {
+          "line": 58,
+          "column": 13,
+          "call": "BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(criteria),\n            frozenset(graph_criteria),\n            tuple(item[\"criterion_id\"] for item in obligations),\n            tuple(item[\"test\"] for item in obligations),\n        )\n    )",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "error",
+          "after": [
+            {
+              "kind": "If",
+              "line": 66,
+              "source": "if error:"
+            },
+            {
+              "kind": "Return",
+              "line": 68,
+              "source": "return bindings, passport"
+            }
+          ],
+          "excerpt": "    obligations = bindings[\"obligations\"]\n    error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(criteria),\n            frozenset(graph_criteria),\n            tuple(item[\"criterion_id\"] for item in obligations),\n            tuple(item[\"test\"] for item in obligations),\n        )\n    ).value\n    if error:\n        raise ValueError(error)\n    return bindings, passport\n"
+        },
+        {
+          "line": 132,
+          "column": 14,
+          "call": "TEST_SUITE_SPEC.decide(\n        TestSuiteContext(\n            exit_code,\n            frozenset(item[\"result\"] for item in results),\n            len(cases),\n            len(obligations),\n        )\n    )",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "result",
+          "after": [
+            {
+              "kind": "Return",
+              "line": 140,
+              "source": "return result, results"
+            }
+          ],
+          "excerpt": "        results.append({**item, \"result\": result})\n    result = TEST_SUITE_SPEC.decide(\n        TestSuiteContext(\n            exit_code,\n            frozenset(item[\"result\"] for item in results),\n            len(cases),\n            len(obligations),\n        )\n    ).value\n    return result, results\n\n\ndef write_json(path: Path, payload: dict[str, Any]) -> None:"
+        },
+        {
+          "line": 121,
+          "column": 18,
+          "call": "TEST_CASE_SPEC.decide(\n            TestCaseContext(\n                len(matches),\n                any(\n                    case.find(\"failure\") is not None or case.find(\"error\") is not None\n                    for case in matches\n                ),\n                any(case.find(\"skipped\") is not None for case in matches),\n            )\n        )",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "result",
+          "after": [
+            {
+              "kind": "Expr",
+              "line": 131,
+              "source": "results.append({**item, \"result\": result})"
+            }
+          ],
+          "excerpt": "        ]\n        result = TEST_CASE_SPEC.decide(\n            TestCaseContext(\n                len(matches),\n                any(\n                    case.find(\"failure\") is not None or case.find(\"error\") is not None\n                    for case in matches\n                ),\n                any(case.find(\"skipped\") is not None for case in matches),\n            )\n        ).value\n        results.append({**item, \"result\": result})\n    result = TEST_SUITE_SPEC.decide(\n        TestSuiteContext(\n            exit_code,"
+        },
+        {
+          "line": 289,
+          "column": 27,
+          "call": "TEST_SUITE_SPEC.decide(\n                TestSuiteContext(\n                    integer(tests.get(\"exit_code\")),\n                    frozenset(item.get(\"result\") for item in obligations),\n                    len(obligations),\n                    len(bindings[\"obligations\"]),\n                    tests.get(\"result\", \"\"),\n                )\n            )",
+          "statement_kind": "Assign",
+          "owner_kind": "If",
+          "assignment_target": "test_result",
+          "after": [],
+          "excerpt": "            obligations = tests[\"obligations\"]\n            test_result = TEST_SUITE_SPEC.decide(\n                TestSuiteContext(\n                    integer(tests.get(\"exit_code\")),\n                    frozenset(item.get(\"result\") for item in obligations),\n                    len(obligations),\n                    len(bindings[\"obligations\"]),\n                    tests.get(\"result\", \"\"),\n                )\n            ).value\n    test_refs = [{\"uri\": tests_path.name, \"sha256\": file_digest(tests_path)}] if tests else []\n    runtime = load_json(runtime_path) if runtime_path and runtime_path.is_file() else None\n    bundle_identity = None\n    runtime_result = \"missing\""
+        }
+      ]
+    },
+    {
+      "revision": "6eeb61b8bd5cffd32a54e62b9a31a65b81091d92",
+      "other_revisions": [],
+      "path": "tools/intent_decision_review/__init__.py",
+      "sha256": "82735c587de5dd444690e9af09c309659cca49d2e88d56eb525431b81fbe8241",
+      "sites": [
+        {
+          "line": 24,
+          "column": 14,
+          "call": "DECISION.decide(facts, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "status",
+          "after": [
+            {
+              "kind": "Return",
+              "line": 25,
+              "source": "return status, [dict(name=e.name, outcome=e.outcome.value) for e in recorder.events]"
+            }
+          ],
+          "excerpt": "    recorder = TraceRecorder()\n    status = DECISION.decide(facts, recorder=recorder).value\n    return status, [dict(name=e.name, outcome=e.outcome.value) for e in recorder.events]"
+        }
+      ]
+    },
+    {
+      "revision": "ad576ec376826bbe6fb090ce0b246db60945d1d9",
+      "other_revisions": [],
+      "path": "tools/supervisor_structural_limits.py",
+      "sha256": "d864171476d4b9e78b137a3c93b356e068125849538b0835f55b4c8bc4906c0f",
+      "sites": [
+        {
+          "line": 63,
+          "column": 16,
+          "call": "_THRESHOLD_KIND.decide(key, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "kind",
+          "after": [
+            {
+              "kind": "If",
+              "line": 64,
+              "source": "if kind == \"unsupported\":"
+            },
+            {
+              "kind": "Assign",
+              "line": 66,
+              "source": "candidate = ThresholdValue(key, value)"
+            },
+            {
+              "kind": "If",
+              "line": 67,
+              "source": "if kind == \"positive_integer\":"
+            },
+            {
+              "kind": "If",
+              "line": 81,
+              "source": "if not valid.is_satisfied_by(candidate, recorder=recorder):"
+            }
+          ],
+          "excerpt": "    for key, value in values.items():\n        kind = _THRESHOLD_KIND.decide(key, recorder=recorder).value\n        if kind == \"unsupported\":\n            raise RuntimeError(f\"unsupported structural limit: {key}\")\n        candidate = ThresholdValue(key, value)\n        if kind == \"positive_integer\":"
+        }
+      ]
+    },
+    {
+      "revision": "c28b86c251b3100ec4c0cb98ff0c605f8e75d7a7",
+      "other_revisions": [],
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "sites": [
+        {
+          "line": 680,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 681,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Expr",
+              "line": 682,
+              "source": "decision.value(preview, operation)"
+            }
+          ],
+          "excerpt": "        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n"
+        },
+        {
+          "line": 425,
+          "column": 24,
+          "call": "_ACCEPTANCE_CRITERION_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 426,
+              "source": "if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n"
+        },
+        {
+          "line": 530,
+          "column": 24,
+          "call": "_UNSUPPORTED_CLAIM_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 531,
+              "source": "if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n"
+        }
+      ]
+    },
+    {
+      "revision": "e5d8895dc58d4b7bcf67bc6ce4d05dabff2fc7c4",
+      "other_revisions": [
+        "e5d8895dc58d4b7bcf67bc6ce4d05dabff2fc7c4"
+      ],
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "34a38fc1170af0e355d6985ad5664e7b5eb367ec5a9113c3e064eb1d777ed2d0",
+      "sites": [
+        {
+          "line": 683,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 684,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Expr",
+              "line": 685,
+              "source": "decision.value(preview, operation)"
+            }
+          ],
+          "excerpt": "        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n"
+        },
+        {
+          "line": 428,
+          "column": 24,
+          "call": "_ACCEPTANCE_CRITERION_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 429,
+              "source": "if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n"
+        },
+        {
+          "line": 533,
+          "column": 24,
+          "call": "_UNSUPPORTED_CLAIM_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 534,
+              "source": "if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n"
+        }
+      ]
+    },
+    {
+      "revision": "e5d8895dc58d4b7bcf67bc6ce4d05dabff2fc7c4",
+      "other_revisions": [
+        "e5d8895dc58d4b7bcf67bc6ce4d05dabff2fc7c4"
+      ],
+      "path": "tools/candidate_repair_readiness_spec.py",
+      "sha256": "e9e29ec2e02b755816a7709ee42d90e9afedc27bb92fbc3dac479750bf5689fb",
+      "sites": [
+        {
+          "line": 40,
+          "column": 16,
+          "call": "_SPEC.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 41,
+              "source": "assert decision.value is not None"
+            },
+            {
+              "kind": "Return",
+              "line": 42,
+              "source": "return decision.value"
+            }
+          ],
+          "excerpt": ") -> CandidateRepairReadiness:\n    decision = _SPEC.decide(context)\n    assert decision.value is not None\n    return decision.value"
+        }
+      ]
+    },
+    {
+      "revision": "7fc2836acf68815edfc68d0dc8a500ddb067f304",
+      "other_revisions": [
+        "710367a01881d34c1291e09b534925f8cd7f79ae",
+        "4b5b9e2e7f5cdf36588cac9f05ecf9e252a5179c"
+      ],
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "65e74a8ea951b11edc541cf10d40cf7c074346a70c11c298e5095a0d75eb02f3",
+      "sites": [
+        {
+          "line": 672,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 673,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Expr",
+              "line": 674,
+              "source": "decision.value(preview, operation)"
+            }
+          ],
+          "excerpt": "        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n"
+        },
+        {
+          "line": 417,
+          "column": 24,
+          "call": "_ACCEPTANCE_CRITERION_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 418,
+              "source": "if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n"
+        },
+        {
+          "line": 522,
+          "column": 24,
+          "call": "_UNSUPPORTED_CLAIM_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 523,
+              "source": "if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n"
+        }
+      ]
+    },
+    {
+      "revision": "54fd3826df2ca33dc8cdf70a4b94d08bab520e5e",
+      "other_revisions": [],
+      "path": "tools/supervisor_structural_limits.py",
+      "sha256": "974ef068bd824df4670dddd6bede8b93d2221d0307e59e940302882dc5bca0de",
+      "sites": [
+        {
+          "line": 63,
+          "column": 16,
+          "call": "_THRESHOLD_KIND.decide(key, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "kind",
+          "after": [
+            {
+              "kind": "If",
+              "line": 64,
+              "source": "if kind == \"unsupported\":"
+            },
+            {
+              "kind": "Assign",
+              "line": 66,
+              "source": "candidate = ThresholdValue(key, value)"
+            },
+            {
+              "kind": "If",
+              "line": 67,
+              "source": "if kind == \"positive_integer\":"
+            },
+            {
+              "kind": "If",
+              "line": 81,
+              "source": "if not valid.is_satisfied_by(candidate, recorder=recorder):"
+            }
+          ],
+          "excerpt": "    for key, value in values.items():\n        kind = _THRESHOLD_KIND.decide(key, recorder=recorder).value\n        if kind == \"unsupported\":\n            raise RuntimeError(f\"unsupported structural limit: {key}\")\n        candidate = ThresholdValue(key, value)\n        if kind == \"positive_integer\":"
+        }
+      ]
+    },
+    {
+      "revision": "06cde6c4899e6ca072661c5792e906b2a51b5045",
+      "other_revisions": [],
+      "path": "tools/idea_to_spec_candidate_quality_review_spec.py",
+      "sha256": "558550e11411de97ff2bb7299e53ab43577e385eeb4024698c0efeefc919dabb",
+      "sites": [
+        {
+          "line": 56,
+          "column": 16,
+          "call": "_CANDIDATE_QUALITY_REVIEW_SPEC.decide(context, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 57,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Return",
+              "line": 58,
+              "source": "return decision.value"
+            }
+          ],
+          "excerpt": ") -> str:\n    decision = _CANDIDATE_QUALITY_REVIEW_SPEC.decide(context, recorder=recorder)\n    assert decision.matched and decision.value is not None\n    return decision.value"
+        }
+      ]
+    },
+    {
+      "revision": "06cde6c4899e6ca072661c5792e906b2a51b5045",
+      "other_revisions": [],
+      "path": "tools/idea_to_spec_decision_set.py",
+      "sha256": "a6ee68043122f6ef0e1d06b7dab49afa73dc5b291af8835a19452146ff3c3977",
+      "sites": [
+        {
+          "line": 55,
+          "column": 34,
+          "call": "field.decide(context, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "values[field.name]",
+          "after": [
+            {
+              "kind": "If",
+              "line": 56,
+              "source": "if trace is not None and recorder is not None:"
+            }
+          ],
+          "excerpt": "            recorder = TraceRecorder() if trace is not None else None\n            values[field.name] = field.decide(context, recorder=recorder)\n            if trace is not None and recorder is not None:\n                if not recorder.events:\n                    raise ValueError(f\"SpecSet field {field.name!r} did not record a decision\")\n                trace.append("
+        }
+      ]
+    },
+    {
+      "revision": "06cde6c4899e6ca072661c5792e906b2a51b5045",
+      "other_revisions": [],
+      "path": "tools/idea_to_spec_gap_resolution_spec.py",
+      "sha256": "1d0b8e8d0e15f19cf975a300a5e97ef784684fb6b378eabe8c286379b6d2dfd2",
+      "sites": [
+        {
+          "line": 42,
+          "column": 16,
+          "call": "_GAP_RESOLUTION_SPEC.decide(context, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 43,
+              "source": "if decision.value is not None:"
+            },
+            {
+              "kind": "Return",
+              "line": 45,
+              "source": "return context.no_gaps_state"
+            }
+          ],
+          "excerpt": ") -> str:\n    decision = _GAP_RESOLUTION_SPEC.decide(context, recorder=recorder)\n    if decision.value is not None:\n        return decision.value\n    return context.no_gaps_state"
+        }
+      ]
+    },
+    {
+      "revision": "3c2a4b75c3a4e026c0351fb2273d106e17d84917",
+      "other_revisions": [
+        "6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+        "5df7dbfe92b3bb0d319e7d1b9096ed2530c91f69"
+      ],
+      "path": "tools/idea_to_spec_candidate_quality_review_spec.py",
+      "sha256": "285a0062bff566e466257f337fb0863673c40a01ead10a5f3432d8a32270d5c1",
+      "sites": [
+        {
+          "line": 52,
+          "column": 16,
+          "call": "_CANDIDATE_QUALITY_REVIEW_SPEC.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 53,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Return",
+              "line": 54,
+              "source": "return decision.value"
+            }
+          ],
+          "excerpt": "def candidate_quality_review_state(context: CandidateQualityContext) -> str:\n    decision = _CANDIDATE_QUALITY_REVIEW_SPEC.decide(context)\n    assert decision.matched and decision.value is not None\n    return decision.value"
+        }
+      ]
+    },
+    {
+      "revision": "3c2a4b75c3a4e026c0351fb2273d106e17d84917",
+      "other_revisions": [
+        "2a75229c29ebbb0c28ffb3439c52a8be69f4c2fd",
+        "695671873ef80a2793c76d50fbaca6b0f7c5a7c5"
+      ],
+      "path": "tools/idea_to_spec_decision_set.py",
+      "sha256": "73be3e89b4d38839a7c7bd9bcc88aacdfac0a16bed1e956b9e3d6677981caee7",
+      "sites": [
+        {
+          "line": 28,
+          "column": 29,
+          "call": "field.decide(context)",
+          "statement_kind": "Return",
+          "owner_kind": "FunctionDef",
+          "assignment_target": null,
+          "after": [],
+          "excerpt": "    def apply(self, context: Context) -> dict[str, str]:\n        return {field.name: field.decide(context) for field in self.fields}"
+        }
+      ]
+    },
+    {
+      "revision": "3c2a4b75c3a4e026c0351fb2273d106e17d84917",
+      "other_revisions": [],
+      "path": "tools/idea_to_spec_gap_resolution_spec.py",
+      "sha256": "62b1ce26c41edb9282a5eee8df584546157b3537d13b098b4cd8acbb59d87595",
+      "sites": [
+        {
+          "line": 38,
+          "column": 16,
+          "call": "_GAP_RESOLUTION_SPEC.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 39,
+              "source": "if decision.value is not None:"
+            },
+            {
+              "kind": "Return",
+              "line": 41,
+              "source": "return context.no_gaps_state"
+            }
+          ],
+          "excerpt": "def gap_resolution_state(context: GapResolutionContext) -> str:\n    decision = _GAP_RESOLUTION_SPEC.decide(context)\n    if decision.value is not None:\n        return decision.value\n    return context.no_gaps_state"
+        }
+      ]
+    },
+    {
+      "revision": "6786e0c85e8d8dded11d864e6a3f021d88fa80db",
+      "other_revisions": [
+        "5df7dbfe92b3bb0d319e7d1b9096ed2530c91f69"
+      ],
+      "path": "tools/idea_to_spec_gap_resolution_spec.py",
+      "sha256": "046e3c8b6f73f85f9bf927a5d62dbb07b771b138a9ae15130186114f9e252f52",
+      "sites": [
+        {
+          "line": 36,
+          "column": 16,
+          "call": "_GAP_RESOLUTION_SPEC.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 37,
+              "source": "if decision.value is not None:"
+            },
+            {
+              "kind": "Return",
+              "line": 39,
+              "source": "return context.no_gaps_state"
+            }
+          ],
+          "excerpt": "def gap_resolution_state(context: GapResolutionContext) -> str:\n    decision = _GAP_RESOLUTION_SPEC.decide(context)\n    if decision.value is not None:\n        return decision.value\n    return context.no_gaps_state"
+        }
+      ]
+    },
+    {
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "other_revisions": [
+        "6e31c37bbdb2d87f1ffc1696a9decaec754e85a0"
+      ],
+      "path": "tools/idea_maturity_lifecycle_context.py",
+      "sha256": "3218d718954148359fc23b3011be40daeee7a514da392d956650ee90fadcd15b",
+      "sites": [
+        {
+          "line": 89,
+          "column": 13,
+          "call": "spec.decide(context, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "value",
+          "after": [
+            {
+              "kind": "If",
+              "line": 90,
+              "source": "if value is None:"
+            },
+            {
+              "kind": "Return",
+              "line": 92,
+              "source": "return value"
+            }
+          ],
+          "excerpt": ") -> str:\n    value = spec.decide(context, recorder=recorder).value\n    if value is None:\n        raise AssertionError(f\"{spec.name} must always return a lifecycle state\")\n    return value"
+        }
+      ]
+    },
+    {
+      "revision": "425078cc74e1c2cccbff259b5505b1b958b8e904",
+      "other_revisions": [
+        "6e31c37bbdb2d87f1ffc1696a9decaec754e85a0"
+      ],
+      "path": "tools/idea_maturity_lifecycle_state_set.py",
+      "sha256": "b2153326c0851f8da8895a3c76cf75b6e4b9b80d2f1eb57cae1ae3cfdef681d6",
+      "sites": [
+        {
+          "line": 52,
+          "column": 34,
+          "call": "field.decide(context, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "values[field.name]",
+          "after": [
+            {
+              "kind": "If",
+              "line": 53,
+              "source": "if trace is not None and recorder is not None:"
+            }
+          ],
+          "excerpt": "            recorder = TraceRecorder() if trace is not None else None\n            values[field.name] = field.decide(context, recorder=recorder)\n            if trace is not None and recorder is not None:\n                if not recorder.events:\n                    raise ValueError(f\"SpecSet field {field.name!r} did not record a decision\")\n                if not recorder.events:"
+        }
+      ]
+    },
+    {
+      "revision": "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+      "other_revisions": [
+        "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "cd5dd5e2bc30da59eb936372c8cd6e8d1dcdd4ae",
+        "b56dde9454a9163f29352db657c23c968c034c84"
+      ],
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "2c80c6f5e67f761cbe33868c40daa9d0d04bce7e2b094e70fe21ab7c3314cc8c",
+      "sites": [
+        {
+          "line": 626,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 627,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Expr",
+              "line": 628,
+              "source": "decision.value(preview, operation)"
+            }
+          ],
+          "excerpt": "        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n"
+        },
+        {
+          "line": 417,
+          "column": 24,
+          "call": "_ACCEPTANCE_CRITERION_DECISION.decide(context)",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "If",
+              "line": 418,
+              "source": "if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:"
+            }
+          ],
+          "excerpt": "            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n"
+        }
+      ]
+    },
+    {
+      "revision": "99b69a9eda02f44b336f7460244abbe9016af18a",
+      "other_revisions": [
+        "99b69a9eda02f44b336f7460244abbe9016af18a"
+      ],
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "183b6d897aa1d25f35b50b3b906282108491f3dfeb8f0aa1a08ca1c9788a3059",
+      "sites": [
+        {
+          "line": 584,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 585,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Expr",
+              "line": 586,
+              "source": "decision.value(preview, operation)"
+            }
+          ],
+          "excerpt": "        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n"
+        }
+      ]
+    },
+    {
+      "revision": "90d26eeb2974b7af35e5295821897e2ebf8d0e70",
+      "other_revisions": [
+        "218da57ad4fc7642b401066d062831808d41b9e7"
+      ],
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "135c4c8f51832705d65a6a18e3337c73c4f7b873556de1797c27dfbe7c77643a",
+      "sites": [
+        {
+          "line": 571,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))",
+          "statement_kind": "Assign",
+          "owner_kind": "For",
+          "assignment_target": "decision",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 572,
+              "source": "assert decision.matched and decision.value is not None"
+            },
+            {
+              "kind": "Expr",
+              "line": 573,
+              "source": "decision.value(preview, operation)"
+            }
+          ],
+          "excerpt": "        operation = _dict(action.get(\"operation\"))\n        decision = _PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))\n        assert decision.matched and decision.value is not None\n        decision.value(preview, operation)\n    return preview\n"
+        }
+      ]
+    },
+    {
+      "revision": "50ae667d1fc088c0a3e5f72fdd306feaa4be0b0a",
+      "other_revisions": [
+        "55c5fca863022cd0ade534de45e3d343ae6b4abb"
+      ],
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "sha256": "e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+      "sites": [
+        {
+          "line": 213,
+          "column": 14,
+          "call": "_PRE_SIB_STATE_DECISION.decide(context, recorder=recorder)",
+          "statement_kind": "Assign",
+          "owner_kind": "FunctionDef",
+          "assignment_target": "result",
+          "after": [
+            {
+              "kind": "Assert",
+              "line": 214,
+              "source": "assert result.matched and result.value is not None"
+            },
+            {
+              "kind": "Return",
+              "line": 215,
+              "source": "return result.value"
+            }
+          ],
+          "excerpt": "    )\n    result = _PRE_SIB_STATE_DECISION.decide(context, recorder=recorder)\n    assert result.matched and result.value is not None\n    return result.value\n\n"
+        }
+      ]
+    }
+  ],
+  "parse_errors": []
+}
