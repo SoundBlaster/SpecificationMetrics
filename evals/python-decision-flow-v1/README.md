@@ -188,3 +188,12 @@ the original corpus/assessment remain unchanged.
 This is one independent model review of a small, purposive development sample.
 It does not turn agreement into semantic coverage or population precision/recall.
 Next: evaluate bounded support for the unchanged loop/enum SpecGraph examples.
+
+## Loop/enum extension, 2026-10-23 UTC
+
+The [separate extension report](extensions/loop-enum-2026-10-23/README.md)
+records support for same-iteration loop origins and verified same-module enum
+comparisons. On the unchanged source corpus, linked bindings increase from
+1 to 3 and unresolved bindings decrease from 8 to 6. Original author/reviewer
+labels and the first assessment remain frozen; extension expectations and
+observations are recorded separately. This does not change raw S/U.

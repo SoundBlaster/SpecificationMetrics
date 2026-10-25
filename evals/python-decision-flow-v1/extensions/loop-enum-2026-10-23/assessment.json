@@ -1,0 +1,479 @@
+{
+  "corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "expected_deltas_sha256": "fdba1e4e1623960bd9f00a35b9082206338391fc91cd4461d02cbf552b3acf0e",
+  "baseline_binary_sha256": "6d004babf556e3e791a30457b7dcb2ad46e42d1926fae0f0dc385b013f168bbb",
+  "expanded_binary_sha256": "e3742383b1854984abb1e38f0bc9c70c2be46bfb3f1c8a5b999f3c1947d4fcba",
+  "baseline_bindings": {
+    "examined_bindings": 9,
+    "linked_bindings": 1,
+    "unresolved_bindings": 8,
+    "not_linked_bindings": 0
+  },
+  "expanded_bindings": {
+    "examined_bindings": 9,
+    "linked_bindings": 3,
+    "unresolved_bindings": 6,
+    "not_linked_bindings": 0
+  },
+  "matches_intended_extension": 29,
+  "cases": 29,
+  "changes": [
+    {
+      "id": "specgraph-02",
+      "before": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "after": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      }
+    },
+    {
+      "id": "specgraph-03",
+      "before": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "after": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      }
+    },
+    {
+      "id": "specgraph-04",
+      "before": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "straight_line_function_body_required"
+      },
+      "after": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "control_flow_or_effect_barrier"
+      }
+    }
+  ],
+  "byte_identity_checks": {
+    "specgraph/measure": {
+      "byte_identical": true,
+      "sha256": "5c9513ed55e840c448a83312853f2c0f155a18e0a34db59db616762a0d888e40"
+    },
+    "specgraph/python-if-v1": {
+      "byte_identical": true,
+      "sha256": "baa731c6bbc4f051cc95f947a7fc2734ebc91917427c8bc68ff6a3f8dc71524a"
+    },
+    "specgraph/python-decisions-v1": {
+      "byte_identical": true,
+      "sha256": "7c15dbf54d4fc9fa02e476695be210d8b23b8505adf248d32581d1617df6e437"
+    },
+    "spycification/measure": {
+      "byte_identical": true,
+      "sha256": "873811f25ae7320baf1e3a3d91ad1dddfaa4866f4eb8f805271e933a7bf75374"
+    },
+    "spycification/python-if-v1": {
+      "byte_identical": true,
+      "sha256": "87b099825b9891f3a998ced4fc3a5cb41c0b4b02b2b11109b1f6df4d3eb3b6b2"
+    },
+    "spycification/python-decisions-v1": {
+      "byte_identical": true,
+      "sha256": "d44dd88e8b19efd4c04a9fd4bcf6b8fe79b08abcb230ea886686e881dfb3e368"
+    },
+    "cctally/measure": {
+      "byte_identical": true,
+      "sha256": "ee0848edf8e59152107bfc095b0211a0e111b9d6250874ae8163951115f3accc"
+    },
+    "cctally/python-if-v1": {
+      "byte_identical": true,
+      "sha256": "6073c4a0da60b8590d4151d3e6112c66c49efc2317a299d5258ebce0c9b62680"
+    },
+    "cctally/python-decisions-v1": {
+      "byte_identical": true,
+      "sha256": "b05f620e93f625a644ad30306b245c8a88d7704b9d9fea678d66c455dabe11f0"
+    },
+    "flask/measure": {
+      "byte_identical": true,
+      "sha256": "a826732f1f64bb930cb212ca456255b88948789f6098f31595780fab2b8abc71"
+    },
+    "flask/python-if-v1": {
+      "byte_identical": true,
+      "sha256": "fc31a44f542f4361358249e6c1d95b537c066878d573e2f8ee7b2af2ca573bec"
+    },
+    "flask/python-decisions-v1": {
+      "byte_identical": true,
+      "sha256": "56ceab9a11257a5ebd222a1ab0d39e095e9f8115fea2739229eee084d40fe995"
+    },
+    "fastapi/measure": {
+      "byte_identical": true,
+      "sha256": "5063f3e20aa761221caf29be0d281b92a737541fb0589cbe3873ac23cb276e8b"
+    },
+    "fastapi/python-if-v1": {
+      "byte_identical": true,
+      "sha256": "b84209f7025ff90c6e7a19c81a93713058133a49211c092af6ddfe114c47f70c"
+    },
+    "fastapi/python-decisions-v1": {
+      "byte_identical": true,
+      "sha256": "3f7c61256dd44cfd0c76cb13bfa1f4f02e70e752155caa28ae8ed7ae817c4a7e"
+    }
+  },
+  "new_link_evidence": [
+    {
+      "project": "specgraph",
+      "path": "candidate_repair_loop.py",
+      "application_id": "9a8dfdc27e1c6ea09bc69f6b3f800abd0fc0780807d95bf9670317d4bcf84bbb",
+      "variable": "decision",
+      "branch": {
+        "anchor": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "candidate_fingerprint": "python:candidate_repair_loop.py:if:a1b66a031e5e2f16:1",
+        "condition": "decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER",
+        "reference_projection": "value",
+        "enum_member": {
+          "class_name": "_AcceptanceCriterionDisposition",
+          "member_name": "ADD_PLACEHOLDER",
+          "class_anchor": {
+            "line": 59,
+            "column": 1,
+            "syntax_kind": "class_definition"
+          },
+          "member_anchor": {
+            "line": 61,
+            "column": 5,
+            "syntax_kind": "identifier"
+          }
+        },
+        "loop_anchors": [
+          {
+            "line": 419,
+            "column": 9,
+            "syntax_kind": "for_statement"
+          },
+          {
+            "line": 413,
+            "column": 5,
+            "syntax_kind": "for_statement"
+          }
+        ]
+      }
+    },
+    {
+      "project": "specgraph",
+      "path": "candidate_repair_loop.py",
+      "application_id": "693f74dc8abeeee86304eeb71473a294394b007e54471d21f44eca7761795511",
+      "variable": "decision",
+      "branch": {
+        "anchor": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "candidate_fingerprint": "python:candidate_repair_loop.py:if:dbfaf5a3a55b635c:1",
+        "condition": "decision.value == _UnsupportedClaimDisposition.DOWNGRADE",
+        "reference_projection": "value",
+        "enum_member": {
+          "class_name": "_UnsupportedClaimDisposition",
+          "member_name": "DOWNGRADE",
+          "class_anchor": {
+            "line": 466,
+            "column": 1,
+            "syntax_kind": "class_definition"
+          },
+          "member_anchor": {
+            "line": 468,
+            "column": 5,
+            "syntax_kind": "identifier"
+          }
+        },
+        "loop_anchors": [
+          {
+            "line": 525,
+            "column": 9,
+            "syntax_kind": "for_statement"
+          },
+          {
+            "line": 524,
+            "column": 5,
+            "syntax_kind": "for_statement"
+          }
+        ]
+      }
+    }
+  ],
+  "source_and_scope_digests": {
+    "specgraph": {
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c"
+    },
+    "spycification": {
+      "source_digest": "e6ebbd75e7fd1d948604e7be529ea2f9d8741551c5c1ca00cd52e3921243ef9d",
+      "scope_manifest_digest": "274775a9a49af4fcd6c5e8d21c8f043b880f57fd61df0188d040c8d72b797556"
+    },
+    "cctally": {
+      "source_digest": "3b0eb7a94a0e8717392b08d8c6294ef687bec0616b894e30e24840b6da4b0556",
+      "scope_manifest_digest": "3f71ba0a74e3235f0b43c4b4f11b2266c2c680827a678d525837b0d8d2ddd62c"
+    },
+    "flask": {
+      "source_digest": "7624e016a6199993c545eb956c702867934584ce44f6a3a2e2ca38117aca6ebc",
+      "scope_manifest_digest": "4cf252b21d87111c7a6cb639cc6503f4a7c0a50fd17cb0617a28d717315210b6"
+    },
+    "fastapi": {
+      "source_digest": "f75fa8b2457bfd28a29df2f632e3c7fd970a9f6bac8924f13f007e736c83bae3",
+      "scope_manifest_digest": "87fa3e44df7d35657c35ca7efcdecb5acc281054e590b69f4a71a0c9ea034908"
+    }
+  },
+  "original_frozen_replay_agreement": 26,
+  "original_replay_exit_code": 1,
+  "metric_effect": "none",
+  "observations": [
+    {
+      "id": "specgraph-01",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "control_flow_or_effect_barrier"
+      }
+    },
+    {
+      "id": "specgraph-02",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      }
+    },
+    {
+      "id": "specgraph-03",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      }
+    },
+    {
+      "id": "specgraph-04",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "control_flow_or_effect_barrier"
+      }
+    },
+    {
+      "id": "specgraph-05",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      }
+    },
+    {
+      "id": "specgraph-06",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "mixed_expression",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "specgraph-07",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-01",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      }
+    },
+    {
+      "id": "spycification-02",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      }
+    },
+    {
+      "id": "spycification-03",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-04",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-05",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-06",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-07",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-08",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-09",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-10",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-11",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-12",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-13",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "spycification-14",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "no_immediate_binding"
+      }
+    },
+    {
+      "id": "cctally-01",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      }
+    },
+    {
+      "id": "cctally-02",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "unresolved_call",
+        "flow_status": "unresolved",
+        "flow_reason": "origin_binding_not_proven"
+      }
+    },
+    {
+      "id": "flask-01",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      }
+    },
+    {
+      "id": "flask-02",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      }
+    },
+    {
+      "id": "flask-03",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      }
+    },
+    {
+      "id": "fastapi-01",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      }
+    },
+    {
+      "id": "fastapi-02",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      }
+    },
+    {
+      "id": "fastapi-03",
+      "matches_intended_extension": true,
+      "observed": {
+        "call_category": "absent",
+        "flow_status": "outside_api"
+      }
+    }
+  ],
+  "original_link_evidence_unchanged": true,
+  "other_unchanged_binding_rows": 6
+}

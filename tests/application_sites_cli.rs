@@ -2,6 +2,57 @@ use serde_json::Value;
 use std::{fs, path::Path, process::Command};
 
 #[test]
+fn loop_enum_flow_retains_declaration_and_iteration_evidence() {
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+    let manifest = root.join("scope.toml");
+    fs::write(
+        &manifest,
+        "schema_version = 1\n[[source_sets]]\nrole = 'application'\npaths = ['app.py']\n",
+    )
+    .unwrap();
+    fs::write(root.join("app.py"), "from specification_core import FirstMatch\nfrom enum import Enum\nclass Choice(Enum):\n    ACCEPT = 'accept'\nRULE = FirstMatch.with_fallback((), Choice.ACCEPT)\ndef run(c):\n    for item in c:\n        value = RULE.decide(item)\n        if value.value == Choice.ACCEPT: pass\n").unwrap();
+    let before = invoke("measure", root, &manifest, &["--require-complete"]);
+    assert!(before.status.success());
+    let typed = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decisions-v1"],
+    );
+    let default = invoke("application-sites", root, &manifest, &[]);
+    let flow = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decision-flow-v1"],
+    );
+    assert!(flow.status.success());
+    let flow: Value = serde_json::from_slice(&flow.stdout).unwrap();
+    assert_eq!(flow["linked_bindings"], 1);
+    assert_eq!(flow["metric_effect"], "none");
+    let branch = &flow["bindings"][0]["branch"];
+    assert_eq!(branch["anchor"]["line"], 9);
+    assert_eq!(branch["enum_member"]["class_name"], "Choice");
+    assert_eq!(branch["enum_member"]["member_name"], "ACCEPT");
+    assert_eq!(branch["enum_member"]["class_anchor"]["line"], 3);
+    assert_eq!(branch["enum_member"]["member_anchor"]["line"], 4);
+    assert_eq!(branch["loop_anchors"][0]["line"], 7);
+    assert_eq!(
+        flow["applications"],
+        serde_json::from_slice::<Value>(&typed.stdout).unwrap()
+    );
+    assert_eq!(
+        before.stdout,
+        invoke("measure", root, &manifest, &["--require-complete"]).stdout
+    );
+    assert_eq!(
+        default.stdout,
+        invoke("application-sites", root, &manifest, &[]).stdout
+    );
+}
+
+#[test]
 fn flow_links_the_scan_candidate_without_mutating_prior_profiles_or_measurement() {
     let dir = tempfile::tempdir().unwrap();
     let root = dir.path();

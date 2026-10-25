@@ -121,7 +121,8 @@ and [frozen SpecGraph pilot](docs/firstmatch-application-pilot.md).
 
 `--profile python-decision-flow-v1` additionally traces an immediately bound
 result to a subsequent if-condition within a conservative straight-line function
-subset. Reassignment and unsupported effects stop analysis explicitly. See the
+or loop body, including comparisons with verified same-module enum members.
+Reassignment and unsupported effects stop analysis explicitly. See the
 [flow contract and pilot](docs/decision-flow-contract.md). It does not change U.
 
 ## Live metric
