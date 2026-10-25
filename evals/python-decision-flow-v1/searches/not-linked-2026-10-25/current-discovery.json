@@ -1,0 +1,174 @@
+{
+  "method": "rg --hidden --no-ignore literal FirstMatch or .decide( across local GitHub, excluding .git/.venv/venv/.worktrees/node_modules/dist/build/target/site-packages/.cache/evals/.0al; no symlink following; no network fetch",
+  "files": [
+    {
+      "repository": "https://github.com/SoundBlaster/SpycificationCore",
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "path": "src/specification_core/core.py",
+      "sha256": "dfb89910d5016db09613c6ed746bb4f3eccf1409efc2f4b8dde3a235ad1d82a4",
+      "matches_revision": true,
+      "sites": []
+    },
+    {
+      "repository": "https://github.com/SoundBlaster/SpycificationCore",
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "path": "src/specification_core/__init__.py",
+      "sha256": "41f5e24c9b5af1c2604b2081db3e134ad17ddc55727f55c15b9783c7320b9d25",
+      "matches_revision": true,
+      "sites": []
+    },
+    {
+      "repository": "https://github.com/SoundBlaster/SpycificationCore",
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "path": "src/specification_core/async_core.py",
+      "sha256": "59e5e978747514b547e0e14f3f0c54b0a945e7d5aa8c3b6096d544aa4774392e",
+      "matches_revision": true,
+      "sites": []
+    },
+    {
+      "repository": "https://github.com/SoundBlaster/SpycificationCore",
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "path": "tests/test_core.py",
+      "sha256": "3fe5b89185b781d74f71395b870eff26c45812f93b62c4f8e448e65b8d2a133d",
+      "matches_revision": true,
+      "sites": [
+        {
+          "line": 47,
+          "column": 16,
+          "call": "rule.decide(object())"
+        },
+        {
+          "line": 48,
+          "column": 14,
+          "call": "no_match.decide(object())"
+        },
+        {
+          "line": 72,
+          "column": 12,
+          "call": "rule.decide(object())"
+        },
+        {
+          "line": 83,
+          "column": 12,
+          "call": "adapted.decide(1)"
+        },
+        {
+          "line": 85,
+          "column": 12,
+          "call": "decision.decide(1)"
+        },
+        {
+          "line": 86,
+          "column": 12,
+          "call": "decision.decide(-1)"
+        },
+        {
+          "line": 92,
+          "column": 12,
+          "call": "fallback.decide(object())"
+        },
+        {
+          "line": 100,
+          "column": 12,
+          "call": "route.decide(object(), recorder=recorder)"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/SoundBlaster/SpycificationCore",
+      "revision": "5bf3c0f48588f8fdc6d96b69dd1b1420dff29419",
+      "path": "tests/test_async.py",
+      "sha256": "9129ac469ed250f58d391cbdd0dee13c6447cb46f8850725c7731182c3f623b8",
+      "matches_revision": true,
+      "sites": [
+        {
+          "line": 47,
+          "column": 22,
+          "call": "allow.decide(object())"
+        },
+        {
+          "line": 48,
+          "column": 22,
+          "call": "AsyncBooleanDecisionAdapter(bad, 'allow').decide(object())"
+        },
+        {
+          "line": 50,
+          "column": 22,
+          "call": "decision.decide(object())"
+        },
+        {
+          "line": 52,
+          "column": 22,
+          "call": "rejected_decision.decide(object())"
+        },
+        {
+          "line": 55,
+          "column": 22,
+          "call": "AsyncFirstMatch.with_fallback([(good, 'publish')], 'review').decide(object())"
+        },
+        {
+          "line": 59,
+          "column": 22,
+          "call": "fallback.decide(object())"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/omrikais/cctally",
+      "revision": "4b14b4c37fd56af3545bd6ee90111e2feaf89e00",
+      "path": "bin/_cctally_journal.py",
+      "sha256": "5bf5523399c54bf8a0301844c215846e2d27933b7677b4ae71638ae91786dea6",
+      "matches_revision": true,
+      "sites": [
+        {
+          "line": 10903,
+          "column": 23,
+          "call": "elision.decide(name, hi, stat_result)"
+        },
+        {
+          "line": 8175,
+          "column": 31,
+          "call": "elision.decide(name, hi, stat_result)"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/0al-spec/SpecGraph",
+      "revision": "697f3dcf3969ecc2ff47370dcf89719f6d3598b2",
+      "path": "tools/idea_to_spec_promotion_gate.py",
+      "sha256": "e16574c2acc5379cf3f0aa5ddde7d5696c17110a7ef9c310234242fd39e3c8ec",
+      "matches_revision": true,
+      "sites": [
+        {
+          "line": 213,
+          "column": 14,
+          "call": "_PRE_SIB_STATE_DECISION.decide(context, recorder=recorder)"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/0al-spec/SpecGraph",
+      "revision": "697f3dcf3969ecc2ff47370dcf89719f6d3598b2",
+      "path": "tools/candidate_repair_loop.py",
+      "sha256": "65e74a8ea951b11edc541cf10d40cf7c074346a70c11c298e5095a0d75eb02f3",
+      "matches_revision": true,
+      "sites": [
+        {
+          "line": 672,
+          "column": 20,
+          "call": "_PREVIEW_OPERATION_DECISION.decide(_PreviewOperationContext(operation))"
+        },
+        {
+          "line": 417,
+          "column": 24,
+          "call": "_ACCEPTANCE_CRITERION_DECISION.decide(context)"
+        },
+        {
+          "line": 522,
+          "column": 24,
+          "call": "_UNSUPPORTED_CLAIM_DECISION.decide(context)"
+        }
+      ]
+    }
+  ]
+}
