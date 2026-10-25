@@ -1,0 +1,734 @@
+{
+  "reviewer_configuration": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "medium",
+    "context": "fresh_no_author_labels"
+  },
+  "input_access_statement": "Reviewed only cases.json, application-contract.md, flow-contract.md, packet-receipt.json and supplied sources within the designated packet directory. Verified every receipt-listed SHA-256 by reading those packet files. Did not consult author labels, repository docs/history, prior experiments, other agent outputs or network; did not run an analyzer or execute/import source projects. Used Python -B only for packet reading, digest verification and output serialization. The initial rtk exec invocation failed without reading inputs; subsequent shell commands used rtk python3 -B. Labels are independent source-and-contract judgments, not human gold or runtime validation. Snapshot import roots were taken from cases.json.",
+  "cases": [
+    {
+      "id": "specgraph-01",
+      "call_category": "direct_application",
+      "flow_status": "unresolved",
+      "semantic_explanation": "A module FirstMatch selects a state; its raw result is assigned, asserted matched/nonempty, then its payload is returned.",
+      "contract_explanation": "Immediate result assignment is direct consumption. The flow encounters an assert, outside the enumerated straight-line subset, rather than a supported if; subsequent return is also a barrier.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/idea_to_spec_promotion_gate.py",
+          "lines": [
+            203,
+            215
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/idea_to_spec_promotion_gate.py",
+          "lines": [
+            14,
+            14
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/idea_to_spec_promotion_gate.py",
+          "lines": [
+            172,
+            200
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": "Assert is not explicitly listed among barriers. I apply the closed supported-subset reading and classify it unresolved; the document should name assert explicitly."
+    },
+    {
+      "id": "specgraph-02",
+      "call_category": "direct_application",
+      "flow_status": "unresolved",
+      "semantic_explanation": "The module FirstMatch fallback decision is assigned in nested loops and its payload controls adding a placeholder.",
+      "contract_explanation": "Assignment is direct local consumption, but the origin is nested under loops. The enum-member comparison also exceeds comparison with primitive literals.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            419,
+            428
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            17,
+            17
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            91,
+            95
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            411,
+            426
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "specgraph-03",
+      "call_category": "direct_application",
+      "flow_status": "unresolved",
+      "semantic_explanation": "The module FirstMatch fallback decision selects whether a claim should be downgraded.",
+      "contract_explanation": "The immediate assignment is direct consumption; loop-nested origin and enum-member comparison are outside the supported flow subset.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            522,
+            533
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            17,
+            17
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            490,
+            494
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "specgraph-04",
+      "call_category": "direct_application",
+      "flow_status": "unresolved",
+      "semantic_explanation": "A FirstMatch selects an operation callable which is checked and subsequently invoked.",
+      "contract_explanation": "The result itself is immediately assigned, so later invocation does not make the call mixed. Its origin inside a loop is unsupported for flow.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            676,
+            683
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            17,
+            17
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            621,
+            625
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/candidate_repair_loop.py",
+          "lines": [
+            660,
+            682
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "specgraph-05",
+      "call_category": "direct_application",
+      "flow_status": "linked",
+      "semantic_explanation": "The binding policy returns an optional error payload; its assigned value is tested immediately and appended to findings when truthy.",
+      "contract_explanation": "With tools as import root the explicit imported module constant resolves to synchronous FirstMatch.with_fallback. A direct function-body .value assignment followed immediately by if binding_error meets the flow subset. Calls and generator expressions inside arguments precede the resulting definition and do not change its consumption.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/traceability/publication.py",
+          "lines": [
+            235,
+            247
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/traceability/publication.py",
+          "lines": [
+            21,
+            22
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/traceability/publication.py",
+          "lines": [
+            158,
+            162
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/publication_evidence/bindings_spec.py",
+          "lines": [
+            3,
+            7
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "specgraph-06",
+      "call_category": "mixed_expression",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "The test-suite payload is selected only when matched is true; otherwise result receives None, then enters an ExecutionSignal.",
+      "contract_explanation": "The conditional expression is mixed consumption. The identifier receives the conditional expression, not the immediate call/projection, so this call has no immediate-binding flow origin.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/traceability/publication_execution_provider.py",
+          "lines": [
+            137,
+            150
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/traceability/publication_execution_provider.py",
+          "lines": [
+            24,
+            24
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/publication_evidence/suite_spec.py",
+          "lines": [
+            3,
+            7
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "specgraph-07",
+      "call_category": "direct_application",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A resolved FirstMatch reference-status payload is passed as an argument to ReferenceResolution.",
+      "contract_explanation": "Argument consumption of the immediate .value projection is direct. There is no immediate identifier assignment of that result, regardless of the surrounding loop or outer append call.",
+      "evidence": [
+        {
+          "path": "sources/specgraph/tools/traceability/references.py",
+          "lines": [
+            60,
+            69
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/traceability/references.py",
+          "lines": [
+            10,
+            10
+          ]
+        },
+        {
+          "path": "sources/specgraph/tools/traceability/reference_status_spec.py",
+          "lines": [
+            3,
+            7
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-01",
+      "call_category": "unresolved_call",
+      "flow_status": "unresolved",
+      "semantic_explanation": "A function-local FirstMatch result is assigned to selected to test the distinction between a matched None payload and no match.",
+      "contract_explanation": "The receiver is a function-local instance, explicitly unsupported even though its constructor is visibly FirstMatch. Receiver uncertainty takes precedence over assignment/comparison shape. An immediate identifier assignment exists, so the flow row is unresolved due to receiver resolution.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            43,
+            49
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-02",
+      "call_category": "unresolved_call",
+      "flow_status": "unresolved",
+      "semantic_explanation": "A function-local empty FirstMatch result is assigned to absent and later compared with no_match.",
+      "contract_explanation": "The receiver is a function-local instance, explicitly unsupported even though its constructor is visibly FirstMatch. Receiver uncertainty takes precedence over assignment/comparison shape. An immediate identifier assignment exists, so the flow row is unresolved due to receiver resolution.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            43,
+            50
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-03",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A function-local FirstMatch result is compared in an assert with the first selected payload.",
+      "contract_explanation": "The receiver is a function-local instance, explicitly unsupported even though its constructor is visibly FirstMatch. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            65,
+            73
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-04",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A BooleanDecisionAdapter created through positive.returning is exercised in an assertion.",
+      "contract_explanation": "The receiver is an adapter/custom decision form rather than a supported module FirstMatch constant. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            76,
+            85
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-05",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A local PredicateDecisionSpec is exercised on positive input and compared with a matching result.",
+      "contract_explanation": "The receiver is an adapter/custom decision form rather than a supported module FirstMatch constant. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            78,
+            86
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-06",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "The same local PredicateDecisionSpec is exercised on negative input and compared with no_match.",
+      "contract_explanation": "The receiver is an adapter/custom decision form rather than a supported module FirstMatch constant. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            79,
+            86
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-07",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A local FirstMatch.with_fallback is compared in an assertion with its fallback payload.",
+      "contract_explanation": "The receiver is a function-local instance, explicitly unsupported even though its constructor is visibly FirstMatch. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            89,
+            94
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-08",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A local FirstMatch is invoked with a recorder and compared with its selected payload.",
+      "contract_explanation": "The receiver is a function-local instance, explicitly unsupported even though its constructor is visibly FirstMatch. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_core.py",
+          "lines": [
+            93,
+            102
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-09",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A local AsyncBooleanDecisionAdapter call is awaited and asserted equal to a matching result.",
+      "contract_explanation": "Async decisions are explicitly unsupported; this is also a local or inline instance. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_async.py",
+          "lines": [
+            43,
+            49
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-10",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "An inline AsyncBooleanDecisionAdapter call is awaited and asserted equal to no_match.",
+      "contract_explanation": "Async decisions are explicitly unsupported; this is also a local or inline instance. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_async.py",
+          "lines": [
+            43,
+            50
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-11",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A local AsyncPredicateDecisionSpec call is awaited and compared with a matching result.",
+      "contract_explanation": "Async decisions are explicitly unsupported; this is also a local or inline instance. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_async.py",
+          "lines": [
+            43,
+            52
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-12",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A rejecting local AsyncPredicateDecisionSpec call is awaited and compared with no_match.",
+      "contract_explanation": "Async decisions are explicitly unsupported; this is also a local or inline instance. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_async.py",
+          "lines": [
+            45,
+            54
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-13",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "An inline AsyncFirstMatch.with_fallback call is awaited and compared with a matching result.",
+      "contract_explanation": "Async decisions are explicitly unsupported; this is also a local or inline instance. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_async.py",
+          "lines": [
+            48,
+            57
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "spycification-14",
+      "call_category": "unresolved_call",
+      "flow_status": "no_immediate_binding",
+      "semantic_explanation": "A local AsyncFirstMatch with fallback is awaited and compared with its fallback result.",
+      "contract_explanation": "Async decisions are explicitly unsupported; this is also a local or inline instance. Receiver uncertainty takes precedence over assignment/comparison shape. The result is consumed within an assertion comparison, with no immediate identifier assignment and therefore no flow row.",
+      "evidence": [
+        {
+          "path": "sources/spycification/tests/test_async.py",
+          "lines": [
+            52,
+            59
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "cctally-01",
+      "call_category": "unresolved_call",
+      "flow_status": "unresolved",
+      "semantic_explanation": "A segment-elision planner returns a summary or None; the nested helper immediately branches on absence.",
+      "contract_explanation": "The method name decide does not establish FirstMatch provenance. elision comes from a local planner factory, not an imported module FirstMatch constant. An immediate summary assignment exists, but receiver uncertainty prevents linking even though the local branch resembles the flow pattern.",
+      "evidence": [
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            8172,
+            8177
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            826,
+            826
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            871,
+            905
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            926,
+            966
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            8155,
+            8155
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "cctally-02",
+      "call_category": "unresolved_call",
+      "flow_status": "unresolved",
+      "semantic_explanation": "A segment-elision planner returns a summary or None; the nested helper immediately branches on absence.",
+      "contract_explanation": "The method name decide does not establish FirstMatch provenance. elision comes from a local planner factory, not an imported module FirstMatch constant. An immediate summary assignment exists, but receiver uncertainty prevents linking even though the local branch resembles the flow pattern.",
+      "evidence": [
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            10899,
+            10909
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            826,
+            826
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            871,
+            905
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            926,
+            966
+          ]
+        },
+        {
+          "path": "sources/cctally/bin/_cctally_journal.py",
+          "lines": [
+            10893,
+            10893
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "flask-01",
+      "call_category": "absent",
+      "flow_status": "outside_api",
+      "semantic_explanation": "A signing serializer and cookie value are checked for absence.",
+      "contract_explanation": "The inspected snippet contains no .decide call. Similar assignment-to-if syntax alone cannot establish Specification usage or a decision-flow row.",
+      "evidence": [
+        {
+          "path": "sources/flask/src/flask/sessions.py",
+          "lines": [
+            324,
+            329
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "flask-02",
+      "call_category": "absent",
+      "flow_status": "outside_api",
+      "semantic_explanation": "An environment lookup is checked for a missing or empty value.",
+      "contract_explanation": "The inspected snippet contains no .decide call. Similar assignment-to-if syntax alone cannot establish Specification usage or a decision-flow row.",
+      "evidence": [
+        {
+          "path": "sources/flask/src/flask/config.py",
+          "lines": [
+            114,
+            118
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "flask-03",
+      "call_category": "absent",
+      "flow_status": "outside_api",
+      "semantic_explanation": "Configuration-derived exception propagation is defaulted and then tested.",
+      "contract_explanation": "The inspected snippet contains no .decide call. Similar assignment-to-if syntax alone cannot establish Specification usage or a decision-flow row.",
+      "evidence": [
+        {
+          "path": "sources/flask/src/flask/app.py",
+          "lines": [
+            927,
+            932
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "fastapi-01",
+      "call_category": "absent",
+      "flow_status": "outside_api",
+      "semantic_explanation": "An Authorization header is tested for absence.",
+      "contract_explanation": "The inspected snippet contains no .decide call. Similar assignment-to-if syntax alone cannot establish Specification usage or a decision-flow row.",
+      "evidence": [
+        {
+          "path": "sources/fastapi/fastapi/security/oauth2.py",
+          "lines": [
+            424,
+            429
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "fastapi-02",
+      "call_category": "absent",
+      "flow_status": "outside_api",
+      "semantic_explanation": "An ordinary getattr result is checked before generator-function introspection.",
+      "contract_explanation": "The inspected snippet contains no .decide call. Similar assignment-to-if syntax alone cannot establish Specification usage or a decision-flow row.",
+      "evidence": [
+        {
+          "path": "sources/fastapi/fastapi/dependencies/models.py",
+          "lines": [
+            115,
+            120
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "fastapi-03",
+      "call_category": "absent",
+      "flow_status": "outside_api",
+      "semantic_explanation": "A regular-expression match is checked before extracting route parameters.",
+      "contract_explanation": "The inspected snippet contains no .decide call. Similar assignment-to-if syntax alone cannot establish Specification usage or a decision-flow row.",
+      "evidence": [
+        {
+          "path": "sources/fastapi/fastapi/routing.py",
+          "lines": [
+            1391,
+            1397
+          ]
+        }
+      ],
+      "confidence": "high"
+    }
+  ],
+  "contract_findings": [
+    {
+      "id": "assert-barrier",
+      "severity": "clarification",
+      "cases": [
+        "specgraph-01"
+      ],
+      "finding": "Assert is omitted from both the permitted-intervening-statement list and the named barrier list. The closed-subset interpretation makes it unresolved, but this should be explicit; assertion success is not an if-candidate link."
+    },
+    {
+      "id": "inventory-versus-supported-origin",
+      "severity": "clarification",
+      "cases": [
+        "specgraph-02",
+        "specgraph-03",
+        "specgraph-04"
+      ],
+      "finding": "The final paragraph groups nested assignments, chained assignments and other forms as unresolved or outside the immediate-identifier inventory without assigning each form to one outcome. I retain simple identifier assignments nested in loops as inventory rows with unresolved scope, following the earlier definition that examined_bindings counts immediate single-identifier assignments."
+    },
+    {
+      "id": "local-firstmatch-is-unsupported",
+      "severity": "interpretation-boundary",
+      "cases": [
+        "spycification-01",
+        "spycification-02",
+        "spycification-03",
+        "spycification-07",
+        "spycification-08"
+      ],
+      "finding": "Visible local FirstMatch constructors and type annotations do not qualify under this module-constant-only contract. Labeling them direct or mixed would silently expand receiver resolution. Unsupported means unresolved, not absent."
+    },
+    {
+      "id": "local-consumption-versus-flow",
+      "severity": "interpretation-boundary",
+      "cases": [
+        "specgraph-01",
+        "specgraph-02",
+        "specgraph-03",
+        "specgraph-04",
+        "specgraph-05",
+        "specgraph-06",
+        "specgraph-07"
+      ],
+      "finding": "Only the binding-error example supplies a supported branch link. Later enum comparison or callable invocation does not change a direct assignment call into mixed consumption; a conditional-expression RHS is mixed and supplies no immediate call/projection binding."
+    },
+    {
+      "id": "ordinary-api-name-collision",
+      "severity": "interpretation-boundary",
+      "cases": [
+        "cctally-01",
+        "cctally-02"
+      ],
+      "finding": "A non-Specification decide method remains syntactically inventoried as unresolved_call and its immediate binding unresolved. The six ordinary Flask/FastAPI snippets instead have no decide call and are absent/outside_api."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "cases": 29,
+  "families": 19,
+  "call_category_agreement": 29,
+  "flow_status_agreement": 29,
+  "differences": [],
+  "raw_independent_labels_sha256": "3bdd26bb7dfd2c70765de98a355afd55ef43d59f767b09b21ecf6343ac0c1e23",
+  "packet_inputs_unchanged": true,
+  "source_corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "label_scope": "Agreement on bounded-contract categories/statuses; not a population precision/recall or semantic coverage estimate."
+}
