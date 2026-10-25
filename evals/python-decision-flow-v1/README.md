@@ -197,3 +197,12 @@ comparisons. On the unchanged source corpus, linked bindings increase from
 1 to 3 and unresolved bindings decrease from 8 to 6. Original author/reviewer
 labels and the first assessment remain frozen; extension expectations and
 observations are recorded separately. This does not change raw S/U.
+
+## Real negative search, 2026-10-25
+
+A [bounded local/history search](searches/not-linked-2026-10-25/README.md)
+inspected 42 historical SpecGraph call observations and checked five close
+candidates with the analyzer. It confirmed **zero new real `not_linked`
+examples**: one site linked and four remained unresolved. Search observations,
+rejected-candidate explanations, frozen expectations and CLI evidence are kept
+separate from this corpus; no old labels or corpus totals were changed.
