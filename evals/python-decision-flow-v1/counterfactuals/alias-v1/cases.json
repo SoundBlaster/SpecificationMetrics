@@ -1,0 +1,375 @@
+{
+  "schema": "python-decision-flow-counterfactuals/v1",
+  "label_status": "author_declared_before_replay; not_independently_reviewed",
+  "source_corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "source_project": "specgraph",
+  "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+  "analyzer_contract_source": "1bc73afc9352ec59e6716816f91be8d6b1ed9a8f",
+  "metric_effect": "none",
+  "original_controls": 3,
+  "synthetic_cases": 12,
+  "families": 3,
+  "pairs": [
+    {
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/traceability/publication.py#L235-L247",
+      "variable": "binding_error",
+      "original_file_sha256": "c4884e043c9489b9ee46e4b9da92a8191c0da2f19354572cb632a1abf9ecdee7",
+      "branch_anchor": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "if_statement"
+      },
+      "expected_original": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "variants": [
+        {
+          "id": "specgraph-05-alias_copy",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_copy",
+          "before_line": 246,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "    _decision_flow_alias_probe = binding_error\n",
+          "original_branch_line": "    if binding_error:\n",
+          "replaced_branch_line": "    if _decision_flow_alias_probe:\n",
+          "modified_file_sha256": "4979bdd385ac2a016b047504aa71c17297c79bb73f784d85c23ee7a5a5a1a6ec",
+          "modified_excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    _decision_flow_alias_probe = binding_error\n    if _decision_flow_alias_probe:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+          "modified_excerpt_sha256": "ca928a540522712f3aa25f1772e3147bdfc4c851f46a3fe3f32e5df2e4b247ff",
+          "unified_diff": "--- a/tools/traceability/publication.py\n+++ b/tools/traceability/publication.py\n@@ -243,7 +243,8 @@\n             tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n         )\n     ).value\n-    if binding_error:\n+    _decision_flow_alias_probe = binding_error\n+    if _decision_flow_alias_probe:\n         findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n     if len(passport_ids) != len(set(passport_ids)):\n         findings.append({\"code\": \"duplicate_passport_criterion\"})\n",
+          "author_expected_selected_branch_reads_origin": true,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-05-alias_origin_rebound",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_origin_rebound",
+          "before_line": 246,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "    _decision_flow_alias_probe = binding_error\n    binding_error = None\n",
+          "original_branch_line": "    if binding_error:\n",
+          "replaced_branch_line": "    if _decision_flow_alias_probe:\n",
+          "modified_file_sha256": "8f5f1c17f221ff57c7396d6f79f9ccba4d4af68fe7ffef6d274bdb75258cdd42",
+          "modified_excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    _decision_flow_alias_probe = binding_error\n    binding_error = None\n    if _decision_flow_alias_probe:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+          "modified_excerpt_sha256": "91f2ea043b2f50bb976e5270f05cfc9cbf1ec307126ced0dfdefff633a99e167",
+          "unified_diff": "--- a/tools/traceability/publication.py\n+++ b/tools/traceability/publication.py\n@@ -243,7 +243,9 @@\n             tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n         )\n     ).value\n-    if binding_error:\n+    _decision_flow_alias_probe = binding_error\n+    binding_error = None\n+    if _decision_flow_alias_probe:\n         findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n     if len(passport_ids) != len(set(passport_ids)):\n         findings.append({\"code\": \"duplicate_passport_criterion\"})\n",
+          "author_expected_selected_branch_reads_origin": true,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-05-alias_rebound",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_rebound",
+          "before_line": 246,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "    _decision_flow_alias_probe = binding_error\n    _decision_flow_alias_probe = None\n",
+          "original_branch_line": "    if binding_error:\n",
+          "replaced_branch_line": "    if _decision_flow_alias_probe:\n",
+          "modified_file_sha256": "8a822a1f2157d857b477ca1249bb4be9db846772160d1420212571705cf67d28",
+          "modified_excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    _decision_flow_alias_probe = binding_error\n    _decision_flow_alias_probe = None\n    if _decision_flow_alias_probe:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+          "modified_excerpt_sha256": "c0729fff3b1188897214a17096dcff465b347bb3b6dcdea0d2e28a679e48c943",
+          "unified_diff": "--- a/tools/traceability/publication.py\n+++ b/tools/traceability/publication.py\n@@ -243,7 +243,9 @@\n             tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n         )\n     ).value\n-    if binding_error:\n+    _decision_flow_alias_probe = binding_error\n+    _decision_flow_alias_probe = None\n+    if _decision_flow_alias_probe:\n         findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n     if len(passport_ids) != len(set(passport_ids)):\n         findings.append({\"code\": \"duplicate_passport_criterion\"})\n",
+          "author_expected_selected_branch_reads_origin": false,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-05-alias_deleted",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_deleted",
+          "before_line": 246,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "    _decision_flow_alias_probe = binding_error\n    del _decision_flow_alias_probe\n",
+          "original_branch_line": "    if binding_error:\n",
+          "replaced_branch_line": "    if _decision_flow_alias_probe:\n",
+          "modified_file_sha256": "293a7a4d9df923668e41854c4187767ac7a1485ff127dc6e248b09fb5597f667",
+          "modified_excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    _decision_flow_alias_probe = binding_error\n    del _decision_flow_alias_probe\n    if _decision_flow_alias_probe:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+          "modified_excerpt_sha256": "c80b87cfb84df9b2e25ec6d9481cf2ca163be44f34ac7b395c67241583d4b2ec",
+          "unified_diff": "--- a/tools/traceability/publication.py\n+++ b/tools/traceability/publication.py\n@@ -243,7 +243,9 @@\n             tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n         )\n     ).value\n-    if binding_error:\n+    _decision_flow_alias_probe = binding_error\n+    del _decision_flow_alias_probe\n+    if _decision_flow_alias_probe:\n         findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n     if len(passport_ids) != len(set(passport_ids)):\n         findings.append({\"code\": \"duplicate_passport_criterion\"})\n",
+          "author_expected_selected_branch_reads_origin": false,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "expression_statement"
+          }
+        }
+      ],
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L419-L428",
+      "variable": "decision",
+      "original_file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "branch_anchor": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "expected_original": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "variants": [
+        {
+          "id": "specgraph-02-alias_copy",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_copy",
+          "before_line": 426,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n",
+          "original_branch_line": "            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "modified_file_sha256": "fa070811b64b460157a431f9400a676b6c1f588299d56b7dc14495f151b2d422",
+          "modified_excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "f8e80b9dcf3880d532612498f9f5a87e72000a3a6246294bd3d984a025e4fff5",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -423,7 +423,8 @@\n                 existing_acceptance_criteria=frozenset(existing_ac),\n             )\n             decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n-            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n+            _decision_flow_alias_probe = decision\n+            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                 actions.append(_acceptance_criterion_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": true,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-02-alias_origin_rebound",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_origin_rebound",
+          "before_line": 426,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n            decision = None\n",
+          "original_branch_line": "            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "modified_file_sha256": "7ef2d049d090b0a94df35a156ed7383990bb016821396b2f9ee4f7073e79d322",
+          "modified_excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            decision = None\n            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "5073b4a871c943f9ac00af6a9b66687dcdc89498145db052c0163b130a9557f7",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -423,7 +423,9 @@\n                 existing_acceptance_criteria=frozenset(existing_ac),\n             )\n             decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n-            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n+            _decision_flow_alias_probe = decision\n+            decision = None\n+            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                 actions.append(_acceptance_criterion_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": true,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-02-alias_rebound",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_rebound",
+          "before_line": 426,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n            _decision_flow_alias_probe = None\n",
+          "original_branch_line": "            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "modified_file_sha256": "c5ba166bce16c5061a676f1d60a37d9f41dfc8ee31615f94c573f0acf9c9c8ed",
+          "modified_excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            _decision_flow_alias_probe = None\n            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "91ce7122fe099ba1590cc6111ee6a7c838cd2a2d4bd23921c9dc629603883328",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -423,7 +423,9 @@\n                 existing_acceptance_criteria=frozenset(existing_ac),\n             )\n             decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n-            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n+            _decision_flow_alias_probe = decision\n+            _decision_flow_alias_probe = None\n+            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                 actions.append(_acceptance_criterion_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": false,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-02-alias_deleted",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_deleted",
+          "before_line": 426,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n            del _decision_flow_alias_probe\n",
+          "original_branch_line": "            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n",
+          "modified_file_sha256": "3d16a11bc59de5fb54d6aa1216867affb68496c488d34db526cfa6ec913dfbea",
+          "modified_excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            del _decision_flow_alias_probe\n            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "6c50f6567ce2f13e1c33d3e12ae814a81de70a498112842b25377f3085a2f24f",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -423,7 +423,9 @@\n                 existing_acceptance_criteria=frozenset(existing_ac),\n             )\n             decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n-            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n+            _decision_flow_alias_probe = decision\n+            del _decision_flow_alias_probe\n+            if _decision_flow_alias_probe.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                 actions.append(_acceptance_criterion_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": false,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        }
+      ],
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L522-L533",
+      "variable": "decision",
+      "original_file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "branch_anchor": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "expected_original": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "variants": [
+        {
+          "id": "specgraph-03-alias_copy",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_copy",
+          "before_line": 531,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n",
+          "original_branch_line": "            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "modified_file_sha256": "c2de3f66910726739065aec5b59ab34825711dc1ade0c4eb9ae831c4f1abcdeb",
+          "modified_excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "15bd59ecad00e2c4eeb62f98f9cb148a4b5eff5b4248b3fde04c51925e432ea5",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -528,7 +528,8 @@\n                 claim=claim,\n             )\n             decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n-            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n+            _decision_flow_alias_probe = decision\n+            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                 actions.append(_downgrade_claim_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": true,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-03-alias_origin_rebound",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_origin_rebound",
+          "before_line": 531,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n            decision = None\n",
+          "original_branch_line": "            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "modified_file_sha256": "c1f03512adfe912bbf2354a0815e0d28bb08b678e42d6b98885862e8d338e9d0",
+          "modified_excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            decision = None\n            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "c29b6466930ea0ea2bf3f81f8d7dffcd20df90b0f29d7ebdf8ae8f023ec03503",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -528,7 +528,9 @@\n                 claim=claim,\n             )\n             decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n-            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n+            _decision_flow_alias_probe = decision\n+            decision = None\n+            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                 actions.append(_downgrade_claim_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": true,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-03-alias_rebound",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_rebound",
+          "before_line": 531,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n            _decision_flow_alias_probe = None\n",
+          "original_branch_line": "            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "modified_file_sha256": "2df9ae28d578764a13abcbb853a7783e3614d4b4df90d0eb8f2fc5f6492a5729",
+          "modified_excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            _decision_flow_alias_probe = None\n            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "02155bcc22b56bb14e6f0ba906ab8d7982c8320e4cab4ad532e1731da4bcba9a",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -528,7 +528,9 @@\n                 claim=claim,\n             )\n             decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n-            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n+            _decision_flow_alias_probe = decision\n+            _decision_flow_alias_probe = None\n+            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                 actions.append(_downgrade_claim_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": false,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-03-alias_deleted",
+          "origin": "synthetic_counterfactual",
+          "mutation": "alias_deleted",
+          "before_line": 531,
+          "alias": "_decision_flow_alias_probe",
+          "inserted_text": "            _decision_flow_alias_probe = decision\n            del _decision_flow_alias_probe\n",
+          "original_branch_line": "            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "replaced_branch_line": "            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n",
+          "modified_file_sha256": "f6492357f79b0f4e053601c0057a219360299527d0892ad5ba9641d995b07b38",
+          "modified_excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            _decision_flow_alias_probe = decision\n            del _decision_flow_alias_probe\n            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "59087f64623af2d5483b326cdfacf2ea9e0b45d7eab23528a838ed379f468796",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -528,7 +528,9 @@\n                 claim=claim,\n             )\n             decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n-            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n+            _decision_flow_alias_probe = decision\n+            del _decision_flow_alias_probe\n+            if _decision_flow_alias_probe.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                 actions.append(_downgrade_claim_action(context))\n     return actions\n \n",
+          "author_expected_selected_branch_reads_origin": false,
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "unresolved",
+            "flow_reason": "intervening_expression_barrier"
+          },
+          "expected_stop": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        }
+      ],
+      "author_expected_selected_branch_reads_origin": true
+    }
+  ],
+  "intent": "Distinguish author-declared selected-guard alias dependencies from the current bounded analyzer refusal; no alias propagation feature."
+}
