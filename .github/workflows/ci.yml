@@ -5,6 +5,18 @@ on:
   pull_request:
 
 jobs:
+  local-alias-reference-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check independent alias reference without providers or source clones
+        run: |
+          python -B -W error -m unittest discover -s evals/local-alias-reference-v1 -p 'test_*.py' -v
+          python -B evals/local-alias-reference-v1/run.py
+
   evaluation-sdk-current:
     runs-on: ubuntu-latest
     steps:

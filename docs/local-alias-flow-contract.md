@@ -4,6 +4,9 @@ Status: **proposed, not implemented**. Date: 2026-10-26.
 This document specifies a future opt-in `python-decision-flow-alias-v1` profile
 with report identity `specification-metrics.python-decision-flow-alias/v1`.
 Those names are reserved by this proposal, not available CLI options.
+The separate [Python reference model](../evals/local-alias-reference-v1/README.md)
+is implemented and checked against the frozen matrix; this does not activate
+the production profile.
 
 The implemented [decision-flow v1](decision-flow-contract.md) stays unchanged.
 Its alias barriers, existing status/reason/stop anchors, frozen assessments,
@@ -198,7 +201,9 @@ Before implementation is accepted:
 5. Retain all body-output, unsafe-evaluation and unknown-effect limitations.
    No automatic U exclusion or review enforcement follows from this pilot.
 
-Validation of this document checks JSON structure, unique IDs, parseable
-fragments, frozen source correspondence and declared expected counts. It does
-not execute a transfer engine, prove totality, run the proposed profile, or
-demonstrate classification accuracy. Implementation is a separate next task.
+The initial document validation checked JSON structure, IDs, anchors and frozen
+source correspondence. The separate reference implementation now matches all
+47 unit cases and the 12 source-backed alias expectations, with three linked
+real controls. It records supplied factory/enum preconditions explicitly.
+No totality or population-accuracy proof follows; the Rust production profile
+and comparison against that implementation remain separate next work.
