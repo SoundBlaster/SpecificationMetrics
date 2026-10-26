@@ -34,9 +34,15 @@ class CounterfactualIntegrityTests(unittest.TestCase):
 
     def variant(self, kind):
         lines = self.data.decode().splitlines(keepends=True)
-        inserted = (
-            "    " + ("value = None" if kind == "overwrite" else "del value") + "\n"
-        )
+        statements = {
+            "overwrite": "value = None",
+            "delete": "del value",
+            "comment": "# Evaluation-only preservation control.",
+            "pass": "pass",
+            "unrelated_literal": "_decision_flow_preservation_probe = None",
+            "local_annotation": "value: object",
+        }
+        inserted = "    " + statements[kind] + "\n"
         changed = lines[:2] + [inserted] + lines[2:]
         excerpt = "".join(changed[1:5])
         return {
@@ -54,7 +60,14 @@ class CounterfactualIntegrityTests(unittest.TestCase):
         }
 
     def test_exact_insertions_preserve_every_other_byte(self):
-        for kind in ("overwrite", "delete"):
+        for kind in (
+            "overwrite",
+            "delete",
+            "comment",
+            "pass",
+            "unrelated_literal",
+            "local_annotation",
+        ):
             with self.subTest(kind=kind):
                 variant = self.variant(kind)
                 result = replay.materialize_variant(
@@ -62,6 +75,72 @@ class CounterfactualIntegrityTests(unittest.TestCase):
                 )
                 lines = result.splitlines(keepends=True)
                 self.assertEqual(b"".join(lines[:2] + lines[3:]), self.data)
+
+    def test_unrelated_literal_probe_must_be_fresh(self):
+        for collision in (
+            b"    _decision_flow_preservation_probe = 1\n",
+            b"def g(_decision_flow_preservation_probe):\n    pass\n",
+        ):
+            with self.subTest(collision=collision):
+                with self.assertRaisesRegex(ValueError, "probe collides"):
+                    replay.materialize_variant(
+                        self.data + collision,
+                        self.case,
+                        self.pair,
+                        self.variant("unrelated_literal"),
+                    )
+
+    def report(self, status, reason, stop, branch):
+        return {
+            "applications": {
+                "sites": [
+                    {
+                        "path": "app.py",
+                        "line": 2,
+                        "column": 13,
+                        "category": "direct_application",
+                        "application_id": "target",
+                    }
+                ]
+            },
+            "bindings": [
+                {
+                    "application_id": "target",
+                    "status": status,
+                    "reason": reason,
+                    "stop": stop,
+                    "branch": branch,
+                }
+            ],
+        }
+
+    def test_linked_synthetic_case_requires_the_shifted_branch_anchor(self):
+        case = {**self.case, "analysis_path": "app.py", "tier": "decide_call"}
+        stop = {"line": 4, "column": 5, "syntax_kind": "if_statement"}
+        expected = {
+            "call_category": "direct_application",
+            "flow_status": "linked",
+            "flow_reason": "local_straight_line_read",
+        }
+        report = self.report(
+            "linked", "local_straight_line_read", stop, {"anchor": stop}
+        )
+        self.assertTrue(replay.assess_target(case, report, expected, stop)[2])
+        report["bindings"][0]["branch"]["anchor"] = self.pair["branch_anchor"]
+        self.assertFalse(replay.assess_target(case, report, expected, stop)[2])
+
+    def test_negative_cannot_retain_branch_evidence(self):
+        case = {**self.case, "analysis_path": "app.py", "tier": "decide_call"}
+        stop = {"line": 3, "column": 5, "syntax_kind": "delete_statement"}
+        expected = {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_deleted",
+        }
+        report = self.report("not_linked", "binding_deleted", stop, None)
+        self.assertTrue(replay.assess_target(case, report, expected, stop)[2])
+        report["bindings"][0]["branch"] = {"anchor": self.pair["branch_anchor"]}
+        self.assertFalse(replay.assess_target(case, report, expected, stop)[2])
 
     def test_arbitrary_insertion_is_rejected_even_with_matching_hashes(self):
         variant = self.variant("overwrite")

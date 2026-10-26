@@ -126,7 +126,7 @@ Offline harness checks:
   -s evals/python-decision-flow-v1/counterfactuals/invalidation-v1 -p 'test_*.py' -v
 ```
 
-The six tests cover exact byte preservation, arbitrary extra insertions,
+The initial six tests cover exact byte preservation, arbitrary extra insertions,
 hash/excerpt/diff drift, wrong variable, source-corpus drift and unsafe output
 placement. Their small fixture is only a harness test, not a dataset case.
 The five existing parent replay tests also pass. Ruff format/check pass.
@@ -137,3 +137,13 @@ Next: add separately labeled benign counterfactuals (for example, an unrelated
 primitive assignment or a local annotation) to check that insertion alone does
 not cause loss of the original link. Keep these separate from real examples
 and measure only the chosen branch dependency.
+
+## Preservation extension, 2026-10-26
+
+The shared runner now also accepts comments, pass statements, fresh unrelated
+literal assignments and local annotations without RHS. Linked variants must
+retain the expected shifted branch anchor; synthetic origin no longer implies
+a negative expectation. The [separate preservation report](../preservation-v1/README.md)
+records 15/15 positive checks and a fresh 9/9 invalidation regression. This
+original manifest and assessment remain frozen; the newer runner hash and
+extended nine-test harness are documented in that separate report.

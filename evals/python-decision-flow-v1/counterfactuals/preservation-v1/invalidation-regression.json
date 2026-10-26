@@ -1,0 +1,445 @@
+{
+  "schema": "python-decision-flow-counterfactual-assessment/v1",
+  "cases_sha256": "b5ee1c09dddce54ae6286f915643e21210d3013d15e01219a3febcf40680aaf8",
+  "runner_sha256": "b21c5e20908546d0fe9df9a7d3d78b25c315c2826207f1e11621385d0dd067c6",
+  "analyzer_binary_sha256": "e3742383b1854984abb1e38f0bc9c70c2be46bfb3f1c8a5b999f3c1947d4fcba",
+  "analyzer_contract_source": "1bc73afc9352ec59e6716816f91be8d6b1ed9a8f",
+  "label_status": "author_declared_before_replay; not_independently_reviewed",
+  "metric_effect": "none",
+  "original_controls": 3,
+  "synthetic_cases": 6,
+  "families": 3,
+  "agreement": 9,
+  "outcomes": [
+    {
+      "id": "specgraph-05",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "real_unmodified_control",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "if_statement"
+      },
+      "binding": {
+        "application_id": "7d398bf4dc8f30b000ba1b19f9dd568a5f9340019c254afc73e9f8a264621054",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "linked",
+        "reason": "local_straight_line_read",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "branch": {
+          "anchor": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          },
+          "candidate_fingerprint": "python:traceability/publication.py:if:42757840404af310:1",
+          "condition": "binding_error",
+          "reference_projection": "value"
+        }
+      },
+      "agrees": true,
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "43237bcfc0a3fac9a94098bc765390a186f8e7d5558bb393d890f5a1b2a9fed9"
+    },
+    {
+      "id": "specgraph-05-overwrite",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_reassigned_or_mutated"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_reassigned_or_mutated"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "b4acf0e104f144fbba3241ccd9a5e6b7d2ef9db1e7cc491b26326ec40d565903",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "not_linked",
+        "reason": "binding_reassigned_or_mutated",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "ce40daff98a7973942e1b3c14a1c4d65ddf78a48298947e4ea5949a9f61a42dd",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "ca15a6e91785777009d32c5da903da304e0e174dbb637162b2a088fe4d409a43"
+    },
+    {
+      "id": "specgraph-05-delete",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_deleted"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_deleted"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "delete_statement"
+      },
+      "binding": {
+        "application_id": "2c075979052c0672764b0849634542c2a3be9e0d4c66f03dbcff535b1135a336",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "not_linked",
+        "reason": "binding_deleted",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "fb0a5a04dea3d5094f586cb56f42701de9519b5c56c98ded44a88e3930744497",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "c1c554d7bef735d741b1b00d4a228c6b53901af13711427c6160a2badbadf6a1"
+    },
+    {
+      "id": "specgraph-02",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "real_unmodified_control",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "binding": {
+        "application_id": "9a8dfdc27e1c6ea09bc69f6b3f800abd0fc0780807d95bf9670317d4bcf84bbb",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "linked",
+        "reason": "local_straight_line_read",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "branch": {
+          "anchor": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          },
+          "candidate_fingerprint": "python:candidate_repair_loop.py:if:a1b66a031e5e2f16:1",
+          "condition": "decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER",
+          "reference_projection": "value",
+          "enum_member": {
+            "class_name": "_AcceptanceCriterionDisposition",
+            "member_name": "ADD_PLACEHOLDER",
+            "class_anchor": {
+              "line": 59,
+              "column": 1,
+              "syntax_kind": "class_definition"
+            },
+            "member_anchor": {
+              "line": 61,
+              "column": 5,
+              "syntax_kind": "identifier"
+            }
+          },
+          "loop_anchors": [
+            {
+              "line": 419,
+              "column": 9,
+              "syntax_kind": "for_statement"
+            },
+            {
+              "line": 413,
+              "column": 5,
+              "syntax_kind": "for_statement"
+            }
+          ]
+        }
+      },
+      "agrees": true,
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "6bcaad5f86ac9dcfaca8ea44e08b3c773dee080acb1bc22d2a0e047aa33aa9d5"
+    },
+    {
+      "id": "specgraph-02-overwrite",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_reassigned_or_mutated"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_reassigned_or_mutated"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "b066aa68fda3b2b5670cc73e2add070128d3329f37dd35b2c6d08292ebf36fa4",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "not_linked",
+        "reason": "binding_reassigned_or_mutated",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "0364ad172fb880e3a7f225fdbd10bd00dcc83c7dbc6c4ca6b079728be8e2cd68",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "af213ec3b5ff1cf35a50629bbb1dede7609839f31c600959a7729af861d694d1"
+    },
+    {
+      "id": "specgraph-02-delete",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_deleted"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_deleted"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "delete_statement"
+      },
+      "binding": {
+        "application_id": "987ddde3bd1a462a48272d53fd9fe06f84cbdfb9e3b191a99bce9b3bb8471aeb",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "not_linked",
+        "reason": "binding_deleted",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "delete_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "62c7dcb9e8a186b7060014c3dcbf22891614ed95a8d7c8f04d3604e4ee4c8f03",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "37a494d005458e9cfeb0c89875a08485f9889bd3c98b11e7af08cb9b2ef85505"
+    },
+    {
+      "id": "specgraph-03",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "real_unmodified_control",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "binding": {
+        "application_id": "693f74dc8abeeee86304eeb71473a294394b007e54471d21f44eca7761795511",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "linked",
+        "reason": "local_straight_line_read",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "branch": {
+          "anchor": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          },
+          "candidate_fingerprint": "python:candidate_repair_loop.py:if:dbfaf5a3a55b635c:1",
+          "condition": "decision.value == _UnsupportedClaimDisposition.DOWNGRADE",
+          "reference_projection": "value",
+          "enum_member": {
+            "class_name": "_UnsupportedClaimDisposition",
+            "member_name": "DOWNGRADE",
+            "class_anchor": {
+              "line": 466,
+              "column": 1,
+              "syntax_kind": "class_definition"
+            },
+            "member_anchor": {
+              "line": 468,
+              "column": 5,
+              "syntax_kind": "identifier"
+            }
+          },
+          "loop_anchors": [
+            {
+              "line": 525,
+              "column": 9,
+              "syntax_kind": "for_statement"
+            },
+            {
+              "line": 524,
+              "column": 5,
+              "syntax_kind": "for_statement"
+            }
+          ]
+        }
+      },
+      "agrees": true,
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "8da05134e14b2fad068d3f47757da653c0bc707cafa74365f50531e0ad2f7178"
+    },
+    {
+      "id": "specgraph-03-overwrite",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_reassigned_or_mutated"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_reassigned_or_mutated"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "9b698ddd3ebfabe61ac6b2ef8b9aff3432abfbf2f4595aab89d5209496a2612f",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "not_linked",
+        "reason": "binding_reassigned_or_mutated",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "fc31c8de42c7a7db2c87d988c50912451a2ce713c2d5dd87233e57b323d88210",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "a762b9b72963d0a102dba78d63060ddc657747a5f90256b1920294131159c37d"
+    },
+    {
+      "id": "specgraph-03-delete",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_deleted"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "not_linked",
+        "flow_reason": "binding_deleted"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "delete_statement"
+      },
+      "binding": {
+        "application_id": "586fb484285ba2ac6138b2c4fcf746464ef7d28c01a76c345aca674f41558611",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "not_linked",
+        "reason": "binding_deleted",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "delete_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "64b7150edf19078eba0b4b8e3a319b76ea04bfeb132aa177057eab2afca84218",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "9f1e8ea94a07331665292984455aa9afc211f7b173aed02cfb0dc7b5dfae5bbc"
+    }
+  ]
+}
