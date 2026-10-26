@@ -90,6 +90,91 @@ class CounterfactualIntegrityTests(unittest.TestCase):
                         self.variant("unrelated_literal"),
                     )
 
+    def alias_variant(self, kind):
+        alias = "_decision_flow_alias_probe"
+        extra, semantic = {
+            "alias_copy": ([], True),
+            "alias_origin_rebound": (["value = None"], True),
+            "alias_rebound": ([alias + " = None"], False),
+            "alias_deleted": (["del " + alias], False),
+        }[kind]
+        lines = self.data.decode().splitlines(keepends=True)
+        inserted = "".join("    " + s + "\n" for s in [alias + " = value", *extra])
+        replacement = "    if " + alias + ":\n"
+        changed = (
+            lines[:2] + inserted.splitlines(keepends=True) + [replacement] + lines[3:]
+        )
+        excerpt = "".join(changed[1:])
+        return {
+            "mutation": kind,
+            "before_line": 3,
+            "alias": alias,
+            "inserted_text": inserted,
+            "original_branch_line": lines[2],
+            "replaced_branch_line": replacement,
+            "author_expected_selected_branch_reads_origin": semantic,
+            "modified_file_sha256": replay.real.digest("".join(changed).encode()),
+            "modified_excerpt": excerpt,
+            "modified_excerpt_sha256": replay.real.digest(excerpt.encode()),
+            "unified_diff": "".join(
+                difflib.unified_diff(
+                    lines, changed, fromfile="a/app.py", tofile="b/app.py"
+                )
+            ),
+        }
+
+    def test_alias_variants_change_only_declared_prefix_and_guard_name(self):
+        for kind in (
+            "alias_copy",
+            "alias_origin_rebound",
+            "alias_rebound",
+            "alias_deleted",
+        ):
+            with self.subTest(kind=kind):
+                variant = self.alias_variant(kind)
+                result = replay.materialize_variant(
+                    self.data, self.case, self.pair, variant
+                )
+                lines = result.decode().splitlines(keepends=True)
+                count = len(variant["inserted_text"].splitlines())
+                restored = lines[:2] + ["    if value:\n"] + lines[3 + count :]
+                self.assertEqual("".join(restored).encode(), self.data)
+
+    def test_alias_probe_collisions_are_rejected(self):
+        for collision in (
+            b"    _decision_flow_alias_probe = 1\n",
+            b"def g(_decision_flow_alias_probe):\n    pass\n",
+        ):
+            with self.subTest(collision=collision):
+                with self.assertRaisesRegex(ValueError, "fresh identifier"):
+                    replay.materialize_variant(
+                        self.data + collision,
+                        self.case,
+                        self.pair,
+                        self.alias_variant("alias_copy"),
+                    )
+
+    def test_alias_rewrite_cannot_change_other_guard_logic(self):
+        variant = self.alias_variant("alias_copy")
+        variant["replaced_branch_line"] = (
+            "    if _decision_flow_alias_probe and ready:\n"
+        )
+        with self.assertRaisesRegex(ValueError, "only the selected guard name"):
+            replay.materialize_variant(self.data, self.case, self.pair, variant)
+
+    def test_alias_with_multiple_guard_reads_is_outside_generator_contract(self):
+        data = self.data.replace(b"if value:", b"if value and value:")
+        with self.assertRaisesRegex(ValueError, "one same-line guard reference"):
+            replay.materialize_variant(
+                data, self.case, self.pair, self.alias_variant("alias_copy")
+            )
+
+    def test_alias_semantic_label_cannot_disagree_with_operator(self):
+        variant = self.alias_variant("alias_deleted")
+        variant["author_expected_selected_branch_reads_origin"] = True
+        with self.assertRaisesRegex(ValueError, "semantic label mismatch"):
+            replay.materialize_variant(self.data, self.case, self.pair, variant)
+
     def report(self, status, reason, stop, branch):
         return {
             "applications": {

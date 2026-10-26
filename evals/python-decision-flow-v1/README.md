@@ -225,3 +225,13 @@ All 15 positive checks retain the selected link, while all nine previous
 invalidation checks reproduce. The three real controls are shared across the
 datasets, not new independent observations. Snapshot application IDs change
 with source digests; explicit source-case correspondence preserves the pairing.
+
+## Synthetic local-alias contrasts, 2026-10-26
+
+The [alias contrast dataset](counterfactuals/alias-v1/README.md) adds 12
+explicitly synthetic variants to the same three real controls. Author labels
+distinguish six guards that retain the original result through an alias from
+six that lose it. The current analyzer returns unresolved for all 12 at alias
+creation; three real controls remain linked. The 15/15 bounded-contract match
+records that refusal, not successful semantic discrimination. Both earlier
+datasets reproduce unchanged; alias propagation and raw S/U remain unchanged.
