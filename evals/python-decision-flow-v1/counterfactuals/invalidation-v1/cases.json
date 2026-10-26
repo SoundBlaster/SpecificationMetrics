@@ -1,0 +1,197 @@
+{
+  "schema": "python-decision-flow-counterfactuals/v1",
+  "label_status": "author_declared_before_replay; not_independently_reviewed",
+  "source_corpus_sha256": "dd03195cbd9c4ab898ac78fd6ea3b678f21cf3cd99b4a08bc3c9277218cf04a3",
+  "source_project": "specgraph",
+  "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+  "analyzer_contract_source": "1bc73afc9352ec59e6716816f91be8d6b1ed9a8f",
+  "metric_effect": "none",
+  "original_controls": 3,
+  "synthetic_cases": 6,
+  "families": 3,
+  "pairs": [
+    {
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/traceability/publication.py#L235-L247",
+      "variable": "binding_error",
+      "original_file_sha256": "c4884e043c9489b9ee46e4b9da92a8191c0da2f19354572cb632a1abf9ecdee7",
+      "branch_anchor": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "if_statement"
+      },
+      "expected_original": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "variants": [
+        {
+          "id": "specgraph-05-overwrite",
+          "origin": "synthetic_counterfactual",
+          "mutation": "overwrite",
+          "before_line": 246,
+          "inserted_text": "    binding_error = None\n",
+          "modified_file_sha256": "0fa406ac186942beafa30919fc1d5d9fe53e904f8295cd6040a281ca0a15bf5e",
+          "modified_excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    binding_error = None\n    if binding_error:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+          "modified_excerpt_sha256": "665118322e777f88765ac502ba1892078fe17c7f752738f664ab76807fe1cc1b",
+          "unified_diff": "--- a/tools/traceability/publication.py\n+++ b/tools/traceability/publication.py\n@@ -243,6 +243,7 @@\n             tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n         )\n     ).value\n+    binding_error = None\n     if binding_error:\n         findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n     if len(passport_ids) != len(set(passport_ids)):\n",
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_reassigned_or_mutated"
+          },
+          "expected_stop": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-05-delete",
+          "origin": "synthetic_counterfactual",
+          "mutation": "delete",
+          "before_line": 246,
+          "inserted_text": "    del binding_error\n",
+          "modified_file_sha256": "d2669b5af0a06dbcbdbd119bdb2a5a015c7fb4be9ca06b11192a590fec95da29",
+          "modified_excerpt": "    obligations = records(bindings.get(\"obligations\"), \"bindings.obligations\")\n    passport_ids = [text(c.get(\"id\"), \"passport criterion.id\") for c in passport_criteria]\n    criterion_ids = [text(c.get(\"id\"), \"criterion.id\") for c in criteria]\n    binding_error = BINDING_ERROR_SPEC.decide(\n        BindingContext(\n            frozenset(passport_ids),\n            frozenset(criterion_ids),\n            tuple(text(item.get(\"criterion_id\"), \"criterion_id\") for item in obligations),\n            tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n        )\n    ).value\n    del binding_error\n    if binding_error:\n        findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n",
+          "modified_excerpt_sha256": "57e2e4f57cdcdc4e977ba3a20a4c4fb8e5b25df3abbcceaf05c2d766ca46bdc9",
+          "unified_diff": "--- a/tools/traceability/publication.py\n+++ b/tools/traceability/publication.py\n@@ -243,6 +243,7 @@\n             tuple(text(item.get(\"test\"), \"test\") for item in obligations),\n         )\n     ).value\n+    del binding_error\n     if binding_error:\n         findings.append({\"code\": \"publication_binding_contract\", \"message\": binding_error})\n     if len(passport_ids) != len(set(passport_ids)):\n",
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_deleted"
+          },
+          "expected_stop": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "delete_statement"
+          }
+        }
+      ]
+    },
+    {
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L419-L428",
+      "variable": "decision",
+      "original_file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "branch_anchor": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "expected_original": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "variants": [
+        {
+          "id": "specgraph-02-overwrite",
+          "origin": "synthetic_counterfactual",
+          "mutation": "overwrite",
+          "before_line": 426,
+          "inserted_text": "            decision = None\n",
+          "modified_file_sha256": "2117cae5e2ae077888f88f630d25bd1f6e779d598a359488a8d4ffd5707c85b1",
+          "modified_excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            decision = None\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "26fe49a3bd21efc442bea329d0c54c8ee0fdffe44ccd8e7a37b6cbfdb55ce699",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -423,6 +423,7 @@\n                 existing_acceptance_criteria=frozenset(existing_ac),\n             )\n             decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n+            decision = None\n             if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                 actions.append(_acceptance_criterion_action(context))\n     return actions\n",
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_reassigned_or_mutated"
+          },
+          "expected_stop": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-02-delete",
+          "origin": "synthetic_counterfactual",
+          "mutation": "delete",
+          "before_line": 426,
+          "inserted_text": "            del decision\n",
+          "modified_file_sha256": "3b431a883e388267943a597e6740344cde42a2adcdf8df5fd2cada523cc40201",
+          "modified_excerpt": "        for requirement in _list(node.get(\"requirements\")):\n            context = _AcceptanceCriterionContext(\n                node_id=_text(node.get(\"id\")),\n                requirement=requirement,\n                existing_acceptance_criteria=frozenset(existing_ac),\n            )\n            decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n            del decision\n            if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                actions.append(_acceptance_criterion_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "39d139669b00d9332b2771088e45389169267b8e83bce8aed984dcb35ad10808",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -423,6 +423,7 @@\n                 existing_acceptance_criteria=frozenset(existing_ac),\n             )\n             decision = _ACCEPTANCE_CRITERION_DECISION.decide(context)\n+            del decision\n             if decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER:\n                 actions.append(_acceptance_criterion_action(context))\n     return actions\n",
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_deleted"
+          },
+          "expected_stop": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "delete_statement"
+          }
+        }
+      ]
+    },
+    {
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "source_url": "https://github.com/0al-spec/SpecGraph/blob/59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe/tools/candidate_repair_loop.py#L522-L533",
+      "variable": "decision",
+      "original_file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "branch_anchor": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "expected_original": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "variants": [
+        {
+          "id": "specgraph-03-overwrite",
+          "origin": "synthetic_counterfactual",
+          "mutation": "overwrite",
+          "before_line": 531,
+          "inserted_text": "            decision = None\n",
+          "modified_file_sha256": "a6f5ff948cff6c9423d7c30d7a2bd240eaa25e4ed1e7c226295f2ee8808ce4b2",
+          "modified_excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            decision = None\n            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "eebb4921e0350d634d138248babe137c86dc43acaa4846c7022d03fda5f8e635",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -528,6 +528,7 @@\n                 claim=claim,\n             )\n             decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n+            decision = None\n             if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                 actions.append(_downgrade_claim_action(context))\n     return actions\n",
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_reassigned_or_mutated"
+          },
+          "expected_stop": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "expression_statement"
+          }
+        },
+        {
+          "id": "specgraph-03-delete",
+          "origin": "synthetic_counterfactual",
+          "mutation": "delete",
+          "before_line": 531,
+          "inserted_text": "            del decision\n",
+          "modified_file_sha256": "bbb0e35ed0972db3a847de0337c55a0994b931aeb542a1be02a99e4505ee1cbe",
+          "modified_excerpt": "def _repair_unsupported_claims(candidate_graph: dict[str, Any]) -> list[dict[str, Any]]:\n    actions: list[dict[str, Any]] = []\n    for node in _nodes(candidate_graph):\n        for claim in _list(node.get(\"claims\")):\n            context = _UnsupportedClaimContext(\n                node_id=_text(node.get(\"id\")),\n                claim=claim,\n            )\n            decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n            del decision\n            if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                actions.append(_downgrade_claim_action(context))\n    return actions\n",
+          "modified_excerpt_sha256": "f4e2599250534915e61bdff56c78874a76cb02026adf168bad7adbfc898549a4",
+          "unified_diff": "--- a/tools/candidate_repair_loop.py\n+++ b/tools/candidate_repair_loop.py\n@@ -528,6 +528,7 @@\n                 claim=claim,\n             )\n             decision = _UNSUPPORTED_CLAIM_DECISION.decide(context)\n+            del decision\n             if decision.value == _UnsupportedClaimDisposition.DOWNGRADE:\n                 actions.append(_downgrade_claim_action(context))\n     return actions\n",
+          "expected": {
+            "call_category": "direct_application",
+            "flow_status": "not_linked",
+            "flow_reason": "binding_deleted"
+          },
+          "expected_stop": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "delete_statement"
+          }
+        }
+      ]
+    }
+  ]
+}

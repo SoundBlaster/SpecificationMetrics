@@ -206,3 +206,13 @@ candidates with the analyzer. It confirmed **zero new real `not_linked`
 examples**: one site linked and four remained unresolved. Search observations,
 rejected-candidate explanations, frozen expectations and CLI evidence are kept
 separate from this corpus; no old labels or corpus totals were changed.
+
+## Synthetic invalidation contrasts, 2026-10-25
+
+A [separate counterfactual dataset](counterfactuals/invalidation-v1/README.md)
+reuses the three real linked controls and inserts an overwrite or deletion
+before each original branch. All three unchanged controls stay linked; all six
+explicitly synthetic variants become not linked with the expected invalidation
+reason and stop anchor. These are controlled damaged programs, not newly found
+real bugs. Original real-corpus counts and labels remain frozen; raw S/U and
+analyzer behavior are unchanged.
