@@ -125,6 +125,10 @@ or loop body, including comparisons with verified same-module enum members.
 Reassignment and unsupported effects stop analysis explicitly. See the
 [flow contract and pilot](docs/decision-flow-contract.md). It does not change U.
 
+A [separate local-alias proposal](docs/local-alias-flow-contract.md) defines
+bounded value propagation and an acceptance matrix. It is not implemented;
+the current flow profile still reports alias propagation as unresolved.
+
 ## Live metric
 
 For each source snapshot, calculate `S / U`: `S` is the number of distinct

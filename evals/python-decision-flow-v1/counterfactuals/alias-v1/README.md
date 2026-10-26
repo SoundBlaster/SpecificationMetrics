@@ -153,3 +153,8 @@ Next: design a separate bounded alias-propagation contract. It must track the
 original value through copies, distinguish rebinding a name from changing its
 other aliases, and preserve unresolved states outside its support boundary.
 Use both positive and damaged variants before changing analyzer behavior.
+
+The [proposed local-alias contract](../../../../docs/local-alias-flow-contract.md)
+now specifies that separate profile, transition rules, bounds and an authored
+acceptance matrix. Its six linked/six not-linked expectations for these frozen
+variants are proposed outcomes, not a replacement for this v1 assessment.
