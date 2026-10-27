@@ -1,0 +1,4788 @@
+{
+  "schema": "specification-metrics.local-alias-reference-assessment/v1",
+  "matrix_sha256": "00b1f9212c9f86dbb768ca98dc7bee9f86617ab9a6c5d2f631b1ff125803c333",
+  "model_sha256": "fa8a76ea5566e3659376123d6e8f7301efda130517d5f8a1e9b775ed165effa8",
+  "runner_sha256": "e7fb433a7bbd95f8b0bb0598fe269667869736392f59aeeb73e0630935c4cef3",
+  "python_version": "3.11.13",
+  "unit_cases": 47,
+  "unit_agreement": 47,
+  "source_alias_cases": 12,
+  "source_controls": 3,
+  "source_agreement": 15,
+  "source_status_counts": {
+    "linked": 9,
+    "not_linked": 6
+  },
+  "source_phase": "checked",
+  "provided_preconditions": {
+    "prior_v1_assessment_sha256": "a9ed37d3cad8a70c78d30b5f398c490fafcc3be4a1ed502ed48c61744c93a914",
+    "snapshot_files": 29,
+    "factory_and_enum_resolution": "supplied preconditions; not independently proved by transfer model"
+  },
+  "production_profile_implemented": false,
+  "metric_effect": "none",
+  "unit_outcomes": [
+    {
+      "id": "direct.raw",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "direct.raw",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "d",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 3,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "direct.payload",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "direct.payload",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "d",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 3,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "direct.matched",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "direct.matched",
+        "origin_projection": "matched",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "d",
+          "state": "origin",
+          "projection": "matched",
+          "anchor": {
+            "line": 3,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.raw",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.raw",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 4,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.payload",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.payload",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 4,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.matched",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.matched",
+        "origin_projection": "matched",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "matched",
+          "anchor": {
+            "line": 4,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.chain",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.chain",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "origin",
+          "b": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a",
+            "target": "b",
+            "before": {
+              "b": null,
+              "a": "origin"
+            },
+            "after": {
+              "b": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "b",
+          "state": "origin",
+          "projection": "matched",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.self",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.self",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a",
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "matched",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "rebind.original-keeps-alias",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "rebind.original-keeps-alias",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "other",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "delete.original-keeps-alias",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "delete.original-keeps-alias",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "deleted",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "rebind.alias-keeps-original",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "rebind.alias-keeps-original",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "d",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "delete.alias-keeps-original",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "delete.alias-keeps-original",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "d",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "rebind.alias-loses-guard",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "rebind.alias-loses-guard",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "delete.alias-loses-guard",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "deleted"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "deleted"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "delete.alias-loses-guard",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "deleted",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "rebind.original-no-alias",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "rebind.original-no-alias",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "other"
+        },
+        "events": [
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "d",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 4,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "delete.original-no-alias",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "deleted"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "deleted"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "delete.original-no-alias",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "deleted"
+        },
+        "events": [
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "d",
+          "state": "deleted",
+          "projection": "value",
+          "anchor": {
+            "line": 4,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "rebind.all-names",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "rebind.all-names",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 4,
+        "states": {
+          "d": "other",
+          "a": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "other"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 5,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 6,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.saved-chain",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 7,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 7,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.saved-chain",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 5,
+        "states": {
+          "d": "other",
+          "a": "other",
+          "b": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a",
+            "target": "b",
+            "before": {
+              "b": null,
+              "a": "origin"
+            },
+            "after": {
+              "b": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 5,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "other"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 6,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "b",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 7,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.other-state",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.other-state",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 4,
+        "states": {
+          "d": "origin",
+          "a": "other",
+          "b": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "other"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 5,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a",
+            "target": "b",
+            "before": {
+              "b": null,
+              "a": "other"
+            },
+            "after": {
+              "b": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "b",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 6,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.deleted-source",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "alias_copy_source_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "alias_copy_source_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.deleted-source",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "copy.self-deleted",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "alias_copy_source_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "alias_copy_source_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "copy.self-deleted",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "delete.twice",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "deletion_state_unproven",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "deletion_state_unproven",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "delete.twice",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "delete.untracked",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "deletion_state_unproven",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "deletion_state_unproven",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "delete.untracked",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.source",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.source",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.untracked-literal-source",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.untracked-literal-source",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.projected-copy",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.projected-copy",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.raw-truthiness",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.raw-truthiness",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.double-projection",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.double-projection",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.boolean-combination",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.boolean-combination",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "unknown.unrelated-if",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "unknown.unrelated-if",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.object-write",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.object-write",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.subscript-write",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.subscript-write",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.augassign",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.augassign",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.call",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.call",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.call-after-loss",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.call-after-loss",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 4,
+        "states": {
+          "d": "other",
+          "a": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "d",
+            "before": {
+              "d": "origin"
+            },
+            "after": {
+              "d": "other"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 5,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "a",
+            "before": {
+              "a": "origin"
+            },
+            "after": {
+              "a": "other"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.return",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "return_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "return_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.return",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.assert",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "assert_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "assert_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.assert",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "barrier.closure",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "function_definition"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "function_definition"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "barrier.closure",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "preserve.annotation",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "preserve.annotation",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "preserve.literal-unrelated",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "preserve.literal-unrelated",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 5,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "scope.end-with-live-alias",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "not_linked",
+        "reason": "no_supported_branch_before_scope_end",
+        "stop": null,
+        "reference": null
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "no_supported_branch_before_scope_end",
+        "stop": null,
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "scope.end-with-live-alias",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "d": "origin",
+          "a": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a",
+            "before": {
+              "a": null,
+              "d": "origin"
+            },
+            "after": {
+              "a": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "limit.names-exact",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 10,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a7",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 10,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a7",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "limit.names-exact",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 8,
+        "states": {
+          "d": "origin",
+          "a1": "origin",
+          "a2": "origin",
+          "a3": "origin",
+          "a4": "origin",
+          "a5": "origin",
+          "a6": "origin",
+          "a7": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a1",
+            "before": {
+              "a1": null,
+              "d": "origin"
+            },
+            "after": {
+              "a1": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a1",
+            "target": "a2",
+            "before": {
+              "a2": null,
+              "a1": "origin"
+            },
+            "after": {
+              "a2": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 5,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a2",
+            "target": "a3",
+            "before": {
+              "a3": null,
+              "a2": "origin"
+            },
+            "after": {
+              "a3": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 6,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a3",
+            "target": "a4",
+            "before": {
+              "a4": null,
+              "a3": "origin"
+            },
+            "after": {
+              "a4": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 7,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a4",
+            "target": "a5",
+            "before": {
+              "a5": null,
+              "a4": "origin"
+            },
+            "after": {
+              "a5": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 8,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a5",
+            "target": "a6",
+            "before": {
+              "a6": null,
+              "a5": "origin"
+            },
+            "after": {
+              "a6": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 9,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a6",
+            "target": "a7",
+            "before": {
+              "a7": null,
+              "a6": "origin"
+            },
+            "after": {
+              "a7": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "a7",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 10,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "limit.names-overflow",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "alias_name_limit",
+        "stop": {
+          "line": 10,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "alias_name_limit",
+        "stop": {
+          "line": 10,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "limit.names-overflow",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 8,
+        "states": {
+          "d": "origin",
+          "a1": "origin",
+          "a2": "origin",
+          "a3": "origin",
+          "a4": "origin",
+          "a5": "origin",
+          "a6": "origin",
+          "a7": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 3,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "d",
+            "target": "a1",
+            "before": {
+              "a1": null,
+              "d": "origin"
+            },
+            "after": {
+              "a1": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 4,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a1",
+            "target": "a2",
+            "before": {
+              "a2": null,
+              "a1": "origin"
+            },
+            "after": {
+              "a2": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 5,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a2",
+            "target": "a3",
+            "before": {
+              "a3": null,
+              "a2": "origin"
+            },
+            "after": {
+              "a3": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 6,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a3",
+            "target": "a4",
+            "before": {
+              "a4": null,
+              "a3": "origin"
+            },
+            "after": {
+              "a4": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 7,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a4",
+            "target": "a5",
+            "before": {
+              "a5": null,
+              "a4": "origin"
+            },
+            "after": {
+              "a5": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 8,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a5",
+            "target": "a6",
+            "before": {
+              "a6": null,
+              "a5": "origin"
+            },
+            "after": {
+              "a6": "origin"
+            }
+          },
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 9,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "a6",
+            "target": "a7",
+            "before": {
+              "a7": null,
+              "a6": "origin"
+            },
+            "after": {
+              "a7": "origin"
+            }
+          }
+        ],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "limit.nodes-exact",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 66,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 66,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "limit.nodes-exact",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 64,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "d",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 66,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "limit.nodes-overflow",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "statement_limit",
+        "stop": {
+          "line": 67,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "statement_limit",
+        "stop": {
+          "line": 67,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "limit.nodes-overflow",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 65,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "scope.global",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "global_or_nonlocal_scope",
+        "stop": null,
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "global_or_nonlocal_scope",
+        "stop": null,
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "scope.global",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 0,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "scope.if-origin",
+      "origin": "synthetic_contract_fixture",
+      "expected": {
+        "status": "unresolved",
+        "reason": "straight_line_function_body_required",
+        "stop": null,
+        "reference": null
+      },
+      "outcome": {
+        "status": "unresolved",
+        "reason": "straight_line_function_body_required",
+        "stop": null,
+        "reference": null
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "scope.if-origin",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 0,
+        "states": {
+          "d": "origin"
+        },
+        "events": [],
+        "consumer_reference": null
+      },
+      "agrees": true
+    }
+  ],
+  "source_outcomes": [
+    {
+      "id": "specgraph-05",
+      "source_case_id": "specgraph-05",
+      "origin": "real_unmodified_control",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/traceability/publication.py",
+      "source_file_sha256": "c4884e043c9489b9ee46e4b9da92a8191c0da2f19354572cb632a1abf9ecdee7",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": null,
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "binding_error",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "binding_error",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "7d398bf4dc8f30b000ba1b19f9dd568a5f9340019c254afc73e9f8a264621054",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "binding_error": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "binding_error",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-05-alias_copy",
+      "source_case_id": "specgraph-05",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/traceability/publication.py",
+      "source_file_sha256": "4979bdd385ac2a016b047504aa71c17297c79bb73f784d85c23ee7a5a5a1a6ec",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": null,
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 247,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 247,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "b4624345050ee2afd6c3b3d4a8b5f3ee0fda59e704f339249b22930b9f872df0",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "binding_error": "origin",
+          "_decision_flow_alias_probe": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 246,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "binding_error",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "binding_error": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 247,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-05-alias_origin_rebound",
+      "source_case_id": "specgraph-05",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/traceability/publication.py",
+      "source_file_sha256": "8f5f1c17f221ff57c7396d6f79f9ccba4d4af68fe7ffef6d274bdb75258cdd42",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": null,
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "8f36e9ea8c98d8c17b03e8a56b9cfa064f4645ef43097edaf22013add7c1212b",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "binding_error": "other",
+          "_decision_flow_alias_probe": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 246,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "binding_error",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "binding_error": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 247,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "binding_error",
+            "before": {
+              "binding_error": "origin"
+            },
+            "after": {
+              "binding_error": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 248,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-05-alias_rebound",
+      "source_case_id": "specgraph-05",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/traceability/publication.py",
+      "source_file_sha256": "8a822a1f2157d857b477ca1249bb4be9db846772160d1420212571705cf67d28",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": null,
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "5ac2bc4b8945266f16851c1ffab37fec00ba4c0b3c508d0a510810a7f137ecdb",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "binding_error": "origin",
+          "_decision_flow_alias_probe": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 246,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "binding_error",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "binding_error": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 247,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 248,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-05-alias_deleted",
+      "source_case_id": "specgraph-05",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/traceability/publication.py",
+      "source_file_sha256": "293a7a4d9df923668e41854c4187767ac7a1485ff127dc6e248b09fb5597f667",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": null,
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "3d86126baf2614a785fe792b8860746478b704560b531abce656dad978512c94",
+        "origin_projection": "value",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "binding_error": "origin",
+          "_decision_flow_alias_probe": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 246,
+              "column": 5,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "binding_error",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "binding_error": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 247,
+              "column": 5,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted",
+          "projection": "value",
+          "anchor": {
+            "line": 248,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-02",
+      "source_case_id": "specgraph-02",
+      "origin": "real_unmodified_control",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_AcceptanceCriterionDisposition",
+        "member": "ADD_PLACEHOLDER",
+        "class_source_sha256": "22c77f6f966665e94033187d57429a5284b7829edcd3f1e30255071f6184f612",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "decision",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "decision",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "9a8dfdc27e1c6ea09bc69f6b3f800abd0fc0780807d95bf9670317d4bcf84bbb",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "decision": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "decision",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-02-alias_copy",
+      "source_case_id": "specgraph-02",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "fa070811b64b460157a431f9400a676b6c1f588299d56b7dc14495f151b2d422",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_AcceptanceCriterionDisposition",
+        "member": "ADD_PLACEHOLDER",
+        "class_source_sha256": "22c77f6f966665e94033187d57429a5284b7829edcd3f1e30255071f6184f612",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 427,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 427,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "55034ca414b2db0fe0083723cc23f4337c0ea69876f99a2fc2e5d68a583264b2",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "decision": "origin",
+          "_decision_flow_alias_probe": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 426,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 427,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-02-alias_origin_rebound",
+      "source_case_id": "specgraph-02",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "7ef2d049d090b0a94df35a156ed7383990bb016821396b2f9ee4f7073e79d322",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_AcceptanceCriterionDisposition",
+        "member": "ADD_PLACEHOLDER",
+        "class_source_sha256": "22c77f6f966665e94033187d57429a5284b7829edcd3f1e30255071f6184f612",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "de3462c3a57c4d2ed47f11b20d8ccb928591f36742d2344171c871e1d65275ac",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "decision": "other",
+          "_decision_flow_alias_probe": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 426,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 427,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "decision",
+            "before": {
+              "decision": "origin"
+            },
+            "after": {
+              "decision": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 428,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-02-alias_rebound",
+      "source_case_id": "specgraph-02",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "c5ba166bce16c5061a676f1d60a37d9f41dfc8ee31615f94c573f0acf9c9c8ed",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_AcceptanceCriterionDisposition",
+        "member": "ADD_PLACEHOLDER",
+        "class_source_sha256": "22c77f6f966665e94033187d57429a5284b7829edcd3f1e30255071f6184f612",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "b3c6c82637665a10e1f860577c8fbc033868e73c53d0d0ce5fec79492878d5b6",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "decision": "origin",
+          "_decision_flow_alias_probe": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 426,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 427,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 428,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-02-alias_deleted",
+      "source_case_id": "specgraph-02",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "3d16a11bc59de5fb54d6aa1216867affb68496c488d34db526cfa6ec913dfbea",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_AcceptanceCriterionDisposition",
+        "member": "ADD_PLACEHOLDER",
+        "class_source_sha256": "22c77f6f966665e94033187d57429a5284b7829edcd3f1e30255071f6184f612",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "c7e5b26bfbd37e1d669d79859b492c89e05fd0bb7b7d2b0ff7b94cba497e0324",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "decision": "origin",
+          "_decision_flow_alias_probe": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 426,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 427,
+              "column": 13,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted",
+          "projection": "value",
+          "anchor": {
+            "line": 428,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-03",
+      "source_case_id": "specgraph-03",
+      "origin": "real_unmodified_control",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "ccc6d0f1f32275c38272eac5fbf51c516eae7245ef83c83288e74b04d8953416",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_UnsupportedClaimDisposition",
+        "member": "DOWNGRADE",
+        "class_source_sha256": "dcdf68d25106130b0afa68f35c7946ef8403db0f295b2e4d66688b5f5c4c4b5f",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "decision",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "decision",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "693f74dc8abeeee86304eeb71473a294394b007e54471d21f44eca7761795511",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 1,
+        "states": {
+          "decision": "origin"
+        },
+        "events": [],
+        "consumer_reference": {
+          "name": "decision",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-03-alias_copy",
+      "source_case_id": "specgraph-03",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "c2de3f66910726739065aec5b59ab34825711dc1ade0c4eb9ae831c4f1abcdeb",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_UnsupportedClaimDisposition",
+        "member": "DOWNGRADE",
+        "class_source_sha256": "dcdf68d25106130b0afa68f35c7946ef8403db0f295b2e4d66688b5f5c4c4b5f",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 532,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 532,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "59a8b56dc68a51aec02b6cbe49d083e34d77e543b9c1de899b518096f7c6219a",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 2,
+        "states": {
+          "decision": "origin",
+          "_decision_flow_alias_probe": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 531,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 532,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-03-alias_origin_rebound",
+      "source_case_id": "specgraph-03",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "c1f03512adfe912bbf2354a0815e0d28bb08b678e42d6b98885862e8d338e9d0",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_UnsupportedClaimDisposition",
+        "member": "DOWNGRADE",
+        "class_source_sha256": "dcdf68d25106130b0afa68f35c7946ef8403db0f295b2e4d66688b5f5c4c4b5f",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "outcome": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "cc6dc21e63794cd33367fdd5ed77f4d5bc0ef3332ce6505341d3d53e7c39255e",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "decision": "other",
+          "_decision_flow_alias_probe": "origin"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 531,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 532,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "decision",
+            "before": {
+              "decision": "origin"
+            },
+            "after": {
+              "decision": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "origin",
+          "projection": "value",
+          "anchor": {
+            "line": 533,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-03-alias_rebound",
+      "source_case_id": "specgraph-03",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "2df9ae28d578764a13abcbb853a7783e3614d4b4df90d0eb8f2fc5f6492a5729",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_UnsupportedClaimDisposition",
+        "member": "DOWNGRADE",
+        "class_source_sha256": "dcdf68d25106130b0afa68f35c7946ef8403db0f295b2e4d66688b5f5c4c4b5f",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "4af394b51fdb2e6458b854b59e95e13c1c6d3878ba523871ab3c8a41fb8967e2",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "decision": "origin",
+          "_decision_flow_alias_probe": "other"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 531,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "literal",
+            "anchor": {
+              "line": 532,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": null,
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "other"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "other",
+          "projection": "value",
+          "anchor": {
+            "line": 533,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    },
+    {
+      "id": "specgraph-03-alias_deleted",
+      "source_case_id": "specgraph-03",
+      "origin": "synthetic_counterfactual",
+      "source_revision": "59ae0f661844db0fde5f64b7dd52ee24a7b8fcbe",
+      "source_path": "tools/candidate_repair_loop.py",
+      "source_file_sha256": "f6492357f79b0f4e053601c0057a219360299527d0892ad5ba9641d995b07b38",
+      "origin_precondition": "resolved direct_application in frozen v1 assessment",
+      "enum_precondition": {
+        "class": "_UnsupportedClaimDisposition",
+        "member": "DOWNGRADE",
+        "class_source_sha256": "dcdf68d25106130b0afa68f35c7946ef8403db0f295b2e4d66688b5f5c4c4b5f",
+        "basis": "exact frozen source, simple enum import/base/members; prior v1 enum proof assumed"
+      },
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted"
+        }
+      },
+      "outcome": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted"
+        }
+      },
+      "evidence": {
+        "contract": "specification-metrics.local-alias-flow-contract/v1-draft",
+        "origin_token": "31ae2435868d637647e8fb11fdc1021bdd3ae37367e6fa5eac0623a88db80ecb",
+        "origin_projection": "raw",
+        "limits": {
+          "max_tracked_names": 8,
+          "max_following_named_sibling_nodes": 64
+        },
+        "visited_nodes": 3,
+        "states": {
+          "decision": "origin",
+          "_decision_flow_alias_probe": "deleted"
+        },
+        "events": [
+          {
+            "kind": "copy",
+            "anchor": {
+              "line": 531,
+              "column": 13,
+              "syntax_kind": "expression_statement"
+            },
+            "source": "decision",
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": null,
+              "decision": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "origin"
+            }
+          },
+          {
+            "kind": "delete",
+            "anchor": {
+              "line": 532,
+              "column": 13,
+              "syntax_kind": "delete_statement"
+            },
+            "source": null,
+            "target": "_decision_flow_alias_probe",
+            "before": {
+              "_decision_flow_alias_probe": "origin"
+            },
+            "after": {
+              "_decision_flow_alias_probe": "deleted"
+            }
+          }
+        ],
+        "consumer_reference": {
+          "name": "_decision_flow_alias_probe",
+          "state": "deleted",
+          "projection": "value",
+          "anchor": {
+            "line": 533,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          }
+        }
+      },
+      "agrees": true
+    }
+  ]
+}
