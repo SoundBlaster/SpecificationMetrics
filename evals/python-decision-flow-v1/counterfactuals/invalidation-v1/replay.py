@@ -16,8 +16,59 @@ real = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(real)
 
 
+def identifier_present(tree, name):
+    return any(
+        isinstance(node, ast.Name)
+        and node.id == name
+        or isinstance(node, ast.arg)
+        and node.arg == name
+        for node in ast.walk(tree)
+    )
+
+
+def alias_change(lines, tree, branch, variable, variant):
+    """Insert a fresh local alias and rewrite only one original guard name."""
+    alias = "_decision_flow_alias_probe"
+    if variant["alias"] != alias or identifier_present(tree, alias):
+        raise ValueError("alias probe must be the declared fresh identifier")
+    names = [
+        n for n in ast.walk(branch.test) if isinstance(n, ast.Name) and n.id == variable
+    ]
+    if (
+        len(names) != 1
+        or names[0].lineno != branch.lineno
+        or names[0].end_lineno != branch.lineno
+    ):
+        raise ValueError("alias rewrite requires one same-line guard reference")
+    extras = {
+        "alias_copy": ([], True),
+        "alias_origin_rebound": ([f"{variable} = None"], True),
+        "alias_rebound": ([f"{alias} = None"], False),
+        "alias_deleted": ([f"del {alias}"], False),
+    }
+    if variant["mutation"] not in extras:
+        raise ValueError("unsupported alias mutation")
+    extra, semantic = extras[variant["mutation"]]
+    if variant["author_expected_selected_branch_reads_origin"] is not semantic:
+        raise ValueError("alias semantic label mismatch")
+    original = lines[branch.lineno - 1]
+    raw = original.encode()
+    reference = names[0]
+    replacement = (
+        raw[: reference.col_offset] + alias.encode() + raw[reference.end_col_offset :]
+    ).decode()
+    if (
+        variant["original_branch_line"] != original
+        or variant["replaced_branch_line"] != replacement
+    ):
+        raise ValueError("alias rewrite must change only the selected guard name")
+    indent = original[: branch.col_offset]
+    inserted = "".join(indent + s + "\n" for s in [f"{alias} = {variable}", *extra])
+    return inserted, replacement
+
+
 def materialize_variant(data, case, pair, variant):
-    """Permit exactly one declared insertion before the original next if."""
+    """Permit declared insertions and a bounded optional alias guard rewrite."""
     lines = data.decode("utf-8").splitlines(keepends=True)
     line = pair["branch_anchor"]["line"]
     branch = next(
@@ -70,24 +121,25 @@ def materialize_variant(data, case, pair, variant):
         "local_annotation": f"{variable}: object",
     }
     kind = variant["mutation"]
-    if kind not in statements or variant["before_line"] != line:
+    if variant["before_line"] != line:
         raise ValueError("unsupported mutation")
-    if kind == "unrelated_literal" and any(
-        isinstance(node, ast.Name)
-        and node.id == probe
-        or isinstance(node, ast.arg)
-        and node.arg == probe
-        for node in ast.walk(tree)
-    ):
-        raise ValueError("preservation probe collides with original identifier")
-    inserted = indent + statements[kind] + "\n"
+    replacement = lines[line - 1]
+    if kind.startswith("alias_"):
+        inserted, replacement = alias_change(lines, tree, branch, variable, variant)
+    else:
+        if kind not in statements:
+            raise ValueError("unsupported mutation")
+        if kind == "unrelated_literal" and identifier_present(tree, probe):
+            raise ValueError("preservation probe collides with original identifier")
+        inserted = indent + statements[kind] + "\n"
     if variant["inserted_text"] != inserted:
         raise ValueError("insertion differs from declared mutation")
-    changed = lines[: line - 1] + [inserted] + lines[line - 1 :]
+    inserted_lines = inserted.splitlines(keepends=True)
+    changed = lines[: line - 1] + inserted_lines + [replacement] + lines[line:]
     modified = "".join(changed).encode()
     ast.parse(modified)  # Syntax only; never execute corpus code.
     start, end = case["excerpt_lines"]
-    excerpt = "".join(changed[start - 1 : end + 1])
+    excerpt = "".join(changed[start - 1 : end + len(inserted_lines)])
     diff = "".join(
         difflib.unified_diff(
             lines, changed, fromfile="a/" + case["path"], tofile="b/" + case["path"]
@@ -297,6 +349,15 @@ def main():
                 "flow_report_sha256": real.digest(result.stdout),
             }
         )
+        metadata = (
+            pair
+            if origin == "real_unmodified_control"
+            else next(v for v in pair["variants"] if v["id"] == run_id)
+        )
+        if "author_expected_selected_branch_reads_origin" in metadata:
+            outcomes[-1]["author_expected_selected_branch_reads_origin"] = metadata[
+                "author_expected_selected_branch_reads_origin"
+            ]
     assessment = {
         "schema": "python-decision-flow-counterfactual-assessment/v1",
         "cases_sha256": real.digest(manifest_bytes),

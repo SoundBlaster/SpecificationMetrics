@@ -1,0 +1,694 @@
+{
+  "schema": "python-decision-flow-counterfactual-assessment/v1",
+  "cases_sha256": "ff132d422854c80e0ad55ef4726c9b4c221720f13dbdd782df647ef50ab8445c",
+  "runner_sha256": "42f42c512438791f595a2f9f29a53b557d49fb88490bc927e9298d3e1e9b82d5",
+  "analyzer_binary_sha256": "e3742383b1854984abb1e38f0bc9c70c2be46bfb3f1c8a5b999f3c1947d4fcba",
+  "analyzer_contract_source": "1bc73afc9352ec59e6716816f91be8d6b1ed9a8f",
+  "label_status": "author_declared_before_replay; not_independently_reviewed",
+  "metric_effect": "none",
+  "original_controls": 3,
+  "synthetic_cases": 12,
+  "families": 3,
+  "agreement": 15,
+  "outcomes": [
+    {
+      "id": "specgraph-05",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "real_unmodified_control",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "if_statement"
+      },
+      "binding": {
+        "application_id": "7d398bf4dc8f30b000ba1b19f9dd568a5f9340019c254afc73e9f8a264621054",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "linked",
+        "reason": "local_straight_line_read",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "branch": {
+          "anchor": {
+            "line": 246,
+            "column": 5,
+            "syntax_kind": "if_statement"
+          },
+          "candidate_fingerprint": "python:traceability/publication.py:if:42757840404af310:1",
+          "condition": "binding_error",
+          "reference_projection": "value"
+        }
+      },
+      "agrees": true,
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "f804468a1e8aca9f64c5a5c4a0b7953a27e0780fffe082854ac6ee7d05a78d2c",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-05-alias_copy",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "b4624345050ee2afd6c3b3d4a8b5f3ee0fda59e704f339249b22930b9f872df0",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "513000637d97ae6734e593e544e33ca3b57ce890e33590cd768dde6b0e0239a6",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "5bbdcf3ccda91f324bff7733094a25a9092951959f9174dbe09064886e71a40d",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-05-alias_origin_rebound",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "8f36e9ea8c98d8c17b03e8a56b9cfa064f4645ef43097edaf22013add7c1212b",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "bfe3769538f7cbbf813258debf8d549897018b8a471bd9cd009cf37abd69c743",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "dd1bbb22f1f29e5146416d071903aa7aeb05fb5abdcd46a123b8b51860a8d4be",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-05-alias_rebound",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "5ac2bc4b8945266f16851c1ffab37fec00ba4c0b3c508d0a510810a7f137ecdb",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "7c3e04cf9f8382349467cba3ce79351561e97212164408d6d608543d008adc90",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "d4a2c6a3c9730e206f91bdffd2adf6d2b213d8ebad6138f45e75dbf02b44c5fc",
+      "author_expected_selected_branch_reads_origin": false
+    },
+    {
+      "id": "specgraph-05-alias_deleted",
+      "source_case_id": "specgraph-05",
+      "family": "specgraph/publication-binding",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 246,
+        "column": 5,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "3d86126baf2614a785fe792b8860746478b704560b531abce656dad978512c94",
+        "path": "traceability/publication.py",
+        "variable": "binding_error",
+        "origin_projection": "value",
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 246,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "0319c5aaedfe7479226f0aebd7cb001160c263f1ad5667086b1aaee48b2d92fa",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "3af6e4d5f2541c571c3b096bd3c674d91cb53f4b6cb404519b2f7481d39b7305",
+      "author_expected_selected_branch_reads_origin": false
+    },
+    {
+      "id": "specgraph-02",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "real_unmodified_control",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "binding": {
+        "application_id": "9a8dfdc27e1c6ea09bc69f6b3f800abd0fc0780807d95bf9670317d4bcf84bbb",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "linked",
+        "reason": "local_straight_line_read",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "branch": {
+          "anchor": {
+            "line": 426,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          },
+          "candidate_fingerprint": "python:candidate_repair_loop.py:if:a1b66a031e5e2f16:1",
+          "condition": "decision.value == _AcceptanceCriterionDisposition.ADD_PLACEHOLDER",
+          "reference_projection": "value",
+          "enum_member": {
+            "class_name": "_AcceptanceCriterionDisposition",
+            "member_name": "ADD_PLACEHOLDER",
+            "class_anchor": {
+              "line": 59,
+              "column": 1,
+              "syntax_kind": "class_definition"
+            },
+            "member_anchor": {
+              "line": 61,
+              "column": 5,
+              "syntax_kind": "identifier"
+            }
+          },
+          "loop_anchors": [
+            {
+              "line": 419,
+              "column": 9,
+              "syntax_kind": "for_statement"
+            },
+            {
+              "line": 413,
+              "column": 5,
+              "syntax_kind": "for_statement"
+            }
+          ]
+        }
+      },
+      "agrees": true,
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "954b0c3cd8cd0cee9898add32e48b8a7a1105c7f4b3fd5736e3e0e01425a7dc3",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-02-alias_copy",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "55034ca414b2db0fe0083723cc23f4337c0ea69876f99a2fc2e5d68a583264b2",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "23b2ffc8d805eccece38c95a87c8a8a85b3698805d726e2b32b0bc6bf64b723e",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "7c40197884f05ad8ee5cb2928c1ded70bc9629ba3349a55a37faeb77f2b10f98",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-02-alias_origin_rebound",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "de3462c3a57c4d2ed47f11b20d8ccb928591f36742d2344171c871e1d65275ac",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "da2fa6fbe8ea6c651cc570180118d46d19292d60096e765776236fc03f4dfa39",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "e6ea84e45196b118cbc895522c8f58149810deb1012413f8b27d18ddf178f71d",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-02-alias_rebound",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "b3c6c82637665a10e1f860577c8fbc033868e73c53d0d0ce5fec79492878d5b6",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "4bbc3e6b97f1d005f931026a55e16663cf74fdd56db4e218e986b1f5472da9a2",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "5f0df95cf1ae4c61f830aeb93aa4df69ba9dc87c986775923db1c0469e315a5f",
+      "author_expected_selected_branch_reads_origin": false
+    },
+    {
+      "id": "specgraph-02-alias_deleted",
+      "source_case_id": "specgraph-02",
+      "family": "specgraph/acceptance",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 426,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "c7e5b26bfbd37e1d669d79859b492c89e05fd0bb7b7d2b0ff7b94cba497e0324",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 426,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "cebc50f5fee40c64c0524caee5358697b88e8a35eb756fef2e5f82be31c6baca",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "4cd6ec65082e5999201bbfc1dca6dafe139de1670a9e63b28aaa38b5ebf126c5",
+      "author_expected_selected_branch_reads_origin": false
+    },
+    {
+      "id": "specgraph-03",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "real_unmodified_control",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "linked",
+        "flow_reason": "local_straight_line_read"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "if_statement"
+      },
+      "binding": {
+        "application_id": "693f74dc8abeeee86304eeb71473a294394b007e54471d21f44eca7761795511",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "linked",
+        "reason": "local_straight_line_read",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        },
+        "branch": {
+          "anchor": {
+            "line": 531,
+            "column": 13,
+            "syntax_kind": "if_statement"
+          },
+          "candidate_fingerprint": "python:candidate_repair_loop.py:if:dbfaf5a3a55b635c:1",
+          "condition": "decision.value == _UnsupportedClaimDisposition.DOWNGRADE",
+          "reference_projection": "value",
+          "enum_member": {
+            "class_name": "_UnsupportedClaimDisposition",
+            "member_name": "DOWNGRADE",
+            "class_anchor": {
+              "line": 466,
+              "column": 1,
+              "syntax_kind": "class_definition"
+            },
+            "member_anchor": {
+              "line": 468,
+              "column": 5,
+              "syntax_kind": "identifier"
+            }
+          },
+          "loop_anchors": [
+            {
+              "line": 525,
+              "column": 9,
+              "syntax_kind": "for_statement"
+            },
+            {
+              "line": 524,
+              "column": 5,
+              "syntax_kind": "for_statement"
+            }
+          ]
+        }
+      },
+      "agrees": true,
+      "source_digest": "93be6886ddc5ae4d8264a62fa8451a42132ee5244a186dac455c0b80394a333f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "21e188434a56083e6e6b47647a14b36c5a3a1efeb8c7684e7b914721579c76bf",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-03-alias_copy",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "59a8b56dc68a51aec02b6cbe49d083e34d77e543b9c1de899b518096f7c6219a",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "0b5fd863b6cb896a72c1c26d022ee4a8b0e8d4a8ec9f388997f1068f112e8c7f",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "0336634418646ab8ee96fa7fd74d9b8d7a8f41bf1a5ab2d26468e2e2360acead",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-03-alias_origin_rebound",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "cc6dc21e63794cd33367fdd5ed77f4d5bc0ef3332ce6505341d3d53e7c39255e",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "a56d3075648d068d811f09b38692a6efab0657713a2ca82ba397c541ab07dd5d",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "6eff4d6c91cb158bbee3f9942ea959f57c16685ec9629de5e6765ec4da2efc8d",
+      "author_expected_selected_branch_reads_origin": true
+    },
+    {
+      "id": "specgraph-03-alias_rebound",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "4af394b51fdb2e6458b854b59e95e13c1c6d3878ba523871ab3c8a41fb8967e2",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "629d6e7b1bbc4b64fce1eecd1731cc7f45faf045dd21968d99c17ceccf8b9bbc",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "4821427d033b3c11579fc9c6fe3ed2e9e259edd40f2762b1fb37111dc0e60c51",
+      "author_expected_selected_branch_reads_origin": false
+    },
+    {
+      "id": "specgraph-03-alias_deleted",
+      "source_case_id": "specgraph-03",
+      "family": "specgraph/claims",
+      "origin": "synthetic_counterfactual",
+      "expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "observed": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "expected_stop": {
+        "line": 531,
+        "column": 13,
+        "syntax_kind": "expression_statement"
+      },
+      "binding": {
+        "application_id": "31ae2435868d637647e8fb11fdc1021bdd3ae37367e6fa5eac0623a88db80ecb",
+        "path": "candidate_repair_loop.py",
+        "variable": "decision",
+        "origin_projection": null,
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 531,
+          "column": 13,
+          "syntax_kind": "expression_statement"
+        },
+        "branch": null
+      },
+      "agrees": true,
+      "source_digest": "b046547a1ee3087001da10a8811e4c8ab79334b8f9e04998308b46f565d69293",
+      "scope_manifest_digest": "e364eecb8917ff17830dd96f2abaa1f7038017152b4ba7c5bed38a65cd752b8c",
+      "flow_report_sha256": "5a18c34acc7621356d5e5fdbfa338ceb303018b880890c5bc4d7a9d51265cc2f",
+      "author_expected_selected_branch_reads_origin": false
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "python-decision-flow-alias-comparison/v1",
+  "cases_sha256": "ff132d422854c80e0ad55ef4726c9b4c221720f13dbdd782df647ef50ab8445c",
+  "runner_sha256": "42f42c512438791f595a2f9f29a53b557d49fb88490bc927e9298d3e1e9b82d5",
+  "analyzer_binary_sha256": "e3742383b1854984abb1e38f0bc9c70c2be46bfb3f1c8a5b999f3c1947d4fcba",
+  "source_families": 3,
+  "reused_real_controls": 3,
+  "new_synthetic_alias_cases": 12,
+  "contract_agreement": 15,
+  "semantic_labels": "Author-declared selected-guard origin dependency, not analyzer conclusions or whole-program equivalence.",
+  "groups": [
+    {
+      "origin": "real_unmodified_control",
+      "author_expected_selected_branch_reads_origin": true,
+      "observed_status": "linked",
+      "count": 3
+    },
+    {
+      "origin": "synthetic_counterfactual",
+      "author_expected_selected_branch_reads_origin": true,
+      "observed_status": "unresolved",
+      "count": 6
+    },
+    {
+      "origin": "synthetic_counterfactual",
+      "author_expected_selected_branch_reads_origin": false,
+      "observed_status": "unresolved",
+      "count": 6
+    }
+  ],
+  "semantic_discrimination_of_alias_variants": "none; all 12 stop at the first alias assignment, irrespective of later rebind/delete",
+  "regressions": {
+    "preservation": {
+      "target_checks": 15,
+      "agreement": 15,
+      "frozen_case_labels_and_complete_binding_evidence_match": true
+    },
+    "invalidation": {
+      "target_checks": 9,
+      "agreement": 9,
+      "frozen_case_labels_and_complete_binding_evidence_match": true
+    }
+  },
+  "frozen_files_unchanged": [
+    "corpus.json",
+    "assessment.json",
+    "reviews/astra-medium-2026-10-23/independent-labels.json",
+    "counterfactuals/preservation-v1/cases.json",
+    "counterfactuals/preservation-v1/assessment.json",
+    "counterfactuals/invalidation-v1/cases.json",
+    "counterfactuals/invalidation-v1/assessment.json"
+  ],
+  "metric_effect": "none"
+}
