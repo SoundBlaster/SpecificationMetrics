@@ -84,6 +84,12 @@ function's independent inline policy; report dynamic imports, shadowing and
 ambiguous resolution as explicit uncertainty where they prevent a conclusion.
 No whole-function exemption follows from one recognized call.
 
+The [bounded local-alias proposal](local-alias-flow-contract.md) and its
+[authored acceptance matrix](local-alias-flow-cases.json) define a separate
+future opt-in result-to-branch profile. They distinguish value provenance from
+name rebinding and reserve explicit unknown/effect/resource boundaries. This
+is a contract draft; no alias transfer engine or new CLI profile is implemented.
+
 ## Stage 3: Metamorphic testing
 
 Generate variants with declared preconditions and expected relations:

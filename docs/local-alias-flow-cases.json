@@ -1,0 +1,1270 @@
+{
+  "schema": "specification-metrics.local-alias-flow-contract/v1-draft",
+  "status": "proposed_not_implemented",
+  "proposed_cli_profile": "python-decision-flow-alias-v1",
+  "proposed_report_profile": "specification-metrics.python-decision-flow-alias/v1",
+  "metric_effect": "none",
+  "preconditions": "Unit fragments assume RULE is a recognized synchronous FirstMatch. Future harness supplies factory/import evidence and translates fragment anchors if a prelude is added. Source is not executed.",
+  "defaults": {
+    "max_tracked_names": 8,
+    "max_following_named_sibling_nodes": 64
+  },
+  "anchor_space": "fragment code, 1-based line and UTF-8 byte column",
+  "unit_cases": [
+    {
+      "id": "direct.raw",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "direct.payload",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx).value\n    if d:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "value",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "direct.matched",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx).matched\n    if not d:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "matched",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "copy.raw",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "copy.payload",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx).value\n    a = d\n    if a:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "value",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "copy.matched",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx).matched\n    a = d\n    if not a:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "matched",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "copy.chain",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    b = a\n    if b.matched:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "copy.self",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a = a\n    if a.matched:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "rebind.original-keeps-alias",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    d = None\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "delete.original-keeps-alias",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    del d\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "rebind.alias-keeps-original",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a = None\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "delete.alias-keeps-original",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    del a\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "rebind.alias-loses-guard",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a = None\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "other"
+        }
+      }
+    },
+    {
+      "id": "delete.alias-loses-guard",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    del a\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "deleted"
+        }
+      }
+    },
+    {
+      "id": "rebind.original-no-alias",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    d = None\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "other"
+        }
+      }
+    },
+    {
+      "id": "delete.original-no-alias",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    del d\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "deleted"
+        }
+      }
+    },
+    {
+      "id": "rebind.all-names",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    d = None\n    a = None\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "other"
+        }
+      }
+    },
+    {
+      "id": "copy.saved-chain",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    b = a\n    a = None\n    d = None\n    if b.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 7,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "copy.other-state",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a = None\n    b = a\n    if b.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "b",
+          "state": "other"
+        }
+      }
+    },
+    {
+      "id": "copy.deleted-source",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    del a\n    b = a\n    if b.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "alias_copy_source_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "copy.self-deleted",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    del a\n    a = a\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "alias_copy_source_deleted",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "delete.twice",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    del a\n    del a\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "deletion_state_unproven",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "delete.untracked",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    del external\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "deletion_state_unproven",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "delete_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.source",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = external\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.untracked-literal-source",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    x = None\n    a = x\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.projected-copy",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d.value\n    if a:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 3,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.raw-truthiness",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    if a:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.double-projection",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx).value\n    a = d\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "value",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.boolean-combination",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    if a.value and ready:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "unknown.unrelated-if",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    if ready:\n        pass\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "condition_or_control_flow_unsupported",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.object-write",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a.value = None\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.subscript-write",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a[0] = None\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.augassign",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a += 1\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "object_mutation_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.call",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    touch(a)\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.call-after-loss",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    d = None\n    a = None\n    touch(a)\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "intervening_expression_barrier",
+        "stop": {
+          "line": 6,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.return",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    return a\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "return_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.assert",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    assert a.value\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "assert_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "barrier.closure",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    def capture():\n        return a\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "control_flow_or_effect_barrier",
+        "stop": {
+          "line": 4,
+          "column": 5,
+          "syntax_kind": "function_definition"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "preserve.annotation",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n    a: object\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "preserve.literal-unrelated",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    x = None\n    a = d\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 5,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "scope.end-with-live-alias",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a = d\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "not_linked",
+        "reason": "no_supported_branch_before_scope_end",
+        "stop": null,
+        "reference": null
+      }
+    },
+    {
+      "id": "limit.names-exact",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a1 = d\n    a2 = a1\n    a3 = a2\n    a4 = a3\n    a5 = a4\n    a6 = a5\n    a7 = a6\n    if a7.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 10,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "a7",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "limit.names-overflow",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    a1 = d\n    a2 = a1\n    a3 = a2\n    a4 = a3\n    a5 = a4\n    a6 = a5\n    a7 = a6\n    a8 = a7\n    if a8.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "alias_name_limit",
+        "stop": {
+          "line": 10,
+          "column": 5,
+          "syntax_kind": "expression_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "limit.nodes-exact",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "stop": {
+          "line": 66,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": {
+          "name": "d",
+          "state": "origin"
+        }
+      }
+    },
+    {
+      "id": "limit.nodes-overflow",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready, external):\n    d = RULE.decide(ctx)\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    pass\n    if d.value:\n        pass\n",
+      "target_origin": {
+        "line": 2,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "statement_limit",
+        "stop": {
+          "line": 67,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        },
+        "reference": null
+      }
+    },
+    {
+      "id": "scope.global",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx):\n    global d\n    d = RULE.decide(ctx)\n    a = d\n    if a.value:\n        pass\n",
+      "target_origin": {
+        "line": 3,
+        "column": 9
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "global_or_nonlocal_scope",
+        "stop": null,
+        "reference": null
+      }
+    },
+    {
+      "id": "scope.if-origin",
+      "origin": "synthetic_contract_fixture",
+      "code": "def fixture(ctx, ready):\n    if ready:\n        d = RULE.decide(ctx)\n        a = d\n        if a.value:\n            pass\n",
+      "target_origin": {
+        "line": 3,
+        "column": 13
+      },
+      "origin_projection": "raw",
+      "expected": {
+        "status": "unresolved",
+        "reason": "straight_line_function_body_required",
+        "stop": null,
+        "reference": null
+      }
+    }
+  ],
+  "frozen_alias_manifest": {
+    "path": "evals/python-decision-flow-v1/counterfactuals/alias-v1/cases.json",
+    "sha256": "ff132d422854c80e0ad55ef4726c9b4c221720f13dbdd782df647ef50ab8445c"
+  },
+  "source_backed_expectations": [
+    {
+      "id": "specgraph-05-alias_copy",
+      "source_case_id": "specgraph-05",
+      "modified_file_sha256": "4979bdd385ac2a016b047504aa71c17297c79bb73f784d85c23ee7a5a5a1a6ec",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": true,
+      "proposed_alias_profile_expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 247,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-05-alias_origin_rebound",
+      "source_case_id": "specgraph-05",
+      "modified_file_sha256": "8f5f1c17f221ff57c7396d6f79f9ccba4d4af68fe7ffef6d274bdb75258cdd42",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": true,
+      "proposed_alias_profile_expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-05-alias_rebound",
+      "source_case_id": "specgraph-05",
+      "modified_file_sha256": "8a822a1f2157d857b477ca1249bb4be9db846772160d1420212571705cf67d28",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": false,
+      "proposed_alias_profile_expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-05-alias_deleted",
+      "source_case_id": "specgraph-05",
+      "modified_file_sha256": "293a7a4d9df923668e41854c4187767ac7a1485ff127dc6e248b09fb5597f667",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": false,
+      "proposed_alias_profile_expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 248,
+          "column": 5,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-02-alias_copy",
+      "source_case_id": "specgraph-02",
+      "modified_file_sha256": "fa070811b64b460157a431f9400a676b6c1f588299d56b7dc14495f151b2d422",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": true,
+      "proposed_alias_profile_expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 427,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-02-alias_origin_rebound",
+      "source_case_id": "specgraph-02",
+      "modified_file_sha256": "7ef2d049d090b0a94df35a156ed7383990bb016821396b2f9ee4f7073e79d322",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": true,
+      "proposed_alias_profile_expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-02-alias_rebound",
+      "source_case_id": "specgraph-02",
+      "modified_file_sha256": "c5ba166bce16c5061a676f1d60a37d9f41dfc8ee31615f94c573f0acf9c9c8ed",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": false,
+      "proposed_alias_profile_expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-02-alias_deleted",
+      "source_case_id": "specgraph-02",
+      "modified_file_sha256": "3d16a11bc59de5fb54d6aa1216867affb68496c488d34db526cfa6ec913dfbea",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": false,
+      "proposed_alias_profile_expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 428,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-03-alias_copy",
+      "source_case_id": "specgraph-03",
+      "modified_file_sha256": "c2de3f66910726739065aec5b59ab34825711dc1ade0c4eb9ae831c4f1abcdeb",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": true,
+      "proposed_alias_profile_expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 532,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-03-alias_origin_rebound",
+      "source_case_id": "specgraph-03",
+      "modified_file_sha256": "c1f03512adfe912bbf2354a0815e0d28bb08b678e42d6b98885862e8d338e9d0",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": true,
+      "proposed_alias_profile_expected": {
+        "status": "linked",
+        "reason": "local_alias_read",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-03-alias_rebound",
+      "source_case_id": "specgraph-03",
+      "modified_file_sha256": "2df9ae28d578764a13abcbb853a7783e3614d4b4df90d0eb8f2fc5f6492a5729",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": false,
+      "proposed_alias_profile_expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_rebound",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    },
+    {
+      "id": "specgraph-03-alias_deleted",
+      "source_case_id": "specgraph-03",
+      "modified_file_sha256": "f6492357f79b0f4e053601c0057a219360299527d0892ad5ba9641d995b07b38",
+      "current_v1_expected": {
+        "call_category": "direct_application",
+        "flow_status": "unresolved",
+        "flow_reason": "intervening_expression_barrier"
+      },
+      "author_expected_selected_branch_reads_origin": false,
+      "proposed_alias_profile_expected": {
+        "status": "not_linked",
+        "reason": "branch_reference_deleted",
+        "reference_name": "_decision_flow_alias_probe",
+        "stop": {
+          "line": 533,
+          "column": 13,
+          "syntax_kind": "if_statement"
+        }
+      }
+    }
+  ]
+}

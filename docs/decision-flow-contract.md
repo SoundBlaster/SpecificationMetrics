@@ -191,3 +191,11 @@ and ordinary-code analogues. Its author labels were frozen before replay.
 Agreement with the current bounded contract is reported separately from semantic
 consumption and unsupported real usage; it does not establish population
 precision/recall or authorize U exclusions.
+
+### Proposed alias extension
+
+The separate [bounded local-alias contract](local-alias-flow-contract.md)
+proposes a new opt-in profile and authored acceptance matrix. It tracks value
+provenance through name copies and distinguishes rebinding/deleting one name
+from changing its other aliases. It is not implemented; this v1 profile keeps
+its existing alias barrier and all historical outcomes unchanged.
