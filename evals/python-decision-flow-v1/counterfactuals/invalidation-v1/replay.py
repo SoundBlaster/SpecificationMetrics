@@ -60,10 +60,26 @@ def materialize_variant(data, case, pair, variant):
         raise ValueError("branch is not the next original statement")
     indent = lines[line - 1][: branch.col_offset]
     variable = pair["variable"]
-    statements = {"overwrite": f"{variable} = None", "delete": f"del {variable}"}
+    probe = "_decision_flow_preservation_probe"
+    statements = {
+        "overwrite": f"{variable} = None",
+        "delete": f"del {variable}",
+        "comment": "# Evaluation-only preservation control.",
+        "pass": "pass",
+        "unrelated_literal": f"{probe} = None",
+        "local_annotation": f"{variable}: object",
+    }
     kind = variant["mutation"]
     if kind not in statements or variant["before_line"] != line:
         raise ValueError("unsupported mutation")
+    if kind == "unrelated_literal" and any(
+        isinstance(node, ast.Name)
+        and node.id == probe
+        or isinstance(node, ast.arg)
+        and node.arg == probe
+        for node in ast.walk(tree)
+    ):
+        raise ValueError("preservation probe collides with original identifier")
     inserted = indent + statements[kind] + "\n"
     if variant["inserted_text"] != inserted:
         raise ValueError("insertion differs from declared mutation")
@@ -171,6 +187,31 @@ def prepare(manifest, corpus_bytes, repo):
     return snapshot, sources, runs
 
 
+def assess_target(case, report, expected, stop):
+    """Join the exact origin and check the declared branch or invalidation stop."""
+    observed = real.assess(case, report)
+    sites = [
+        s
+        for s in report["applications"]["sites"]
+        if s["path"] == case["analysis_path"]
+        and (s["line"], s["column"])
+        == (case["call_anchor"]["line"], case["call_anchor"]["column"])
+    ]
+    rows = [
+        r
+        for r in report["bindings"]
+        if len(sites) == 1 and r["application_id"] == sites[0]["application_id"]
+    ]
+    row = rows[0] if len(rows) == 1 else {}
+    branch = row.get("branch")
+    branch_ok = (
+        branch is not None and branch["anchor"] == stop
+        if expected["flow_status"] == "linked"
+        else branch is None
+    )
+    return observed, row, observed == expected and row.get("stop") == stop and branch_ok
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -239,26 +280,7 @@ def main():
         applications = report["applications"]
         if applications["provisional"] or report["metric_effect"] != "none":
             raise ValueError(f"incomplete or unexpected metric contract: {run_id}")
-        observed = real.assess(case, report)
-        sites = [
-            s
-            for s in applications["sites"]
-            if s["path"] == case["analysis_path"]
-            and (s["line"], s["column"])
-            == (case["call_anchor"]["line"], case["call_anchor"]["column"])
-        ]
-        rows = [
-            r
-            for r in report["bindings"]
-            if len(sites) == 1 and r["application_id"] == sites[0]["application_id"]
-        ]
-        row = rows[0] if len(rows) == 1 else {}
-        branch = row.get("branch")
-        branch_ok = (
-            branch is not None and branch["anchor"] == pair["branch_anchor"]
-            if origin == "real_unmodified_control"
-            else branch is None
-        )
+        observed, row, agrees = assess_target(case, report, expected, stop)
         outcomes.append(
             {
                 "id": run_id,
@@ -269,9 +291,7 @@ def main():
                 "observed": observed,
                 "expected_stop": stop,
                 "binding": row,
-                "agrees": observed == expected
-                and row.get("stop") == stop
-                and branch_ok,
+                "agrees": agrees,
                 "source_digest": applications["source_digest"],
                 "scope_manifest_digest": applications["scope_manifest_digest"],
                 "flow_report_sha256": real.digest(result.stdout),

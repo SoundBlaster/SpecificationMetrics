@@ -1,0 +1,102 @@
+{
+  "schema": "python-decision-flow-preservation-comparison/v1",
+  "preservation_cases_sha256": "641632217d7e6c7a1a13b08b7f94341405dbbe098501518595581642c8fcb6de",
+  "runner_sha256": "b21c5e20908546d0fe9df9a7d3d78b25c315c2826207f1e11621385d0dd067c6",
+  "preservation_target_checks": 15,
+  "invalidation_regression_target_checks": 9,
+  "shared_real_controls": 3,
+  "unique_reused_real_controls": 3,
+  "new_synthetic_preservation_cases": 12,
+  "reused_synthetic_invalidation_cases": 6,
+  "source_families": 3,
+  "scope": "Author-declared selected source cases; no independent accuracy claim or raw metric change.",
+  "invalidation_outcomes_and_binding_evidence_match_frozen_assessment": true,
+  "original_corpus_and_frozen_labels_unchanged": true,
+  "identity_note": "Application IDs include the source snapshot digest. Match across variants by explicit source_case_id and original call anchor, never by application_id alone.",
+  "benign_binding_checks": [
+    {
+      "id": "specgraph-05-comment",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-05-pass",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-05-unrelated_literal",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-05-local_annotation",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-02-comment",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-02-pass",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-02-unrelated_literal",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-02-local_annotation",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-03-comment",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-03-pass",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-03-unrelated_literal",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    },
+    {
+      "id": "specgraph-03-local_annotation",
+      "binding_evidence_identical_except_snapshot_application_id_and_shifted_stop_and_branch_lines": true,
+      "branch_condition_unchanged": true,
+      "source_digest_changed": true,
+      "snapshot_application_id_changed": true
+    }
+  ]
+}
