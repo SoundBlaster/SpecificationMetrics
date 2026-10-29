@@ -12,6 +12,7 @@ pub enum ApplicationProfile {
     PythonIfV1,
     PythonDecisionsV1,
     PythonDecisionFlowV1,
+    PythonDecisionFlowAliasV1,
 }
 
 #[derive(Serialize)]

@@ -282,6 +282,9 @@ fn main() -> Result<()> {
                 liveness::ApplicationProfile::PythonDecisionFlowV1 => {
                     emit_json(&liveness::decision_flow(&scan), output.as_deref())?
                 }
+                liveness::ApplicationProfile::PythonDecisionFlowAliasV1 => {
+                    emit_json(&liveness::decision_flow_alias(&scan), output.as_deref())?
+                }
             }
         }
         Command::PrepareClassification {

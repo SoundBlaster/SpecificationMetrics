@@ -103,3 +103,18 @@ also pass. No Rust code changed or broad Rust suite was run locally.
 Next: implement the separately named Rust opt-in profile and compare it with
 this reference on the frozen matrix and source-backed cases. Keep implemented
 v1 output and raw metric behavior unchanged.
+# Comparing the Rust alias profile
+
+After building the binary, compare the three frozen SpecGraph controls and
+their twelve synthetic variants against the stored Python reference:
+
+```sh
+python -B evals/local-alias-reference-v1/compare_rust.py \
+  --repo /path/to/SpecGraph --binary /path/to/specification-metrics \
+  --temp-root /path/to/external/temporary-directory
+```
+
+The command verifies the frozen source provenance, uses isolated temporary
+copies, and emits the binary digest and individual outcomes. It requires the
+pinned Git revision to be present in the source checkout. This comparison does
+not prove population accuracy or execute source programs.

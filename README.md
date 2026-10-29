@@ -125,9 +125,11 @@ or loop body, including comparisons with verified same-module enum members.
 Reassignment and unsupported effects stop analysis explicitly. See the
 [flow contract and pilot](docs/decision-flow-contract.md). It does not change U.
 
-A [separate local-alias proposal](docs/local-alias-flow-contract.md) defines
-bounded value propagation and an acceptance matrix. It is not implemented;
-the current flow profile still reports alias propagation as unresolved.
+`--profile python-decision-flow-alias-v1` follows supported local name copies
+through the next condition, with explicit bounds and barriers. Its evidence is
+static and advisory: it does not establish reachability or change U. See the
+[local-alias contract](docs/local-alias-flow-contract.md). The earlier flow
+profile continues to report alias propagation as unresolved.
 
 ## Live metric
 
