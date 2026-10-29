@@ -7,6 +7,7 @@ use super::python_decisions::{DecisionReport, DecisionSite, decision_application
 use super::{PythonLiveness, PythonSource};
 use crate::model::ScanReport;
 
+mod alias;
 mod enum_members;
 use enum_members::EnumMemberEvidence;
 
@@ -32,6 +33,8 @@ struct BindingFlow {
     reason: &'static str,
     stop: Option<Anchor>,
     branch: Option<BranchUse>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    alias_flow: Option<alias::Evidence>,
 }
 
 #[derive(Serialize)]
@@ -54,6 +57,14 @@ struct BranchUse {
 }
 
 pub fn decision_flow(scan: &ScanReport) -> FlowReport {
+    flow(scan, false)
+}
+
+pub fn decision_flow_alias(scan: &ScanReport) -> FlowReport {
+    flow(scan, true)
+}
+
+fn flow(scan: &ScanReport, use_aliases: bool) -> FlowReport {
     let applications = decision_applications(scan);
     let sources: Vec<_> = scan
         .sources
@@ -83,17 +94,26 @@ pub fn decision_flow(scan: &ScanReport) -> FlowReport {
                 reason: "origin_binding_not_proven",
                 stop: None,
                 branch: None,
+                alias_flow: None,
             };
             if site.target.is_some()
                 && let Some(source) = resolver.sources.iter().find(|s| s.path == site.path)
             {
-                trace(scan, site, source, &resolver, &mut result);
+                if use_aliases {
+                    alias::trace(scan, site, source, &resolver, &mut result);
+                } else {
+                    trace(scan, site, source, &resolver, &mut result);
+                }
             }
             Some(result)
         })
         .collect();
     FlowReport {
-        profile: "specification-metrics.python-decision-flow/v1",
+        profile: if use_aliases {
+            "specification-metrics.python-decision-flow-alias/v1"
+        } else {
+            "specification-metrics.python-decision-flow/v1"
+        },
         metric_effect: "none",
         examined_bindings: bindings.len(),
         linked_bindings: bindings.iter().filter(|b| b.status == "linked").count(),

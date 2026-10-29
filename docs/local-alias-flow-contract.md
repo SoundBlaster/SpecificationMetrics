@@ -1,12 +1,11 @@
 # Bounded local-alias flow: proposed contract v1
 
-Status: **proposed, not implemented**. Date: 2026-10-26.
-This document specifies a future opt-in `python-decision-flow-alias-v1` profile
+Status: **implemented as an opt-in profile**. Contract date: 2026-10-26.
+This document specifies the opt-in `python-decision-flow-alias-v1` profile
 with report identity `specification-metrics.python-decision-flow-alias/v1`.
-Those names are reserved by this proposal, not available CLI options.
+The existing profile remains available separately.
 The separate [Python reference model](../evals/local-alias-reference-v1/README.md)
-is implemented and checked against the frozen matrix; this does not activate
-the production profile.
+is implemented and checked against the frozen matrix.
 
 The implemented [decision-flow v1](decision-flow-contract.md) stays unchanged.
 Its alias barriers, existing status/reason/stop anchors, frozen assessments,
@@ -183,8 +182,8 @@ For the source-backed variants, the future profile must produce:
 | Alias rebound before guard | 3 not linked |
 | Alias deleted before guard | 3 not linked |
 
-All 12 are currently unresolved in implemented v1. This document does not
-claim they have changed. Positive means only selected-condition dependency.
+All 12 remain unresolved in the earlier flow v1. The alias profile returns the
+outcomes above. Positive means only selected-condition dependency.
 For publication, rebinding `binding_error` can preserve its alias guard while
 changing the message read from the original name inside the body.
 
@@ -205,5 +204,8 @@ The initial document validation checked JSON structure, IDs, anchors and frozen
 source correspondence. The separate reference implementation now matches all
 47 unit cases and the 12 source-backed alias expectations, with three linked
 real controls. It records supplied factory/enum preconditions explicitly.
-No totality or population-accuracy proof follows; the Rust production profile
-and comparison against that implementation remain separate next work.
+The Rust profile matches those 47 frozen unit expectations and the 15 source
+outcomes (three controls and twelve synthetic variants) of the Python reference.
+The `scope.global` unit supplies the reference's explicit recognized-origin
+precondition in the test harness; the production resolver may decline it earlier.
+No totality or population-accuracy proof follows.

@@ -2,6 +2,63 @@ use serde_json::Value;
 use std::{fs, path::Path, process::Command};
 
 #[test]
+fn alias_profile_links_saved_name_without_changing_existing_profiles() {
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+    let manifest = root.join("scope.toml");
+    fs::write(
+        &manifest,
+        "schema_version = 1\n[[source_sets]]\nrole = 'application'\npaths = ['app.py']\n",
+    )
+    .unwrap();
+    fs::write(root.join("app.py"), "from specification_core import FirstMatch\nRULE = FirstMatch.with_fallback((), 'ok')\ndef run(c):\n    value = RULE.decide(c).value\n    alias = value\n    value = None\n    if alias: pass\n").unwrap();
+    let old = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decision-flow-v1"],
+    );
+    let metric = invoke("measure", root, &manifest, &["--require-complete"]);
+    let new = invoke(
+        "application-sites",
+        root,
+        &manifest,
+        &["--profile", "python-decision-flow-alias-v1"],
+    );
+    assert!(
+        new.status.success(),
+        "{}",
+        String::from_utf8_lossy(&new.stderr)
+    );
+    let old_report: Value = serde_json::from_slice(&old.stdout).unwrap();
+    let new_report: Value = serde_json::from_slice(&new.stdout).unwrap();
+    assert_eq!(
+        old_report["bindings"][0]["reason"],
+        "intervening_expression_barrier"
+    );
+    assert_eq!(new_report["bindings"][0]["reason"], "local_alias_read");
+    assert_eq!(
+        new_report["bindings"][0]["alias_flow"]["consumer_reference"]["name"],
+        "alias"
+    );
+    assert_eq!(old_report["applications"], new_report["applications"]);
+    assert_eq!(
+        old.stdout,
+        invoke(
+            "application-sites",
+            root,
+            &manifest,
+            &["--profile", "python-decision-flow-v1"]
+        )
+        .stdout
+    );
+    assert_eq!(
+        metric.stdout,
+        invoke("measure", root, &manifest, &["--require-complete"]).stdout
+    );
+}
+
+#[test]
 fn loop_enum_flow_retains_declaration_and_iteration_evidence() {
     let dir = tempfile::tempdir().unwrap();
     let root = dir.path();
