@@ -1487,6 +1487,106 @@ mod tests {
     }
 
     #[test]
+    fn typed_python_predicate_requires_a_resolved_constructor_and_covers_only_its_call() {
+        let dir = tempdir().unwrap();
+        for (path, import, callee, count) in [
+            (
+                "direct.py",
+                "from specification_core import PredicateSpec",
+                "PredicateSpec",
+                1,
+            ),
+            (
+                "alias.py",
+                "from specification_core import PredicateSpec as P",
+                "P",
+                1,
+            ),
+            (
+                "qualified.py",
+                "import specification_core as core",
+                "core.PredicateSpec",
+                1,
+            ),
+            (
+                "foreign.py",
+                "from unrelated import PredicateSpec",
+                "PredicateSpec",
+                0,
+            ),
+            (
+                "rebound.py",
+                "from specification_core import PredicateSpec\nPredicateSpec = external",
+                "PredicateSpec",
+                0,
+            ),
+        ] {
+            let code = format!(
+                "{import}\nRULE = {callee}[int](lambda v: 1 if v else 0)\nif external: pass\n"
+            );
+            fs::write(dir.path().join(path), code).unwrap();
+            let report = scan(&dir.path().join(path), &[]).unwrap();
+            assert!(report.parse_issues.is_empty(), "{path}");
+            assert_eq!(report.specifications.len(), count, "{path}");
+            assert_eq!(report.candidates.len(), 2);
+            assert_eq!(
+                report.candidates[0].inside_specification,
+                count == 1,
+                "{path}"
+            );
+            assert!(!report.candidates[1].inside_specification);
+        }
+        fs::write(
+            dir.path().join("specification_core.py"),
+            "class PredicateSpec: pass\n",
+        )
+        .unwrap();
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(
+            report.specifications.is_empty(),
+            "local module shadows the external package"
+        );
+    }
+
+    #[test]
+    fn typed_predicates_respect_definition_time_and_method_body_scopes() {
+        let dir = tempdir().unwrap();
+        let path = dir.path().join("policy.py");
+        fs::write(
+            &path,
+            r#"from specification_core import PredicateSpec
+class App:
+    PredicateSpec = list
+    def build(self, rule=PredicateSpec[int]([1 if external else 0])):
+        return PredicateSpec[int](lambda v: 1 if v else 0)
+def make(PredicateSpec=PredicateSpec[int](lambda v: 1 if v else 0)):
+    return PredicateSpec[int](lambda v: 1 if v else 0)
+def outer(PredicateSpec):
+    def nested(rule=PredicateSpec[int](lambda v: 1 if v else 0)): pass
+"#,
+        )
+        .unwrap();
+        let report = scan(&path, &[]).unwrap();
+        assert!(report.parse_issues.is_empty());
+        assert_eq!(
+            report
+                .specifications
+                .iter()
+                .map(|s| s.line)
+                .collect::<Vec<_>>(),
+            [5, 6]
+        );
+        assert_eq!(
+            report
+                .candidates
+                .iter()
+                .map(|c| (c.line, c.inside_specification))
+                .collect::<Vec<_>>(),
+            [(4, false), (5, true), (6, true), (7, false), (9, false)]
+        );
+    }
+
+    #[test]
     fn generic_argument_does_not_count_as_specification_conformance() {
         assert!(is_spec_base("specification_core.Specification[int]"));
         assert!(is_spec_base("specification_core::Specification<i32>"));

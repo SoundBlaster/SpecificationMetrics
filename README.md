@@ -149,9 +149,11 @@ move the ratio in either direction; that is part of a live project-health
 measurement. Store dated snapshots and their source revision in SQLite to
 explain the trajectory, without freezing a historical denominator.
 
-Counting rule v9 recognizes direct Specification/DecisionSpec conformances or
+Counting rule v10 recognizes direct Specification/DecisionSpec conformances or
 implementations and source sites that construct `PredicateSpec` or `FirstMatch`
-variants. It counts a factory site once, regardless of runtime calls. Decisions
+variants. Python also counts a subscripted call such as `PredicateSpec[ContextFacts](...)`
+when the constructor resolves to `specification_core.PredicateSpec` in the
+selected scope. It counts a factory site once, regardless of runtime calls. Decisions
 inside recognized definitions or factories do not contribute to `U`. Reviewed
 `excluded` entries in an optional registry remove only *currently matching*
 candidates. Other current candidates contribute to `U`.
@@ -164,7 +166,7 @@ See the [v9 inheritance audit](docs/python-inheritance-counting-audit.md) for th
 SpecGraph reproduction and the distinction between analyzer corrections and
 application refactoring gains.
 
-Rule v9 classifies named Python and Rust Specification declarations as `live`,
+Rule v10 classifies named Python and Rust Specification declarations as `live`,
 `dead`, or `unknown`. Resolved runtime uses stay in `S`; a private declaration
 without a resolved use leaves `S` only when a source-role manifest explicitly
 sets `[liveness] closed_world = true`. Public declarations, unresolved or

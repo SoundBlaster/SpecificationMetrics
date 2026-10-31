@@ -235,6 +235,18 @@ pub(super) fn resolved_factory(
     call: Node<'_>,
     receiver: Node<'_>,
 ) -> Option<FactoryTarget> {
+    match resolved_call_symbol(resolver, source, call, receiver)? {
+        Symbol::Value(target) => Some(target),
+        _ => None,
+    }
+}
+
+pub(super) fn resolved_call_symbol(
+    resolver: &PythonLiveness,
+    source: &ParsedPythonSource,
+    call: Node<'_>,
+    receiver: Node<'_>,
+) -> Option<Symbol> {
     let name = root_name(receiver, &source.source)?;
     if resolver.parse_failed.contains(&source.path) || lexical_binding(call, &name, &source.source)
     {
@@ -253,10 +265,7 @@ pub(super) fn resolved_factory(
         }
         ancestor = node.parent();
     }
-    match resolve_expression(resolver, source, receiver, &mut HashSet::new())? {
-        Symbol::Value(target) => Some(target),
-        _ => None,
-    }
+    resolve_expression(resolver, source, receiver, &mut HashSet::new())
 }
 
 fn direct_expression(node: Node<'_>, text: &str) -> bool {
@@ -287,13 +296,17 @@ pub(super) fn lexical_binding(mut node: Node<'_>, name: &str, text: &str) -> boo
         if parent.kind() == "lambda" || (parent.kind() == "class_definition" && !inside_function) {
             return true;
         }
-        if parent.kind() == "function_definition" {
+        // Defaults and annotations are outside the function's local body scope.
+        // Only crossing the body boundary makes a method skip its class locals.
+        if parent.kind() == "function_definition"
+            && parent.child_by_field_name("body") == Some(node)
+        {
             inside_function = true;
             // A method's bare name skips its class namespace. Enclosing function
             // scopes still participate in closure lookup and can shadow globals.
             if parent
                 .child_by_field_name("parameters")
-                .is_some_and(|parameters| mentions_identifier(parameters, name, text))
+                .is_some_and(|parameters| parameters_bind(parameters, name, text))
                 || parent.child_by_field_name("body").is_some_and(|body| {
                     binds_name(body, name, text.as_bytes()) || has_scope_directive(body)
                 })
@@ -304,6 +317,26 @@ pub(super) fn lexical_binding(mut node: Node<'_>, name: &str, text: &str) -> boo
         node = parent;
     }
     false
+}
+
+fn parameters_bind(parameters: Node<'_>, name: &str, text: &str) -> bool {
+    let mut cursor = parameters.walk();
+    parameters.named_children(&mut cursor).any(|parameter| {
+        let target = match parameter.kind() {
+            "default_parameter" | "typed_default_parameter" => {
+                parameter.child_by_field_name("name")
+            }
+            "typed_parameter" => {
+                let annotation = parameter.child_by_field_name("type");
+                let mut cursor = parameter.walk();
+                parameter
+                    .named_children(&mut cursor)
+                    .find(|child| Some(*child) != annotation && !child.is_extra())
+            }
+            _ => Some(parameter),
+        };
+        target.is_some_and(|target| mentions_identifier(target, name, text))
+    })
 }
 
 fn mentions_identifier(node: Node<'_>, name: &str, text: &str) -> bool {

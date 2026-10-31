@@ -64,13 +64,13 @@ future work because resolved `uses_specification` is not yet implemented.
 
 The separate [application-site diagnostic](application-sites-contract.md) records
 direct/mixed/unresolved Python-if evidence as preparation for that work. It does
-not activate `uses_specification`, remove candidates from U, or change v9.
+not activate `uses_specification`, remove candidates from U, or change the counting rule.
 Comparing ratios across different scopes or rule versions requires an explicit
 annotation; old snapshots are not rewritten when the contract changes.
 
 ## Current implementation boundary
 
-Counting rule v9 implements versioned source roles, semantic manifest digests,
+Counting rule v10 implements versioned source roles, semantic manifest digests,
 the exact-subtree `inside_specification` exclusion for directly recognized
 definitions, factories, the Python type marker, the Swift
 `SpecificationMetricV1` protocol marker, and the Rust
@@ -101,3 +101,32 @@ The v8 -> v9 change corrects the previously missing transitive discovery and
 inheritance use. It can increase `S`, decrease `U` and resolve `unknown` without
 any application change. Treat that as an analyzer correction and start a new
 comparison contract; do not rewrite v8 history or report it as a refactoring gain.
+
+
+## Python typed predicate factories in v10
+
+For a call such as `RULE = PredicateSpec[ContextFacts](predicate)`, the scanner
+resolves the constructor expression before the subscript through the selected
+Python modules. A resolved `specification_core.PredicateSpec` contributes one
+factory site to S. Direct imports, import aliases and module-qualified imports
+are supported. An unrelated constructor, ambiguous binding or lexically
+shadowed name provides no evidence for this rule. The argument `ContextFacts`
+is type metadata. Only the invoked factory counts. Candidates in the factory
+call subtree receive the existing inside-specification treatment. Factory
+liveness uses the existing source-presence convention.
+
+On [SpecGraph 4add3afe](https://github.com/0al-spec/SpecGraph/tree/4add3afee736b9a97a0b6750c435e985959254cd),
+with its application scope manifest and zero reviewed exclusions, the v9 and
+v10 measurements share source digest
+`bfa650679971f2b64f18f6416dbe9fe6a91a994e19287670b3d81c9f535d8c68` and
+manifest digest `f7fe04b2f442ae87b91efc8257f297c0cda10a520796a8ec72dfd66f6cd8d73e`.
+
+| Rule | S | U | S/U | Candidates inside recognized Specifications |
+| --- | ---: | ---: | ---: | ---: |
+| v9 | 127 | 10676 | 0.01189584 | 24 |
+| v10 | 130 | 10676 | 0.01217685 | 24 |
+
+The added sites are `INVALID_SPEC`, `UNAVAILABLE_SPEC` and
+`REPORT_INPUTS_COMPATIBLE_SPEC`. This difference measures the change in analyzer
+coverage on identical application bytes. Use v10 on both revisions for future
+project comparisons.
