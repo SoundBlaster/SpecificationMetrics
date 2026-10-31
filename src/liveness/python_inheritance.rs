@@ -90,6 +90,15 @@ pub(crate) fn discover_python_specifications(
         }
     }
     for source in &resolver.sources {
+        if !resolver.parse_failed.contains(&source.path) {
+            discover_typed_predicates(
+                &resolver,
+                source,
+                source.tree.root_node(),
+                definitions,
+                candidates,
+            );
+        }
         for class in module_classes(source.tree.root_node()) {
             let start = class.start_position();
             let end = class.end_position();
@@ -100,16 +109,57 @@ pub(crate) fn discover_python_specifications(
             // Test against the original catalog boundary, not the growing
             // definitions vector (which can contain earlier discovered types).
             definitions.push(catalog[index].clone());
-            for candidate in candidates
-                .iter_mut()
-                .filter(|item| item.language == Language::Python && item.path == source.path)
-            {
-                let point = (candidate.line - 1, candidate.column - 1);
-                if (start.row, start.column) <= point && point < (end.row, end.column) {
-                    candidate.inside_specification = true;
-                }
-            }
+            mark_inside(source, start, end, candidates);
         }
+    }
+}
+
+fn mark_inside(
+    source: &ParsedPythonSource,
+    start: tree_sitter::Point,
+    end: tree_sitter::Point,
+    candidates: &mut [Candidate],
+) {
+    for item in candidates
+        .iter_mut()
+        .filter(|item| item.language == Language::Python && item.path == source.path)
+    {
+        let point = tree_sitter::Point::new(item.line - 1, item.column - 1);
+        if start <= point && point < end {
+            item.inside_specification = true;
+        }
+    }
+}
+
+fn discover_typed_predicates(
+    resolver: &PythonLiveness,
+    source: &ParsedPythonSource,
+    node: Node<'_>,
+    definitions: &mut Vec<SpecificationDefinition>,
+    candidates: &mut [Candidate],
+) {
+    use super::python_applications::{Symbol, resolved_call_symbol};
+    if node.kind() == "call"
+        && let Some(function) = node.child_by_field_name("function")
+        && function.kind() == "subscript"
+        && let Some(base) = function.child_by_field_name("value")
+        && let Some(Symbol::Constructor(name)) = resolved_call_symbol(resolver, source, node, base)
+        && name == "PredicateSpec"
+    {
+        let start = node.start_position();
+        definitions.push(SpecificationDefinition {
+            language: Language::Python,
+            path: source.path.clone(),
+            name,
+            kind: "factory".to_owned(),
+            line: start.row + 1,
+            column: start.column + 1,
+        });
+        mark_inside(source, start, node.end_position(), candidates);
+    }
+    let mut cursor = node.walk();
+    for child in node.named_children(&mut cursor) {
+        discover_typed_predicates(resolver, source, child, definitions, candidates);
     }
 }
 

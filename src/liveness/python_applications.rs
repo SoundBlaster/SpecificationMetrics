@@ -235,6 +235,18 @@ pub(super) fn resolved_factory(
     call: Node<'_>,
     receiver: Node<'_>,
 ) -> Option<FactoryTarget> {
+    match resolved_call_symbol(resolver, source, call, receiver)? {
+        Symbol::Value(target) => Some(target),
+        _ => None,
+    }
+}
+
+pub(super) fn resolved_call_symbol(
+    resolver: &PythonLiveness,
+    source: &ParsedPythonSource,
+    call: Node<'_>,
+    receiver: Node<'_>,
+) -> Option<Symbol> {
     let name = root_name(receiver, &source.source)?;
     if resolver.parse_failed.contains(&source.path) || lexical_binding(call, &name, &source.source)
     {
@@ -253,10 +265,7 @@ pub(super) fn resolved_factory(
         }
         ancestor = node.parent();
     }
-    match resolve_expression(resolver, source, receiver, &mut HashSet::new())? {
-        Symbol::Value(target) => Some(target),
-        _ => None,
-    }
+    resolve_expression(resolver, source, receiver, &mut HashSet::new())
 }
 
 fn direct_expression(node: Node<'_>, text: &str) -> bool {
