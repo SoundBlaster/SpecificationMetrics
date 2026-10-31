@@ -186,3 +186,47 @@ The collection was also run twice against SpecGraph revision
 Both runs returned the same SQLite snapshot ID and all comparison deltas were
 zero. These are full-file cohort measurements, not the earlier pilot's selected
 function sums, and not whole-project SpecGraph totals.
+
+## Source locations in PR reports
+
+Pass `--candidate-locations` when collecting both checkouts. The optional v1
+inventory records only candidates that contribute to U, using the same
+partition as the primary counter. Coordinates are one-based lines and UTF-8
+byte columns. The stored evidence includes the scan-relative path, kind and
+scanner fingerprint. Raw source excerpts are omitted.
+
+```sh
+specification-metrics collect --candidate-locations --config base/metrics.toml --output before.json
+specification-metrics collect --candidate-locations --config head/metrics.toml --output after.json
+specification-metrics compare before.json after.json --output diff.json
+specification-metrics compare before.json after.json --github-markdown OWNER/REPO --output locations.md
+```
+
+Archive the full JSON and append the Markdown section to the downstream PR
+report. Supply the repository slug from trusted workflow configuration. The
+section shows up to 20 locations within a 12 KB row budget. For each candidate
+file, collection compares the scanned bytes to the Git blob at the reported
+revision and repository-relative path. Matching files can link to that commit.
+Other files retain their local anchor with a revision-link-unavailable label.
+
+The versioned `opportunity_changes` object identifies both source digests,
+revisions, scan prefixes and manifest digests. Under a compatible collection
+contract, matching groups use language, scan-relative path, syntax kind and
+the scanner's whitespace-normalized subtree hash (fingerprint without its
+occurrence suffix). A line shift within a file preserves the key. A changed
+key, including a file rename or subtree edit, produces removal and addition
+evidence. This measures changes in the U inventory, including crossings of
+the Specification boundary.
+
+If a key exists on both sides, compare its multiplicity. Equal counts cancel.
+For unequal counts report the complete before/after group as ambiguous,
+because occurrence numbers cannot identify which duplicate survived. The
+difference in U equals added minus removed plus the net change in ambiguous
+groups. The order of locations within a group carries no correspondence claim.
+
+Missing inventories (including older snapshots), unsupported inventory
+versions or different known repository prefixes make locations unavailable.
+An incomplete primary measurement labels the location comparison provisional.
+Counts inconsistent with an inventory, duplicate fingerprints or incompatible
+collection contracts fail comparison. Location reporting leaves the counting
+rule and the primary collection contract digest intact.

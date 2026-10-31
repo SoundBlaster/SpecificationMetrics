@@ -1,4 +1,5 @@
 use std::fs;
+use std::path::Path;
 use std::process::Command;
 
 use serde_json::Value;
@@ -186,4 +187,108 @@ fn bare_output_and_store_names_work_in_the_current_directory() {
     );
     assert!(dir.path().join("report.json").is_file());
     assert!(dir.path().join("metrics.sqlite").is_file());
+}
+
+#[test]
+fn pr_locations_match_snapshots_and_abstain_for_duplicate_or_unverified_sites() {
+    let dir = tempdir().unwrap();
+    let repo = dir.path();
+    let git = |args: &[&str]| {
+        let output = Command::new("git")
+            .current_dir(repo)
+            .args(args)
+            .output()
+            .unwrap();
+        assert!(
+            output.status.success(),
+            "{}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+        String::from_utf8(output.stdout).unwrap().trim().to_owned()
+    };
+    git(&["init", "-q"]);
+    let src = repo.join("pkg");
+    fs::create_dir(&src).unwrap();
+    let file = src.join("a (1).py");
+    let config = repo.join("metrics.toml");
+    fs::write(
+        &config,
+        "schema_version=1\nproject='org/repo'\nroot='pkg'\nincludes=['a (1).py']\n",
+    )
+    .unwrap();
+    let collect = |out: &Path| {
+        let result = run(&[
+            "collect",
+            "--candidate-locations",
+            "--config",
+            config.to_str().unwrap(),
+            "--output",
+            out.to_str().unwrap(),
+        ]);
+        assert!(
+            result.status.success(),
+            "{}",
+            String::from_utf8_lossy(&result.stderr)
+        );
+    };
+    let commit = || {
+        git(&["add", "--", "pkg"]);
+        git(&[
+            "-c",
+            "user.name=test",
+            "-c",
+            "user.email=test@example.com",
+            "-c",
+            "commit.gpgsign=false",
+            "commit",
+            "-qm",
+            "snapshot",
+        ]);
+        git(&["rev-parse", "HEAD"])
+    };
+    let base = repo.join("b.json");
+    let head = repo.join("h.json");
+    let compare = |more: &[&str]| {
+        let mut args = vec!["compare", base.to_str().unwrap(), head.to_str().unwrap()];
+        args.extend_from_slice(more);
+        let output = run(&args);
+        assert!(
+            output.status.success(),
+            "{}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+        String::from_utf8(output.stdout).unwrap()
+    };
+    fs::write(
+        &file,
+        "if old: pass\nif same: pass\nif same: pass\nif moved: pass\n",
+    )
+    .unwrap();
+    let old = commit();
+    collect(&base);
+    fs::write(&file, "if moved: pass\nif same: pass\nif new: pass\nRULE = PredicateSpec(lambda v: 1 if v else 0)\n").unwrap();
+    let new = commit();
+    collect(&head);
+    let diff: Value = serde_json::from_str(&compare(&[])).unwrap();
+    let ch = &diff["opportunity_changes"];
+    assert_eq!(ch["status"], "complete");
+    assert_eq!(ch["added"].as_array().unwrap().len(), 1);
+    assert_eq!(ch["removed"].as_array().unwrap().len(), 1);
+    assert_eq!(ch["added"][0]["line"], 3);
+    assert_eq!(ch["added"][0]["column"], 1);
+    assert_eq!(ch["ambiguous"][0]["before"].as_array().unwrap().len(), 2);
+    assert_eq!(ch["ambiguous"][0]["after"].as_array().unwrap().len(), 1);
+    assert_eq!(diff["primary"]["remaining_opportunities"]["delta"], -1);
+    let md = compare(&["--github-markdown", "org/repo"]);
+    assert!(md.contains(&format!("/blob/{new}/pkg/a%20%281%29.py#L3")));
+    assert!(md.contains(&format!("/blob/{old}/pkg/a%20%281%29.py#L1")));
+    fs::write(&file, "if dirty: pass\n").unwrap();
+    collect(&head);
+    let dirty = compare(&["--github-markdown", "org/repo"]);
+    assert!(dirty.contains("revision link unavailable"));
+    assert!(!dirty.contains(&format!("/blob/{new}/")));
+    let mut legacy: Value = serde_json::from_slice(&fs::read(&base).unwrap()).unwrap();
+    legacy.as_object_mut().unwrap().remove("opportunity_sites");
+    fs::write(&base, serde_json::to_vec(&legacy).unwrap()).unwrap();
+    assert!(compare(&["--github-markdown", "org/repo"]).contains("missing_inventory"));
 }
