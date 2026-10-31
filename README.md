@@ -54,6 +54,10 @@ cargo run --locked -- collect --config configs/specgraph.toml \
 cargo run --locked -- collection-history --store metrics/specgraph.sqlite
 ```
 
+For a PR report with source links, add `--candidate-locations` to both
+`collect` runs, then use `compare before.json after.json --github-markdown OWNER/REPO`.
+The JSON comparison retains every added, removed and ambiguous location.
+
 See the [collection contract](docs/collection-contract.md) for source exclusions,
 external-tool setup, before/after comparisons, statuses and strict exit codes.
 

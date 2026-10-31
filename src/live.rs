@@ -10,6 +10,14 @@ use crate::model::{
 };
 
 pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMetricReport> {
+    measure_with_sites(scan, registry, None)
+}
+
+pub(crate) fn measure_with_sites<'a>(
+    scan: &'a ScanReport,
+    registry: Option<&Registry>,
+    mut sites: Option<&mut Vec<&'a crate::model::Candidate>>,
+) -> Result<LiveMetricReport> {
     let mut excluded = HashSet::new();
     if let Some(registry) = registry {
         ensure!(
@@ -78,19 +86,19 @@ pub fn measure(scan: &ScanReport, registry: Option<&Registry>) -> Result<LiveMet
         .iter()
         .filter(|entry| entry.status == SpecificationLivenessStatus::Unknown)
         .count();
-    let covered_candidates = scan
-        .candidates
-        .iter()
-        .filter(|candidate| candidate.inside_specification)
-        .count();
-    let reviewed_exclusions = scan
-        .candidates
-        .iter()
-        .filter(|candidate| {
-            !candidate.inside_specification && excluded.contains(candidate.fingerprint.as_str())
-        })
-        .count();
-    let remaining_opportunities = scan.candidates.len() - covered_candidates - reviewed_exclusions;
+    let (mut covered_candidates, mut reviewed_exclusions, mut remaining_opportunities) = (0, 0, 0);
+    for candidate in &scan.candidates {
+        if candidate.inside_specification {
+            covered_candidates += 1;
+        } else if excluded.contains(candidate.fingerprint.as_str()) {
+            reviewed_exclusions += 1;
+        } else {
+            remaining_opportunities += 1;
+            if let Some(rows) = &mut sites {
+                rows.push(candidate);
+            }
+        }
+    }
     let specification_definitions = live_specifications + unknown_specifications;
     let state = match (specification_definitions, remaining_opportunities) {
         (_, remaining) if remaining > 0 => LiveState::Ratio,
@@ -248,7 +256,10 @@ mod tests {
         registry.sites.push(first);
         registry.sites[0].disposition = Disposition::Excluded;
         registry.sites[0].reason = Some("mechanical guard".to_owned());
-        let measured = measure(&initial, Some(&registry)).unwrap();
+        let mut sites = Vec::new();
+        let measured =
+            super::measure_with_sites(&initial, Some(&registry), Some(&mut sites)).unwrap();
+        assert_eq!(sites, vec![&initial.candidates[1]]);
         assert_eq!(measured.remaining_opportunities, 1);
         assert_eq!(measured.reviewed_exclusions, 1);
 
