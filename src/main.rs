@@ -4,6 +4,7 @@ mod live;
 mod liveness;
 mod metric;
 mod model;
+mod opportunities;
 mod reuse;
 mod scan;
 mod scope;
@@ -132,6 +133,9 @@ enum Command {
     },
     /// Collect primary S/U counters and opt-in external metrics from a TOML contract.
     Collect {
+        /// Retain location evidence for every remaining opportunity for use by compare.
+        #[arg(long)]
+        candidate_locations: bool,
         #[arg(long)]
         config: PathBuf,
         #[arg(long)]
@@ -144,6 +148,9 @@ enum Command {
     },
     /// Compare two collection JSON snapshots under the same measurement contract.
     Compare {
+        /// Render a bounded GitHub PR section for OWNER/REPO instead of JSON.
+        #[arg(long, value_name = "OWNER/REPO")]
+        github_markdown: Option<String>,
         before: PathBuf,
         after: PathBuf,
         #[arg(long)]
@@ -388,12 +395,13 @@ fn main() -> Result<()> {
             emit_json(&reuse::history(&store, limit)?, None)?;
         }
         Command::Collect {
+            candidate_locations,
             config,
             output,
             store,
             require_complete,
         } => {
-            let report = collection::collect(&config)?;
+            let report = collection::collect(&config, candidate_locations)?;
             emit_json(&report, output.as_deref())?;
             if require_complete && report.status != "complete" {
                 bail!(
@@ -407,13 +415,21 @@ fn main() -> Result<()> {
             }
         }
         Command::Compare {
+            github_markdown,
             before,
             after,
             output,
         } => {
-            let report =
-                collection::compare(&collection::load(&before)?, &collection::load(&after)?)?;
-            emit_json(&report, output.as_deref())?;
+            let before = collection::load(&before)?;
+            let after = collection::load(&after)?;
+            let mut report = collection::compare(&before, &after)?;
+            let changes = opportunities::compare(&before, &after)?;
+            if let Some(repo) = github_markdown {
+                emit_text(&changes.markdown(&repo)?, output.as_deref())?;
+            } else {
+                report["opportunity_changes"] = serde_json::to_value(changes)?;
+                emit_json(&report, output.as_deref())?;
+            }
         }
         Command::CollectionHistory { store, limit } => {
             emit_json(&collection::history(&store, limit)?, None)?;
@@ -569,6 +585,10 @@ fn main() -> Result<()> {
 fn emit_json<T: Serialize>(payload: &T, output: Option<&Path>) -> Result<()> {
     let serialized =
         serde_json::to_string_pretty(payload).context("cannot serialize JSON report")?;
+    emit_text(&serialized, output)
+}
+
+fn emit_text(serialized: &str, output: Option<&Path>) -> Result<()> {
     if let Some(output) = output {
         if let Some(parent) = output.parent().filter(|p| !p.as_os_str().is_empty()) {
             fs::create_dir_all(parent)

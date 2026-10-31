@@ -40,6 +40,8 @@ pub struct Collection {
     pub project: String,
     pub contract_digest: String,
     pub primary: LiveMetricReport,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub opportunity_sites: Option<crate::opportunities::Inventory>,
     pub supplementary: Value,
     pub status: String,
 }
@@ -52,7 +54,7 @@ fn resolve(base: &Path, path: &Path) -> PathBuf {
     }
 }
 
-pub fn collect(config_path: &Path) -> Result<Collection> {
+pub fn collect(config_path: &Path, locations: bool) -> Result<Collection> {
     let config_path = config_path.canonicalize()?;
     let base = config_path.parent().context("config has no parent")?;
     let config: Config = toml::from_str(&fs::read_to_string(&config_path)?)?;
@@ -90,7 +92,11 @@ pub fn collect(config_path: &Path) -> Result<Collection> {
         config.includes.clone()
     };
     let scan = scan::scan_with_scope(&root, &includes, manifest.as_ref())?;
-    let primary = live::measure(&scan, registry.as_ref())?;
+    let mut sites = Vec::new();
+    let primary =
+        live::measure_with_sites(&scan, registry.as_ref(), locations.then_some(&mut sites))?;
+    let opportunity_sites =
+        locations.then(|| crate::opportunities::inventory(&scan, &primary, sites));
     // Roots/interpreter locations are execution details, not measurement policy.
     let contract = json!({
         "schema_version": 1,
@@ -169,6 +175,7 @@ pub fn collect(config_path: &Path) -> Result<Collection> {
         project: config.project,
         contract_digest,
         primary,
+        opportunity_sites,
         supplementary,
         status: status.to_owned(),
     })
