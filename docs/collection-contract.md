@@ -224,6 +224,12 @@ because occurrence numbers cannot identify which duplicate survived. The
 difference in U equals added minus removed plus the net change in ambiguous
 groups. The order of locations within a group carries no correspondence claim.
 
+Markdown labels the ambiguous contribution separately and spells out the total:
+`Total ΔU: 23 − 2 + (+0) = +21.` Zero contribution from ambiguous groups does
+not mean zero total change. The equation uses the full inventory comparison,
+even when the location list is truncated. See the [SpecGraph PR 852 control](specgraph-852-u-location-control.md)
+for a real example and a proposed mechanics/policy interpretation.
+
 Missing inventories (including older snapshots), unsupported inventory
 versions or different known repository prefixes make locations unavailable.
 An incomplete primary measurement labels the location comparison provisional.

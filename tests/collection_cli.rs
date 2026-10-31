@@ -280,8 +280,25 @@ fn pr_locations_match_snapshots_and_abstain_for_duplicate_or_unverified_sites() 
     assert_eq!(ch["ambiguous"][0]["after"].as_array().unwrap().len(), 1);
     assert_eq!(diff["primary"]["remaining_opportunities"]["delta"], -1);
     let md = compare(&["--github-markdown", "org/repo"]);
+    assert!(md.contains("ambiguous groups 1 (contribution to ΔU: -1)"));
+    assert!(md.contains("Total ΔU: 1 − 1 + (-1) = -1."));
     assert!(md.contains(&format!("/blob/{new}/pkg/a%20%281%29.py#L3")));
     assert!(md.contains(&format!("/blob/{old}/pkg/a%20%281%29.py#L1")));
+    // A nonzero total must not be confused with zero ambiguous contribution
+    // (the shape of the real SpecGraph PR #852 report: 23 added, 2 removed).
+    fs::write(&file, "if removed_a: pass\nif removed_b: pass\n").unwrap();
+    commit();
+    collect(&base);
+    let additions: String = (0..23).map(|i| format!("if added_{i}: pass\n")).collect();
+    fs::write(&file, additions).unwrap();
+    let new = commit();
+    collect(&head);
+    let md = compare(&["--github-markdown", "org/repo"]);
+    assert!(md.contains("Remaining opportunities (U) · 2 → 23 (+21)"));
+    assert!(md.contains("Added 23, removed 2, ambiguous groups 0 (contribution to ΔU: +0)"));
+    assert!(md.contains("Total ΔU: 23 − 2 + (+0) = +21."));
+    assert_eq!(md.lines().filter(|line| line.starts_with("- ")).count(), 20);
+    assert!(md.contains("More locations in the JSON comparison."));
     fs::write(&file, "if dirty: pass\n").unwrap();
     collect(&head);
     let dirty = compare(&["--github-markdown", "org/repo"]);

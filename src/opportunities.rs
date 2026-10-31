@@ -260,12 +260,19 @@ impl Changes<'_> {
             .sum();
         lines.push(String::new());
         lines.push(format!(
-            "Location comparison **{}**. Added {}, removed {}, ambiguous groups {} (net {:+}).",
+            "Location comparison **{}**. Added {}, removed {}, ambiguous groups {} (contribution to ΔU: {:+}).",
             self.status,
             self.added.len(),
             self.removed.len(),
             self.ambiguous.len(),
             ambiguous_delta
+        ));
+        lines.push(format!(
+            "Total ΔU: {} − {} + ({:+}) = {:+}.",
+            self.added.len(),
+            self.removed.len(),
+            ambiguous_delta,
+            self.after.remaining as i128 - self.before.remaining as i128
         ));
         let rows = self
             .added
