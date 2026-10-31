@@ -1549,6 +1549,44 @@ mod tests {
     }
 
     #[test]
+    fn typed_predicates_respect_definition_time_and_method_body_scopes() {
+        let dir = tempdir().unwrap();
+        let path = dir.path().join("policy.py");
+        fs::write(
+            &path,
+            r#"from specification_core import PredicateSpec
+class App:
+    PredicateSpec = list
+    def build(self, rule=PredicateSpec[int]([1 if external else 0])):
+        return PredicateSpec[int](lambda v: 1 if v else 0)
+def make(PredicateSpec=PredicateSpec[int](lambda v: 1 if v else 0)):
+    return PredicateSpec[int](lambda v: 1 if v else 0)
+def outer(PredicateSpec):
+    def nested(rule=PredicateSpec[int](lambda v: 1 if v else 0)): pass
+"#,
+        )
+        .unwrap();
+        let report = scan(&path, &[]).unwrap();
+        assert!(report.parse_issues.is_empty());
+        assert_eq!(
+            report
+                .specifications
+                .iter()
+                .map(|s| s.line)
+                .collect::<Vec<_>>(),
+            [5, 6]
+        );
+        assert_eq!(
+            report
+                .candidates
+                .iter()
+                .map(|c| (c.line, c.inside_specification))
+                .collect::<Vec<_>>(),
+            [(4, false), (5, true), (6, true), (7, false), (9, false)]
+        );
+    }
+
+    #[test]
     fn generic_argument_does_not_count_as_specification_conformance() {
         assert!(is_spec_base("specification_core.Specification[int]"));
         assert!(is_spec_base("specification_core::Specification<i32>"));
