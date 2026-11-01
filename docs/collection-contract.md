@@ -236,3 +236,67 @@ An incomplete primary measurement labels the location comparison provisional.
 Counts inconsistent with an inventory, duplicate fingerprints or incompatible
 collection contracts fail comparison. Location reporting leaves the counting
 rule and the primary collection contract digest intact.
+
+### Function complexity hotspots
+
+`compare` also emits version 1 of `function_changes`. The same
+`--github-markdown OWNER/REPO` output appends its Python hotspot table, so an
+existing consumer of that output does not need another command. Collection,
+S/U, tool versions, counting rule and contract digest are unchanged.
+
+The section uses the already retained per-file `cognitive` and `cyclomatic`
+observations. Both Python supplements must be complete and have the same
+nonempty Radon and complexipy versions. Absent/invalid function details give
+`unavailable`; failed supplements or different tools give `not_comparable`.
+Neither produces a successful empty table. A provisional primary cohort labels
+the comparison `provisional`. No requested Python metrics means `not_requested`
+and no Markdown section. No source imports, execution or provider calls occur.
+
+For each tool separately, match only the same path and reported name when
+that key has exactly one observation on each side. Keep both original line
+anchors; compute the score delta for a changed score. Line shifts alone are
+omitted. This is structural correspondence, not proof of semantic identity:
+a replacement can retain its name, and the available records contain no body
+hash or change history. The section does not detect edits whose scores stay
+equal and is not a complete list of functions edited by the PR.
+
+If a key exists on only one side or has duplicate names on either side, retain
+each observation as an unmatched row, with a null counterpart and null delta.
+In Markdown these are `—` and `not established`. They can represent a move,
+rename, addition, removal or ambiguous same-named methods. Do not call them
+new/deleted code or fill their unknown baseline with zero. Tool naming differs
+(for example Radon's bare method names versus complexipy's qualified names),
+so CC and Cog observations are not joined by line or array order. Existing
+tool limitations, including incomplete lambda coverage, still apply.
+For duplicated keys whose score multisets are equal, omit the entire unchanged
+metric group without asserting correspondence between its members. If the
+multisets differ, keep every member on both sides as unmatched evidence.
+
+The full JSON retains all rows. Markdown ranks by the larger available score
+within each metric, displays at most five CC and five Cog rows, and applies a
+12 KB row budget. Scores from the two tools are not combined into a quality
+score. Path/name labels are escaped and kept as plain locations: unlike the U
+inventory, these legacy function observations have no per-file blob verification
+receipt for a trustworthy commit link. Source digests and the U comparison's
+revision metadata remain in the encompassing comparison report.
+
+For the historical SpecGraph PR 855 measurement (`39b66a60ad0d` →
+`ccd8b4df11f7`, [original report](https://github.com/0al-spec/SpecGraph/pull/855#issuecomment-6554479153)),
+local replay of the original six-file CI artifact (artifact `13072404710`,
+collection run `41281100140`, analyzer `cd2bc093fec82983ec370536fa9f1d6014ab86e2`)
+produced 13 function observations, with 10 shown in Markdown. Selected rows:
+
+| Metric | Function | Before | After | Delta / correspondence |
+| --- | --- | ---: | ---: | --- |
+| Cog | `capture_project_context` | 109 | 119 | +10, same path and unique reported name |
+| Cog | `check_packages` | — | 77 | not established |
+| CC | `check_packages` | — | 44 | not established |
+| Cog | `_reference_sites` | 13 | — | not established |
+| Cog | `reference_sites` | — | 13 | not established |
+
+The two reference-site names illustrate a possible rename without assigning
+a zero baseline to either side. The project Cog maximum delta remains zero
+while `check_packages` is visible. That observation
+does not attribute 77 units to new logic. The project-wide Cog sum delta +97
+and U delta +27 remain unchanged independent aggregate observations. This
+replays stored metrics without recollecting sources or posting to the historical PR.

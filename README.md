@@ -57,6 +57,9 @@ cargo run --locked -- collection-history --store metrics/specgraph.sqlite
 For a PR report with source links, add `--candidate-locations` to both
 `collect` runs, then use `compare before.json after.json --github-markdown OWNER/REPO`.
 The JSON comparison retains every added, removed and ambiguous location.
+When Python complexity details are available, the same Markdown includes
+metric-changed and unmatched function hotspots with before/after values.
+Unestablished correspondence is explicit; a possible move is never assigned a zero baseline.
 
 See the [collection contract](docs/collection-contract.md) for source exclusions,
 external-tool setup, before/after comparisons, statuses and strict exit codes.

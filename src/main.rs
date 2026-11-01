@@ -1,5 +1,6 @@
 mod classify;
 mod collection;
+mod function_changes;
 mod live;
 mod liveness;
 mod metric;
@@ -424,10 +425,18 @@ fn main() -> Result<()> {
             let after = collection::load(&after)?;
             let mut report = collection::compare(&before, &after)?;
             let changes = opportunities::compare(&before, &after)?;
+            let functions = function_changes::compare(&before, &after);
             if let Some(repo) = github_markdown {
-                emit_text(&changes.markdown(&repo)?, output.as_deref())?;
+                let mut markdown = changes.markdown(&repo)?;
+                let hotspots = functions.markdown();
+                if !hotspots.is_empty() {
+                    markdown.push_str("\n\n");
+                    markdown.push_str(&hotspots);
+                }
+                emit_text(&markdown, output.as_deref())?;
             } else {
                 report["opportunity_changes"] = serde_json::to_value(changes)?;
+                report["function_changes"] = serde_json::to_value(functions)?;
                 emit_json(&report, output.as_deref())?;
             }
         }

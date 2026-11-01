@@ -219,7 +219,7 @@ pub fn compare<'a>(before: &'a Collection, after: &'a Collection) -> Result<Chan
 }
 
 // Percent-encode source-controlled text before putting it in a Markdown label or URL.
-fn encoded(s: &str) -> String {
+pub(crate) fn encoded(s: &str) -> String {
     let mut out = String::new();
     for b in s.bytes() {
         if b.is_ascii_alphanumeric() || b"-_./".contains(&b) {
