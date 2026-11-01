@@ -169,8 +169,15 @@ impl Changes {
         if self.status == "not_requested" {
             return String::new();
         }
-        let mut lines = vec!["### Python function complexity hotspots".to_owned()];
-        lines.push(format!("\nComparison **{}**.", self.status));
+        format!(
+            "<details>\n<summary>Python function complexity hotspots · {}</summary>\n\n{}\n\n</details>",
+            self.status,
+            self.markdown_body()
+        )
+    }
+
+    fn markdown_body(&self) -> String {
+        let mut lines = vec![format!("Comparison **{}**.", self.status)];
         if let Some(reason) = self.reason {
             lines.push(format!("Function details unavailable (`{reason}`)."));
             return lines.join("\n");

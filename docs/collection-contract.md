@@ -243,6 +243,9 @@ rule and the primary collection contract digest intact.
 `--github-markdown OWNER/REPO` output appends its Python hotspot table, so an
 existing consumer of that output does not need another command. Collection,
 S/U, tool versions, counting rule and contract digest are unchanged.
+The function section is collapsed by default in a `<details>` block. Its
+`<summary>` shows the comparison status; the table, limitations and unavailable
+details expand together. JSON remains complete regardless of display state.
 
 The section uses the already retained per-file `cognitive` and `cyclomatic`
 observations. Both Python supplements must be complete and have the same

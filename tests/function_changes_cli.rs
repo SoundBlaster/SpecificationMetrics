@@ -35,10 +35,20 @@ fn compare(old: Value, new: Value) -> (Value, String) {
         fs::write(path, serde_json::to_vec(&snapshot).unwrap()).unwrap();
     }
     let args = ["compare", b.to_str().unwrap(), a.to_str().unwrap()];
-    let report = serde_json::from_slice(&run(&args)).unwrap();
+    let report: Value = serde_json::from_slice(&run(&args)).unwrap();
     let mut args = args.to_vec();
     args.extend(["--github-markdown", "org/repo"]);
-    (report, String::from_utf8(run(&args)).unwrap())
+    let md = String::from_utf8(run(&args)).unwrap();
+    let details_count = usize::from(report["function_changes"]["status"] != "not_requested");
+    assert_eq!(md.matches("<details>").count(), details_count);
+    assert_eq!(md.matches("</details>").count(), details_count);
+    if details_count != 0 {
+        assert!(md.contains("<summary>Python function complexity hotspots · "));
+        assert!(md.contains("</summary>\n\nComparison"));
+        assert!(md.ends_with("\n\n</details>\n"));
+        assert!(!md.contains("<details open"));
+    }
+    (report, md)
 }
 
 fn metrics(files: Value) -> Value {
