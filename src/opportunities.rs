@@ -219,7 +219,7 @@ pub fn compare<'a>(before: &'a Collection, after: &'a Collection) -> Result<Chan
 }
 
 // Percent-encode source-controlled text before putting it in a Markdown label or URL.
-fn encoded(s: &str) -> String {
+pub(crate) fn encoded(s: &str) -> String {
     let mut out = String::new();
     for b in s.bytes() {
         if b.is_ascii_alphanumeric() || b"-_./".contains(&b) {
@@ -274,6 +274,13 @@ impl Changes<'_> {
             ambiguous_delta,
             self.after.remaining as i128 - self.before.remaining as i128
         ));
+        if self.added.is_empty() && self.removed.is_empty() && self.ambiguous.is_empty() {
+            return Ok(lines.join("\n"));
+        }
+        lines.push(
+            "\n<details>\n<summary>Source locations (added, removed and ambiguous)</summary>\n"
+                .into(),
+        );
         let rows = self
             .added
             .iter()
@@ -285,7 +292,6 @@ impl Changes<'_> {
                     .map(|r| ("Ambiguous base", r, &self.before))
                     .chain(g.after.iter().map(|r| ("Ambiguous head", r, &self.after)))
             }));
-        lines.push(String::new());
         let mut bytes_left = 12000;
         for (i, (label, row, side)) in rows.enumerate() {
             if i == 20 {
@@ -317,6 +323,7 @@ impl Changes<'_> {
             bytes_left -= line.len() + 1;
             lines.push(line);
         }
+        lines.push("\n</details>".into());
         Ok(lines.join("\n"))
     }
 }
