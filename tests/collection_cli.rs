@@ -282,6 +282,14 @@ fn pr_locations_match_snapshots_and_abstain_for_duplicate_or_unverified_sites() 
     let md = compare(&["--github-markdown", "org/repo"]);
     assert!(md.contains("ambiguous groups 1 (contribution to ΔU: -1)"));
     assert!(md.contains("Total ΔU: 1 − 1 + (-1) = -1."));
+    assert_eq!(md.matches("<details>").count(), 1);
+    assert_eq!(md.matches("</details>").count(), 1);
+    assert!(!md.contains("<details open"));
+    let (summary, locations) = md.split_once("<details>").unwrap();
+    assert!(summary.contains("Total ΔU:"));
+    assert!(!summary.contains("- Added"));
+    assert!(locations.contains("</summary>\n\n- Added"));
+    assert!(md.ends_with("\n\n</details>\n"));
     assert!(md.contains(&format!("/blob/{new}/pkg/a%20%281%29.py#L3")));
     assert!(md.contains(&format!("/blob/{old}/pkg/a%20%281%29.py#L1")));
     // A nonzero total must not be confused with zero ambiguous contribution
@@ -299,6 +307,11 @@ fn pr_locations_match_snapshots_and_abstain_for_duplicate_or_unverified_sites() 
     assert!(md.contains("Total ΔU: 23 − 2 + (+0) = +21."));
     assert_eq!(md.lines().filter(|line| line.starts_with("- ")).count(), 20);
     assert!(md.contains("More locations in the JSON comparison."));
+    assert!(md.ends_with("\n\n</details>\n"));
+    fs::copy(&base, &head).unwrap();
+    let unchanged = compare(&["--github-markdown", "org/repo"]);
+    assert!(unchanged.contains("Total ΔU: 0 − 0 + (+0) = +0."));
+    assert!(!unchanged.contains("<details>"));
     fs::write(&file, "if dirty: pass\n").unwrap();
     collect(&head);
     let dirty = compare(&["--github-markdown", "org/repo"]);

@@ -229,6 +229,10 @@ Markdown labels the ambiguous contribution separately and spells out the total:
 not mean zero total change. The equation uses the full inventory comparison,
 even when the location list is truncated. See the [SpecGraph PR 852 control](specgraph-852-u-location-control.md)
 for a real example and a proposed mechanics/policy interpretation.
+Counts, status and the total ΔU calculation stay visible. Nonempty source
+location lists are collapsed by default under `<details>`; zero-change and
+unavailable comparisons do not create an empty spoiler. Truncation notices
+remain inside the location block, while full JSON is unchanged.
 
 Missing inventories (including older snapshots), unsupported inventory
 versions or different known repository prefixes make locations unavailable.
