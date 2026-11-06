@@ -68,9 +68,22 @@ not activate `uses_specification`, remove candidates from U, or change the count
 Comparing ratios across different scopes or rule versions requires an explicit
 annotation; old snapshots are not rewritten when the contract changes.
 
+## Swift parser update in v11
+
+Counting rule v11 updates `tree-sitter-swift` from 0.7.3 to 0.7.4. Grammar
+changes can alter recognized syntax, diagnostics and candidate locations, so
+the version changes even if a particular project's totals do not. Recollect
+both sides with the same version; do not interpret analyzer changes as code
+refactoring or rewrite historical results.
+
+On an identical ISOInspector snapshot the update reduces Swift parse issue
+files from 12 to 3 while leaving all recorded U sites unchanged. Attribute
+previews still produce diagnostics and remain provisional; the implementation
+does not suppress those errors. See the [source-bound audit](swift-parser-isoinspector-audit.md).
+
 ## Current implementation boundary
 
-Counting rule v10 implements versioned source roles, semantic manifest digests,
+Counting rule v11 implements versioned source roles, semantic manifest digests,
 the exact-subtree `inside_specification` exclusion for directly recognized
 definitions, factories, the Python type marker, the Swift
 `SpecificationMetricV1` protocol marker, and the Rust
