@@ -1396,6 +1396,51 @@ mod tests {
     use super::{is_spec_base, scan, scan_with_scope};
 
     #[test]
+    fn swift_conditional_members_and_nil_coalescing_parse_without_diagnostics() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("sample.swift"),
+            r#"
+struct Sample {
+    #if os(macOS)
+    private let value: Int
+    #else
+    private let value: Int
+    #endif
+    func check(_ properties: [String: Any]) -> Bool {
+        let enabled = properties["enabled"] as? Bool ?? true
+        let mapping = properties["mapping"] as? [String: Any] ?? [:]
+        if enabled { return !mapping.isEmpty }
+        return false
+    }
+}
+"#,
+        )
+        .unwrap();
+        let report = scan(dir.path(), &[]).unwrap();
+        assert!(report.parse_issues.is_empty(), "{:?}", report.parse_issues);
+        assert!(
+            report
+                .candidates
+                .iter()
+                .any(|candidate| candidate.kind == "if")
+        );
+    }
+
+    #[test]
+    fn swift_preview_attributes_remain_provisional_until_supported() {
+        let dir = tempdir().unwrap();
+        fs::write(
+            dir.path().join("preview.swift"),
+            "@available(iOS 17.0, macOS 14.0, *) #Preview(\"Example\") { Text(\"Hi\") }\n",
+        )
+        .unwrap();
+        let report = scan(&dir.path().join("preview.swift"), &[]).unwrap();
+        assert_eq!(report.parse_issues.len(), 1);
+        assert!(crate::live::measure(&report, None).unwrap().provisional);
+    }
+
+    #[test]
     fn discovers_decisions_in_all_three_languages() {
         let dir = tempdir().unwrap();
         fs::write(
